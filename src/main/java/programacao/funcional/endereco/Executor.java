@@ -12,83 +12,6 @@ import java.util.stream.Stream;
  */
 public class Executor {
 
-    static String[] paises = new String[]
-            {
-                    "Brasil"
-            };
-
-    static String[] estados = new String[]
-            {
-                    "Acre - AC / Brasil",
-                    "Amazonas - AM / Brasil",
-                    "Paraná - PR / Brasil",
-                    "Piauí - PI / Brasil",
-                    "Rio Grande do Sul - RS / Brasil",
-                    "Santa Catarina - SC / Brasil",
-                    "São Paulo - SP / Brasil"
-            };
-
-    static String[] cidades = new String[]
-            {
-                    "Foz do Iguacu - PR",
-                    "Curitiba - PR",
-                    "Três Barras do Paraná - PR",
-                    "Barracão - PR",
-                    "Santa Terezinha - PR",
-                    "Cascavel - PR",
-                    "Umuarama - PR",
-
-                    "São Paulo - SP",
-                    "Santo André - SP",
-                    "Jundiaí - SP",
-                    "Santos - SP",
-                    "São Bernardo do Campo - SP",
-                    "Sorocaba - SP",
-                    "Piracicaba - SP",
-
-
-                    "Florianópolis - SC",
-                    "Blumenau - SC",
-                    "Itajaí - SC",
-                    "Chapecó - SC",
-                    "São José - SC",
-                    "Bom Jesus - SC",
-                    "Navegantes - SC",
-
-                    "Porto Alagre - RS",
-                    "Alecrim - RS",
-                    "Alpestre - RS",
-                    "Araricá - RS",
-                    "Barracão - RS",
-                    "Bom Jesus - RS",
-                    "Pelotas - RS",
-
-                    "Acauã - PI",
-                    "Agricolândia - PI",
-                    "Altos - PI",
-                    "Amarante - PI",
-                    "Aroazes - PI",
-                    "Bom Jesus - PI",
-                    "Arraial - PI",
-
-                    "Rio Branco - AC",
-                    "Xapuri - AC",
-                    "Feijó - AC",
-                    "Tarauacá - AC",
-                    "Acrelândia - AC",
-                    "Jordão - AC",
-                    "Capixaba - AC",
-
-                    "Maués - AM",
-                    "Careiro - AM",
-                    "Careiro da Várzea - AM",
-                    "Borba - AM",
-                    "Manaus - AM",
-                    "Silves - AM",
-                    "Itapiranga - AM"
-
-            };
-
     public static void main(String[] args) {
 //        Executor.testandoForEach();
 //        Executor.testandoArraysStream();
@@ -101,12 +24,12 @@ public class Executor {
     }
 
     static void testandoReferenceMethods() {
-        Arrays.asList(Executor.cidades)
+        Arrays.asList(Repository.cidades)
                 .forEach(System.out::println);
     }
 
     static void testandoForEach() {
-        Arrays.asList(Executor.cidades)
+        Arrays.asList(Repository.cidades)
                 .forEach(System.out::println);
     }
 
@@ -115,7 +38,7 @@ public class Executor {
      * Ou seja, não é necessário "Array.asList(array).stream, basta utilizar o "Arrays.stream(array)" que a função devolve um fluxo (ou stream)
      */
     static void testandoArraysStream() {
-        final Stream stream = Arrays.stream(Executor.cidades)
+        final Stream stream = Arrays.stream(Repository.cidades)
                 .map(cidadeString -> {
                     final Cidade cidade = new Cidade();
                     cidade.setNome(cidadeString.substring(0, cidadeString.indexOf("-")));
@@ -128,7 +51,7 @@ public class Executor {
     }
 
     static void testandoMap() {
-        Arrays.stream(Executor.cidades)
+        Arrays.stream(Repository.cidades)
                 .map(cidadeString -> {
                     final Cidade cidade = new Cidade();
                     cidade.setNome(cidadeString.substring(0, cidadeString.indexOf("-")));
@@ -140,14 +63,14 @@ public class Executor {
     }
 
     static void testandoMapsEncadeados() {
-        Arrays.stream(Executor.cidades)
+        Arrays.stream(Repository.cidades)
                 .map(cidadeString -> new Cidade(cidadeString.substring(0, cidadeString.indexOf("-")), null))
                 .map(Cidade::getNome)
                 .forEach(System.out::println);
     }
 
     static void testandoFilter() {
-        Arrays.stream(Executor.cidades)
+        Arrays.stream(Repository.cidades)
                 .filter(filtro -> filtro.contains("Bom Jesus"))
                 .map(cidadeString -> new Cidade(cidadeString, null))
                 .map(Cidade::getNome)
@@ -155,11 +78,11 @@ public class Executor {
     }
 
     static void testandoFilter2() {
-        Arrays.stream(Executor.cidades)
+        Arrays.stream(Repository.cidades)
                 .map(cidadeString -> {
 
                     final Cidade cidade = new Cidade(cidadeString.substring(0, cidadeString.indexOf("-")).trim(),
-                            Arrays.stream(Executor.estados)
+                            Arrays.stream(Repository.estados)
                                     // Filtrando os estados
                                     .filter(estadoString ->
 
@@ -199,8 +122,6 @@ public class Executor {
     }
 
     public static List<Cidade> getCidades(final Integer quantidade) {
-
-
         return Executor.getCidades().subList(0, quantidade);
     }
 
@@ -211,7 +132,7 @@ public class Executor {
      */
     public static List<Pais> getPaises() {
 
-        return Arrays.stream(Executor.paises)
+        return Arrays.stream(Repository.paises)
                 // Mapeando jo estado
                 .map(paisString -> new Pais(paisString))
                 .collect(Collectors.toList());
@@ -219,7 +140,7 @@ public class Executor {
 
 
     public static List<Estado> getEstados() {
-        return Arrays.stream(Executor.estados)
+        return Arrays.stream(Repository.estados)
                 // Mapeando jo estado
                 .map(estadoString -> new Estado(
 
@@ -242,7 +163,7 @@ public class Executor {
 
         Executor.getEstados()
                 .stream().map(estado -> {
-                    estado.setCidades(Arrays.stream(Executor.cidades)
+                    estado.setCidades(Arrays.stream(Repository.cidades)
                             .map(cidadeString -> new Cidade(cidadeString.substring(0, cidadeString.indexOf("-")).trim(), estado))
                             .collect(Collectors.toList()));
                     return estado;
@@ -251,13 +172,13 @@ public class Executor {
 
                 .forEach(System.out::println);
 
-        final List<Cidade> cidades = Arrays.stream(Executor.cidades)
+        final List<Cidade> cidades = Arrays.stream(Repository.cidades)
 
                 .map(cidadeString ->
 
                         new Cidade(cidadeString.substring(0, cidadeString.indexOf("-")).trim(),
 
-                                Arrays.stream(Executor.estados)
+                                Arrays.stream(Repository.estados)
 
                                         // Filtrando os estados
                                         .filter(estadoString ->
