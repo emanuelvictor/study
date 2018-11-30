@@ -185,15 +185,15 @@ public class Matriz {
         }
 
         for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz.length; j++) {
-                if (matriz[j][i] == 0)
+            for (int[] aMatriz : matriz) {
+                if (aMatriz[i] == 0)
                     System.out.print("000 ");
-                else if (matriz[j][i] < 100 && matriz[j][i] >= 10)
-                    System.out.print("0" + matriz[j][i] + " ");
-                else if (matriz[j][i] < 10)
-                    System.out.print("00" + matriz[j][i] + " ");
+                else if (aMatriz[i] < 100 && aMatriz[i] >= 10)
+                    System.out.print("0" + aMatriz[i] + " ");
+                else if (aMatriz[i] < 10)
+                    System.out.print("00" + aMatriz[i] + " ");
                 else
-                    System.out.print(matriz[j][i] + " ");
+                    System.out.print(aMatriz[i] + " ");
             }
             System.out.println();
         }
@@ -206,7 +206,7 @@ public class Matriz {
         for (int i = 0; i < TAM; i++) {
             cont = cont + i;
         }
-        ;
+
         return cont;
     }
 

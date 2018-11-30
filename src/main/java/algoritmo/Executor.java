@@ -1,5 +1,6 @@
 package algoritmo;
 
+import algoritmo.genetico.AlgoritmoGenetico;
 import algoritmo.memetico.AlgoritmoMemetico;
 
 /**
@@ -11,8 +12,12 @@ import algoritmo.memetico.AlgoritmoMemetico;
 public class Executor {
 
     public static void main(String[] args) {
-        AlgoritmoMemetico algoritmoMemetico = new AlgoritmoMemetico();
-        algoritmoMemetico.execute();
+//        final AlgoritmoMemetico algoritmoMemetico = new AlgoritmoMemetico(Integer.parseInt(Leitura.inDados("Insira a quantidade de cidades: ")));
+//        algoritmoMemetico.execute();
+
+
+        final AlgoritmoGenetico algoritmoGenetico = new AlgoritmoGenetico(Integer.parseInt(Leitura.inDados("Insira a quantidade de cidades: ")), Integer.parseInt(Leitura.inDados("Defina o tamanho da população: ")));
+        algoritmoGenetico.execute();
     }
 
 }

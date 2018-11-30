@@ -3,6 +3,8 @@
 package algoritmo.genetico;
 
 
+import algoritmo.Matriz;
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -13,14 +15,13 @@ import java.util.Random;
  */
 public class AlgoritmoGenetico {
 
-
     int[][] populacao;
     private int[][] MATRIZ_ADJACENTE = new int[][]{{}};
     // Tamanho da população
     private int TAM_POP;
     //    COM TAXA DE MUTAÇÃO 100% E CROSSOVER 0% O ALGORÍTMO ESTA CONFIGURADO PARA FORÇA BRUTA
-    private float TAXA_MUTACAO;
-    private int TAXA_CROSSOVER;
+    private float TAXA_MUTACAO = 1;
+    private int TAXA_CROSSOVER = 100;
     private Crossover CROSSOVER;
     private int FITNESS_A_SER_ENCONTRADO;
     private int elitismo = 0;
@@ -28,13 +29,20 @@ public class AlgoritmoGenetico {
     // SE FOR SETADO COMO NULL, AS GERAÇẼOS SÃO CONSIDERADAS COMO INFINITAS. OU SEJA SÓ VAI PARAR QUANDO ENCONTRAR O FITNESS
     private Integer NUM_GERACOES;
     //variável para somar o fitness
-    private int melhorFitnes;
     private int geracaoMelhorFitness;
     private int[] rotaMelhorFitness;
     private Crossover melhorCrossover;
     private int melhorTamPop;
     private int[][] populacaoInicial;
     private boolean IMPRIMIR_EVOLUCAO = false;
+
+
+    public AlgoritmoGenetico(int TAM_MATRIZ, int TAM_POP) {
+        this.MATRIZ_ADJACENTE = Matriz.getMatriz(TAM_MATRIZ);
+        this.setFitnessASerEncontrado(Matriz.getFitness(TAM_MATRIZ));
+        this.TAM_POP = TAM_POP;
+        this.populacao = gerarPopulacaoAleatoria(TAM_POP, MATRIZ_ADJACENTE);
+    }
 
     private static int[][] crossover(final int elitismo, final int roleta, final int[][] populacao, final int TAXA_CROSSOVER, final int[][] MATRIZ_ADJACENTE, final Crossover CROSSOVER) {
         if (CROSSOVER == Crossover.PMX)
@@ -384,11 +392,14 @@ public class AlgoritmoGenetico {
         this.IMPRIMIR_EVOLUCAO = IMPRIMIR_EVOLUCAO;
     }
 
+    public int execute() {
+        return this.execute(this.populacao);
+    }
+
     //TODO EXECUTE
     public int execute(int[][] populacao) {
 
-        melhorFitnes = 99999;
-
+        int melhorFitnes = 99999;
 
         //Vetor que guarda os fitness de fitness (são atributos privados por não são necessários para o acesso externo)
         int[] fitness = calcularFitness(populacao, MATRIZ_ADJACENTE);
@@ -427,7 +438,7 @@ public class AlgoritmoGenetico {
             int roleta = roleta(fitness);
 
             // Aplica o crossover do indivíduo selecionado pela roleta
-            populacao = crossover(elitismo, roleta, populacao, TAXA_CROSSOVER, MATRIZ_ADJACENTE, CROSSOVER);
+            populacao = crossover(elitismo, roleta, populacao, TAXA_CROSSOVER, MATRIZ_ADJACENTE, Crossover.PMX);
 
             // Aplica mutaçao
             populacao = mutacao(populacao, TAXA_MUTACAO, MATRIZ_ADJACENTE);
@@ -442,6 +453,7 @@ public class AlgoritmoGenetico {
             if (b) // Se for true repete infinitamente
                 NUM_GERACOES++;
 
+            System.out.println(calcularFitness(populacao, MATRIZ_ADJACENTE)[0]);
         }
 
         return melhorFitnes/* maisForteDaPrimeiraGeracao-fitness[0]*/;

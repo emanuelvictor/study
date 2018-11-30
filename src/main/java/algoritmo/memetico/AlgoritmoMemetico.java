@@ -19,6 +19,11 @@ public class AlgoritmoMemetico {
     // Quantidade de cidades
     private int TAM_MATRIZ = 80;
 
+    public AlgoritmoMemetico(int TAM_MATRIZ) {
+        this.MATRIZ_ADJACENTE = Matriz.getMatriz(TAM_MATRIZ);
+        this.FITNESS = Matriz.getFitness(TAM_MATRIZ);
+    }
+
     public AlgoritmoMemetico() {
         this.MATRIZ_ADJACENTE = Matriz.getMatriz(TAM_MATRIZ);
         this.FITNESS = Matriz.getFitness(TAM_MATRIZ);
