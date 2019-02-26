@@ -84,7 +84,7 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("logado", true);
             request.getSession().setAttribute("usuario", "admin");
 
-            if (redirect != null)
+            if (redirect != null && !redirect.equals("null"))
                 response.sendRedirect(redirect);
             else
                 response.sendRedirect("/");

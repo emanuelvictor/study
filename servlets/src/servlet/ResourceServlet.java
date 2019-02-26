@@ -39,7 +39,7 @@ public class ResourceServlet extends HttpServlet {
         html("<!DOCTYPE html>");
         html("<html>");
         html("<head>");
-        html("<title>Notícias</title>");
+        html("<title>Resource APP</title>");
         html("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
         html("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css\">");
         html("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/trix/1.0.0/trix.css\">");

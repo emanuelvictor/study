@@ -46,8 +46,10 @@ public class PublicServlet extends HttpServlet {
         html("<h2>Resource APP</h2>");
 
         html("<h3>Bem vindo</h3>");
-
         html("<hr />");
+        html("<a href='resource'>Acessar protegido</a>");
+
+
 
         footer();
 
