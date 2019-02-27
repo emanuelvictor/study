@@ -87,7 +87,7 @@ public class LoginServlet extends HttpServlet {
             if (redirect != null && !redirect.equals("null"))
                 response.sendRedirect(redirect);
             else
-                response.sendRedirect("/");
+                response.sendRedirect("\"#");
 
         } else {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
