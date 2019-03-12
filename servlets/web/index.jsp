@@ -5,12 +5,15 @@
   Time: 18:49
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType='text/html;charset=UTF-8' language='java' %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Escrever parâmetro</title>
 </head>
 <body>
-roulou de prima
+<form action='lista.jsp' method='post'>
+    <input type='text' name='parametro' id='parametro'>
+    <input type='submit' value='Enviar parâmetro'>
+</form>
 </body>
 </html>

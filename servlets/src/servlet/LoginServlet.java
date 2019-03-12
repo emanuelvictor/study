@@ -1,6 +1,5 @@
 package servlet;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
+@WebServlet(name = "LoginServlet", urlPatterns = {"/servlet/login"})
 public class LoginServlet extends HttpServlet {
     private PrintWriter out = null;
 
@@ -87,7 +86,7 @@ public class LoginServlet extends HttpServlet {
             if (redirect != null && !redirect.equals("null"))
                 response.sendRedirect(redirect);
             else
-                response.sendRedirect("\"#");
+                response.sendRedirect("/servlet/");
 
         } else {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);

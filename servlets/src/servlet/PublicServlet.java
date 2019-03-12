@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "PublicServlet", urlPatterns = {"/fasdfasdf"})
+@WebServlet(name = "PublicServlet", urlPatterns = {"/servlet/"})
 public class PublicServlet extends HttpServlet {
     private PrintWriter out = null;
 

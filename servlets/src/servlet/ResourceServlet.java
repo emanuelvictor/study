@@ -1,6 +1,5 @@
 package servlet;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "ResourceServlet", urlPatterns = {"/resource"})
+@WebServlet(name = "ResourceServlet", urlPatterns = {"/servlet/resource"})
 public class ResourceServlet extends HttpServlet {
 
     private PrintWriter out = null;
@@ -18,7 +17,7 @@ public class ResourceServlet extends HttpServlet {
         final String usuario = (String) request.getSession().getAttribute("usuario");
         final Boolean logado = (Boolean) request.getSession().getAttribute("logado");
         if (usuario == null || !logado){
-            response.sendRedirect("login?" + request.getServletPath().replace("/", ""));
+            response.sendRedirect("login?" + request.getServletPath().replace("/servlet/", ""));
             return;
         }
         this.out = response.getWriter();
