@@ -13,7 +13,7 @@ public class Cliente {
             final String solicitacao = "Mande uma piada";
             final byte[] msg = solicitacao.getBytes();
 
-            InetAddress endereco = InetAddress.getByName("localhost");
+            final InetAddress endereco = InetAddress.getByName("localhost");
 
             DatagramPacket datagramPacket = new DatagramPacket(msg, msg.length, endereco, 40000);
 
@@ -29,9 +29,8 @@ public class Cliente {
 
             System.out.println(piada);
 
-            if (piada.contains("Acabaram as piadas")) {
+            if (piada.contains("Acabaram as piadas"))
                 System.exit(0);
-            }
 
             Thread.sleep(60);
 
