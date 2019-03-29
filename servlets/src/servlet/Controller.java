@@ -16,8 +16,8 @@ public class Controller extends HttpServlet {
         if (request.getParameter("filtro") == null) {
             request.setAttribute("piadas", PiadasRepository.getInstance().getTodasAsPiadas());
             request.getRequestDispatcher("WEB-INF/views/index.jsp").forward(request, response);
-        } else{
-            request.setAttribute("piadas", PiadasRepository.getInstance().getTodasAsPiadas().stream().filter(s -> s.contains(request.getParameter("filtro"))).collect(Collectors.toList()));
+        } else {
+            request.setAttribute("piadas", PiadasRepository.getInstance().getTodasAsPiadas().stream().filter(s -> s.getConteudo().contains(request.getParameter("filtro"))).collect(Collectors.toList()));
             request.setAttribute("filtro", request.getParameter("filtro"));
             request.getRequestDispatcher("WEB-INF/views/index.jsp").forward(request, response);
         }
