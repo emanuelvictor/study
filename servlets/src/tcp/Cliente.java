@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Cliente {
@@ -19,18 +18,7 @@ public class Cliente {
             // Solicitar conexão
             conexao = new Socket("127.0.0.1", 4000);
 
-
-            // Enviar dados
-            saida = new DataOutputStream(conexao.getOutputStream());
-
-            int dados = Integer.parseInt(JOptionPane.showInputDialog("Digite um valor", entrada));
-            saida.writeInt(dados);
-
-            // Receber resposta
-            entrada = new DataInputStream(conexao.getInputStream());
-
-            final String resultado =  entrada.readUTF();
-            System.out.println("Servidor enviou: " + resultado);
+            starRunnable().run();
 
             // Fechar conexão
             conexao.close();
@@ -39,5 +27,30 @@ public class Cliente {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    static Runnable starRunnable() {
+        return () -> {
+
+            try {
+
+                // Enviar dados
+                saida = new DataOutputStream(conexao.getOutputStream());
+
+                entrada = null;
+                int dados = Integer.parseInt(JOptionPane.showInputDialog("Digite um valor", entrada));
+                saida.writeInt(dados);
+
+                // Receber resposta
+                entrada = new DataInputStream(conexao.getInputStream());
+
+                final String resultado = entrada.readUTF();
+                System.out.println("Servidor enviou: " + resultado);
+
+                starRunnable().run();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        };
     }
 }

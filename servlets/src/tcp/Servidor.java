@@ -14,9 +14,7 @@ public class Servidor {
     private static DataOutputStream saida;
 
     public static void main(String[] args) {
-
         try {
-
             // Reservar uma porta
             servidor = new ServerSocket(4000);
 
@@ -24,20 +22,36 @@ public class Servidor {
             System.out.println("Aguardando conexão");
             conexao = servidor.accept();
 
-            // Receber dados
-            entrada = new DataInputStream(conexao.getInputStream());
-            final int valor = entrada.readInt();
-
-            // Responder cliente
-            final String retorno = valor > 0 ? "O valor é maior que zero" : "O valor é menor que zero";
-            saida = new DataOutputStream(conexao.getOutputStream());
-            saida.writeUTF("retorno");
+            startTrhead().run();
 
             // Fecha conexão
             conexao.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
+    static Runnable startTrhead() {
+        return () -> {
+            // Receber dados
+            try {
+
+                entrada = new DataInputStream(conexao.getInputStream());
+
+                final int valor = entrada.readInt();
+
+                // Responder cliente
+                final String retorno = valor > 0 ? "O valor é maior que zero" : "O valor é menor que zero";
+                saida = new DataOutputStream(conexao.getOutputStream());
+                saida.writeUTF(retorno);
+
+                startTrhead().run();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        };
+    }
+
+
 }
