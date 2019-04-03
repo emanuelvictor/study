@@ -1,11 +1,12 @@
-package tcp.multi.threads;
+package multi.threads;
 
+import javax.swing.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-public class Cliente3 {
+public class Cliente {
 
     private static Socket conexao;
     private static DataInputStream entrada;
@@ -15,27 +16,28 @@ public class Cliente3 {
 
         try {
 
-            for (int i = 0; i < 1000; i++) {
+            boolean continuidade = true;
 
-                // Solicitar conexão
+            while (continuidade) {
+// Solicitar conexão
                 conexao = new Socket("127.0.0.1", 4000);
-
                 // Enviar dados
                 saida = new DataOutputStream(conexao.getOutputStream());
 
                 entrada = null;
-                int dados = i - 1;
-                saida.writeInt(dados);
+                final String mensagem = JOptionPane.showInputDialog("Digite a mensagem", entrada);
 
-                // Receber resposta
-                entrada = new DataInputStream(conexao.getInputStream());
-
-                final String resultado = entrada.readUTF();
-                System.out.println("Servidor enviou: " + resultado);
+                if (mensagem == null || mensagem.trim().toLowerCase().equals("sair"))
+                    continuidade = false;
+                else {
+                    if (mensagem.length() > 0)
+                        saida.writeUTF(mensagem);
+                }
 
                 // Fechar conexão
                 conexao.close();
             }
+
 
         } catch (IOException e) {
             e.printStackTrace();

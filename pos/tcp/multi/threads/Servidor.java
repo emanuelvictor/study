@@ -1,4 +1,4 @@
-package tcp.multi.threads;
+package multi.threads;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -39,12 +39,8 @@ public class Servidor {
 
                 // Recebe dados
                 entrada = new DataInputStream(conexao.getInputStream());
-                final int valor = entrada.readInt();
-
-                // Responder cliente
-                final String retorno = valor > 0 ? "O valor é maior que zero" : "O valor é menor que zero";
-                saida = new DataOutputStream(conexao.getOutputStream());
-                saida.writeUTF(retorno);
+                final String valor = entrada.readUTF();
+                System.out.println(valor);
 
                 // Fecha conexão
                 conexao.close();
