@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -16,9 +17,10 @@ public class ClienteRMI {
 
             Validadora stub = (Validadora) registro.lookup("metodosValidadores");
 
-            System.out.println("O CPF 07074762911 é: " + stub.validarCPF("07074762911"));
+            final String cpf = JOptionPane.showInputDialog("Digite o CPF");
+            System.out.println("O CPF " + cpf + " é " + (stub.validarCPF(cpf) ? "válido" : "inválido"));
 
-            System.out.println("O número 10 é: " + stub.maiorMenorZero(10));
+//            System.out.println("O número 10 é: " + stub.maiorMenorZero(10));
 
         } catch (RemoteException | NotBoundException e) {
             e.printStackTrace();
