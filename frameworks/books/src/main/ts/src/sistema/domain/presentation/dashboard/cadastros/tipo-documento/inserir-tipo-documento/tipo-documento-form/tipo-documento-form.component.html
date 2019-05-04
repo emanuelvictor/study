@@ -1,0 +1,23 @@
+<form [formGroup]='form' (ngSubmit)='saveEntity(form)' novalidate>
+
+  <!--toolbar div-->
+  <ng-content select="[toolbar]"></ng-content>
+
+  <mat-card id="default-form">
+    <div layout="row">
+
+      <mat-form-field flex>
+        <input [(ngModel)]='entity.nome'
+               matInput placeholder='Nome'
+               required id='nome' name='nome'
+               formControlName='nome' maxlength='250'/>
+        <mat-error>
+          Esse campo é obrigatório
+        </mat-error>
+      </mat-form-field>
+
+      <horizontal-space></horizontal-space>
+
+    </div>
+  </mat-card>
+</form>

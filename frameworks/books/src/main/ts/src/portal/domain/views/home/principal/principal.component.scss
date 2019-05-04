@@ -1,0 +1,25 @@
+@import '../../portal.component.scss';
+
+.welcome-text {
+    font-family: "Open Sans";
+    font-size: 39px; 
+    color: #ffffff;
+}
+.white {
+    color: #ffffff;
+}
+
+.button-categoria {
+    color: #4C4C4C !important; 
+    margin-right:10px !important;
+    margin-bottom: 10px !important;
+}
+
+.withOverflow {
+    overflow-y: scroll;
+}
+
+.withoutOverlfow {
+    overflow-y: none;
+}
+

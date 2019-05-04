@@ -1,0 +1,76 @@
+<detail-page [entity]="tipoCadastro">
+
+  <!--<div class="toolbar" layout-gt-xs="row" flex toolbar>-->
+  <div toolbar>
+    <div class="toolbar" layout="row" flex>
+      <div layout="column">
+        <div hide-xs class="headline" [innerHTML]="'Tipo Cadastro / Detalhes'"></div>
+        <div hide-xs class="subhead" [innerHTML]="'Tipo Cadastro'"></div>
+        <div hide-gt-xs class="headline" [innerHTML]="'Tipo Cadastro'"></div>
+        <div hide-gt-xs class="subhead" [innerHTML]="'Detalhes'"></div>
+      </div>
+      <div layout='row' layout-align="end center" flex>
+
+        <button mat-raised-button type="button" color="accent" routerLink="../">
+          <mat-icon>arrow_back</mat-icon>
+          <span>Voltar</span>
+        </button>
+        <horizontal-space></horizontal-space>
+        <button mat-raised-button type="button"
+                *hasPermission="['administrador', 'tipos-cadastros', 'tipos-cadastros/put', 'tipos-cadastros/put/activate']; operation 'OR'"
+                (click)="updateAtivo(tipoCadastro.id)"
+                [ngClass]="{'activate': !tipoCadastro.ativo, 'inactivate': tipoCadastro.ativo}">
+          <mat-icon>{{ !tipoCadastro.ativo ? 'check' : 'block' }}</mat-icon>
+          <span>{{ !tipoCadastro.ativo ? 'Ativar' : 'Inativar' }}</span>
+        </button>
+        <horizontal-space></horizontal-space>
+        <a mat-raised-button type="button" color="primary" [routerLink]="'editar'"
+           *hasPermission="['administrador', 'tipos-cadastros', 'tipos-cadastros/put']; operation 'OR'">
+          <mat-icon>edit</mat-icon>
+          <span>Editar</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div details>
+    <div layout='row' layout-align='start center'>
+      <h3>Documentos</h3>
+    </div>
+    <div layout='column' flex *ngFor='let documento of tipoCadastro.documentos; let indexDocumento = index'>
+      <div layout='row' flex layout-align='start center'>
+        <div layout='row' flex>
+          <div layout="column" flex>
+            <label class="title">Tipo de Documento</label>
+            <label class="text">{{ documento.tipoDocumento.nome }}</label>
+          </div>
+
+          <div layout="column" flex>
+            <label class="title">Obrigatório</label>
+            <label class="text">{{ documento.obrigatorio ? 'Sim' : 'Não' }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</detail-page>
+<!--<mat-card style="border-top:none !important; box-shadow: none!important; padding-top: 0">-->
+<!--<div layout='row' layout-align='start center'>-->
+<!--<h3>Documentos</h3>-->
+<!--</div>-->
+<!--<div layout='column' flex *ngFor='let documento of tipoCadastro.documentos; let indexDocumento = index'>-->
+<!--<div layout='row' flex layout-align='start center'>-->
+<!--<div layout='row' flex>-->
+<!--<div layout="column" flex>-->
+<!--<label class="title">Tipo de Documento</label>-->
+<!--<label class="text">{{ documento.tipoDocumento.nome }}</label>-->
+<!--</div>-->
+
+<!--<div layout="column" flex>-->
+<!--<label class="title">Obrigatório</label>-->
+<!--<label class="text">{{ documento.obrigatorio ? 'Sim' : 'Não' }}</label>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</mat-card>-->

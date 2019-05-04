@@ -1,0 +1,139 @@
+<template-portal [overflow]='true'>
+  <!--LADO ESQUERDO DO TEMPLATE-->
+  <div layout='column' layout-align='center start'
+       style='height: 100%; padding:10% 25%' left-side>
+
+    <div class='welcome-text'><strong>Acesso ao sistema</strong></div>
+    <div class='white'>
+      <p>
+        O Portal de Compras da Fundação Parque Tecnológico Itaipu Brasil foi idealizado com o objetivo principal de
+        proporcionar uma comunicação mais próxima com os fornecedores, resultando em processos de aquisição ainda mais
+        transparentes, ágeis e eficientes.
+      </p>
+
+      <ul>
+        <li>
+          <p>Em caso de pessoa física, enviar email para <br><span class='bold-text'>fornecedores@pti.org.br</span>
+            com
+            suas informações e os serviços ofertados.
+          </p>
+        </li>
+        <li>
+          <p>Dúvidas poderão ser esclarecidas através do telefone: <br><span class='bold-text'>(45) 3576 7421</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+
+
+  </div>
+
+  <div right-side [ngSwitch]="done" layout='column' style='height: 100%; padding:0 25% 0 25%'
+       layout-align='center start'>
+    <div *ngSwitchCase='false'>
+
+      <h1 class='title-text'>Portal de Compras</h1>
+      <div style='padding-bottom: 30px'>Para se cadastrar no sistema, basta preencher os campos abaixo.</div>
+      <form style='width:100% !important' [formGroup]='form' novalidate (ngSubmit)='saveEntity(form)'>
+        <div layout='row'>
+          <mat-form-field flex class='white-form-field'>
+            <input [textMask]='{mask: masks.cnpj, guide: false}' matInput
+                   placeholder='CNPJ' (change)='findCnpj()' formControlName='cnpj'
+                   [(ngModel)]='fornecedor.usuario.documento' name='cnpj' id='cnpj'>
+            <mat-error *ngIf="form?.controls['cnpj']?.hasError('exception')">
+              {{form?.controls['cnpj']?.errors?.exception}}
+            </mat-error>
+            <mat-error *ngIf="form?.controls['cnpj']?.hasError('required')">
+              Esse campo é obrigatório
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div layout='row'>
+          <mat-form-field flex class='white-form-field'>
+            <input formControlName='razaoSocial'
+                   matInput placeholder='Razão Social'
+                   name='razaoSocial' id='razaoSocial'
+                   [(ngModel)]='fornecedor.razaoSocial'>
+            <mat-error>
+              Esse campo é obrigatório
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div layout='row'>
+          <mat-form-field flex class='white-form-field'>
+            <input formControlName='nomeFantasia'
+                   matInput placeholder='Nome Fantasia'
+                   name='nomeFantasia' id='nomeFantasia'
+                   [(ngModel)]='fornecedor.usuario.nome'>
+            <mat-error>
+              Esse campo é obrigatório
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div layout='row' layout-xs='column' layout-sm='column'>
+          <mat-form-field flex class='white-form-field' style='margin-right: 10px'>
+            <input formControlName='telefone1'
+                   name='telefone1' id='telefone1'
+                   matInput placeholder='Telefone 1'
+                   [(ngModel)]='fornecedor.telefones[0]'
+                   [textMask]='{mask: phoneMask, guide: false }'>
+            <mat-error>
+              Esse campo é obrigatório
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field flex class='white-form-field'>
+            <input name='telefone2' id='telefone2'
+                   matInput placeholder='Telefone 2'
+                   [ngModelOptions]='{standalone: true}'
+                   [(ngModel)]='fornecedor.telefones[1]'
+                   [textMask]='{mask: phoneMask, guide: false }'/>
+          </mat-form-field>
+        </div>
+
+        <div layout='row'>
+          <mat-form-field flex class='white-form-field'>
+            <input name='email' id='email'
+                   placeholder='Email' formControlName='email'
+                   [(ngModel)]='fornecedor.usuario.email' matInput
+                   pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'>
+            <mat-error *ngIf="form.controls['email'].hasError('pattern')">
+              E-mail inválido, utilize o formato 'email@email.com'
+            </mat-error>
+            <mat-error *ngIf="form?.controls['email']?.hasError('required')">
+              Esse campo é obrigatório
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div layout='row' layout-align='end end'>
+          <re-captcha siteKey='{{fornecedor.siteKey}}'
+                      formControlName='recaptchaReactive'
+                      *ngIf='fornecedor.siteKey' required
+                      style='margin-right: -4px !important;'
+                      (resolved)='resolved($event)' #reCaptcha
+                      id='recaptchaReactive' name='recaptchaReactive'>
+          </re-captcha>
+        </div>
+
+        <div style='font-size: 13px; padding: 30px 0'>
+          Ao cadastrar-se você concorda com os <span class='bold-text'>Termos de Uso e Politicas de Privacidade</span>.
+        </div>
+
+        <div layout='row' style='padding-bottom: 100px'>
+          <button mat-flat-button color='primary'><strong>CADASTRAR-SE</strong></button>
+          <button class='turnback-button' routerLink=''
+                  mat-flat-button style='margin-left:10px'>
+            <strong>VOLTAR</strong>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div *ngSwitchCase='true' right-side>
+      <h1 class='title-text'>Portal de Compras</h1>
+      <div style='padding-bottom: 30px'>Fornecedor salvo com sucesso, informações foram enviadas para o e-mail  {{fornecedor.usuario.email}}</div>
+    </div>
+  </div>
+</template-portal>

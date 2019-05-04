@@ -1,0 +1,189 @@
+<div layout='column' flex [formGroup]='form?.controls?.contatos'>
+  <!-- Tittle content-->
+  <ng-content select='[tittle]'></ng-content>
+
+  <vertical-space></vertical-space>
+
+  <!--Content-->
+  <div layout='row' layout-sm='column' layout-xs='column'>
+    <mat-form-field flex>
+      <input flex id='cep' name='cep' maxlength='10'
+             formControlName='cep' required matInput
+             (change)='findByCep(entity.endereco.cep)'
+             [textMask]='{mask: masks.cep, guide: false }'
+             placeholder='CEP' [(ngModel)]='entity.endereco.cep'/>
+      <mat-error *ngIf="form?.controls?.contatos?.get('cep')?.hasError('exception')">
+        {{form?.controls?.contatos?.get('cep')?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+
+    <horizontal-space></horizontal-space>
+
+    <mat-form-field flex>
+      <input formControlName='logradouro'
+             maxlength='250' required flex
+             id='logradouro' name='logradouro'
+             placeholder='Logradouro' matInput
+             [(ngModel)]='entity.endereco.logradouro'/>
+      <mat-error *ngIf="form?.controls?.contatos?.get('logradouro')?.hasError('exception')">
+        {{form?.controls?.contatos?.get('logradouro')?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+
+    <horizontal-space></horizontal-space>
+
+    <mat-form-field flex>
+      <input required flex maxlength='20'
+             matInput id='numero' name='numero'
+             [(ngModel)]='entity.endereco.numero'
+             placeholder='Número' formControlName='numero'/>
+      <mat-error *ngIf="form?.controls?.contatos?.get('numero')?.hasError('exception')">
+        {{form?.controls?.contatos?.get('numero')?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+
+    <horizontal-space></horizontal-space>
+
+    <mat-form-field flex>
+      <input placeholder='Caixa Postal'
+             maxlength='20' matInput flex
+             formControlName='caixaPostal'
+             id='caixaPostal' name='caixaPostal'
+             [(ngModel)]='entity.endereco.caixaPostal'/>
+    </mat-form-field>
+
+  </div>
+  <div layout='row' layout-sm='column' layout-xs='column'>
+    <mat-form-field flex>
+      <input formControlName='pais' [(ngModel)]='pais'
+             [matAutocomplete]='auto' (keyup)='listPaises()'
+             required matInput name='pais' id='pais' placeholder='País'>
+
+      <mat-autocomplete [displayWith]='displayNome' #auto='matAutocomplete'>
+        <mat-option [value]='pais' *ngFor='let pais of paises'>
+          {{ pais.nome }}
+        </mat-option>
+      </mat-autocomplete>
+
+      <mat-error *ngIf="form?.controls?.contatos?.get('pais')?.hasError('exception')">
+        {{form?.controls?.contatos?.get('pais')?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+
+    <horizontal-space></horizontal-space>
+
+
+    <mat-form-field flex>
+      <input name='estado' id='estado'
+             [matAutocomplete]='autoEstado'
+             (keyup)='listEstados()' matInput
+             formControlName='estado' required
+             [(ngModel)]='estado' placeholder='Estado'>
+
+      <mat-autocomplete [displayWith]='displayNome' #autoEstado='matAutocomplete'>
+        <mat-option [value]='estado' *ngFor='let estado of estados'>
+          {{ estado.nome }}
+        </mat-option>
+      </mat-autocomplete>
+
+      <mat-error *ngIf="form?.controls?.contatos?.get('estado')?.hasError('exception')">
+        {{form?.controls?.contatos?.get('estado')?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+
+    <horizontal-space></horizontal-space>
+
+    <mat-form-field flex>
+      <input formControlName='cidade'
+             [(ngModel)]='entity.endereco.cidade'
+             (keyup)='listCidades()' matInput required
+             id='cidade' name='cidade' placeholder='Cidade'
+             [matAutocomplete]='autoCidade' (blur)='normalizeCidade()'>
+
+      <mat-autocomplete [displayWith]='displayNome' #autoCidade='matAutocomplete'>
+        <mat-option [value]='cidade' *ngFor='let cidade of cidades'>
+          {{ cidade.nome }}
+        </mat-option>
+      </mat-autocomplete>
+
+      <mat-error *ngIf="form?.controls?.contatos?.get('cidade')?.hasError('exception')">
+        {{form?.controls?.contatos?.get('cidade')?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+
+    <horizontal-space></horizontal-space>
+
+    <mat-form-field flex>
+      <input placeholder='Site (opcional)'
+             [(ngModel)]='entity.site' formControlName='site'
+             matInput id='site' name='site' flex maxlength='150'/>
+    </mat-form-field>
+
+  </div>
+
+  <div layout='row' layout-sm='column' layout-xs='column'>
+    <mat-form-field flex [ngStyle]="{'margin-top': (entity?.telefones?.length ? '-1.5px' : '15px')}">
+      <mat-chip-list #chipListTelefones aria-label='Telefones' formArrayName='telefones'>
+
+        <mat-chip (removed)='removeTelefone(telefone)'
+                  [selectable]='true' [removable]='true'
+                  *ngFor='let telefone of entity.telefones'>
+          {{telefone}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input placeholder='Telefones' id='telefones' name='telefones'
+               [matChipInputFor]='chipListTelefones' [matChipInputAddOnBlur]='true'
+               (matChipInputTokenEnd)='addTelefone($event)' [textMask]='{mask: phoneMask, guide: false }'>
+
+      </mat-chip-list>
+
+      <mat-error *ngIf="form?.controls?.contatos?.get('telefones')?.hasError('exception')">
+        {{form?.controls?.contatos?.get('telefones')?.errors?.exception}}
+      </mat-error>
+
+    </mat-form-field>
+
+    <horizontal-space></horizontal-space>
+
+
+    <mat-form-field flex [ngStyle]="{'margin-top': (entity?.emails?.length ? '-1.5px' : '15px')}">
+      <mat-chip-list #chipListEmails aria-label='E-mails' formArrayName='emails'>
+
+        <mat-chip *ngFor='let email of entity.emails; let i = index'
+                  (removed)='removeEmail(email)' [selectable]='true'
+                  [ngStyle]="{ 'background-color': (i == 0 ? '#0097A7' : '#E0E0E0'),'color': (i == 0 ? '#FFFFFF' : '#000000')}">
+          {{email}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+
+        <input pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'
+               placeholder='Emails' id='emails' name='emails' maxlength='150'
+               [matChipInputFor]='chipListEmails' [matChipInputAddOnBlur]='true'
+               (matChipInputTokenEnd)="form.controls['contatos'].get('emails').hasError('email') ? null : addEmail($event)">
+      </mat-chip-list>
+      <mat-hint align='start'>
+        O primeiro registro será o <span style='color: #00ABAF'>email principal</span> onde serão enviadas informações
+        de criação e recuperação de senha.
+      </mat-hint>
+
+      <mat-error *ngIf="form?.controls?.contatos?.get('emails')?.hasError('pattern')">
+        E-mail inválido, utilize o formato 'email@email.com'
+      </mat-error>
+
+      <mat-error *ngIf="form?.controls?.contatos?.get('emails')?.hasError('exception')">
+        {{form?.controls?.contatos?.get('emails')?.errors?.exception}}
+      </mat-error>
+
+    </mat-form-field>
+
+  </div>
+
+  <!--Divider content-->
+  <ng-content select='[divider]'></ng-content>
+
+  <vertical-space></vertical-space>
+
+  <!-- Toolbar content-->
+  <ng-content select='[actions]'></ng-content>
+
+</div>

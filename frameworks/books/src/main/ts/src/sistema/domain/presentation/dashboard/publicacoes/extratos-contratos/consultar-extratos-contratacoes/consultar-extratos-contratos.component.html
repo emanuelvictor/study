@@ -1,0 +1,18 @@
+<list-page [subhead]="'Extratos de Contratação'"
+           [gender]="'M'"
+           [dataSource]='dataSource'
+           [anexavel]='true'
+           [editavel]='false'
+           [desativavel]='false'
+           [columns]='columns'
+           [displayedColumns]='displayedColumns'
+           [totalElements]='totalElements'
+           [pageSize]="pageSize"
+           [pageIndex]="pageIndex"
+           [rolesToAdd]="['administrador', 'extratos-contratos', 'extratos-contratos/post']"
+           [rolesToView]="['administrador', 'extratos-contratos', 'extratos-contratos/get']"
+           [rolesToEdit]="['administrador', 'extratos-contratos', 'extratos-contratos/put']"
+           [rolesToDelelte]="['administrador', 'extratos-contratos', 'extratos-contratos/delete']"
+           (list)='listByFilters($event)'
+           (anexo)='openAnexoDialog($event)'>
+</list-page>

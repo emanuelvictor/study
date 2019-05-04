@@ -1,0 +1,47 @@
+<div *tdLoading="'carregando-documentos'; mode:'determinate'; type:'linear'; strategy:'replace'; color:'$greenColor'">
+<form layout='column' flex [formGroup]='form?.controls?.documentos'>
+
+  <!-- (ngSubmit)='saveEntity(form)' -->
+  <!-- Tittle content-->
+  <ng-content select='[tittle]'></ng-content>
+
+  <vertical-space></vertical-space>
+
+  <!--Content-->
+  <div layout="row" layout-md='column' layout-sm='column' layout-xs='column'>
+
+    <mat-form-field flex>
+      <mat-select [compareWith]='compareTiposCadastros' required
+                  (selectionChange)='findDocumentosByTipoCadastro()'
+                  placeholder='Tipo de Cadastro' [(ngModel)]='entity.tipoCadastro'
+                  formControlName='tipoCadastro' id='tipoCadastro' name='tipoCadastro'>
+        <mat-option *ngFor='let tipoCadastro of tiposCadastros' [value]='tipoCadastro'>
+          {{ tipoCadastro.nome }}
+        </mat-option>
+      </mat-select>
+      <mat-hint align="start">Após selecionar o tipo de cadastro, apresentaremos os documentos obrigatórios e
+        complementares necessários para realizá-lo.
+      </mat-hint>
+      <mat-error *ngIf="form?.controls?.documentos?.get('tipoCadastro')?.hasError('exception')">
+        {{form?.controls?.documentos?.get('tipoCadastro')?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+
+  </div>
+
+  <listagem-documentos [form]='form.controls.documentos'
+                       [(documentos)]='entity.documentos'
+                       *ngIf='entity?.documentos?.length'>
+  </listagem-documentos>
+
+
+  <!--Divider content-->
+  <ng-content select='[divider]'></ng-content>
+
+  <vertical-space></vertical-space>
+
+  <!-- Toolbar content-->
+  <ng-content select='[actions]'></ng-content>
+
+</form>
+</div>

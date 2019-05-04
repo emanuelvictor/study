@@ -1,0 +1,34 @@
+<detail-page [entity]="tipoDocumento">
+
+  <!--<div class="toolbar" layout-gt-xs="row" flex toolbar>-->
+  <div toolbar>
+    <div class="toolbar" layout="row" flex>
+      <div layout="column">
+        <div hide-xs class="headline" [innerHTML]="'Tipo Documento / Detalhes'"></div>
+        <div hide-xs class="subhead" [innerHTML]="'Tipo Documento'"></div>
+        <div hide-gt-xs class="headline" [innerHTML]="'Tipo Documento'"></div>
+        <div hide-gt-xs class="subhead" [innerHTML]="'Detalhes'"></div>
+      </div>
+      <div layout='row' layout-align="end center" flex>
+
+        <button mat-raised-button type="button" color="accent" routerLink="../">
+          <mat-icon>arrow_back</mat-icon>
+          <span>Voltar</span>
+        </button>
+        <horizontal-space></horizontal-space>
+        <button mat-raised-button type="button" *hasPermission="['administrador', 'tipos-documentos', 'tipos-documentos/put', 'tipos-documentos/put/activate']; operation 'OR'"
+                (click)="updateAtivo(tipoDocumento.id)"
+                [ngClass]="{'activate': !tipoDocumento.ativo, 'inactivate': tipoDocumento.ativo}">
+          <mat-icon>{{ !tipoDocumento.ativo ? 'check' : 'block' }}</mat-icon>
+          <span>{{ !tipoDocumento.ativo ? 'Ativar' : 'Inativar' }}</span>
+        </button>
+        <horizontal-space></horizontal-space>
+        <a mat-raised-button type="button" color="primary" [routerLink]="'editar'" *hasPermission="['administrador', 'tipos-documentos', 'tipos-documentos/put']; operation 'OR'">
+          <mat-icon>edit</mat-icon>
+          <span>Editar</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</detail-page>

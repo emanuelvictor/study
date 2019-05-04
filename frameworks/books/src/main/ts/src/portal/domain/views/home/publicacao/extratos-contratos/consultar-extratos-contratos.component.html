@@ -1,0 +1,150 @@
+<div layout="column" style="height: 100%;" class="extratos-contratos">
+    <div flex style="padding: 0px 10px 0px 20px;">
+      <mat-card style="margin: 0 0px 20px 0px; background-color: #F9F9F9">
+        <mat-card-content flex>
+          <div layout="row" layout-align="center center" style="padding-bottom: 16px">
+            <input flex type="text" style="height: 40px; border: #e0e0e0 solid 1px; padding-left:10px" placeholder="Buscar"
+              name="text" [(ngModel)]='pageable.defaultFilter' (keyup.enter)="listByFilters(true)" />
+            <mat-icon matSuffix (click)="listByFilters(true)" style="cursor: pointer; background-color:#00ABAF!important; display:inline-table!important; padding: 8px 12px!important; color: #ffffff">search</mat-icon>
+            <horizontal-space></horizontal-space>
+            <button mat-flat-button type="button" class="btn-back-to-login" style="color:#00ABAF; border: solid 2px #00ABAF"
+              (click)="showAdvancedFilters()">
+              <mat-icon>tune</mat-icon><strong>Filtros</strong>
+            </button>
+          </div>
+  
+          <div layout="row" layout-align="start center">
+            <span style="padding-right:18px"><strong>Ordenar: </strong></span>
+            <mat-form-field flex="20">
+              <mat-select [(value)]='orderBy' (selectionChange)='listByFilters(true)'>
+                <mat-option [value]="'PUBLICADO'">Publicado em</mat-option>
+                <mat-option [value]="'PROCESSO'">Nº do Processo</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <span flex></span>
+            <mat-paginator [pageSizeOptions]='[5, 10, 20]' [length]='totalElements' [pageIndex]='pageIndex'
+              [hidePageSize]='false' [pageSize]="pageSize" (page)='listByFilters()'>
+            </mat-paginator>
+  
+          </div>
+  
+        </mat-card-content>
+      </mat-card>
+      <mat-card style="margin: 0 0px 20px 0px;background-color: #F9F9F9" *ngIf="filtrosAvancados == true">
+        <mat-card-content flex>
+          <div layout="row" layout-align="start center">
+            <span style="padding-right:18px"><strong>Instrumento Jurídico: </strong></span>
+            <mat-form-field flex="15">
+              <mat-select [(value)]='pageable.instrumentoJuridico' (selectionChange)='listByFilters(true)' style="background-color:#ffffff!important">
+                <mat-option [value]=""></mat-option>
+                <mat-option [value]="instrumentoJuridico" *ngFor="let instrumentoJuridico of instrumentosJuridicos">
+                  {{instrumentoJuridico | translate }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <horizontal-space></horizontal-space>
+            <span style="padding-right:18px"><strong>Data Início: </strong></span>
+            <mat-form-field flex="15">
+              <input (click)="dataInicio.open()" matInput [matDatepicker]="dataInicio" [(ngModel)]='pageable.dataInicio'
+                (ngModelChange)='listByFilters(true)'>
+              <mat-datepicker-toggle matSuffix [for]="dataInicio">
+              </mat-datepicker-toggle>
+              <mat-datepicker #dataInicio></mat-datepicker>
+            </mat-form-field>
+            <horizontal-space></horizontal-space>
+            <span style="padding-right:18px"><strong>Data Fim: </strong></span>
+            <mat-form-field flex="15">
+              <input (click)="dataFim.open()" matInput [matDatepicker]="dataFim" [(ngModel)]='pageable.dataFim'
+                (ngModelChange)='listByFilters(true)'>
+              <mat-datepicker-toggle matSuffix [for]="dataFim"></mat-datepicker-toggle>
+              <mat-datepicker #dataFim></mat-datepicker>
+            </mat-form-field>
+            <div flex></div>
+            <button mat-flat-button style="color:#DE411A; background-color: #f9f9f9" (click)="cleanFilters()">
+              Limpar Filtros
+            </button>
+          </div>
+  
+  
+        </mat-card-content>
+      </mat-card>
+  
+    </div>
+  
+  
+    <div flex="100" style="overflow-y: scroll; right:-17px; padding: 0px 6px 0px 20px;">
+  
+      <mat-card *ngFor="let extratoContrato of dataSource.data" style="margin: 0px 0px 20px 0px; position: inherit!important">
+        <mat-card-content style="padding:0px!important">
+          <div layout="row" flex style="padding:20px 20px 20px 0px">
+            <div class="border-label-red" layout="column" flex>
+              <span flex>
+                <strong>N° do Processo</strong>
+              </span>
+              <span flex>
+                {{ extratoContrato.numeroProcesso}}
+              </span>
+            </div>
+  
+            <div layout="column" flex>
+              <span flex>
+                <strong>Instrumento Jurídico</strong>
+              </span>
+              <span flex>
+                {{ extratoContrato.instrumentoJuridico | translate }}
+              </span>
+            </div>
+  
+            <div layout="column" flex>
+              <span flex>
+                <strong>Publicado em</strong>
+              </span>
+              <span flex>
+                {{ extratoContrato.dataPublicacao }}
+              </span>
+            </div>
+          </div>
+          <div layout="row" style="padding:0 20px 0px 20px;">
+  
+            <div layout="column" flex>
+              <span flex>
+                <strong>Objeto</strong>
+              </span>
+              <span flex>
+                {{ extratoContrato.objeto }}
+              </span>
+            </div>
+  
+          </div>
+  
+        </mat-card-content>
+        <mat-expansion-panel style="background-color: #F7F7F7;">
+          <mat-expansion-panel-header style="padding-top:10px!important;padding-bottom: 10px!important">
+            <mat-panel-title>
+              <h3 style="color: #4C4C4C">Arquivos Anexos</h3>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div layout="row" *ngIf="extratoContrato.dataModificacao != null">
+              Data de Modificação: {{ extratoContrato.dataModificacao | date: 'dd/MM/yyyy'}} 
+          </div>
+          <div style="margin: 15px 0" *ngFor="let anexo of extratoContrato.anexos">
+              <div layout="row">
+              <div layout="column" flex layout-align="center start">
+                <a href="{{hostname}}/{{extratoContrato.id}}/anexos/{{anexo.nome}}" target="_blank">{{anexo.nome}}</a>
+              </div>
+              <div layout="column" layout-align=" end center">
+                <a href="{{hostname}}/{{extratoContrato.id}}/anexos/{{anexo.nome}}" target="_blank">
+                  <button mat-flat-button color="primary">
+                    <mat-icon>cloud_download</mat-icon> Baixar
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-card>
+  
+    </div>
+  
+  </div>

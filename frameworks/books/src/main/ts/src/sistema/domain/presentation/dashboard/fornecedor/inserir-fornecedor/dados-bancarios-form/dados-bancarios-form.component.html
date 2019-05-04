@@ -1,0 +1,136 @@
+<form layout='column' flex
+      *ngIf='entity?.dadosRecebimento?.formaPagamento'
+      [formGroup]='form?.controls?.dadosBancarios'>
+
+  <!-- Tittle content-->
+  <ng-content select='[tittle]'></ng-content>
+
+  <vertical-space></vertical-space>
+
+  <!--Content-->
+  <div layout='row' layout-md='column' layout-sm='column' layout-xs='column'>
+
+    <mat-form-field flex='25' flex-md='25' flex-sm='100' flex-xs='100' style="padding-bottom: 20px">
+
+      <mat-select id='formaPagamento' name='formaPagamento'
+                  [(ngModel)]='entity.dadosRecebimento.formaPagamento'
+                  placeholder='Forma de Pagamento' formControlName='formaPagamento'>
+        <mat-option *ngFor="let formaPagamento of formasPagamento" [value]="formaPagamento">
+          {{ formaPagamento | translate }}
+        </mat-option>
+
+      </mat-select>
+      <mat-hint align="start">Os pagamentos são realizados apenas por <span style="color:#00ABAF">boletos</span> ou
+        <span style="color: #00ABAF">depósitos bancários</span>, ambos vinculados ao CNPJ da empresa. Pagamentos
+        centralizados em outras unidades não serão realizados.
+      </mat-hint>
+
+      <mat-error *ngIf="form?.controls?.dadosBancarios?.controls['formaPagamento']?.hasError('exception')">
+        {{form?.controls?.dadosBancarios?.controls['formaPagamento']?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+
+    <horizontal-space></horizontal-space>
+
+    <mat-form-field flex='25' flex-md='25' flex-sm='100' flex-xs='100'>
+
+      <mat-select id='tipoConta' name='tipoConta'
+                  placeholder='Tipo de Conta' formControlName='tipoConta'
+                  [(ngModel)]='entity.dadosRecebimento.contaBancaria.tipoContaBancaria'>
+        <mat-option *ngFor="let tipoConta of tiposContas" [value]="tipoConta">
+          {{ tipoConta | translate }}
+        </mat-option>
+
+      </mat-select>
+
+      <mat-error *ngIf="form?.controls?.dadosBancarios?.controls['tipoContaBancaria']?.hasError('exception')">
+        {{form?.controls?.dadosBancarios?.controls['tipoContaBancaria']?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+
+
+    <horizontal-space></horizontal-space>
+
+    <mat-form-field flex="50" flex-md='50' flex-sm='100' flex-xs='100'>
+      <input id='identificacao' name='identificacao' flex
+             formControlName='identificacao' maxlength='50'
+             placeholder='Identificação da Conta' required matInput
+             [(ngModel)]='entity.dadosRecebimento.contaBancaria.identificacao'/>
+
+      <mat-hint align="start">Informação referente ao proprietário da conta.</mat-hint>
+
+      <mat-error *ngIf="form?.controls?.dadosBancarios?.controls['identificacao']?.hasError('exception')">
+        {{form?.controls?.dadosBancarios?.controls['identificacao']?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+
+  </div>
+
+  <div layout='row' layout-md='column' layout-sm='column' layout-xs='column'>
+
+    <mat-form-field flex='25' flex-md='25' flex-sm='100' flex-xs='100'>
+      <input [(ngModel)]='entity.dadosRecebimento.contaBancaria.banco'
+             required matInput [matAutocomplete]='auto' (keyup)='listBancos()'
+             placeholder='Banco' name='banco' id='banco' formControlName='banco'>
+
+      <mat-autocomplete [displayWith]='displayNome' #auto='matAutocomplete'>
+        <mat-option [value]="banco" *ngFor="let banco of bancos">
+          {{ banco.codigo + ' - ' + banco.nome }}
+        </mat-option>
+      </mat-autocomplete>
+
+      <mat-error *ngIf="form?.controls?.dadosBancarios?.controls['banco']?.hasError('exception')">
+        {{form?.controls?.dadosBancarios?.controls['banco']?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+
+    <horizontal-space></horizontal-space>
+
+    <mat-form-field flex="25" flex-md='25' flex-sm='100' flex-xs='100'>
+      <input flex maxlength='4' matInput id='agencia'
+             formControlName='agencia' required name='agencia'
+             placeholder='Agência' [(ngModel)]='entity.dadosRecebimento.contaBancaria.agencia'/>
+
+      <mat-error *ngIf="form?.controls?.dadosBancarios?.controls['agencia']?.hasError('exception')">
+        {{form?.controls?.dadosBancarios?.controls['agencia']?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+
+    <horizontal-space></horizontal-space>
+
+    <mat-form-field flex="25" flex-md='25' flex-sm='100' flex-xs='100'>
+      <input placeholder='Conta'
+             formControlName='numero' required
+             maxlength='10' id='numero' name='numero' flex matInput
+             [(ngModel)]='entity.dadosRecebimento.contaBancaria.numero'/>
+
+      <mat-error *ngIf="form?.controls?.dadosBancarios?.controls['numero']?.hasError('exception')">
+        {{form?.controls?.dadosBancarios?.controls['numero']?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+
+    <horizontal-space></horizontal-space>
+
+    <mat-form-field flex="25" flex-md='25' flex-sm='100' flex-xs='100'>
+      <input flex maxlength='2' matInput id='digito'
+             [(ngModel)]='entity.dadosRecebimento.contaBancaria.digito'
+             formControlName='digito' required name='digito' placeholder='digito'/>
+
+      <mat-error *ngIf="form?.controls?.dadosBancarios?.controls['digito']?.hasError('exception')">
+        {{form?.controls?.dadosBancarios?.controls['digito']?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+
+  </div>
+
+  <horizontal-space></horizontal-space>
+
+  <!--Divider content-->
+  <ng-content select='[divider]'></ng-content>
+
+  <vertical-space></vertical-space>
+
+  <!-- Toolbar content-->
+  <ng-content select='[actions]'></ng-content>
+
+</form>

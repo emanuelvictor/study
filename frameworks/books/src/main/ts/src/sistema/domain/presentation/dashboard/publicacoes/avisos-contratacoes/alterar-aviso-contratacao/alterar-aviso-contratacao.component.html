@@ -1,0 +1,22 @@
+<aviso-contratacao-form *ngIf='avisoContratacao?.id' [(entity)]='avisoContratacao'
+                        (save)='save($event)' (removeAnexo)='removeAnexoPublicacao($event)'>
+
+  <div class="toolbar" layout="row" flex toolbar>
+    <div layout="column">
+      <div class="headline" [innerHTML]="'Aviso de Contratação'"></div>
+      <div class="subhead" [innerHTML]="'Aviso de Contratação / Editar'"></div>
+    </div>
+    <div layout="row" layout-align="end center" flex>
+      <button mat-raised-button type="button" color="accent" routerLink='../'>
+        <mat-icon>arrow_back</mat-icon>
+        <span>Voltar</span>
+      </button>
+      <horizontal-space></horizontal-space>
+      <button mat-raised-button color="primary">
+        <mat-icon>save</mat-icon>
+        <span>Salvar</span>
+      </button>
+    </div>
+  </div>
+
+</aviso-contratacao-form>

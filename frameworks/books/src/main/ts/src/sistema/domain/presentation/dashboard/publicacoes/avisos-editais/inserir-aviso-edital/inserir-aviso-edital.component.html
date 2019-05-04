@@ -1,0 +1,22 @@
+<aviso-edital-form [entity]='avisoEdital' (save)='save($event)' (removeAnexo)='removeAnexoPublicacao($event)'>
+
+  <div class='toolbar' layout='row' flex toolbar>
+    <div layout='column'>
+      <div class='headline' [innerHTML]="'Aviso de Edital'"></div>
+      <div class='subhead' [innerHTML]="'Aviso de Edital / Adicionar'"></div>
+    </div>
+    <div layout='row' layout-align='end center' flex>
+      <button mat-raised-button type='button'
+              color='accent' routerLink='../'>
+        <mat-icon>arrow_back</mat-icon>
+        <span>Voltar</span>
+      </button>
+      <horizontal-space></horizontal-space>
+      <button mat-raised-button color='primary'>
+        <mat-icon>save</mat-icon>
+        <span>Salvar</span>
+      </button>
+    </div>
+  </div>
+
+</aviso-edital-form>
