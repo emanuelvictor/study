@@ -3,9 +3,9 @@ import {MatDialog} from '@angular/material';
 import {DeleteDialogComponent} from '../../application/controls/delete-dialog/delete-dialog.component';
 import {AnexoDialogComponent} from "../../application/controls/anexo-dialog/anexo-dialog.component";
 import {Anexo} from "../entity/publicacao/anexo.model";
-import {VisualizarAnexoDialogComponent} from "../presentation/dashboard/publicacoes/vincular-anexos/anexo/visualizar-anexo-dialog/visualizar-anexo-dialog.component";
+import {VisualizarAnexoDialogComponent} from "../presentation/publicacoes/vincular-anexos/anexo/visualizar-anexo-dialog/visualizar-anexo-dialog.component";
 import {Documento} from '../entity/fornecedor/documento.model';
-import {VisualizarDocumentoDialogComponent} from '../presentation/dashboard/fornecedor/inserir-fornecedor/documentos-form/vincular-documentos/documento/visualizar-documento-dialog/visualizar-documento-dialog.component';
+import {VisualizarDocumentoDialogComponent} from '../presentation/fornecedor/inserir-fornecedor/documentos-form/vincular-documentos/documento/visualizar-documento-dialog/visualizar-documento-dialog.component';
 import {ConfirmacaoRecusaComponent} from "../../application/controls/confirmacao-recusa/confirmacao-recusa.component";
 
 @Injectable()
