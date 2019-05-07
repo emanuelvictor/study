@@ -53,19 +53,11 @@ import {
   CovalentMediaModule
 } from '@covalent/core';
 import {CovalentMarkdownModule} from '@covalent/markdown';
-import {RecuperarSenhaComponent} from "../sistema/domain/presentation/gerenciar-senha/recuperar-senha.component";
-import {CadastrarSenhaComponent} from "../sistema/domain/presentation/gerenciar-senha/cadastrar-senha.component";
 
 /**
  *
  */
 @NgModule({
-  declarations: [
-    // Recuperar senha
-    RecuperarSenhaComponent,
-    CadastrarSenhaComponent,
-
-  ],
   imports: [
     // ANGULAR
     CommonModule,

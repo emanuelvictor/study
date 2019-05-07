@@ -18,7 +18,6 @@
                 mat-icon-button flex hide-xs
                 #rlaDashboard='routerLinkActive'
                 [ngClass]="{'menu-active': rlaDashboard.isActive}"
-                *hasPermission="['administrador']; operation 'OR'"
                 [routerLink]="'/dashboard'" style='margin-top: 8px; color: #4C4C4C'>
           <mat-icon>dashboard</mat-icon>
           Dashboard
@@ -29,8 +28,7 @@
                   mat-icon-button flex hide-xs
                   #rlaFornecedores='routerLinkActive'
                   [ngClass]="{'menu-active': rlaFornecedores.isActive}"
-                  [routerLink]="'/fornecedores'" style='margin-top: 8px; color: #4C4C4C'
-                  *hasPermission="['administrador', 'fornecedores', 'fornecedores/get']; operation 'OR'">
+                  [routerLink]="'/fornecedores'" style='margin-top: 8px; color: #4C4C4C'>
             <mat-icon>assignment_ind</mat-icon>
             Fornecedores
           </button>
@@ -40,8 +38,7 @@
                 mat-icon-button flex hide-xs
                 #rlaCompras='routerLinkActive'
                 [ngClass]="{'menu-active': rlaCompras.isActive}"
-                [routerLink]="'/publicacoes'" style='margin-top: 8px; color: #4C4C4C'
-                *hasPermission="['administrador', 'avisos-contratacoes', 'avisos-contratacoes/get', 'extratos-contratos', 'extratos-contratos/get', 'avisos-editais', 'avisos-editais/get']; operation 'OR'">
+                [routerLink]="'/publicacoes'" style='margin-top: 8px; color: #4C4C4C'>
           <mat-icon>work</mat-icon>
           Compras e licitações
         </button>
@@ -51,7 +48,7 @@
                 #rlaCadastros='routerLinkActive'
                 [ngClass]="{'menu-active': rlaCadastros.isActive}"
                 [routerLink]="'/cadastros'" style='margin-top: 8px; color: #4C4C4C'
-                *hasPermission="['administrador', 'categorias', 'categorias/get', 'tipos-documentos', 'tipos-documentos/get', 'tipos-cadastros', 'tipos-cadastros/get']; operation 'OR'">
+                >
           <mat-icon>playlist_add_check</mat-icon>
           Cadastros
         </button>
@@ -61,7 +58,7 @@
                 #rlaConfiguracoes='routerLinkActive'
                 [ngClass]="{'menu-active': rlaConfiguracoes.isActive}"
                 [routerLink]="'/configuracoes'" style='margin-top: 8px; color: #4C4C4C'
-                *hasPermission="['administrador', 'usuarios', 'usuarios/get', 'grupos-acesso', 'grupos-acesso/get']; operation 'OR'">
+                >
           <mat-icon>tune</mat-icon>
           Configurações
         </button>
@@ -140,8 +137,7 @@
                        routerLinkActive mat-icon-button
                        #rlaDashboard='routerLinkActive' flex
                        class='menu-routers' (click)='sidenav.close()'
-                       [ngClass]="{'menu-active': rlaDashboard.isActive}"
-                       *hasPermission="['administrador']; operation 'OR'">
+                       [ngClass]="{'menu-active': rlaDashboard.isActive}">
           <div layout='row' class="menu-item">
             <mat-icon>dashboard</mat-icon>
             <h3>Dashboard</h3>
@@ -154,7 +150,7 @@
                          #rlaFornecedores='routerLinkActive' flex
                          class='menu-routers' (click)='sidenav.close()'
                          [ngClass]="{'menu-active': rlaFornecedores.isActive}"
-                         *hasPermission="['administrador', 'fornecedores', 'fornecedores/get']; operation 'OR'">
+>
             <div layout='row' class="menu-item">
               <mat-icon>assignment_ind</mat-icon>
               <h3>Fornecedores</h3>
@@ -166,7 +162,7 @@
                        #rlaCompras='routerLinkActive' mat-icon-button
                        [ngClass]="{'menu-active': rlaCompras.isActive}"
                        [routerLink]="'/publicacoes'" routerLinkActive flex
-                       *hasPermission="['administrador', 'avisos-contratacoes', 'avisos-contratacoes/get', 'extratos-contratos', 'extratos-contratos/get', 'avisos-editais', 'avisos-editais/get']; operation 'OR'">
+>
           <div layout='row' class="menu-item">
             <mat-icon>work</mat-icon>
             <h3>Compras e licitações</h3>
@@ -177,7 +173,7 @@
                        mat-icon-button #rlaCadastros='routerLinkActive'
                        [ngClass]="{'menu-active': rlaCadastros.isActive}"
                        [routerLink]="'/cadastros'" flex class='menu-routers'
-                       *hasPermission="['administrador', 'categorias', 'categorias/get', 'tipos-documentos', 'tipos-documentos/get', 'tipos-cadastros', 'tipos-cadastros/get']; operation 'OR'">
+>
           <div layout='row' class="menu-item">
             <mat-icon>playlist_add_check</mat-icon>
             <h3>Cadastros</h3>
@@ -187,7 +183,7 @@
         <mat-list-item class='menu-routers' (click)='sidenav.close()' routerLinkActive
                        [ngClass]="{'menu-active': rlaConfiguracoes.isActive}" mat-icon-button
                        #rlaConfiguracoes='routerLinkActive' [routerLink]="'/configuracoes'" flex
-                       *hasPermission="['administrador', 'usuarios', 'usuarios/get', 'grupos-acesso', 'grupos-acesso/get']; operation 'OR'">
+>
           <div layout='row' class="menu-item">
             <mat-icon>tune</mat-icon>
             <h3>Configurações</h3>

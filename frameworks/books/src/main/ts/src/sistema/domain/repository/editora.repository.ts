@@ -11,7 +11,7 @@ export class EditoraRepository extends BaseRepository<Editora> {
    * @param httpClient
    */
   constructor(httpClient: HttpClient) {
-    super(httpClient, 'editoras', null);
+    super(httpClient, 'editoras');
   }
 
 }

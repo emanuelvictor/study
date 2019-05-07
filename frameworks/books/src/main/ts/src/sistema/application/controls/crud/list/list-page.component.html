@@ -19,8 +19,7 @@
       </mat-select>
     </mat-form-field>
     <horizontal-space *ngIf='desativavel' [horizontalMargin]="15"></horizontal-space>
-    <a *hasPermission="rolesToAdd; operation 'OR'"
-       mat-raised-button color="primary" [routerLink]="['adicionar']">
+    <a mat-raised-button color="primary" [routerLink]="['adicionar']">
       <mat-icon>add</mat-icon>
       <span hide-sm hide-xs>Adicionar</span>
     </a>
@@ -52,20 +51,20 @@
     <ng-container matColumnDef="acoes">
       <mat-header-cell *matHeaderCellDef class="actions">Ações</mat-header-cell>
       <mat-cell *matCellDef="let data" class="actions">
-        <div *hasPermission="rolesToEdit; operation 'OR'">
+        <div>
           <a *ngIf='editavel' mat-button type="button" [routerLink]="['editar/' + data?.id]">
             <mat-icon>edit</mat-icon>
             Editar
           </a>
         </div>
-        <div *hasPermission="rolesToDelelte; operation 'OR'">
+        <div >
           <button *ngIf='deletavel'
                   mat-button type="button" class="delete-button" (click)="openDeleteDialog(data)">
             <mat-icon>delete_forever</mat-icon>
             Excluir
           </button>
         </div>
-        <div *hasPermission="rolesToEdit; operation 'OR'">
+        <div >
           <button *ngIf='anexavel'
                   mat-button type="button" (click)="openAnexoDialog(data)">
             <mat-icon>attach_file</mat-icon>
