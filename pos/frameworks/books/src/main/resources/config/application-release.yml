@@ -16,7 +16,7 @@ spring:
   #JPA
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
       naming:
         implicit-strategy: br.com.emanuelvictor.books.application.configuration.ConstraintsImplicitNamingStrategy
     show-sql: true
@@ -53,7 +53,7 @@ spring:
   #FLYWAY
   flyway:
     check-location: false
-    enabled: false
+    enabled: true
     locations: classpath:db/migration
     baseline-on-migrate: false
     sql-migration-prefix: v
