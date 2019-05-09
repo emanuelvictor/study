@@ -1,0 +1,28 @@
+<detail-page [entity]="categoria">
+
+  <div class="toolbar" layout="row" flex toolbar>
+    <div layout="column">
+      <div class="headline" [innerHTML]="'Categoria / Detalhes'"></div>
+      <div class="subhead" [innerHTML]="'Categoria'"></div>
+    </div>
+    <div layout="row" layout-align="end center" flex>
+      <button mat-raised-button type="button" color="accent" routerLink="../">
+        <mat-icon>arrow_back</mat-icon>
+        <span>Voltar</span>
+      </button>
+      <horizontal-space></horizontal-space>
+      <button mat-raised-button type="button" *hasPermission="['administrador', 'categorias', 'categorias/put', 'categorias/put/activate']; operation 'OR'"
+              [ngClass]="{'activate': !categoria.ativo, 'inactivate': categoria.ativo}"
+              (click)="updateAtivo(categoria.id)">
+        <mat-icon>{{ !categoria.ativo ? 'check' : 'block' }}</mat-icon>
+        <span>{{ !categoria.ativo ? 'Ativar' : 'Inativar' }}</span>
+      </button>
+      <horizontal-space></horizontal-space>
+      <a mat-raised-button type="button" color="primary" [routerLink]="'editar'" *hasPermission="['administrador', 'categorias', 'categorias/put']; operation 'OR'">
+        <mat-icon>edit</mat-icon>
+        <span>Editar</span>
+      </a>
+    </div>
+  </div>
+
+</detail-page>
