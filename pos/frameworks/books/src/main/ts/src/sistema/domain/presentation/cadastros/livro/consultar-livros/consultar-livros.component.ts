@@ -1,23 +1,23 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {DialogService} from '../../../../services/dialog.service';
 import {MessageService} from '../../../../services/message.service';
 import {PaginationService} from '../../../../services/pagination.service';
 import {ListPageComponent} from '../../../../../application/controls/crud/list/list-page.component';
-import {Editora} from "../../../../entity/editora.model";
-import {EditoraRepository} from "../../../../repository/editora.repository";
+import {Livro} from "../../../../entity/livro.model";
+import {LivroRepository} from "../../../../repository/livro.repository";
 import {handlePageable} from "../../../../../application/utils/handle-data-table";
 
 @Component({
-  selector: 'consultar-editoras',
-  templateUrl: 'consultar-editoras.component.html',
-  styleUrls: ['../editora.component.scss']
+  selector: 'consultar-livros',
+  templateUrl: 'consultar-livros.component.html',
+  styleUrls: ['../livro.component.scss']
 })
-export class ConsultarEditorasComponent /*implements OnInit */ {
+export class ConsultarLivrosComponent implements OnInit {
 
   // Bind com o component ListPageComponent
   @ViewChild(ListPageComponent)
-  private editora: Editora = new Editora();
+  private livro: Livro = new Livro();
 
   public pageable: any = {
     size: 20,
@@ -33,6 +33,7 @@ export class ConsultarEditorasComponent /*implements OnInit */ {
 
   public columns: any[] = [
     {name: 'nome', label: 'Nome'},
+    {name: 'editora.nome', label: 'Editora'},
   ];
 
   public displayedColumns: string[] = this.columns.map(cell => cell.name);
@@ -43,12 +44,12 @@ export class ConsultarEditorasComponent /*implements OnInit */ {
    * @param dialogService {DialogService}
    * @param paginationService {PaginationService}
    * @param messageService {MessageService}
-   * @param editoraRepository {EditoraRepository}
+   * @param livroRepository {LivroRepository}
    */
   constructor(private dialogService: DialogService,
               paginationService: PaginationService,
               private messageService: MessageService,
-              private editoraRepository: EditoraRepository) {
+              private livroRepository: LivroRepository) {
 
     this.displayedColumns.push('acoes');
     this.pageable = paginationService.pageable('nome');
@@ -60,7 +61,7 @@ export class ConsultarEditorasComponent /*implements OnInit */ {
    */
   ngOnInit() {
     // Seta o size do pageable no size do paginator
-    (this.editora as any).paginator.pageSize = this.pageable.size;
+    (this.livro as any).paginator.pageSize = this.pageable.size;
 
     // Sobrescreve o sortChange do sort bindado
     this.sortChange();
@@ -70,8 +71,8 @@ export class ConsultarEditorasComponent /*implements OnInit */ {
    *
    */
   public sortChange() {
-    (this.editora as any).sort.sortChange.subscribe(() => {
-      const {active, direction} = (this.editora as any).sort;
+    (this.livro as any).sort.sortChange.subscribe(() => {
+      const {active, direction} = (this.livro as any).sort;
       this.pageable.sort = {'properties': active, 'direction': direction};
       this.listByFilters();
     });
@@ -84,14 +85,14 @@ export class ConsultarEditorasComponent /*implements OnInit */ {
    */
   public listByFilters(hasAnyFilter: boolean = false) {
 
-    const pageable = handlePageable(hasAnyFilter, (this.editora as any).paginator, this.pageable);
-    pageable.ativoFilter = (this.editora as any).filters.ativoFilter;
-    pageable.defaultFilter = (this.editora as any).filters.defaultFilter;
-    (this.editora as any).paginator.pageSize = this.pageable.size;
+    const pageable = handlePageable(hasAnyFilter, (this.livro as any).paginator, this.pageable);
+    pageable.ativoFilter = (this.livro as any).filters.ativoFilter;
+    pageable.defaultFilter = (this.livro as any).filters.defaultFilter;
+    (this.livro as any).paginator.pageSize = this.pageable.size;
 
-    this.editoraRepository.listByFilters(pageable)
+    this.livroRepository.listByFilters(pageable)
       .subscribe(result => {
-        result.content.forEach(editora => editora.ativo ? editora.ativo = 'Ativo' : editora.ativo = 'Inativo');
+        console.log(result.content);
         this.dataSource = new MatTableDataSource(result.content);
         this.totalElements = result.totalElements;
         this.pageSize = result.size;
@@ -101,15 +102,15 @@ export class ConsultarEditorasComponent /*implements OnInit */ {
 
   /**
    * Função para confirmar a exclusão de um registro permanentemente
-   * @param editora
+   * @param livro
    */
-  public openDeleteDialog(editora) {
+  public openDeleteDialog(livro) {
 
-    this.dialogService.confirmDelete(editora, 'editora')
+    this.dialogService.confirmDelete(livro, 'livro')
       .then((accept: boolean) => {
 
         if (accept) {
-          this.editoraRepository.delete(editora.id)
+          this.livroRepository.delete(livro.id)
             .then(() => {
               this.listByFilters();
               this.messageService.toastSuccess('Registro excluído com sucesso.')

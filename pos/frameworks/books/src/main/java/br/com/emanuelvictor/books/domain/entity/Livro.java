@@ -24,13 +24,13 @@ public class Livro extends AbstractEntity implements Serializable {
     @NotEmpty
     @NotNull
     @Length(max = 100)
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, unique = true)
     private String nome;
 
     /**
      *
      */
     @JoinColumn(name = "editora_id")
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, /*cascade = CascadeType.ALL,*/ fetch = FetchType.EAGER)
     private Editora editora;
 }

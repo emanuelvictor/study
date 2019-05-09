@@ -36,4 +36,9 @@ public class EditoraResource {
         editora.setId(id);
         return this.editoraRepository.save(editora);
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable final long id) {
+        this.editoraRepository.deleteById(id);
+    }
 }

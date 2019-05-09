@@ -11,15 +11,14 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("livros")
+@RequestMapping("api/livros")
 public class LivroResource {
 
     private final ILivroRepository livroRepository;
 
     @GetMapping
-    public Page<Livro> listByFilters(final String defaultFilter, final Boolean ativoFilter, final Pageable pageable) {
-//        return this.livroRepository.listByFilters(defaultFilter, ativoFilter, pageable);
-        return null;
+    public Page<Livro> listByFilters(final String defaultFilter, final Pageable pageable) {
+        return this.livroRepository.listByFilters(defaultFilter, pageable);
     }
 
     @GetMapping("/{id}")
@@ -36,6 +35,11 @@ public class LivroResource {
     public Livro save(@PathVariable final long id, @RequestBody final Livro livro) {
         livro.setId(id);
         return this.livroRepository.save(livro);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable final long id) {
+        this.livroRepository.deleteById(id);
     }
 
 }

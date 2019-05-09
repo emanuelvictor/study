@@ -13,9 +13,7 @@ public interface IEditoraRepository extends JpaRepository<Editora, Long> {
 
     @Query("FROM Editora editora WHERE" +
             "   (   " +
-            "       (" +
-            "               FILTER(:filter, editora.nome) = TRUE" +
-            "       )" +
+            "       FILTER(:filter, editora.nome) = TRUE" +
             "   )"
     )
     Page<Editora> listByFilters(@Param("filter") final String defaultFilter, final Pageable pageable);

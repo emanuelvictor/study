@@ -61,6 +61,12 @@ import {ConsultarEditorasComponent} from "./presentation/cadastros/editora/consu
 import {EditoraViewComponent} from "./presentation/cadastros/editora/editora-view.component";
 import {InserirEditoraComponent} from "./presentation/cadastros/editora/inserir-editora/inserir-editora.component";
 import {EditoraFormComponent} from "./presentation/cadastros/editora/inserir-editora/editora-form/editora-form.component";
+import {LivroViewComponent} from "./presentation/cadastros/livro/livro-view.component";
+import {VisualizarLivroComponent} from "./presentation/cadastros/livro/visualizar-livro/visualizar-livro.component";
+import {AlterarLivroComponent} from "./presentation/cadastros/livro/alterar-livro/alterar-livro.component";
+import {ConsultarLivrosComponent} from "./presentation/cadastros/livro/consultar-livros/consultar-livros.component";
+import {InserirLivroComponent} from "./presentation/cadastros/livro/inserir-livro/inserir-livro.component";
+import {LivroFormComponent} from "./presentation/cadastros/livro/inserir-livro/livro-form/livro-form.component";
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -104,6 +110,14 @@ export function customTranslateLoader(http: HttpClient) {
     AlterarEditoraComponent,
     InserirEditoraComponent,
     EditoraFormComponent,
+
+    // Livro
+    LivroViewComponent,
+    ConsultarLivrosComponent,
+    VisualizarLivroComponent,
+    AlterarLivroComponent,
+    InserirLivroComponent,
+    LivroFormComponent,
 
     // PIPES
     CapitalizePipe,

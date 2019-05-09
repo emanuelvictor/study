@@ -66,10 +66,10 @@ export class ListPageComponent extends CrudViewComponent implements OnInit {
    * Restaura os filtros para o estado inicial
    */
   clearFilters = () => {
-    const {defaultFilter, ativoFilter} = this.filters;
+    const {defaultFilter} = this.filters;
 
-    if (defaultFilter || ativoFilter !== '') {
-      this.filters = {defaultFilter: '', ativoFilter: ''};
+    if (defaultFilter !== '') {
+      this.filters = {defaultFilter: ''};
       this.listByFilters();
     }
   };

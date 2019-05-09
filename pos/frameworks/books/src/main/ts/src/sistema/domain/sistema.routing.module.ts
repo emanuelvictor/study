@@ -7,6 +7,11 @@ import {VisualizarEditoraComponent} from "./presentation/cadastros/editora/visua
 import {InserirEditoraComponent} from "./presentation/cadastros/editora/inserir-editora/inserir-editora.component";
 import {ConsultarEditorasComponent} from "./presentation/cadastros/editora/consultar-editoras/consultar-editoras.component";
 import {EditoraViewComponent} from "./presentation/cadastros/editora/editora-view.component";
+import {AlterarLivroComponent} from "./presentation/cadastros/livro/alterar-livro/alterar-livro.component";
+import {InserirLivroComponent} from "./presentation/cadastros/livro/inserir-livro/inserir-livro.component";
+import {ConsultarLivrosComponent} from "./presentation/cadastros/livro/consultar-livros/consultar-livros.component";
+import {LivroViewComponent} from "./presentation/cadastros/livro/livro-view.component";
+import {VisualizarLivroComponent} from "./presentation/cadastros/livro/visualizar-livro/visualizar-livro.component";
 
 const routes: Routes = [
     {
@@ -21,7 +26,18 @@ const routes: Routes = [
                 component: CadastrosViewComponent,
                 children: [
                     {
-                        path: '', redirectTo: 'editoras', pathMatch: 'full',
+                        path: '', redirectTo: 'livros', pathMatch: 'full',
+                    },
+                    {
+                        path: 'livros', component: LivroViewComponent,
+                        children: [
+                            {path: 'get', redirectTo: '', pathMatch: 'full'},
+                            {path: '', component: ConsultarLivrosComponent},
+                            {path: 'adicionar', component: InserirLivroComponent},
+                            {path: 'editar/:id', component: AlterarLivroComponent},
+                            {path: ':id/editar', component: AlterarLivroComponent},
+                            {path: ':id', component: VisualizarLivroComponent}
+                        ]
                     },
                     {
                         path: 'editoras', component: EditoraViewComponent,

@@ -10,14 +10,6 @@
              (ngModelChange)="debounce(this, listByFiltersStatement)" placeholder="Buscar"/>
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
-    <horizontal-space></horizontal-space>
-    <mat-form-field *ngIf='desativavel'>
-      <mat-select placeholder="Status" [(ngModel)]="filters.ativoFilter" (ngModelChange)="listByFilters(true)">
-        <mat-option [value]="''">{{ labelStatus.all }}</mat-option>
-        <mat-option [value]="'true'">{{ labelStatus.active }}</mat-option>
-        <mat-option [value]="'false'">{{ labelStatus.inactive }}</mat-option>
-      </mat-select>
-    </mat-form-field>
     <horizontal-space *ngIf='desativavel' [horizontalMargin]="15"></horizontal-space>
     <a mat-raised-button color="primary" [routerLink]="['adicionar']">
       <mat-icon>add</mat-icon>
@@ -36,7 +28,7 @@
       </mat-header-cell>
       <mat-cell *matCellDef='let data'>
         <a [routerLink]="[data.id]" style='height: 30px' ellipsis>
-          {{ column.translate ? (data[column.name] | translate) || '-' : (data[column.name] || '-')  }}
+          {{ column.translate ? (data[column.name] | translate) || '-' : (column?.name.indexOf('.') > 1 ? data?.editora?.nome : data[column.name] || '-')  }}
         </a>
       </mat-cell>
     </ng-container>

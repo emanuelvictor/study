@@ -16,7 +16,7 @@ import java.io.Serializable;
 @Entity
 @Audited
 @EqualsAndHashCode(callSuper = true)
-public class Editora extends AbstractEntity implements Serializable{
+public class Editora extends AbstractEntity implements Serializable {
 
     /**
      *
@@ -24,6 +24,6 @@ public class Editora extends AbstractEntity implements Serializable{
     @NotEmpty
     @NotNull
     @Length(max = 100)
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, unique = true)
     private String nome;
 }

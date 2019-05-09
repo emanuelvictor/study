@@ -10,7 +10,7 @@ export class LivroRepository extends BaseRepository<Livro> {
    * @param httpClient
    */
   constructor(httpClient: HttpClient) {
-    super(httpClient, 'avisos-editais');
+    super(httpClient, 'livros');
   }
 
 }

@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {MatSnackBar} from "@angular/material";
 import {FormBuilder} from "@angular/forms";
 import {CrudViewInterface} from "./crud-view.inteface";
+import {Editora} from "../../../domain/entity/editora.model";
 
 // Para diferenciar se a entidade é uma palavra masculina ou feminina
 export type Gender = 'M' | 'F';
