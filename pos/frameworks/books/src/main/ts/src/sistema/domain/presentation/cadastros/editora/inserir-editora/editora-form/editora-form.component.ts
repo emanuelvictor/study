@@ -5,11 +5,11 @@ import {MatSnackBar} from "@angular/material";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'categoria-form',
-  templateUrl: 'categoria-form.component.html',
-  styleUrls: ['../../categoria.component.scss']
+  selector: 'editora-form',
+  templateUrl: 'editora-form.component.html',
+  styleUrls: ['../../editora.component.scss']
 })
-export class CategoriaFormComponent extends CrudViewComponent implements OnInit {
+export class EditoraFormComponent extends CrudViewComponent implements OnInit {
 
   // Armazena o link para voltar para a tela de consulta
   @Input() backLink: string;

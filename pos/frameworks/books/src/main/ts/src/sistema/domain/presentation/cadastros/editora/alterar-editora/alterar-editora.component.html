@@ -1,12 +1,12 @@
-<categoria-form [entity]="categoria" (save)="save($event)">
+<editora-form [entity]="editora" (save)="save($event)">
 
   <div class="toolbar" layout="row" flex toolbar>
     <div layout="column">
-      <div class="headline" [innerHTML]="'Categoria'"></div>
-      <div class="subhead" [innerHTML]="'Categoria / Adicionar'"></div>
+      <div class="headline" [innerHTML]="'Editora / Editar'"></div>
+      <div class="subhead" [innerHTML]="'Editora'"></div>
     </div>
     <div layout="row" layout-align="end center" flex>
-      <button mat-raised-button type="button" color="accent" routerLink='../'>
+      <button mat-raised-button type="button" color="accent" (click)='back()'>
         <mat-icon>arrow_back</mat-icon>
         <span>Voltar</span>
       </button>
@@ -18,4 +18,4 @@
     </div>
   </div>
 
-</categoria-form>
+</editora-form>

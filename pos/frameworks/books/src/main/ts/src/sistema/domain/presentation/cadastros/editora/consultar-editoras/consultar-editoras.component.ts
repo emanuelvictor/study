@@ -4,20 +4,20 @@ import {DialogService} from '../../../../services/dialog.service';
 import {MessageService} from '../../../../services/message.service';
 import {PaginationService} from '../../../../services/pagination.service';
 import {ListPageComponent} from '../../../../../application/controls/crud/list/list-page.component';
-import {Categoria} from "../../../../entity/categoria.model";
-import {CategoriaRepository} from "../../../../repository/categoria.repository";
+import {Editora} from "../../../../entity/editora.model";
+import {EditoraRepository} from "../../../../repository/editora.repository";
 import {handlePageable} from "../../../../../application/utils/handle-data-table";
 
 @Component({
-  selector: 'consultar-categorias',
-  templateUrl: 'consultar-categorias.component.html',
-  styleUrls: ['../categoria.component.scss']
+  selector: 'consultar-editoras',
+  templateUrl: 'consultar-editoras.component.html',
+  styleUrls: ['../editora.component.scss']
 })
-export class ConsultarCategoriasComponent /*implements OnInit */ {
+export class ConsultarEditorasComponent /*implements OnInit */ {
 
   // Bind com o component ListPageComponent
   @ViewChild(ListPageComponent)
-  private categoria: Categoria = new Categoria();
+  private editora: Editora = new Editora();
 
   public pageable: any = {
     size: 20,
@@ -44,12 +44,12 @@ export class ConsultarCategoriasComponent /*implements OnInit */ {
    * @param dialogService {DialogService}
    * @param paginationService {PaginationService}
    * @param messageService {MessageService}
-   * @param categoriaRepository {CategoriaRepository}
+   * @param editoraRepository {EditoraRepository}
    */
   constructor(private dialogService: DialogService,
               paginationService: PaginationService,
               private messageService: MessageService,
-              private categoriaRepository: CategoriaRepository) {
+              private editoraRepository: EditoraRepository) {
 
     this.displayedColumns.push('acoes');
     this.pageable = paginationService.pageable('nome');
@@ -61,7 +61,7 @@ export class ConsultarCategoriasComponent /*implements OnInit */ {
    */
   ngOnInit() {
     // Seta o size do pageable no size do paginator
-    (this.categoria as any).paginator.pageSize = this.pageable.size;
+    (this.editora as any).paginator.pageSize = this.pageable.size;
 
     // Sobrescreve o sortChange do sort bindado
     this.sortChange();
@@ -71,8 +71,8 @@ export class ConsultarCategoriasComponent /*implements OnInit */ {
    *
    */
   public sortChange() {
-    (this.categoria as any).sort.sortChange.subscribe(() => {
-      const {active, direction} = (this.categoria as any).sort;
+    (this.editora as any).sort.sortChange.subscribe(() => {
+      const {active, direction} = (this.editora as any).sort;
       this.pageable.sort = {'properties': active, 'direction': direction};
       this.listByFilters();
     });
@@ -85,14 +85,14 @@ export class ConsultarCategoriasComponent /*implements OnInit */ {
    */
   public listByFilters(hasAnyFilter: boolean = false) {
 
-    const pageable = handlePageable(hasAnyFilter, (this.categoria as any).paginator, this.pageable);
-    pageable.ativoFilter = (this.categoria as any).filters.ativoFilter;
-    pageable.defaultFilter = (this.categoria as any).filters.defaultFilter;
-    (this.categoria as any).paginator.pageSize = this.pageable.size;
+    const pageable = handlePageable(hasAnyFilter, (this.editora as any).paginator, this.pageable);
+    pageable.ativoFilter = (this.editora as any).filters.ativoFilter;
+    pageable.defaultFilter = (this.editora as any).filters.defaultFilter;
+    (this.editora as any).paginator.pageSize = this.pageable.size;
 
-    this.categoriaRepository.listByFilters(pageable)
+    this.editoraRepository.listByFilters(pageable)
       .subscribe(result => {
-        result.content.forEach(categoria => categoria.ativo ? categoria.ativo = 'Ativo' : categoria.ativo = 'Inativo');
+        result.content.forEach(editora => editora.ativo ? editora.ativo = 'Ativo' : editora.ativo = 'Inativo');
         this.dataSource = new MatTableDataSource(result.content);
         this.totalElements = result.totalElements;
         this.pageSize = result.size;
@@ -102,15 +102,15 @@ export class ConsultarCategoriasComponent /*implements OnInit */ {
 
   /**
    * Função para confirmar a exclusão de um registro permanentemente
-   * @param categoria
+   * @param editora
    */
-  public openDeleteDialog(categoria) {
+  public openDeleteDialog(editora) {
 
-    this.dialogService.confirmDelete(categoria, 'categoria')
+    this.dialogService.confirmDelete(editora, 'editora')
       .then((accept: boolean) => {
 
         if (accept) {
-          this.categoriaRepository.delete(categoria.id)
+          this.editoraRepository.delete(editora.id)
             .then(() => {
               this.listByFilters();
               this.messageService.toastSuccess('Registro excluído com sucesso.')

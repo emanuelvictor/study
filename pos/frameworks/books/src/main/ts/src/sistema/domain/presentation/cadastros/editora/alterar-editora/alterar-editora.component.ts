@@ -2,21 +2,21 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DashboardViewComponent} from '../../../dashboard-view.component';
 import {MessageService} from '../../../../services/message.service';
-import {Categoria} from "../../../../entity/categoria.model";
-import {CategoriaRepository} from "../../../../repository/categoria.repository";
+import {Editora} from "../../../../entity/editora.model";
+import {EditoraRepository} from "../../../../repository/editora.repository";
 
 @Component({
-  selector: 'alterar-categoria',
-  templateUrl: 'alterar-categoria.component.html',
-  styleUrls: ['../categoria.component.scss']
+  selector: 'alterar-editora',
+  templateUrl: 'alterar-editora.component.html',
+  styleUrls: ['../editora.component.scss']
 })
-export class AlterarCategoriaComponent implements OnInit {
+export class AlterarEditoraComponent implements OnInit {
 
 
   /**
    *
    */
-  categoria: Categoria = new Categoria();
+  editora: Editora = new Editora();
 
   /**
    *
@@ -24,36 +24,36 @@ export class AlterarCategoriaComponent implements OnInit {
    * @param homeView
    * @param activatedRoute
    * @param messageService
-   * @param categoriaRepository
+   * @param editoraRepository
    */
   constructor(private router: Router,
               private homeView: DashboardViewComponent,
               private activatedRoute: ActivatedRoute,
               private messageService: MessageService,
-              private categoriaRepository: CategoriaRepository) {
+              private editoraRepository: EditoraRepository) {
 
-    homeView.toolbar.subhead = 'Categoria / Editar';
-    this.categoria.id = +this.activatedRoute.snapshot.params.id;
+    homeView.toolbar.subhead = 'Editora / Editar';
+    this.editora.id = +this.activatedRoute.snapshot.params.id;
 
   }
 
   back() {
     if (this.activatedRoute.snapshot.routeConfig.path === 'editar/:id')
-      this.router.navigate(['cadastros/categorias']);
+      this.router.navigate(['cadastros/editoras']);
     else
-      this.router.navigate(['cadastros/categorias/' + this.categoria.id]);
+      this.router.navigate(['cadastros/editoras/' + this.editora.id]);
   }
 
   ngOnInit() {
-    if (this.categoria && this.categoria.id) {
+    if (this.editora && this.editora.id) {
       this.findById();
     }
   }
 
   public findById() {
-    this.categoriaRepository.findById(this.categoria.id)
+    this.editoraRepository.findById(this.editora.id)
       .subscribe((result) => {
-        this.categoria = result;
+        this.editora = result;
       });
   }
 
@@ -64,9 +64,9 @@ export class AlterarCategoriaComponent implements OnInit {
       return;
     }
 
-    this.categoriaRepository.save(this.categoria)
+    this.editoraRepository.save(this.editora)
       .then(() => {
-        this.router.navigate(['cadastros/categorias']);
+        this.router.navigate(['cadastros/editoras']);
         this.messageService.toastSuccess();
       });
   }
