@@ -1,9 +1,8 @@
-import {Component, ElementRef, EventEmitter, Inject, Input, OnInit, Output, Renderer} from '@angular/core';
+import {Component, ElementRef, Inject, Input, OnInit, Renderer} from '@angular/core';
 import {CrudViewComponent} from "../../../../../../application/controls/crud/crud-view.component";
 import {FormBuilder, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material";
 import {ActivatedRoute} from "@angular/router";
-import {Editora} from "../../../../../entity/editora.model";
 import {EditoraRepository} from "../../../../../repository/editora.repository";
 import {debounce} from "../../../../../../application/utils/debounce";
 
@@ -86,7 +85,7 @@ export class LivroFormComponent extends CrudViewComponent implements OnInit {
       return;
     }
 
-    this.editoraRepository.listByFilters({defaultFilter: this.editora, ativoFilter: true})
+    this.editoraRepository.listByFilters({defaultFilter: this.entity.editora})
       .subscribe((result) => {
         this.editoras = result.content;
       });
