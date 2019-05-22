@@ -8,7 +8,7 @@ public class FileDemonstrationTest {
         final Scanner input = new Scanner(System.in);
         final FileDemonstration application = new FileDemonstration();
 
-        System.out.print("Entre com a pasta ou arquivo: ");
+        System.out.print("Entre com o diretório ou arquivo: ");
         application.analyzePath(input.nextLine());
     }
 }
