@@ -1,57 +1,94 @@
 package java2.arquivos;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Objects;
 
-public class FileDemonstration
-{
+class FileDemonstration {
+
+    class MyFileVisitor extends SimpleFileVisitor<Path> {
+
+        private long length = 0L;
+
+        private int folderCount = 0;
+
+        private int fileCount = 0;
+
+        public FileVisitResult visitFile(Path path, BasicFileAttributes fileAttributes) {
+
+            if (path.toFile().isFile())
+                length = length + path.toFile().length();
+
+            fileCount++;
+
+            return FileVisitResult.CONTINUE;
+        }
+
+        public FileVisitResult preVisitDirectory(Path path, BasicFileAttributes fileAttributes) {
+
+            folderCount++;
+
+            return FileVisitResult.CONTINUE;
+        }
+
+        long getLength() {
+            return length;
+        }
+
+        int getFolderCount() {
+            return folderCount;
+        }
+
+        int getFileCount() {
+            return fileCount;
+        }
+    }
+
     // display information about file user specifies
-    public void analyzePath( String path )
-    {
+    void analyzePath(final String path) {
         // create File object based on user input
-        File name = new File( path );
+        File name = new File(path);
 
-        if ( name.exists() ) // if name exists, output information about it
+        final Path source = Paths.get(path);
+        try {
+            final MyFileVisitor visitor = new MyFileVisitor();
+            Files.walkFileTree(source, visitor);
+            System.out.printf("%s%s\n", "Tamanho total: ", (visitor.getLength() / 1024L / 1024L) + " MB");
+            System.out.printf("%s%s\n", "Quantidade de pastas contidas: ", (visitor.getFolderCount()));
+            System.out.printf("%s%s\n", "Quantidade de arquivos contidos: ", (visitor.getFileCount()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (name.exists()) // if name exists, output information about it
         {
             // display file (or directory) information
             System.out.printf(
                     "%s%s\n%s\n%s\n%s\n%s%s\n%s%s\n%s%s\n%s%s\n%s%s",
                     name.getName(), " exists",
-                    ( name.isFile() ? "is a file" : "is not a file" ),
-                    ( name.isDirectory() ? "is a directory" :
-                            "is not a directory" ),
-                    ( name.isAbsolute() ? "is absolute path" :
-                            "is not absolute path" ), "Last modified: ",
+                    (name.isFile() ? "is a file" : "is not a file"),
+                    (name.isDirectory() ? "is a directory" :
+                            "is not a directory"),
+                    (name.isAbsolute() ? "is absolute path" :
+                            "is not absolute path"), "Last modified: ",
                     name.lastModified(), "Length: ", name.length(),
                     "Path: ", name.getPath(), "Absolute path: ",
-                    name.getAbsolutePath(), "Parent: ", name.getParent() );
+                    name.getAbsolutePath(), "Parent: ", name.getParent());
 
-            if ( name.isDirectory() ) // output directory listing
+            if (name.isDirectory()) // output directory listing
             {
-                String directory[] = name.list();
-                System.out.println( "\n\nDirectory contents:\n" );
+                final String[] directory = name.list();
+                System.out.println("\n\nDirectory contents:\n");
 
-                for ( String directoryName : directory )
-                    System.out.printf( "%s\n", directoryName );
+                for (String directoryName : Objects.requireNonNull(directory))
+                    System.out.printf("%s\n", directoryName);
             } // end else
         } // end outer if
         else // not file or directory, output error message
         {
-            System.out.printf( "%s %s", path, "does not exist." );
+            System.out.printf("%s %s", path, "does not exist.");
         } // end else
     } // end method analyzePath
 } // end class arquivos.FileDemonstration
-
-/*************************************************************************
- * (C) Copyright 1992-2007 by Deitel & Associates, Inc. and               *
- * Pearson Education, Inc. All Rights Reserved.                           *
- *                                                                        *
- * DISCLAIMER: The authors and publisher of this book have used their     *
- * best efforts in preparing the book. These efforts include the          *
- * development, research, and testing of the theories and programs        *
- * to determine their effectiveness. The authors and publisher make       *
- * no warranty of any kind, expressed or implied, with regard to these    *
- * programs or to the documentation contained in these books. The authors *
- * and publisher shall not be liable in any event for incidental or       *
- * consequential damages in connection with, or arising out of, the       *
- * furnishing, performance, or use of these programs.                     *
- *************************************************************************/
