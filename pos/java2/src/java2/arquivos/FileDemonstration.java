@@ -47,8 +47,6 @@ class FileDemonstration {
     }
 
     void analyzePath(final String path) {
-        File name = new File(path);
-
         final Path source = Paths.get(path);
         try {
             final MyFileVisitor visitor = new MyFileVisitor();
