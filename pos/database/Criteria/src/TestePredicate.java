@@ -12,8 +12,7 @@ import java.util.List;
 
 public class TestePredicate {
     public static void main(String[] args) {
-        final EntityManagerFactory factory =
-                Persistence.createEntityManagerFactory("criteria");
+        final EntityManagerFactory factory = Persistence.createEntityManagerFactory("criteria");
         final EntityManager manager = factory.createEntityManager();
         final CriteriaBuilder cb = manager.getCriteriaBuilder();
         final CriteriaQuery<Livro> c = cb.createQuery(Livro.class);
