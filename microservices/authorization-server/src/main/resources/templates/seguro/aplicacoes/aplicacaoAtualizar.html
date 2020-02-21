@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      layout:decorate="~{base.html}"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=”http://www.ultraq.net.nz/thymeleaf/layout”>
+
+<div class="row" layout:fragment="content">
+  <div class="col-md-12">
+    <h3>Editar Aplicação</h3>
+  </div>
+  <div class="col-md-12 mt-3">
+    <form th:action="@{/seguro/aplicacoes/cadastrar}" th:object="${aplicacao}" method="post">
+      <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <ul>
+          <li th:each="err : ${#fields.allErrors()}" th:text="${err}"></li>
+        </ul>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <input type="hidden" th:field="*{id}">
+
+      <div class="form-group row">
+        <label for="inNome" class="col-sm-3 col-form-label">Nome:</label>
+        <div class="col-sm-9">
+          <input id="inNome" class="form-control" type="text" th:field="*{nome}" th:errorclass="is-invalid"/>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inIdentificador" class="col-sm-3 col-form-label">Identificador (clientId):</label>
+        <div class="col-sm-9">
+          <input id="inIdentificador"
+                 class="form-control" type="text" th:field="*{identificador}" th:errorclass="is-invalid"/>
+        </div>
+      </div>
+
+      <div class="form-group row" style='display: none'>
+        <label for="inSenha" class="col-sm-3 col-form-label">Senha</label>
+        <div class="col-sm-9">
+          <input id="inSenha" class="form-control" type="text" th:field="*{senha}" th:errorclass="is-invalid"/>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Permissões</label>
+        <div class="col-sm-9">
+          <ul>
+            <li th:each="permissaoToSelect : ${allPermissoes}">
+              <div class="ui checkbox">
+                <input th:id="${permissaoToSelect.id}" type="checkbox" th:field="*{permissoes}" th:value="${permissaoToSelect.id}">
+                <label th:for="${permissaoToSelect.id}" th:text="${permissaoToSelect.nome}"></label>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-12 text-right">
+          <a role="button" class="btn btn-primary mr-1" th:href="@{'/seguro/aplicacoes/detalhar/' + ${aplicacao.getId()}}">Voltar</a>
+          <button type="submit" th:onclick="|esconder('.alert', 5000)|" class="btn btn-success">Salvar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</html>
