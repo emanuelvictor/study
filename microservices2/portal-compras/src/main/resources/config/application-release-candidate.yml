@@ -1,0 +1,41 @@
+spring:
+
+  datasource:
+    url: jdbc:postgresql://ptipsqlh.fpti.pti.org.br:5436/portaldecompras_h
+    username: sa_portaldecompras_h
+    password: TlFZsup0xHzm61OoojQvuL
+    hikari.maximum-pool-size: 10
+
+  jpa:
+    hibernate.ddl-auto: validate
+    show-sql: false
+
+  flyway:
+    enabled: true
+
+  mail:
+    host: info-fpti.fpti.pti.org.br
+    port: 587
+    username: portaldecomprash@ptisb01h.fpti.pti.org.br
+    password: UN26sMF9Ihjz7DvaCg1FTM
+    properties:
+      mail.transport.protocol: smtp
+      mail.smtp.starttls.enable: true
+      mail.smtps.debug: false
+      mail.smtp.debug: false
+      mail.debug: false
+
+ldap:
+  url: ldap://dc01.fpti.pti.org.br
+  username: CN=bindportaldecomprash,OU=Aplicacoes,DC=fpti,DC=pti,DC=org,DC=br
+  password: gYTCM3BZ7sK1LkP5DNVOYq
+
+oauth:
+  endpoints:
+    fornecedores: https://integrador.t.pti.org.br/compras/fornecedores/
+    bancos: https://integrador.t.pti.org.br/financeiro/bancos/
+    cidades: https://integrador.t.pti.org.br/compras/municipios/
+  token: https://integrador.t.pti.org.br/autorizador/oauth/token
+
+info:
+  url: portaldecompras.h.pti.org.br

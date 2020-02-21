@@ -1,0 +1,64 @@
+<div class='toolbar' layout='row' flex>
+  <div layout='column'>
+    <div class='headline' [innerHTML]="'Bens'"></div>
+    <div class='subhead' [innerHTML]="'Inventário / Visualizar '"></div>
+  </div>
+  <div layout='row' layout-align='end center' flex>
+    <button mat-raised-button type='button' color='accent' routerLink='../'>
+      <mat-icon>arrow_back</mat-icon>
+      <span>Voltar</span>
+    </button>
+    <button color='warn' class='ml-25'
+            type='button' mat-raised-button
+            (click)='openDeleteDialog(inventario)'
+            *hasPermission="['root', 'inventarios/delete']; operation 'OR'">
+      <mat-icon>delete_forever</mat-icon>
+      <span>Excluir</span>
+    </button>
+    <a routerLink='editar' class='ml-25'
+       color='primary' type='button' mat-raised-button
+       *hasPermission="['root', 'inventarios/put']; operation 'OR'">
+      <mat-icon>edit</mat-icon>
+      <span>Editar</span>
+    </a>
+  </div>
+</div>
+<mat-card id='default-form'>
+  <div layout='row' layout-sm='column' layout-xs='column'>
+    <div layout='column' flex layout-align='start start'>
+      <label class='title' layout-align='start start'>Nome:</label>
+      <label class='text' layout-align='start start'>{{ inventario.nome }}</label>
+    </div>
+
+    <vertical-space></vertical-space>
+
+    <div layout='column' flex layout-align='start start'>
+      <label class='title' layout-align='start start'>Data de Início:</label>
+      <label class='text' layout-align='start start'>{{ inventario.dataInicio }}</label>
+    </div>
+
+    <vertical-space></vertical-space>
+
+    <div layout='column' flex layout-align='start start'>
+      <label class='title' layout-align='start start'>Data de Término:</label>
+      <label class='text' layout-align='start start'>{{ inventario.dataTermino }}</label>
+    </div>
+
+    <span flex></span>
+
+    <ngx-charts-advanced-pie-chart [results]='single2' [view]='[600,200]'
+                                   [scheme]="{ domain: [ '#4db6ac', '#F6B800', '#2DB45C', '#424242']}">
+    </ngx-charts-advanced-pie-chart>
+  </div>
+
+  <vertical-space></vertical-space>
+
+  <div layout='row' layout-sm='column' layout-xs='column'>
+    <div layout='column' flex>
+      <label class='title'>Centros de Custo:</label>
+      <vincular-centro-custo *ngIf='inventario?.nome' layout='column'
+                             [toView]='true' [entity]='inventario' flex>
+      </vincular-centro-custo>
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,38 @@
+#Configuração destinada ao ambiente de homologação
+#GENERAL
+spring:
+
+  #DATA SOURCE
+  datasource:
+    url: jdbc:postgresql://ptipsqlh.fpti.pti.org.br:5436/${spring.application.name}_h
+    username: sa_inventario_h
+    password: 2KTzVfH4MFw5VbtuA7q5E4
+
+#LDAP
+ldap:
+  username: CN=bindinventarioh,OU=Aplicacoes,DC=fpti,DC=pti,DC=org,DC=br
+  password: Afe9EBMM2g6t68e2KMpkpa
+
+  #JPA
+  jpa:
+    hibernate.ddl-auto: validate
+    show-sql: true
+
+  #STATIC RESOURCES
+  resources.chain:
+    cache: false
+
+  #FLYWAY
+  flyway:
+    enabled: true
+    
+  #MAIL
+  mail:
+    host: info-fpti.fpti.pti.org.br
+    username: inventario@ptisb01h.fpti.pti.org.br
+    password: 950WD7TbGoyHHzw
+
+# informacoes do sistema
+info:
+  app:
+    url: ${spring.application.name}.h.pti.org.br

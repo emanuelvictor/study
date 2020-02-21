@@ -1,0 +1,40 @@
+<form [formGroup]='form' (ngSubmit)='saveEntity(form)' novalidate>
+
+  <!--toolbar div-->
+  <ng-content select="[toolbar]"></ng-content>
+
+  <mat-card id="default-form">
+    <div layout="row">
+
+      <mat-form-field flex>
+        <input [(ngModel)]='entity.nome'
+               matInput placeholder='Nome'
+               required id='nome' name='nome'
+               formControlName='nome' maxlength='250'/>
+        <mat-error>
+          Esse campo é obrigatório
+        </mat-error>
+      </mat-form-field>
+
+      <horizontal-space></horizontal-space>
+
+      <!--<mat-form-field flex>-->
+      <!--<input id='modelo' name='modelo'-->
+      <!--[(ngModel)]='entity.modelo'-->
+      <!--matInput placeholder='Modelo'-->
+      <!--formControlName='modelo' maxlength='500'/>-->
+      <!--</mat-form-field>-->
+
+      <mat-form-field flex>
+        <input placeholder='Link externo' flex
+               matInput id='modelo' name='modelo'
+               formControlName='modelo' type='url'
+               maxlength='500' [(ngModel)]='entity.modelo'/>
+        <mat-error>
+          Link inválido
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+  </mat-card>
+</form>

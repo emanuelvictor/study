@@ -1,0 +1,27 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    check-location: true
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    sql-migration-prefix:
+    baseline-version: 0
+
+management:
+  endpoint:
+    logfile:
+      external-file: /${user.home}/${spring.application.name}.log
+
+logging:
+  file: /${user.home}/${spring.application.name}.log
+
+info:
+  url: localhost:8080
+  version: @project.version@
+
+server:
+  port: 8083

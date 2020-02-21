@@ -1,0 +1,63 @@
+@import '../../../../portal.component.scss';
+
+.welcome-text {
+    font-weight: bold !important;
+    font-family: "Open Sans";
+    font-size: 39px; 
+ 
+    color: #ffffff;
+}
+
+.title-text {
+    font-weight: bold !important;
+    font-family: "Open Sans";
+    font-size: 39px;
+    margin-bottom: 10px; 
+    color: #00ABAF;
+}
+
+.white {
+    font-family: "Open Sans";
+    color: #ffffff;
+}
+
+.bold-text {
+    color: #00ABAF;
+    font-weight: bold;
+}
+
+p{
+    line-height: 2.0;
+}
+
+ul {
+    padding: 0;
+}
+
+.turnback-button {
+    border: solid 2px #0097a7;
+    color: #0097a7;
+    background: #f2f2f2;
+    padding: 0 40px;
+}
+
+.white-form-field {
+    box-shadow: 1px 1px 3px grey;
+    padding-top: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-bottom: 0;
+    background: #ffffff;
+    margin: 5px 0;
+}
+
+.white-form-field {
+    ::ng-deep .mat-form-field-underline {
+        display: none!important;
+    }
+
+    ::ng-deep .mat-form-field-infix{
+        padding-bottom: 0;
+        margin-left:10px;
+    }
+}

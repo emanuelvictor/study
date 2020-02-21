@@ -1,0 +1,26 @@
+#Configuração destinada ao ambiente de desenvolvimento, os demais perfis hedarão deste
+spring:
+
+  #DATA SOURCE
+  datasource:
+    hikari.pool-name: ${spring.application.name}
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:5432/${spring.application.name}
+    username: sa_inventario
+    password: sa_inventario
+
+# configuracoes do actuator
+management:
+  endpoint:
+    logfile:
+      external-file: /${user.home}/${spring.application.name}.log
+
+# configuracoes de logging
+logging:
+  file: /${user.home}/${spring.application.name}.log
+
+# informacoes do sistema
+info:
+  app:
+    url: localhost:8080

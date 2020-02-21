@@ -1,0 +1,18 @@
+# configs de acesso ao ws protheus
+protheus:
+  api:
+    rest: http://ptiprotheus12:8080/api/
+
+# configs dos clientes do integrador
+clients:
+  passwords:
+    admin: ZXGw5hyg
+    management: 0AMzyw2f
+    limber: U2FmYOSb9w
+    contabil: 8uiLZhUq
+    patrimonio: 6U6cdYdl
+    sigee: C0eojrJY
+    basi: GpyZih2N
+    sigtel: H5wGHBcP
+    portalcompras: 8RbwqTju
+    portalcandidato: zXLfRx4c

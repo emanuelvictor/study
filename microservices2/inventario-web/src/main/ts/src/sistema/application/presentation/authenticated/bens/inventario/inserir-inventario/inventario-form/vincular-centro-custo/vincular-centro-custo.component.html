@@ -1,0 +1,210 @@
+<mat-nav-list *ngIf='centrosCusto?.length && toView'>
+  <div layout='row' *ngFor='let centroCusto of centrosCusto'
+       [ngStyle]="{'background-color': centroCusto?.centroCustoValue ? 'aliceblue' : '#fafafa' }">
+    <div flex layout='column'
+         [ngStyle]="{'margin-right': centroCusto?.status === 'APROVADO' ? '-669px' : (centroCusto?.status === 'FINALIZADO' ? '-1120px' : 'auto') }">
+      <mat-list-item disableRipple layout='row' routerLink='executar/{{centroCusto?.codigo}}'
+                     *ngIf='centroCusto?.centroCustoValue === true'>
+
+        <h3 matLine>{{centroCusto?.codigo}}</h3>
+        <p matLine>{{centroCusto?.descricao}}</p>
+        <p matLine *ngIf='centroCusto?.gestor?.nome' style='color: #607d8b'>Gestor: {{centroCusto?.gestor?.nome}}</p>
+
+        <div flex='10' style='min-width: 115px' *ngIf="centroCusto?.status === 'EM_ANALISE'">
+          <label hide-gt-xs style='color: #F6B800!important'>
+            Em Análise
+          </label>
+
+          <label hide-xs style='color: #F6B800!important; min-width: 168px'>
+            <span>Em Análise</span>
+          </label>
+        </div>
+
+
+        <div flex='10' style='min-width: 115px' *ngIf="centroCusto?.status === 'EM_EXECUCAO'">
+          <label hide-gt-xs style='color: #4db6ac!important'>
+            Em Execução
+          </label>
+
+          <label hide-xs style='color: #4db6ac!important; min-width: 168px'>
+            <span>Em Execução</span>
+          </label>
+        </div>
+
+      </mat-list-item>
+
+      <mat-accordion routerLink='executar/{{centroCusto?.codigo}}'
+                     *ngIf='centroCusto?.centroCustoValue === true'>
+        <mat-expansion-panel [expanded]='centroCusto.centroCustoValue'>
+
+          <div flex *ngIf='centroCusto?.colaboradores?.length'
+               layout='column' style='width: 100%' layout-align='center start'>
+            <div style='width: 100%' layout='row' *ngFor='let colaborador of centroCusto.colaboradores'>
+
+              <mat-list-item disableRipple layout='column' layout-margin
+                             style='background-color: aliceblue; !important; margin: 0'>
+                <p matLine>
+                  {{colaborador?.usuario?.nome}} ({{colaborador?.usuario?.email}})
+                </p>
+              </mat-list-item>
+            </div>
+          </div>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div *ngIf="centroCusto?.status === 'APROVADO' || centroCusto?.status === 'FINALIZADO'"
+         [ngStyle]="{'padding-right': (centroCusto?.status === 'FINALIZADO') ? '10px' : '95px' }"
+         layout='row' layout-align='center start' style='padding-top: 25px; padding-right: 95px'>
+
+      <a flex matTooltip='Sobras físicas'
+         mat-raised-button color='primary'
+         (click)='exportarSobrasFisicas(entity.id, centroCusto)'
+         style='margin-right: 8px; min-width: 199px'
+         type='button' [matTooltipPosition]="'below'">
+        <mat-icon>send</mat-icon>
+        <span hide-xs>Exportar sobras físicas</span>
+      </a>
+
+      <horizontal-space></horizontal-space>
+
+      <a [matTooltipPosition]="'below'"
+         (click)='exportar(entity.id, centroCusto)'
+         matTooltip='Transferidos e não localizados'
+         style='margin-right: 8px; max-width: 115px'
+         flex mat-raised-button type='button' color='primary'>
+        <mat-icon>send</mat-icon>
+        <span hide-xs>Exportar</span>
+      </a>
+
+      <horizontal-space></horizontal-space>
+
+      <a *ngIf="centroCusto?.status === 'APROVADO'"
+         (click)='finalizar(entity.id, centroCusto)'
+         flex mat-raised-button type='button' color='accent'>
+        <mat-icon>done_all</mat-icon>
+        <span hide-xs>Finalizar</span>
+      </a>
+
+      <a (click)='desfinalizar(entity.id, centroCusto)'
+         style='padding-right: 126px;margin-right: 20px'
+         flex mat-raised-button type='button' color='accent'
+         *ngIf="centroCusto?.status === 'FINALIZADO' && (authenticationService?.usuarioAutenticado?.root || authenticationService?.usuarioAutenticado?.isPatrimonio)">
+        <mat-icon>arrow_back</mat-icon>
+        <span hide-xs>Devolver para análise do patrimônio</span>
+      </a>
+
+      <a flex mat-raised-button type='button' (click)='executarCentroCustoInventario(entity.id, centroCusto)'
+         style='padding-right: 50px;margin-right: 20px; background-color: #F6B800!important; color: #FFFFFF!important'
+         *ngIf="centroCusto?.status === 'FINALIZADO' && (authenticationService?.usuarioAutenticado?.root || authenticationService?.usuarioAutenticado?.isPatrimonio)">
+        <mat-icon>arrow_back</mat-icon>
+        <span hide-xs>Devolver para execução</span>
+      </a>
+
+      <horizontal-space *ngIf="centroCusto?.status === 'APROVADO'"></horizontal-space>
+
+      <div flex style='margin-top: 9px' *ngIf="centroCusto?.status === 'APROVADO'">
+        <label hide-gt-xs style='color: #2DB45C!important; font-size: 16px !important;'>
+          Aprovado
+        </label>
+
+        <label hide-xs style='color: #2DB45C!important; min-width: 168px; font-size: 16px !important;'>
+          <span>Aprovado</span>
+        </label>
+      </div>
+
+      <div flex style='margin-top: 9px; font-size: 16px' *ngIf="centroCusto?.status === 'FINALIZADO'">
+        <label hide-gt-xs style='color: #424242!important'>
+          Finalizado
+        </label>
+
+        <label hide-xs style='color: #424242!important; min-width: 168px'>
+          <span>Finalizado</span>
+        </label>
+      </div>
+
+    </div>
+
+  </div>
+</mat-nav-list>
+
+
+<mat-nav-list *ngIf='centrosCusto?.length && !toView'>
+  <div *ngFor='let centroCusto of centrosCusto'
+       style='border: 1px solid #bbbbbb; border-bottom: 0'
+       [ngStyle]="{'background-color': centroCusto?.centroCustoValue ? 'aliceblue' : '#fafafa' }">
+    <mat-list-item disableRipple layout='row'
+                   (click)='centroCusto.centroCustoValue = !centroCusto.centroCustoValue; changeCentroCusto(centroCusto)'>
+      <h3 matLine>{{centroCusto?.codigo}}</h3>
+      <p matLine>{{centroCusto?.descricao}}</p>
+      <p matLine *ngIf='centroCusto?.gestor?.nome' style='color: #607d8b'>Gestor: {{centroCusto?.gestor?.nome}}</p>
+
+      <mat-slide-toggle layout-margin [disabled]='true' flex
+                        [(ngModel)]='centroCusto.centroCustoValue'
+                        style='opacity: 1 !important; margin-right: 0'>
+      </mat-slide-toggle>
+
+    </mat-list-item>
+
+    <mat-accordion>
+      <mat-expansion-panel [expanded]='centroCusto.centroCustoValue' style='margin-bottom: 0'>
+
+        <div style='width: 100%' layout-align='center start' layout='column' flex>
+          <div style='width: 100%; background-color: #fafafa' layout='row'
+               [ngStyle]="{'margin-bottom': (centroCusto?.executoresAvulsos?.length ? '-24px' : ''), 'max-height': (centroCusto?.executoresAvulsos?.length ? '100%' : '74px'), 'background-color': (centroCusto?.executoresAvulsos?.length || hasExecutoresNormais(centroCusto) ? 'aliceblue' : '#fafafa')}">
+
+            <mat-form-field style='margin: 11px 15px 15px 17px' flex>
+
+              <mat-chip-list #chipList aria-label='Pesquise pelo email corporativo para inserir executores avulsos'>
+
+                <mat-chip style='max-width: 100%'
+                          *ngFor='let executorAvulso of centroCusto.executoresAvulsos'
+                          (removed)='removeExecutorAvulso(centroCusto, executorAvulso)'>
+                  {{ executorAvulso?.username }} - {{ executorAvulso?.nome }}
+                  <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+
+
+                <input [ngModelOptions]='{standalone: true}'
+                       #executoresAvulsosFilter [(ngModel)]='filtro'
+                       (keyup)='executoresAvulsosFilterChanged(filtro)'
+                       [matAutocomplete]='auto' [matChipInputFor]='chipList'
+                       id='executoresAvulsosFilter' name='executoresAvulsosFilter'
+                       placeholder='Pesquise pelo email corporativo para inserir executores avulsos'>
+
+              </mat-chip-list>
+
+              <mat-autocomplete #auto='matAutocomplete'
+                                (optionSelected)='add(centroCusto, $event, executoresAvulsosFilter)'>
+                <mat-option [value]='colaboradorAvulso' *ngFor='let colaboradorAvulso of colaboradoresAvulsos'>
+                  {{ colaboradorAvulso?.username }} - {{ colaboradorAvulso?.nome }}
+                </mat-option>
+              </mat-autocomplete>
+
+            </mat-form-field>
+          </div>
+
+          <div style='width: 100%' layout='row'
+               *ngFor='let colaborador of centroCusto.colaboradores'>
+            <mat-list-item disableRipple layout='column' layout-margin
+                           style='background-color: #FFFFFF !important; margin: 0'
+                           [ngStyle]="{'background-color': colaborador.colaboradorValue ? 'aliceblue' : '#fafafa' }">
+              <h3 matLine>
+                <mat-checkbox (change)='clickColaborador(colaborador)'
+                              flex layout-margin style='margin-left: 0'
+                              [(ngModel)]='colaborador.colaboradorValue'
+                              [disabled]='!centroCusto?.usuarioAutenticadoIsGestor && !(authenticationService?.usuarioAutenticado?.root || authenticationService?.usuarioAutenticado?.isPatrimonio)'>
+                  {{colaborador?.usuario?.nome}} ({{colaborador?.usuario?.email}})
+                </mat-checkbox>
+              </h3>
+            </mat-list-item>
+          </div>
+
+        </div>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+    <!--    <mat-divider style='width: calc(100% - 62px);left: 31px'></mat-divider>-->
+  </div>
+</mat-nav-list>

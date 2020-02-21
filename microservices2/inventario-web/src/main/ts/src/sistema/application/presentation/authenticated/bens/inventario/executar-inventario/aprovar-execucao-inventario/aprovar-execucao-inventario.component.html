@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Aprovar Inventário</h1>
+<div mat-dialog-content class="text">
+  Ainda existem itens a serem inventariados, tem certeza que deseja aprovar?
+</div>
+
+<div id='space'></div>
+<mat-divider></mat-divider>
+
+<div mat-dialog-actions>
+  <button mat-raised-button color="accent" [mat-dialog-close]='false'>Cancelar</button>
+  <button mat-raised-button color='primary' [mat-dialog-close]='true'>Aprovar</button>
+</div>

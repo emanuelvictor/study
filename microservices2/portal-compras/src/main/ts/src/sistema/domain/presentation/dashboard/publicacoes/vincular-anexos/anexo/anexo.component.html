@@ -1,0 +1,75 @@
+<form [formGroup]='form?.controls[index]'
+      *ngIf='form?.controls[index]' novalidate>
+  <div layout="row" flex layout-align='start center'>
+
+    <mat-form-field flex>
+      <input formControlName='nome{{index}}' flex
+             [(ngModel)]='anexo.nome' maxlength='150'
+             placeholder='Nome do anexo' *ngIf='index'
+             matInput id='nome{{index}}' name='nome{{index}}'/>
+      <mat-error *ngIf="form?.controls[index]?.controls['nome'+index]?.hasError('exception')">
+        {{form?.controls[index]?.controls['nome'+index]?.errors?.exception}}
+      </mat-error>
+      <mat-hint align='start'>
+        São aceitos apenas arquivos nos formatos: {{formatos?.join(', ')}}
+      </mat-hint>
+    </mat-form-field>
+
+    <horizontal-space *ngIf='anexo?.externo'></horizontal-space>
+
+    <mat-form-field flex *ngIf='anexo?.externo'>
+      <input formControlName='link{{index}}' flex
+             placeholder='Link externo' *ngIf='index'
+             matInput id='link{{index}}' name='link{{index}}'
+             maxlength='500' [(ngModel)]='anexo.link' type='url'/>
+      <mat-error *ngIf="form?.controls[index]?.controls['link'+index]?.hasError('exception')">
+        {{form?.controls[index]?.controls['link'+index]?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+
+    <horizontal-space></horizontal-space>
+
+    <mat-slide-toggle [(ngModel)]='anexo.externo'
+                      (change)='selectChange(anexo)'
+                      [ngModelOptions]='{standalone: true}'
+                      (ngModelChange)='selectModelChange(anexo)'
+                      style='margin-bottom: 10px; color: #09aaae'>
+      Link externo
+    </mat-slide-toggle>
+
+    <horizontal-space *ngIf='!anexo?.externo'></horizontal-space>
+
+    <input type='file' accept="{{formatos?.join(',')}}"
+           id='inputField{{index}}' name='inputField{{index}}'
+           style='display: none' (change)='onFileChange($event)'/>
+
+    <button type='button' style='margin-top: -17px'
+            mat-raised-button class='attach-button'
+            (click)='selectFile()' *ngIf='!anexo?.externo'>
+      <mat-icon>attach_file</mat-icon>
+      <span>Anexar</span>
+    </button>
+
+    <horizontal-space *ngIf='anexo?.conteudo?.lastModified && !anexo?.externo'></horizontal-space>
+
+    <button style='margin-top: -17px'
+            mat-raised-button class='attach-button'
+            (click)='visualizarAnexo(anexo)' type='button'
+            *ngIf='anexo?.conteudo?.lastModified && !anexo?.externo'>
+      <mat-icon>cloud_download</mat-icon>
+      <span> Visualizar</span>
+    </button>
+
+    <horizontal-space *ngIf='anexo?.externo'></horizontal-space>
+
+    <a href='{{anexo?.link}}'
+       style='margin-top: -17px'
+       target='_blank' type='button'
+       *ngIf='anexo?.externo && anexo?.link'
+       mat-raised-button class='attach-button'>
+      <mat-icon>cloud_download</mat-icon>
+      <span>Visualizar</span>
+    </a>
+
+  </div>
+</form>
