@@ -1,6 +1,6 @@
 package br.org.pti.authorizationserver.domain.repositories.security;
 
-import br.org.pti.authorizationserver.domain.entities.security.Aplicacao;
+import br.org.pti.authorizationserver.domain.entities.configuration.Application;
 import br.org.pti.authorizationserver.domain.repositories.DefaultRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,27 +17,27 @@ import java.util.Optional;
  * @since 2.0.0, 01/01/2020
  */
 @Repository
-public interface AplicacaoRepository extends DefaultRepository<Aplicacao> {
+public interface AplicacaoRepository extends DefaultRepository<Application> {
 
     /**
      * @param identificador
      * @return
      */
-    Optional<Aplicacao> findByIdentificador(final String identificador);
+    Optional<Application> findByIdentificador(final String identificador);
 
     /**
      * @param identificador
      * @param id
      * @return
      */
-    Optional<Aplicacao> findByIdentificadorAndIdNot(final String identificador, final Long id);
+    Optional<Application> findByIdentificadorAndIdNot(final String identificador, final Long id);
 
     /**
      * @param filter
      * @return
      */
-    @Query("from Aplicacao u " +
+    @Query("from Application u " +
             "where filter(:filter, u.nome, u.identificador) = true " +
             "order by u.nome")
-    Page<Aplicacao> findByFiltro(final String filter, final Pageable pageable);
+    Page<Application> findByFiltro(final String filter, final Pageable pageable);
 }

@@ -18,6 +18,10 @@
         <java.version>11</java.version>
         <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
+
+        <!--validação de cpf e cnpj-->
+        <stella.caelumn.version>2.1.2</stella.caelumn.version>
+
     </properties>
 
     <profiles>
@@ -59,6 +63,13 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <!-- Validação de CPF e CNPJ -->
+        <dependency>
+            <groupId>br.com.caelum.stella</groupId>
+            <artifactId>caelum-stella-core</artifactId>
+            <version>${stella.caelumn.version}</version>
         </dependency>
 
         <dependency>

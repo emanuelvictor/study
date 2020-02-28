@@ -1,6 +1,6 @@
 package br.org.pti.authorizationserver.domain.logics.application;
 
-import br.org.pti.authorizationserver.domain.entities.security.Aplicacao;
+import br.org.pti.authorizationserver.domain.entities.configuration.Application;
 import br.org.pti.authorizationserver.domain.exceptions.BusinessLogicException;
 import br.org.pti.authorizationserver.domain.repositories.security.AplicacaoRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class NomeUsuarioValidator implements ApplicationSavingLogic, Application
      * @param value
      */
     @Override
-    public void perform(final Aplicacao value) {
+    public void perform(final Application value) {
         if (value.isSaved()) {
             this.userRepository.findByIdentificadorAndIdNot(value.getClientId(), value.getId())
                     .ifPresent(this::duplicatedException);
@@ -34,7 +34,7 @@ public class NomeUsuarioValidator implements ApplicationSavingLogic, Application
     /**
      * @param user
      */
-    private void duplicatedException(final Aplicacao user) {
+    private void duplicatedException(final Application user) {
         throw new BusinessLogicException("Nome de usuário já utilizado por: " + user.getNome());
     }
 }

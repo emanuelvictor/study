@@ -1,5 +1,5 @@
 package br.org.pti.authorizationserver.domain.services;
-import br.org.pti.authorizationserver.domain.entities.security.Aplicacao;
+import br.org.pti.authorizationserver.domain.entities.configuration.Application;
 import br.org.pti.authorizationserver.domain.entities.security.Permissao;
 import br.org.pti.authorizationserver.domain.logics.application.ApplicationSavingLogic;
 import br.org.pti.authorizationserver.domain.logics.application.ApplicationUpdatingLogic;
@@ -46,7 +46,7 @@ public class AplicacaoService implements ClientDetailsService {
      * @param aplicacao Usuario
      */
     @Transactional
-    public Aplicacao save(final Aplicacao aplicacao) {
+    public Application save(final Application aplicacao) {
 
         Assert.isNull(aplicacao.getId(), "Você não tem acesso a essa aplicação");
 
@@ -59,7 +59,7 @@ public class AplicacaoService implements ClientDetailsService {
      * @param aplicacao Usuario
      */
     @Transactional
-    public Aplicacao save(final long id, final Aplicacao aplicacao) {
+    public Application save(final long id, final Application aplicacao) {
 
         this.aplicacaoRepository.findById(id).ifPresentOrElse(actual -> {
             this.userUpdatingLogics.forEach(logic -> logic.perform(aplicacao));
@@ -119,7 +119,7 @@ public class AplicacaoService implements ClientDetailsService {
     /**
      * @return List<Aplicacao>
      */
-    public List<Aplicacao> findAll() {
+    public List<Application> findAll() {
         return this.aplicacaoRepository.findAll();
     }
 
@@ -128,7 +128,7 @@ public class AplicacaoService implements ClientDetailsService {
      * @param pageable Pageable
      * @return Page<Aplicaca
      */
-    public Page<Aplicacao> findByFiltro(final String filtro, final Pageable pageable) {
+    public Page<Application> findByFiltro(final String filtro, final Pageable pageable) {
         return aplicacaoRepository.findByFiltro(filtro, pageable);
     }
 
@@ -136,7 +136,7 @@ public class AplicacaoService implements ClientDetailsService {
      * @param id Long
      * @return Optional<Aplicacao>
      */
-    public Optional<Aplicacao> findById(final long id) {
+    public Optional<Application> findById(final long id) {
         return this.aplicacaoRepository.findById(id);
     }
 

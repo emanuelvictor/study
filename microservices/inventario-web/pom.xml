@@ -262,7 +262,6 @@
             <version>${stella.caelumn.version}</version>
         </dependency>
 
-
         <!--jaxb for java 10 compat-->
         <dependency>
             <groupId>javax.xml.bind</groupId>

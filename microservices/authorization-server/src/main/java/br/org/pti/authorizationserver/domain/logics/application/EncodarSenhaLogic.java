@@ -1,6 +1,6 @@
 package br.org.pti.authorizationserver.domain.logics.application;
 
-import br.org.pti.authorizationserver.domain.entities.security.Aplicacao;
+import br.org.pti.authorizationserver.domain.entities.configuration.Application;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -20,7 +20,7 @@ public class EncodarSenhaLogic implements ApplicationSavingLogic {
      * @param value Aplicacao
      */
     @Override
-    public void perform(final Aplicacao value) {
+    public void perform(final Application value) {
         value.setSenha(this.passwordEncoder.encode(value.getSenha()));
     }
 }

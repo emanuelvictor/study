@@ -1,6 +1,6 @@
 package br.org.pti.authorizationserver.domain.logics.application;
 
-import br.org.pti.authorizationserver.domain.entities.security.Aplicacao;
+import br.org.pti.authorizationserver.domain.entities.configuration.Application;
 import br.org.pti.authorizationserver.domain.exceptions.BusinessLogicException;
 import br.org.pti.authorizationserver.domain.repositories.security.AplicacaoRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class EmailDuplicadoValidator implements ApplicationSavingLogic, Applicat
      * @param value
      */
     @Override
-    public void perform(Aplicacao value) {
+    public void perform(Application value) {
 
 //        if (value.isAplicacao()) {
 //            return;
@@ -39,7 +39,7 @@ public class EmailDuplicadoValidator implements ApplicationSavingLogic, Applicat
     /**
      * @param user
      */
-    private void duplicatedException(Aplicacao user) {
+    private void duplicatedException(Application user) {
         throw new BusinessLogicException("Endereço de e-mail já utilizado por: " + user.getNome());
     }
 }

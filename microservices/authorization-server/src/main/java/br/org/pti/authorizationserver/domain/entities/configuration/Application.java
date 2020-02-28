@@ -1,4 +1,4 @@
-package br.org.pti.authorizationserver.domain.entities.security;
+package br.org.pti.authorizationserver.domain.entities.configuration;
 
 import br.org.pti.authorizationserver.domain.entities.PersistentEntity;
 import lombok.EqualsAndHashCode;
@@ -12,9 +12,9 @@ import org.springframework.security.oauth2.provider.ClientDetails;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
-
-import static javax.persistence.CascadeType.MERGE;
+import java.util.stream.Stream;
 
 /**
  * @author Arthur Gregorio
@@ -26,7 +26,7 @@ import static javax.persistence.CascadeType.MERGE;
 @ToString
 @Table(name = "aplicacao")
 @EqualsAndHashCode(callSuper = true)
-public class Aplicacao extends PersistentEntity /*implements UserDetails*/ implements ClientDetails {
+public class Application extends PersistentEntity /*implements UserDetails*/ implements ClientDetails {
 
     /**
      *
@@ -66,23 +66,14 @@ public class Aplicacao extends PersistentEntity /*implements UserDetails*/ imple
     /**
      *
      */
-    @Getter
-    @Setter
-    @JoinTable(
-            name = "aplicacao_permissao",
-            uniqueConstraints = {
-                    @UniqueConstraint(columnNames = {"aplicacao_id", "permissao_id"})
-            },
-            joinColumns = {@JoinColumn(name = "aplicacao_id")},
-            inverseJoinColumns = {@JoinColumn(name = "permissao_id")}
-    )
-    @ManyToMany(cascade = MERGE, fetch = FetchType.EAGER)
-    private Set<Permissao> permissoes;
+    @ManyToOne
+    private AccessGroup grupoAcesso;
+
 
     /**
      *
      */
-    public Aplicacao() {
+    public Application() {
         this.ativo = true;
     }
 
@@ -123,7 +114,7 @@ public class Aplicacao extends PersistentEntity /*implements UserDetails*/ imple
      */
     @Override
     public Set<String> getScope() {
-        return this.permissoes.stream().map(Permissao::getNome).collect(Collectors.toSet());
+        return this.grupoAcesso.getGruposAcessoPermissoes().stream().map(AccessGroupPermission::getGrupoAcesso).flatMap((Function<AccessGroup, Stream<?>>) AccessGroup::getGruposAcessoPermissoes).map(o -> o.)
     }
 
     @Setter

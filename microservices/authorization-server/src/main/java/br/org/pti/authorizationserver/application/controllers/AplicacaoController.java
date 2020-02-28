@@ -1,6 +1,6 @@
 package br.org.pti.authorizationserver.application.controllers;
 
-import br.org.pti.authorizationserver.domain.entities.security.Aplicacao;
+import br.org.pti.authorizationserver.domain.entities.configuration.Application;
 import br.org.pti.authorizationserver.domain.repositories.security.PermissaoRepository;
 import br.org.pti.authorizationserver.domain.services.AplicacaoService;
 import br.org.pti.authorizationserver.infrastructure.misc.PasswordGenerator;
@@ -71,7 +71,7 @@ public class AplicacaoController {
     @GetMapping("/cadastrar")
     public String acaoCadastrar(final Model model) {
 
-        final Aplicacao aplicacao = new Aplicacao();
+        final Application aplicacao = new Application();
 
         aplicacao.setSenha(PasswordGenerator.generate());
 
@@ -115,7 +115,7 @@ public class AplicacaoController {
     @GetMapping("/buscar")
     public String acaoBusca(@RequestParam final String filtro, final Model model) {
 
-        final List<Aplicacao> aplicacoes;
+        final List<Application> aplicacoes;
 
         if (isBlank(filtro)) {
             aplicacoes = this.aplicacaoService.findAll();
@@ -135,7 +135,7 @@ public class AplicacaoController {
      * @return String
      */
     @PostMapping("/cadastrar")
-    public String salvar(@ModelAttribute @Valid final Aplicacao aplicacao, final BindingResult bindingResult, final Model model) {
+    public String salvar(@ModelAttribute @Valid final Application aplicacao, final BindingResult bindingResult, final Model model) {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("aplicacao", aplicacao);

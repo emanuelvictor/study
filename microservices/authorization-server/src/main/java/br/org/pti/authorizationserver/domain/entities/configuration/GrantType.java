@@ -1,4 +1,4 @@
-package br.org.pti.authorizationserver.domain.entities.security;
+package br.org.pti.authorizationserver.domain.entities.configuration;
 
 /**
  * @author Emanuel Victor
