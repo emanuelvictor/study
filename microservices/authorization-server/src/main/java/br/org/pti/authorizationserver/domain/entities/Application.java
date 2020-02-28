@@ -1,6 +1,6 @@
-package br.org.pti.authorizationserver.domain.entities.configuration;
+package br.org.pti.authorizationserver.domain.entities;
 
-import br.org.pti.authorizationserver.domain.entities.PersistentEntity;
+import br.org.pti.authorizationserver.domain.entities.generic.PersistentEntity;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,14 +12,10 @@ import org.springframework.security.oauth2.provider.ClientDetails;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
- * @author Arthur Gregorio
- * @version 1.0.0
- * @since 2.0.0, 01/01/2020
+ *
  */
 @Entity
 @Audited
@@ -29,31 +25,22 @@ import java.util.stream.Stream;
 public class Application extends PersistentEntity /*implements UserDetails*/ implements ClientDetails {
 
     /**
-     *
-     */
-    @Getter
-    @Setter
-    @NotBlank(message = "Um nome deve ser informado")
-    @Column(name = "nome", nullable = false, length = 90)
-    private String nome;
-
-    /**
      * Corresponds to the clientId
      */
     @Getter
     @Setter
-    @NotBlank(message = "Um identificador deve ser informado")
-    @Column(name = "identificador", length = 45, nullable = false)
-    private String identificador;
+    @NotBlank(message = "A client id must be informed")
+    @Column(name = "clientId", length = 45, nullable = false)
+    private String clientId;
 
     /**
      *
      */
     @Getter
     @Setter
-    @NotBlank(message = "Uma senha deve ser informada")
-    @Column(name = "senha", length = 90, nullable = false)
-    private String senha;
+    @NotBlank(message = "A client secrete must be informed")
+    @Column(name = "clientSecret", length = 90, nullable = false)
+    private String clientSecret;
 
     /**
      *
@@ -61,28 +48,20 @@ public class Application extends PersistentEntity /*implements UserDetails*/ imp
     @Getter
     @Setter
     @Column(name = "ativo", nullable = false)
-    private boolean ativo;
+    private boolean enable;
 
     /**
      *
      */
     @ManyToOne
-    private AccessGroup grupoAcesso;
+    private AccessGroup accessGroup;
 
 
     /**
      *
      */
     public Application() {
-        this.ativo = true;
-    }
-
-    /**
-     * @return String
-     */
-    @Override
-    public String getClientId() {
-        return this.identificador;
+        this.enable = true;
     }
 
     /**
@@ -91,14 +70,6 @@ public class Application extends PersistentEntity /*implements UserDetails*/ imp
     @Override
     public boolean isSecretRequired() {
         return true;
-    }
-
-    /**
-     * @return String
-     */
-    @Override
-    public String getClientSecret() {
-        return this.senha;
     }
 
     /**
@@ -114,18 +85,7 @@ public class Application extends PersistentEntity /*implements UserDetails*/ imp
      */
     @Override
     public Set<String> getScope() {
-        return this.grupoAcesso.getGruposAcessoPermissoes().stream().map(AccessGroupPermission::getGrupoAcesso).flatMap((Function<AccessGroup, Stream<?>>) AccessGroup::getGruposAcessoPermissoes).map(o -> o.)
-    }
-
-    @Setter
-    @Transient
-    private String nomePermissoes;
-
-    /**
-     * @return String
-     */
-    public String getNomePermissoes() {
-        return String.join(";", getScope());
+        return this.accessGroup.getAccessGroupPermissions().stream().map(accessGroupPermission -> accessGroupPermission.getPermission().getAuthority()).collect(Collectors.toSet());
     }
 
     /**
@@ -148,7 +108,7 @@ public class Application extends PersistentEntity /*implements UserDetails*/ imp
      */
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
-        return new ArrayList<>(permissoes);
+        return this.accessGroup.getAccessGroupPermissions().stream().map(AccessGroupPermission::getPermission).distinct().collect(Collectors.toList());
     }
 
     /**

@@ -1,4 +1,4 @@
-package br.org.pti.authorizationserver.domain.entities;
+package br.org.pti.authorizationserver.domain.entities.generic;
 
 import com.fasterxml.jackson.annotation.ObjectIdGenerator;
 import com.fasterxml.jackson.annotation.ObjectIdResolver;

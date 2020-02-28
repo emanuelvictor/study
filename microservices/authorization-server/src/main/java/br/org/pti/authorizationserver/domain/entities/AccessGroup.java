@@ -1,7 +1,7 @@
-package br.org.pti.authorizationserver.domain.entities.configuration;
+package br.org.pti.authorizationserver.domain.entities;
 
-import br.org.pti.authorizationserver.domain.entities.EntityIdResolver;
-import br.org.pti.authorizationserver.domain.entities.PersistentEntity;
+import br.org.pti.authorizationserver.domain.entities.generic.EntityIdResolver;
+import br.org.pti.authorizationserver.domain.entities.generic.PersistentEntity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
@@ -39,19 +39,13 @@ public class AccessGroup extends PersistentEntity {
     @NotBlank
     @Length(max = 50)
     @Column(nullable = false, unique = true, length = 50)
-    private String nome;
-
-    /**
-     *
-     */
-    @Column(nullable = false)
-    private boolean ativo = true;
+    private String name;
 
     /**
      *
      */
     @EqualsAndHashCode.Exclude
-    @OneToMany(targetEntity = AccessGroupPermission.class, mappedBy = "grupoAcesso", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
-    private Set<AccessGroupPermission> gruposAcessoPermissoes;
+    @OneToMany(targetEntity = AccessGroupPermission.class, mappedBy = "accessGroup", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
+    private Set<AccessGroupPermission> accessGroupPermissions;
 
 }

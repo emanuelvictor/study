@@ -1,8 +1,8 @@
 package br.org.pti.authorizationserver.domain.logics.application;
 
-import br.org.pti.authorizationserver.domain.entities.configuration.Application;
+import br.org.pti.authorizationserver.domain.entities.Application;
 import br.org.pti.authorizationserver.domain.exceptions.BusinessLogicException;
-import br.org.pti.authorizationserver.domain.repositories.security.AplicacaoRepository;
+import br.org.pti.authorizationserver.domain.repositories.ApplicationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class EmailDuplicadoValidator implements ApplicationSavingLogic, ApplicationUpdatingLogic {
 
-    private final AplicacaoRepository userRepository;
+    private final ApplicationRepository userRepository;
 
     /**
      * @param value
@@ -37,9 +37,9 @@ public class EmailDuplicadoValidator implements ApplicationSavingLogic, Applicat
     }
 
     /**
-     * @param user
+     * @param application
      */
-    private void duplicatedException(Application user) {
-        throw new BusinessLogicException("Endereço de e-mail já utilizado por: " + user.getNome());
+    private void duplicatedException(final Application application) {
+//        throw new BusinessLogicException("Endereço de e-mail já utilizado por: " + application.getPermissionsName());
     }
 }

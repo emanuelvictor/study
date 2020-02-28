@@ -1,4 +1,4 @@
-package br.org.pti.authorizationserver.domain.entities;
+package br.org.pti.authorizationserver.domain.entities.generic;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

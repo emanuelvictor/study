@@ -1,9 +1,9 @@
-package br.org.pti.authorizationserver.domain.repositories.security;
+package br.org.pti.authorizationserver.domain.repositories;
 
-import br.org.pti.authorizationserver.domain.entities.configuration.Application;
-import br.org.pti.authorizationserver.domain.repositories.DefaultRepository;
+import br.org.pti.authorizationserver.domain.entities.Application;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +17,7 @@ import java.util.Optional;
  * @since 2.0.0, 01/01/2020
  */
 @Repository
-public interface AplicacaoRepository extends DefaultRepository<Application> {
+public interface ApplicationRepository extends JpaRepository<Application, Long> {
 
     /**
      * @param identificador

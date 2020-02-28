@@ -1,6 +1,5 @@
 package br.org.pti.authorizationserver.application.security;
 
-import br.org.pti.authorizationserver.application.components.Autorizacoes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -68,7 +67,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/actuator/health")
                 .permitAll()
                 .antMatchers("/actuator/**")
-                .hasAnyAuthority(Autorizacoes.ADMINISTRADOR)
+                .hasAnyAuthority("root" )
                 .antMatchers("/seguro/**")
                 .authenticated()
                 .and()

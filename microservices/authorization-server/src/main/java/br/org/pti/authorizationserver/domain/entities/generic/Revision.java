@@ -1,4 +1,4 @@
-package br.org.pti.authorizationserver.domain.entities;
+package br.org.pti.authorizationserver.domain.entities.generic;
 
 import lombok.*;
 import org.hibernate.envers.RevisionEntity;

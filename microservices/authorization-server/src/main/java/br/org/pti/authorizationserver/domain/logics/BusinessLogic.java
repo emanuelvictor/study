@@ -1,7 +1,7 @@
 package br.org.pti.authorizationserver.domain.logics;
 
 
-import br.org.pti.authorizationserver.domain.entities.PersistentEntity;
+import br.org.pti.authorizationserver.domain.entities.generic.PersistentEntity;
 
 /**
  * @author Arthur Gregorio

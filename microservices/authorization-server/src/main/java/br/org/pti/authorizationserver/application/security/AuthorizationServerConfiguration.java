@@ -3,7 +3,7 @@
  */
 package br.org.pti.authorizationserver.application.security;
 
-import br.org.pti.authorizationserver.domain.services.AplicacaoService;
+import br.org.pti.authorizationserver.domain.services.ApplicationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -34,7 +34,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     private final List<TokenEnhancer> tokenEnhancers;
 
-    private final AplicacaoService clientDetailsService;
+    private final ApplicationService clientDetailsService;
 
     private final AuthenticationManager authenticationManager;
 

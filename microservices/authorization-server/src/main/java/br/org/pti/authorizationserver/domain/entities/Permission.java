@@ -1,7 +1,7 @@
-package br.org.pti.authorizationserver.domain.entities.configuration;
+package br.org.pti.authorizationserver.domain.entities;
 
-import br.org.pti.authorizationserver.domain.entities.EntityIdResolver;
-import br.org.pti.authorizationserver.domain.entities.PersistentEntity;
+import br.org.pti.authorizationserver.domain.entities.generic.EntityIdResolver;
+import br.org.pti.authorizationserver.domain.entities.generic.PersistentEntity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -11,7 +11,6 @@ import org.hibernate.envers.Audited;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
@@ -34,30 +33,23 @@ public class Permission extends PersistentEntity implements GrantedAuthority {
     /**
      *
      */
-    @NotBlank
-    @Column(nullable = false)
-    private String nome;
-
-    /**
-     *
-     */
     @NotNull
     @Column(nullable = false, unique = true)
-    private String identificador;
+    private String authority;
 
     /**
      *
      */
     @JsonProperty
     @ManyToOne(fetch = FetchType.EAGER)
-    private Permission permissaoSuperior;
+    private Permission upperPermission;
 
     /**
      *
      */
     @EqualsAndHashCode.Exclude
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "permissaoSuperior")
-    private Set<Permission> permissoesInferiores;
+    private Set<Permission> lowerPermissions;
 
     /**
      *
@@ -65,28 +57,4 @@ public class Permission extends PersistentEntity implements GrantedAuthority {
     public Permission() {
     }
 
-    /**
-     * @param identificador String
-     */
-    public Permission(@NotNull final String identificador) {
-        this.identificador = identificador;
-    }
-
-    /**
-     * @return Permissao
-     */
-    public static Permission getAdministratorInstance() {
-        final Permission permissao = new Permission();
-        permissao.setIdentificador("root"); // TODO separar em uma variável global
-        return permissao;
-    }
-
-    /**
-     * @return String
-     */
-    @Override
-    @Transient
-    public String getAuthority() {
-        return this.identificador;
-    }
 }

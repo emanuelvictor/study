@@ -1,7 +1,7 @@
 package br.org.pti.authorizationserver.domain.logics.application;
 
 
-import br.org.pti.authorizationserver.domain.entities.configuration.Application;
+import br.org.pti.authorizationserver.domain.entities.Application;
 import br.org.pti.authorizationserver.domain.logics.BusinessLogic;
 
 /**

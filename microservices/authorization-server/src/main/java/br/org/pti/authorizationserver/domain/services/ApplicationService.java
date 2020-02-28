@@ -1,10 +1,10 @@
 package br.org.pti.authorizationserver.domain.services;
-import br.org.pti.authorizationserver.domain.entities.configuration.Application;
-import br.org.pti.authorizationserver.domain.entities.security.Permissao;
+import br.org.pti.authorizationserver.domain.entities.Application;
+import br.org.pti.authorizationserver.domain.entities.Permission;
 import br.org.pti.authorizationserver.domain.logics.application.ApplicationSavingLogic;
 import br.org.pti.authorizationserver.domain.logics.application.ApplicationUpdatingLogic;
-import br.org.pti.authorizationserver.domain.repositories.security.AplicacaoRepository;
-import br.org.pti.authorizationserver.domain.repositories.security.PermissaoRepository;
+import br.org.pti.authorizationserver.domain.repositories.ApplicationRepository;
+import br.org.pti.authorizationserver.domain.repositories.PermissionRepository;
 import br.org.pti.authorizationserver.infrastructure.misc.PasswordGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -32,12 +32,12 @@ import java.util.Optional;
 @Component
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class AplicacaoService implements ClientDetailsService {
+public class ApplicationService implements ClientDetailsService {
 
     private final PasswordEncoder passwordEncoder;
 
-    private final PermissaoRepository permissaoRepository;
-    private final AplicacaoRepository aplicacaoRepository;
+    private final PermissionRepository permissaoRepository;
+    private final ApplicationRepository aplicacaoRepository;
 
     private final List<ApplicationSavingLogic> applicationSavingLogics;
     private final List<ApplicationUpdatingLogic> userUpdatingLogics;
@@ -98,7 +98,7 @@ public class AplicacaoService implements ClientDetailsService {
 
         this.aplicacaoRepository.findById(id)
                 .ifPresent(user -> {
-                    user.setSenha(this.passwordEncoder.encode(password));
+                    user.setClientSecret(this.passwordEncoder.encode(password));
                     this.aplicacaoRepository.save(user);
                 });
 
@@ -143,7 +143,7 @@ public class AplicacaoService implements ClientDetailsService {
     /**
      * @return Page<Permissao>
      */
-    public Page<Permissao> findAllPermissions() {
+    public Page<Permission> findAllPermissions() {
         return permissaoRepository.findAll(PageRequest.of(0, 100000));
     }
 }

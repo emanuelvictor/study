@@ -1,6 +1,6 @@
-package br.org.pti.authorizationserver.domain.entities.configuration;
+package br.org.pti.authorizationserver.domain.entities;
 
-import br.org.pti.authorizationserver.domain.entities.PersistentEntity;
+import br.org.pti.authorizationserver.domain.entities.generic.PersistentEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -19,7 +19,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Table(uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"grupo_acesso_permissao_id", "permissao_id"})
+        @UniqueConstraint(columnNames = {"access_group_permission_id", "permissao_id"})
 })
 public class AccessGroupPermission extends PersistentEntity {
 
@@ -27,19 +27,19 @@ public class AccessGroupPermission extends PersistentEntity {
      *
      */
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    private Permission permissao;
+    private Permission permission;
 
     /**
      *
      */
     @ManyToOne(optional = false)
-    @JoinColumn(name = "grupo_acesso_permissao_id")
-    private AccessGroup grupoAcesso;
+    @JoinColumn(name = "access_group_permission_id")
+    private AccessGroup accessGroup;
 
     /**
-     * @param permissao Permissao
+     * @param permission Permissao
      */
-    public AccessGroupPermission(Permission permissao) {
-        this.permissao = permissao;
+    public AccessGroupPermission(final Permission permission) {
+        this.permission = permission;
     }
 }
