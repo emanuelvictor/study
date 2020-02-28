@@ -29,7 +29,6 @@
             <properties>
                 <active.profile>alpha</active.profile>
                 <final-name>${project.artifactId}-${project.version}-ALPHA</final-name>
-                <maven.test.skip>true</maven.test.skip>
             </properties>
         </profile>
         <profile>
@@ -37,7 +36,6 @@
             <properties>
                 <active.profile>beta</active.profile>
                 <final-name>${project.artifactId}-${project.version}-BETA</final-name>
-                <maven.test.skip>true</maven.test.skip>
             </properties>
         </profile>
         <profile>
@@ -45,7 +43,6 @@
             <properties>
                 <active.profile>release-candidate</active.profile>
                 <final-name>${project.artifactId}-${project.version}-RC</final-name>
-                <maven.test.skip>true</maven.test.skip>
             </properties>
         </profile>
         <profile>
@@ -53,12 +50,17 @@
             <properties>
                 <active.profile>release</active.profile>
                 <final-name>${project.artifactId}-${project.version}-RELEASE</final-name>
-                <maven.test.skip>true</maven.test.skip>
             </properties>
         </profile>
     </profiles>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>

@@ -17,8 +17,8 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.regex.Pattern;
 
-import static br.org.pti.compras.Application.AUDIT_SUFFIX;
-import static br.org.pti.compras.Application.CONFIGURACAO;
+import static br.org.pti.compras.ComprasApplication.AUDIT_SUFFIX;
+import static br.org.pti.compras.ComprasApplication.CONFIGURACAO;
 
 @Data
 @Entity

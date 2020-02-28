@@ -12,10 +12,10 @@
     </parent>
 
     <groupId>br.org.pti</groupId>
-    <artifactId>integrador</artifactId>
+    <artifactId>integrator</artifactId>
     <version>2.0.0</version>
 
-    <name>integrador</name>
+    <name>integrator</name>
     <description>Integrador de serviços para o ERP Protheus</description>
 
     <properties>

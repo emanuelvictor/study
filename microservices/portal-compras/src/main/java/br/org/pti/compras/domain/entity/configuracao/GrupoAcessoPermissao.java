@@ -9,8 +9,8 @@ import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 
-import static br.org.pti.compras.Application.AUDIT_SUFFIX;
-import static br.org.pti.compras.Application.CONFIGURACAO;
+import static br.org.pti.compras.ComprasApplication.AUDIT_SUFFIX;
+import static br.org.pti.compras.ComprasApplication.CONFIGURACAO;
 
 @Data
 @Entity

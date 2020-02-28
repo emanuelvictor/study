@@ -10,8 +10,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-import static br.org.pti.compras.Application.AUDIT_SUFFIX;
-import static br.org.pti.compras.Application.PUBLICACAO;
+import static br.org.pti.compras.ComprasApplication.AUDIT_SUFFIX;
+import static br.org.pti.compras.ComprasApplication.PUBLICACAO;
 
 @Data
 @Entity

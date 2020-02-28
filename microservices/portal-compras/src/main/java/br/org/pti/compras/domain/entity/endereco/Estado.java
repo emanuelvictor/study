@@ -12,8 +12,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import static br.org.pti.compras.Application.AUDIT_SUFFIX;
-import static br.org.pti.compras.Application.ENDERECO;
+import static br.org.pti.compras.ComprasApplication.AUDIT_SUFFIX;
+import static br.org.pti.compras.ComprasApplication.ENDERECO;
 
 
 /**

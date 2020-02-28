@@ -1,5 +1,5 @@
 spring:
-  application.name: integrador
+  application.name: integrator
   jmx.enabled: false
 
   datasource:
@@ -62,7 +62,7 @@ logging:
     org.springframework.context.support: INFO
 
 info:
-  name: integrador
+  name: integrator
   description: 'Integrador de servicos para o ERP Protheus'
   version: @project.version@-@project.build-number@
   environment: @active.profile@

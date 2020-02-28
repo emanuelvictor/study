@@ -20,7 +20,7 @@
         <project.build-number>b${build-number}</project.build-number>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <start-class>br.org.pti.compras.Application</start-class>
+        <start-class>br.org.pti.compras.ComprasApplication</start-class>
         <java.version>11</java.version>
 
         <!--ng build configuration-->
@@ -346,7 +346,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <includeSystemScope>true</includeSystemScope>
-                    <mainClass>br.org.pti.compras.Application</mainClass>
+                    <mainClass>br.org.pti.compras.ComprasApplication</mainClass>
                 </configuration>
             </plugin>
             <plugin>

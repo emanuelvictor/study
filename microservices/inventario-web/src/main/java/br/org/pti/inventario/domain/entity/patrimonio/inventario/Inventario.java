@@ -17,8 +17,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Set;
 
-import static br.org.pti.inventario.Application.AUDIT_SUFFIX;
-import static br.org.pti.inventario.Application.PATRIMONIO;
+import static br.org.pti.inventario.InventarioApplication.AUDIT_SUFFIX;
+import static br.org.pti.inventario.InventarioApplication.PATRIMONIO;
 
 /**
  * @author Emanuel Victor

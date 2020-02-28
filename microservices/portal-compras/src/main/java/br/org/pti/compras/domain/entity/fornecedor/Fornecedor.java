@@ -19,8 +19,8 @@ import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static br.org.pti.compras.Application.AUDIT_SUFFIX;
-import static br.org.pti.compras.Application.FORNECEDOR;
+import static br.org.pti.compras.ComprasApplication.AUDIT_SUFFIX;
+import static br.org.pti.compras.ComprasApplication.FORNECEDOR;
 import static br.org.pti.compras.domain.repository.dtos.FornecedorProtheus.REGEX_TO_REMOVE_ESPECIAL_CHARACTERS_TO_PROTHEUS;
 
 @Data

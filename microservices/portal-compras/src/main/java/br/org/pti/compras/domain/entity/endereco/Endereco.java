@@ -9,8 +9,8 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 
-import static br.org.pti.compras.Application.AUDIT_SUFFIX;
-import static br.org.pti.compras.Application.ENDERECO;
+import static br.org.pti.compras.ComprasApplication.AUDIT_SUFFIX;
+import static br.org.pti.compras.ComprasApplication.ENDERECO;
 
 /**
  *

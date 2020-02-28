@@ -17,9 +17,17 @@ eureka:
 
 zuul:
   routes:
-    resource-service:
+    integrator:
       path: /integrator/**
-      serviceId: integrador
+      serviceId: integrator
+      stripPrefix: true
+    authorization-server:
+      path: /authorization-server/**
+      serviceId: authorization-server
+      stripPrefix: true
+    inventario:
+      path: /inventario/**
+      serviceId: inventario
       stripPrefix: true
 
 

@@ -10,7 +10,7 @@ import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 
-import static br.org.pti.compras.Application.*;
+import static br.org.pti.compras.ComprasApplication.*;
 
 @Data
 @Entity

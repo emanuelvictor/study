@@ -8,8 +8,8 @@ import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 
-import static br.org.pti.compras.Application.AUDIT_SUFFIX;
-import static br.org.pti.compras.Application.FORNECEDOR;
+import static br.org.pti.compras.ComprasApplication.AUDIT_SUFFIX;
+import static br.org.pti.compras.ComprasApplication.FORNECEDOR;
 
 @Data
 @Entity

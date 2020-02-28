@@ -1,22 +1,15 @@
 package br.org.pti.inventario.domain.entity.patrimonio;
 
 import br.org.pti.inventario.domain.entity.AbstractEntity;
-import br.org.pti.inventario.domain.entity.EntityIdResolver;
-import br.org.pti.inventario.domain.entity.patrimonio.inventario.CentroCustoInventario;
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.envers.AuditTable;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 
-import static br.org.pti.inventario.Application.AUDIT_SUFFIX;
-import static br.org.pti.inventario.Application.PATRIMONIO;
+import static br.org.pti.inventario.InventarioApplication.AUDIT_SUFFIX;
+import static br.org.pti.inventario.InventarioApplication.PATRIMONIO;
 
 /**
  * @author Emanuel Victor

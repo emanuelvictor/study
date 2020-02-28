@@ -23,8 +23,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import static br.org.pti.inventario.Application.AUDIT_SUFFIX;
-import static br.org.pti.inventario.Application.CONFIGURACAO;
+import static br.org.pti.inventario.InventarioApplication.AUDIT_SUFFIX;
+import static br.org.pti.inventario.InventarioApplication.CONFIGURACAO;
 import static br.org.pti.inventario.application.resource.Roles.*;
 
 /**

@@ -17,8 +17,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
-import static br.org.pti.inventario.Application.AUDIT_SUFFIX;
-import static br.org.pti.inventario.Application.CONFIGURACAO;
+import static br.org.pti.inventario.InventarioApplication.AUDIT_SUFFIX;
+import static br.org.pti.inventario.InventarioApplication.CONFIGURACAO;
 
 /**
  * @author Emanuel Victor

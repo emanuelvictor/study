@@ -1,6 +1,6 @@
 package br.org.pti.compras.domain.entity.generic;
 
-import br.org.pti.compras.Application;
+import br.org.pti.compras.ComprasApplication;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.envers.RevisionEntity;
@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(schema = Application.REVISION)
+@Table(schema = ComprasApplication.REVISION)
 @RevisionEntity(EntityTrackingRevisionListener.class)
 public class Revision implements Serializable {
     /**

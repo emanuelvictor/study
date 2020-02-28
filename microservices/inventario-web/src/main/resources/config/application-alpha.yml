@@ -23,4 +23,16 @@ logging:
 # informacoes do sistema
 info:
   app:
-    url: localhost:8080
+    url: localhost:8083
+
+server:
+  port: 8083
+
+# configs do eureka server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    hostname: localhost
+    appname: inventario

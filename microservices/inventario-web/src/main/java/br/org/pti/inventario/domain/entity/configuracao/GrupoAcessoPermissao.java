@@ -9,8 +9,8 @@ import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 
-import static br.org.pti.inventario.Application.AUDIT_SUFFIX;
-import static br.org.pti.inventario.Application.CONFIGURACAO;
+import static br.org.pti.inventario.InventarioApplication.AUDIT_SUFFIX;
+import static br.org.pti.inventario.InventarioApplication.CONFIGURACAO;
 
 /**
  * @author Emanuel Victor
