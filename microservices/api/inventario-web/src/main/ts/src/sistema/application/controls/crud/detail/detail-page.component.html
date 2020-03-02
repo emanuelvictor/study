@@ -1,0 +1,26 @@
+<!--toolbar div-->
+<ng-content select="[toolbar]"></ng-content>
+
+<mat-card>
+  <div layout="row" *ngIf='entity?.nome'>
+    <div layout="column" flex>
+      <label class="title">Nome:</label>
+      <label class="text">{{ entity.nome }}</label>
+    </div>
+  </div>
+  <vertical-space *ngIf="hasDescription && entity?.nome"></vertical-space>
+  <div layout="row" *ngIf="hasDescription">
+    <div layout="column" flex>
+      <label class="title">Descrição</label>
+      <label class="text">
+        <pre>{{ entity.descricao || '-' }}</pre>
+      </label>
+    </div>
+  </div>
+  <vertical-space></vertical-space>
+  <div layout="row">
+    <ng-content select="[ativo]"></ng-content>
+  </div>
+
+  <ng-content select='[details]'></ng-content>
+</mat-card>

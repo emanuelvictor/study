@@ -1,0 +1,105 @@
+<form [formGroup]='form' (ngSubmit)='saveEntity(form)' novalidate>
+
+  <!--toolbar div-->
+  <ng-content select='[toolbar]'></ng-content>
+
+  <div layout='row'>
+    <mat-form-field flex>
+      <mat-label>Plaqueta</mat-label>
+      <input [(ngModel)]='entity.plaqueta'
+             name='plaqueta' id='plaqueta'
+             placeholder='Plaqueta' required
+             [matAutocomplete]='autoPlaqueta'
+             formControlName='plaqueta' matInput
+             (keyup)='listPatrimoniosByFilters()'>
+
+      <mat-autocomplete #autoPlaqueta='matAutocomplete'>
+        <mat-option [value]='patrimonio.plaqueta'
+                    *ngFor='let patrimonio of patrimonios'
+                    (onSelectionChange)='entity = patrimonio; entity.localizacaoAnterior = patrimonio.localizacao; entityChange.emit(entity)'>
+          {{ patrimonio.plaqueta + ' - ' + patrimonio.descricao }}
+        </mat-option>
+      </mat-autocomplete>
+
+      <mat-error>
+        Esse campo é obrigatório
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div layout='row' layout-sm='column' layout-xs='column'>
+    <mat-form-field flex *ngIf='entity?.descricao || entity?.sobraFisica'>
+      <mat-label>Descrição</mat-label>
+      <input placeholder='Descrição'
+             matInput maxlength='150'
+             [(ngModel)]='entity.descricao'
+             id='descricao' name='descricao'
+             [disabled]='!entity?.sobraFisica'
+             [ngModelOptions]='{standalone: true}'/>
+      <mat-error>
+        Esse campo é obrigatório
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <vertical-space *ngIf='entity?.sobraFisica'></vertical-space>
+
+  <div layout='row' layout-sm='column' layout-xs='column'>
+
+    <mat-form-field flex *ngIf='entity?.complemento || entity?.sobraFisica'>
+      <mat-label>Complemento</mat-label>
+      <input matInput maxlength='150'
+             placeholder='Complemento'
+             [(ngModel)]='entity.complemento'
+             [disabled]='!entity?.sobraFisica'
+             id='complemento' name='complemento'
+             [ngModelOptions]='{standalone: true}'/>
+      <mat-error>
+        Esse campo é obrigatório
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <vertical-space *ngIf='(entity?.complemento && entity?.observacao) || entity?.sobraFisica'></vertical-space>
+
+  <div layout='column'>
+    <mat-form-field flex *ngIf='entity?.observacao || entity?.sobraFisica'>
+      <mat-label>Observação</mat-label>
+      <textarea matInput maxlength='150'
+                placeholder='Observação'
+                [(ngModel)]='entity.observacao'
+                [disabled]='!entity?.sobraFisica'
+                id='observacao' name='observacao'
+                [ngModelOptions]='{standalone: true}'>
+      </textarea>
+      <mat-error>
+        Esse campo é obrigatório
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <vertical-space></vertical-space>
+
+  <div layout='column'>
+    <mat-form-field flex>
+      <mat-label>Localização</mat-label>
+      <input [matAutocomplete]='auto'
+             [(ngModel)]='entity.localizacao'
+             placeholder='Localização' required
+             name='localizacao' id='localizacao'
+             (keyup)='listByLocalizacoesFilters()'
+             formControlName='localizacao' matInput>
+
+      <mat-autocomplete [displayWith]='displayNome' #auto='matAutocomplete'>
+        <mat-option [value]='localizacao'
+                    *ngFor='let localizacao of localizacoes'>
+          {{ localizacao.codigo + ' - ' + localizacao.descricao }}
+        </mat-option>
+      </mat-autocomplete>
+
+      <mat-error>
+        Nenhuma localização selecionada
+      </mat-error>
+    </mat-form-field>
+  </div>
+</form>

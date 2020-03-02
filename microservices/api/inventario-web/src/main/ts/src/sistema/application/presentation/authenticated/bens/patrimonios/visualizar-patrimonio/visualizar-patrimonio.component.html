@@ -1,0 +1,73 @@
+<div class="toolbar" layout="row" flex>
+  <div layout="column">
+    <div class="headline" [innerHTML]="'Bens'"></div>
+    <div class="subhead" [innerHTML]="'Patrimônios / Detalhes'"></div>
+  </div>
+</div>
+<div layout='row' layout-sm='column' layout-xs='column'>
+  <div layout="column" flex>
+    <label class="title">Descrição: </label>
+    <label class="text">{{ patrimonio?.descricao ? patrimonio?.descricao : '-' }}</label>
+  </div>
+  <horizontal-space></horizontal-space>
+  <div layout="column" flex>
+    <label class="title">Plaqueta:</label>
+    <label class="text">{{ patrimonio?.numero ? patrimonio?.numero : '-' }}</label>
+  </div>
+</div>
+
+<vertical-space></vertical-space>
+
+<div layout='row' layout-sm='column' layout-xs='column'>
+  <div layout="column" flex>
+    <label class="title">Complemento:</label>
+    <label class="text">{{ patrimonio?.complemento ? patrimonio?.complemento : '-' }}</label>
+  </div>
+  <horizontal-space></horizontal-space>
+  <div layout="column" flex>
+    <label class="title">Observação:</label>
+    <label class="text">{{ patrimonio?.observacao ? patrimonio?.observacao : '-' }}</label>
+  </div>
+  <horizontal-space></horizontal-space>
+  <div layout="column" flex>
+    <label class="title">Número de Série:</label>
+    <label class="text">{{ patrimonio?.numeroSerie ? patrimonio?.numeroSerie : '-' }}</label>
+  </div>
+  <horizontal-space></horizontal-space>
+  <div layout="column" flex>
+    <label class="title">Modelo:</label>
+    <label class="text">{{ patrimonio?.modelo ? patrimonio?.modelo : '-' }}</label>
+  </div>
+  <horizontal-space></horizontal-space>
+  <div layout="column" flex>
+    <label class="title">Marca:</label>
+    <label class="text">{{ patrimonio?.marca ? patrimonio?.marca : '-' }}</label>
+  </div>
+</div>
+
+<vertical-space></vertical-space>
+
+<div layout='row' layout-sm='column' layout-xs='column'>
+  <div layout="column" flex>
+    <label class="title">Centro de Custo:</label>
+    <label
+        class="text">{{ patrimonio?.centroCustoInventario?.centroCusto?.descricao ? patrimonio?.centroCustoInventario?.centroCusto?.descricao : '-' }}</label>
+  </div>
+  <horizontal-space></horizontal-space>
+  <div layout="column" flex>
+    <label class="title">Centro de Custo Anterior:</label>
+    <label
+        class="text">{{ patrimonio?.centroCustoAnterior?.descricao ? patrimonio?.centroCustoAnterior?.descricao : '-' }}</label>
+  </div>
+  <horizontal-space></horizontal-space>
+  <div layout="column" flex>
+    <label class="title">Localização:</label>
+    <label class="text">{{ patrimonio?.localizacao?.descricao ? patrimonio?.localizacao?.descricao : '-' }}</label>
+  </div>
+  <horizontal-space></horizontal-space>
+  <div layout="column" flex>
+    <label class="title">Localização Anterior:</label>
+    <label
+        class="text">{{ patrimonio?.localizacaoAnterior?.descricao ? patrimonio?.localizacaoAnterior?.descricao : '-' }}</label>
+  </div>
+</div>

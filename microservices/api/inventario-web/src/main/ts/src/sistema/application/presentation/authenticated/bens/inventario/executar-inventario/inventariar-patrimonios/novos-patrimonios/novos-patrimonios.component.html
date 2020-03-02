@@ -1,0 +1,38 @@
+<button (click)='openInserirNovoPatrimonioDialog(entity)'
+        mat-button type='button' color='primary' style='height: 49px'>
+  <mat-icon>add</mat-icon>
+  <span>Novo patrimônio encontrado</span>
+</button>
+<mat-nav-list *ngIf='patrimonios?.length' style='padding-top: 0'>
+  <div (click)='openAlterarLocalizacaoPatrimonioDialog(patrimonio)'
+       style='background-color: rgb(246, 251, 214)' *ngFor='let patrimonio of patrimonios'>
+    <mat-list-item layout='row' disableRipple>
+      <h3 matLine *ngIf='patrimonio?.plaqueta'>Número da plaqueta: {{patrimonio?.plaqueta}}</h3>
+      <p matLine *ngIf='patrimonio?.descricao'>Descrição: {{patrimonio?.descricao}}</p>
+      <p matLine style='color: #607d8b' *ngIf='patrimonio?.marca || patrimonio?.modelo'>
+        {{ (patrimonio?.marca ? 'Marca: ' + patrimonio?.marca?.trim() : '') + (patrimonio?.modelo ? ((!patrimonio?.marca ? 'Modelo:  ' : '; Modelo: ') + patrimonio?.modelo) : '') }}
+      </p>
+      <h3 matLine style='color: #4db6ac'>
+        Centro de Custo
+        Anterior: {{patrimonio?.centroCustoAnterior?.codigo + ' - ' + patrimonio?.centroCustoAnterior?.descricao}}
+      </h3>
+      <h3 matLine *ngIf='patrimonio?.localizacaoAnterior' style='color: #4db6ac'>
+        Localização
+        Anterior: {{patrimonio?.localizacaoAnterior?.codigo + '-' + patrimonio?.localizacaoAnterior?.descricao}}
+      </h3>
+    </mat-list-item>
+
+    <div *ngIf='patrimonio?.id' style='box-shadow: none'>
+      <mat-list-item layout='row'>
+        <p matLine *ngIf='patrimonio?.localizacao' style='color: #607d8b'>
+          Localização: {{patrimonio?.localizacao?.codigo + '-' + patrimonio?.localizacao?.descricao}}
+        </p>
+      </mat-list-item>
+    </div>
+
+  </div>
+</mat-nav-list>
+
+<mat-paginator [pageIndex]='pageIndex' [length]='totalElements'
+               [hidePageSize]='true' [pageSize]='pageSize' (page)='ngOnInit()'>
+</mat-paginator>

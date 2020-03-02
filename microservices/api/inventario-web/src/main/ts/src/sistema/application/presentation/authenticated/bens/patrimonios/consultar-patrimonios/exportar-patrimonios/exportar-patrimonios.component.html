@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Exportar patrimônios</h1>
+<div mat-dialog-content class="text">
+  Deseja importar com a paginação atual ({{pageable?.size}}), ou todos os patrimônios com esse filtro?
+<!--  <strong class="color-primary">{{ data?.type }} - {{ data?.entity?.nome }}</strong> permanentemente?-->
+</div>
+
+<div id="space"></div>
+<mat-divider></mat-divider>
+
+<div mat-dialog-actions>
+  <button mat-raised-button color="accent" [mat-dialog-close]='pageable?.size'>Manter paginação</button>
+  <button mat-raised-button color='primary' [mat-dialog-close]='10000000'>Exportar todos</button>
+</div>

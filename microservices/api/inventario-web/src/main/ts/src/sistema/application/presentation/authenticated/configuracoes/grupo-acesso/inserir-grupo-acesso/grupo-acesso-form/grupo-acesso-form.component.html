@@ -1,0 +1,31 @@
+<form [formGroup]='form' (ngSubmit)='saveEntity(form)' novalidate>
+
+  <!--toolbar div-->
+  <ng-content select="[toolbar]"></ng-content>
+
+  <mat-card id="default-form">
+    <div layout="row">
+
+      <mat-form-field flex>
+        <mat-label>Nome</mat-label>
+        <input formControlName='nome'
+               required id='nome' name='nome'
+               matInput placeholder="Nome" name="nome"
+               [(ngModel)]="entity.nome" maxlength="50"/>
+        <mat-error>
+          Esse campo é obrigatório
+        </mat-error>
+      </mat-form-field>
+
+      <horizontal-space></horizontal-space>
+
+    </div>
+
+    <vincular-permissoes [permissoes]='permissoes'
+                         *ngIf='permissoes?.length'
+                         (save)='addPermissao($event)'
+                         (remove)='removePermissao($event)'>
+    </vincular-permissoes>
+
+  </mat-card>
+</form>

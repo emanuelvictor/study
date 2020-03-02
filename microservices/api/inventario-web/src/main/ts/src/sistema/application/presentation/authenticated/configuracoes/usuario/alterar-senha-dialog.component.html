@@ -1,0 +1,46 @@
+<form [formGroup]='form' (ngSubmit)='updateSenhaUsuario(form)' novalidate>
+  <h1 mat-dialog-title style="color: #002E63">Alterar senha</h1>
+  <div layout="column">
+    <mat-form-field flex>
+      <mat-label>Senha atual:</mat-label>
+      <input matInput type="password" placeholder="Senha atual"
+             [(ngModel)]="usuarioDialog.senhaAtual" maxlength="100"
+             id="senhaAtual" name="senhaAtual" formControlName='senhaAtual'/>
+      <mat-icon matSuffix>lock</mat-icon>
+      <mat-error *ngIf="form?.get('senhaAtual')?.hasError('required')">
+        Qual é a senha atual?
+      </mat-error>
+    </mat-form-field>
+    <vertical-space [verticalMargin]='5'></vertical-space>
+    <mat-form-field flex>
+      <mat-label>Nova senha:</mat-label>
+      <input [(ngModel)]="usuarioDialog.novaSenha" matInput
+             type="password" placeholder="Nova senha" maxlength="100"
+             id='novaSenha' name="novaSenha" formControlName="novaSenha"
+             (keyup)="form?.get('confirmarNovaSenha')?.updateValueAndValidity()"/>
+      <mat-icon matSuffix>lock</mat-icon>
+      <mat-error *ngIf="form?.get('novaSenha')?.hasError('exception')">
+        {{form?.get('novaSenha')?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+    <vertical-space [verticalMargin]='5'></vertical-space>
+    <mat-form-field flex>
+      <mat-label>Confirmar nova senha:</mat-label>
+      <input matInput type="password" placeholder="Confirmar nova senha"
+             [(ngModel)]="usuarioDialog.confirmarNovaSenha" maxlength="100"
+             name="confirmarNovaSenha" id="confirmarNovaSenha" formControlName='confirmarNovaSenha'/>
+      <mat-icon matSuffix>lock</mat-icon>
+      <mat-error *ngIf="form?.get('confirmarNovaSenha')?.hasError('exception')">
+        {{form?.get('confirmarNovaSenha')?.errors?.exception}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div id="space"></div>
+  <mat-divider></mat-divider>
+
+  <div mat-dialog-actions>
+    <button mat-button color="accent" type='button' mat-dialog-close cdkFocusInitial>Cancelar</button>
+    <button mat-button color="primary">Confirmar</button>
+  </div>
+</form>
