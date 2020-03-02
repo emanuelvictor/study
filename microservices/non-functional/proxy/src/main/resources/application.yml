@@ -1,0 +1,33 @@
+# configs gerais
+spring:
+  application:
+    name: @name@
+  profiles:
+    active: @active.profile@
+
+# configs do eureka server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    hostname: localhost
+
+zuul:
+  routes:
+    integrator:
+      path: /integrator/**
+      serviceId: integrator
+      stripPrefix: true
+    authorization-server:
+      path: /authorization-server/**
+      serviceId: authorization-server
+      stripPrefix: true
+    inventario:
+      path: /inventario/**
+      serviceId: inventario
+      stripPrefix: true
+
+

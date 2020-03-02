@@ -15,7 +15,7 @@
     <version>2.8.1</version>
     <packaging>jar</packaging>
 
-    <name>inventario</name>
+    <name>inventario-web</name>
     <description>Aplicação para gerenciamento de inventários da FPTI - Fundação Parque Tecnológico Itaipu</description>
 
     <properties>
