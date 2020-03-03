@@ -1,0 +1,26 @@
+<form [formGroup]='form' novalidate>
+
+  <div layout='row' layout-align='start center'>
+    <h3>Anexos</h3>
+    <button class='mat-mini-fab' color='primary' type='button' (click)='addAnexoEmail()'
+            style='box-shadow: none; -moz-box-shadow: none; -o-box-shadow: none; -webkit-box-shadow: none'>
+      +
+    </button>
+  </div>
+  <div layout='column' flex *ngFor='let anexoEmail of anexosEmail; let indexAnexoEmail = index'>
+    <div layout='row' flex layout-align='start center'>
+      <div layout='row' flex>
+        <anexo-email [form]='form' flex
+                     [(anexoEmail)]='anexoEmail'
+                     [anexosEmail]='anexosEmail'>
+        </anexo-email>
+
+        <button mat-icon-button color='primary'
+                type='button' style='margin-top: 3px'>
+          <mat-icon (click)='removeAnexoEmail(indexAnexoEmail)'>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</form>

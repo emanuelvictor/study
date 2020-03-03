@@ -1,0 +1,23 @@
+<form novalidate layout='row' [formGroup]='form.controls.grupoAcesso'>
+
+  <mat-form-field flex>
+    <mat-label>Grupo de acesso</mat-label>
+    <input matInput [(ngModel)]="grupoAcesso"
+           formControlName='grupoAcesso' required
+           placeholder="Grupo de Acesso" name="grupoAcesso"
+           (ngModelChange)='grupoAcessoChange.emit(this.grupoAcesso)'
+           [matAutocomplete]="auto" (blur)="normalizeGrupoAcesso()" id="grupoAcesso"
+           (keyup)="debounce(this,listGruposAcesso); error = isString(grupoAcesso)">
+
+    <mat-autocomplete [displayWith]='displayNomeGrupoAcesso' #auto='matAutocomplete'>
+      <mat-option [value]="grupoAcesso" *ngFor="let grupoAcesso of gruposAcesso">
+        {{ grupoAcesso.nome }}
+      </mat-option>
+    </mat-autocomplete>
+
+    <mat-error>
+      Nenhum grupo de acesso selecionado.
+    </mat-error>
+  </mat-form-field>
+
+</form>

@@ -1,0 +1,57 @@
+<mat-nav-list *ngIf='patrimonios?.length && !toView' style='padding-top: 0'>
+  <div *ngFor='let patrimonio of patrimonios'
+       [ngStyle]="{'background-color': patrimonio?.encontrado === undefined ? '#ffffff' : (patrimonio?.encontrado === false ? '#ffd0d0' : 'rgba(77, 182, 172, 0.38)') }">
+    <mat-list-item layout='row' disableRipple>
+      <h3 matLine *ngIf='patrimonio?.plaqueta'>Número da plaqueta: {{patrimonio?.plaqueta}}</h3>
+      <p matLine *ngIf='patrimonio?.descricao'>Descrição: {{patrimonio?.descricao}}</p>
+      <p matLine style='color: #607d8b' *ngIf='patrimonio?.marca || patrimonio?.modelo'>
+        {{ (patrimonio?.marca ? 'Marca: ' + patrimonio?.marca?.trim() : '') + (patrimonio?.modelo ? ((!patrimonio?.marca ? 'Modelo:  ' : '; Modelo: ') + patrimonio?.modelo) : '') }}
+      </p>
+      <h3 matLine style='color: #2DB45C'
+          *ngIf='patrimonio?.centroCustoInventario?.centroCusto?.codigo'>
+        Centro de Custo
+        Atual: {{patrimonio?.centroCustoInventario?.centroCusto?.codigo + ' - ' + patrimonio?.centroCustoInventario?.centroCusto?.descricao}}
+      </h3>
+      <h3 matLine style='color: #4db6ac'
+          *ngIf='patrimonio?.localizacaoAnterior'>
+        Localização
+        Anterior: {{patrimonio?.localizacaoAnterior?.codigo + '-' + patrimonio?.localizacaoAnterior?.descricao}}
+      </h3>
+
+      <div layout='row' flex='30'>
+        <span layout-margin flex='65'>
+          {{patrimonio.encontrado === true ? 'Encontrado' : (patrimonio.encontrado === false ? 'Não encontrado' : '')}}
+        </span>
+
+        <button mat-raised-button type='button' flex
+                (click)='(patrimonio.encontrado === undefined ? patrimonio.encontrado = true : patrimonio.encontrado = !patrimonio.encontrado); encontrar(patrimonio)'
+                [ngClass]="{'approved-button': patrimonio.encontrado === true, 'not-approved-button': (!patrimonio.encontrado || patrimonio.encontrado === undefined)}">
+          <mat-icon>done_all</mat-icon>
+        </button>
+
+        <horizontal-space>
+        </horizontal-space>
+
+        <button mat-raised-button type='button' flex
+                (click)='(patrimonio.encontrado === undefined ? patrimonio.encontrado = false : patrimonio.encontrado = !patrimonio.encontrado); encontrar(patrimonio)'
+                [ngClass]="{'refused-button': patrimonio.encontrado === false, 'not-refused-button': (patrimonio.encontrado || patrimonio.encontrado === undefined)}">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+
+    </mat-list-item>
+
+    <div *ngIf='patrimonio?.id && patrimonio?.encontrado' style='box-shadow: none'>
+      <mat-list-item layout='row' (click)='openAlterarLocalizacaoPatrimonioDialog(patrimonio)'>
+        <p matLine *ngIf='patrimonio?.localizacao' style='color: #607d8b'>
+          Localização: {{patrimonio?.localizacao?.codigo + '-' + patrimonio?.localizacao?.descricao}}
+        </p>
+      </mat-list-item>
+    </div>
+
+  </div>
+</mat-nav-list>
+
+<mat-paginator [pageIndex]='pageIndex' [length]='totalElements' [hidePageSize]='true' [pageSize]='pageSize'
+               (page)='listByFilters(filter.descricaoPatrimonioFilter, filter.descricaoLocalizacaoFilter, filter.numeroPlaquetaFilter, filter.encontradoFilter)'>
+</mat-paginator>

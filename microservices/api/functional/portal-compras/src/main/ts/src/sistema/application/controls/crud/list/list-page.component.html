@@ -1,0 +1,89 @@
+<div class="toolbar" layout="row" layout-xs='column' flex (keyup.esc)="clearFilters()">
+  <div layout="column" flex>
+    <div class="headline" [innerHTML]="headline"></div>
+    <div class="subhead" [innerHTML]="subhead"></div>
+  </div>
+  <!--<span flex='70' hide-xs></span>-->
+  <div layout="row" layout-align="end center" flex-sm="30">
+    <mat-form-field>
+      <input matInput type="text" name="text" [(ngModel)]="filters.defaultFilter"
+             (ngModelChange)="debounce(this, listByFiltersStatement)" placeholder="Buscar"/>
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <horizontal-space></horizontal-space>
+    <mat-form-field *ngIf='desativavel'>
+      <mat-select placeholder="Status" [(ngModel)]="filters.ativoFilter" (ngModelChange)="listByFilters(true)">
+        <mat-option [value]="''">{{ labelStatus.all }}</mat-option>
+        <mat-option [value]="'true'">{{ labelStatus.active }}</mat-option>
+        <mat-option [value]="'false'">{{ labelStatus.inactive }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <horizontal-space *ngIf='desativavel' [horizontalMargin]="15"></horizontal-space>
+    <a *hasPermission="rolesToAdd; operation 'OR'"
+       mat-raised-button color="primary" [routerLink]="['adicionar']">
+      <mat-icon>add</mat-icon>
+      <span hide-sm hide-xs>Adicionar</span>
+    </a>
+  </div>
+</div>
+<div id="default-table">
+  <mat-table #table matSort matSortDisableClear
+             matSortActive="nome" matSortDirection="asc"
+             [dataSource]="dataSource">
+
+    <ng-container [matColumnDef]="column.name" *ngFor="let column of columns">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>
+        {{ column.label }}
+      </mat-header-cell>
+      <mat-cell *matCellDef='let data'>
+        <a [routerLink]="[data.id]" style='height: 30px' ellipsis>
+          {{ column.translate ? (data[column.name] | translate) || '-' : (data[column.name] || '-')  }}
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <!--<ng-container matColumnDef="status">-->
+    <!--<mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>-->
+    <!--<mat-cell *matCellDef="let data"><a-->
+    <!--[routerLink]="['detalhes/' + data.id]">{{ data.status ? labelStatus.active : labelStatus.inactive }}</a>-->
+    <!--</mat-cell>-->
+    <!--</ng-container>-->
+
+    <ng-container matColumnDef="acoes">
+      <mat-header-cell *matHeaderCellDef class="actions">Ações</mat-header-cell>
+      <mat-cell *matCellDef="let data" class="actions">
+        <div *hasPermission="rolesToEdit; operation 'OR'">
+          <a *ngIf='editavel' mat-button type="button" [routerLink]="['editar/' + data?.id]">
+            <mat-icon>edit</mat-icon>
+            Editar
+          </a>
+        </div>
+        <div *hasPermission="rolesToDelelte; operation 'OR'">
+          <button *ngIf='deletavel'
+                  mat-button type="button" class="delete-button" (click)="openDeleteDialog(data)">
+            <mat-icon>delete_forever</mat-icon>
+            Excluir
+          </button>
+        </div>
+        <div *hasPermission="rolesToEdit; operation 'OR'">
+          <button *ngIf='anexavel'
+                  mat-button type="button" (click)="openAnexoDialog(data)">
+            <mat-icon>attach_file</mat-icon>
+            Anexo
+          </button>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let data; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <no-records-found [dataSource]="dataSource?.data"></no-records-found>
+  <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]"
+                 [length]="totalElements"
+                 [pageIndex]="pageIndex"
+                 [pageSize]="pageSize"
+                 [hidePageSize]="false"
+                 (page)="listByFilters()">
+  </mat-paginator>
+</div>

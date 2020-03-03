@@ -1,0 +1,17 @@
+@import '../../../../theme';
+
+$cyan-color: #00ABAF;
+
+.btn-primary {
+    background: $cyan-color;
+    color: #FFFFFF;
+    font-size: 12px;
+    padding: 2px 40px;
+}
+
+.btn-secondary {
+    color: #003D6A;
+    margin-right: 20px;
+}
+
+

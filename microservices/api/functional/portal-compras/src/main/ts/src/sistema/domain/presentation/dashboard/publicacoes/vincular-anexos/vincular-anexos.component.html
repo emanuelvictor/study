@@ -1,0 +1,23 @@
+<form [formGroup]='form' novalidate>
+
+  <div layout='row' layout-align='start center'>
+    <h3>Anexos</h3>
+    <button class='mat-mini-fab' color='primary' type='button' (click)='addAnexoPublicacao()'
+            style='box-shadow: none; -moz-box-shadow: none; -o-box-shadow: none; -webkit-box-shadow: none'>
+      +
+    </button>
+  </div>
+  <div layout='column' flex *ngFor='let anexo of anexos; let indexAnexo = index'>
+    <div layout='row' flex layout-align='start center'>
+      <div layout='row' flex>
+        <anexo [(anexo)]='anexo' [anexos]='anexos' [form]='form' flex></anexo>
+
+        <button mat-icon-button color='primary'
+                type='button' style='margin-top: 3px'>
+          <mat-icon (click)='removeAnexoPublicacao(indexAnexo)'>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</form>

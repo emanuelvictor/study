@@ -1,0 +1,93 @@
+<div *tdLoading="identifier; mode:'determinate'; type:'linear'; strategy:'replace'; color:'$greenColor'">
+
+  <form [formGroup]='form' novalidate>
+    <div *ngIf="form?.controls['nome' + documento?.tipoCadastroTipoDocumento?.id]"
+         layout='row' flex layout-align='start center' style='padding-bottom: 20px'>
+      <mat-form-field flex>
+        <input name='nome{{documento.tipoCadastroTipoDocumento.id}}'
+               id='nome{{documento.tipoCadastroTipoDocumento.id}}' flex
+               formControlName='nome{{documento.tipoCadastroTipoDocumento.id}}'
+               placeholder='{{documento.tipoCadastroTipoDocumento.tipoDocumento.nome}}'
+               [(ngModel)]='documento.nome' (keyup)='verifyNome()' matInput maxlength='150'/>
+        <mat-error *ngIf="form?.controls['nome' + documento.tipoCadastroTipoDocumento.id]?.hasError('exception')">
+          {{form?.controls['nome' + documento.tipoCadastroTipoDocumento.id]?.errors?.exception}}
+        </mat-error>
+        <mat-hint align='start'>
+          Os formatos disponíveis são somente {{formatos?.join(', ')}}
+        </mat-hint>
+      </mat-form-field>
+
+      <horizontal-space *ngIf='documento?.tipoCadastroTipoDocumento?.tipoDocumento?.modelo'></horizontal-space>
+
+      <a target='_blank' type='button' [matTooltipPosition]="'left'"
+         *ngIf='documento.tipoCadastroTipoDocumento.tipoDocumento.modelo'
+         style='margin-top: -17px' mat-raised-button class='attach-button'
+         href='{{documento?.tipoCadastroTipoDocumento?.tipoDocumento?.modelo}}'
+         matTooltip='Modelo do arquivo que deve ser baixado, preenchido e anexado a este cadastro'>
+        <mat-icon>link</mat-icon>
+        <span>Baixar Modelo</span>
+      </a>
+
+      <horizontal-space></horizontal-space>
+
+      <input type='file' accept="{{formatos?.join(',')}}"
+             (change)='onFileChange($event)' style='display: none'
+             id='inputField{{documento.tipoCadastroTipoDocumento.id}}'
+             name='inputField{{documento.tipoCadastroTipoDocumento.id}}'/>
+
+      <button (click)='selectFile()'
+              [disabled]='form.disabled'
+              type='button' style='margin-top: -17px'
+              mat-raised-button class='attach-button'>
+        <mat-icon>attach_file</mat-icon>
+        <span>Anexar</span>
+      </button>
+
+      <horizontal-space
+          *ngIf='authenticationService.usuarioAutenticado.isFornecedor && (documento.aprovado === true || documento.aprovado === false)'>
+      </horizontal-space>
+
+      <div style='margin-bottom: 20px' layout-margin
+           *ngIf='authenticationService.usuarioAutenticado.isFornecedor && (documento.aprovado === true || documento.aprovado === false)'>
+        <label [ngSwitch]='documento?.aprovado' layout-align='center center' flex>
+          <span *ngSwitchCase="true" style='color: #2DB45C'>Aprovado</span>
+          <span *ngSwitchCase="false" style='color: #E44451'>Recusado</span>
+        </label>
+      </div>
+
+      <horizontal-space *ngIf='documento?.conteudo?.lastModified'></horizontal-space>
+
+      <button style='margin-top: -17px'
+              (click)='visualizarDocumento(documento)'
+              mat-raised-button class='attach-button' type='button'
+              *ngIf='documento?.conteudo?.lastModified'>
+        <mat-icon>cloud_download</mat-icon>
+        <span> Visualizar</span>
+      </button>
+
+      <div layout='row' *hasPermission="['administrador','fornecedores','fornecedores/put/approve']">
+        <horizontal-space
+            *ngIf="documento?.id && !form?.controls['nome' + documento?.tipoCadastroTipoDocumento?.id].disabled">
+        </horizontal-space>
+
+        <button mat-raised-button style='margin-top: -17px' type='button'
+                *ngIf="documento?.id && !form?.controls['nome' + documento?.tipoCadastroTipoDocumento?.id].disabled"
+                (click)='documento.aprovado === undefined ? documento.aprovado = true : documento.aprovado = !documento.aprovado'
+                [ngClass]="{'approved-button': documento.aprovado === true, 'not-approved-button': (!documento.aprovado || documento.aprovado === undefined)}">
+          <mat-icon>done_all</mat-icon>
+        </button>
+
+        <horizontal-space
+            *ngIf="documento?.id && !form?.controls['nome' + documento?.tipoCadastroTipoDocumento?.id].disabled">
+        </horizontal-space>
+
+        <button mat-raised-button style='margin-top: -17px' type='button'
+                *ngIf="documento?.id && !form?.controls['nome' + documento?.tipoCadastroTipoDocumento?.id].disabled"
+                (click)='documento.aprovado === undefined ? documento.aprovado = false : documento.aprovado = !documento.aprovado'
+                [ngClass]="{'refused-button': documento.aprovado === false, 'not-refused-button': (documento.aprovado || documento.aprovado === undefined)}">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

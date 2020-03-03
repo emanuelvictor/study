@@ -1,0 +1,195 @@
+<div class="toolbar" layout="row" layout-xs='column' flex>
+  <div layout="column" flex layout-align='center start'>
+    <div class="headline" [innerHTML]="'Bens'"></div>
+    <div class="subhead" [innerHTML]="'Patrimônios'"></div>
+
+    <div layout='column' layout-gt-md='row' style='background-color: white; padding-right: 7px'>
+      <div layout='row'>
+        <div layout-margin style='background-color: rgba(77, 182, 172, 0.38);; width: 20px; height: 20px'>
+        </div>
+        <div style='margin-top: 10px'>Encontrado</div>
+      </div>
+
+      <div layout='row'>
+        <div layout-margin style='background-color: rgb(246, 251, 214); width: 20px; height: 20px'>
+        </div>
+        <div style='margin-top: 10px'>Transferido</div>
+      </div>
+
+      <div layout='row'>
+        <div layout-margin style='background-color: #ffd0d0; width: 20px; height: 20px'>
+        </div>
+        <div style='margin-top: 10px'>Não encontrado</div>
+      </div>
+
+      <div layout='row'>
+        <div layout-margin style='background-color: rgb(179, 221, 253); width: 20px; height: 20px'>
+        </div>
+        <div style='margin-top: 10px'>Sobra física</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!--<span flex='70' hide-xs></span>-->
+  <div layout='column' layout-gt-sm='row' layout-align='end center' layout-margin flex-sm='30' flex='50'>
+
+    <button (click)='exportar(true)' flex
+            [matTooltipPosition]="'below'"
+            matTooltip='Transferidos e não localizados'
+            mat-raised-button color='primary' type='button'
+            style='min-width: 110px; margin-top: 13px !important'>
+      <mat-icon>send</mat-icon>
+      <span hide-xs>Exportar</span>
+    </button>
+
+    <mat-form-field style='min-width: 110px' flex>
+      <mat-label>Sobra Física</mat-label>
+      <mat-select [(ngModel)]='filters.sobraFisicaFilter'
+                  (selectionChange)='listByFilters(true)'
+                  disableOptionCentering='true' name='sobraFisicaFilter'>
+        <mat-option [value]='null'></mat-option>
+        <mat-option [value]='true'>Sim</mat-option>
+        <mat-option [value]='false'>Não</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field style='min-width: 110px' flex>
+      <mat-label>Encontrado</mat-label>
+      <mat-select [(ngModel)]='filters.encontradoFilter'
+                  (selectionChange)='listByFilters(true)'
+                  disableOptionCentering='true' name='encontradoFilter'>
+        <mat-option [value]='null'></mat-option>
+        <mat-option [value]='true'>Sim</mat-option>
+        <mat-option [value]='false'>Não</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field style='min-width: 110px' flex>
+      <mat-label>Transferido</mat-label>
+      <mat-select [(ngModel)]='filters.transferidoFilter'
+                  (selectionChange)='listByFilters(true)'
+                  disableOptionCentering='true' name='transferidoFilter'>
+        <mat-option [value]='null'></mat-option>
+        <mat-option [value]='true'>Sim</mat-option>
+        <mat-option [value]='false'>Não</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field flex>
+      <mat-label>Código do Centro de Custo</mat-label>
+      <input type='text' name='text' matInput
+             placeholder='Código do Centro de Custo'
+             [(ngModel)]='filters.centroCustoCodigoFilter'
+             (ngModelChange)='debounce(this, listByFiltersStatement)'/>
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field flex>
+      <mat-label>Buscar</mat-label>
+      <input type='text' name='text'
+             matInput placeholder='Buscar'
+             [(ngModel)]='filters.defaultFilter'
+             (ngModelChange)='debounce(this, listByFiltersStatement)'/>
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+  </div>
+</div>
+
+<div id='default-table' [style.margin-top]="'20px'">
+  <mat-table [dataSource]='dataSource'
+             #table matSort matSortDisableClear
+             matSortActive='descricao' matSortDirection='asc'>
+
+    <ng-container matColumnDef='descricao'>
+      <mat-header-cell flex-sm='20' flex-xl='20'
+                       flex-gt-md='20' flex-md='20'
+                       *matHeaderCellDef mat-sort-header
+                       matTooltip='Ordernar pela descrição'>
+        Descrição
+      </mat-header-cell>
+      <mat-cell *matCellDef='let data'
+                flex-sm='20' flex-xl='20'
+                flex-gt-md='20' flex-md='20'
+                [ngStyle]="{'color': (data?.sobraFisica ? '#ffffff' : '#003D6A')}">
+
+        <div layout='column' layout-margin>
+          <span *ngIf='data?.plaqueta' [@fadeInOut]>Número da plaqueta: {{data?.plaqueta}}</span>
+
+          <span style='color: #607d8b' *ngIf='data?.descricao' [@fadeInOut]>Descrição: {{ (data.descricao) }} </span>
+
+          <span style='color: #607d8b' *ngIf='data?.marca || data?.modelo' [@fadeInOut]>
+            {{ (data?.marca ? 'Marca: ' + data?.marca?.trim() : '') + (data?.modelo ? ((!data?.marca ? 'Modelo:  ' : '; Modelo: ') + data?.modelo) : '') }}
+          </span>
+
+          <span *ngIf='data?.complemento' [@fadeInOut]>Complemento: {{data?.complemento}}</span>
+          <span *ngIf='data?.numeroSerie' [@fadeInOut]>Número de Série: {{data?.numeroSerie}}</span>
+        </div>
+
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef='observacao'>
+      <mat-header-cell flex mat-sort-header *matHeaderCellDef>
+        Observação
+      </mat-header-cell>
+      <mat-cell flex ellipsis *matCellDef='let data'
+                [ngStyle]="{'color': (data?.sobraFisica ? '#ffffff' : '#003D6A')}">
+        {{ (data.observacao) }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef='centroCustoInventario.centroCusto.descricao'>
+      <mat-header-cell flex mat-sort-header *matHeaderCellDef>
+        Centro de Custo
+      </mat-header-cell>
+      <mat-cell flex ellipsis *matCellDef='let data'
+                [ngStyle]="{'color': (data?.sobraFisica ? '#ffffff' : '#003D6A')}">
+        {{ (data?.centroCustoInventario?.centroCusto?.descricao) }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef='centroCustoAnterior.descricao'>
+      <mat-header-cell flex mat-sort-header *matHeaderCellDef>
+        Centro de Custo Anterior
+      </mat-header-cell>
+      <mat-cell flex ellipsis *matCellDef='let data'
+                [ngStyle]="{'color': (data?.sobraFisica ? '#ffffff' : '#003D6A')}">
+        {{ (data?.centroCustoAnterior?.descricao) }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef='localizacao.descricao'>
+      <mat-header-cell flex mat-sort-header *matHeaderCellDef>
+        Localização
+      </mat-header-cell>
+      <mat-cell flex ellipsis *matCellDef='let data'
+                [ngStyle]="{'color': (data?.sobraFisica ? '#ffffff' : '#003D6A')}">
+        {{ (data?.localizacao?.descricao) }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef='localizacaoAnterior.descricao'>
+      <mat-header-cell flex mat-sort-header *matHeaderCellDef>
+        Localização Anterior
+      </mat-header-cell>
+      <mat-cell flex ellipsis *matCellDef='let data'
+                [ngStyle]="{'color': (data?.sobraFisica ? '#ffffff' : '#003D6A')}">
+        {{ (data?.localizacaoAnterior?.descricao) }}
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef='displayedColumns'>
+    </mat-header-row>
+    <mat-row *matRowDef='let patrimonio; columns: displayedColumns'
+             style='cursor: pointer; height: 110px' (click)='openVisualizarPatrimonioDialog(patrimonio)'
+             [ngStyle]="{'background-color': (patrimonio?.sobraFisica ? 'rgb(179, 221, 253)' : ((patrimonio.localizacaoAnterior || patrimonio.centroCustoAnterior) ? 'rgb(246, 251, 214)' : (patrimonio?.encontrado === undefined ? '#ffd0d0' : (patrimonio?.encontrado === false ? '#ffd0d0' : '#4db6ac61'))))}">
+    </mat-row>
+  </mat-table>
+  <no-records-found [dataSource]='dataSource?.data'></no-records-found>
+  <mat-paginator [pageSizeOptions]='[10, 20, 50, 100, 500]'
+                 [length]='totalElements' (page)='listByFilters()'
+                 [pageIndex]='pageIndex' [pageSize]='pageSize' [hidePageSize]='false'>
+  </mat-paginator>
+</div>

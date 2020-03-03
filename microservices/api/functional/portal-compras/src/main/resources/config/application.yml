@@ -1,0 +1,129 @@
+spring:
+  application.name: portal-compras
+  jmx.enabled: false
+
+  datasource:
+    hikari.pool-name: ${spring.application.name}
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    hikari.maximum-pool-size: 3
+    url: jdbc:postgresql://127.0.0.1:5432/portaldecompras
+    username: sa_portaldecompras
+    password: sa_portaldecompras
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: br.org.pti.api.functional.portalcompras.infrastructure.hibernate.constraint.ConstraintsImplicitNamingStrategy
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate.dialect: br.org.pti.compras.infrastructure.hibernate.dialect.PostgreSQLDialect
+      hibernate.jdbc.lob.non_contextual_creation: true
+      hibernate.id.new_generator_mappings: true
+      hibernate.cache.use_second_level_cache: false
+      hibernate.default_schema: public
+      org.hibernate.envers.audit_table_suffix: _audited
+      org.hibernate.envers.revision_field_name: revision
+      org.hibernate.envers.revision_type_field_name: revision_type
+
+  flyway:
+    check-location: true
+    enabled: false
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    sql-migration-prefix:
+    baseline-version: 0
+
+  resources.static-locations: classpath:/META-INF/resources/
+  resources.chain:
+    cache: false
+    strategy.content.enabled: true
+    strategy.content.paths: /**
+
+  mail:
+    host: info-fpti.fpti.pti.org.br
+    port: 587
+    from: no-reply@pti.org.br
+    username: portaldecomprast@ptisb01t.fpti.pti.org.br
+    password: kA0oH4n5itCGeV7AdaFOwc
+    properties:
+      mail.transport.protocol: smtp
+      mail.smtp.starttls.enable: true
+      mail.smtps.debug: true
+      mail.smtp.debug: true
+      mail.debug: true
+
+  thymeleaf:
+    mode: HTML
+    cache: false
+    prefix: classpath:/META-INF/resources/
+    suffix: .html
+
+server:
+  compression.enabled: true
+  servlet:
+    context-path:
+    session.persistent: true
+    session.timeout: 999999999
+
+ldap:
+  url: ldap://dc04.fpti.pti.org.br
+  domain: fpti.pti.org.br
+  base: DC=FPTI,DC=PTI,DC=ORG,DC=BR
+  baseDn: OU=Colaboradores,DC=FPTI,DC=PTI,DC=ORG,DC=BR
+  searchBase: OU=Colaboradores
+  username: CN=bindportaldecomprast,OU=Aplicacoes,DC=FPTI,DC=PTI,DC=ORG,DC=BR
+  password: 3W4TutztLxbfXbfqHktdHK
+  userPrincipalPath: sAMAccountName=
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: ['health', 'info', 'flyway' , 'logfile']
+  endpoint:
+    health:
+      enabled: true
+    info:
+      enabled: true
+    flyway:
+      enabled: true
+    logfile:
+      enabled: true
+      external-file: /var/log/${spring.application.name}/${spring.application.name}.log
+
+logging:
+  file: /var/log/${spring.application.name}/${spring.application.name}.log
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.springframework: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.context.support: INFO
+
+info:
+  name: ${spring.application.name}
+  description: 'Portal de habilitação de fornecedores'
+  version: @project.version@-@project.build-number@
+  environment: @active.profile@
+  url: portaldecompras.pti.org.br
+
+google:
+  recaptcha:
+    secret-key: 6LfB4ZwUAAAAACGyEg2x8JIUr6uXZ0r1h9NuXKEM
+    site-key: 6LfB4ZwUAAAAAO3AGNoWncSAF_-tB3xd-WwsxQ3B
+    urltoverify: https://www.google.com/recaptcha/api/siteverify
+
+oauth:
+  endpoints:
+    fornecedores-ws-externo: https://www.receitaws.com.br/v1/cnpj/
+    fornecedores: http://localhost:8082/api/fornecedores/
+    bancos: http://localhost:8082/api/bancos/
+    cidades: http://localhost:8082/api/municipios/
+  token: http://localhost:8081/oauth/token
+  clientId: compras
+  clientSecret: O8p7ndZmf3DQY0Q2

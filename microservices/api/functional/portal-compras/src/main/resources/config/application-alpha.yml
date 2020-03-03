@@ -1,0 +1,36 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    check-location: true
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    sql-migration-prefix:
+    baseline-version: 0
+
+management:
+  endpoint:
+    logfile:
+      external-file: /${user.home}/${spring.application.name}.log
+
+logging:
+  file: /${user.home}/${spring.application.name}.log
+
+info:
+  url: localhost:8084
+  version: @project.version@
+
+server:
+  port: 8084
+
+# configs do eureka server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    hostname: localhost
+    appname: portal-compras

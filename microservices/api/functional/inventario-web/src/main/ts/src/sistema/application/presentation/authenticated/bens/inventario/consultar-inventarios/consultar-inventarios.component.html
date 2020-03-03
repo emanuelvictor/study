@@ -1,0 +1,18 @@
+<list-page [gender]="'M'"
+           [deletavel]='true'
+           [columns]='columns'
+           [headline]="'Bens'"
+           [subhead]='subhead'
+           [pageSize]='pageSize'
+           [pageIndex]='pageIndex'
+           [dataSource]='dataSource'
+           [hasAdvancedFilter]='false'
+           (list)='listByFilters($event)'
+           [totalElements]='totalElements'
+           (delete)='openDeleteDialog($event)'
+           [displayedColumns]='displayedColumns'
+           [rolesToAdd]="['root', 'inventarios', 'inventarios/post']"
+           [rolesToView]="['root', 'inventarios', 'inventarios/get']"
+           [rolesToEdit]="['root', 'inventarios', 'inventarios/put']"
+           [rolesToDelete]="['root', 'inventarios', 'inventarios/delete']">
+</list-page>

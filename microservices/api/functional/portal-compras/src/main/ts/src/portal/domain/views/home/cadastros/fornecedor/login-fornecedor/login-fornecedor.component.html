@@ -1,0 +1,92 @@
+<template-portal [overflow]="true">
+  <!--LADO ESQUERDO DO TEMPLATE-->
+  <div left-side layout="column" style="height: 100%; padding:10% 25%" layout-align="center start">
+
+    <div class="welcome-text"><strong>Acesso ao sistema</strong></div>
+    <div class="white">
+      <p>O Portal de Compras da Fundação Parque Tecnológico Itaipu – Brasil, foi idealizado, com o objetivo principal de
+        proporcionar uma comunicação mais próxima aos fornecedores, resultando em processos de aquisições ainda mais
+        transparentes, ágeis e eficientes.</p>
+
+      <ul>
+        <li>
+          <p>
+            Em caso de pessoa física, enviar e-mail para o endereço eletrônico <br><span class="bold-text">fornecedores@pti.org.br</span>
+            contendo suas informações e serviços prestados.
+          </p>
+        </li>
+        <li>
+          <p>Dúvidas podem ser esclarecidas por meio do telefone <br><span class="bold-text">(45) 3576-7421</span></p>
+        </li>
+      </ul>
+
+      <div layout="row" layout-align="start center" (click)="toSistema()" style="cursor: pointer; margin-top: 80px">
+        <mat-icon style="font-size: 19px">arrow_forward</mat-icon>
+        Acesso Administrativo
+      </div>
+    </div>
+
+  </div>
+
+  <div right-side layout="column" style="height: 100%; padding:0 25% 0 25%;" layout-align="center start">
+    <h1 class="title-text">Portal de Compras</h1>
+    <div style="padding-bottom: 30px">Para acessar o sistema, preencher os campos abaixo.</div>
+    <form style="width:100% !important" [formGroup]='form' novalidate (ngSubmit)='login()'>
+      <div layout="row">
+        <mat-form-field flex class="white-form-field">
+          <input matInput placeholder="CNPJ" [(ngModel)]="fornecedor.usuario.documento"
+                 formControlName="cnpj" [textMask]="{mask: mask, guide: false }" required>
+          <mat-icon style="font-size: 19px!important; margin-right: 19px; margin-top: 19px!important" matSuffix>
+            supervisor_account
+          </mat-icon>
+        </mat-form-field>
+      </div>
+      <div layout="row">
+        <mat-form-field flex class="white-form-field">
+          <input matInput type="password" placeholder="Senha" required
+                 [(ngModel)]="fornecedor.usuario.senha" formControlName="senha">
+          <mat-icon style="font-size: 19px!important; margin-right: 19px; margin-top: 19px!important" matSuffix>lock
+          </mat-icon>
+        </mat-form-field>
+      </div>
+      <div layout="row">
+        <mat-checkbox flex style="font-size: 13px; padding: 30px 0">Lembrar de mim</mat-checkbox>
+        <a [routerLink]="['/recuperar-senha']" style="font-size: 13px; padding: 30px 0">Esqueceu sua senha?</a>
+      </div>
+
+      <div layout="row" style="padding-bottom: 50px">
+        <button mat-flat-button color="primary"><strong>ACESSAR</strong></button>
+        <button mat-flat-button class="turnback-button"
+                [routerLink]="['/cadastrar']" style="margin-left:10px">
+          <strong>CADASTRAR</strong>
+        </button>
+      </div>
+
+    </form>
+
+    <mat-card layout-margin *ngIf='realizado'
+              style='background-color: #016769; border-top: none !important; color: white !important; margin: 0 !important; width: 100%'>
+
+      <button mat-mini-fab [routerLink]="['/login']" (click)='realizado = false' type='button'
+              style=' position: absolute; left: 95.6%; border-radius: 50%!important; top: -21px!important; color: #00ABAF !important; background-color: #FFFFFF!important;
+                      box-shadow: 0 3px 0 -2px rgba(0, 0, 0, 0.2), 0 0 10px 0 rgba(0, 0, 0, 0.14), 0 0 0 0 rgba(0, 0, 0, 0.12) !important'>
+        <mat-icon>clear</mat-icon>
+      </button>
+
+      <div layout='row' flex>
+        <div class='info-tittle'
+             style='font-size: 24px !important; font-weight: bold!important;padding-top: 12px; padding-left: 12px'>
+          Cadastro realizado com sucesso!
+        </div>
+      </div>
+
+      <div layout='row' flex
+           style='font-size: 18px !important; padding-left: 13px; padding-bottom: 19px !important'>
+        Orientações de acesso foram encaminhadas para o e-mail informado, verifique-o para acessar o sistema.
+      </div>
+
+    </mat-card>
+
+  </div>
+
+</template-portal>

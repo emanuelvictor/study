@@ -1,0 +1,50 @@
+<inventario-form [entity]='inventario' (save)='save(inventario)'>
+  <div class='toolbar' layout='row' flex toolbar>
+    <div layout='column'>
+      <div class='headline' [innerHTML]="'Bens'"></div>
+      <div class='subhead' [innerHTML]="'Inventário / Adicionar'"></div>
+    </div>
+    <div layout='row' layout-align='end center' flex>
+      <button mat-raised-button type='button' routerLink='../'>
+        <mat-icon>arrow_back</mat-icon>
+        <span>Voltar</span>
+      </button>
+      <horizontal-space></horizontal-space>
+      <button mat-raised-button color='primary'>
+        <mat-icon>save</mat-icon>
+        <span>Salvar</span>
+      </button>
+    </div>
+  </div>
+
+  <mat-divider divider style='margin-top: 13px'></mat-divider>
+
+  <div vincular-centro-custo layout='row' layout-sm='column' layout-xs='column' style='margin-top: 48px'>
+    <div layout='column' flex>
+
+      <div style='width: 100%' layout-align='center center' layout='row' flex>
+
+        <mat-form-field flex style='margin-bottom: 0'>
+          <input id='filter' name='filter' [(ngModel)]='filter' [ngModelOptions]='{standalone: true}'
+                 noSubmit matInput maxlength='200' placeholder='Filtre os centros de custo pela descrição'>
+        </mat-form-field>
+
+        <horizontal-space></horizontal-space>
+
+        <mat-form-field flex style='margin-bottom: 0'>
+          <input id='codigoCentroCustoFilter' name='codigoCentroCustoFilter'
+                 [(ngModel)]='centroCustoCodigoFilter' [ngModelOptions]='{standalone: true}'
+                 noSubmit matInput maxlength='200' placeholder='Filtre os centros de custo pelo código'>
+        </mat-form-field>
+
+      </div>
+
+      <vincular-centro-custo [centroCustoCodigoFilter]='centroCustoCodigoFilter'
+                             (remove)='remove($event)' (push)='push($event)' flex
+                             layout='column' [filter]='filter' [entity]='inventario'>
+      </vincular-centro-custo>
+    </div>
+  </div>
+
+
+</inventario-form>

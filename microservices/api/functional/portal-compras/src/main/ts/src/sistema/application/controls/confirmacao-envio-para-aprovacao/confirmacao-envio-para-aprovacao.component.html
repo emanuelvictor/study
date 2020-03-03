@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Enviar para análise</h1>
+<div mat-dialog-content class="text">
+  Ao submeter o seu cadastro à análise, não será possível realizar edições, até que este seja validado por nossa equipe. Se deseja continuar, clique no botão “Confirmar envio”.
+</div>
+
+<div id="space"></div>
+<mat-divider></mat-divider>
+
+<div mat-dialog-actions>
+  <button mat-button color="accent" [mat-dialog-close]="false">Voltar</button>
+  <button mat-button color="primary" [mat-dialog-close]="true">
+    <mat-icon>send</mat-icon>
+    <span>Confirmar envio</span>
+  </button>
+</div>

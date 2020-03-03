@@ -1,0 +1,19 @@
+<usuario-form *ngIf='usuario?.username' [entity]='usuario' (save)="save($event)">
+  <div class='toolbar' layout='row' flex toolbar>
+    <div layout='column'>
+      <div class='headline' [innerHTML]="'Usuario'"></div>
+      <div class='subhead' [innerHTML]="'Usuario / Editar'"></div>
+    </div>
+    <div layout='row' layout-align='end center' flex>
+      <button mat-raised-button type='button' color='accent' (click)='back()'>
+        <mat-icon>arrow_back</mat-icon>
+        <span>Voltar</span>
+      </button>
+      <horizontal-space *ngIf='!usuario?.fornecedor'></horizontal-space>
+      <button *ngIf='!usuario?.fornecedor' mat-raised-button color='primary'>
+        <mat-icon>save</mat-icon>
+        <span>Salvar</span>
+      </button>
+    </div>
+  </div>
+</usuario-form>

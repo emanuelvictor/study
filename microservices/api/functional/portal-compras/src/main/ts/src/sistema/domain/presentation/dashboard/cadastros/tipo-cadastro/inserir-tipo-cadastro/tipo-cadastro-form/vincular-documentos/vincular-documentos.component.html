@@ -1,0 +1,43 @@
+<div layout='row' layout-align='start center'>
+  <h3>Documentos</h3>
+  <button type='button' class='mat-mini-fab' color='primary' (click)='addDocument()'
+          style='box-shadow: none; -moz-box-shadow: none; -o-box-shadow: none; -webkit-box-shadow: none'>
+    +
+  </button>
+</div>
+<div layout='column' flex *ngFor='let documento of documentos; let indexDocumento = index'>
+  <div layout='row' flex layout-align='start center'>
+    <div layout='row' flex>
+      <mat-form-field flex='75'>
+        <mat-label>Tipo Documento</mat-label>
+        <mat-select placeholder='Tipo Documento'
+                    [compareWith]='compareObjects'
+                    [(ngModel)]='documento.tipoDocumento'>
+          <mat-option [value]='tipoDocumento' *ngFor='let tipoDocumento of tiposDocumentos'>
+            {{tipoDocumento.nome}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-slide-toggle flex='7' class='push-left'
+                        [(ngModel)]='documento.interno'
+                        [ngModelOptions]='{standalone: true}'
+                        style='color: #09aaae; margin-top: 13px; margin-left: 37px'>
+        Interno
+      </mat-slide-toggle>
+
+      <mat-form-field flex='15' class='push-left'>
+        <mat-select placeholder='Obrigatório' [(ngModel)]='documento.obrigatorio'>
+          <mat-option [value]='true'>Sim</mat-option>
+          <mat-option [value]='false'>Não</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <button type='button' mat-icon-button>
+      <mat-icon (click)='removeDocument(indexDocumento)'>delete</mat-icon>
+    </button>
+  </div>
+
+</div>
+
