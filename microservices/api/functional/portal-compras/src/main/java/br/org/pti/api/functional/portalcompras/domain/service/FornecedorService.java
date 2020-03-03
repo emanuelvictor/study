@@ -20,8 +20,8 @@ import br.org.pti.api.functional.portalcompras.application.i18n.MessageSourceHol
 import br.org.pti.api.functional.portalcompras.domain.entity.cadastros.Banco;
 import br.org.pti.api.functional.portalcompras.domain.entity.configuracao.Pessoa;
 import br.org.pti.api.functional.portalcompras.domain.entity.configuracao.Usuario;
-import br.org.pti.compras.domain.entity.fornecedor.*;
-import br.org.pti.compras.domain.repository.*;
+import br.org.pti.api.functional.portalcompras.domain.entity.fornecedor.*;
+import br.org.pti.api.functional.portalcompras.domain.repository.*;
 import br.org.pti.api.functional.portalcompras.infrastructure.support.SSLSupport;
 import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;

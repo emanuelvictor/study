@@ -6,11 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import lombok.Data;
-import org.hibernate.envers.Audited;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -25,9 +23,6 @@ import java.util.Set;
  * @since 1.0.0, 10/09/2019
  */
 @Data
-@Entity
-@Audited
-@Table(name = "\"user\"")
 @JsonIgnoreProperties({"authorities"})
 @lombok.EqualsAndHashCode(callSuper = true)
 public class User extends PersistentEntity implements UserDetails {
@@ -45,14 +40,12 @@ public class User extends PersistentEntity implements UserDetails {
     /**
      *
      */
-    @Column(nullable = false, length = 150, unique = true)
     private String username;
 
     /**
      *
      */
     @NotBlank
-    @Column(nullable = false, length = 100)
     @JsonProperty(access = Access.WRITE_ONLY)
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@!%*#?&+,./])[A-Za-z\\d$@!%*#?&+,./]{8,}$", flags = Flag.UNICODE_CASE, message = "A senha deve conter ao menos 8 caracteres com letras, números e um caractere especial.")
     private String password;
@@ -61,13 +54,11 @@ public class User extends PersistentEntity implements UserDetails {
      *
      */
     @NotNull
-    @Column(nullable = false)
     private Boolean enabled;
 
     /**
      *
      */
-    @ManyToOne(optional = false)
     private AccessGroup accessGroup;
 
     /**
@@ -101,7 +92,7 @@ public class User extends PersistentEntity implements UserDetails {
      * @return Set<GrantedAuthority>
      */
     @Override
-    @Transient
+//    @Transient TODO verificar
     @JsonIgnore
     public Set<GrantedAuthority> getAuthorities() {
 
@@ -142,7 +133,7 @@ public class User extends PersistentEntity implements UserDetails {
      */
     @Override
     @JsonIgnore
-    @Transient
+//    @Transient TODO verificar
     public boolean isAccountNonExpired() {
         return true;
     }
@@ -152,7 +143,7 @@ public class User extends PersistentEntity implements UserDetails {
      */
     @Override
     @JsonIgnore
-    @Transient
+    //    @Transient TODO verificar
     public boolean isAccountNonLocked() {
         return true;
     }
@@ -162,7 +153,7 @@ public class User extends PersistentEntity implements UserDetails {
      */
     @Override
     @JsonIgnore
-    @Transient
+    //    @Transient TODO verificar
     public boolean isCredentialsNonExpired() {
         return true;
     }

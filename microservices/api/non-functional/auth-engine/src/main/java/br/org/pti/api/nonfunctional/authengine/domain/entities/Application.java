@@ -5,14 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.envers.Audited;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 import java.util.HashSet;
@@ -23,10 +18,7 @@ import java.util.stream.Collectors;
 /**
  *
  */
-@Entity
-@Audited
 @ToString
-@Table(name = "aplicacao")
 @EqualsAndHashCode(callSuper = true)
 public class Application extends PersistentEntity /*implements UserDetails*/ implements ClientDetails {
 
@@ -36,7 +28,6 @@ public class Application extends PersistentEntity /*implements UserDetails*/ imp
     @Getter
     @Setter
     @NotBlank(message = "A client id must be informed")
-    @Column(name = "clientId", length = 45, nullable = false)
     private String clientId;
 
     /**
@@ -45,7 +36,6 @@ public class Application extends PersistentEntity /*implements UserDetails*/ imp
     @Getter
     @Setter
     @NotBlank(message = "A client secrete must be informed")
-    @Column(name = "clientSecret", length = 90, nullable = false)
     private String clientSecret;
 
     /**
@@ -53,13 +43,11 @@ public class Application extends PersistentEntity /*implements UserDetails*/ imp
      */
     @Getter
     @Setter
-    @Column(name = "ativo", nullable = false)
     private boolean enable;
 
     /**
      *
      */
-    @ManyToOne
     private AccessGroup accessGroup;
 
 

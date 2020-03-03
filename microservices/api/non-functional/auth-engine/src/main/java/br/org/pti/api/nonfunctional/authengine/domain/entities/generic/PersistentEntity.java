@@ -2,7 +2,6 @@ package br.org.pti.api.nonfunctional.authengine.domain.entities.generic;
 
 import lombok.*;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
@@ -11,23 +10,27 @@ import java.time.LocalDateTime;
  * @since 2.0.0, 01/01/2020
  */
 @ToString
-@MappedSuperclass
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = {"createdOn", "updatedOn"})
 public abstract class PersistentEntity implements IPersistentEntity<Long> {
 
-    @Id
+    /**
+     *
+     */
     @Getter
     @Setter
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, updatable = false)
     protected Long id;
 
+    /**
+     *
+     */
     @Getter
-    @Column(name = "created_on", nullable = false, updatable = false)
     protected LocalDateTime createdOn;
+
+    /**
+     *
+     */
     @Getter
-    @Column(name = "updated_on")
     protected LocalDateTime updatedOn;
 
     /**
@@ -35,22 +38,6 @@ public abstract class PersistentEntity implements IPersistentEntity<Long> {
      */
     public PersistentEntity(final Long id) {
         this.id = id;
-    }
-
-    /**
-     *
-     */
-    @PrePersist
-    protected void beforeInsert() {
-        this.createdOn = LocalDateTime.now();
-    }
-
-    /**
-     *
-     */
-    @PreUpdate
-    protected void beforeUpdate() {
-        this.updatedOn = LocalDateTime.now();
     }
 
     /**

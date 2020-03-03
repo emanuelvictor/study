@@ -1,6 +1,6 @@
 package br.org.pti.api.nonfunctional.authengine.domain.services;
 
-import br.org.pti.api.nonfunctional.authengine.domain.repositories.UserRepository;
+import br.org.pti.api.nonfunctional.authengine.domain.repositories.feign.IUserFeignRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,7 +19,7 @@ public class UserService implements UserDetailsService {
     /**
      *
      */
-    private final UserRepository userRepository;
+    private final IUserFeignRepository userFeignRepository;
 
     /**
      * @param username
@@ -28,7 +28,7 @@ public class UserService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
-        return this.userRepository.findByUsername(username)
+        return this.userFeignRepository.loadUserByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Username " + username + " not founded!"));
     }
 }
