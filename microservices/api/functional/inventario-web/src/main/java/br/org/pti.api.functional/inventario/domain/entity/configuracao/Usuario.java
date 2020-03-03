@@ -1,7 +1,7 @@
-package br.org.pti.inventario.domain.entity.configuracao;
+package br.org.pti.api.functional.inventario.domain.entity.configuracao;
 
-import br.org.pti.inventario.domain.entity.patrimonio.inventario.Executor;
-import br.org.pti.inventario.domain.entity.pessoal.CentroCusto;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.inventario.Executor;
+import br.org.pti.api.functional.inventario.domain.entity.pessoal.CentroCusto;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,9 +23,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import static br.org.pti.inventario.InventarioApplication.AUDIT_SUFFIX;
-import static br.org.pti.inventario.InventarioApplication.CONFIGURACAO;
-import static br.org.pti.inventario.application.resource.Roles.*;
+import static br.org.pti.api.functional.inventario.InventarioApplication.AUDIT_SUFFIX;
+import static br.org.pti.api.functional.inventario.InventarioApplication.CONFIGURACAO;
+import static br.org.pti.api.functional.inventario.application.resource.Roles.*;
 
 /**
  * @author Emanuel Victor

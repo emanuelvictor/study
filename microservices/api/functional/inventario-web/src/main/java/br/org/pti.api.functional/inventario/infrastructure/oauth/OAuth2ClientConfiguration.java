@@ -1,4 +1,4 @@
-package br.org.pti.inventario.infrastructure.oauth;
+package br.org.pti.api.functional.inventario.infrastructure.oauth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;

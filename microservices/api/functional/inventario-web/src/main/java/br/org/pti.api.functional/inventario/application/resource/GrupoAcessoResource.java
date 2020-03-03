@@ -1,7 +1,7 @@
-package br.org.pti.inventario.application.resource;
+package br.org.pti.api.functional.inventario.application.resource;
 
-import br.org.pti.inventario.domain.entity.configuracao.GrupoAcesso;
-import br.org.pti.inventario.domain.service.GrupoAcessoService;
+import br.org.pti.api.functional.inventario.domain.entity.configuracao.GrupoAcesso;
+import br.org.pti.api.functional.inventario.domain.service.GrupoAcessoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-import static br.org.pti.inventario.application.resource.Roles.*;
+import static br.org.pti.api.functional.inventario.application.resource.Roles.*;
 
 /**
  * RESTFul de Grupos de Acesso

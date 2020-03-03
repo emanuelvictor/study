@@ -1,6 +1,6 @@
-package br.org.pti.inventario.infrastructure.hibernate.dialect;
+package br.org.pti.api.functional.inventario.infrastructure.hibernate.dialect;
 
-import br.org.pti.inventario.infrastructure.hibernate.functions.PostgreSQLFilterFunction;
+import br.org.pti.api.functional.inventario.infrastructure.hibernate.functions.PostgreSQLFilterFunction;
 import org.hibernate.dialect.PostgreSQL9Dialect;
 
 /**

@@ -1,6 +1,6 @@
-package br.org.pti.inventario.domain.entity.patrimonio;
+package br.org.pti.api.functional.inventario.domain.entity.patrimonio;
 
-import br.org.pti.inventario.domain.entity.AbstractEntity;
+import br.org.pti.api.functional.inventario.domain.entity.AbstractEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.envers.AuditTable;
@@ -8,8 +8,8 @@ import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 
-import static br.org.pti.inventario.InventarioApplication.AUDIT_SUFFIX;
-import static br.org.pti.inventario.InventarioApplication.PATRIMONIO;
+import static br.org.pti.api.functional.inventario.InventarioApplication.AUDIT_SUFFIX;
+import static br.org.pti.api.functional.inventario.InventarioApplication.PATRIMONIO;
 
 /**
  * @author Emanuel Victor

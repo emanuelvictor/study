@@ -1,4 +1,4 @@
-package br.org.pti.inventario.infrastructure.aid;
+package br.org.pti.api.functional.inventario.infrastructure.aid;
 
 import java.text.Normalizer;
 import java.util.Arrays;

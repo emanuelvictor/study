@@ -1,7 +1,7 @@
-package br.org.pti.inventario.domain.entity.configuracao;
+package br.org.pti.api.functional.inventario.domain.entity.configuracao;
 
-import br.org.pti.inventario.domain.entity.AbstractEntity;
-import br.org.pti.inventario.domain.entity.EntityIdResolver;
+import br.org.pti.api.functional.inventario.domain.entity.AbstractEntity;
+import br.org.pti.api.functional.inventario.domain.entity.EntityIdResolver;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
@@ -15,8 +15,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
-import static br.org.pti.inventario.InventarioApplication.AUDIT_SUFFIX;
-import static br.org.pti.inventario.InventarioApplication.CONFIGURACAO;
+import static br.org.pti.api.functional.inventario.InventarioApplication.AUDIT_SUFFIX;
+import static br.org.pti.api.functional.inventario.InventarioApplication.CONFIGURACAO;
 
 /**
  * @author Emanuel Victor

@@ -1,9 +1,9 @@
-package br.org.pti.inventario.domain.entity.patrimonio.dto;
+package br.org.pti.api.functional.inventario.domain.entity.patrimonio.dto;
 
-import br.org.pti.inventario.domain.entity.patrimonio.Localizacao;
-import br.org.pti.inventario.domain.entity.patrimonio.inventario.CentroCustoInventario;
-import br.org.pti.inventario.domain.entity.pessoal.CentroCusto;
-import br.org.pti.inventario.domain.entity.pessoal.dto.CentroCustoDTO;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.Localizacao;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.inventario.CentroCustoInventario;
+import br.org.pti.api.functional.inventario.domain.entity.pessoal.CentroCusto;
+import br.org.pti.api.functional.inventario.domain.entity.pessoal.dto.CentroCustoDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

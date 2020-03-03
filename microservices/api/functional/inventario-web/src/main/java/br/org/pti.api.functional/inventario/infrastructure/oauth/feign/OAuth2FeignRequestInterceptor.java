@@ -1,4 +1,4 @@
-package br.org.pti.inventario.infrastructure.oauth.feign;
+package br.org.pti.api.functional.inventario.infrastructure.oauth.feign;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;

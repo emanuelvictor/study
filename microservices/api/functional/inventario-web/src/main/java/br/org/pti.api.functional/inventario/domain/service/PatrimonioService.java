@@ -1,21 +1,21 @@
-package br.org.pti.inventario.domain.service;
+package br.org.pti.api.functional.inventario.domain.service;
 
-import br.org.pti.inventario.application.context.ContextHolder;
-import br.org.pti.inventario.domain.entity.configuracao.Usuario;
-import br.org.pti.inventario.domain.entity.patrimonio.Localizacao;
-import br.org.pti.inventario.domain.entity.patrimonio.Patrimonio;
-import br.org.pti.inventario.domain.entity.patrimonio.dto.PatrimonioDTO;
-import br.org.pti.inventario.domain.entity.patrimonio.inventario.CentroCustoInventarioStatus;
-import br.org.pti.inventario.domain.entity.pessoal.CentroCusto;
-import br.org.pti.inventario.domain.entity.pessoal.dto.CentroCustoDTO;
-import br.org.pti.inventario.domain.entity.pessoal.dto.ColaboradorDTO;
-import br.org.pti.inventario.domain.repository.ICentroCustoInventarioRepository;
-import br.org.pti.inventario.domain.repository.ICentroCustoRepository;
-import br.org.pti.inventario.domain.repository.ILocalizacaoRepository;
-import br.org.pti.inventario.domain.repository.IPatrimonioRepository;
-import br.org.pti.inventario.domain.repository.feign.ICentroCustoFeignRepository;
-import br.org.pti.inventario.domain.repository.feign.ILocalizacaoFeignRepository;
-import br.org.pti.inventario.domain.repository.feign.IPatrimonioFeignRepository;
+import br.org.pti.api.functional.inventario.application.context.ContextHolder;
+import br.org.pti.api.functional.inventario.domain.entity.configuracao.Usuario;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.Localizacao;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.Patrimonio;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.dto.PatrimonioDTO;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.inventario.CentroCustoInventarioStatus;
+import br.org.pti.api.functional.inventario.domain.entity.pessoal.CentroCusto;
+import br.org.pti.api.functional.inventario.domain.entity.pessoal.dto.CentroCustoDTO;
+import br.org.pti.api.functional.inventario.domain.entity.pessoal.dto.ColaboradorDTO;
+import br.org.pti.api.functional.inventario.domain.repository.ICentroCustoInventarioRepository;
+import br.org.pti.api.functional.inventario.domain.repository.ICentroCustoRepository;
+import br.org.pti.api.functional.inventario.domain.repository.ILocalizacaoRepository;
+import br.org.pti.api.functional.inventario.domain.repository.IPatrimonioRepository;
+import br.org.pti.api.functional.inventario.domain.repository.feign.ICentroCustoFeignRepository;
+import br.org.pti.api.functional.inventario.domain.repository.feign.ILocalizacaoFeignRepository;
+import br.org.pti.api.functional.inventario.domain.repository.feign.IPatrimonioFeignRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -363,7 +363,7 @@ public class PatrimonioService {
     private Patrimonio handlerCentroCustoAnterior(final Patrimonio patrimonio) {
 
         final CentroCustoDTO centroCustoAneriorDTO = this.patrimonioFeignRepository.findByPlaqueta(patrimonio.getPlaqueta()).stream().findFirst().orElseThrow(() -> new RuntimeException("Plaqueta não encontrada!")).getCentroCusto();
-        final ColaboradorDTO gestorDTO = centrosCustoFeignRepository.findByCentroCustoCodigo(centroCustoAneriorDTO.getCodigo(), new PageRequest(0, 1)).getContent().stream().findFirst().orElse(new CentroCustoDTO()).getGestor();
+        final ColaboradorDTO gestorDTO = centrosCustoFeignRepository.findByCentroCustoCodigo(centroCustoAneriorDTO.getCodigo(), PageRequest.of(0, 1)).getContent().stream().findFirst().orElse(new CentroCustoDTO()).getGestor();
         if (gestorDTO.getEmail() == null || gestorDTO.getNome() == null)
             throw new RuntimeException("O centro de custo atual (" + patrimonio.getCentroCustoAnterior().getCodigo() + " - " + patrimonio.getCentroCustoAnterior().getDescricao() + ") está sem gestor, este patrimônio não pode ser inventariado!");
 
@@ -514,7 +514,7 @@ public class PatrimonioService {
             e.printStackTrace();
         }
 
-        return new HashSet<>(this.localizacaoFeignRepository.listLocalizacoesByDescricao(descricaoLocalizacaoFilter, new PageRequest(0, 1000000)).getContent());
+        return new HashSet<>(this.localizacaoFeignRepository.listLocalizacoesByDescricao(descricaoLocalizacaoFilter, PageRequest.of(0, 1000000)).getContent());
     }
 
     /**

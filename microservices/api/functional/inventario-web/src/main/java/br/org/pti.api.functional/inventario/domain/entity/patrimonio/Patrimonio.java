@@ -1,9 +1,9 @@
-package br.org.pti.inventario.domain.entity.patrimonio;
+package br.org.pti.api.functional.inventario.domain.entity.patrimonio;
 
-import br.org.pti.inventario.domain.entity.AbstractEntity;
-import br.org.pti.inventario.domain.entity.EntityIdResolver;
-import br.org.pti.inventario.domain.entity.patrimonio.inventario.CentroCustoInventario;
-import br.org.pti.inventario.domain.entity.pessoal.CentroCusto;
+import br.org.pti.api.functional.inventario.domain.entity.AbstractEntity;
+import br.org.pti.api.functional.inventario.domain.entity.EntityIdResolver;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.inventario.CentroCustoInventario;
+import br.org.pti.api.functional.inventario.domain.entity.pessoal.CentroCusto;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -16,8 +16,8 @@ import org.hibernate.envers.Audited;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
-import static br.org.pti.inventario.InventarioApplication.AUDIT_SUFFIX;
-import static br.org.pti.inventario.InventarioApplication.PATRIMONIO;
+import static br.org.pti.api.functional.inventario.InventarioApplication.AUDIT_SUFFIX;
+import static br.org.pti.api.functional.inventario.InventarioApplication.PATRIMONIO;
 
 /**
  * @author Emanuel Victor

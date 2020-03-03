@@ -1,6 +1,6 @@
-package br.org.pti.inventario.domain.repository;
+package br.org.pti.api.functional.inventario.domain.repository;
 
-import br.org.pti.inventario.domain.entity.configuracao.GrupoAcesso;
+import br.org.pti.api.functional.inventario.domain.entity.configuracao.GrupoAcesso;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

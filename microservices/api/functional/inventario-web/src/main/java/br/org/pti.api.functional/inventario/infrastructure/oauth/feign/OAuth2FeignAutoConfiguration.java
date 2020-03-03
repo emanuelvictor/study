@@ -1,7 +1,7 @@
-package br.org.pti.inventario.infrastructure.oauth.feign;
+package br.org.pti.api.functional.inventario.infrastructure.oauth.feign;
 
-import br.org.pti.inventario.infrastructure.feign.PageMixIn;
-import br.org.pti.inventario.infrastructure.feign.PageableQueryEncoder;
+import br.org.pti.api.functional.inventario.infrastructure.feign.PageMixIn;
+import br.org.pti.api.functional.inventario.infrastructure.feign.PageableQueryEncoder;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import feign.RequestInterceptor;

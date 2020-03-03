@@ -1,6 +1,6 @@
-package br.org.pti.inventario.application.context;
+package br.org.pti.api.functional.inventario.application.context;
 
-import br.org.pti.inventario.domain.entity.configuracao.Usuario;
+import br.org.pti.api.functional.inventario.domain.entity.configuracao.Usuario;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

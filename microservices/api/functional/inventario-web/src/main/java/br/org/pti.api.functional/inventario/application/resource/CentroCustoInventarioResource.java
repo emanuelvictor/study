@@ -1,14 +1,14 @@
-package br.org.pti.inventario.application.resource;
+package br.org.pti.api.functional.inventario.application.resource;
 
-import br.org.pti.inventario.domain.entity.patrimonio.inventario.CentroCustoInventario;
-import br.org.pti.inventario.domain.entity.patrimonio.inventario.CentroCustoInventarioStatus;
-import br.org.pti.inventario.domain.repository.ICentroCustoInventarioRepository;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.inventario.CentroCustoInventario;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.inventario.CentroCustoInventarioStatus;
+import br.org.pti.api.functional.inventario.domain.repository.ICentroCustoInventarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import static br.org.pti.inventario.application.resource.Roles.*;
+import static br.org.pti.api.functional.inventario.application.resource.Roles.*;
 
 /**
  * RESTFul de Centros de Custo

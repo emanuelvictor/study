@@ -1,9 +1,9 @@
-package br.org.pti.inventario.domain.service;
+package br.org.pti.api.functional.inventario.domain.service;
 
-import br.org.pti.inventario.domain.entity.configuracao.GrupoAcesso;
-import br.org.pti.inventario.domain.entity.configuracao.GrupoAcessoPermissao;
-import br.org.pti.inventario.domain.repository.IGrupoAcessoPermissaoRepository;
-import br.org.pti.inventario.domain.repository.IGrupoAcessoRepository;
+import br.org.pti.api.functional.inventario.domain.entity.configuracao.GrupoAcesso;
+import br.org.pti.api.functional.inventario.domain.entity.configuracao.GrupoAcessoPermissao;
+import br.org.pti.api.functional.inventario.domain.repository.IGrupoAcessoPermissaoRepository;
+import br.org.pti.api.functional.inventario.domain.repository.IGrupoAcessoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

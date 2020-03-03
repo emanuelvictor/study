@@ -1,4 +1,4 @@
-package br.org.pti.inventario.application.i18n;
+package br.org.pti.api.functional.inventario.application.i18n;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceResolvable;

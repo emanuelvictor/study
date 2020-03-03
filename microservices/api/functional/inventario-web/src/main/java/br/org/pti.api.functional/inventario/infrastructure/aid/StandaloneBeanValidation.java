@@ -1,4 +1,4 @@
-package br.org.pti.inventario.infrastructure.aid;
+package br.org.pti.api.functional.inventario.infrastructure.aid;
 
 import javax.validation.*;
 import java.util.Set;

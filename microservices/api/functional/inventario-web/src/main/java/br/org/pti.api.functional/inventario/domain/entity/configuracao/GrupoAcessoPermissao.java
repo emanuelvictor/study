@@ -1,6 +1,6 @@
-package br.org.pti.inventario.domain.entity.configuracao;
+package br.org.pti.api.functional.inventario.domain.entity.configuracao;
 
-import br.org.pti.inventario.domain.entity.AbstractEntity;
+import br.org.pti.api.functional.inventario.domain.entity.AbstractEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -9,8 +9,8 @@ import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 
-import static br.org.pti.inventario.InventarioApplication.AUDIT_SUFFIX;
-import static br.org.pti.inventario.InventarioApplication.CONFIGURACAO;
+import static br.org.pti.api.functional.inventario.InventarioApplication.AUDIT_SUFFIX;
+import static br.org.pti.api.functional.inventario.InventarioApplication.CONFIGURACAO;
 
 /**
  * @author Emanuel Victor

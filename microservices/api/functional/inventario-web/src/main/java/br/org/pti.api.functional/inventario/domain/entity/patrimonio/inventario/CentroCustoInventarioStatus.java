@@ -1,4 +1,4 @@
-package br.org.pti.inventario.domain.entity.patrimonio.inventario;
+package br.org.pti.api.functional.inventario.domain.entity.patrimonio.inventario;
 
 public enum CentroCustoInventarioStatus {
     EM_CRIACAO, EM_EXECUCAO, RECUSADO, EM_ANALISE, APROVADO, FINALIZADO;

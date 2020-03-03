@@ -1,13 +1,13 @@
-package br.org.pti.inventario.domain.service;
+package br.org.pti.api.functional.inventario.domain.service;
 
-import br.org.pti.inventario.application.context.ContextHolder;
-import br.org.pti.inventario.application.i18n.MessageSourceHolder;
-import br.org.pti.inventario.application.ldap.LdapConfig;
-import br.org.pti.inventario.domain.entity.configuracao.Permissao;
-import br.org.pti.inventario.domain.entity.configuracao.Usuario;
-import br.org.pti.inventario.domain.repository.IExecutorRepository;
-import br.org.pti.inventario.domain.repository.IUsuarioRepository;
-import br.org.pti.inventario.infrastructure.aid.StandaloneBeanValidation;
+import br.org.pti.api.functional.inventario.application.context.ContextHolder;
+import br.org.pti.api.functional.inventario.application.i18n.MessageSourceHolder;
+import br.org.pti.api.functional.inventario.application.ldap.LdapConfig;
+import br.org.pti.api.functional.inventario.domain.entity.configuracao.Permissao;
+import br.org.pti.api.functional.inventario.domain.entity.configuracao.Usuario;
+import br.org.pti.api.functional.inventario.domain.repository.IExecutorRepository;
+import br.org.pti.api.functional.inventario.domain.repository.IUsuarioRepository;
+import br.org.pti.api.functional.inventario.infrastructure.aid.StandaloneBeanValidation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

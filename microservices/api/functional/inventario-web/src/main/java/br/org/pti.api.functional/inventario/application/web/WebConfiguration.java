@@ -1,9 +1,9 @@
-package br.org.pti.inventario.application.web;
+package br.org.pti.api.functional.inventario.application.web;
 
-import br.org.pti.inventario.application.context.ContextHolder;
-import br.org.pti.inventario.application.i18n.ResourceBundleMessageSource;
-import br.org.pti.inventario.domain.entity.configuracao.Usuario;
-import br.org.pti.inventario.domain.repository.IUsuarioRepository;
+import br.org.pti.api.functional.inventario.application.context.ContextHolder;
+import br.org.pti.api.functional.inventario.application.i18n.ResourceBundleMessageSource;
+import br.org.pti.api.functional.inventario.domain.entity.configuracao.Usuario;
+import br.org.pti.api.functional.inventario.domain.repository.IUsuarioRepository;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-import static br.org.pti.inventario.InventarioApplication.LOGGER;
+import static br.org.pti.api.functional.inventario.InventarioApplication.LOGGER;
 
 /**
  * Define a configuração web da aplicação

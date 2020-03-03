@@ -1,4 +1,4 @@
-package br.org.pti.inventario;
+package br.org.pti.api.functional.inventario;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

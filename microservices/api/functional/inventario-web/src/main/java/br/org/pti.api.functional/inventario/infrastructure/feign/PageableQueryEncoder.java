@@ -1,4 +1,4 @@
-package br.org.pti.inventario.infrastructure.feign;
+package br.org.pti.api.functional.inventario.infrastructure.feign;
 
 import feign.RequestTemplate;
 import feign.codec.EncodeException;

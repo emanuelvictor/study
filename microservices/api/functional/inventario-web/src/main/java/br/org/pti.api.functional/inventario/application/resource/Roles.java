@@ -1,4 +1,4 @@
-package br.org.pti.inventario.application.resource;
+package br.org.pti.api.functional.inventario.application.resource;
 
 /**
  * Armazena as permissões do sistema

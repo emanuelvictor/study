@@ -1,8 +1,8 @@
-package br.org.pti.inventario.domain.entity.configuracao;
+package br.org.pti.api.functional.inventario.domain.entity.configuracao;
 
 import br.com.caelum.stella.validation.CNPJValidator;
 import br.com.caelum.stella.validation.CPFValidator;
-import br.org.pti.inventario.domain.entity.AbstractEntity;
+import br.org.pti.api.functional.inventario.domain.entity.AbstractEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.hibernate.envers.AuditTable;
@@ -13,8 +13,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.regex.Pattern;
 
-import static br.org.pti.inventario.InventarioApplication.AUDIT_SUFFIX;
-import static br.org.pti.inventario.InventarioApplication.CONFIGURACAO;
+import static br.org.pti.api.functional.inventario.InventarioApplication.AUDIT_SUFFIX;
+import static br.org.pti.api.functional.inventario.InventarioApplication.CONFIGURACAO;
 
 /**
  * @author Emanuel Victor

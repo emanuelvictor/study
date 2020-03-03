@@ -1,6 +1,6 @@
-package br.org.pti.inventario.domain.entity.patrimonio.dto;
+package br.org.pti.api.functional.inventario.domain.entity.patrimonio.dto;
 
-import br.org.pti.inventario.domain.entity.AbstractEntity;
+import br.org.pti.api.functional.inventario.domain.entity.AbstractEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

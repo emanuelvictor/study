@@ -1,13 +1,13 @@
-package br.org.pti.inventario.application.scheduling;
+package br.org.pti.api.functional.inventario.application.scheduling;
 
-import br.org.pti.inventario.domain.entity.patrimonio.Patrimonio;
-import br.org.pti.inventario.domain.entity.patrimonio.dto.PatrimonioDTO;
-import br.org.pti.inventario.domain.entity.patrimonio.inventario.CentroCustoInventario;
-import br.org.pti.inventario.domain.entity.patrimonio.inventario.CentroCustoInventarioStatus;
-import br.org.pti.inventario.domain.repository.ICentroCustoInventarioRepository;
-import br.org.pti.inventario.domain.repository.IPatrimonioRepository;
-import br.org.pti.inventario.domain.repository.feign.IPatrimonioFeignRepository;
-import br.org.pti.inventario.domain.service.PatrimonioService;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.Patrimonio;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.dto.PatrimonioDTO;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.inventario.CentroCustoInventario;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.inventario.CentroCustoInventarioStatus;
+import br.org.pti.api.functional.inventario.domain.repository.ICentroCustoInventarioRepository;
+import br.org.pti.api.functional.inventario.domain.repository.IPatrimonioRepository;
+import br.org.pti.api.functional.inventario.domain.repository.feign.IPatrimonioFeignRepository;
+import br.org.pti.api.functional.inventario.domain.service.PatrimonioService;
 import lombok.RequiredArgsConstructor;
 import org.quartz.*;
 import org.slf4j.Logger;
@@ -216,7 +216,7 @@ public class JobConfiguration {
 
                 if (centroCustoInventario.getDataTerminoExtendida() == null || centroCustoInventario.getDataTerminoExtendida().isBefore(LocalDate.now())) {
 
-                    final List<PatrimonioDTO> patrimonios = patrimonioFeignRepository.listByFilters(centroCustoInventario.getCentroCusto().getCodigo(), null, null, new PageRequest(0, 1000000)).getContent();
+                    final List<PatrimonioDTO> patrimonios = patrimonioFeignRepository.listByFilters(centroCustoInventario.getCentroCusto().getCodigo(), null, null, PageRequest.of(0, 1000000)).getContent();
 
                     patrimonios.forEach(patrimonioDTO -> {
                         if (patrimonioRepository.findByCodigoBaseAndItemAndNumero(patrimonioDTO.getCodigoBase(), patrimonioDTO.getItem(), patrimonioDTO.getPlaqueta()).isEmpty()) {

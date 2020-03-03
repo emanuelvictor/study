@@ -1,4 +1,4 @@
-package br.org.pti.inventario.domain.entity.pessoal.dto;
+package br.org.pti.api.functional.inventario.domain.entity.pessoal.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

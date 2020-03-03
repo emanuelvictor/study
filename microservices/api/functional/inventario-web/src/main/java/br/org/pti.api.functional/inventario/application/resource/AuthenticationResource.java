@@ -1,8 +1,8 @@
-package br.org.pti.inventario.application.resource;
+package br.org.pti.api.functional.inventario.application.resource;
 
-import br.org.pti.inventario.domain.entity.configuracao.Usuario;
-import br.org.pti.inventario.domain.service.AuthenticationService;
-import br.org.pti.inventario.domain.service.UsuarioService;
+import br.org.pti.api.functional.inventario.domain.entity.configuracao.Usuario;
+import br.org.pti.api.functional.inventario.domain.service.AuthenticationService;
+import br.org.pti.api.functional.inventario.domain.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

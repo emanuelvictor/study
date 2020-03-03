@@ -1,4 +1,4 @@
-package br.org.pti.inventario.domain.entity;
+package br.org.pti.api.functional.inventario.domain.entity;
 
 import com.fasterxml.jackson.annotation.ObjectIdGenerator;
 import com.fasterxml.jackson.annotation.ObjectIdResolver;

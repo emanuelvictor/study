@@ -1,4 +1,4 @@
-package br.org.pti.inventario.infrastructure.feign;
+package br.org.pti.api.functional.inventario.infrastructure.feign;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,7 +30,7 @@ public class SimplePageImpl<T> implements Page<T> {
                           @JsonProperty("page") final int number,
                           @JsonProperty("size") final int size,
                           @JsonProperty("totalElements") final long totalElements) {
-        delegate = new PageImpl<>(content, new PageRequest(number, size), totalElements);
+        delegate = new PageImpl<>(content, PageRequest.of(number, size), totalElements);
     }
 
     /**

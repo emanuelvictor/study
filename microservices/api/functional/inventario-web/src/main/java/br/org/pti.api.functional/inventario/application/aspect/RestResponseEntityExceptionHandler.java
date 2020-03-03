@@ -1,4 +1,4 @@
-package br.org.pti.inventario.application.aspect;
+package br.org.pti.api.functional.inventario.application.aspect;
 
 import feign.FeignException;
 import org.apache.commons.lang3.StringUtils;

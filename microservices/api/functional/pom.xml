@@ -14,14 +14,11 @@
     <name>functional</name>
     <version>1.0.0-SNAPSHOT</version>
 
-    <properties>
-        <java.version>11</java.version>
-        <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
-        <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
-
-        <!--validação de cpf e cnpj-->
-        <stella.caelumn.version>2.1.2</stella.caelumn.version>
-
-    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

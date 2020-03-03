@@ -1,4 +1,4 @@
-package br.org.pti.inventario.application.ldap;
+package br.org.pti.api.functional.inventario.application.ldap;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,4 +1,4 @@
-package br.org.pti.inventario.infrastructure.hibernate.constraint;
+package br.org.pti.api.functional.inventario.infrastructure.hibernate.constraint;
 
 import org.hibernate.boot.model.naming.Identifier;
 import org.hibernate.boot.model.naming.ImplicitForeignKeyNameSource;

@@ -1,7 +1,7 @@
-package br.org.pti.inventario.domain.entity.patrimonio.inventario;
+package br.org.pti.api.functional.inventario.domain.entity.patrimonio.inventario;
 
-import br.org.pti.inventario.domain.entity.AbstractEntity;
-import br.org.pti.inventario.domain.entity.EntityIdResolver;
+import br.org.pti.api.functional.inventario.domain.entity.AbstractEntity;
+import br.org.pti.api.functional.inventario.domain.entity.EntityIdResolver;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -17,8 +17,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Set;
 
-import static br.org.pti.inventario.InventarioApplication.AUDIT_SUFFIX;
-import static br.org.pti.inventario.InventarioApplication.PATRIMONIO;
+import static br.org.pti.api.functional.inventario.InventarioApplication.AUDIT_SUFFIX;
+import static br.org.pti.api.functional.inventario.InventarioApplication.PATRIMONIO;
 
 /**
  * @author Emanuel Victor

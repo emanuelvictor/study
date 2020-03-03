@@ -1,7 +1,7 @@
-package br.org.pti.inventario.domain.repository.feign;
+package br.org.pti.api.functional.inventario.domain.repository.feign;
 
-import br.org.pti.inventario.domain.entity.patrimonio.dto.LocalizacaoDTO;
-import br.org.pti.inventario.domain.entity.pessoal.dto.CentroCustoDTO;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.dto.LocalizacaoDTO;
+import br.org.pti.api.functional.inventario.domain.entity.pessoal.dto.CentroCustoDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

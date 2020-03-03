@@ -1,0 +1,91 @@
+spring:
+  application.name: @name@
+
+  datasource:
+    username: sa_authorization-server
+    password: sa_authorization-server
+    hikari.pool-name: ${spring.application.name}
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    hikari.maximum-pool-size: 10
+    url: jdbc:postgresql://localhost:5432/authorization-server
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        hibernate.dialect: br.org.pti.api.nonfunctional.authengine.infrastructure.jpa.CustomPostgresDialect
+        jdbc.lob.non_contextual_creation: true
+        jdbc.batch_size: 20
+        connection.autocommit: false
+        implicit_naming_strategy: br.org.pti.api.nonfunctional.authengine.infrastructure.jpa.CustomNamingStrategy
+      org.hibernate.envers.store_data_at_delete: true
+      org.hibernate.envers.revision_field_name: revision
+      org.hibernate.envers.audit_table_suffix: _audit
+      org.hibernate.envers.revision_type_field_name: revision_type
+
+
+  flyway:
+    enabled: true
+    check-location: true
+    locations: classpath:db/migrations
+    sql-migration-prefix:
+    baseline-on-migrate: true
+    baseline-version: 0
+#
+#  thymeleaf:
+#    enabled: true
+#    cache: false
+#    check-template: true
+#    check-template-location: true
+
+#  http:
+#    encoding:
+#      charset: UTF-8
+#      enabled: true
+#      force: true
+
+#server:
+#  servlet:
+#    session:
+#      persistent: false
+
+management:
+  health:
+    ldap:
+      enabled: false
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: ['health', 'info', 'flyway' , 'logfile']
+  endpoint:
+    health:
+      enabled: true
+    info:
+      enabled: true
+    flyway:
+      enabled: true
+    logfile:
+      enabled: true
+      external-file: /var/log/${spring.application.name}/${spring.application.name}.log
+
+logging:
+  file:
+    name: /var/log/${spring.application.name}/${spring.application.name}.log
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.springframework: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.context.support: INFO
+
+info:
+  name: authorization-server
+  description: 'Authorization Server'
+  version: @project.version@-@project.build-number@
+  environment: @active.profile@

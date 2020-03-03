@@ -10,8 +10,8 @@
     </parent>
 
     <groupId>br.org.pti.api.functional</groupId>
-    <artifactId>${name}</artifactId>
-    <version>2.8.1</version>
+    <artifactId>inventarioweb</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
     <name>inventario-web</name>
 
     <properties>
@@ -20,14 +20,8 @@
         <project.build-number>b${build-number}</project.build-number>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <start-class>br.org.pti.inventario.InventarioApplication</start-class>
+        <start-class>br.org.pti.api.functional.inventario.InventarioApplication</start-class>
         <java.version>11</java.version>
-
-        <!--ng build configuration-->
-        <node.version>v10.14.1</node.version>
-        <yarn.version>v1.12.3</yarn.version>
-        <node.path>${user.home}/.node-base</node.path>
-        <typescript.path>src/main/ts</typescript.path>
 
         <!-- apache - upload de arquivos-->
         <commons-fileupload.version>1.4</commons-fileupload.version>
@@ -42,9 +36,6 @@
 
         <!--oauth2 version-->
         <oauth2-autoconfiguration.version>2.1.4.RELEASE</oauth2-autoconfiguration.version>
-
-        <!--spring cloud version-->
-        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
 
         <!--jaxb for java 10 compat-->
         <jaxb-api.version>2.3.0</jaxb-api.version>
@@ -64,50 +55,7 @@
 
     </properties>
 
-    <profiles>
-        <profile>
-            <id>alpha</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <active.profile>alpha</active.profile>
-                <final-name>${project.artifactId}-${project.version}-ALPHA</final-name>
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
-        </profile>
-        <profile>
-            <id>beta</id>
-            <properties>
-                <active.profile>beta</active.profile>
-                <final-name>${project.artifactId}-${project.version}-BETA</final-name>
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
-        </profile>
-        <profile>
-            <id>release-candidate</id>
-            <properties>
-                <active.profile>release-candidate</active.profile>
-                <final-name>${project.artifactId}-${project.version}-RC</final-name>
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
-        </profile>
-        <profile>
-            <id>release</id>
-            <properties>
-                <active.profile>release</active.profile>
-                <final-name>${project.artifactId}-${project.version}-RELEASE</final-name>
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
-        </profile>
-    </profiles>
-
     <dependencies>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
 
         <!--spring-boot-->
         <dependency>
@@ -140,12 +88,6 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
-        <!-- actuator -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
         <!-- LDAP Spring Security -->
         <dependency>
             <groupId>org.springframework.ldap</groupId>
@@ -172,18 +114,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-
-        <!--spring-boot testing-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <!--hibernate-->
@@ -300,19 +230,6 @@
 
     </dependencies>
 
-    <!--configuração para dependências do feign-->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <build>
         <finalName>${final-name}</finalName>
         <plugins>
@@ -345,7 +262,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <includeSystemScope>true</includeSystemScope>
-                    <mainClass>br.org.pti.inventario.InventarioApplication</mainClass>
+                    <mainClass>br.org.pti.api.functional.inventario.InventarioApplication</mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -365,45 +282,6 @@
                         <include>**/*IntegrationTests.java</include>
                     </includes>
                 </configuration>
-            </plugin>
-
-            <!-- Angular build -->
-            <plugin>
-                <groupId>com.github.eirslett</groupId>
-                <artifactId>frontend-maven-plugin</artifactId>
-                <version>${frontend-maven-plugin.version}</version>
-                <configuration>
-                    <nodeVersion>${node.version}</nodeVersion>
-                    <yarnVersion>${yarn.version}</yarnVersion>
-                    <workingDirectory>${typescript.path}</workingDirectory>
-                    <installDirectory>${node.path}</installDirectory>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>install node and yarn</id>
-                        <goals>
-                            <goal>install-node-and-yarn</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>yarn install</id>
-                        <goals>
-                            <goal>yarn</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>install --mutex network</arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>yarn run mavenbuild</id>
-                        <goals>
-                            <goal>yarn</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>run mavenbuild</arguments>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
 

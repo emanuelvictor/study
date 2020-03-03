@@ -1,8 +1,8 @@
-package br.org.pti.inventario.application.ldap;
+package br.org.pti.api.functional.inventario.application.ldap;
 
-import br.org.pti.inventario.domain.entity.configuracao.Pessoa;
-import br.org.pti.inventario.domain.entity.configuracao.Usuario;
-import br.org.pti.inventario.domain.service.UsuarioService;
+import br.org.pti.api.functional.inventario.domain.entity.configuracao.Pessoa;
+import br.org.pti.api.functional.inventario.domain.entity.configuracao.Usuario;
+import br.org.pti.api.functional.inventario.domain.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.core.support.LdapContextSource;

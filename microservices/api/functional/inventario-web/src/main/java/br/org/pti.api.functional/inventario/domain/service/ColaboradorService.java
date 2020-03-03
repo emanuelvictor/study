@@ -1,9 +1,9 @@
-package br.org.pti.inventario.domain.service;
+package br.org.pti.api.functional.inventario.domain.service;
 
-import br.org.pti.inventario.application.ldap.LdapConfig;
-import br.org.pti.inventario.domain.entity.configuracao.Usuario;
-import br.org.pti.inventario.domain.entity.pessoal.dto.ColaboradorDTO;
-import br.org.pti.inventario.domain.repository.feign.IColaboradorFeignRepository;
+import br.org.pti.api.functional.inventario.application.ldap.LdapConfig;
+import br.org.pti.api.functional.inventario.domain.entity.configuracao.Usuario;
+import br.org.pti.api.functional.inventario.domain.entity.pessoal.dto.ColaboradorDTO;
+import br.org.pti.api.functional.inventario.domain.repository.feign.IColaboradorFeignRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

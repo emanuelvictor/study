@@ -1,16 +1,16 @@
-package br.org.pti.inventario.application.resource;
+package br.org.pti.api.functional.inventario.application.resource;
 
-import br.org.pti.inventario.application.context.ContextHolder;
-import br.org.pti.inventario.domain.entity.patrimonio.inventario.CentroCustoInventario;
-import br.org.pti.inventario.domain.entity.patrimonio.inventario.CentroCustoInventarioStatus;
-import br.org.pti.inventario.domain.entity.pessoal.CentroCusto;
-import br.org.pti.inventario.domain.entity.pessoal.dto.CentroCustoDTO;
-import br.org.pti.inventario.domain.entity.pessoal.dto.ColaboradorDTO;
-import br.org.pti.inventario.domain.repository.ICentroCustoInventarioRepository;
-import br.org.pti.inventario.domain.repository.IPatrimonioRepository;
-import br.org.pti.inventario.domain.repository.feign.IPatrimonioFeignRepository;
-import br.org.pti.inventario.domain.service.CentroCustoService;
-import br.org.pti.inventario.domain.service.ColaboradorService;
+import br.org.pti.api.functional.inventario.application.context.ContextHolder;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.inventario.CentroCustoInventario;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.inventario.CentroCustoInventarioStatus;
+import br.org.pti.api.functional.inventario.domain.entity.pessoal.CentroCusto;
+import br.org.pti.api.functional.inventario.domain.entity.pessoal.dto.CentroCustoDTO;
+import br.org.pti.api.functional.inventario.domain.entity.pessoal.dto.ColaboradorDTO;
+import br.org.pti.api.functional.inventario.domain.repository.ICentroCustoInventarioRepository;
+import br.org.pti.api.functional.inventario.domain.repository.IPatrimonioRepository;
+import br.org.pti.api.functional.inventario.domain.repository.feign.IPatrimonioFeignRepository;
+import br.org.pti.api.functional.inventario.domain.service.CentroCustoService;
+import br.org.pti.api.functional.inventario.domain.service.ColaboradorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
-import static br.org.pti.inventario.application.resource.Roles.*;
+import static br.org.pti.api.functional.inventario.application.resource.Roles.*;
 
 /**
  * RESTFul de Centros de Custo
@@ -249,7 +249,7 @@ public class CentroCustoResource {
     @GetMapping("/{centroCustoCodigo}/nao-inventariados")
     @PreAuthorize("hasAnyAuthority('" + CENTRO_CUSTO_GET_ROLE + "', '" + ROOT + "')")
     public Integer countPatrimoniosNaoInventariados(@PathVariable final String centroCustoCodigo) {
-        return this.patrimonioFeignRepository.listByFilters(centroCustoCodigo, null, null, new PageRequest(0, 20000000)).getContent().size() - this.countPatrimoniosInventariados(centroCustoCodigo);
+        return this.patrimonioFeignRepository.listByFilters(centroCustoCodigo, null, null, PageRequest.of(0, 20000000)).getContent().size() - this.countPatrimoniosInventariados(centroCustoCodigo);
     }
 
     /**

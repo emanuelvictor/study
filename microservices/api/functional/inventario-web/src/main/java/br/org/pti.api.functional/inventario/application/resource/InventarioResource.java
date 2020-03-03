@@ -1,8 +1,8 @@
-package br.org.pti.inventario.application.resource;
+package br.org.pti.api.functional.inventario.application.resource;
 
-import br.org.pti.inventario.domain.entity.patrimonio.inventario.CentroCustoInventario;
-import br.org.pti.inventario.domain.entity.patrimonio.inventario.Inventario;
-import br.org.pti.inventario.domain.service.InventarioService;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.inventario.CentroCustoInventario;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.inventario.Inventario;
+import br.org.pti.api.functional.inventario.domain.service.InventarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import static br.org.pti.inventario.application.resource.Roles.*;
+import static br.org.pti.api.functional.inventario.application.resource.Roles.*;
 
 /**
  * RESTFul de Inventários

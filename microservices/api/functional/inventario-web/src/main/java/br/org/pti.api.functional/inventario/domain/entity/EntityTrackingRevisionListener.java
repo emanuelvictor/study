@@ -1,6 +1,6 @@
-package br.org.pti.inventario.domain.entity;
+package br.org.pti.api.functional.inventario.domain.entity;
 
-import br.org.pti.inventario.application.context.ContextHolder;
+import br.org.pti.api.functional.inventario.application.context.ContextHolder;
 import org.hibernate.envers.RevisionType;
 
 import java.io.Serializable;

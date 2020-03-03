@@ -2,8 +2,144 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/AuthorizationManagerApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/TestResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/spring.oauth/CommonConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/spring.oauth/ResourceServerConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/AccessGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/AccessGroupPermission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/GrantType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/Permission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/generic/EntityIdResolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/generic/IPersistentEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/generic/PersistentEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/generic/Revision.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/generic/RevisionListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/exceptions/ApplicationRuntimeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/exceptions/BusinessLogicException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/BusinessLogic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/application/ApplicationSavingLogic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/application/ApplicationUpdatingLogic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/application/EmailDuplicadoValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/application/EncodarSenhaLogic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/application/NomeUsuarioValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/repositories/ApplicationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/repositories/PermissionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/repositories/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/services/ApplicationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/services/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/infrastructure/jpa/CustomNamingStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/infrastructure/jpa/CustomPostgresDialect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/infrastructure/jpa/PostgresFilterFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/infrastructure/misc/PasswordGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/config/application-alpha.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/config/application-beta.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/config/application-release.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/config/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.0__RELEASE.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.1__RELEASE.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/static/css/autenticacao.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/static/css/layout-base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/static/images/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/static/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/static/js/aplicacao.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/static/js/utilidades.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/test/java/br/org/pti/api/nonfunctional/authorizationserver/AuthorizationServerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/authorization-server/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/authorization-server/src/main/resources/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/integrator/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/functional/integrator/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/integrator/src/main/java/br/org/pti/api.functional.integrator/application/security/oauth/OAuthBeansConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/integrator/src/main/java/br/org/pti/api.functional.integrator/application/security/oauth/CommonConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/InventarioApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/InventarioApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/aspect/RestResponseEntityExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/aspect/RestResponseEntityExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/context/ContextHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/context/ContextHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/handler/AuthenticationFailureHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/handler/AuthenticationFailureHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/handler/AuthenticationSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/handler/AuthenticationSuccessHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/i18n/MessageSourceHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/i18n/MessageSourceHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/i18n/ResourceBundleMessageSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/i18n/ResourceBundleMessageSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/ldap/LdapConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/ldap/LdapConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/ldap/LdapDbAuthenticationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/ldap/LdapDbAuthenticationProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/navigation/NavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/navigation/NavigationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/AuthenticationResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/AuthenticationResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/CentroCustoInventarioResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/CentroCustoInventarioResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/CentroCustoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/CentroCustoResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/GrupoAcessoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/GrupoAcessoResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/InventarioResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/InventarioResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/PatrimonioResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/PatrimonioResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/PermissaoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/PermissaoResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/Roles.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/Roles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/UsuarioResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/resource/UsuarioResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/scheduling/JobConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/scheduling/JobConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/security/AuthenticationConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/security/AuthenticationConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/security/WebSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/security/WebSecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/web/WebConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/application/web/WebConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/AbstractEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/AbstractEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/AbstractVersionedEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/AbstractVersionedEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/EntityIdResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/EntityIdResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/EntityTrackingRevisionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/EntityTrackingRevisionListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/Revision.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/Revision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/configuracao/GrupoAcesso.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/configuracao/GrupoAcesso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/configuracao/GrupoAcessoPermissao.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/configuracao/GrupoAcessoPermissao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/configuracao/Permissao.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/configuracao/Permissao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/configuracao/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/configuracao/Pessoa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/configuracao/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/configuracao/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/Localizacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/Localizacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/Patrimonio.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/Patrimonio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/dto/LocalizacaoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/dto/LocalizacaoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/dto/PatrimonioDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/dto/PatrimonioDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/inventario/CentroCustoInventario.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/inventario/CentroCustoInventario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/inventario/CentroCustoInventarioStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/inventario/CentroCustoInventarioStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/inventario/Executor.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/inventario/Executor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/inventario/Inventario.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/patrimonio/inventario/Inventario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/pessoal/CentroCusto.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/pessoal/CentroCusto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/pessoal/dto/CentroCustoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/pessoal/dto/CentroCustoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/pessoal/dto/ColaboradorDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/entity/pessoal/dto/ColaboradorDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/ICentroCustoInventarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/ICentroCustoInventarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/ICentroCustoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/ICentroCustoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/IExecutorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/IExecutorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/IGrupoAcessoPermissaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/IGrupoAcessoPermissaoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/IGrupoAcessoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/IGrupoAcessoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/IInventarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/IInventarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/ILocalizacaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/ILocalizacaoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/IPatrimonioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/IPatrimonioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/IPermissaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/IPermissaoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/IUsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/IUsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/feign/ICentroCustoFeignRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/feign/ICentroCustoFeignRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/feign/IColaboradorFeignRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/feign/IColaboradorFeignRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/feign/ILocalizacaoFeignRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/feign/ILocalizacaoFeignRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/feign/IPatrimonioFeignRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/repository/feign/IPatrimonioFeignRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/service/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/service/CentroCustoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/service/CentroCustoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/service/ColaboradorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/service/ColaboradorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/service/GrupoAcessoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/service/GrupoAcessoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/service/InventarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/service/InventarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/service/PatrimonioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/service/PatrimonioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/domain/service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/aid/StandaloneBeanValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/aid/StandaloneBeanValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/aid/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/aid/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/feign/PageMixIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/feign/PageMixIn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/feign/PageableQueryEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/feign/PageableQueryEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/feign/SimplePageImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/feign/SimplePageImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/hibernate/constraint/ConstraintsImplicitNamingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/hibernate/constraint/ConstraintsImplicitNamingStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/hibernate/dialect/PostgreSQLDialect.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/hibernate/dialect/PostgreSQLDialect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/hibernate/functions/PostgreSQLFilterFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/hibernate/functions/PostgreSQLFilterFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/oauth/OAuth2ClientConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/oauth/OAuth2ClientConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/oauth/feign/OAuth2FeignAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/oauth/feign/OAuth2FeignAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/oauth/feign/OAuth2FeignRequestInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/java/br/org/pti.api.functional/inventario/infrastructure/oauth/feign/OAuth2FeignRequestInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/main/resources/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/test/java/br/org/pti/inventario/domain/TestApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/test/java/br/org/pti/api/functional/inventario/domain/TestApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/test/java/br/org/pti/inventario/domain/service/AbstractIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/test/java/br/org/pti/api/functional/inventario/domain/service/AbstractIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/inventario-web/src/test/java/br/org/pti/inventario/domain/service/UsuarioServiceIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/inventario-web/src/test/java/br/org/pti/api/functional/inventario/domain/service/UsuarioServiceIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/functional/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/portal-compras/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/functional/portal-compras/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/authorization-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/authorization-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,6 +149,9 @@
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="238" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -37,17 +176,18 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/functional/integrator" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/functional/inventario-web" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/functional/authorization-manager/src/main/java/br/org/pti/api/functional/authorizationmanager/application" />
+      <recent name="$PROJECT_DIR$/functional" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/functional" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -62,17 +202,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AuthorizationServerApplication">
+  <component name="RunManager" selected="Spring Boot.DiscovererApplication">
+    <configuration name="AuthorizationManagerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="accountmanager" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.accountmanager.AuthorizationManagerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AuthorizationServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="authorization-server" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.authorizationserver.AuthorizationServerApplication" />
+      <module name="auth-engine" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.authengine.AuthEngineApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ComprasApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="portal-compras" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.compras.ComprasApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.portalcompras.ComprasApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -87,7 +235,8 @@
     </configuration>
     <configuration name="DiscovererApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="discoverer" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.proxy.DiscovererApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.discoverer.DiscovererApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -109,7 +258,8 @@
     </configuration>
     <configuration name="InventarioApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="inventario-web" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.inventario.InventarioApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.inventario.InventarioApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -128,6 +278,7 @@
       <item itemvalue="Spring Boot.IntegratorApplication" />
       <item itemvalue="Spring Boot.InventarioApplication" />
       <item itemvalue="Spring Boot.ProxyApplication" />
+      <item itemvalue="Spring Boot.AuthorizationManagerApplication" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -140,7 +291,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583250715907</updated>
-      <workItem from="1583250717366" duration="5329000" />
+      <workItem from="1583250717366" duration="6157000" />
+      <workItem from="1583258679209" duration="6101000" />
     </task>
     <task id="LOCAL-00001" summary="Rearranging packages.">
       <created>1583254084341</created>
@@ -149,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583254084341</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Rearranging packages.">
+      <created>1583256331365</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1583256331365</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,7 +319,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -169,5 +330,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Rearranging packages." />
     <option name="LAST_COMMIT_MESSAGE" value="Rearranging packages." />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/api$InventarioApplication.ic" NAME="InventarioApplication Coverage Results" MODIFIED="1583262580381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

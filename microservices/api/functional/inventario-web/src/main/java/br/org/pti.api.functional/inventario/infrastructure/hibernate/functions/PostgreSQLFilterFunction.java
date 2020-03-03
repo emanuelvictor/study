@@ -1,4 +1,4 @@
-package br.org.pti.inventario.infrastructure.hibernate.functions;
+package br.org.pti.api.functional.inventario.infrastructure.hibernate.functions;
 
 import org.hibernate.QueryException;
 import org.hibernate.dialect.function.SQLFunction;

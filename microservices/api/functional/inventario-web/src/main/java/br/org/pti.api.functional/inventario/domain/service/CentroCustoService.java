@@ -1,13 +1,13 @@
-package br.org.pti.inventario.domain.service;
+package br.org.pti.api.functional.inventario.domain.service;
 
-import br.org.pti.inventario.application.context.ContextHolder;
-import br.org.pti.inventario.application.i18n.MessageSourceHolder;
-import br.org.pti.inventario.domain.entity.configuracao.Usuario;
-import br.org.pti.inventario.domain.entity.pessoal.CentroCusto;
-import br.org.pti.inventario.domain.entity.pessoal.dto.CentroCustoDTO;
-import br.org.pti.inventario.domain.repository.ICentroCustoRepository;
-import br.org.pti.inventario.domain.repository.IUsuarioRepository;
-import br.org.pti.inventario.domain.repository.feign.ICentroCustoFeignRepository;
+import br.org.pti.api.functional.inventario.application.context.ContextHolder;
+import br.org.pti.api.functional.inventario.application.i18n.MessageSourceHolder;
+import br.org.pti.api.functional.inventario.domain.entity.configuracao.Usuario;
+import br.org.pti.api.functional.inventario.domain.entity.pessoal.CentroCusto;
+import br.org.pti.api.functional.inventario.domain.entity.pessoal.dto.CentroCustoDTO;
+import br.org.pti.api.functional.inventario.domain.repository.ICentroCustoRepository;
+import br.org.pti.api.functional.inventario.domain.repository.IUsuarioRepository;
+import br.org.pti.api.functional.inventario.domain.repository.feign.ICentroCustoFeignRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -80,7 +80,7 @@ public class CentroCustoService {
                 }).collect(Collectors.toList()));
 
             centrosCustoList.forEach(centroCusto -> {
-                final CentroCustoDTO centroCustoDTOComGestor = centrosCustoFeignRepository.findByCentroCustoCodigo(centroCusto.getCodigo(), new PageRequest(0, 1)).getContent().stream().findFirst().orElse(new CentroCustoDTO());
+                final CentroCustoDTO centroCustoDTOComGestor = centrosCustoFeignRepository.findByCentroCustoCodigo(centroCusto.getCodigo(), PageRequest.of(0, 1)).getContent().stream().findFirst().orElse(new CentroCustoDTO());
                 centroCusto.setEmailGestor(centroCustoDTOComGestor.getEmailGestor());
                 centroCusto.setNomeGestor(centroCustoDTOComGestor.getNomeGestor());
             });
@@ -98,7 +98,7 @@ public class CentroCustoService {
             centrosCusto = this.centrosCustoFeignRepository.listByFilters(descricaoFilter, pageable);
 
         centrosCusto.forEach(centroCusto -> {
-            final CentroCustoDTO centroCustoDTOComGestor = centrosCustoFeignRepository.findByCentroCustoCodigo(centroCusto.getCodigo(), new PageRequest(0, 1)).getContent().stream().findFirst().orElse(new CentroCustoDTO());
+            final CentroCustoDTO centroCustoDTOComGestor = centrosCustoFeignRepository.findByCentroCustoCodigo(centroCusto.getCodigo(),  PageRequest.of(0, 1)).getContent().stream().findFirst().orElse(new CentroCustoDTO());
             centroCusto.setEmailGestor(centroCustoDTOComGestor.getEmailGestor());
             centroCusto.setNomeGestor(centroCustoDTOComGestor.getNomeGestor());
         });

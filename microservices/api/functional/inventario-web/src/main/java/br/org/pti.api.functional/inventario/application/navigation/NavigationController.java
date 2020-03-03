@@ -1,4 +1,4 @@
-package br.org.pti.inventario.application.navigation;
+package br.org.pti.api.functional.inventario.application.navigation;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

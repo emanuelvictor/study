@@ -1,9 +1,9 @@
-package br.org.pti.inventario.application.security;
+package br.org.pti.api.functional.inventario.application.security;
 
-import br.org.pti.inventario.application.handler.AuthenticationFailureHandler;
-import br.org.pti.inventario.application.handler.AuthenticationSuccessHandler;
-import br.org.pti.inventario.application.ldap.LdapDbAuthenticationProvider;
-import br.org.pti.inventario.domain.service.AuthenticationService;
+import br.org.pti.api.functional.inventario.application.handler.AuthenticationFailureHandler;
+import br.org.pti.api.functional.inventario.application.handler.AuthenticationSuccessHandler;
+import br.org.pti.api.functional.inventario.application.ldap.LdapDbAuthenticationProvider;
+import br.org.pti.api.functional.inventario.domain.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

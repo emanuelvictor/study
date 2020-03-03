@@ -1,9 +1,9 @@
-package br.org.pti.inventario.application.resource;
+package br.org.pti.api.functional.inventario.application.resource;
 
-import br.org.pti.inventario.domain.entity.patrimonio.Localizacao;
-import br.org.pti.inventario.domain.entity.patrimonio.Patrimonio;
-import br.org.pti.inventario.domain.entity.patrimonio.dto.PatrimonioDTO;
-import br.org.pti.inventario.domain.service.PatrimonioService;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.Localizacao;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.Patrimonio;
+import br.org.pti.api.functional.inventario.domain.entity.patrimonio.dto.PatrimonioDTO;
+import br.org.pti.api.functional.inventario.domain.service.PatrimonioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,7 +20,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import static br.org.pti.inventario.application.resource.Roles.*;
+import static br.org.pti.api.functional.inventario.application.resource.Roles.*;
 
 /**
  * RESTFul de Patrimônios
