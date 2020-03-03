@@ -30,12 +30,24 @@ import java.util.List;
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
+    /**
+     *
+     */
     private final TokenStore tokenStore;
 
+    /**
+     *
+     */
     private final List<TokenEnhancer> tokenEnhancers;
 
+    /**
+     *
+     */
     private final ApplicationService clientDetailsService;
 
+    /**
+     *
+     */
     private final AuthenticationManager authenticationManager;
 
     /**
@@ -53,8 +65,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .tokenEnhancer(tokenEnhancerChain)
                 .authenticationManager(authenticationManager);
 
-        endpoints.tokenStore(tokenStore).tokenEnhancer(tokenEnhancerChain).authenticationManager(authenticationManager);
-
     }
 
     /**
@@ -64,7 +74,22 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      */
     @Override
     public void configure(final ClientDetailsServiceConfigurer clientDetailsServiceConfigurer) throws Exception {
-        clientDetailsServiceConfigurer.withClientDetails(clientDetailsService);
+        clientDetailsServiceConfigurer.inMemory()
+                .withClient("funcionario2")
+                .authorizedGrantTypes("password", "refresh_token")
+                .redirectUris("http://0.0.0.0:9000/#/")
+
+                .scopes("perfis", "e", "permissões")
+                .secret("$2a$10$svrdNy8n1cqasMqcvHPsj.u/b.uPvNW2VdeMhFkzp5E2cSbFZW6Ba")
+
+                .and()
+
+                .withClient("local1")
+                .authorizedGrantTypes("password", "authorization_code", "refresh_token")
+
+                .scopes("perfis", "e", "permissões")
+                .secret("123456");
+//        clientDetailsServiceConfigurer.withClientDetails(clientDetailsService);
     }
 
     /**

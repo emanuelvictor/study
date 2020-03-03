@@ -29,5 +29,6 @@ zuul:
       path: /inventario/**
       serviceId: inventario
       stripPrefix: true
+  sensitive-headers:
 
 

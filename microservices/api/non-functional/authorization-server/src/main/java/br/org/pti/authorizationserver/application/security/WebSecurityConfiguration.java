@@ -7,31 +7,26 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * @author Arthur Gregorio
+ * @author Emanuel Victor
  * @version 1.0.0
  * @since 2.0.0, 31/01/2020
  */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, proxyTargetClass = true)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     /**
-     * {@inheritDoc}
      *
-     * @param web
-     * @throws Exception
      */
-    @Override
-    public void configure(final WebSecurity web) {
-        web.ignoring().antMatchers("/resources/**");
-    }
+    private final UserDetailsService userDetailsService;
 
     /**
      * {@inheritDoc}
@@ -41,15 +36,17 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(final AuthenticationManagerBuilder builder) throws Exception {
-//        builder
-//                .ldapAuthentication()
-//                .contextSource()
-//                .url("ldap://dc04.fpti.pti.org.br/OU=Admins,DC=fpti,DC=pti,DC=org,DC=br")
-//                .managerDn("CN=bindintegrador,OU=Aplicacoes,DC=fpti,DC=pti,DC=org,DC=br")
-//                .managerPassword("XNTtUQK5PeeStSTwGvjfaY")
-//                .and()
-//                .userDnPatterns("OU=Admins,DC=fpti,DC=pti,DC=org,DC=br")
-//                .userSearchFilter("sAMAccountName={0}");
+        builder.userDetailsService(userDetailsService);
+    }
+
+    /**
+     * @return AuthenticationManager
+     * @throws Exception
+     */
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
     /**
@@ -64,32 +61,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/actuator/health")
-                .permitAll()
-                .antMatchers("/actuator/**")
-                .hasAnyAuthority("root")
-                .antMatchers("/seguro/**")
-                .authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/autenticacao")
-                .failureUrl("/autenticacao/erro")
-                .loginProcessingUrl("/autenticacao/executar")
-                .defaultSuccessUrl("/dashboard")
-                .and()
-                .logout()
-                .deleteCookies("JSESSIONID")
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/dashboard");
-    }
-
-    /**
-     * @return AuthenticationManager
-     * @throws Exception
-     */
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
+                .antMatchers("/**")
+                .permitAll();
     }
 }

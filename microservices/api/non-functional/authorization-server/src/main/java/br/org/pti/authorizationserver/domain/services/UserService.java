@@ -16,8 +16,16 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
 
+    /**
+     *
+     */
     private final UserRepository userRepository;
 
+    /**
+     * @param username
+     * @return
+     * @throws UsernameNotFoundException
+     */
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
         return this.userRepository.findByUsername(username)

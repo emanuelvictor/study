@@ -1,14 +1,12 @@
 package br.org.pti.authorizationserver.domain.entities;
 
 import br.org.pti.authorizationserver.domain.entities.generic.PersistentEntity;
-import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import lombok.Data;
 import org.hibernate.envers.Audited;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -17,7 +15,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Pattern.Flag;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -48,14 +45,6 @@ public class User extends PersistentEntity implements UserDetails {
     /**
      *
      */
-    @NotBlank
-    @Length(max = 150)
-    @Column(nullable = false, length = 150)
-    protected String name;
-
-    /**
-     *
-     */
     @Column(nullable = false, length = 150, unique = true)
     private String username;
 
@@ -73,18 +62,12 @@ public class User extends PersistentEntity implements UserDetails {
      */
     @NotNull
     @Column(nullable = false)
-    private Boolean enable;
+    private Boolean enabled;
 
     /**
      *
      */
-    @JsonAlias("isRoot")
-    private boolean root;
-
-    /**
-     *
-     */
-    @ManyToOne
+    @ManyToOne(optional = false)
     private AccessGroup accessGroup;
 
     /**
@@ -122,10 +105,6 @@ public class User extends PersistentEntity implements UserDetails {
     @JsonIgnore
     public Set<GrantedAuthority> getAuthorities() {
 
-        if (root) {
-            return new HashSet<>(Collections.singletonList((GrantedAuthority) () -> "root")); // TODO separar em uma variável global
-        }
-
         final Set<Permission> permissoes = new HashSet<>();
 
         if (this.accessGroup != null && this.accessGroup.getAccessGroupPermissions() != null)
@@ -135,7 +114,9 @@ public class User extends PersistentEntity implements UserDetails {
                 if (!grupoAcessoPermissao.getPermission().getLowerPermissions().isEmpty())
                     permissoes.addAll(populePermissions(grupoAcessoPermissao.getPermission().getLowerPermissions()));
             }
+
         return permissoes.isEmpty() ? null : new HashSet<>(permissoes);
+
     }
 
     /**
@@ -153,7 +134,7 @@ public class User extends PersistentEntity implements UserDetails {
     @Override
     @JsonIgnore
     public boolean isEnabled() {
-        return this.enable;
+        return this.enabled;
     }
 
     /**
@@ -185,6 +166,5 @@ public class User extends PersistentEntity implements UserDetails {
     public boolean isCredentialsNonExpired() {
         return true;
     }
-
 
 }
