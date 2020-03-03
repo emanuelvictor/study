@@ -1,4 +1,0 @@
-# informacoes do sistema
-info:
-  app:
-    url: ${spring.application.name}.t.pti.org.br

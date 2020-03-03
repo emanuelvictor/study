@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>br.org.pti.nonfunctional</groupId>
-        <artifactId>non-functional</artifactId>
+        <groupId>br.org.pti.api</groupId>
+        <artifactId>nonfunctional</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>br.org.pti.proxy</groupId>
+    <groupId>br.org.pti.api.nonfunctional</groupId>
     <artifactId>proxy</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>proxy</name>
