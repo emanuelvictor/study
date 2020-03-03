@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="non-functional" />
+        <module name="portal-compras" />
+        <module name="api" />
+        <module name="authorization-server" />
+        <module name="inventario-web" />
+        <module name="proxy" />
+        <module name="discoverer" />
+        <module name="functional" />
+        <module name="integrator" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api" options="-parameters" />
+      <module name="authorization-server" options="-parameters" />
+      <module name="discoverer" options="-parameters" />
+      <module name="functional" options="-parameters" />
+      <module name="integrator" options="-parameters" />
+      <module name="inventario-web" options="-parameters" />
+      <module name="non-functional" options="-parameters" />
+      <module name="portal-compras" options="-parameters" />
+      <module name="proxy" options="-parameters" />
+    </option>
+  </component>
+</project>

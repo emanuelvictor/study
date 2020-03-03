@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1YcnOB2An7r5cHpNSBneNtcuPnH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/functional/integrator" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/functional" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.DiscovererApplication">
+    <configuration name="AuthorizationServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="authorization-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.authorizationserver.AuthorizationServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComprasApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="portal-compras" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.portalcompras.ComprasApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComprasApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="portal-compras" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.compras.ComprasApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DiscovererApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="discoverer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.discoverer.DiscovererApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DiscovererApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="discoverer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.proxy.DiscovererApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IntegratorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="integrator" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.integrator.IntegratorApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InventarioApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="inventario-web" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.inventario.InventarioApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProxyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="proxy" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.proxy.ProxyApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="" />
+      <created>1583250715907</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583250715907</updated>
+      <workItem from="1583250717366" duration="3936000" />
+    </task>
+    <task id="LOCAL-00001" summary="Rearranging packages.">
+      <created>1583254084341</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583254084341</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Rearranging packages." />
+    <option name="LAST_COMMIT_MESSAGE" value="Rearranging packages." />
+  </component>
+</project>
