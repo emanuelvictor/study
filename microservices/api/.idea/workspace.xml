@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="" />
+    <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/authorization-server/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/authorization-server/src/main/resources/config/application.yml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +30,10 @@
   <component name="ProjectId" id="1YcnOB2An7r5cHpNSBneNtcuPnH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -55,17 +62,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.DiscovererApplication">
+  <component name="RunManager" selected="Spring Boot.AuthorizationServerApplication">
     <configuration name="AuthorizationServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="authorization-server" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.authorizationserver.AuthorizationServerApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ComprasApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="portal-compras" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.portalcompras.ComprasApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -77,9 +77,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DiscovererApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="discoverer" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.discoverer.DiscovererApplication" />
+    <configuration name="ComprasApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="portal-compras" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.portalcompras.ComprasApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -87,6 +88,14 @@
     <configuration name="DiscovererApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="discoverer" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.proxy.DiscovererApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DiscovererApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="discoverer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.discoverer.DiscovererApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -112,6 +121,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.AuthorizationServerApplication" />
+      <item itemvalue="Spring Boot.ComprasApplication" />
+      <item itemvalue="Spring Boot.DiscovererApplication" />
+      <item itemvalue="Spring Boot.IntegratorApplication" />
+      <item itemvalue="Spring Boot.InventarioApplication" />
+      <item itemvalue="Spring Boot.ProxyApplication" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -123,7 +140,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583250715907</updated>
-      <workItem from="1583250717366" duration="3936000" />
+      <workItem from="1583250717366" duration="5329000" />
     </task>
     <task id="LOCAL-00001" summary="Rearranging packages.">
       <created>1583254084341</created>

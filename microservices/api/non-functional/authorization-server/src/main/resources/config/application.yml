@@ -17,11 +17,11 @@ spring:
     open-in-view: false
     properties:
       hibernate:
-        hibernate.dialect: br.org.pti.authorizationserver.infrastructure.jpa.CustomPostgresDialect
+        hibernate.dialect: br.org.pti.api.nonfunctional.authorizationserver.infrastructure.jpa.CustomPostgresDialect
         jdbc.lob.non_contextual_creation: true
         jdbc.batch_size: 20
         connection.autocommit: false
-        implicit_naming_strategy: br.org.pti.authorizationserver.infrastructure.jpa.CustomNamingStrategy
+        implicit_naming_strategy: br.org.pti.api.nonfunctional.authorizationserver.infrastructure.jpa.CustomNamingStrategy
       org.hibernate.envers.store_data_at_delete: true
       org.hibernate.envers.revision_field_name: revision
       org.hibernate.envers.audit_table_suffix: _audit
