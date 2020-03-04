@@ -33,6 +33,11 @@ public class ClientService implements ClientDetailsService {
     private final IClientFeignRepository clientFeignRepository;
 
     /**
+     *
+     */
+    private final org.springframework.core.env.Environment env;
+
+    /**
      * @param clientId String
      * @return ClientDetails
      * @throws ClientRegistrationException
@@ -40,16 +45,16 @@ public class ClientService implements ClientDetailsService {
     @Override
     public ClientDetails loadClientByClientId(final String clientId) throws ClientRegistrationException {
 
-        if (clientId.equals("auth-engine")) {
+        if (clientId.equals(env.getProperty("oauth.clientId"))) {
             return new ClientBuilder()
-                    .withClientId("auth-engine")
-                    .withClientSecret(passwordEncoder.encode("auth-engine"))
+                    .withClientId(env.getProperty("oauth.clientId"))
+                    .withClientSecret(passwordEncoder.encode(env.getProperty("oauth.clientSecret")))
                     .withScope("root")
                     .withAuthorizedGrantTypes(ALL_GRANT_TYPES)
-                    .withRedirectUris("http://0.0.0.0:9000/#/")
                     .build();
         }
 
+        //TODO não está convertendo de lá pra cá
         return this.clientFeignRepository.loadClientByClientId(clientId)
                 .orElseThrow(() -> new UsernameNotFoundException("ClientId " + clientId + " não localizado!"));
     }
