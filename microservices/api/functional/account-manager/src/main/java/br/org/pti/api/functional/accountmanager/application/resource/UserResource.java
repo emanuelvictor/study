@@ -1,5 +1,6 @@
 package br.org.pti.api.functional.accountmanager.application.resource;
 
+import br.org.pti.api.functional.accountmanager.domain.entities.User;
 import br.org.pti.api.functional.accountmanager.domain.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,8 +26,8 @@ public class UserResource {
      * @return UserDetails
      */
     @GetMapping("{username}")
-    public UserDetails loadUserByUsername(@PathVariable final String username) {
-        return userService.loadUserByUsername(username);
+    public User loadUserByUsername(@PathVariable final String username) {
+        return (User) userService.loadUserByUsername(username);
     }
 
 }

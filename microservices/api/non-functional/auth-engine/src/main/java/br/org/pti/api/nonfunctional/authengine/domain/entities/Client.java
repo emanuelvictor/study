@@ -15,6 +15,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static br.org.pti.api.nonfunctional.authengine.domain.services.ClientService.getGrantTypeStrings;
+
 /**
  *
  */
@@ -87,13 +89,7 @@ public class Client extends PersistentEntity /*implements UserDetails*/ implemen
      */
     @Override
     public Set<String> getAuthorizedGrantTypes() {
-        final Set<String> authorizedGrantTypes = new HashSet<>();
-        authorizedGrantTypes.add(GrantType.AUTHORIZATION_CODE.getGrantType());
-        authorizedGrantTypes.add(GrantType.CLIENT_CREDENTIALS.getGrantType());
-        authorizedGrantTypes.add(GrantType.IMPLICIT.getGrantType());
-        authorizedGrantTypes.add(GrantType.PASSWORD.getGrantType());
-        authorizedGrantTypes.add(GrantType.REFRESH_TOKEN.getGrantType());
-        return authorizedGrantTypes;
+        return getGrantTypeStrings();
     }
 
 

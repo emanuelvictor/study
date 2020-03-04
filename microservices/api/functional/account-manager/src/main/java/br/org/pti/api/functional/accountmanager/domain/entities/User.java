@@ -1,7 +1,6 @@
 package br.org.pti.api.functional.accountmanager.domain.entities;
 
 import br.org.pti.api.functional.accountmanager.domain.entities.generic.PersistentEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -10,7 +9,10 @@ import org.hibernate.envers.Audited;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -35,16 +37,6 @@ public class User extends PersistentEntity implements UserDetails {
     /**
      *
      */
-    public static final String DEFAULT_PASSWORD = "pti#1234";
-
-    /**
-     * Máximo de tentativas frustradas de login para bloqueio do usuário
-     */
-    private static final int MAX_ATTEMPTS = 5;
-
-    /**
-     *
-     */
     @Column(nullable = false, length = 150, unique = true)
     private String username;
 
@@ -53,7 +45,6 @@ public class User extends PersistentEntity implements UserDetails {
      */
     @NotBlank
     @Column(nullable = false, length = 100)
-    @JsonProperty(access = Access.WRITE_ONLY)
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@!%*#?&+,./])[A-Za-z\\d$@!%*#?&+,./]{8,}$", flags = Flag.UNICODE_CASE, message = "A senha deve conter ao menos 8 caracteres com letras, números e um caractere especial.")
     private String password;
 
@@ -101,8 +92,6 @@ public class User extends PersistentEntity implements UserDetails {
      * @return Set<GrantedAuthority>
      */
     @Override
-    @Transient
-    @JsonIgnore
     public Set<GrantedAuthority> getAuthorities() {
 
         final Set<Permission> permissoes = new HashSet<>();
@@ -123,7 +112,6 @@ public class User extends PersistentEntity implements UserDetails {
      * @return String
      */
     @Override
-    @JsonIgnore
     public String getPassword() {
         return this.password;
     }
@@ -132,7 +120,6 @@ public class User extends PersistentEntity implements UserDetails {
      * @return boolean
      */
     @Override
-    @JsonIgnore
     public boolean isEnabled() {
         return this.enabled;
     }
@@ -141,8 +128,6 @@ public class User extends PersistentEntity implements UserDetails {
      * @return boolean
      */
     @Override
-    @JsonIgnore
-    @Transient
     public boolean isAccountNonExpired() {
         return true;
     }
@@ -151,8 +136,6 @@ public class User extends PersistentEntity implements UserDetails {
      * @return boolean
      */
     @Override
-    @JsonIgnore
-    @Transient
     public boolean isAccountNonLocked() {
         return true;
     }
@@ -161,8 +144,6 @@ public class User extends PersistentEntity implements UserDetails {
      * @return boolean
      */
     @Override
-    @JsonIgnore
-    @Transient
     public boolean isCredentialsNonExpired() {
         return true;
     }

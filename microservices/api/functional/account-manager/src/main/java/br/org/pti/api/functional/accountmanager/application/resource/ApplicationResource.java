@@ -1,5 +1,6 @@
 package br.org.pti.api.functional.accountmanager.application.resource;
 
+import br.org.pti.api.functional.accountmanager.domain.entities.Application;
 import br.org.pti.api.functional.accountmanager.domain.services.ApplicationService;
 import br.org.pti.api.functional.accountmanager.domain.services.UserService;
 import lombok.RequiredArgsConstructor;
@@ -27,8 +28,8 @@ public class ApplicationResource {
      * @return ClientDetails
      */
     @GetMapping("{clientId}")
-    public ClientDetails loadClientByClientId(@PathVariable final String clientId) {
-        return applicationService.loadClientByClientId(clientId);
+    public Application loadClientByClientId(@PathVariable final String clientId) {
+        return (Application) applicationService.loadClientByClientId(clientId);
     }
 
 }

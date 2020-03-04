@@ -1,7 +1,6 @@
 package br.org.pti.api.nonfunctional.authengine.domain.entities;
 
 import br.org.pti.api.nonfunctional.authengine.domain.entities.generic.PersistentEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -30,23 +29,12 @@ public class User extends PersistentEntity implements UserDetails {
     /**
      *
      */
-    public static final String DEFAULT_PASSWORD = "pti#1234";
-
-    /**
-     * Máximo de tentativas frustradas de login para bloqueio do usuário
-     */
-    private static final int MAX_ATTEMPTS = 5;
-
-    /**
-     *
-     */
     private String username;
 
     /**
      *
      */
     @NotBlank
-    @JsonProperty(access = Access.WRITE_ONLY)
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@!%*#?&+,./])[A-Za-z\\d$@!%*#?&+,./]{8,}$", flags = Flag.UNICODE_CASE, message = "A senha deve conter ao menos 8 caracteres com letras, números e um caractere especial.")
     private String password;
 
@@ -54,7 +42,7 @@ public class User extends PersistentEntity implements UserDetails {
      *
      */
     @NotNull
-    private Boolean enabled;
+    private boolean enabled;
 
     /**
      *
@@ -92,8 +80,6 @@ public class User extends PersistentEntity implements UserDetails {
      * @return Set<GrantedAuthority>
      */
     @Override
-//    @Transient TODO verificar
-    @JsonIgnore
     public Set<GrantedAuthority> getAuthorities() {
 
         final Set<Permission> permissoes = new HashSet<>();
@@ -114,7 +100,6 @@ public class User extends PersistentEntity implements UserDetails {
      * @return String
      */
     @Override
-    @JsonIgnore
     public String getPassword() {
         return this.password;
     }
@@ -123,7 +108,6 @@ public class User extends PersistentEntity implements UserDetails {
      * @return boolean
      */
     @Override
-    @JsonIgnore
     public boolean isEnabled() {
         return this.enabled;
     }
@@ -132,7 +116,6 @@ public class User extends PersistentEntity implements UserDetails {
      * @return boolean
      */
     @Override
-    @JsonIgnore
 //    @Transient TODO verificar
     public boolean isAccountNonExpired() {
         return true;
@@ -142,7 +125,6 @@ public class User extends PersistentEntity implements UserDetails {
      * @return boolean
      */
     @Override
-    @JsonIgnore
     //    @Transient TODO verificar
     public boolean isAccountNonLocked() {
         return true;
@@ -152,7 +134,6 @@ public class User extends PersistentEntity implements UserDetails {
      * @return boolean
      */
     @Override
-    @JsonIgnore
     //    @Transient TODO verificar
     public boolean isCredentialsNonExpired() {
         return true;

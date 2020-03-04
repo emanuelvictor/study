@@ -28,7 +28,6 @@ public class UserService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
-        return this.userFeignRepository.loadUserByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Username " + username + " not founded!"));
+        return this.userFeignRepository.loadUserByUsername(username);
     }
 }

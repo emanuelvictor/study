@@ -74,14 +74,14 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      */
     @Override
     public void configure(final ClientDetailsServiceConfigurer clientDetailsServiceConfigurer) throws Exception {
-        clientDetailsServiceConfigurer.inMemory()
-                .withClient("auth-engine")
-                .authorizedGrantTypes("password", "authorization_code", "implicit", "token", "refresh_token")
-                .redirectUris("http://0.0.0.0:9000/#/")
-                .scopes("root")
-                .secret("$2a$12$V.mEGBHyJ7Feo2I48fYmi.je.ir5nqAPWjtNwGZv5XUZHUmgoz1Ne");
+//        clientDetailsServiceConfigurer.inMemory()
+//                .withClient("auth-engine")
+//                .authorizedGrantTypes("password", "authorization_code", "implicit", "token", "refresh_token", "client_credentials")
+//                .redirectUris("http://0.0.0.0:9000/#/")
+//                .scopes("root")
+//                .secret("$2a$12$V.mEGBHyJ7Feo2I48fYmi.je.ir5nqAPWjtNwGZv5XUZHUmgoz1Ne");
 
-//        clientDetailsServiceConfigurer.withClientDetails(clientDetailsService);
+        clientDetailsServiceConfigurer.withClientDetails(clientDetailsService);
     }
 
     /**

@@ -1,7 +1,7 @@
 package br.org.pti.api.nonfunctional.authengine.domain.repositories.feign;
 
+import br.org.pti.api.nonfunctional.authengine.domain.entities.User;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -20,5 +20,6 @@ public interface IUserFeignRepository {
      * @return
      */
     @GetMapping("{username}")
-    Optional<UserDetails> loadUserByUsername(@PathVariable("username") final String username);
+    User loadUserByUsername(@PathVariable("username") final String username);
+
 }
