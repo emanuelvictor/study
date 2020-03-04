@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/ClientBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/ApplicationResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/ApplicationResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/UserResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/UserResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/feign/OAuth2FeignAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/feign/OAuth2FeignAutoConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/AuthorizationServerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/AuthorizationServerConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/AccessGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/AccessGroup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/Permission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories/feign/IUserFeignRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories/feign/IUserFeignRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/proxy/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/proxy/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,6 +63,7 @@
       <recent name="$PROJECT_DIR$/functional" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.org.pti.api.nonfunctional.authengine.domain.entities" />
       <recent name="br.org.pti.api.nonfunctional.authengine.domain.entities.generic" />
       <recent name="br.org.pti.api.functional.accountmanager.application.resource" />
     </key>
@@ -237,7 +229,7 @@
       <option name="presentableId" value="Default" />
       <updated>1583250715907</updated>
       <workItem from="1583250717366" duration="6157000" />
-      <workItem from="1583258679209" duration="32313000" />
+      <workItem from="1583258679209" duration="36796000" />
     </task>
     <task id="LOCAL-00001" summary="Rearranging packages.">
       <created>1583254084341</created>
@@ -274,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583330760243</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Authentication working.">
+      <created>1583345927746</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1583345927746</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,7 +306,8 @@
     <MESSAGE value="Rearranging packages." />
     <MESSAGE value="Implementing auth-engine and account-manager" />
     <MESSAGE value="Founded short circuit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Founded short circuit" />
+    <MESSAGE value="Authentication working." />
+    <option name="LAST_COMMIT_MESSAGE" value="Authentication working." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,28 +1,23 @@
 package br.org.pti.api.nonfunctional.authengine.domain.entities;
 
 import br.org.pti.api.nonfunctional.authengine.domain.entities.generic.PersistentEntity;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import static br.org.pti.api.nonfunctional.authengine.domain.services.ClientService.getGrantTypeStrings;
 
 /**
  *
  */
 @ToString
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class Client extends PersistentEntity /*implements UserDetails*/ implements ClientDetails {
+public class Client extends PersistentEntity implements ClientDetails {
 
     /**
      * Corresponds to the clientId
@@ -45,22 +40,17 @@ public class Client extends PersistentEntity /*implements UserDetails*/ implemen
      */
     @Getter
     @Setter
-    private boolean enable;
-
-    /**
-     *
-     */
     private AccessGroup accessGroup;
 
-
     /**
      *
      */
-    public Client() {
-        this.enable = true;
-    }
+    @Getter
+    @Setter
+    private Set<String> authorizedGrantTypes;
 
     /**
+     * TODO virá do account manager
      * @return String
      */
     @Override
@@ -69,6 +59,7 @@ public class Client extends PersistentEntity /*implements UserDetails*/ implemen
     }
 
     /**
+     * TODO virá do account manager
      * @return boolean
      */
     @Override
@@ -77,6 +68,7 @@ public class Client extends PersistentEntity /*implements UserDetails*/ implemen
     }
 
     /**
+     * TODO virá do account manager
      * @return Set<String>
      */
     @Override
@@ -85,15 +77,7 @@ public class Client extends PersistentEntity /*implements UserDetails*/ implemen
     }
 
     /**
-     * @return Set<String>
-     */
-    @Override
-    public Set<String> getAuthorizedGrantTypes() {
-        return getGrantTypeStrings();
-    }
-
-
-    /**
+     * TODO virá do account manager
      * @return Collection<GrantedAuthority>
      */
     @Override
@@ -102,6 +86,7 @@ public class Client extends PersistentEntity /*implements UserDetails*/ implemen
     }
 
     /**
+     * TODO virá do account manager
      * @return Integer
      */
     @Override
@@ -110,6 +95,7 @@ public class Client extends PersistentEntity /*implements UserDetails*/ implemen
     }
 
     /**
+     * TODO virá do account manager
      * @return Integer
      */
     @Override
@@ -127,7 +113,7 @@ public class Client extends PersistentEntity /*implements UserDetails*/ implemen
     }
 
     /**
-     * Non necessary for now.
+     * TODO virá do account manager
      *
      * @return Set<String></String>
      */
