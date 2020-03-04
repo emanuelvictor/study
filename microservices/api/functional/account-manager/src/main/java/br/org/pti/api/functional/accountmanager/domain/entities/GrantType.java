@@ -1,4 +1,4 @@
-package br.org.pti.api.nonfunctional.authengine.domain.entities;
+package br.org.pti.api.functional.accountmanager.domain.entities;
 
 /**
  * @author Emanuel Victor

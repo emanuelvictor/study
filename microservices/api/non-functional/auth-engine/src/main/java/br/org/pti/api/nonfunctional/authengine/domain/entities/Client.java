@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
  */
 @ToString
 @EqualsAndHashCode(callSuper = true)
-public class Application extends PersistentEntity /*implements UserDetails*/ implements ClientDetails {
+public class Client extends PersistentEntity /*implements UserDetails*/ implements ClientDetails {
 
     /**
      * Corresponds to the clientId
@@ -54,7 +54,7 @@ public class Application extends PersistentEntity /*implements UserDetails*/ imp
     /**
      *
      */
-    public Application() {
+    public Client() {
         this.enable = true;
     }
 

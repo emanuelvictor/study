@@ -1,4 +1,4 @@
-package br.org.pti.api.nonfunctional.authengine.infrastructure.misc;
+package br.org.pti.api.functional.accountmanager.infrastructure.misc;
 
 import java.util.Collections;
 import java.util.List;

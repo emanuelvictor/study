@@ -26,7 +26,7 @@ eureka:
 oauth:
   endpoints:
     users: http://localhost:8080/account-manager/api/users/
-    applications: http://localhost:8080/account-manager/api/applications
+    applications: http://localhost:8080/account-manager/api/applications/
   token: http://localhost:8080/auth-engine/oauth/token
   clientId: auth-engine
   clientSecret: auth-engine

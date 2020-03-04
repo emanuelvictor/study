@@ -2,8 +2,6 @@ package br.org.pti.api.nonfunctional.authengine.application.feign;
 
 import feign.RequestInterceptor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.ObjectFactory;
-import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;

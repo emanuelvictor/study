@@ -1,12 +1,12 @@
-package br.org.pti.api.nonfunctional.authengine.domain.services;
+package br.org.pti.api.functional.accountmanager.domain.services;
 
-import br.org.pti.api.nonfunctional.authengine.domain.entities.Application;
-import br.org.pti.api.nonfunctional.authengine.domain.entities.Permission;
-import br.org.pti.api.nonfunctional.authengine.domain.repositories.ApplicationRepository;
-import br.org.pti.api.nonfunctional.authengine.domain.repositories.PermissionRepository;
-import br.org.pti.api.nonfunctional.authengine.domain.logics.application.ApplicationSavingLogic;
-import br.org.pti.api.nonfunctional.authengine.domain.logics.application.ApplicationUpdatingLogic;
-import br.org.pti.api.nonfunctional.authengine.infrastructure.misc.PasswordGenerator;
+import br.org.pti.api.functional.accountmanager.domain.entities.Application;
+import br.org.pti.api.functional.accountmanager.domain.entities.Permission;
+import br.org.pti.api.functional.accountmanager.domain.repositories.ApplicationRepository;
+import br.org.pti.api.functional.accountmanager.domain.repositories.PermissionRepository;
+import br.org.pti.api.functional.accountmanager.domain.logics.application.ApplicationSavingLogic;
+import br.org.pti.api.functional.accountmanager.domain.logics.application.ApplicationUpdatingLogic;
+import br.org.pti.api.functional.accountmanager.infrastructure.misc.PasswordGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

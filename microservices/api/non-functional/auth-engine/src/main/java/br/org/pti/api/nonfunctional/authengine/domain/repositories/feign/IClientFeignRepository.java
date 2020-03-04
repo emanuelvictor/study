@@ -13,7 +13,7 @@ import java.util.Optional;
  * @since 1.0.0, 10/09/2019
  */
 @FeignClient(name = "applications", url = "${oauth.endpoints.applications}")
-public interface IApplicationFeignRepository {
+public interface IClientFeignRepository {
 
     /**
      * @param clientId

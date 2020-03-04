@@ -1,4 +1,4 @@
-package br.org.pti.api.nonfunctional.authengine.infrastructure.jpa;
+package br.org.pti.api.functional.accountmanager.infrastructure.jpa;
 
 import org.hibernate.QueryException;
 import org.hibernate.dialect.function.SQLFunction;

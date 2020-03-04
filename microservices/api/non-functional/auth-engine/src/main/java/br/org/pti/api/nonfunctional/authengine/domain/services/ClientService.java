@@ -1,6 +1,6 @@
 package br.org.pti.api.nonfunctional.authengine.domain.services;
 
-import br.org.pti.api.nonfunctional.authengine.domain.repositories.feign.IApplicationFeignRepository;
+import br.org.pti.api.nonfunctional.authengine.domain.repositories.feign.IClientFeignRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.oauth2.provider.ClientDetails;
@@ -15,12 +15,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class ApplicationService implements ClientDetailsService {
+public class ClientService implements ClientDetailsService {
 
     /**
      *
      */
-    private final IApplicationFeignRepository applicationFeignRepository;
+    private final IClientFeignRepository clientFeignRepository;
 
     /**
      * @param clientId String
@@ -29,7 +29,7 @@ public class ApplicationService implements ClientDetailsService {
      */
     @Override
     public ClientDetails loadClientByClientId(final String clientId) throws ClientRegistrationException {
-        return this.applicationFeignRepository.loadClientByClientId(clientId)
+        return this.clientFeignRepository.loadClientByClientId(clientId)
                 .orElseThrow(() -> new UsernameNotFoundException("ClientId " + clientId + " não localizado!"));
     }
 

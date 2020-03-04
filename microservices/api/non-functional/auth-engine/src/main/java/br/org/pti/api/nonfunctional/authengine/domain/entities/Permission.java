@@ -1,9 +1,7 @@
 package br.org.pti.api.nonfunctional.authengine.domain.entities;
 
 import br.org.pti.api.nonfunctional.authengine.domain.entities.generic.PersistentEntity;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.security.core.GrantedAuthority;

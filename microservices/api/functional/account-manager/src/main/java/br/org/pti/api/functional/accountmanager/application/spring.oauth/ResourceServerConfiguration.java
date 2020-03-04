@@ -9,9 +9,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 
 /**
- *
  * @author Emanuel Victor
- *
  * @version 1.0.0
  * @since 2.0.0, 20/02/2020
  */
@@ -20,6 +18,9 @@ import org.springframework.security.oauth2.provider.token.ResourceServerTokenSer
 @RequiredArgsConstructor
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
+    /**
+     *
+     */
     private final ResourceServerTokenServices resourceServerTokenServices;
 
     /**

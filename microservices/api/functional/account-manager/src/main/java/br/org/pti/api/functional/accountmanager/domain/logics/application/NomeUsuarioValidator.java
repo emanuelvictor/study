@@ -1,7 +1,7 @@
-package br.org.pti.api.nonfunctional.authengine.domain.logics.application;
+package br.org.pti.api.functional.accountmanager.domain.logics.application;
 
-import br.org.pti.api.nonfunctional.authengine.domain.entities.Application;
-import br.org.pti.api.nonfunctional.authengine.domain.repositories.ApplicationRepository;
+import br.org.pti.api.functional.accountmanager.domain.entities.Application;
+import br.org.pti.api.functional.accountmanager.domain.repositories.ApplicationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

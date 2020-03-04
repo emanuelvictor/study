@@ -10,20 +10,24 @@
         <module name="portal-compras" />
         <module name="api" />
         <module name="accountmanager" />
+        <module name="authengine" />
         <module name="inventario-web" />
-        <module name="auth-engine" />
         <module name="proxy" />
         <module name="discoverer" />
         <module name="functional" />
         <module name="integrator" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="auth-engine" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="accountmanager" options="-parameters" />
       <module name="api" options="-parameters" />
       <module name="auth-engine" options="-parameters" />
+      <module name="authengine" options="-parameters" />
       <module name="discoverer" options="-parameters" />
       <module name="functional" options="-parameters" />
       <module name="integrator" options="-parameters" />

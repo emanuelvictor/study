@@ -1,4 +1,4 @@
-package br.org.pti.api.nonfunctional.authengine.domain.entities.generic;
+package br.org.pti.api.functional.accountmanager.domain.entities.generic;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

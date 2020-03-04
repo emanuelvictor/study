@@ -2,43 +2,70 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/feign/OAuth2ClientConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/feign/OAuth2FeignAutoConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/feign/OAuth2FeignRequestInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories/feign/IApplicationFeignRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories/feign/IUserFeignRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/ApplicationResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/test/java/br/org/pti/api/functional/authengine/AccountManagerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functional/portal-compras/src/main/java/br/org/pti/api/functional/portalcompras/domain/service/FornecedorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/portal-compras/src/main/java/br/org/pti/api/functional/portalcompras/domain/service/FornecedorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/AuthorizationManagerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/AccountManagerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/TestResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/UserResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/spring.oauth/CommonConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/spring.oauth/CommonConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/spring.oauth/ResourceServerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/spring.oauth/ResourceServerConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/AccessGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/AccessGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/AccessGroupPermission.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/AccessGroupPermission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/GrantType.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/GrantType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/Permission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/generic/EntityIdResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/generic/EntityIdResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/generic/IPersistentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/generic/IPersistentEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/generic/PersistentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/generic/PersistentEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/generic/Revision.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/generic/Revision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/generic/RevisionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/generic/RevisionListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/exceptions/ApplicationRuntimeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/exceptions/ApplicationRuntimeException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/exceptions/BusinessLogicException.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/exceptions/BusinessLogicException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/BusinessLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/BusinessLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/application/ApplicationSavingLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/application/ApplicationSavingLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/application/ApplicationUpdatingLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/application/ApplicationUpdatingLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/application/EmailDuplicadoValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/application/EmailDuplicadoValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/application/EncodarSenhaLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/application/EncodarSenhaLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/application/NomeUsuarioValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/logics/application/NomeUsuarioValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/repositories/ApplicationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/repositories/ApplicationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/repositories/PermissionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/repositories/PermissionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/services/ApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/services/ApplicationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/infrastructure/jpa/CustomNamingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/infrastructure/jpa/CustomNamingStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/infrastructure/jpa/CustomPostgresDialect.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/infrastructure/jpa/CustomPostgresDialect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/infrastructure/jpa/PostgresFilterFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/infrastructure/jpa/PostgresFilterFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/infrastructure/misc/PasswordGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/infrastructure/misc/PasswordGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/resources/config/application-alpha.yml" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/config/application-alpha.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.1__RELEASE.sql" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.1__RELEASE.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/test/java/br/org/pti/api/nonfunctional/authengine/AuthorizationServerApplicationTests.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/AuthEngineApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/AuthEngineApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/feign/OAuth2ClientConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/feign/OAuth2ClientConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/feign/OAuth2FeignAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/feign/OAuth2FeignAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/feign/OAuth2FeignRequestInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/feign/OAuth2FeignRequestInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/resource/TestResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/resource/TestResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/AuthorizationServerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/AuthorizationServerConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/CommonConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/CommonConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/WebSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/WebSecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/AccessGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/AccessGroup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/AccessGroupPermission.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/AccessGroupPermission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/GrantType.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/GrantType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/Permission.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/generic/EntityIdResolver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/generic/IPersistentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/generic/IPersistentEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/generic/PersistentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/generic/PersistentEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/generic/Revision.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/generic/RevisionListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/exceptions/ApplicationRuntimeException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/exceptions/BusinessLogicException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/logics/BusinessLogic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/logics/application/ApplicationSavingLogic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/logics/application/ApplicationUpdatingLogic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/logics/application/EmailDuplicadoValidator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/logics/application/EncodarSenhaLogic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/logics/application/NomeUsuarioValidator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories/ApplicationRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories/PermissionRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ApplicationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories/feign/IApplicationFeignRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories/feign/IClientFeignRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories/feign/IUserFeignRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories/feign/IUserFeignRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ClientService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/infrastructure/jpa/CustomNamingStrategy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/infrastructure/jpa/CustomPostgresDialect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/infrastructure/jpa/PostgresFilterFunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/infrastructure/misc/PasswordGenerator.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/config/application-alpha.yml" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/config/application-alpha.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/test/java/br/org/pti/api/nonfunctional/authengine/AuthorizationServerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/test/java/br/org/pti/api/nonfunctional/authengine/AuthorizationServerApplicationTests.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,12 +89,17 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="NamedScopeManager">
+    <scope name="Unnamed" pattern="!file[api]:*/&amp;&amp;!file[accountmanager]:*/&amp;&amp;!file[discoverer]:*/&amp;&amp;!file[functional]:*/&amp;&amp;!file[integrator]:*/&amp;&amp;!file[inventario-web]:*/&amp;&amp;!file[non-functional]:*/&amp;&amp;!file[portal-compras]:*/&amp;&amp;!file[proxy]:*/||file[auth-engine]:*/" />
+    <scope name="Unnamed1" pattern="!file[api]:*/&amp;&amp;!file[auth-engine]:*/&amp;&amp;!file[discoverer]:*/&amp;&amp;!file[functional]:*/&amp;&amp;!file[integrator]:*/&amp;&amp;!file[inventario-web]:*/&amp;&amp;!file[non-functional]:*/&amp;&amp;!file[portal-compras]:*/&amp;&amp;!file[proxy]:*/" />
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1YcnOB2An7r5cHpNSBneNtcuPnH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -75,10 +107,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/non-functional/auth-engine" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -86,6 +119,9 @@
       <recent name="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application" />
       <recent name="$PROJECT_DIR$/functional/authorization-manager/src/main/java/br/org/pti/api/functional/authorizationmanager/application" />
       <recent name="$PROJECT_DIR$/functional" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.org.pti.api.functional.accountmanager.application.resource" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -103,7 +139,46 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AuthEngineApplication">
+  <component name="RunManager" selected="JUnit.AccountManagerApplicationTests">
+    <configuration name="AccountManagerApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="accountmanager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.org.pti.api.functional.authengine.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="br.org.pti.api.functional.authengine" />
+      <option name="MAIN_CLASS_NAME" value="br.org.pti.api.functional.authengine.AccountManagerApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountManagerApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="accountmanager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.org.pti.api.functional.authengine.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="br.org.pti.api.functional.authengine" />
+      <option name="MAIN_CLASS_NAME" value="br.org.pti.api.functional.authengine.AccountManagerApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountManagerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="accountmanager" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.accountmanager.AccountManagerApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AuthEngineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="auth-engine" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.authengine.AuthEngineApplication" />
@@ -112,9 +187,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AuthorizationManagerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="accountmanager" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.accountmanager.AuthorizationManagerApplication" />
+    <configuration name="AuthEngineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
+      <module name="authengine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.org.pti.api.nonfunctional.authengine.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.authengine.AuthEngineApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -174,14 +256,23 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.AuthEngineApplication" />
+      <item itemvalue="JUnit.AccountManagerApplicationTests.contextLoads" />
       <item itemvalue="Spring Boot.ComprasApplication" />
       <item itemvalue="Spring Boot.DiscovererApplication" />
       <item itemvalue="Spring Boot.IntegratorApplication" />
       <item itemvalue="Spring Boot.InventarioApplication" />
       <item itemvalue="Spring Boot.ProxyApplication" />
-      <item itemvalue="Spring Boot.AuthorizationManagerApplication" />
+      <item itemvalue="Spring Boot.AccountManagerApplication" />
+      <item itemvalue="Spring Boot.AuthEngineApplication" />
+      <item itemvalue="JUnit.AccountManagerApplicationTests" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.AuthEngineApplication" />
+        <item itemvalue="JUnit.AccountManagerApplicationTests" />
+        <item itemvalue="JUnit.AccountManagerApplicationTests.contextLoads" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -194,7 +285,7 @@
       <option name="presentableId" value="Default" />
       <updated>1583250715907</updated>
       <workItem from="1583250717366" duration="6157000" />
-      <workItem from="1583258679209" duration="8087000" />
+      <workItem from="1583258679209" duration="18440000" />
     </task>
     <task id="LOCAL-00001" summary="Rearranging packages.">
       <created>1583254084341</created>
@@ -217,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583266203988</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Implementing auth-engine and account-manager">
+      <created>1583267999820</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1583267999821</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +338,17 @@
     <MESSAGE value="Rearranging packages." />
     <MESSAGE value="Implementing auth-engine and account-manager" />
     <option name="LAST_COMMIT_MESSAGE" value="Implementing auth-engine and account-manager" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/services/ApplicationService.java</url>
+          <line>113</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/api$InventarioApplication.ic" NAME="InventarioApplication Coverage Results" MODIFIED="1583262580381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

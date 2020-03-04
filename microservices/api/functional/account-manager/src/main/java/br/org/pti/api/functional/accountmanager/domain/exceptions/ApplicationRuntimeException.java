@@ -1,4 +1,4 @@
-package br.org.pti.api.nonfunctional.authengine.domain.exceptions;
+package br.org.pti.api.functional.accountmanager.domain.exceptions;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

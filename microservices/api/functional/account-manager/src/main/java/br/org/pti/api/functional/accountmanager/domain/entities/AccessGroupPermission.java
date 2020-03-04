@@ -1,6 +1,6 @@
-package br.org.pti.api.nonfunctional.authengine.domain.entities;
+package br.org.pti.api.functional.accountmanager.domain.entities;
 
-import br.org.pti.api.nonfunctional.authengine.domain.entities.generic.PersistentEntity;
+import br.org.pti.api.functional.accountmanager.domain.entities.generic.PersistentEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

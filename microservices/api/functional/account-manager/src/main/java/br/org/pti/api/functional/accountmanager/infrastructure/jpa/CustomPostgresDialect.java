@@ -1,4 +1,4 @@
-package br.org.pti.api.nonfunctional.authengine.infrastructure.jpa;
+package br.org.pti.api.functional.accountmanager.infrastructure.jpa;
 
 import org.hibernate.dialect.PostgreSQL95Dialect;
 
@@ -13,6 +13,6 @@ public class CustomPostgresDialect extends PostgreSQL95Dialect {
      *
      */
     public CustomPostgresDialect() {
-        super.registerFunction("FILTER", new PostgresFilterFunction());
+        super.registerFunction("FILTER", new br.org.pti.api.functional.accountmanager.infrastructure.jpa.PostgresFilterFunction());
     }
 }

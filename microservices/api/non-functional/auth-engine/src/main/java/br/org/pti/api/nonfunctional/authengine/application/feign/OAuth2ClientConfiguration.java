@@ -29,20 +29,14 @@ public class OAuth2ClientConfiguration {
     /**
      *
      */
-    @Value("${oauth.clientId:patrimonio}")
+    @Value("${oauth.clientId:auth-engine}")
     private String clientId;
 
     /**
      *
      */
-    @Value("${oauth.clientSecret:patrimonio}")
+    @Value("${oauth.clientSecret:auth-engine}")
     private String clientSecret;
-
-    /**
-     *
-     */
-    @Value("${oauth.password:spring}")
-    private String password;
 
     /**
      * Configuração do bean de grant_type de clientcredentials do oauth2.

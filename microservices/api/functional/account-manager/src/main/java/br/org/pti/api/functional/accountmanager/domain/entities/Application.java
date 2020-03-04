@@ -1,10 +1,7 @@
-package br.org.pti.api.nonfunctional.authengine.domain.entities;
+package br.org.pti.api.functional.accountmanager.domain.entities;
 
-import br.org.pti.api.nonfunctional.authengine.domain.entities.generic.PersistentEntity;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import br.org.pti.api.functional.accountmanager.domain.entities.generic.PersistentEntity;
+import lombok.*;
 import org.hibernate.envers.Audited;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
@@ -12,7 +9,6 @@ import org.springframework.security.oauth2.provider.ClientDetails;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 import java.util.HashSet;
@@ -26,9 +22,8 @@ import java.util.stream.Collectors;
 @Entity
 @Audited
 @ToString
-@Table(name = "aplicacao")
 @EqualsAndHashCode(callSuper = true)
-public class Application extends PersistentEntity /*implements UserDetails*/ implements ClientDetails {
+public class Application extends PersistentEntity implements ClientDetails {
 
     /**
      * Corresponds to the clientId
@@ -53,21 +48,20 @@ public class Application extends PersistentEntity /*implements UserDetails*/ imp
      */
     @Getter
     @Setter
-    @Column(name = "ativo", nullable = false)
-    private boolean enable;
+    @Column(nullable = false)
+    private boolean enabled;
 
     /**
      *
      */
-    @ManyToOne
+    @ManyToOne(optional = false)
     private AccessGroup accessGroup;
-
 
     /**
      *
      */
     public Application() {
-        this.enable = true;
+        this.enabled = true;
     }
 
     /**

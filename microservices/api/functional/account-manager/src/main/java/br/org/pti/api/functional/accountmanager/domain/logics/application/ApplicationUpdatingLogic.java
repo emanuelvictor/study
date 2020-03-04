@@ -1,8 +1,8 @@
-package br.org.pti.api.nonfunctional.authengine.domain.logics.application;
+package br.org.pti.api.functional.accountmanager.domain.logics.application;
 
 
-import br.org.pti.api.nonfunctional.authengine.domain.entities.Application;
-import br.org.pti.api.nonfunctional.authengine.domain.logics.BusinessLogic;
+import br.org.pti.api.functional.accountmanager.domain.entities.Application;
+import br.org.pti.api.functional.accountmanager.domain.logics.BusinessLogic;
 
 /**
  * @author Arthur Gregorio

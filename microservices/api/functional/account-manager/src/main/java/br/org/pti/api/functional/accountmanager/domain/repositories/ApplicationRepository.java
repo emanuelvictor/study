@@ -1,6 +1,6 @@
-package br.org.pti.api.nonfunctional.authengine.domain.repositories;
+package br.org.pti.api.functional.accountmanager.domain.repositories;
 
-import br.org.pti.api.nonfunctional.authengine.domain.entities.Application;
+import br.org.pti.api.functional.accountmanager.domain.entities.Application;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,6 +1,6 @@
-package br.org.pti.api.nonfunctional.authengine.domain.services;
+package br.org.pti.api.functional.accountmanager.domain.services;
 
-import br.org.pti.api.nonfunctional.authengine.domain.repositories.UserRepository;
+import br.org.pti.api.functional.accountmanager.domain.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

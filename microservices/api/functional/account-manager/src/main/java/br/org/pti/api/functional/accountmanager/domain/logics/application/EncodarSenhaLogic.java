@@ -1,6 +1,6 @@
-package br.org.pti.api.nonfunctional.authengine.domain.logics.application;
+package br.org.pti.api.functional.accountmanager.domain.logics.application;
 
-import br.org.pti.api.nonfunctional.authengine.domain.entities.Application;
+import br.org.pti.api.functional.accountmanager.domain.entities.Application;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

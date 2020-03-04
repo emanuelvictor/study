@@ -3,7 +3,7 @@
  */
 package br.org.pti.api.nonfunctional.authengine.application.security;
 
-import br.org.pti.api.nonfunctional.authengine.domain.services.ApplicationService;
+import br.org.pti.api.nonfunctional.authengine.domain.services.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -43,7 +43,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     /**
      *
      */
-    private final ApplicationService clientDetailsService;
+    private final ClientService clientDetailsService;
 
     /**
      *
@@ -75,20 +75,12 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Override
     public void configure(final ClientDetailsServiceConfigurer clientDetailsServiceConfigurer) throws Exception {
         clientDetailsServiceConfigurer.inMemory()
-                .withClient("funcionario2")
-                .authorizedGrantTypes("password", "refresh_token")
+                .withClient("auth-engine")
+                .authorizedGrantTypes("password", "authorization_code", "implicit", "token", "refresh_token")
                 .redirectUris("http://0.0.0.0:9000/#/")
+                .scopes("root")
+                .secret("$2a$12$V.mEGBHyJ7Feo2I48fYmi.je.ir5nqAPWjtNwGZv5XUZHUmgoz1Ne");
 
-                .scopes("perfis", "e", "permissões")
-                .secret("$2a$10$svrdNy8n1cqasMqcvHPsj.u/b.uPvNW2VdeMhFkzp5E2cSbFZW6Ba")
-
-                .and()
-
-                .withClient("local1")
-                .authorizedGrantTypes("password", "authorization_code", "refresh_token")
-
-                .scopes("perfis", "e", "permissões")
-                .secret("123456");
 //        clientDetailsServiceConfigurer.withClientDetails(clientDetailsService);
     }
 

@@ -2,13 +2,13 @@ spring:
   application.name: @name@
 
   datasource:
-    username: sa_authorization-server
-    password: sa_authorization-server
+    username: account-manager
+    password: account-manager
     hikari.pool-name: ${spring.application.name}
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.postgresql.Driver
     hikari.maximum-pool-size: 10
-    url: jdbc:postgresql://localhost:5432/authorization-server
+    url: jdbc:postgresql://localhost:5432/account-manager
 
   jpa:
     hibernate:
@@ -17,11 +17,11 @@ spring:
     open-in-view: false
     properties:
       hibernate:
-        hibernate.dialect: br.org.pti.api.funcional.accountmanager.infrastructure.jpa.CustomPostgresDialect
+        hibernate.dialect: br.org.pti.api.functional.accountmanager.infrastructure.jpa.CustomPostgresDialect
         jdbc.lob.non_contextual_creation: true
         jdbc.batch_size: 20
         connection.autocommit: false
-        implicit_naming_strategy: br.org.pti.api.funcional.accountmanager.infrastructure.jpa.CustomNamingStrategy
+        implicit_naming_strategy: br.org.pti.api.functional.accountmanager.infrastructure.jpa.CustomNamingStrategy
       org.hibernate.envers.store_data_at_delete: true
       org.hibernate.envers.revision_field_name: revision
       org.hibernate.envers.audit_table_suffix: _audit

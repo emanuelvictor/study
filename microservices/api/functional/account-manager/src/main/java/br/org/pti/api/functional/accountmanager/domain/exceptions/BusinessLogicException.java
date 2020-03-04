@@ -1,4 +1,4 @@
-package br.org.pti.api.nonfunctional.authengine.domain.exceptions;
+package br.org.pti.api.functional.accountmanager.domain.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

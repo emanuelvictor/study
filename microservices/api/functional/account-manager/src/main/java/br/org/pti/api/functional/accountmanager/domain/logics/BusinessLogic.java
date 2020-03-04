@@ -1,7 +1,7 @@
-package br.org.pti.api.nonfunctional.authengine.domain.logics;
+package br.org.pti.api.functional.accountmanager.domain.logics;
 
 
-import br.org.pti.api.nonfunctional.authengine.domain.entities.generic.PersistentEntity;
+import br.org.pti.api.functional.accountmanager.domain.entities.generic.PersistentEntity;
 
 /**
  * @author Arthur Gregorio

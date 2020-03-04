@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 
 /**
- * @author Arthur Gregorio
+ * @author Emanuel Victor
  * @version 1.0.0
  * @since 2.0.0, 01/01/2020
  */
