@@ -9,13 +9,13 @@
         <module name="non-functional" />
         <module name="portal-compras" />
         <module name="api" />
-        <module name="accountmanager" />
+        <module name="integrator" />
         <module name="authengine" />
         <module name="inventario-web" />
         <module name="proxy" />
         <module name="discoverer" />
         <module name="functional" />
-        <module name="integrator" />
+        <module name="accountmanager" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

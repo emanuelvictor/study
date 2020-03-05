@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/test/java/br/org/pti/api/functional/authengine/AccountManagerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/test/java/br/org/pti/api/functional/authengine/AccountManagerApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories/feign/IClientFeignRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories/feign/IClientFeignRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/AuthorizationServerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/AuthorizationServerConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/ClientBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/ClientBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ClientService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,7 +83,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AccountManagerApplicationTests">
+  <component name="RunManager" selected="Spring Boot.AccountManagerApplication">
     <configuration name="AccountManagerApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="accountmanager" />
       <extension name="coverage">
@@ -118,6 +119,19 @@
       <module name="accountmanager" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.accountmanager.AccountManagerApplication" />
       <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthEngineApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="authengine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.org.pti.api.nonfunctional.authengine.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.authengine.AuthEngineApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -200,6 +214,7 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.AccountManagerApplicationTests.contextLoads" />
+      <item itemvalue="JUnit.AccountManagerApplicationTests" />
       <item itemvalue="Spring Boot.ComprasApplication" />
       <item itemvalue="Spring Boot.DiscovererApplication" />
       <item itemvalue="Spring Boot.IntegratorApplication" />
@@ -207,10 +222,11 @@
       <item itemvalue="Spring Boot.ProxyApplication" />
       <item itemvalue="Spring Boot.AccountManagerApplication" />
       <item itemvalue="Spring Boot.AuthEngineApplication" />
-      <item itemvalue="JUnit.AccountManagerApplicationTests" />
+      <item itemvalue="Spring Boot.AuthEngineApplication (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.AuthEngineApplication (1)" />
         <item itemvalue="Spring Boot.AuthEngineApplication" />
         <item itemvalue="JUnit.AccountManagerApplicationTests" />
         <item itemvalue="JUnit.AccountManagerApplicationTests.contextLoads" />
@@ -228,7 +244,8 @@
       <option name="presentableId" value="Default" />
       <updated>1583250715907</updated>
       <workItem from="1583250717366" duration="6157000" />
-      <workItem from="1583258679209" duration="39065000" />
+      <workItem from="1583258679209" duration="45874000" />
+      <workItem from="1583423754309" duration="3138000" />
     </task>
     <task id="LOCAL-00001" summary="Rearranging packages.">
       <created>1583254084341</created>
@@ -279,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583350354860</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Authentication working.">
+      <created>1583352733108</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1583352733108</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,17 +338,6 @@
     <MESSAGE value="Founded short circuit" />
     <MESSAGE value="Authentication working." />
     <option name="LAST_COMMIT_MESSAGE" value="Authentication working." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ClientService.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="66" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/api$InventarioApplication.ic" NAME="InventarioApplication Coverage Results" MODIFIED="1583262580381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

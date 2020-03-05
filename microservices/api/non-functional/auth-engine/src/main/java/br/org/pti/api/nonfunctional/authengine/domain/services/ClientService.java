@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ClientService implements ClientDetailsService {
 
-    private static final String[] ALL_GRANT_TYPES = new String[]{GrantType.AUTHORIZATION_CODE.getGrantType(), GrantType.CLIENT_CREDENTIALS.getGrantType(), GrantType.IMPLICIT.getGrantType(), GrantType.PASSWORD.getGrantType(), GrantType.REFRESH_TOKEN.getGrantType()};
+    private static final String[] ALL_GRANT_TYPES = new String[]{GrantType.AUTHORIZATION_CODE.getGrantType(), GrantType.CLIENT_CREDENTIALS.getGrantType(), GrantType.IMPLICIT.getGrantType(), GrantType.PASSWORD.getGrantType(), GrantType.REFRESH_TOKEN.getGrantType(), "implicit"};
 
     /**
      *
@@ -48,11 +48,27 @@ public class ClientService implements ClientDetailsService {
         if (clientId.equals(env.getProperty("oauth.clientId"))) {
             return new ClientBuilder()
                     .withClientId(env.getProperty("oauth.clientId"))
+                    .withRedirectUris("http://localhost:8080")
+                    .withScoped(false)
                     .withClientSecret(passwordEncoder.encode(env.getProperty("oauth.clientSecret")))
                     .withScope("root")
+                    .withSecretRequired(true)
                     .withAuthorizedGrantTypes(ALL_GRANT_TYPES)
                     .build();
         }
+
+        if (clientId.equals("account-manager")) {
+            return new ClientBuilder()
+                    .withClientId("account-manager")
+                    .withRedirectUris("http://localhost:8080")
+                    .withScoped(false)
+                    .withClientSecret(passwordEncoder.encode("account-manager"))
+                    .withScope("root")
+                    .withSecretRequired(false)
+                    .withAuthorizedGrantTypes(ALL_GRANT_TYPES)
+                    .build();
+        }
+
 
         //TODO não está convertendo de lá pra cá
         return this.clientFeignRepository.loadClientByClientId(clientId)

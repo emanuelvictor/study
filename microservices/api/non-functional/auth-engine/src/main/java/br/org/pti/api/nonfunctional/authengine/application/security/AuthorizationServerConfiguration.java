@@ -7,6 +7,7 @@ import br.org.pti.api.nonfunctional.authengine.domain.services.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -84,14 +85,21 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
         clientDetailsServiceConfigurer.withClientDetails(clientDetailsService);
     }
-
+private final PasswordEncoder passwordEncoder;
     /**
      *
      * @param authorizationServerSecurityConfigurer AuthorizationServerSecurityConfigurer
      */
     @Override
     public void configure(final AuthorizationServerSecurityConfigurer authorizationServerSecurityConfigurer) {
-        authorizationServerSecurityConfigurer.allowFormAuthenticationForClients().checkTokenAccess("permitAll()");
+//        authorizationServerSecurityConfigurer
+//                .allowFormAuthenticationForClients()
+//                .checkTokenAccess("permitAll()");
+
+        authorizationServerSecurityConfigurer.tokenKeyAccess("permitAll()")
+                .checkTokenAccess("permitAll()")
+                .allowFormAuthenticationForClients()
+        .passwordEncoder(passwordEncoder);
     }
 
 }

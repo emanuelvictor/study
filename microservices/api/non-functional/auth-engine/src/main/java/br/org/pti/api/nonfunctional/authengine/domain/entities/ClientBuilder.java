@@ -183,7 +183,7 @@ public class ClientBuilder {
             }
 
             @Override
-            public boolean isAutoApprove(String scope) {
+            public boolean isAutoApprove(final String scope) {
                 return autoApprove;
             }
 
