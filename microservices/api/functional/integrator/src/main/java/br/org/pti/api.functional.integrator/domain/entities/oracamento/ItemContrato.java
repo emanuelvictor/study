@@ -1,9 +1,9 @@
-package br.org.pti.integrator.domain.entities.oracamento;
+package br.org.pti.api.functional.integrator.domain.entities.oracamento;
 
-import br.org.pti.integrator.domain.entities.contabilidade.CentroCusto;
-import br.org.pti.integrator.domain.entities.contabilidade.FonteDeRecurso;
-import br.org.pti.integrator.domain.entities.contabilidade.NaturezaOrcamentaria;
-import br.org.pti.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.CentroCusto;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.FonteDeRecurso;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.NaturezaOrcamentaria;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

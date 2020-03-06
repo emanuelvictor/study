@@ -1,4 +1,4 @@
-package br.org.pti.integrator.application.components.validation;
+package br.org.pti.api.functional.integrator.application.components.validation;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtils;

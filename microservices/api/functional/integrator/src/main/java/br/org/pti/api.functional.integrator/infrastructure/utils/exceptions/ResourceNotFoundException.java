@@ -1,4 +1,4 @@
-package br.org.pti.integrator.infrastructure.utils.exceptions;
+package br.org.pti.api.functional.integrator.infrastructure.utils.exceptions;
 
 /**
  *

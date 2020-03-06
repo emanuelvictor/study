@@ -57,14 +57,16 @@ public class ClientService implements ClientDetailsService {
                     .build();
         }
 
-        if (clientId.equals("account-manager")) {
+        if (clientId.equals("browser")) {
             return new ClientBuilder()
-                    .withClientId("account-manager")
-                    .withRedirectUris("http://localhost:8484/client/login")
+                    .withClientId("browser")
+                    .withRedirectUris("http://localhost:8080/test", "http://localhost:8080/test/login")
                     .withScoped(false)
-                    .withClientSecret(passwordEncoder.encode("account-manager"))
-                    .withScope("root")
+                    .withClientSecret(passwordEncoder.encode("browser"))
+                    .withScope("none")
                     .withSecretRequired(false)
+                    .withAccessTokenValiditySeconds(999999999)
+                    .withRefreshTokenValiditySeconds(999999999)
                     .withAuthorizedGrantTypes(ALL_GRANT_TYPES)
                     .build();
         }

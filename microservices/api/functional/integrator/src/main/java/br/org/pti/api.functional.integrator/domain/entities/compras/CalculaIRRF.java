@@ -1,4 +1,4 @@
-package br.org.pti.integrator.domain.entities.compras;
+package br.org.pti.api.functional.integrator.domain.entities.compras;
 
 import lombok.Getter;
 

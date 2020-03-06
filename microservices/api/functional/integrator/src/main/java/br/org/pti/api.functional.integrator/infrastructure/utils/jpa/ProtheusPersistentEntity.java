@@ -1,10 +1,10 @@
-package br.org.pti.integrator.infrastructure.utils.jpa;
+package br.org.pti.api.functional.integrator.infrastructure.utils.jpa;
 
 
 import java.io.Serializable;
 import javax.persistence.*;
 
-import br.org.pti.integrator.infrastructure.utils.jpa.converters.DeletFieldConverter;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.converters.DeletFieldConverter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Setter;
 

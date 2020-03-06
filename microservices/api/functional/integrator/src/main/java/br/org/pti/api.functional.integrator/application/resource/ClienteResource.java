@@ -1,10 +1,9 @@
-package br.org.pti.integrator.application.resource;
+package br.org.pti.api.functional.integrator.application.resource;
 
-import br.org.pti.integrator.domain.entities.compras.Cliente;
-import br.org.pti.integrator.domain.entities.dto.ClienteDTO;
-import br.org.pti.integrator.domain.services.ClienteService;
-import br.org.pti.integrator.infrastructure.utils.components.RestPreconditions;
-import br.org.pti.integrator.infrastructure.utils.components.security.Rule;
+import br.org.pti.api.functional.integrator.domain.entities.compras.Cliente;
+import br.org.pti.api.functional.integrator.domain.entities.dto.ClienteDTO;
+import br.org.pti.api.functional.integrator.domain.services.ClienteService;
+import br.org.pti.api.functional.integrator.infrastructure.utils.components.security.Rule;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -61,7 +60,7 @@ public class ClienteResource {
     @GetMapping("/{codigo}/{loja}")
     @PreAuthorize(Rule.COMPRAS_READ)
     public Cliente buscarPorCodigoLoja(@PathVariable("codigo") final String codigo, @PathVariable("loja") final String loja) {
-        return RestPreconditions.checkFound(this.clienteService.buscarPorCodigoELoja(codigo, loja));
+        return br.org.pti.api.functional.integrator.infrastructure.utils.components.RestPreconditions.checkFound(this.clienteService.buscarPorCodigoELoja(codigo, loja));
     }
     
     /**
@@ -73,7 +72,7 @@ public class ClienteResource {
     @GetMapping("/{email}/porEmail")
     @PreAuthorize(Rule.COMPRAS_READ)
     public Cliente buscarPorEmail(@PathVariable("email") final String email) {
-        return RestPreconditions.checkFound(this.clienteService.buscarPorEmail(email));
+        return br.org.pti.api.functional.integrator.infrastructure.utils.components.RestPreconditions.checkFound(this.clienteService.buscarPorEmail(email));
     }
     
     /**
@@ -85,6 +84,6 @@ public class ClienteResource {
     @PreAuthorize(Rule.COMPRAS_READ)
     @GetMapping("/{documento}/porDocumento")
     public Cliente buscarPorDocumento(@PathVariable("documento") final String documento) {
-        return RestPreconditions.checkFound(this.clienteService.buscarPorDocumento(documento));
+        return br.org.pti.api.functional.integrator.infrastructure.utils.components.RestPreconditions.checkFound(this.clienteService.buscarPorDocumento(documento));
     }
 }

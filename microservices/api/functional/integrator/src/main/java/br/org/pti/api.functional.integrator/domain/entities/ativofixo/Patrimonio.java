@@ -1,9 +1,9 @@
-package br.org.pti.integrator.domain.entities.ativofixo;
+package br.org.pti.api.functional.integrator.domain.entities.ativofixo;
 
-import br.org.pti.integrator.domain.entities.rh.Funcionario;
-import br.org.pti.integrator.domain.entities.ativofixo.converter.SimOuNaoConverter;
-import br.org.pti.integrator.domain.entities.contabilidade.CentroCusto;
-import br.org.pti.integrator.infrastructure.utils.jpa.IPersistentEntity;
+import br.org.pti.api.functional.integrator.domain.entities.rh.Funcionario;
+import br.org.pti.api.functional.integrator.domain.entities.ativofixo.converter.SimOuNaoConverter;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.CentroCusto;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.IPersistentEntity;
 import lombok.*;
 
 import javax.persistence.*;

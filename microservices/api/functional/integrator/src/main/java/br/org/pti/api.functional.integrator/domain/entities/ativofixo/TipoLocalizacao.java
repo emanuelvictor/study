@@ -1,4 +1,4 @@
-package br.org.pti.integrator.domain.entities.ativofixo;
+package br.org.pti.api.functional.integrator.domain.entities.ativofixo;
 
 import lombok.Getter;
 

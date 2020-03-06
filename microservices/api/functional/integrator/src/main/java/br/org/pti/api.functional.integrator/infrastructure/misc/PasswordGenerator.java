@@ -1,4 +1,4 @@
-package br.org.pti.integrator.infrastructure.misc;
+package br.org.pti.api.functional.integrator.infrastructure.misc;
 
 import java.util.Collections;
 import java.util.List;

@@ -1,4 +1,4 @@
-package br.org.pti.integrator.domain.entities.rh;
+package br.org.pti.api.functional.integrator.domain.entities.rh;
 
 /**
  *

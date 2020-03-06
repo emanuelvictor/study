@@ -1,4 +1,4 @@
-package br.org.pti.integrator.infrastructure.utils.jpa.converters;
+package br.org.pti.api.functional.integrator.infrastructure.utils.jpa.converters;
 
 import org.apache.commons.lang3.StringUtils;
 

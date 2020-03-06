@@ -1,6 +1,6 @@
-package br.org.pti.integrator.domain.entities.rh.converters;
+package br.org.pti.api.functional.integrator.domain.entities.rh.converters;
 
-import br.org.pti.integrator.domain.entities.rh.SituacaoFolha;
+import br.org.pti.api.functional.integrator.domain.entities.rh.SituacaoFolha;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

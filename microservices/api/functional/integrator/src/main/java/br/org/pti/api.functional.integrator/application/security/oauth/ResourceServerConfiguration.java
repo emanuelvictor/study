@@ -1,4 +1,4 @@
-package br.org.pti.integrator.application.security.oauth;
+package br.org.pti.api.functional.integrator.application.security.oauth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;

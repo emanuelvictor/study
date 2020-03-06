@@ -1,4 +1,4 @@
-package br.org.pti.integrator.infrastructure.utils.jpa;
+package br.org.pti.api.functional.integrator.infrastructure.utils.jpa;
 
 import javax.persistence.Column;
 import javax.persistence.Id;

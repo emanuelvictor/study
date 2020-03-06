@@ -1,4 +1,4 @@
-package br.org.pti.integrator.application.formatters;
+package br.org.pti.api.functional.integrator.application.formatters;
 
 /**
  *

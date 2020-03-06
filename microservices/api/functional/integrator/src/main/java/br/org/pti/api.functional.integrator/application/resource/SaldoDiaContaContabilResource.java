@@ -1,10 +1,10 @@
-package br.org.pti.integrator.application.resource;
+package br.org.pti.api.functional.integrator.application.resource;
 
-import br.org.pti.integrator.domain.entities.contabilidade.SaldoDiaContaContabil;
-import br.org.pti.integrator.domain.entities.contabilidade.SaldoIntervaloContas;
-import br.org.pti.integrator.domain.entities.contabilidade.SaldoPeriodoContaContabil;
-import br.org.pti.integrator.domain.services.SaldoDiaContaContabilService;
-import br.org.pti.integrator.infrastructure.utils.components.security.Rule;
+import br.org.pti.api.functional.integrator.infrastructure.utils.components.security.Rule;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.SaldoDiaContaContabil;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.SaldoIntervaloContas;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.SaldoPeriodoContaContabil;
+import br.org.pti.api.functional.integrator.domain.services.SaldoDiaContaContabilService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;

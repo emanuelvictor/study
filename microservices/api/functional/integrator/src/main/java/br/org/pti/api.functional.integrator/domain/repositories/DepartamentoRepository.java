@@ -1,6 +1,6 @@
-package br.org.pti.integrator.domain.repositories;
+package br.org.pti.api.functional.integrator.domain.repositories;
 
-import br.org.pti.integrator.domain.entities.rh.Departamento;
+import br.org.pti.api.functional.integrator.domain.entities.rh.Departamento;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.EntityGraph.EntityGraphType;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,6 +1,6 @@
-package br.org.pti.integrator.domain.entities.contabilidade;
+package br.org.pti.api.functional.integrator.domain.entities.contabilidade;
 
-import br.org.pti.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

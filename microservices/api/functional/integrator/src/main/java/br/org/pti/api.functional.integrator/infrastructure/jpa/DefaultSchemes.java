@@ -1,4 +1,4 @@
-package br.org.pti.integrator.infrastructure.jpa;
+package br.org.pti.api.functional.integrator.infrastructure.jpa;
 
 /**
  *

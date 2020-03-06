@@ -1,7 +1,7 @@
-package br.org.pti.integrator.domain.entities.contabilidade.converters;
+package br.org.pti.api.functional.integrator.domain.entities.contabilidade.converters;
 
 
-import br.org.pti.integrator.domain.entities.contabilidade.StatusConciliacao;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.StatusConciliacao;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

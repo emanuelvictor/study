@@ -1,4 +1,4 @@
-package br.org.pti.integrator.application.formatters;
+package br.org.pti.api.functional.integrator.application.formatters;
 
 import org.springframework.format.Formatter;
 import org.springframework.stereotype.Component;

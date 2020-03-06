@@ -1,7 +1,7 @@
-package br.org.pti.integrator.domain.entities.dto;
+package br.org.pti.api.functional.integrator.domain.entities.dto;
 
-import br.org.pti.integrator.domain.entities.contabilidade.CentroCusto;
-import br.org.pti.integrator.domain.entities.contabilidade.FonteDeRecurso;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.CentroCusto;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.FonteDeRecurso;
 import lombok.Getter;
 import lombok.Setter;
 

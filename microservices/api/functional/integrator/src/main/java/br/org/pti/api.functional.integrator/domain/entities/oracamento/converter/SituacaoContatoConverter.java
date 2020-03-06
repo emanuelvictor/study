@@ -1,6 +1,6 @@
-package br.org.pti.integrator.domain.entities.oracamento.converter;
+package br.org.pti.api.functional.integrator.domain.entities.oracamento.converter;
 
-import br.org.pti.integrator.domain.entities.oracamento.SituacaoContrato;
+import br.org.pti.api.functional.integrator.domain.entities.oracamento.SituacaoContrato;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

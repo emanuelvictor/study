@@ -1,9 +1,9 @@
-package br.org.pti.integrator.application.resource;
+package br.org.pti.api.functional.integrator.application.resource;
 
-import br.org.pti.integrator.domain.entities.contabilidade.*;
-import br.org.pti.integrator.domain.services.ContaContabilService;
-import br.org.pti.integrator.domain.services.LancamentoContabilService;
-import br.org.pti.integrator.infrastructure.utils.components.security.Rule;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.*;
+import br.org.pti.api.functional.integrator.domain.services.ContaContabilService;
+import br.org.pti.api.functional.integrator.domain.services.LancamentoContabilService;
+import br.org.pti.api.functional.integrator.infrastructure.utils.components.security.Rule;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

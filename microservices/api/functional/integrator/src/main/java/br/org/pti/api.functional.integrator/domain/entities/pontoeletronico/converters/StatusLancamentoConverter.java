@@ -1,7 +1,7 @@
-package br.org.pti.integrator.domain.entities.pontoeletronico.converters;
+package br.org.pti.api.functional.integrator.domain.entities.pontoeletronico.converters;
 
 
-import br.org.pti.integrator.domain.entities.pontoeletronico.StatusLancamento;
+import br.org.pti.api.functional.integrator.domain.entities.pontoeletronico.StatusLancamento;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

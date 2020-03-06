@@ -1,8 +1,8 @@
-package br.org.pti.integrator.domain.repositories;
+package br.org.pti.api.functional.integrator.domain.repositories;
 
-import br.org.pti.integrator.domain.entities.rh.Funcionario;
-import br.org.pti.integrator.domain.entities.rh.SituacaoFolha;
-import br.org.pti.integrator.infrastructure.utils.jpa.ProtheusRepository;
+import br.org.pti.api.functional.integrator.domain.entities.rh.Funcionario;
+import br.org.pti.api.functional.integrator.domain.entities.rh.SituacaoFolha;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.ProtheusRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;

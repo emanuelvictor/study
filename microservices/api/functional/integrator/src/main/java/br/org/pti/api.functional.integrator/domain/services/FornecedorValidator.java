@@ -1,7 +1,7 @@
-package br.org.pti.integrator.domain.services;
+package br.org.pti.api.functional.integrator.domain.services;
 
-import br.org.pti.integrator.domain.entities.dto.FornecedorDTO;
-import br.org.pti.integrator.infrastructure.utils.exceptions.ValidationException;
+import br.org.pti.api.functional.integrator.domain.entities.dto.FornecedorDTO;
+import br.org.pti.api.functional.integrator.infrastructure.utils.exceptions.ValidationException;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;

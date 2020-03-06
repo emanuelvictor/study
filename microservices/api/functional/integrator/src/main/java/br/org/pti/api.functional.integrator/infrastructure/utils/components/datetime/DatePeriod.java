@@ -1,4 +1,4 @@
-package br.org.pti.integrator.infrastructure.utils.components.datetime;
+package br.org.pti.api.functional.integrator.infrastructure.utils.components.datetime;
 
 import lombok.Getter;
 

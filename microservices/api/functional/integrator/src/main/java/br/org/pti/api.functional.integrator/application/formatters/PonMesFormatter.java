@@ -1,7 +1,7 @@
-package br.org.pti.integrator.application.formatters;
+package br.org.pti.api.functional.integrator.application.formatters;
 
 
-import br.org.pti.integrator.infrastructure.utils.components.datetime.DatePeriod;
+import br.org.pti.api.functional.integrator.infrastructure.utils.components.datetime.DatePeriod;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

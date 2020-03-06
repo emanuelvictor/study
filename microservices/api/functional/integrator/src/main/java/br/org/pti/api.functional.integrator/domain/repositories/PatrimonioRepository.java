@@ -1,6 +1,6 @@
-package br.org.pti.integrator.domain.repositories;
+package br.org.pti.api.functional.integrator.domain.repositories;
 
-import br.org.pti.integrator.domain.entities.ativofixo.Patrimonio;
+import br.org.pti.api.functional.integrator.domain.entities.ativofixo.Patrimonio;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

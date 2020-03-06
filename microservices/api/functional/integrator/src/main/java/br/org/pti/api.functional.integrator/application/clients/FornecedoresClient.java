@@ -1,6 +1,6 @@
-package br.org.pti.integrator.application.clients;
+package br.org.pti.api.functional.integrator.application.clients;
 
-import br.org.pti.integrator.domain.entities.dto.FornecedorDTO;
+import br.org.pti.api.functional.integrator.domain.entities.dto.FornecedorDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

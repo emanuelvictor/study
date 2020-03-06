@@ -1,17 +1,20 @@
+spring:
+  application.name: @name@
+
 server:
   port: 8484
-  servlet:
-    context-path: /client
+#  servlet:
+#    context-path: /client
 
 security:
   oauth2:
     client:
       client-id: account-manager
       client-secret: account-manager
-      access-token-uri: http://localhost:8081/oauth/token
-      user-authorization-uri: http://localhost:8081/oauth/authorize
+      access-token-uri: http://localhost:8080/auth-engine/oauth/token
+      user-authorization-uri: http://localhost:8080/auth-engine/oauth/authorize
     resource:
-      user-info-uri: http://localhost:8081/api/user
+      user-info-uri: http://localhost:8080/auth-engine/api/user
 
 logging:
   level:
@@ -21,3 +24,12 @@ logging:
     org.springframework.web: INFO
     org.springframework.security: TRACE
     org.springframework.context.support: TRACE
+
+# configs do eureka server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    hostname: localhost
+    appname: test

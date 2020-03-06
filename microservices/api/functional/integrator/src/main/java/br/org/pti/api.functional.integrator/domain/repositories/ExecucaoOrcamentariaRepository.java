@@ -1,8 +1,8 @@
-package br.org.pti.integrator.domain.repositories;
+package br.org.pti.api.functional.integrator.domain.repositories;
 
-import br.org.pti.integrator.domain.entities.contabilidade.CentroCusto;
-import br.org.pti.integrator.domain.entities.contabilidade.FonteDeRecurso;
-import br.org.pti.integrator.domain.entities.oracamento.ExecucaoOrcamentaria;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.CentroCusto;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.FonteDeRecurso;
+import br.org.pti.api.functional.integrator.domain.entities.oracamento.ExecucaoOrcamentaria;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

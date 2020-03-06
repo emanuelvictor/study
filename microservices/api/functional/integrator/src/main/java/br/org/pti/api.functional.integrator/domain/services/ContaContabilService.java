@@ -1,7 +1,7 @@
-package br.org.pti.integrator.domain.services;
+package br.org.pti.api.functional.integrator.domain.services;
 
-import br.org.pti.integrator.domain.entities.contabilidade.ContaContabil;
-import br.org.pti.integrator.domain.repositories.ContaContabilRepository;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.ContaContabil;
+import br.org.pti.api.functional.integrator.domain.repositories.ContaContabilRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

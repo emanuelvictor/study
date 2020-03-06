@@ -1,10 +1,10 @@
-package br.org.pti.integrator.domain.repositories;
+package br.org.pti.api.functional.integrator.domain.repositories;
 
-import br.org.pti.integrator.domain.entities.contabilidade.ContaContabil;
-import br.org.pti.integrator.domain.entities.contabilidade.LancamentoContabil;
-import br.org.pti.integrator.domain.entities.contabilidade.StatusConciliacao;
-import br.org.pti.integrator.domain.entities.dto.LancamentoViagemValorDTO;
-import br.org.pti.integrator.infrastructure.utils.jpa.ProtheusRepository;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.ContaContabil;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.LancamentoContabil;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.StatusConciliacao;
+import br.org.pti.api.functional.integrator.domain.entities.dto.LancamentoViagemValorDTO;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.ProtheusRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -128,7 +128,7 @@ public interface LancamentoContabilRepository extends ProtheusRepository<Lancame
      * @param endDate data final do periodo para busca
      * @return lista de lancamentos de viagens
      */
-    @Query(value = "SELECT new br.org.pti.integrator.domain.entities.dto.LancamentoViagemValorDTO("
+    @Query(value = "SELECT new br.org.pti.api.functional.integrator.domain.entities.dto.LancamentoViagemValorDTO("
             + "   l.valor, "
             + "   CASE "
             + "     WHEN l.contaDebito = ?1 THEN 'D' "

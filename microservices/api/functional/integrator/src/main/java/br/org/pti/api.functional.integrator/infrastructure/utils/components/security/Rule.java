@@ -1,4 +1,6 @@
-package br.org.pti.integrator.infrastructure.utils.components.security;
+package br.org.pti.api.functional.integrator.infrastructure.utils.components.security;
+
+import br.org.pti.api.functional.integrator.infrastructure.utils.components.security.Authority;
 
 /**
  *

@@ -1,7 +1,7 @@
-package br.org.pti.integrator.domain.repositories;
+package br.org.pti.api.functional.integrator.domain.repositories;
 
-import br.org.pti.integrator.domain.entities.pontoeletronico.Feriado;
-import br.org.pti.integrator.domain.entities.pontoeletronico.TipoFeriado;
+import br.org.pti.api.functional.integrator.domain.entities.pontoeletronico.Feriado;
+import br.org.pti.api.functional.integrator.domain.entities.pontoeletronico.TipoFeriado;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

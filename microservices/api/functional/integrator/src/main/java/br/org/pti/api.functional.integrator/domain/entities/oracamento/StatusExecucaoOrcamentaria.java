@@ -1,4 +1,4 @@
-package br.org.pti.integrator.domain.entities.oracamento;
+package br.org.pti.api.functional.integrator.domain.entities.oracamento;
 
 import lombok.Getter;
 

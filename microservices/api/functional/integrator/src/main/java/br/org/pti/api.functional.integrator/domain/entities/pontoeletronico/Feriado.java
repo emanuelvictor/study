@@ -1,8 +1,8 @@
-package br.org.pti.integrator.domain.entities.pontoeletronico;
+package br.org.pti.api.functional.integrator.domain.entities.pontoeletronico;
 
-import br.org.pti.integrator.domain.entities.pontoeletronico.converters.TipoFeriadoConverter;
-import br.org.pti.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
-import br.org.pti.integrator.infrastructure.utils.jpa.converters.StringDateConverter;
+import br.org.pti.api.functional.integrator.domain.entities.pontoeletronico.converters.TipoFeriadoConverter;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.converters.StringDateConverter;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

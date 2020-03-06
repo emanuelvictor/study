@@ -1,6 +1,6 @@
-package br.org.pti.integrator.domain.entities.dto;
+package br.org.pti.api.functional.integrator.domain.entities.dto;
 
-import br.org.pti.integrator.application.formatters.ParametroFormatter;
+import br.org.pti.api.functional.integrator.application.formatters.ParametroFormatter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

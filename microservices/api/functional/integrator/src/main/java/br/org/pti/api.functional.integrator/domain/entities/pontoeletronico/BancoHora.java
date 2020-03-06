@@ -1,10 +1,10 @@
-package br.org.pti.integrator.domain.entities.pontoeletronico;
+package br.org.pti.api.functional.integrator.domain.entities.pontoeletronico;
 
-import br.org.pti.integrator.domain.entities.contabilidade.CentroCusto;
-import br.org.pti.integrator.domain.entities.rh.Funcionario;
-import br.org.pti.integrator.domain.entities.pontoeletronico.converters.StatusLancamentoConverter;
-import br.org.pti.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
-import br.org.pti.integrator.infrastructure.utils.jpa.converters.StringDateConverter;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.CentroCusto;
+import br.org.pti.api.functional.integrator.domain.entities.rh.Funcionario;
+import br.org.pti.api.functional.integrator.domain.entities.pontoeletronico.converters.StatusLancamentoConverter;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.converters.StringDateConverter;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

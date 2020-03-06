@@ -1,13 +1,13 @@
-package br.org.pti.integrator.domain.entities.ativofixo;
+package br.org.pti.api.functional.integrator.domain.entities.ativofixo;
 
 
-import br.org.pti.integrator.domain.entities.ativofixo.converter.TipoLocalizacaoConverter;
+import br.org.pti.api.functional.integrator.domain.entities.ativofixo.converter.TipoLocalizacaoConverter;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import br.org.pti.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

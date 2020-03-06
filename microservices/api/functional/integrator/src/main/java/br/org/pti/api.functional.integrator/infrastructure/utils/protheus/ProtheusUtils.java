@@ -1,4 +1,4 @@
-package br.org.pti.integrator.infrastructure.utils.protheus;
+package br.org.pti.api.functional.integrator.infrastructure.utils.protheus;
 
 import org.apache.commons.lang3.StringUtils;
 

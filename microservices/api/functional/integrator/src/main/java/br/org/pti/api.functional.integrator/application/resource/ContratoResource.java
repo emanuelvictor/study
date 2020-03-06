@@ -1,9 +1,9 @@
-package br.org.pti.integrator.application.resource;
+package br.org.pti.api.functional.integrator.application.resource;
 
-import br.org.pti.integrator.domain.entities.oracamento.Contrato;
-import br.org.pti.integrator.domain.services.ContratoService;
-import br.org.pti.integrator.infrastructure.utils.components.RestPreconditions;
-import br.org.pti.integrator.infrastructure.utils.components.security.Rule;
+import br.org.pti.api.functional.integrator.domain.entities.oracamento.Contrato;
+import br.org.pti.api.functional.integrator.domain.services.ContratoService;
+import br.org.pti.api.functional.integrator.infrastructure.utils.components.RestPreconditions;
+import br.org.pti.api.functional.integrator.infrastructure.utils.components.security.Rule;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;

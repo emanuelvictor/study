@@ -1,7 +1,7 @@
-package br.org.pti.integrator.application.clients;
+package br.org.pti.api.functional.integrator.application.clients;
 
-import br.org.pti.integrator.domain.entities.dto.ClienteDTO;
-import br.org.pti.integrator.infrastructure.utils.exceptions.ServiceException;
+import br.org.pti.api.functional.integrator.domain.entities.dto.ClienteDTO;
+import br.org.pti.api.functional.integrator.infrastructure.utils.exceptions.ServiceException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

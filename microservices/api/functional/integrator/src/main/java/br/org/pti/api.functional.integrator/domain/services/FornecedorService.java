@@ -1,12 +1,12 @@
-package br.org.pti.integrator.domain.services;
+package br.org.pti.api.functional.integrator.domain.services;
 
-import br.org.pti.integrator.application.clients.FornecedoresClient;
-import br.org.pti.integrator.domain.entities.compras.Fornecedor;
-import br.org.pti.integrator.domain.entities.dto.FornecedorDTO;
-import br.org.pti.integrator.domain.repositories.FornecedorRepository;
-import br.org.pti.integrator.infrastructure.utils.exceptions.ResourceNotFoundException;
-import br.org.pti.integrator.infrastructure.utils.exceptions.ServiceException;
-import br.org.pti.integrator.infrastructure.utils.exceptions.ValidationException;
+import br.org.pti.api.functional.integrator.application.clients.FornecedoresClient;
+import br.org.pti.api.functional.integrator.domain.entities.compras.Fornecedor;
+import br.org.pti.api.functional.integrator.domain.entities.dto.FornecedorDTO;
+import br.org.pti.api.functional.integrator.domain.repositories.FornecedorRepository;
+import br.org.pti.api.functional.integrator.infrastructure.utils.exceptions.ResourceNotFoundException;
+import br.org.pti.api.functional.integrator.infrastructure.utils.exceptions.ServiceException;
+import br.org.pti.api.functional.integrator.infrastructure.utils.exceptions.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

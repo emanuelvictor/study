@@ -1,4 +1,4 @@
-package br.org.pti.integrator;
+package br.org.pti.api.functional.integrator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

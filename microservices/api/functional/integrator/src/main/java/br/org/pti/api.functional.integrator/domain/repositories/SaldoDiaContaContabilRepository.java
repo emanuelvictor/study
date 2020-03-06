@@ -1,8 +1,8 @@
-package br.org.pti.integrator.domain.repositories;
+package br.org.pti.api.functional.integrator.domain.repositories;
 
-import br.org.pti.integrator.domain.entities.contabilidade.ContaContabil;
-import br.org.pti.integrator.domain.entities.contabilidade.SaldoDiaContaContabil;
-import br.org.pti.integrator.infrastructure.utils.jpa.ProtheusRepository;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.ContaContabil;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.SaldoDiaContaContabil;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.ProtheusRepository;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

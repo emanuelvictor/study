@@ -1,8 +1,8 @@
-package br.org.pti.integrator.domain.entities.rh;
+package br.org.pti.api.functional.integrator.domain.entities.rh;
 
-import br.org.pti.integrator.domain.entities.contabilidade.CentroCusto;
-import br.org.pti.integrator.domain.entities.rh.converters.SituacaoFolhaConverter;
-import br.org.pti.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.CentroCusto;
+import br.org.pti.api.functional.integrator.domain.entities.rh.converters.SituacaoFolhaConverter;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
 import lombok.*;
 import org.hibernate.annotations.Where;
 

@@ -1,9 +1,9 @@
-package br.org.pti.integrator.domain.entities.contabilidade;
+package br.org.pti.api.functional.integrator.domain.entities.contabilidade;
 
-import br.org.pti.integrator.domain.entities.contabilidade.converters.StatusIntegracaoConverter;
-import br.org.pti.integrator.infrastructure.utils.jpa.ProtheusPersistentEntity;
-import br.org.pti.integrator.infrastructure.utils.jpa.converters.StringDateConverter;
-import br.org.pti.integrator.infrastructure.utils.jpa.converters.StringDateTimeConverter;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.converters.StatusIntegracaoConverter;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.ProtheusPersistentEntity;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.converters.StringDateConverter;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.converters.StringDateTimeConverter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

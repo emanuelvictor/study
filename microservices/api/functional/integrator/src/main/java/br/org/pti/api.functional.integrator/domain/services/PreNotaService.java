@@ -1,12 +1,12 @@
-package br.org.pti.integrator.domain.services;
+package br.org.pti.api.functional.integrator.domain.services;
 
-import br.org.pti.integrator.domain.entities.contabilidade.ItemPreNota;
-import br.org.pti.integrator.domain.entities.contabilidade.PreNota;
-import br.org.pti.integrator.domain.repositories.ItemPreNotaRepository;
-import br.org.pti.integrator.domain.repositories.PreNotaRepository;
-import br.org.pti.integrator.infrastructure.utils.components.RandomCodeGenerator;
-import br.org.pti.integrator.infrastructure.utils.components.RestPreconditions;
-import br.org.pti.integrator.infrastructure.utils.exceptions.ValidationException;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.ItemPreNota;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.PreNota;
+import br.org.pti.api.functional.integrator.domain.repositories.ItemPreNotaRepository;
+import br.org.pti.api.functional.integrator.domain.repositories.PreNotaRepository;
+import br.org.pti.api.functional.integrator.infrastructure.utils.components.RandomCodeGenerator;
+import br.org.pti.api.functional.integrator.infrastructure.utils.components.RestPreconditions;
+import br.org.pti.api.functional.integrator.infrastructure.utils.exceptions.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="non-functional" />
         <module name="portal-compras" />
-        <module name="demo" />
         <module name="api" />
         <module name="clientApplication" />
         <module name="integrator" />
@@ -22,7 +21,6 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="auth-engine" target="11" />
-      <module name="functional" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -32,7 +30,6 @@
       <module name="auth-engine" options="-parameters" />
       <module name="authengine" options="-parameters" />
       <module name="clientApplication" options="-parameters" />
-      <module name="demo" options="-parameters" />
       <module name="discoverer" options="-parameters" />
       <module name="functional" options="-parameters" />
       <module name="integrator" options="-parameters" />

@@ -1,4 +1,4 @@
-package br.org.pti.integrator.infrastructure.utils.exceptions;
+package br.org.pti.api.functional.integrator.infrastructure.utils.exceptions;
 
 /**
  * Exception customizada para ser utilizada em erros de validacao de alguma 

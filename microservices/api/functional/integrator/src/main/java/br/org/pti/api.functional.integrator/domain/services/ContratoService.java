@@ -1,9 +1,9 @@
-package br.org.pti.integrator.domain.services;
+package br.org.pti.api.functional.integrator.domain.services;
 
-import br.org.pti.integrator.domain.entities.oracamento.Contrato;
-import br.org.pti.integrator.domain.entities.oracamento.ItemContrato;
-import br.org.pti.integrator.domain.repositories.ContratoRepository;
-import br.org.pti.integrator.domain.repositories.ItemContratoRepository;
+import br.org.pti.api.functional.integrator.domain.entities.oracamento.Contrato;
+import br.org.pti.api.functional.integrator.domain.entities.oracamento.ItemContrato;
+import br.org.pti.api.functional.integrator.domain.repositories.ContratoRepository;
+import br.org.pti.api.functional.integrator.domain.repositories.ItemContratoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

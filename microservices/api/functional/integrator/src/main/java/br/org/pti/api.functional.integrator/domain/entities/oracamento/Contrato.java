@@ -1,8 +1,8 @@
-package br.org.pti.integrator.domain.entities.oracamento;
+package br.org.pti.api.functional.integrator.domain.entities.oracamento;
 
-import br.org.pti.integrator.domain.entities.oracamento.converter.SituacaoContatoConverter;
-import br.org.pti.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
-import br.org.pti.integrator.infrastructure.utils.jpa.converters.StringDateConverter;
+import br.org.pti.api.functional.integrator.domain.entities.oracamento.converter.SituacaoContatoConverter;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.converters.StringDateConverter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

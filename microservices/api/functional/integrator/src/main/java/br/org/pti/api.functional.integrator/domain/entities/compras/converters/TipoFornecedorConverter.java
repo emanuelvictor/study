@@ -1,6 +1,6 @@
-package br.org.pti.integrator.domain.entities.compras.converters;
+package br.org.pti.api.functional.integrator.domain.entities.compras.converters;
 
-import br.org.pti.integrator.domain.entities.compras.TipoFornecedor;
+import br.org.pti.api.functional.integrator.domain.entities.compras.TipoFornecedor;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.AttributeConverter;

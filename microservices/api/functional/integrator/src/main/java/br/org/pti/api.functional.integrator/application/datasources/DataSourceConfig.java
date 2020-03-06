@@ -1,4 +1,4 @@
-package br.org.pti.integrator.application.datasources;
+package br.org.pti.api.functional.integrator.application.datasources;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,7 +24,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableJpaRepositories(
-        basePackages = "br.org.pti.integrator.domain.repositories"
+        basePackages = "br.org.pti.api.functional.integrator.domain.repositories"
 )
 @RequiredArgsConstructor
 @EnableTransactionManagement
@@ -50,7 +50,7 @@ public class DataSourceConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(final EntityManagerFactoryBuilder builder, final @Qualifier("dataSource") DataSource dataSource) {
         return builder
                 .dataSource(dataSource)
-                .packages("br.org.pti.integrator.domain")
+                .packages("br.org.pti.api.functional.integrator.domain")
                 .persistenceUnit("oracle")
                 .build();
     }

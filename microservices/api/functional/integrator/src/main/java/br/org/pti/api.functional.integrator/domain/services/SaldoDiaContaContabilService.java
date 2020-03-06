@@ -1,13 +1,13 @@
-package br.org.pti.integrator.domain.services;
+package br.org.pti.api.functional.integrator.domain.services;
 
-import br.org.pti.integrator.domain.entities.contabilidade.ContaContabil;
-import br.org.pti.integrator.domain.entities.contabilidade.SaldoDiaContaContabil;
-import br.org.pti.integrator.domain.entities.contabilidade.SaldoIntervaloContas;
-import br.org.pti.integrator.domain.entities.contabilidade.SaldoPeriodoContaContabil;
-import br.org.pti.integrator.domain.repositories.ContaContabilRepository;
-import br.org.pti.integrator.domain.repositories.SaldoDiaContaContabilRepository;
-import br.org.pti.integrator.infrastructure.utils.components.RestPreconditions;
-import br.org.pti.integrator.infrastructure.utils.exceptions.ResourceNotFoundException;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.ContaContabil;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.SaldoDiaContaContabil;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.SaldoIntervaloContas;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.SaldoPeriodoContaContabil;
+import br.org.pti.api.functional.integrator.domain.repositories.ContaContabilRepository;
+import br.org.pti.api.functional.integrator.domain.repositories.SaldoDiaContaContabilRepository;
+import br.org.pti.api.functional.integrator.infrastructure.utils.components.RestPreconditions;
+import br.org.pti.api.functional.integrator.infrastructure.utils.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;

@@ -1,4 +1,4 @@
-package br.org.pti.integrator.application.components.validation;
+package br.org.pti.api.functional.integrator.application.components.validation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

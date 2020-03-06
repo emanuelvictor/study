@@ -1,12 +1,12 @@
-package br.org.pti.integrator.domain.entities.oracamento;
+package br.org.pti.api.functional.integrator.domain.entities.oracamento;
 
-import br.org.pti.integrator.domain.entities.oracamento.converter.StatusExecucaoOrcamentariaConverter;
-import br.org.pti.integrator.domain.entities.oracamento.converter.TipoExecucaoOrcamentariaConverter;
-import br.org.pti.integrator.domain.entities.oracamento.converter.TipoSaldoExecucaoOrcamentariaConverter;
-import br.org.pti.integrator.domain.entities.contabilidade.CentroCusto;
-import br.org.pti.integrator.domain.entities.contabilidade.FonteDeRecurso;
-import br.org.pti.integrator.domain.entities.contabilidade.NaturezaOrcamentaria;
-import br.org.pti.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
+import br.org.pti.api.functional.integrator.domain.entities.oracamento.converter.StatusExecucaoOrcamentariaConverter;
+import br.org.pti.api.functional.integrator.domain.entities.oracamento.converter.TipoExecucaoOrcamentariaConverter;
+import br.org.pti.api.functional.integrator.domain.entities.oracamento.converter.TipoSaldoExecucaoOrcamentariaConverter;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.CentroCusto;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.FonteDeRecurso;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.NaturezaOrcamentaria;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

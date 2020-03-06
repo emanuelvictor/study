@@ -1,10 +1,10 @@
-package br.org.pti.integrator.application.resource;
+package br.org.pti.api.functional.integrator.application.resource;
 
-import br.org.pti.integrator.domain.entities.compras.Fornecedor;
-import br.org.pti.integrator.domain.entities.dto.FornecedorDTO;
-import br.org.pti.integrator.domain.services.FornecedorService;
-import br.org.pti.integrator.infrastructure.utils.components.RestPreconditions;
-import br.org.pti.integrator.infrastructure.utils.components.security.Rule;
+import br.org.pti.api.functional.integrator.domain.entities.compras.Fornecedor;
+import br.org.pti.api.functional.integrator.domain.entities.dto.FornecedorDTO;
+import br.org.pti.api.functional.integrator.domain.services.FornecedorService;
+import br.org.pti.api.functional.integrator.infrastructure.utils.components.RestPreconditions;
+import br.org.pti.api.functional.integrator.infrastructure.utils.components.security.Rule;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

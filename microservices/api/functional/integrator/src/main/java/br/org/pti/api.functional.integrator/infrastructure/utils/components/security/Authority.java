@@ -1,4 +1,4 @@
-package br.org.pti.integrator.infrastructure.utils.components.security;
+package br.org.pti.api.functional.integrator.infrastructure.utils.components.security;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

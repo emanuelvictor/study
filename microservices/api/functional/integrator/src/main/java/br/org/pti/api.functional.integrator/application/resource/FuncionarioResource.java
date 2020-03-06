@@ -1,11 +1,11 @@
-package br.org.pti.integrator.application.resource;
+package br.org.pti.api.functional.integrator.application.resource;
 
-import br.org.pti.integrator.domain.entities.rh.Funcionario;
-import br.org.pti.integrator.domain.entities.rh.SituacaoFolha;
-import br.org.pti.integrator.domain.repositories.FuncionarioRepository;
-import br.org.pti.integrator.infrastructure.utils.components.RestPreconditions;
-import br.org.pti.integrator.infrastructure.utils.components.security.Rule;
-import br.org.pti.integrator.infrastructure.utils.protheus.ProtheusUtils;
+import br.org.pti.api.functional.integrator.domain.entities.rh.Funcionario;
+import br.org.pti.api.functional.integrator.domain.entities.rh.SituacaoFolha;
+import br.org.pti.api.functional.integrator.domain.repositories.FuncionarioRepository;
+import br.org.pti.api.functional.integrator.infrastructure.utils.components.RestPreconditions;
+import br.org.pti.api.functional.integrator.infrastructure.utils.components.security.Rule;
+import br.org.pti.api.functional.integrator.infrastructure.utils.protheus.ProtheusUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

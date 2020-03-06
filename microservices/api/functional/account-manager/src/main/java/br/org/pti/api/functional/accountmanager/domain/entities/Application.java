@@ -116,7 +116,7 @@ public class Application extends PersistentEntity implements ClientDetails {
      */
     @Override
     public Integer getAccessTokenValiditySeconds() {
-        return 60;
+        return 60000;
     }
 
     /**

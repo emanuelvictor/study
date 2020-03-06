@@ -1,4 +1,4 @@
-package br.org.pti.integrator.application.components;
+package br.org.pti.api.functional.integrator.application.components;
 
 /**
  *

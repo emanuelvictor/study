@@ -1,12 +1,12 @@
-package br.org.pti.integrator.domain.entities.contabilidade;
+package br.org.pti.api.functional.integrator.domain.entities.contabilidade;
 
-import br.org.pti.integrator.domain.entities.contabilidade.converters.FormaLancamentoContabilConverter;
-import br.org.pti.integrator.domain.entities.contabilidade.converters.StatusConciliacaoConverter;
-import br.org.pti.integrator.domain.entities.contabilidade.converters.TipoLancamentoContabilConverter;
-import br.org.pti.integrator.domain.entities.contabilidade.converters.TipoSaldoLancamentoContabilConverter;
-import br.org.pti.integrator.infrastructure.utils.jpa.ProtheusPersistentEntity;
-import br.org.pti.integrator.infrastructure.utils.jpa.converters.BlobStringConverter;
-import br.org.pti.integrator.infrastructure.utils.jpa.converters.StringDateConverter;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.converters.FormaLancamentoContabilConverter;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.converters.StatusConciliacaoConverter;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.converters.TipoLancamentoContabilConverter;
+import br.org.pti.api.functional.integrator.domain.entities.contabilidade.converters.TipoSaldoLancamentoContabilConverter;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.ProtheusPersistentEntity;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.converters.BlobStringConverter;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.converters.StringDateConverter;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

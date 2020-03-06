@@ -1,7 +1,7 @@
-package br.org.pti.integrator.infrastructure.utils.components;
+package br.org.pti.api.functional.integrator.infrastructure.utils.components;
 
-import br.org.pti.integrator.infrastructure.utils.exceptions.ResourceNotFoundException;
-import br.org.pti.integrator.infrastructure.utils.exceptions.ValidationException;
+import br.org.pti.api.functional.integrator.infrastructure.utils.exceptions.ResourceNotFoundException;
+import br.org.pti.api.functional.integrator.infrastructure.utils.exceptions.ValidationException;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collection;

@@ -1,6 +1,6 @@
-package br.org.pti.integrator.domain.entities.compras;
+package br.org.pti.api.functional.integrator.domain.entities.compras;
 
-import br.org.pti.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
+import br.org.pti.api.functional.integrator.infrastructure.utils.jpa.ReadOnlyProtheusPersistentEntity;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

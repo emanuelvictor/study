@@ -1,4 +1,4 @@
-package br.org.pti.integrator.domain.entities.ativofixo.converter;
+package br.org.pti.api.functional.integrator.domain.entities.ativofixo.converter;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

@@ -1,4 +1,4 @@
-package br.org.pti.integrator;
+package br.org.pti.api.functional.integrator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

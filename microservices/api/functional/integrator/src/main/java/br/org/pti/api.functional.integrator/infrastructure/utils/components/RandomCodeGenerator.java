@@ -1,4 +1,4 @@
-package br.org.pti.integrator.infrastructure.utils.components;
+package br.org.pti.api.functional.integrator.infrastructure.utils.components;
 
 /**
  * Class that's generate sequences of random codes to use in unique identifications of certain objects of this project
