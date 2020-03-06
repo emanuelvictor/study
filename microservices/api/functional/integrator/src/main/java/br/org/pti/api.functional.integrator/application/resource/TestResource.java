@@ -29,7 +29,7 @@ public class TestResource {
      * @return
      */
     @GetMapping("not-access")
-    @PreAuthorize("#oauth2.hasScope('read')")
+    @PreAuthorize("hasAuthority('asdfasdfasdf')")
     public StringBuilder notAccess() {
         return new StringBuilder("not-accessed");
     }
