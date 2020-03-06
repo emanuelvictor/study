@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
@@ -37,6 +38,7 @@ public class AccessGroup extends PersistentEntity {
     /**
      *
      */
+    @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Set<AccessGroupPermission> accessGroupPermissions;
 

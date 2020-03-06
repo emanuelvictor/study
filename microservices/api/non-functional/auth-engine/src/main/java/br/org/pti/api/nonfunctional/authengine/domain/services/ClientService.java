@@ -60,7 +60,7 @@ public class ClientService implements ClientDetailsService {
         if (clientId.equals("account-manager")) {
             return new ClientBuilder()
                     .withClientId("account-manager")
-                    .withRedirectUris("http://localhost:8080")
+                    .withRedirectUris("http://localhost:8484/client/login")
                     .withScoped(false)
                     .withClientSecret(passwordEncoder.encode("account-manager"))
                     .withScope("root")

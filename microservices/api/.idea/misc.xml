@@ -16,6 +16,7 @@
         <option value="$PROJECT_DIR$/functional/inventario-web/pom.xml" />
         <option value="$PROJECT_DIR$/functional/account-manager/pom.xml" />
         <option value="$PROJECT_DIR$/non-functional/auth-engine/pom.xml" />
+        <option value="$PROJECT_DIR$/functional/test/pom.xml" />
       </list>
     </option>
   </component>

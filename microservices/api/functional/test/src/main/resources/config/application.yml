@@ -1,0 +1,23 @@
+server:
+  port: 8484
+  servlet:
+    context-path: /client
+
+security:
+  oauth2:
+    client:
+      client-id: account-manager
+      client-secret: account-manager
+      access-token-uri: http://localhost:8081/oauth/token
+      user-authorization-uri: http://localhost:8081/oauth/authorize
+    resource:
+      user-info-uri: http://localhost:8081/api/user
+
+logging:
+  level:
+    root: INFO
+    org.hibernate: TRACE
+    org.springframework: INFO
+    org.springframework.web: INFO
+    org.springframework.security: TRACE
+    org.springframework.context.support: TRACE

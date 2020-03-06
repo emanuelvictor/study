@@ -4,6 +4,7 @@
 package br.org.pti.api.nonfunctional.authengine.application.security;
 
 import br.org.pti.api.nonfunctional.authengine.domain.services.ClientService;
+import br.org.pti.api.nonfunctional.authengine.domain.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -85,21 +86,17 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
         clientDetailsServiceConfigurer.withClientDetails(clientDetailsService);
     }
-private final PasswordEncoder passwordEncoder;
+
     /**
      *
      * @param authorizationServerSecurityConfigurer AuthorizationServerSecurityConfigurer
      */
     @Override
     public void configure(final AuthorizationServerSecurityConfigurer authorizationServerSecurityConfigurer) {
-//        authorizationServerSecurityConfigurer
-//                .allowFormAuthenticationForClients()
-//                .checkTokenAccess("permitAll()");
-
-        authorizationServerSecurityConfigurer.tokenKeyAccess("permitAll()")
-                .checkTokenAccess("permitAll()")
-                .allowFormAuthenticationForClients()
-        .passwordEncoder(passwordEncoder);
+        authorizationServerSecurityConfigurer
+                .tokenKeyAccess("permitAll()")
+                .checkTokenAccess("isAuthenticated()")
+                .allowFormAuthenticationForClients();
     }
 
 }

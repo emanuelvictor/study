@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="">
+    <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="Authentication working.">
+      <change afterPath="$PROJECT_DIR$/functional/test/src/main/java/br/org/pti/api/functional/test/CommonConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/OAuth2ResourceServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/resource/TestResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/resource/TestResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/AuthorizationServerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/AuthorizationServerConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/ClientBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/ClientBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/WebSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/WebSecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/AccessGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/AccessGroup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/config/application.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +26,13 @@
   </component>
   <component name="CoverageViewManager">
     <option name="myElementSize" value="238" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -43,32 +57,36 @@
     <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/non-functional/auth-engine" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/functional/test" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.org.pti.api.functional.test" />
+      <recent name="br.org.pti.api.nonfunctional.authengine.domain.entities" />
+      <recent name="br.org.pti.api.nonfunctional.authengine.domain.entities.generic" />
+      <recent name="br.org.pti.api.functional.accountmanager.application.resource" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories" />
       <recent name="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application" />
       <recent name="$PROJECT_DIR$/functional/authorization-manager/src/main/java/br/org/pti/api/functional/authorizationmanager/application" />
       <recent name="$PROJECT_DIR$/functional" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="br.org.pti.api.nonfunctional.authengine.domain.entities" />
-      <recent name="br.org.pti.api.nonfunctional.authengine.domain.entities.generic" />
-      <recent name="br.org.pti.api.functional.accountmanager.application.resource" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -83,7 +101,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AccountManagerApplication">
+  <component name="RunManager" selected="Spring Boot.ClientApplication">
     <configuration name="AccountManagerApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="accountmanager" />
       <extension name="coverage">
@@ -123,19 +141,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AuthEngineApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="authengine" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="br.org.pti.api.nonfunctional.authengine.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.authengine.AuthEngineApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="AuthEngineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="auth-engine" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.authengine.AuthEngineApplication" />
@@ -154,6 +159,27 @@
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.authengine.AuthEngineApplication" />
       <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthEngineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
+      <module name="authengine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.org.pti.api.nonfunctional.authengine.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.authengine.AuthEngineApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="clientApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.test.ClientApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -221,12 +247,12 @@
       <item itemvalue="Spring Boot.InventarioApplication" />
       <item itemvalue="Spring Boot.ProxyApplication" />
       <item itemvalue="Spring Boot.AccountManagerApplication" />
+      <item itemvalue="Spring Boot.ClientApplication" />
       <item itemvalue="Spring Boot.AuthEngineApplication" />
-      <item itemvalue="Spring Boot.AuthEngineApplication (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.AuthEngineApplication (1)" />
+        <item itemvalue="Spring Boot.AuthEngineApplication" />
         <item itemvalue="Spring Boot.AuthEngineApplication" />
         <item itemvalue="JUnit.AccountManagerApplicationTests" />
         <item itemvalue="JUnit.AccountManagerApplicationTests.contextLoads" />
@@ -246,6 +272,7 @@
       <workItem from="1583250717366" duration="6157000" />
       <workItem from="1583258679209" duration="45874000" />
       <workItem from="1583423754309" duration="3138000" />
+      <workItem from="1583494634635" duration="1333000" />
     </task>
     <task id="LOCAL-00001" summary="Rearranging packages.">
       <created>1583254084341</created>

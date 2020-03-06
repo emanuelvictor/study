@@ -37,11 +37,11 @@ logging:
     name: /var/log/${spring.application.name}/${spring.application.name}.log
   level:
     root: INFO
-    org.hibernate: INFO
+    org.hibernate: TRACE
     org.springframework: INFO
     org.springframework.web: INFO
-    org.springframework.security: INFO
-    org.springframework.context.support: INFO
+    org.springframework.security: TRACE
+    org.springframework.context.support: TRACE
 
 info:
   name: authorization-server
