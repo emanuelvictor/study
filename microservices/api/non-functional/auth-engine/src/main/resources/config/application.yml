@@ -20,13 +20,11 @@ management:
     enabled-by-default: true
     web:
       exposure:
-        include: ['health', 'info', 'flyway' , 'logfile']
+        include: ['health', 'info', 'logfile']
   endpoint:
     health:
       enabled: true
     info:
-      enabled: true
-    flyway:
       enabled: true
     logfile:
       enabled: true
@@ -44,7 +42,7 @@ logging:
     org.springframework.context.support: TRACE
 
 info:
-  name: authorization-server
+  name: auth-engine
   description: 'Auth Engine'
   version: @project.version@-@project.build-number@
   environment: @active.profile@
