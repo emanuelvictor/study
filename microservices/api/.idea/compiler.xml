@@ -6,17 +6,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="non-functional" />
-        <module name="portal-compras" />
-        <module name="api" />
-        <module name="clientApplication" />
-        <module name="integrator" />
-        <module name="authengine" />
         <module name="inventario-web" />
-        <module name="proxy" />
+        <module name="authengine" />
+        <module name="nonfunctional" />
         <module name="discoverer" />
-        <module name="functional" />
+        <module name="clientApplication" />
         <module name="accountmanager" />
+        <module name="test" />
+        <module name="functional" />
+        <module name="proxy" />
+        <module name="portalcompras" />
+        <module name="portal-compras" />
+        <module name="non-functional" />
+        <module name="integrator" />
+        <module name="inventarioweb" />
+        <module name="api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -34,9 +38,13 @@
       <module name="functional" options="-parameters" />
       <module name="integrator" options="-parameters" />
       <module name="inventario-web" options="-parameters" />
+      <module name="inventarioweb" options="-parameters" />
       <module name="non-functional" options="-parameters" />
+      <module name="nonfunctional" options="-parameters" />
       <module name="portal-compras" options="-parameters" />
+      <module name="portalcompras" options="-parameters" />
       <module name="proxy" options="-parameters" />
+      <module name="test" options="-parameters" />
     </option>
   </component>
 </project>

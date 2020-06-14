@@ -31,7 +31,7 @@ public class TokenResource {
      * @return
      * @throws InvalidClientException
      */
-    @ResponseStatus(HttpStatus.FOUND)
+    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/oauth/revoke/{token}", method = RequestMethod.DELETE)
     void revokeToken(@PathVariable("token") final String token) {
         serviceToken.revokeToken(token);

@@ -9,7 +9,7 @@ class AccountManagerApplicationTests {
 
 	@Test
 	void contextLoads() {
-		System.out.println(new BCryptPasswordEncoder(12).encode("account-manager"));
+		System.out.println(new BCryptPasswordEncoder(12).encode("browser"));
 	}
 
 }

@@ -4,13 +4,21 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/functional" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/functional/account-manager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/functional/account-manager/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/functional/integrator" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/functional/integrator/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/functional/inventario-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/functional/inventario-web/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/functional/portal-compras" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/functional/portal-compras/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/functional/test" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/functional/test/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/non-functional" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/non-functional/auth-engine" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/non-functional/auth-engine/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/non-functional/discoverer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/non-functional/discoverer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/non-functional/proxy" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/non-functional/proxy/src/main/java" charset="UTF-8" />
   </component>
 </project>

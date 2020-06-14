@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="">
+    <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="Authentication and authorization working.">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functional/integrator/src/main/java/br/org/pti/api.functional.integrator/application/resource/TestResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/integrator/src/main/java/br/org/pti/api.functional.integrator/application/resource/TestResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/resources/config/application-alpha.yml" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/config/application-alpha.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.0__RELEASE.sql" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.0__RELEASE.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.1__RELEASE.sql" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.1__RELEASE.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/test/java/br/org/pti/api/functional/authengine/AccountManagerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/test/java/br/org/pti/api/functional/authengine/AccountManagerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/resource/TokenResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/resource/TokenResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/db/migrations/1.0.0__RELEASE.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/db/migrations/1.0.1__RELEASE.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/static/css/autenticacao.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/static/css/layout-base.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/static/images/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/static/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/static/js/aplicacao.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/static/js/utilidades.js" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,6 +58,11 @@
   </component>
   <component name="ProjectId" id="1YcnOB2An7r5cHpNSBneNtcuPnH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
@@ -51,16 +71,20 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/functional/test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -80,19 +104,7 @@
       <recent name="$PROJECT_DIR$/functional" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Spring Boot.IntegratorApplication (1)">
+  <component name="RunManager" selected="Spring Boot.AuthEngineApplication">
     <configuration name="AccountManagerApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="accountmanager" />
       <extension name="coverage">
@@ -168,54 +180,40 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ClientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="clientApplication" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.test.ClientApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ComprasApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="portal-compras" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.portalcompras.ComprasApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ComprasApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="portal-compras" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.portalcompras.ComprasApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DiscovererApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="discoverer" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.discoverer.DiscovererApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DiscovererApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="discoverer" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.discoverer.DiscovererApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IntegratorApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="integrator" />
+    <configuration name="AuthEngineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
+      <module name="authengine" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="br.org.pti.api.functional.integrator.*" />
+          <option name="PATTERN" value="br.org.pti.api.nonfunctional.authengine.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.integrator.IntegratorApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.authengine.AuthEngineApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComprasApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="portal-compras" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.portalcompras.ComprasApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DiscovererApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="discoverer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.discoverer.DiscovererApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DiscovererApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="discoverer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.discoverer.DiscovererApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -227,9 +225,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InventarioApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="inventario-web" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.inventario.InventarioApplication" />
+    <configuration name="IntegratorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
+      <module name="integrator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.org.pti.api.functional.integrator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.integrator.IntegratorApplication" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -245,23 +249,19 @@
     <list>
       <item itemvalue="JUnit.AccountManagerApplicationTests.contextLoads" />
       <item itemvalue="JUnit.AccountManagerApplicationTests" />
-      <item itemvalue="Spring Boot.ComprasApplication" />
       <item itemvalue="Spring Boot.DiscovererApplication" />
-      <item itemvalue="Spring Boot.IntegratorApplication" />
-      <item itemvalue="Spring Boot.InventarioApplication" />
       <item itemvalue="Spring Boot.ProxyApplication" />
       <item itemvalue="Spring Boot.AccountManagerApplication" />
-      <item itemvalue="Spring Boot.ClientApplication" />
+      <item itemvalue="Spring Boot.IntegratorApplication" />
       <item itemvalue="Spring Boot.AuthEngineApplication" />
-      <item itemvalue="Spring Boot.IntegratorApplication (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.IntegratorApplication (1)" />
         <item itemvalue="Spring Boot.AuthEngineApplication" />
-        <item itemvalue="Spring Boot.AuthEngineApplication" />
+        <item itemvalue="Spring Boot.IntegratorApplication" />
         <item itemvalue="JUnit.AccountManagerApplicationTests" />
-        <item itemvalue="JUnit.AccountManagerApplicationTests.contextLoads" />
+        <item itemvalue="Spring Boot.AuthEngineApplication" />
+        <item itemvalue="Spring Boot.AuthEngineApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -279,6 +279,7 @@
       <workItem from="1583258679209" duration="45874000" />
       <workItem from="1583423754309" duration="3138000" />
       <workItem from="1583494634635" duration="20542000" />
+      <workItem from="1592097169908" duration="8236000" />
     </task>
     <task id="LOCAL-00001" summary="Rearranging packages.">
       <created>1583254084341</created>
@@ -379,6 +380,88 @@
     <MESSAGE value="Authentication working." />
     <MESSAGE value="Authentication and authorization working." />
     <option name="LAST_COMMIT_MESSAGE" value="Authentication and authorization working." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592098200752">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592098200752" />
+    <state x="715" y="223" key="#xdebugger.evaluate" timestamp="1592107102550">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="715" y="223" key="#xdebugger.evaluate/0.0.1920.1040@0.0.1920.1040" timestamp="1592107102550" />
+    <state x="515" y="114" key="CommitChangelistDialog2" timestamp="1592107278250">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="515" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1592107278250" />
+    <state width="1877" height="347" key="GridCell.Tab.0.bottom" timestamp="1592106735265">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592106735265" />
+    <state width="1877" height="347" key="GridCell.Tab.0.center" timestamp="1592106735265">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592106735265" />
+    <state width="1877" height="347" key="GridCell.Tab.0.left" timestamp="1592106735265">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592106735265" />
+    <state width="1877" height="347" key="GridCell.Tab.0.right" timestamp="1592106735265">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592106735265" />
+    <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1592106911855">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592106911855" />
+    <state width="1877" height="347" key="GridCell.Tab.1.center" timestamp="1592106911855">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592106911855" />
+    <state width="1877" height="347" key="GridCell.Tab.1.left" timestamp="1592106911855">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592106911855" />
+    <state width="1877" height="347" key="GridCell.Tab.1.right" timestamp="1592106911855">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592106911855" />
+    <state width="1877" height="347" key="GridCell.Tab.2.bottom" timestamp="1592106734709">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592106734709" />
+    <state width="1877" height="347" key="GridCell.Tab.2.center" timestamp="1592106734709">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592106734709" />
+    <state width="1877" height="347" key="GridCell.Tab.2.left" timestamp="1592106734709">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592106734709" />
+    <state width="1877" height="347" key="GridCell.Tab.2.right" timestamp="1592106734709">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592106734709" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592106938240">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592106938240" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/oauth/spring-security-oauth2/2.3.4.RELEASE/spring-security-oauth2-2.3.4.RELEASE.jar!/org/springframework/security/oauth2/provider/token/DefaultTokenServices.class</url>
+          <line>212</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/oauth/spring-security-oauth2/2.3.4.RELEASE/spring-security-oauth2-2.3.4.RELEASE.jar!/org/springframework/security/oauth2/provider/token/DefaultTokenServices.class</url>
+          <line>215</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/api$InventarioApplication.ic" NAME="InventarioApplication Coverage Results" MODIFIED="1583262580381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
