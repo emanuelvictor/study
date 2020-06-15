@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/TestResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/WebSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/WebSecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/spring.oauth/ResourceServerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/spring.oauth/ResourceServerConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ClientService.java" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,24 +74,36 @@
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="br.org.pti.api.functional.integrator.application.security.oauth" />
-      <recent name="br.org.pti.api.functional.integrator.application.resource" />
-      <recent name="br.org.pti.api.nonfunctional.authengine.domain.services" />
-      <recent name="br.org.pti.api.nonfunctional.authengine.application.resource" />
-      <recent name="br.org.pti.api.nonfunctional.proxy" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/repositories" />
       <recent name="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application" />
       <recent name="$PROJECT_DIR$/functional/authorization-manager/src/main/java/br/org/pti/api/functional/authorizationmanager/application" />
       <recent name="$PROJECT_DIR$/functional" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.org.pti.api.functional.accountmanager.application.resource" />
+      <recent name="br.org.pti.api.functional.integrator.application.security.oauth" />
+      <recent name="br.org.pti.api.functional.integrator.application.resource" />
+      <recent name="br.org.pti.api.nonfunctional.authengine.domain.services" />
+      <recent name="br.org.pti.api.nonfunctional.authengine.application.resource" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.AuthEngineApplication">
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.AccountManagerApplication">
     <configuration name="AccountManagerApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="accountmanager" />
       <extension name="coverage">
@@ -227,6 +241,7 @@
       <item itemvalue="Spring Boot.DiscovererApplication" />
       <item itemvalue="Spring Boot.ProxyApplication" />
       <item itemvalue="Spring Boot.AccountManagerApplication" />
+      <item itemvalue="Spring Boot.IntegratorApplication" />
       <item itemvalue="Spring Boot.AuthEngineApplication" />
     </list>
     <recent_temporary>
@@ -254,6 +269,8 @@
       <workItem from="1583494634635" duration="20542000" />
       <workItem from="1592097169908" duration="9170000" />
       <workItem from="1592145189843" duration="8108000" />
+      <workItem from="1592236478182" duration="278000" />
+      <workItem from="1592239706824" duration="7644000" />
     </task>
     <task id="LOCAL-00001" summary="Rearranging packages.">
       <created>1583254084341</created>
@@ -456,6 +473,21 @@
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/oauth/spring-security-oauth2/2.3.4.RELEASE/spring-security-oauth2-2.3.4.RELEASE.jar!/org/springframework/security/oauth2/provider/token/DefaultTokenServices.class</url>
           <line>215</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ClientService.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/TestResource.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.2.1.RELEASE/spring-security-web-5.2.1.RELEASE-sources.jar!/org/springframework/security/web/header/writers/HstsHeaderWriter.java</url>
+          <line>161</line>
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

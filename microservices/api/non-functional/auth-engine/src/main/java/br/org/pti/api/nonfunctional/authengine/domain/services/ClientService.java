@@ -48,7 +48,7 @@ public class ClientService implements ClientDetailsService {
         if (clientId.equals(env.getProperty("oauth.clientId"))) {
             return new ClientBuilder()
                     .withClientId(env.getProperty("oauth.clientId"))
-                    .withRedirectUris("http://localhost:8080")
+                    .withRedirectUris("http://localhost:8081/login", "http://localhost:8084/api/logged", "http://localhost:8080/account-manager/api/logged", "http://localhost:8084/api/test") //TODO api/test
                     .withScoped(false)
                     .withClientSecret(passwordEncoder.encode(env.getProperty("oauth.clientSecret")))
                     .withScope("root")
@@ -60,10 +60,10 @@ public class ClientService implements ClientDetailsService {
         if (clientId.equals("browser")) {
             return new ClientBuilder()
                     .withClientId("browser")
-                    .withRedirectUris("http://localhost:8080/test", "http://localhost:8080/test/login")
+                    .withRedirectUris("http://localhost:8084/api/test", "http://localhost:8084/api/logged", "http://localhost:8080/account-manager/api/logged", "http://localhost:8080/account-manager/api/test")
                     .withScoped(false)
                     .withClientSecret(passwordEncoder.encode("browser"))
-//                    .withScope("none")
+                    .withScope("none") // TODO o escopo é obrigatório
                     .withSecretRequired(false)
                     .withAccessTokenValiditySeconds(999999999)
                     .withRefreshTokenValiditySeconds(999999999)
