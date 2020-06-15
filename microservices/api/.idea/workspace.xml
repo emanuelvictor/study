@@ -1,25 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="Authentication and authorization working.">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/resources/config/application-alpha.yml" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/config/application-alpha.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.0__RELEASE.sql" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.0__RELEASE.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.1__RELEASE.sql" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.1__RELEASE.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/test/java/br/org/pti/api/functional/authengine/AccountManagerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/test/java/br/org/pti/api/functional/authengine/AccountManagerApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/resource/TokenResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/resource/TokenResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/config/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/db/migrations/1.0.0__RELEASE.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/db/migrations/1.0.1__RELEASE.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/static/css/autenticacao.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/static/css/layout-base.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/static/images/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/static/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/static/js/aplicacao.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/static/js/utilidades.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/WebSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/WebSecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ClientService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,10 +129,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AuthEngineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="auth-engine" />
+    <configuration name="AuthEngineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="authengine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.org.pti.api.nonfunctional.authengine.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.authengine.AuthEngineApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -189,14 +179,6 @@
         </pattern>
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.authengine.AuthEngineApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ComprasApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="portal-compras" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.functional.portalcompras.ComprasApplication" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -214,13 +196,6 @@
       <module name="discoverer" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.api.nonfunctional.discoverer.DiscovererApplication" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IntegratorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="integrator" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.org.pti.integrator.IntegratorApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -252,13 +227,11 @@
       <item itemvalue="Spring Boot.DiscovererApplication" />
       <item itemvalue="Spring Boot.ProxyApplication" />
       <item itemvalue="Spring Boot.AccountManagerApplication" />
-      <item itemvalue="Spring Boot.IntegratorApplication" />
       <item itemvalue="Spring Boot.AuthEngineApplication" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.AuthEngineApplication" />
-        <item itemvalue="Spring Boot.IntegratorApplication" />
         <item itemvalue="JUnit.AccountManagerApplicationTests" />
         <item itemvalue="Spring Boot.AuthEngineApplication" />
         <item itemvalue="Spring Boot.AuthEngineApplication" />
@@ -279,7 +252,8 @@
       <workItem from="1583258679209" duration="45874000" />
       <workItem from="1583423754309" duration="3138000" />
       <workItem from="1583494634635" duration="20542000" />
-      <workItem from="1592097169908" duration="8236000" />
+      <workItem from="1592097169908" duration="9170000" />
+      <workItem from="1592145189843" duration="8108000" />
     </task>
     <task id="LOCAL-00001" summary="Rearranging packages.">
       <created>1583254084341</created>
@@ -344,7 +318,21 @@
       <option name="project" value="LOCAL" />
       <updated>1583518140884</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Authentication and authorization working.">
+      <created>1592110215721</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1592110215721</updated>
+    </task>
+    <task id="LOCAL-00011" summary="We need implementing authorization code">
+      <created>1592110424073</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1592110424073</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -379,81 +367,82 @@
     <MESSAGE value="Founded short circuit" />
     <MESSAGE value="Authentication working." />
     <MESSAGE value="Authentication and authorization working." />
-    <option name="LAST_COMMIT_MESSAGE" value="Authentication and authorization working." />
+    <MESSAGE value="We need implementing authorization code" />
+    <option name="LAST_COMMIT_MESSAGE" value="We need implementing authorization code" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592098200752">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592169732572">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592098200752" />
-    <state x="715" y="223" key="#xdebugger.evaluate" timestamp="1592107102550">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592169732572" />
+    <state x="715" y="223" key="#xdebugger.evaluate" timestamp="1592180132873">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="715" y="223" key="#xdebugger.evaluate/0.0.1920.1040@0.0.1920.1040" timestamp="1592107102550" />
-    <state x="515" y="114" key="CommitChangelistDialog2" timestamp="1592110213231">
+    <state x="715" y="223" key="#xdebugger.evaluate/0.0.1920.1040@0.0.1920.1040" timestamp="1592180132873" />
+    <state x="515" y="114" key="CommitChangelistDialog2" timestamp="1592193150304">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="515" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1592110213231" />
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1592110287866">
+    <state x="515" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1592193150304" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1592180650879">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592110287866" />
-    <state width="1877" height="347" key="GridCell.Tab.0.bottom" timestamp="1592106735265">
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592180650879" />
+    <state width="1877" height="347" key="GridCell.Tab.0.bottom" timestamp="1592180661303">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592106735265" />
-    <state width="1877" height="347" key="GridCell.Tab.0.center" timestamp="1592106735265">
+    <state width="1877" height="347" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592180661303" />
+    <state width="1877" height="347" key="GridCell.Tab.0.center" timestamp="1592180661303">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592106735265" />
-    <state width="1877" height="347" key="GridCell.Tab.0.left" timestamp="1592106735265">
+    <state width="1877" height="347" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592180661303" />
+    <state width="1877" height="347" key="GridCell.Tab.0.left" timestamp="1592180661303">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592106735265" />
-    <state width="1877" height="347" key="GridCell.Tab.0.right" timestamp="1592106735265">
+    <state width="1877" height="347" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592180661303" />
+    <state width="1877" height="347" key="GridCell.Tab.0.right" timestamp="1592180661303">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592106735265" />
-    <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1592106911855">
+    <state width="1877" height="347" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592180661303" />
+    <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1592180660923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592106911855" />
-    <state width="1877" height="347" key="GridCell.Tab.1.center" timestamp="1592106911855">
+    <state width="1877" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
+    <state width="1877" height="347" key="GridCell.Tab.1.center" timestamp="1592180660923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592106911855" />
-    <state width="1877" height="347" key="GridCell.Tab.1.left" timestamp="1592106911855">
+    <state width="1877" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
+    <state width="1877" height="347" key="GridCell.Tab.1.left" timestamp="1592180660923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592106911855" />
-    <state width="1877" height="347" key="GridCell.Tab.1.right" timestamp="1592106911855">
+    <state width="1877" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
+    <state width="1877" height="347" key="GridCell.Tab.1.right" timestamp="1592180660923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592106911855" />
-    <state width="1877" height="347" key="GridCell.Tab.2.bottom" timestamp="1592106734709">
+    <state width="1877" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
+    <state width="1877" height="347" key="GridCell.Tab.2.bottom" timestamp="1592180660923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592106734709" />
-    <state width="1877" height="347" key="GridCell.Tab.2.center" timestamp="1592106734709">
+    <state width="1877" height="347" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
+    <state width="1877" height="347" key="GridCell.Tab.2.center" timestamp="1592180660923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592106734709" />
-    <state width="1877" height="347" key="GridCell.Tab.2.left" timestamp="1592106734709">
+    <state width="1877" height="347" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
+    <state width="1877" height="347" key="GridCell.Tab.2.left" timestamp="1592180660923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592106734709" />
-    <state width="1877" height="347" key="GridCell.Tab.2.right" timestamp="1592106734709">
+    <state width="1877" height="347" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
+    <state width="1877" height="347" key="GridCell.Tab.2.right" timestamp="1592180660923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592106734709" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1592110217936">
+    <state width="1877" height="347" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1592110704813">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592110217936" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592106938240">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592110704813" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592178841800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592106938240" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592178841800" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

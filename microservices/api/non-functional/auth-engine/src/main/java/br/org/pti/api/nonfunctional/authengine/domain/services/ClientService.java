@@ -63,7 +63,7 @@ public class ClientService implements ClientDetailsService {
                     .withRedirectUris("http://localhost:8080/test", "http://localhost:8080/test/login")
                     .withScoped(false)
                     .withClientSecret(passwordEncoder.encode("browser"))
-                    .withScope("none")
+//                    .withScope("none")
                     .withSecretRequired(false)
                     .withAccessTokenValiditySeconds(999999999)
                     .withRefreshTokenValiditySeconds(999999999)
