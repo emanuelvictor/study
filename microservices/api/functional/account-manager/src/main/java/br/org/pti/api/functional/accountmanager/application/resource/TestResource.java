@@ -28,7 +28,7 @@ public class TestResource {
      * @param code
      * @return
      */
-    @PostMapping("logged")
+    @GetMapping("logged")
     public String logged(final String code) {
         System.out.println(code);
         return code;
