@@ -1,11 +1,16 @@
 import {animate, query, style, transition, trigger} from "@angular/animations";
 import {Pipe, PipeTransform} from "@angular/core";
 
+export function getParameterByName(name): string {
+  const match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+  return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
 /**
  *
  * @param enumerator
  */
-export function  enumToArrayString(enumerator): any {
+export function enumToArrayString(enumerator): any {
   return Object.keys(enumerator).map(key => enumerator[key]).filter(value => typeof value === 'string') as string[]
 }
 

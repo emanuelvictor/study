@@ -6,7 +6,7 @@ spring:
     hikari.pool-name: ${spring.application.name}
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://127.0.0.1:5432/inventario
+    url: jdbc:postgresql://127.0.0.1:5432/inventario.microservice
     username: sa_inventario
     password: sa_inventario
 

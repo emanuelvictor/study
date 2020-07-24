@@ -6,6 +6,7 @@ import {isNullOrUndefined} from "util";
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
 import {UsuarioRepository} from "../repository/usuario.repository";
+import {getParameterByName} from "../../application/utils/utils";
 
 @Injectable()
 export class AuthenticationService implements CanActivate, CanActivateChild {
@@ -37,6 +38,15 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
    *
    */
   private _usuarioAutenticado: Usuario = null;
+
+  private _access = {
+    access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI1OTU2MDY1MjYsInVzZXJfbmFtZSI6ImFkbWluQGFkbWluLmNvbSIsImF1dGhvcml0aWVzIjpbInJvb3QiXSwianRpIjoiOWQ2NWY5OWEtNjMwMC00NzU2LThmMWMtZTRiYjE2NzU1NWVmIiwiY2xpZW50X2lkIjoiYnJvd3NlciIsInNjb3BlIjpbIm5vbmUiXX0.s9OaZhdbB5VC_4YnqKOOHFG1LXM0fN6ZZYILz1d_dXs",
+    expires_in: 999999998,
+    integrator: "admin@admin.comIxBu",
+    refresh_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbkBhZG1pbi5jb20iLCJzY29wZSI6WyJub25lIl0sImF0aSI6IjlkNjVmOTlhLTYzMDAtNDc1Ni04ZjFjLWU0YmIxNjc1NTVlZiIsImV4cCI6MjU5NTYwNjUyNSwiYXV0aG9yaXRpZXMiOlsicm9vdCJdLCJqdGkiOiJhM2I4ZDIwMS01Njg2LTQ2OTktYTEzZi00OGEyOWE4N2M5MjEiLCJjbGllbnRfaWQiOiJicm93c2VyIn0.FHz0_x56iuOEtoGmznsG6elQJqYzHRy3eDu7GffjyME",
+    scope: "none",
+    token_type: "bearer"
+  }
 
   /**
    *
@@ -100,23 +110,31 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
         return
       }
 
-      this.http.get<Usuario>(this.pathToAuthenticated).subscribe(result => {
-        if (result && result.id)
-          this.getAuthoritiesByUsuarioId(result.id).subscribe(authorities => {
-            result.authorities = authorities;
-            this._usuarioAutenticado = result;
-            this.getExecutoresByUsuarioId(result.id).subscribe(executores => {
-              result.executores = executores;
-              this._usuarioAutenticado = result;
-              this.getCentrosCustoByGestorId(result.id).subscribe(centrosCusto => {
-                result.centrosCusto = centrosCusto;
-                this._usuarioAutenticado = result;
-                observer.next(result)
-              })
-            })
-          });
-        else observer.next(null)
-      })
+      if (!this._access.access_token && getParameterByName('code'))
+        window.location.href = 'http://localhost:8081/oauth/authorize?response_type=code&client_id=browser&redirect_uri=http://localhost:4200/login&scope=none';
+
+      this.http.post('/oauth/token?grant_type=authorization_code&code=' + getParameterByName('code') + '&client_id=browser&client_secret=browser&redirect_uri=http://localhost:4200/login', {})
+        .subscribe(result => {
+          this._access = <any>result;
+        })
+
+      // this.http.get<Usuario>('localhost:8084/user').subscribe(result => {
+      //   if (result && result.id)
+      //     this.getAuthoritiesByUsuarioId(result.id).subscribe(authorities => {
+      //       result.authorities = authorities;
+      //       this._usuarioAutenticado = result;
+      //       this.getExecutoresByUsuarioId(result.id).subscribe(executores => {
+      //         result.executores = executores;
+      //         this._usuarioAutenticado = result;
+      //         this.getCentrosCustoByGestorId(result.id).subscribe(centrosCusto => {
+      //           result.centrosCusto = centrosCusto;
+      //           this._usuarioAutenticado = result;
+      //           observer.next(result)
+      //         })
+      //       })
+      //     });
+      //   else observer.next(null)
+      // })
     })
   }
 
