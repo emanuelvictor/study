@@ -17,13 +17,6 @@
     <div flex hide-sm>
       <div flex layout='row' layout-align='center center' class="sistema-header">
         <a style='margin-top: 8px; color: #4C4C4C'
-           routerLinkActive mat-button hide-xs #rlaBens='routerLinkActive'
-           *hasPermission="['root', 'inventarios', 'inventarios/get']; operation 'OR'"
-           [ngClass]="{'menu-active': rlaBens.isActive}" [routerLink]="'/bens'">
-          <mat-icon>list_alt</mat-icon>
-          Bens
-        </a>
-        <a style='margin-top: 8px; color: #4C4C4C'
            routerLinkActive mat-button hide-xs #rlaConfiguracoes='routerLinkActive'
            [ngClass]="{'menu-active': rlaConfiguracoes.isActive}" [routerLink]="'/configuracoes'"
            *hasPermission="['root', 'usuarios', 'usuarios/get', 'grupos-acesso', 'grupos-acesso/get']; operation 'OR'">
@@ -40,7 +33,7 @@
            layout-margin layout-align='end center'>
 
         <button mat-button class='header-button'>
-            {{usuario?.nome ? usuario?.nome : usuario?.email}}
+            {{usuario?.name ? usuario?.name : usuario?.email}}
           <mat-icon>keyboard_arrow_down</mat-icon>
         </button>
       </div>
@@ -70,14 +63,14 @@
            matTooltip='Alterar senha' [style.position]="'relative'">
 
         <button mat-icon-button class='btn-primary'>
-          {{ usuario.nome | userInitials }}
+          {{ usuario.name | userInitials }}
         </button>
         <mat-icon matSuffix class="change-password">settings</mat-icon>
 
       </div>
       <horizontal-space [horizontalMargin]="5"></horizontal-space>
       <div layout='column' style="margin-left: 10px;">
-        <h3>{{ usuario.nome }}</h3>
+        <h3>{{ usuario.name }}</h3>
         <label *ngIf="usuario?.email?.length <= 24">{{ usuario.email }}</label>
         <label matTooltip='{{ usuario?.email }}' *ngIf='usuario?.email?.length > 24'>
           {{ usuario.email | truncate:21 }}
@@ -87,15 +80,6 @@
 
     <mat-nav-list class='pad-none' *ngIf="usuario" flex>
       <mat-list class='pad-none'>
-        <mat-list-item #rlaBens='routerLinkActive' [routerLink]="'/bens'"
-                       class='menu-routers' (click)='sidenav.close()' routerLinkActive flex
-                       [ngClass]="{'menu-active': rlaBens.isActive}" mat-icon-button
-                       *hasPermission="['root', 'inventarios', 'inventarios/get']; operation 'OR'">
-          <div layout='row' class="menu-item">
-            <mat-icon>list_alt</mat-icon>
-            <h3>Bens</h3>
-          </div>
-        </mat-list-item>
         <mat-list-item #rlaConfiguracoes='routerLinkActive' [routerLink]="'/configuracoes'"
                        class='menu-routers' (click)='sidenav.close()' routerLinkActive flex
                        [ngClass]="{'menu-active': rlaConfiguracoes.isActive}" mat-icon-button

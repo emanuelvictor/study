@@ -3,6 +3,7 @@ import {BaseRepository} from "../../infrastructure/repository/base/base.reposito
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Usuario} from "../entity/usuario.model";
 import {PageSerialize} from "../../infrastructure/page-serialize/page-serialize";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class UsuarioRepository extends BaseRepository<Usuario> {
@@ -12,7 +13,7 @@ export class UsuarioRepository extends BaseRepository<Usuario> {
    * @param httpClient
    */
   constructor(httpClient: HttpClient) {
-    super(httpClient, 'usuarios');
+    super(httpClient, 'account-manager/api/users');
   }
 
   /**
@@ -41,5 +42,13 @@ export class UsuarioRepository extends BaseRepository<Usuario> {
     return this.httpClient.get<Usuario>(this.collectionName + '/' + usuario.id + '/change-password', {
       params: params
     }).toPromise();
+  }
+
+  /**
+   *
+   * @param username
+   */
+  public findByUsername(username: string): Observable<Usuario> {
+    return this.httpClient.get<Usuario>(this.collectionName + '/' + username);
   }
 }

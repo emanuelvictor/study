@@ -9,6 +9,12 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
+
+import static br.org.pti.api.nonfunctional.authengine.application.security.AuthorizationServerConfiguration.corsConfigurationSource;
 
 /**
  * @author Emanuel Victor
@@ -56,7 +62,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
-        http.csrf()
+        http.cors(httpSecurityCorsConfigurer -> {
+            httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource());
+        }).csrf()
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/**"/*, "/login", "/oauth/authorize"*/)

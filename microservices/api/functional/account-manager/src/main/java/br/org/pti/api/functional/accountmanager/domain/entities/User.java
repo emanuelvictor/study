@@ -58,6 +58,12 @@ public class User extends PersistentEntity implements UserDetails {
     /**
      *
      */
+    @Column(nullable = false, length = 250)
+    private String name;
+
+    /**
+     *
+     */
     @ManyToOne(optional = false)
     private AccessGroup accessGroup;
 

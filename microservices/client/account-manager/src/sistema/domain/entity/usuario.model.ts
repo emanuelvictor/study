@@ -2,6 +2,10 @@ import {GrupoAcesso} from "./grupo-acesso.model";
 import {Pessoa} from './pessoa.model';
 
 export class Usuario extends Pessoa {
+  /**
+   *TODO
+   */
+  public name: string;
 
   /**
    *

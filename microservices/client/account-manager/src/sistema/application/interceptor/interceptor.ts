@@ -8,6 +8,7 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from
 import {Router} from '@angular/router';
 import {MessageService} from '../../domain/services/message.service';
 import {MatSnackBar} from "@angular/material";
+import {AuthenticationService} from "../../domain/services/authentication.service";
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
@@ -18,11 +19,14 @@ export class Interceptor implements HttpInterceptor {
 
   /**
    *
+   * @param authenticationService
    * @param snackBar
    * @param messageService
    * @param router
    */
-  constructor(public snackBar: MatSnackBar, private messageService: MessageService, public router: Router) {
+  constructor(private messageService: MessageService,
+              private authenticationService: AuthenticationService,
+              private router: Router, private snackBar: MatSnackBar) {
   }
 
   /**
@@ -34,6 +38,13 @@ export class Interceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     this.progress.start();
+
+    if (this.authenticationService.access && this.authenticationService.access.token)
+      req = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${this.authenticationService.access.token}`
+        }
+      });
 
     return next.handle(req)
       .do(evt => {

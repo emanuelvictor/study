@@ -8,6 +8,8 @@ import {TranslateService} from '@ngx-translate/core';
 import {AuthenticationService} from "../../../domain/services/authentication.service";
 import {AlterarSenhaDialogComponent} from "./configuracoes/usuario/alterar-senha-dialog.component";
 import {UserDetails} from "../../../infrastructure/authentication/user-details";
+import {Usuario} from "../../../domain/entity/usuario.model";
+import {UsuarioRepository} from "../../../domain/repository/usuario.repository";
 
 // @ts-ignore
 @Component({
@@ -19,7 +21,7 @@ export class AuthenticatedViewComponent implements OnInit, OnDestroy {
   /**
    *
    */
-  public usuario: UserDetails;
+  public usuario: Usuario;
   public routerSubscription: Subscription;
   public userSubscription: Subscription;
 
@@ -34,6 +36,7 @@ export class AuthenticatedViewComponent implements OnInit, OnDestroy {
    * @param activeRoute
    * @param messageService
    * @param loadingService
+   * @param usuarioRepository
    * @param dialog
    * @param router
    * @param authenticationService
@@ -42,6 +45,7 @@ export class AuthenticatedViewComponent implements OnInit, OnDestroy {
               private activeRoute: ActivatedRoute,
               private messageService: MessageService,
               private loadingService: TdLoadingService,
+              private usuarioRepository: UsuarioRepository,
               private dialog: MatDialog, private router: Router,
               private authenticationService: AuthenticationService) {
 
@@ -72,18 +76,19 @@ export class AuthenticatedViewComponent implements OnInit, OnDestroy {
   public logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
-    localStorage.clear()
+    localStorage.clear() // LOCALSTORAGE
   }
 
   /**
    *
    */
   public getAuthenticatedUser() {
-    this.authenticationService.getObservedLoggedUser()
-      .subscribe(authenticatedUser => {
-        if (authenticatedUser)
-          this.usuario = authenticatedUser
-      })
+    this.authenticationService.getObservedLoggedUser().subscribe(authenticatedUser => {
+      if (authenticatedUser)
+        this.usuarioRepository.findByUsername(authenticatedUser.username).subscribe(result => {
+          this.usuario = result
+        })
+    })
   }
 
   /**

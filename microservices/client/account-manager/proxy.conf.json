@@ -9,7 +9,7 @@
     "logLevel": "debug"
   },
 
-  "/back-end": {
+  "/": {
     "target": "http://127.0.0.1:8080/",
     "changeOrigin": true,
     "secure": false,
@@ -18,17 +18,6 @@
     },
     "logLevel": "debug"
   },
-
-  "/oauth": {
-    "target": "http://localhost:8081/",
-    "changeOrigin": true,
-    "secure": false,
-    "pathRewrite": {
-      "^/": ""
-    },
-    "logLevel": "debug"
-  },
-
 
   "/favicon.ico": {
     "target": "http://127.0.0.1:8080/favicon.ico",

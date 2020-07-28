@@ -54,4 +54,8 @@ export class Access {
   set token_type(value: any) {
     this._token_type = value;
   }
+
+  get token(): string {
+    return this.access_token
+  }
 }

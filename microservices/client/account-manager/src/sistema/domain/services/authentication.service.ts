@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot} from "@angular/router";
 import {isNullOrUndefined} from "util";
 import {Observable} from "rxjs";
@@ -12,29 +12,13 @@ import {UserDetails} from "../../infrastructure/authentication/user-details";
 @Injectable()
 export class AuthenticationService implements CanActivate, CanActivateChild {
 
-  private _user: UserDetails;
+  public user: UserDetails;
 
-  get user(): UserDetails {
-    return this._user
-  }
-
-  set user(user: UserDetails) {
-    this._user = user
-  }
-
-  private _access: Access;
-
-  get access(): Access {
-    return this._access
-  }
-
-  set access(access: Access) {
-    this._access = access
-  }
-
+  public access: Access;
 
   /**
-   * Utilized for the transaction control
+   * Utilized for the transaction control.
+   * This prevents the transaction from occurring twice.
    */
   getPromiseLoggedUserInstance: Promise<UserDetails>;
 
@@ -46,9 +30,6 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
    */
   constructor(private usuarioRepository: UsuarioRepository,
               private router: Router, private http: HttpClient) {
-
-    this.getObservedLoggedUser()
-      .subscribe(result => this.user = result)
   }
 
   /**
@@ -79,11 +60,7 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
         }
         return true
       }
-    }).catch(err =>
-      new Observable(observer =>
-        observer.error(err)
-      )
-    )
+    })
   }
 
   /**
@@ -131,28 +108,27 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
    *
    * @param authorizationCode
    */
-  public async getAccessTokenByAuthorizationCode(authorizationCode: string): Promise<Access> {
-    return (await this.http.post<Access>('/oauth/token?grant_type=authorization_code&code=' + authorizationCode + '&client_id=browser&client_secret=browser&redirect_uri=http://localhost:4200', {}).toPromise())
+  public getAccessTokenByAuthorizationCode(authorizationCode: string): Promise<Access> {
+    return this.http.post<Access>('http://localhost:8081/oauth/token?grant_type=authorization_code&code=' + authorizationCode + '&client_id=browser&client_secret=browser&redirect_uri=http://localhost:4200', {}).toPromise()
   }
 
   /**
    *
    * @param access
    */
-  private async getLoggedUser(access?: Access): Promise<UserDetails> {
-    return (await this.http.get<UserDetails>('/oauth/principal/' + access ? access.access_token : this.access.access_token, {}).toPromise())
+  private getLoggedUser(access?: Access): Promise<UserDetails> {
+    return this.http.get<UserDetails>('http://localhost:8081/oauth/principal/' + (access ? access.access_token : this.access.access_token)).toPromise()
   }
 
   /**
    *
    */
   public getAuthorities(access?: Access): Observable<any> {
-    return this.http.get<any>('/oauth/authorities/' + access ? access.access_token : this.access.access_token);
-    //this.usuarioRepository.getAuthoritiesByUsuarioId(usuarioId)
+    return this.http.get<any>('http://localhost:8081/oauth/authorities/' + (access ? access.access_token : this.access.access_token));
   }
 
   /**
-   *
+   * TODO
    */
   public logout(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
