@@ -16,16 +16,6 @@ import {InserirUsuarioComponent} from "../application/presentation/authenticated
 import {ConsultarUsuariosComponent} from "../application/presentation/authenticated/configuracoes/usuario/consultar-usuarios/consultar-usuarios.component";
 import {UsuarioViewComponent} from "../application/presentation/authenticated/configuracoes/usuario/usuario-view.component";
 import {ConfiguracoesViewComponent} from "../application/presentation/authenticated/configuracoes/configuracoes-view.component";
-import {BensViewComponent} from "../application/presentation/authenticated/bens/bens-view.component";
-import {InventariosViewComponent} from "../application/presentation/authenticated/bens/inventario/inventarios-view.component";
-import {ConsultarInventariosComponent} from "../application/presentation/authenticated/bens/inventario/consultar-inventarios/consultar-inventarios.component";
-import {EditarInventarioComponent} from "../application/presentation/authenticated/bens/inventario/alterar-inventario/editar-inventario.component";
-import {VisualizarInventarioComponent} from "../application/presentation/authenticated/bens/inventario/visualizar-inventario/visualizar-inventario.component";
-import {InserirInventarioComponent} from "../application/presentation/authenticated/bens/inventario/inserir-inventario/inserir-inventario.component";
-import {ExecutarInventarioComponent} from "../application/presentation/authenticated/bens/inventario/executar-inventario/executar-inventario.component";
-import {PatrimoniosViewComponent} from "../application/presentation/authenticated/bens/patrimonios/patrimonios-view.component";
-import {ConsultarPatrimoniosComponent} from "../application/presentation/authenticated/bens/patrimonios/consultar-patrimonios/consultar-patrimonios.component";
-import {VisualizarPatrimonioComponent} from "../application/presentation/authenticated/bens/patrimonios/visualizar-patrimonio/visualizar-patrimonio.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -65,35 +55,6 @@ const routes: Routes = [
               {path: 'editar/:id', component: AlterarGrupoAcessoComponent},
               {path: ':id/editar', component: AlterarGrupoAcessoComponent},
               {path: ':id', component: VisualizarGrupoAcessoComponent}
-            ]
-          }
-        ]
-      },
-      {
-        path: 'bens',
-        component: BensViewComponent,
-        children: [
-          {
-            path: '', redirectTo: 'inventarios', pathMatch: 'full',
-          },
-          {
-            path: 'inventarios', component: InventariosViewComponent,
-            canActivate: [InventariosViewComponent],
-            children: [
-              {path: 'get', redirectTo: '', pathMatch: 'full'},
-              {path: '', component: ConsultarInventariosComponent},
-              {path: 'adicionar', component: InserirInventarioComponent},
-              {path: 'editar/:id', component: EditarInventarioComponent},
-              {path: ':id/editar', component: EditarInventarioComponent},
-              {path: ':id', component: VisualizarInventarioComponent},
-              {path: ':id/executar/:codigo', component: ExecutarInventarioComponent}
-            ]
-          },
-          {
-            path: 'patrimonios', component: PatrimoniosViewComponent,
-            children: [
-              {path: '', component: ConsultarPatrimoniosComponent},
-              {path: ':id', component: VisualizarPatrimonioComponent},
             ]
           }
         ]

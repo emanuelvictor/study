@@ -1,51 +1,33 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot} from "@angular/router";
-import {Usuario} from "../entity/usuario.model";
 import {isNullOrUndefined} from "util";
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
 import {UsuarioRepository} from "../repository/usuario.repository";
 import {getParameterByName} from "../../application/utils/utils";
+import {Access} from "../../infrastructure/authentication/access";
+import {UserDetails} from "../../infrastructure/authentication/user-details";
 
 @Injectable()
 export class AuthenticationService implements CanActivate, CanActivateChild {
 
   /**
-   * Dessa forma se faz necessária inserção deste IF
-   * @type {string}
-   */
-  public pathToAuthenticate: string = 'authenticate';
-
-  /**
    *
-   * @type {string}
    */
-  public pathToLogout: string = 'logout';
-
-  /**
-   *
-   * @type {string}
-   */
-  public pathToAuthenticated = 'authenticated';
+  private _user: UserDetails;
 
   /**
    *
    */
-  public usuarioAutenticadoEmitter: EventEmitter<any>;
+  private _access: Access;
 
-  /**
-   *
-   */
-  private _usuarioAutenticado: Usuario = null;
+  get access(): Access {
+    return this._access;
+  }
 
-  private _access = {
-    access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI1OTU2MDY1MjYsInVzZXJfbmFtZSI6ImFkbWluQGFkbWluLmNvbSIsImF1dGhvcml0aWVzIjpbInJvb3QiXSwianRpIjoiOWQ2NWY5OWEtNjMwMC00NzU2LThmMWMtZTRiYjE2NzU1NWVmIiwiY2xpZW50X2lkIjoiYnJvd3NlciIsInNjb3BlIjpbIm5vbmUiXX0.s9OaZhdbB5VC_4YnqKOOHFG1LXM0fN6ZZYILz1d_dXs",
-    expires_in: 999999998,
-    integrator: "admin@admin.comIxBu",
-    refresh_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbkBhZG1pbi5jb20iLCJzY29wZSI6WyJub25lIl0sImF0aSI6IjlkNjVmOTlhLTYzMDAtNDc1Ni04ZjFjLWU0YmIxNjc1NTVlZiIsImV4cCI6MjU5NTYwNjUyNSwiYXV0aG9yaXRpZXMiOlsicm9vdCJdLCJqdGkiOiJhM2I4ZDIwMS01Njg2LTQ2OTktYTEzZi00OGEyOWE4N2M5MjEiLCJjbGllbnRfaWQiOiJicm93c2VyIn0.FHz0_x56iuOEtoGmznsG6elQJqYzHRy3eDu7GffjyME",
-    scope: "none",
-    token_type: "bearer"
+  set access(access: Access) {
+    this._access = access;
   }
 
   /**
@@ -57,37 +39,10 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
   constructor(private usuarioRepository: UsuarioRepository,
               private router: Router, private http: HttpClient) {
 
-    this.usuarioAutenticadoEmitter = new EventEmitter();
+    this.getObservedLoggedUser().subscribe(result =>
+      this.user = result
+    )
 
-    this.requestContaAutenticada().subscribe(result => {
-      this.usuarioAutenticado = result;
-    });
-
-    if (window.location.pathname.indexOf('sistema') > -1) {
-      this.pathToAuthenticate = '../authenticate';
-      this.pathToLogout = '../logout';
-      this.pathToAuthenticated = '../authenticated';
-    }
-
-  }
-
-  /**
-   *
-   * @param route
-   * @param state
-   * @returns {boolean}
-   */
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-
-    return this.requestContaAutenticada()
-      .map(auth => {
-        if (isNullOrUndefined(auth)) {
-          this.router.navigate(['login']);
-          return false;
-        } else {
-          return true
-        }
-      })
   }
 
   /**
@@ -102,40 +57,76 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
 
   /**
    *
+   * @param route
+   * @param state
+   * @returns {boolean}
    */
-  public requestContaAutenticada(): Observable<Usuario> {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    return this.getObservedLoggedUser().map(auth => {
+      if (isNullOrUndefined(auth)) {
+        window.location.href = 'http://localhost:8081/oauth/authorize?response_type=code&client_id=browser&redirect_uri=http://localhost:4200&scope=none';
+        return false
+      } else {
+        return true
+      }
+    }).catch(err => {
+      return new Observable(observer => {
+        observer.error(err);
+        window.location.href = 'http://localhost:8081/oauth/authorize?response_type=code&client_id=browser&redirect_uri=http://localhost:4200&scope=none'
+      })
+    })
+  }
+
+  /**
+   *
+   */
+  public getObservedLoggedUser(): Observable<UserDetails> {
     return new Observable(observer => {
-      if (this._usuarioAutenticado && this._usuarioAutenticado.authorities) {
-        observer.next(this._usuarioAutenticado);
-        return
+      this.getPromiseLoggedUser().then(result => observer.next(result)).catch(err => observer.error(err))
+    })
+  }
+
+  /**
+   * Utilized for the transaction control
+   */
+  getPromiseLoggedUserInstance: Promise<UserDetails>;
+
+  /**
+   *
+   */
+  public getPromiseLoggedUser(): Promise<UserDetails> {
+
+    this.getPromiseLoggedUserInstance = this.getPromiseLoggedUserInstance ? this.getPromiseLoggedUserInstance : new Promise<UserDetails>((resolve, reject) => {
+      if ((!this.access || !this.access.access_token) && !getParameterByName('code')) {
+        return resolve(null) // TODO aqui deve ser resolve mesmo
       }
 
-      if (!this._access.access_token && getParameterByName('code'))
-        window.location.href = 'http://localhost:8081/oauth/authorize?response_type=code&client_id=browser&redirect_uri=http://localhost:4200/login&scope=none';
-
-      this.http.post('/oauth/token?grant_type=authorization_code&code=' + getParameterByName('code') + '&client_id=browser&client_secret=browser&redirect_uri=http://localhost:4200/login', {})
-        .subscribe(result => {
-          this._access = <any>result;
-        })
-
-      // this.http.get<Usuario>('localhost:8084/user').subscribe(result => {
-      //   if (result && result.id)
-      //     this.getAuthoritiesByUsuarioId(result.id).subscribe(authorities => {
-      //       result.authorities = authorities;
-      //       this._usuarioAutenticado = result;
-      //       this.getExecutoresByUsuarioId(result.id).subscribe(executores => {
-      //         result.executores = executores;
-      //         this._usuarioAutenticado = result;
-      //         this.getCentrosCustoByGestorId(result.id).subscribe(centrosCusto => {
-      //           result.centrosCusto = centrosCusto;
-      //           this._usuarioAutenticado = result;
-      //           observer.next(result)
-      //         })
-      //       })
-      //     });
-      //   else observer.next(null)
-      // })
+      if (getParameterByName('code'))
+        this.getAccessTokenByAuthorizationCode(getParameterByName('code')).then(result => {
+          this.access = result;
+          this.getLoggedUserByAccessToken(this.access.access_token).then(result => {
+            return resolve(result)
+          }).catch(err => reject(err))
+        }).catch(err => reject(err))
     })
+
+    return this.getPromiseLoggedUserInstance
+  }
+
+  /**
+   *
+   * @param authorizationCode
+   */
+  public async getAccessTokenByAuthorizationCode(authorizationCode: string): Promise<Access> {
+    return (await this.http.post<Access>('/oauth/token?grant_type=authorization_code&code=' + authorizationCode + '&client_id=browser&client_secret=browser&redirect_uri=http://localhost:4200', {}).toPromise())
+  }
+
+  /**
+   *
+   * @param access_token
+   */
+  private async getLoggedUserByAccessToken(access_token: string): Promise<UserDetails> {
+    return (await this.http.get<UserDetails>('/oauth/principal/' + access_token, {}).toPromise())
   }
 
   /**
@@ -148,43 +139,16 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
   /**
    *
    */
-  public getExecutoresByUsuarioId(usuarioId: number): Observable<any> {
-    return this.usuarioRepository.getExecutoresByUsuarioId(usuarioId)
+  get user(): UserDetails {
+    return this._user
   }
 
   /**
    *
+   * @param user
    */
-  public getCentrosCustoByGestorId(usuarioId: number): Observable<any> {
-    return this.usuarioRepository.getCentrosCustoByGestorId(usuarioId)
-  }
-
-  /**
-   *
-   */
-  get usuarioAutenticado(): Usuario {
-    return this._usuarioAutenticado
-  }
-
-  /**
-   *
-   * @param usuarioAutenticado
-   */
-  set usuarioAutenticado(usuarioAutenticado: Usuario) {
-    this._usuarioAutenticado = usuarioAutenticado;
-    this.usuarioAutenticadoEmitter.emit(this.requestContaAutenticada());
-  }
-
-
-  /**
-   *
-   * @param usuario
-   */
-  public login(usuario: any): Promise<any> {
-    let body = new HttpParams();
-    body = body.set('username', usuario.email ? usuario.email : (usuario.documento ? usuario.documento : ''));
-    body = body.set('senha', usuario.senha ? usuario.senha : '');
-    return this.http.post(this.pathToAuthenticate, body).toPromise();
+  set user(user: UserDetails) {
+    this._user = user;
   }
 
   /**
@@ -192,10 +156,6 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
    */
   public logout(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
-      this.http.get(this.pathToLogout).toPromise().then(result => {
-        this._usuarioAutenticado = null;
-        resolve('Logout efetuado com sucesso')
-      }).catch(err => reject(err))
     })
   }
 

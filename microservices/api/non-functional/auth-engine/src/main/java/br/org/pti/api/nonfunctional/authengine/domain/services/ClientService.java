@@ -60,7 +60,7 @@ public class ClientService implements ClientDetailsService {
         if (clientId.equals("browser")) {
             return new ClientBuilder()
                     .withClientId("browser")
-                    .withRedirectUris("http://localhost:4200/login","http://localhost:8084/api/test", "http://localhost:8084/api/logged", "http://localhost:8080/account-manager/api/logged", "http://localhost:8080/account-manager/api/test")
+                    .withRedirectUris("http://localhost:4200","http://localhost:8084/api/test", "http://localhost:8084/api/logged", "http://localhost:8080/account-manager/api/logged", "http://localhost:8080/account-manager/api/test")
                     .withScoped(false)
                     .withClientSecret(passwordEncoder.encode("browser"))
                     .withScope("none") // TODO o escopo é obrigatório

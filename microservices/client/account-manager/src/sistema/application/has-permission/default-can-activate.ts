@@ -43,7 +43,7 @@ export abstract class DefaultCanActivate implements CanActivate {
    */
   canActivate(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
 
-    return this.authenticationService.requestContaAutenticada().map(usuario => {
+    return this.authenticationService.getObservedLoggedUser().map(usuario => {
       for (let i = 0; i < this._permissions.length; i++) {
         const permission = this._permissions[i];
 

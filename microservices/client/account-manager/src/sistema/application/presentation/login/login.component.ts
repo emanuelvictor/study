@@ -42,17 +42,5 @@ export class LoginComponent {
    *
    */
   public login() {
-    this.authenticationService.login(this.usuario)
-      .then((result) => {
-        localStorage.setItem('curUser', result.nome);
-        this.authenticationService.requestContaAutenticada()
-          .subscribe(authenticated => {
-            this.usuario = authenticated;
-            this.authenticationService.usuarioAutenticado = this.usuario;
-            this.usuario.senha = "**********";
-
-            this.router.navigate(['/']);
-          });
-      });
   }
 }

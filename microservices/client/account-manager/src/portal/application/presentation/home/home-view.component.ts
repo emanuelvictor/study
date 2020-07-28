@@ -63,7 +63,7 @@ export class HomeViewComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.userSubscription = authenticationService.requestContaAutenticada().subscribe(usuario => this.usuario = usuario);
+    this.userSubscription = authenticationService.getObservedLoggedUser().subscribe(usuario => this.usuario = usuario);
   }
 
   /**
@@ -94,7 +94,7 @@ export class HomeViewComponent implements OnInit, OnDestroy {
    *
    */
   public getAuthenticatedUser() {
-    this.authenticationService.requestContaAutenticada()
+    this.authenticationService.getObservedLoggedUser()
       .subscribe(authenticatedUser => {
         if (authenticatedUser) {
           this.usuario = authenticatedUser;

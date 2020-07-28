@@ -19,7 +19,7 @@
     "logLevel": "debug"
   },
 
-  "/oauth/token": {
+  "/oauth": {
     "target": "http://localhost:8081/",
     "changeOrigin": true,
     "secure": false,

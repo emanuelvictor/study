@@ -6,8 +6,8 @@ import {Subscription} from 'rxjs';
 import {MessageService} from '../../../domain/services/message.service';
 import {TranslateService} from '@ngx-translate/core';
 import {AuthenticationService} from "../../../domain/services/authentication.service";
-import {Usuario} from "../../../domain/entity/usuario.model";
 import {AlterarSenhaDialogComponent} from "./configuracoes/usuario/alterar-senha-dialog.component";
+import {UserDetails} from "../../../infrastructure/authentication/user-details";
 
 // @ts-ignore
 @Component({
@@ -19,7 +19,7 @@ export class AuthenticatedViewComponent implements OnInit, OnDestroy {
   /**
    *
    */
-  public usuario: Usuario;
+  public usuario: UserDetails;
   public routerSubscription: Subscription;
   public userSubscription: Subscription;
 
@@ -79,7 +79,7 @@ export class AuthenticatedViewComponent implements OnInit, OnDestroy {
    *
    */
   public getAuthenticatedUser() {
-    this.authenticationService.requestContaAutenticada()
+    this.authenticationService.getObservedLoggedUser()
       .subscribe(authenticatedUser => {
         if (authenticatedUser)
           this.usuario = authenticatedUser
@@ -102,7 +102,7 @@ export class AuthenticatedViewComponent implements OnInit, OnDestroy {
    */
   public itsMe(usuario: any): boolean {
     const authenticatedUser = this.usuario;
-    return authenticatedUser && (authenticatedUser.isRoot || authenticatedUser.id === usuario.id)
+    return authenticatedUser && ((authenticatedUser as any).isRoot || (authenticatedUser as any).id === usuario.id)
   }
 
   /**

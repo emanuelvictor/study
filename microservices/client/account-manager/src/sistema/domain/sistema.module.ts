@@ -53,23 +53,9 @@ import {NoRecordsFoundComponent} from "sistema/application/controls/no-records-f
 import {FilterPipe} from "../application/controls/pipes/filter.pipe";
 import {ConfiguracoesViewComponent} from "../application/presentation/authenticated/configuracoes/configuracoes-view.component";
 import {InventarioRepository} from "./repository/inventario.repository";
-import {ConsultarInventariosComponent} from "../application/presentation/authenticated/bens/inventario/consultar-inventarios/consultar-inventarios.component";
-import {EditarInventarioComponent} from "../application/presentation/authenticated/bens/inventario/alterar-inventario/editar-inventario.component";
-import {VisualizarInventarioComponent} from "../application/presentation/authenticated/bens/inventario/visualizar-inventario/visualizar-inventario.component";
-import {InserirInventarioComponent} from "../application/presentation/authenticated/bens/inventario/inserir-inventario/inserir-inventario.component";
-import {InventarioFormComponent} from "../application/presentation/authenticated/bens/inventario/inserir-inventario/inventario-form/inventario-form.component";
-import {BensViewComponent} from "../application/presentation/authenticated/bens/bens-view.component";
-import {InventariosViewComponent} from "../application/presentation/authenticated/bens/inventario/inventarios-view.component";
 import {CentroCustoRepository} from "./repository/centro-custo.repository";
-import {VincularCentroCustoComponent} from "../application/presentation/authenticated/bens/inventario/inserir-inventario/inventario-form/vincular-centro-custo/vincular-centro-custo.component";
 import {NoSubmitDirective} from "../application/controls/no-sumbit/no-submit.directive";
-import {ExecutarInventarioComponent} from "../application/presentation/authenticated/bens/inventario/executar-inventario/executar-inventario.component";
-import {InventariarPatrimoniosComponent} from "../application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/inventariar-patrimonios.component";
 import {PatrimonioRepository} from "./repository/patrimonio.repository";
-import {InserirPatrimonioComponent} from "../application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/inserir-patrimonio/inserir-patrimonio.component";
-import {PatrimonioFormComponent} from "../application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/inserir-patrimonio/patrimonio-form/patrimonio-form.component";
-import {AlterarLocalizacaoPatrimonioComponent} from "../application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/alterar-localizacao-patrimonio/alterar-localizacao-patrimonio.component";
-import {NovosPatrimoniosComponent} from "../application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/novos-patrimonios/novos-patrimonios.component";
 import {CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule} from "@angular/core";
 import {CommonModule, registerLocaleData} from "@angular/common";
 import {
@@ -85,19 +71,8 @@ import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CovalentSearchModule} from "@covalent/core";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
-import {SobrasFisicasComponent} from "../application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/sobras-fisicas/sobras-fisicas.component";
-import {InserirSobraFisicaComponent} from "../application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/sobras-fisicas/inserir-sobra-fisica/inserir-sobra-fisica.component";
-import {AlterarSobraFisicaComponent} from "../application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/sobras-fisicas/alterar-sobra-fisica/alterar-sobra-fisica.component";
-import {SobraFisicaFormComponent} from "../application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/sobras-fisicas/inserir-sobra-fisica/sobra-fisica-form/sobra-fisica-form.component";
-import {PatrimoniosViewComponent} from "../application/presentation/authenticated/bens/patrimonios/patrimonios-view.component";
-import {ConsultarPatrimoniosComponent} from "../application/presentation/authenticated/bens/patrimonios/consultar-patrimonios/consultar-patrimonios.component";
-import {VisualizarPatrimonioComponent} from "../application/presentation/authenticated/bens/patrimonios/visualizar-patrimonio/visualizar-patrimonio.component";
 import {DadoComponent} from "../application/controls/dado/dado.component";
-import {ExportarPatrimoniosComponent} from "../application/presentation/authenticated/bens/patrimonios/consultar-patrimonios/exportar-patrimonios/exportar-patrimonios.component";
-import {AprovarExecucaoInventarioComponent} from "../application/presentation/authenticated/bens/inventario/executar-inventario/aprovar-execucao-inventario/aprovar-execucao-inventario.component";
-import {ResumoComponent} from "../application/presentation/authenticated/bens/inventario/executar-inventario/resumo/resumo.component";
 import {PieChartModule} from "@swimlane/ngx-charts";
-import {ExtenderDataTerminoComponent} from "../application/presentation/authenticated/bens/inventario/executar-inventario/extender-data-termino/extender-data-termino.component";
 import {CentroCustoInventarioRepository} from "./repository/centro-custo-inventario.repository";
 
 const appearance: MatFormFieldDefaultOptions = {
@@ -173,33 +148,7 @@ export function customTranslateLoader(http: HttpClient) {
     VincularPermissoesComponent,
     AlterarSenhaComponent,
 
-    // Bens
-    BensViewComponent,
-    InventariosViewComponent,
-    ConsultarInventariosComponent,
-    EditarInventarioComponent,
-    VisualizarInventarioComponent,
-    InserirInventarioComponent,
-    InventarioFormComponent,
-    VincularCentroCustoComponent,
-    ExecutarInventarioComponent,
-    InventariarPatrimoniosComponent,
-    InserirPatrimonioComponent,
-    PatrimonioFormComponent,
-    AlterarLocalizacaoPatrimonioComponent,
-    NovosPatrimoniosComponent,
-    SobrasFisicasComponent,
-    InserirSobraFisicaComponent,
-    AlterarSobraFisicaComponent,
-    SobraFisicaFormComponent,
-    PatrimoniosViewComponent,
-    ConsultarPatrimoniosComponent,
-    VisualizarPatrimonioComponent,
     DadoComponent,
-    ExportarPatrimoniosComponent,
-    AprovarExecucaoInventarioComponent,
-    ResumoComponent,
-    ExtenderDataTerminoComponent,
 
     // Has Permission
     HasPermissionDirective,
@@ -232,15 +181,7 @@ export function customTranslateLoader(http: HttpClient) {
   entryComponents: [
     DeleteDialogComponent,
     AlterarSenhaComponent,
-    InserirPatrimonioComponent,
     AlterarSenhaDialogComponent,
-    AlterarLocalizacaoPatrimonioComponent,
-    InserirSobraFisicaComponent,
-    AlterarSobraFisicaComponent,
-    VisualizarPatrimonioComponent,
-    ExportarPatrimoniosComponent,
-    ExtenderDataTerminoComponent,
-    AprovarExecucaoInventarioComponent
   ],
   providers: [
 
@@ -264,7 +205,6 @@ export function customTranslateLoader(http: HttpClient) {
     AuthenticationService,
 
     UsuarioViewComponent,
-    InventariosViewComponent,
     ConfiguracoesViewComponent,
 
     DialogService,

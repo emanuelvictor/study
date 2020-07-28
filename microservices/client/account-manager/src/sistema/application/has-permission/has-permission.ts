@@ -36,19 +36,19 @@ export class HasPermissionDirective implements OnInit {
    *
    */
   ngOnInit() {
-    if (!this.authenticationService.usuarioAutenticado || !this.authenticationService.usuarioAutenticado.authorities || !this.authenticationService.usuarioAutenticado.authorities.length)
-      this.authenticationService.requestContaAutenticada().subscribe(user => {
+    if (!this.authenticationService.user || !this.authenticationService.user.authorities || !this.authenticationService.user.authorities.length)
+      this.authenticationService.getObservedLoggedUser().subscribe(user => {
         this.currentUser = user;
 
-        this.authenticationService.getAuthoritiesByUsuarioId(user.id).subscribe(authorities => {
+        this.authenticationService.getAuthoritiesByUsuarioId((user as any).id).subscribe(authorities => {
           this.currentUser.authorities = authorities;
 
-          this.authenticationService.usuarioAutenticado.authorities = authorities;
+          this.authenticationService.user.authorities = authorities;
           this.updateView()
         })
       });
     else {
-      this.currentUser = this.authenticationService.usuarioAutenticado;
+      this.currentUser = this.authenticationService.user;
       this.updateView()
     }
   }
