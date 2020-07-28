@@ -12,23 +12,31 @@ import {UserDetails} from "../../infrastructure/authentication/user-details";
 @Injectable()
 export class AuthenticationService implements CanActivate, CanActivateChild {
 
-  /**
-   *
-   */
   private _user: UserDetails;
 
-  /**
-   *
-   */
+  get user(): UserDetails {
+    return this._user
+  }
+
+  set user(user: UserDetails) {
+    this._user = user
+  }
+
   private _access: Access;
 
   get access(): Access {
-    return this._access;
+    return this._access
   }
 
   set access(access: Access) {
-    this._access = access;
+    this._access = access
   }
+
+
+  /**
+   * Utilized for the transaction control
+   */
+  getPromiseLoggedUserInstance: Promise<UserDetails>;
 
   /**
    *
@@ -39,10 +47,8 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
   constructor(private usuarioRepository: UsuarioRepository,
               private router: Router, private http: HttpClient) {
 
-    this.getObservedLoggedUser().subscribe(result =>
-      this.user = result
-    )
-
+    this.getObservedLoggedUser()
+      .subscribe(result => this.user = result)
   }
 
   /**
@@ -64,17 +70,20 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.getObservedLoggedUser().map(auth => {
       if (isNullOrUndefined(auth)) {
-        window.location.href = 'http://localhost:8081/oauth/authorize?response_type=code&client_id=browser&redirect_uri=http://localhost:4200&scope=none';
+        window.location.href = 'http://localhost:8081/oauth/authorize?response_type=code&client_id=browser&redirect_uri=http://localhost:4200&scope=none' + (state.url ? '&state=' + state.url : '');
         return false
       } else {
+        const stateReturned: string = getParameterByName('state');
+        if (stateReturned) {
+          this.router.navigate([stateReturned])
+        }
         return true
       }
-    }).catch(err => {
-      return new Observable(observer => {
-        observer.error(err);
-        window.location.href = 'http://localhost:8081/oauth/authorize?response_type=code&client_id=browser&redirect_uri=http://localhost:4200&scope=none'
-      })
-    })
+    }).catch(err =>
+      new Observable(observer =>
+        observer.error(err)
+      )
+    )
   }
 
   /**
@@ -87,27 +96,32 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
   }
 
   /**
-   * Utilized for the transaction control
-   */
-  getPromiseLoggedUserInstance: Promise<UserDetails>;
-
-  /**
    *
    */
   public getPromiseLoggedUser(): Promise<UserDetails> {
 
     this.getPromiseLoggedUserInstance = this.getPromiseLoggedUserInstance ? this.getPromiseLoggedUserInstance : new Promise<UserDetails>((resolve, reject) => {
-      if ((!this.access || !this.access.access_token) && !getParameterByName('code')) {
-        return resolve(null) // TODO aqui deve ser resolve mesmo
-      }
 
-      if (getParameterByName('code'))
-        this.getAccessTokenByAuthorizationCode(getParameterByName('code')).then(result => {
+      const code: string = getParameterByName('code');
+
+      if (!this.access && !code)
+        resolve(null)
+
+      if (!this.access && code)
+        this.getAccessTokenByAuthorizationCode(code).then(result => {
           this.access = result;
-          this.getLoggedUserByAccessToken(this.access.access_token).then(result => {
-            return resolve(result)
+          this.getLoggedUser(this.access).then(result => {
+            this.user = result;
+            resolve(result)
           }).catch(err => reject(err))
         }).catch(err => reject(err))
+
+      if (this.access)
+        this.getLoggedUser(this.access).then(result => {
+          this.user = result;
+          resolve(result)
+        }).catch(err => reject(err))
+
     })
 
     return this.getPromiseLoggedUserInstance
@@ -123,32 +137,18 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
 
   /**
    *
-   * @param access_token
+   * @param access
    */
-  private async getLoggedUserByAccessToken(access_token: string): Promise<UserDetails> {
-    return (await this.http.get<UserDetails>('/oauth/principal/' + access_token, {}).toPromise())
+  private async getLoggedUser(access?: Access): Promise<UserDetails> {
+    return (await this.http.get<UserDetails>('/oauth/principal/' + access ? access.access_token : this.access.access_token, {}).toPromise())
   }
 
   /**
    *
    */
-  public getAuthoritiesByUsuarioId(usuarioId: number): Observable<any> {
-    return this.usuarioRepository.getAuthoritiesByUsuarioId(usuarioId)
-  }
-
-  /**
-   *
-   */
-  get user(): UserDetails {
-    return this._user
-  }
-
-  /**
-   *
-   * @param user
-   */
-  set user(user: UserDetails) {
-    this._user = user;
+  public getAuthorities(access?: Access): Observable<any> {
+    return this.http.get<any>('/oauth/authorities/' + access ? access.access_token : this.access.access_token);
+    //this.usuarioRepository.getAuthoritiesByUsuarioId(usuarioId)
   }
 
   /**

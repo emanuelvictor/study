@@ -5,6 +5,7 @@ import br.org.pti.api.nonfunctional.authengine.domain.services.ServiceToken;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.common.exceptions.InvalidClientException;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.util.Set;
 
 /**
  * Created by emanuelvictor on 08/04/15.
@@ -27,9 +30,8 @@ public class TokenResource {
     private final ServiceToken serviceToken;
 
     /**
-     * @param token
-     * @return
-     * @throws InvalidClientException
+     * @param token String
+     * @return ResponseEntity<User>
      */
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/oauth/revoke/{token}", method = RequestMethod.DELETE)
@@ -38,13 +40,22 @@ public class TokenResource {
     }
 
     /**
-     * @param token
-     * @return
-     * @throws InvalidClientException
+     * @param token String
+     * @return ResponseEntity<User>
      */
     @RequestMapping(value = "/oauth/principal/{token}", method = RequestMethod.GET)
     ResponseEntity<User> getPrincipal(@PathVariable("token") final String token) {
         return ResponseEntity.ok(serviceToken.getPrincipal(token));
+    }
+
+
+    /**
+     * @param token String
+     * @return ResponseEntity<Set < GrantedAuthority>>
+     */
+    @RequestMapping(value = "/oauth/authorities/{token}", method = RequestMethod.GET)
+    ResponseEntity<Set<GrantedAuthority>> getAuthoritiesByToken(@PathVariable("token") final String token) {
+        return ResponseEntity.ok(serviceToken.getPrincipal(token).getAuthorities());
     }
 
     /**

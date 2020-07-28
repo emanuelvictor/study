@@ -152,73 +152,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="Implementing client">
-      <change afterPath="$PROJECT_DIR$/../client/account-manager/src/sistema/infrastructure/authentication/access.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/account-manager/src/sistema/infrastructure/authentication/user-details.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/proxy.conf.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/proxy.conf.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/portal/application/presentation/home/home-view.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/portal/application/presentation/home/home-view.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/has-permission/default-can-activate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/has-permission/default-can-activate.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/resource/TokenResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/resource/TokenResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/has-permission/has-permission.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/has-permission/has-permission.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/authenticated-view.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/authenticated-view.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/bens-view.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/bens-view.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/bens-view.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/alterar-inventario/editar-inventario.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/alterar-inventario/editar-inventario.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/consultar-inventarios/consultar-inventarios.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/consultar-inventarios/consultar-inventarios.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/aprovar-execucao-inventario/aprovar-execucao-inventario.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/aprovar-execucao-inventario/aprovar-execucao-inventario.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/executar-inventario.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/executar-inventario.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/extender-data-termino/extender-data-termino.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/extender-data-termino/extender-data-termino.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/alterar-localizacao-patrimonio/alterar-localizacao-patrimonio.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/alterar-localizacao-patrimonio/alterar-localizacao-patrimonio.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/inserir-patrimonio/inserir-patrimonio.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/inserir-patrimonio/inserir-patrimonio.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/inserir-patrimonio/patrimonio-form/patrimonio-form.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/inserir-patrimonio/patrimonio-form/patrimonio-form.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/inventariar-patrimonios.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/inventariar-patrimonios.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/novos-patrimonios/novos-patrimonios.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/novos-patrimonios/novos-patrimonios.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/sobras-fisicas/alterar-sobra-fisica/alterar-sobra-fisica.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/sobras-fisicas/alterar-sobra-fisica/alterar-sobra-fisica.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/sobras-fisicas/inserir-sobra-fisica/inserir-sobra-fisica.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/sobras-fisicas/inserir-sobra-fisica/inserir-sobra-fisica.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/sobras-fisicas/inserir-sobra-fisica/sobra-fisica-form/sobra-fisica-form.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/sobras-fisicas/inserir-sobra-fisica/sobra-fisica-form/sobra-fisica-form.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/sobras-fisicas/sobras-fisicas.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/inventariar-patrimonios/sobras-fisicas/sobras-fisicas.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/resumo/resumo.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/executar-inventario/resumo/resumo.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/inserir-inventario/inserir-inventario.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/inserir-inventario/inserir-inventario.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/inserir-inventario/inventario-form/inventario-form.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/inserir-inventario/inventario-form/inventario-form.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/inserir-inventario/inventario-form/vincular-centro-custo/vincular-centro-custo.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/inserir-inventario/inventario-form/vincular-centro-custo/vincular-centro-custo.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/inventarios-view.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/inventarios-view.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/inventarios-view.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/inventarios.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/visualizar-inventario/visualizar-inventario.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/inventario/visualizar-inventario/visualizar-inventario.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/patrimonios/consultar-patrimonios/consultar-patrimonios.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/patrimonios/consultar-patrimonios/consultar-patrimonios.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/patrimonios/consultar-patrimonios/exportar-patrimonios/exportar-patrimonios.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/patrimonios/consultar-patrimonios/exportar-patrimonios/exportar-patrimonios.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/patrimonios/patrimonios-view.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/patrimonios/patrimonios-view.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/patrimonios/patrimonios-view.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/patrimonios/patrimonios.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/patrimonios/visualizar-patrimonio/visualizar-patrimonio.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/authenticated/bens/patrimonios/visualizar-patrimonio/visualizar-patrimonio.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/sistema/application/presentation/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/domain/repository/usuario.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/sistema/domain/repository/usuario.repository.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/domain/services/authentication.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/sistema/domain/services/authentication.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/domain/sistema.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/sistema/domain/sistema.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/account-manager/src/sistema/domain/sistema.routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/sistema/domain/sistema.routing.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -515,7 +453,7 @@
       <workItem from="1592145189843" duration="8108000" />
       <workItem from="1592236478182" duration="278000" />
       <workItem from="1592239706824" duration="9107000" />
-      <workItem from="1595446671725" duration="27843000" />
+      <workItem from="1595446671725" duration="33840000" />
     </task>
     <task id="LOCAL-00001" summary="Rearranging packages.">
       <created>1583254084341</created>
@@ -608,7 +546,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595607050088</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Implementing client">
+      <created>1595954342932</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1595954342932</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -680,66 +625,66 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="738" y="242" width="424" height="621" key="FileChooserDialogImpl/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595600949153" />
-    <state width="1874" height="278" key="GridCell.Tab.0.bottom" timestamp="1595948778915">
+    <state width="1874" height="278" key="GridCell.Tab.0.bottom" timestamp="1595959920810">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592180661303" />
-    <state width="1874" height="278" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595948778915" />
-    <state width="1874" height="278" key="GridCell.Tab.0.center" timestamp="1595948778915">
+    <state width="1874" height="278" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595959920810" />
+    <state width="1874" height="278" key="GridCell.Tab.0.center" timestamp="1595959920810">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592180661303" />
-    <state width="1874" height="278" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595948778915" />
-    <state width="1874" height="278" key="GridCell.Tab.0.left" timestamp="1595948778914">
+    <state width="1874" height="278" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595959920810" />
+    <state width="1874" height="278" key="GridCell.Tab.0.left" timestamp="1595959920809">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592180661303" />
-    <state width="1874" height="278" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595948778914" />
-    <state width="1874" height="278" key="GridCell.Tab.0.right" timestamp="1595948778915">
+    <state width="1874" height="278" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595959920809" />
+    <state width="1874" height="278" key="GridCell.Tab.0.right" timestamp="1595959920810">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592180661303" />
-    <state width="1874" height="278" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595948778915" />
-    <state width="1874" height="351" key="GridCell.Tab.1.bottom" timestamp="1595947913615">
+    <state width="1874" height="278" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595959920810" />
+    <state width="1874" height="351" key="GridCell.Tab.1.bottom" timestamp="1595959825727">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
-    <state width="1874" height="351" key="GridCell.Tab.1.bottom/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595947913615" />
-    <state width="1874" height="351" key="GridCell.Tab.1.center" timestamp="1595947913615">
+    <state width="1874" height="351" key="GridCell.Tab.1.bottom/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595959825727" />
+    <state width="1874" height="351" key="GridCell.Tab.1.center" timestamp="1595959825727">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
-    <state width="1874" height="351" key="GridCell.Tab.1.center/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595947913615" />
-    <state width="1874" height="351" key="GridCell.Tab.1.left" timestamp="1595947913615">
+    <state width="1874" height="351" key="GridCell.Tab.1.center/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595959825727" />
+    <state width="1874" height="351" key="GridCell.Tab.1.left" timestamp="1595959825727">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
-    <state width="1874" height="351" key="GridCell.Tab.1.left/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595947913615" />
-    <state width="1874" height="351" key="GridCell.Tab.1.right" timestamp="1595947913615">
+    <state width="1874" height="351" key="GridCell.Tab.1.left/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595959825727" />
+    <state width="1874" height="351" key="GridCell.Tab.1.right" timestamp="1595959825727">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
-    <state width="1874" height="351" key="GridCell.Tab.1.right/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595947913615" />
-    <state width="1874" height="351" key="GridCell.Tab.2.bottom" timestamp="1595947913615">
+    <state width="1874" height="351" key="GridCell.Tab.1.right/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595959825727" />
+    <state width="1874" height="351" key="GridCell.Tab.2.bottom" timestamp="1595959825729">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
-    <state width="1874" height="351" key="GridCell.Tab.2.bottom/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595947913615" />
-    <state width="1874" height="351" key="GridCell.Tab.2.center" timestamp="1595947913615">
+    <state width="1874" height="351" key="GridCell.Tab.2.bottom/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595959825729" />
+    <state width="1874" height="351" key="GridCell.Tab.2.center" timestamp="1595959825727">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
-    <state width="1874" height="351" key="GridCell.Tab.2.center/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595947913615" />
-    <state width="1874" height="351" key="GridCell.Tab.2.left" timestamp="1595947913615">
+    <state width="1874" height="351" key="GridCell.Tab.2.center/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595959825727" />
+    <state width="1874" height="351" key="GridCell.Tab.2.left" timestamp="1595959825727">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
-    <state width="1874" height="351" key="GridCell.Tab.2.left/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595947913615" />
-    <state width="1874" height="351" key="GridCell.Tab.2.right" timestamp="1595947913615">
+    <state width="1874" height="351" key="GridCell.Tab.2.left/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595959825727" />
+    <state width="1874" height="351" key="GridCell.Tab.2.right" timestamp="1595959825729">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592180660923" />
-    <state width="1874" height="351" key="GridCell.Tab.2.right/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595947913615" />
+    <state width="1874" height="351" key="GridCell.Tab.2.right/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595959825729" />
     <state x="540" y="299" width="872" height="507" key="NewModule_or_Project.wizard" timestamp="1595600957470">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -748,24 +693,24 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="443" y="130" width="1024" height="845" key="SettingsEditor/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595600973471" />
-    <state x="552" y="283" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1595607055062">
+    <state x="552" y="283" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1595954363793">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592110704813" />
-    <state x="552" y="283" width="800" height="528" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595607055062" />
-    <state x="651" y="291" width="1122" height="522" key="find.popup" timestamp="1595944591040">
+    <state x="552" y="283" width="800" height="528" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595954363793" />
+    <state x="651" y="291" width="1154" height="522" key="find.popup" timestamp="1595959819821">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="651" y="291" width="1122" height="522" key="find.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595944591040" />
+    <state x="651" y="291" width="1154" height="522" key="find.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595959819821" />
     <state x="624" y="253" key="run.anything.popup" timestamp="1595602453942">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="624" y="253" key="run.anything.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595602453942" />
-    <state x="623" y="255" width="672" height="687" key="search.everywhere.popup" timestamp="1595948962604">
+    <state x="623" y="255" width="672" height="687" key="search.everywhere.popup" timestamp="1595956409956">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592178841800" />
-    <state x="623" y="255" width="672" height="687" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595948962604" />
+    <state x="623" y="255" width="672" height="687" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595956409956" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

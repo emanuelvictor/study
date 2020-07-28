@@ -42,28 +42,4 @@ export class UsuarioRepository extends BaseRepository<Usuario> {
       params: params
     }).toPromise();
   }
-
-  /**
-   *
-   * @param usuarioId
-   */
-  getAuthoritiesByUsuarioId(usuarioId: number): any {
-    return this.httpClient.get<any>(this.collectionName + '/' + usuarioId + '/authorities')
-  }
-
-  /**
-   *
-   * @param usuarioId
-   */
-  getExecutoresByUsuarioId(usuarioId: number): any {
-    return this.httpClient.get<any>(this.collectionName + '/' + usuarioId + '/executores')
-  }
-
-  /**
-   *
-   * @param usuarioId
-   */
-  getCentrosCustoByGestorId(usuarioId: number): any {
-    return this.httpClient.get<any>(this.collectionName + '/' + usuarioId + '/centros-custo')
-  }
 }

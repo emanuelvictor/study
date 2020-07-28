@@ -25,7 +25,7 @@ const routes: Routes = [
     path: '', component: AuthenticatedViewComponent, canActivate: [AuthenticationService],
     children: [
       {
-        path: '', redirectTo: 'bens', pathMatch: 'full',
+        path: '', redirectTo: 'configuracoes', pathMatch: 'full',
       },
       {
         path: 'configuracoes',
@@ -36,7 +36,7 @@ const routes: Routes = [
           },
           {
             path: 'usuarios', component: UsuarioViewComponent,
-            canActivate: [UsuarioViewComponent],
+            // canActivate: [UsuarioViewComponent],
             children: [
               {path: 'get', redirectTo: '', pathMatch: 'full'},
               {path: '', component: ConsultarUsuariosComponent},
@@ -67,7 +67,7 @@ const routes: Routes = [
  *
  */
 @NgModule({
-  imports: [RouterModule.forRoot(routes/*, {useHash: true}*/)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule],
   providers: []
 })
