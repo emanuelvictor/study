@@ -6,15 +6,11 @@ server:
 #  servlet:
 #    context-path: /client
 
-security:
-  oauth2:
-    client:
-      client-id: account-manager
-      client-secret: account-manager
-      access-token-uri: http://localhost:8080/auth-engine/oauth/token
-      user-authorization-uri: http://localhost:8080/auth-engine/oauth/authorize
-    resource:
-      user-info-uri: http://localhost:8080/auth-engine/api/user
+info:
+  name: integrator
+  description: 'Integrador de servicos para o ERP Protheus'
+  version: @project.version@-@project.build-number@
+  environment: @active.profile@
 
 logging:
   level:
