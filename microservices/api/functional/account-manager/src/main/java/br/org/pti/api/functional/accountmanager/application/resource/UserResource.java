@@ -3,6 +3,9 @@ package br.org.pti.api.functional.accountmanager.application.resource;
 import br.org.pti.api.functional.accountmanager.domain.entities.User;
 import br.org.pti.api.functional.accountmanager.domain.services.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +24,15 @@ public class UserResource {
      *
      */
     private final UserService userService;
+
+    /**
+     * @return UserDetails
+     */
+    @GetMapping
+    @PreAuthorize("hasAnyAuthority('asdf', 'root')")
+    public Page<User> listByFilters(final Pageable pageable) {
+        return userService.listByFilters(pageable);
+    }
 
     /**
      * @return UserDetails

@@ -29,9 +29,18 @@ public class TestResource {
      * @return
      */
     @GetMapping("not-access")
+//    @PreAuthorize("hasAuthority('asdfasdfasdf') AND #oauth2.hasScope('read')")
     @PreAuthorize("hasAuthority('asdfasdfasdf')")
     public StringBuilder notAccess() {
         return new StringBuilder("not-accessed");
+    }
+
+    /**
+     * @return
+     */
+    @GetMapping("public-access")
+    public StringBuilder publicAccess() {
+        return new StringBuilder("public-accessed");
     }
 
 }

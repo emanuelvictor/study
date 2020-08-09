@@ -1,7 +1,10 @@
 package br.org.pti.api.functional.accountmanager.domain.services;
 
+import br.org.pti.api.functional.accountmanager.domain.entities.User;
 import br.org.pti.api.functional.accountmanager.domain.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,6 +23,14 @@ public class UserService implements UserDetailsService {
      *
      */
     private final UserRepository userRepository;
+
+    /**
+     * @param pageable
+     * @return
+     */
+    public Page<User> listByFilters(final Pageable pageable) {
+        return userRepository.findAll(pageable);
+    }
 
     /**
      * @param username

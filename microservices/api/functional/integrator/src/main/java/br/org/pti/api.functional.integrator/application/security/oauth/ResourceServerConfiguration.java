@@ -30,7 +30,10 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
      */
     @Override
     public void configure(final HttpSecurity http) throws Exception {
-        http.antMatcher("/api/**").authorizeRequests().anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/**").permitAll()
+                .anyRequest()
+                .authenticated();
+//        http.antMatcher("/api/**").authorizeRequests().anyRequest().authenticated();
     }
 
     /**
