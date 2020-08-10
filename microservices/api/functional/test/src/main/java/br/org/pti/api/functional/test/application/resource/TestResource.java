@@ -21,8 +21,8 @@ public class TestResource {
      */
     @GetMapping
     @PreAuthorize("hasAuthority('root')")
-    public StringBuilder buscarPorCodigo() {
-        return new StringBuilder("accessed");
+    public String buscarPorCodigo() {
+        return "accessed";
     }
 
     /**
