@@ -39,7 +39,7 @@ public class UserResource {
      */
     @GetMapping("{username}")
     public User loadUserByUsername(@PathVariable final String username) {
-        return (User) userService.loadUserByUsername(username);
+        return userService.loadUserByUsername(username);
     }
 
 }

@@ -7,21 +7,19 @@ import br.org.pti.api.nonfunctional.authengine.domain.entities.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
-import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.stereotype.Service;
 
 /**
- * @author emanuelvictor TODO não tem nada ainda
+ * @author emanuelvictor
  */
 @Service
 @RequiredArgsConstructor
 public class ServiceToken {
 
-
-    /**
-     *
-     */
-    private final TokenStore tokenStore;
+//    /**
+//     *
+//     */
+//    private final TokenStore tokenStore;
 
     /**
      *
@@ -34,8 +32,7 @@ public class ServiceToken {
     private final DefaultTokenServices defaultTokenServices;
 
     /**
-     * @param token
-     * @return
+     * @param token String
      */
     public void revokeToken(final String token) {
         defaultTokenServices.revokeToken(token);
@@ -44,8 +41,8 @@ public class ServiceToken {
 
     /**
      *
-     * @param token
-     * @return
+     * @param token String
+     * @return User
      */
     public User getPrincipal(final String token) {
         final OAuth2Authentication oAuth2Authentication = defaultTokenServices.loadAuthentication(token);

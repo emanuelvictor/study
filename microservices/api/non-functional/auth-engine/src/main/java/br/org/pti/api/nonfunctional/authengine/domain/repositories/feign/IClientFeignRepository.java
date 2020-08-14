@@ -17,8 +17,8 @@ import java.util.Optional;
 public interface IClientFeignRepository {
 
     /**
-     * @param clientId
-     * @return
+     * @param clientId String
+     * @return Optional<Client>
      */
     @GetMapping("{clientId}")
     Optional<Client> loadClientByClientId(@PathVariable("clientId") final String clientId);

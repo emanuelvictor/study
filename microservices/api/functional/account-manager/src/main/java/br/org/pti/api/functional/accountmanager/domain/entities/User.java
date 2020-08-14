@@ -30,7 +30,6 @@ import java.util.Set;
 @Entity
 @Audited
 @Table(name = "\"user\"")
-@JsonIgnoreProperties({"authorities"})
 @lombok.EqualsAndHashCode(callSuper = true)
 public class User extends PersistentEntity implements UserDetails {
 
@@ -84,12 +83,13 @@ public class User extends PersistentEntity implements UserDetails {
         final Set<Permission> permissoesLocais = new HashSet<>();
 
         permissions.forEach(permissao -> {
-            permissoesLocais.add(permissao);
+            permissoesLocais.add(permissao.copy());
             if (!permissao.getLowerPermissions().isEmpty())
                 permissoesLocais.addAll(populePermissions(permissao.getLowerPermissions()));
         });
 
         return permissoesLocais;
+
     }
 
     /**
@@ -98,13 +98,13 @@ public class User extends PersistentEntity implements UserDetails {
      * @return Set<GrantedAuthority>
      */
     @Override
-    public Set<GrantedAuthority> getAuthorities() {
+    public Set<Permission> getAuthorities() {
 
         final Set<Permission> permissoes = new HashSet<>();
 
         if (this.accessGroup != null && this.accessGroup.getAccessGroupPermissions() != null)
             for (AccessGroupPermission grupoAcessoPermissao : this.accessGroup.getAccessGroupPermissions()) {
-                permissoes.add(grupoAcessoPermissao.getPermission());
+                permissoes.add(grupoAcessoPermissao.getPermission().copy());
 
                 if (!grupoAcessoPermissao.getPermission().getLowerPermissions().isEmpty())
                     permissoes.addAll(populePermissions(grupoAcessoPermissao.getPermission().getLowerPermissions()));

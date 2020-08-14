@@ -15,7 +15,7 @@ public class ClientBuilder {
 
     private String clientSecret;
 
-    private boolean autoApprove = true;
+    private final boolean autoApprove = true;
 
     private boolean secretRequired = false;
 
@@ -25,11 +25,11 @@ public class ClientBuilder {
 
     private int refreshTokenValiditySeconds = 999999999;
 
-    private Set<String> authorizedGrantTypes = new LinkedHashSet<>();
+    private final Set<String> authorizedGrantTypes = new LinkedHashSet<>();
 
-    private Set<String> scope = new LinkedHashSet<>();
+    private final Set<String> scope = new LinkedHashSet<>();
 
-    private Set<String> registeredRedirectUris = new HashSet<>();
+    private final Set<String> registeredRedirectUris = new HashSet<>();
 
     /**
      *

@@ -16,10 +16,10 @@ import java.util.Optional;
 public interface IUserFeignRepository {
 
     /**
-     * @param username
-     * @return
+     * @param username String
+     * @return User
      */
     @GetMapping("{username}")
-    User loadUserByUsername(@PathVariable("username") final String username);
+    Optional<User> loadUserByUsername(@PathVariable("username") final String username);
 
 }

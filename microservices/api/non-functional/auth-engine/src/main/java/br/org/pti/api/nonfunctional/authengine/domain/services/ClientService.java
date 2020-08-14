@@ -71,7 +71,6 @@ public class ClientService implements ClientDetailsService {
                     .build();
         }
 
-
         //TODO não está convertendo de lá pra cá
         return this.clientFeignRepository.loadClientByClientId(clientId)
                 .orElseThrow(() -> new UsernameNotFoundException("ClientId " + clientId + " não localizado!"));

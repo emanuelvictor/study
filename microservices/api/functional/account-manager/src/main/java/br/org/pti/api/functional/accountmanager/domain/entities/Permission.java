@@ -57,4 +57,23 @@ public class Permission extends PersistentEntity implements GrantedAuthority {
     public Permission() {
     }
 
+    /**
+     * @param authority        String
+     * @param upperPermission  Permission
+     * @param lowerPermissions Set<Permission>
+     */
+    public Permission(final String authority,
+                      final Permission upperPermission,
+                      final Set<Permission> lowerPermissions) {
+        this.authority = authority;
+        this.upperPermission = upperPermission;
+        this.lowerPermissions = lowerPermissions;
+    }
+
+    /**
+     * @return Permission
+     */
+    public Permission copy() {
+        return new Permission(authority, upperPermission, lowerPermissions);
+    }
 }

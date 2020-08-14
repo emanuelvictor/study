@@ -1,15 +1,9 @@
 package br.org.pti.api.nonfunctional.authengine.domain.entities;
 
-import br.org.pti.api.nonfunctional.authengine.domain.entities.generic.PersistentEntity;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.validation.constraints.NotNull;
-import java.util.Set;
 
 
 /**
@@ -18,14 +12,7 @@ import java.util.Set;
  * @since 1.0.0, 10/09/2019
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id",
-        scope = Permission.class/*,
-        resolver = EntityIdResolver.class*/
-)
-public class Permission extends PersistentEntity implements GrantedAuthority {
+public class Permission implements GrantedAuthority {
 
     /**
      *
@@ -36,19 +23,13 @@ public class Permission extends PersistentEntity implements GrantedAuthority {
     /**
      *
      */
-    @JsonProperty
-    private Permission upperPermission;
-
-    /**
-     *
-     */
-    @EqualsAndHashCode.Exclude
-    private Set<Permission> lowerPermissions;
-
-    /**
-     *
-     */
     public Permission() {
     }
 
+    /**
+     * @param authority
+     */
+    public Permission(@NotNull final String authority) {
+        this.authority = authority;
+    }
 }

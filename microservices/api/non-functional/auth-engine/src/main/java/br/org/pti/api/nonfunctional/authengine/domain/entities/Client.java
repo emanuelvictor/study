@@ -1,8 +1,8 @@
 package br.org.pti.api.nonfunctional.authengine.domain.entities;
 
-import br.org.pti.api.nonfunctional.authengine.domain.entities.generic.PersistentEntity;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
 
 import javax.validation.constraints.NotBlank;
@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
  */
 @ToString
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class Client extends PersistentEntity implements ClientDetails {
+@EqualsAndHashCode
+public class Client implements ClientDetails {
 
     /**
      * Corresponds to the clientId
@@ -40,96 +40,91 @@ public class Client extends PersistentEntity implements ClientDetails {
      */
     @Getter
     @Setter
-    private AccessGroup accessGroup;
+    private Set<String> authorizedGrantTypes;
 
     /**
      *
      */
     @Getter
     @Setter
-    private Set<String> authorizedGrantTypes;
+    private Set<String> registeredRedirectUri;
 
     /**
-     * TODO virá do account manager
+     *
+     */
+    @Getter
+    @Setter
+    private Set<String> resourceIds;
+
+    /**
+     *
+     */
+    @Getter
+    @Setter
+    private Set<String> scope;
+
+    /**
+     *
+     */
+    @Setter
+    private boolean secretRequired;
+
+    /**
+     *
+     */
+    @Setter
+    private boolean scoped;
+
+    /**
+     *
+     */
+    @Getter
+    @Setter
+    private Integer accessTokenValiditySeconds;
+
+    /**
+     *
+     */
+    @Getter
+    @Setter
+    private Integer refreshTokenValiditySeconds;
+
+    /**
      * @return String
      */
     @Override
     public boolean isSecretRequired() {
-        return true;
+        return secretRequired;
     }
 
     /**
-     * TODO virá do account manager
      * @return boolean
      */
     @Override
     public boolean isScoped() {
-        return true;
+        return scoped;
     }
 
     /**
      * TODO virá do account manager
-     * @return Set<String>
-     */
-    @Override
-    public Set<String> getScope() {
-        return this.accessGroup.getAccessGroupPermissions().stream().map(accessGroupPermission -> accessGroupPermission.getPermission().getAuthority()).collect(Collectors.toSet());
-    }
-
-    /**
-     * TODO virá do account manager
+     *
      * @return Collection<GrantedAuthority>
      */
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
-        return this.accessGroup.getAccessGroupPermissions().stream().map(AccessGroupPermission::getPermission).distinct().collect(Collectors.toList());
+        return this.getScope().stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+//        return this.accessGroup.getAccessGroupPermissions().stream().map(AccessGroupPermission::getPermission).distinct().collect(Collectors.toList());
     }
 
     /**
-     * TODO virá do account manager
-     * @return Integer
-     */
-    @Override
-    public Integer getAccessTokenValiditySeconds() {
-        return 60;
-    }
-
-    /**
-     * TODO virá do account manager
-     * @return Integer
-     */
-    @Override
-    public Integer getRefreshTokenValiditySeconds() {
-        return 999999999;
-    }
-
-    /**
+     * TODO
+     *
      * @param scope String
      * @return boolean
      */
     @Override
     public boolean isAutoApprove(final String scope) {
         return true;
-    }
-
-    /**
-     * TODO virá do account manager
-     *
-     * @return Set<String></String>
-     */
-    @Override
-    public Set<String> getRegisteredRedirectUri() {
-        return null;
-    }
-
-    /**
-     * Non necessary
-     *
-     * @return Set<String>
-     */
-    @Override
-    public Set<String> getResourceIds() {
-        return null;
     }
 
     /**

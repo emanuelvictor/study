@@ -1,18 +1,14 @@
 package br.org.pti.api.nonfunctional.authengine.domain.entities;
 
-import br.org.pti.api.nonfunctional.authengine.domain.entities.generic.PersistentEntity;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
+import lombok.EqualsAndHashCode;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Pattern.Flag;
-import java.util.HashSet;
 import java.util.Set;
 
 
@@ -22,9 +18,8 @@ import java.util.Set;
  * @since 1.0.0, 10/09/2019
  */
 @Data
-@JsonIgnoreProperties({"authorities"})
-@lombok.EqualsAndHashCode(callSuper = true)
-public class User extends PersistentEntity implements UserDetails {
+@EqualsAndHashCode
+public class User implements UserDetails {
 
     /**
      *
@@ -47,7 +42,22 @@ public class User extends PersistentEntity implements UserDetails {
     /**
      *
      */
-    private AccessGroup accessGroup;
+    private Set<Permission> authorities;
+
+    /**
+     *
+     */
+    private boolean accountNonExpired;
+
+    /**
+     *
+     */
+    private boolean accountNonLocked;
+
+    /**
+     *
+     */
+    private boolean credentialsNonExpired;
 
     /**
      *
@@ -56,87 +66,11 @@ public class User extends PersistentEntity implements UserDetails {
     }
 
     /**
-     * Percorre recursivamente as permissões e retorna elas lineares.
-     *
-     * @param permissions Set<Permission>
-     * @return Set<Permissao>
-     */
-    private static Set<Permission> populePermissions(final Set<Permission> permissions) {
-
-        final Set<Permission> permissoesLocais = new HashSet<>();
-
-        permissions.forEach(permissao -> {
-            permissoesLocais.add(permissao);
-            if (!permissao.getLowerPermissions().isEmpty())
-                permissoesLocais.addAll(populePermissions(permissao.getLowerPermissions()));
-        });
-
-        return permissoesLocais;
-    }
-
-    /**
-     * Retorna as authorities do usuário.
-     *
-     * @return Set<GrantedAuthority>
-     */
-    @Override
-    public Set<GrantedAuthority> getAuthorities() {
-
-        final Set<Permission> permissoes = new HashSet<>();
-
-        if (this.accessGroup != null && this.accessGroup.getAccessGroupPermissions() != null)
-            for (AccessGroupPermission grupoAcessoPermissao : this.accessGroup.getAccessGroupPermissions()) {
-                permissoes.add(grupoAcessoPermissao.getPermission());
-
-                if (!grupoAcessoPermissao.getPermission().getLowerPermissions().isEmpty())
-                    permissoes.addAll(populePermissions(grupoAcessoPermissao.getPermission().getLowerPermissions()));
-            }
-
-        return permissoes.isEmpty() ? null : new HashSet<>(permissoes);
-
-    }
-
-    /**
-     * @return String
-     */
-    @Override
-    public String getPassword() {
-        return this.password;
-    }
-
-    /**
      * @return boolean
      */
     @Override
     public boolean isEnabled() {
         return this.enabled;
-    }
-
-    /**
-     * @return boolean
-     */
-    @Override
-//    @Transient TODO verificar
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    /**
-     * @return boolean
-     */
-    @Override
-    //    @Transient TODO verificar
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    /**
-     * @return boolean
-     */
-    @Override
-    //    @Transient TODO verificar
-    public boolean isCredentialsNonExpired() {
-        return true;
     }
 
 }

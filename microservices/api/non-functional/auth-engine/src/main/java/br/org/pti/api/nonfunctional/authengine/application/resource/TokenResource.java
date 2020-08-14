@@ -1,11 +1,13 @@
 package br.org.pti.api.nonfunctional.authengine.application.resource;
 
+import br.org.pti.api.nonfunctional.authengine.domain.entities.Permission;
 import br.org.pti.api.nonfunctional.authengine.domain.entities.User;
 import br.org.pti.api.nonfunctional.authengine.domain.services.ServiceToken;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.common.exceptions.InvalidClientException;
@@ -54,7 +56,7 @@ public class TokenResource {
      * @return ResponseEntity<Set < GrantedAuthority>>
      */
     @RequestMapping(value = "/oauth/authorities/{token}", method = RequestMethod.GET)
-    ResponseEntity<Set<GrantedAuthority>> getAuthoritiesByToken(@PathVariable("token") final String token) {
+    ResponseEntity<Set<Permission>> getAuthoritiesByToken(@PathVariable("token") final String token) {
         return ResponseEntity.ok(serviceToken.getPrincipal(token).getAuthorities());
     }
 
