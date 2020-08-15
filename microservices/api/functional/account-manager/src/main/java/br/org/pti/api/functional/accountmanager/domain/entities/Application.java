@@ -52,6 +52,8 @@ public class Application extends PersistentEntity implements ClientDetails {
     /**
      *
      */
+    @Getter
+    @Setter
     @ManyToOne(optional = false)
     private AccessGroup accessGroup;
 
@@ -73,6 +75,9 @@ public class Application extends PersistentEntity implements ClientDetails {
     @Convert(converter = StringSetConverter.class)
     private Set<String> resourceIds;
 
+    /**
+     *
+     */
     @Getter
     @Setter
     @Column

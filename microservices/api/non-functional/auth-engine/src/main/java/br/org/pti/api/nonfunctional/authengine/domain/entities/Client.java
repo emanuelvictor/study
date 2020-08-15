@@ -138,7 +138,7 @@ public class Client implements ClientDetails {
                     permissions.addAll(populePermissions(grupoAcessoPermissao.getPermission().getLowerPermissions()));
             }
 
-        return permissions.isEmpty() ? null : new HashSet<>(permissions);
+        return permissions.isEmpty() ? new HashSet<>() : new HashSet<>(permissions);
 
     }
 
