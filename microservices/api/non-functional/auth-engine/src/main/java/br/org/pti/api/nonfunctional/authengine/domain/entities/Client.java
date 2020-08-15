@@ -1,11 +1,13 @@
 package br.org.pti.api.nonfunctional.authengine.domain.entities;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
 
-import javax.validation.constraints.NotBlank;
-import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -13,6 +15,7 @@ import java.util.stream.Collectors;
 /**
  *
  */
+@Data
 @ToString
 @NoArgsConstructor
 @EqualsAndHashCode
@@ -21,72 +24,57 @@ public class Client implements ClientDetails {
     /**
      * Corresponds to the clientId
      */
-    @Getter
-    @Setter
-    @NotBlank(message = "A client id must be informed")
     private String clientId;
 
     /**
      *
      */
-    @Getter
-    @Setter
-    @NotBlank(message = "A client secrete must be informed")
     private String clientSecret;
 
     /**
      *
      */
-    @Getter
-    @Setter
     private Set<String> authorizedGrantTypes;
 
     /**
      *
      */
-    @Getter
-    @Setter
     private Set<String> registeredRedirectUri;
 
     /**
      *
      */
-    @Getter
-    @Setter
     private Set<String> resourceIds;
 
     /**
      *
      */
-    @Getter
-    @Setter
     private Set<String> scope;
 
     /**
      *
      */
-    @Setter
     private boolean secretRequired;
 
     /**
      *
      */
-    @Setter
     private boolean scoped;
 
     /**
      *
      */
-    @Getter
-    @Setter
     private Integer accessTokenValiditySeconds;
 
     /**
      *
      */
-    @Getter
-    @Setter
     private Integer refreshTokenValiditySeconds;
+
+    /**
+     *
+     */
+    private AccessGroup accessGroup;
 
     /**
      * @return String
@@ -105,14 +93,53 @@ public class Client implements ClientDetails {
     }
 
     /**
-     * TODO virá do account manager
-     *
-     * @return Collection<GrantedAuthority>
+     * @return Set<String>
      */
     @Override
-    public Collection<GrantedAuthority> getAuthorities() {
-        return this.getScope().stream().map(Permission::new).collect(Collectors.toList());
-//        return this.accessGroup.getAccessGroupPermissions().stream().map(AccessGroupPermission::getPermission).distinct().collect(Collectors.toList());
+    public Set<String> getScope() {
+        return this.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toSet());
+    }
+
+    /**
+     * Percorre recursivamente as permissões e retorna elas lineares.
+     *
+     * @param permissions Set<Permission>
+     * @return Set<Permissao>
+     */
+    private static Set<Permission> populePermissions(final Set<Permission> permissions) {
+
+        final Set<Permission> localPermissions = new HashSet<>();
+
+        permissions.forEach(permission -> {
+            localPermissions.add(permission.copy());
+            if (!permission.getLowerPermissions().isEmpty())
+                localPermissions.addAll(populePermissions(permission.getLowerPermissions()));
+        });
+
+        return localPermissions;
+
+    }
+
+    /**
+     * Retorna as authorities do usuário.
+     *
+     * @return Set<GrantedAuthority>
+     */
+    @Override
+    public Set<GrantedAuthority> getAuthorities() {
+
+        final Set<Permission> permissions = new HashSet<>();
+
+        if (this.accessGroup != null && this.accessGroup.getAccessGroupPermissions() != null)
+            for (AccessGroupPermission grupoAcessoPermissao : this.accessGroup.getAccessGroupPermissions()) {
+                permissions.add(grupoAcessoPermissao.getPermission().copy());
+
+                if (!grupoAcessoPermissao.getPermission().getLowerPermissions().isEmpty())
+                    permissions.addAll(populePermissions(grupoAcessoPermissao.getPermission().getLowerPermissions()));
+            }
+
+        return permissions.isEmpty() ? null : new HashSet<>(permissions);
+
     }
 
     /**

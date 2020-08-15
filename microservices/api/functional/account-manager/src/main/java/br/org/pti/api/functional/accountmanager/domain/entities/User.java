@@ -30,6 +30,7 @@ import java.util.Set;
 @Entity
 @Audited
 @Table(name = "\"user\"")
+@JsonIgnoreProperties({"authorities"})
 @lombok.EqualsAndHashCode(callSuper = true)
 public class User extends PersistentEntity implements UserDetails {
 

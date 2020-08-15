@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Pattern.Flag;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -29,14 +30,11 @@ public class User implements UserDetails {
     /**
      *
      */
-    @NotBlank
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@!%*#?&+,./])[A-Za-z\\d$@!%*#?&+,./]{8,}$", flags = Flag.UNICODE_CASE, message = "A senha deve conter ao menos 8 caracteres com letras, números e um caractere especial.")
     private String password;
 
     /**
      *
      */
-    @NotNull
     private boolean enabled;
 
     /**
@@ -62,6 +60,16 @@ public class User implements UserDetails {
     /**
      *
      */
+    private String name;
+
+    /**
+     *
+     */
+    private AccessGroup accessGroup;
+
+    /**
+     *
+     */
     public User() {
     }
 
@@ -71,6 +79,48 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return this.enabled;
+    }
+
+    /**
+     * Percorre recursivamente as permissões e retorna elas lineares.
+     *
+     * @param permissions Set<Permission>
+     * @return Set<Permissao>
+     */
+    private static Set<Permission> populePermissions(final Set<Permission> permissions) {
+
+        final Set<Permission> localPermissions = new HashSet<>();
+
+        permissions.forEach(permission -> {
+            localPermissions.add(permission.copy());
+            if (!permission.getLowerPermissions().isEmpty())
+                localPermissions.addAll(populePermissions(permission.getLowerPermissions()));
+        });
+
+        return localPermissions;
+
+    }
+
+    /**
+     * Retorna as authorities do usuário.
+     *
+     * @return Set<GrantedAuthority>
+     */
+    @Override
+    public Set<Permission> getAuthorities() {
+
+        final Set<Permission> permissions = new HashSet<>();
+
+        if (this.accessGroup != null && this.accessGroup.getAccessGroupPermissions() != null)
+            for (AccessGroupPermission accessGroupPermission : this.accessGroup.getAccessGroupPermissions()) {
+                permissions.add(accessGroupPermission.getPermission().copy());
+
+                if (!accessGroupPermission.getPermission().getLowerPermissions().isEmpty())
+                    permissions.addAll(populePermissions(accessGroupPermission.getPermission().getLowerPermissions()));
+            }
+
+        return permissions.isEmpty() ? null : new HashSet<>(permissions);
+
     }
 
 }

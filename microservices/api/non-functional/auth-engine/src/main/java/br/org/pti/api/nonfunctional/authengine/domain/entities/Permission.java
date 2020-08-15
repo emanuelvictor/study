@@ -1,9 +1,16 @@
 package br.org.pti.api.nonfunctional.authengine.domain.entities;
 
+import br.org.pti.api.nonfunctional.authengine.domain.entities.generic.PersistentEntity;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.Set;
 
 
 /**
@@ -12,13 +19,30 @@ import javax.validation.constraints.NotNull;
  * @since 1.0.0, 10/09/2019
  */
 @Data
-public class Permission implements GrantedAuthority {
+@EqualsAndHashCode(callSuper = true)
+@JsonIdentityInfo(
+        property = "id",
+        scope = Permission.class,
+        generator = ObjectIdGenerators.PropertyGenerator.class
+)
+public class Permission extends PersistentEntity implements GrantedAuthority {
 
     /**
      *
      */
-    @NotNull
     private String authority;
+
+    /**
+     *
+     */
+    @JsonProperty
+    private Permission upperPermission;
+
+    /**
+     *
+     */
+    @EqualsAndHashCode.Exclude
+    private Set<Permission> lowerPermissions;
 
     /**
      *
@@ -27,9 +51,22 @@ public class Permission implements GrantedAuthority {
     }
 
     /**
-     * @param authority
+     * @param authority        String
+     * @param upperPermission  Permission
+     * @param lowerPermissions Set<Permission>
      */
-    public Permission(@NotNull final String authority) {
+    public Permission(final String authority,
+                      final Permission upperPermission,
+                      final Set<Permission> lowerPermissions) {
         this.authority = authority;
+        this.upperPermission = upperPermission;
+        this.lowerPermissions = lowerPermissions;
+    }
+
+    /**
+     * @return Permission
+     */
+    public Permission copy() {
+        return new Permission(authority, upperPermission, lowerPermissions);
     }
 }

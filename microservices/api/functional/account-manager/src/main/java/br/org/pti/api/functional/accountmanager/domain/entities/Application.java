@@ -2,6 +2,7 @@ package br.org.pti.api.functional.accountmanager.domain.entities;
 
 import br.org.pti.api.functional.accountmanager.application.converters.StringSetConverter;
 import br.org.pti.api.functional.accountmanager.domain.entities.generic.PersistentEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +28,7 @@ import java.util.stream.Collectors;
 @Audited
 @ToString
 @EqualsAndHashCode(callSuper = true)
+@JsonIgnoreProperties({"authorities"})
 public class Application extends PersistentEntity implements ClientDetails {
 
     /**
