@@ -25,12 +25,12 @@ export default () => {
     console.error('You need define the URL of the SSO');
   } /*else if (!CODE) {
     console.error('First get the code to authorization code request');
-    console.error('Open your browser and go to the url http://localhost:8081/oauth/authorize?response_type=code&client_id=browser&redirect_uri=http://localhost:8080/test&scope=none');
+    console.error('Open your browser and go to the url http://localhost:8081/oauth/authorize?response_type=code&client_id=browser&redirect_uri=http://localhost:8080/test');
     console.error('Execute the login and get the code in URL redirected (Example: http://localhost:8080/test?code=tCQlSA => tCQlSA).');
   }*/ else {
 
     // First get the code to authorization code request
-    // Open your browser and go to the url http://localhost:8081/oauth/authorize?response_type=code&client_id=browser&redirect_uri=http://localhost:8080/test&scope=none
+    // Open your browser and go to the url http://localhost:8081/oauth/authorize?response_type=code&client_id=browser&redirect_uri=http://localhost:8080/test
     // Execute the login and get the code in URL redirected (Example: http://localhost:8080/test?code=tCQlSA => tCQlSA).
     group('Authorization Code', function () {
 

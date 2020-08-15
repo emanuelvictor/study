@@ -31,7 +31,7 @@ import java.util.Optional;
 @Component
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class ApplicationService implements ClientDetailsService {
+public class ApplicationService {
 
     private final PasswordEncoder passwordEncoder;
 
@@ -109,8 +109,7 @@ public class ApplicationService implements ClientDetailsService {
      * @return ClientDetails
      * @throws ClientRegistrationException
      */
-    @Override
-    public ClientDetails loadClientByClientId(final String clientId) throws ClientRegistrationException {
+    public Application loadClientByClientId(final String clientId) throws ClientRegistrationException {
         return this.aplicacaoRepository.findByClientId(clientId)
                 .orElseThrow(() -> new UsernameNotFoundException("ClientId " + clientId + " não localizado!"));
     }

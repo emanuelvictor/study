@@ -8,18 +8,13 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.envers.Audited;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.oauth2.provider.ClientDetails;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
-import java.util.Collection;
-import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  *
@@ -29,7 +24,7 @@ import java.util.stream.Collectors;
 @ToString
 @EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties({"authorities"})
-public class Application extends PersistentEntity implements ClientDetails {
+public class Application extends PersistentEntity {
 
     /**
      * Corresponds to the clientId
@@ -122,54 +117,20 @@ public class Application extends PersistentEntity implements ClientDetails {
     public Application() {
     }
 
-
-    /**
-     * @return Set<String>
-     */
-    @Override
-    public Set<String> getScope() {
-        return this.accessGroup.getAccessGroupPermissions().stream().map(accessGroupPermission -> accessGroupPermission.getPermission().getAuthority()).collect(Collectors.toSet());
-    }
-
-    /**
-     * @return Collection<GrantedAuthority>
-     */
-    @Override
-    public Collection<GrantedAuthority> getAuthorities() {
-        return this.accessGroup.getAccessGroupPermissions().stream().map(AccessGroupPermission::getPermission).distinct().collect(Collectors.toList());
-    }
-
-    /**
-     * @param scope String
-     * @return boolean
-     */
-    @Override
-    public boolean isAutoApprove(final String scope) {
-        return true;
-    }
-
-    /**
-     * Non necessary
-     *
-     * @return Map<String, Object>
-     */
-    @Override
-    public Map<String, Object> getAdditionalInformation() {
-        return null;
-    }
-
-    //
 //    /**
 //     * @return Set<String>
 //     */
 //    @Override
-//    public Set<String> getAuthorizedGrantTypes() {
-//        final Set<String> authorizedGrantTypes = new HashSet<>();
-//        authorizedGrantTypes.add(GrantType.AUTHORIZATION_CODE.getGrantType());
-//        authorizedGrantTypes.add(GrantType.CLIENT_CREDENTIALS.getGrantType());
-//        authorizedGrantTypes.add(GrantType.IMPLICIT.getGrantType());
-//        authorizedGrantTypes.add(GrantType.PASSWORD.getGrantType());
-//        authorizedGrantTypes.add(GrantType.REFRESH_TOKEN.getGrantType());
-//        return authorizedGrantTypes;
+//    public Set<String> getScope() {
+//        return this.accessGroup.getAccessGroupPermissions().stream().map(accessGroupPermission -> accessGroupPermission.getPermission().getAuthority()).collect(Collectors.toSet());
 //    }
+//
+//    /**
+//     * @return Collection<GrantedAuthority>
+//     */
+//    @Override
+//    public Collection<GrantedAuthority> getAuthorities() {
+//        return this.accessGroup.getAccessGroupPermissions().stream().map(AccessGroupPermission::getPermission).distinct().collect(Collectors.toList());
+//    }
+
 }

@@ -32,7 +32,7 @@ import java.util.Set;
 @Table(name = "\"user\"")
 @JsonIgnoreProperties({"authorities"})
 @lombok.EqualsAndHashCode(callSuper = true)
-public class User extends PersistentEntity implements UserDetails {
+public class User extends PersistentEntity {
 
     /**
      *
@@ -81,59 +81,8 @@ public class User extends PersistentEntity implements UserDetails {
     }
 
     /**
-     * Percorre recursivamente as permissões e retorna elas lineares.
-     *
-     * @param permissions Set<Permission>
-     * @return Set<Permissao>
-     */
-    private static Set<Permission> populePermissions(final Set<Permission> permissions) {
-
-        final Set<Permission> permissoesLocais = new HashSet<>();
-
-        permissions.forEach(permissao -> {
-            permissoesLocais.add(permissao.copy());
-            if (!permissao.getLowerPermissions().isEmpty())
-                permissoesLocais.addAll(populePermissions(permissao.getLowerPermissions()));
-        });
-
-        return permissoesLocais;
-
-    }
-
-    /**
-     * Retorna as authorities do usuário.
-     *
-     * @return Set<GrantedAuthority>
-     */
-    @Override
-    public Set<Permission> getAuthorities() {
-
-        final Set<Permission> permissoes = new HashSet<>();
-
-        if (this.accessGroup != null && this.accessGroup.getAccessGroupPermissions() != null)
-            for (AccessGroupPermission grupoAcessoPermissao : this.accessGroup.getAccessGroupPermissions()) {
-                permissoes.add(grupoAcessoPermissao.getPermission().copy());
-
-                if (!grupoAcessoPermissao.getPermission().getLowerPermissions().isEmpty())
-                    permissoes.addAll(populePermissions(grupoAcessoPermissao.getPermission().getLowerPermissions()));
-            }
-
-        return permissoes.isEmpty() ? null : new HashSet<>(permissoes);
-
-    }
-
-    /**
-     * @return String
-     */
-    @Override
-    public String getPassword() {
-        return this.password;
-    }
-
-    /**
      * @return boolean
      */
-    @Override
     public boolean isEnabled() {
         return this.enabled;
     }
@@ -141,7 +90,6 @@ public class User extends PersistentEntity implements UserDetails {
     /**
      * @return boolean
      */
-    @Override
     public boolean isAccountNonLocked() {
         return !locked;
     }
@@ -149,7 +97,6 @@ public class User extends PersistentEntity implements UserDetails {
     /**
      * @return boolean
      */
-    @Override
     public boolean isAccountNonExpired() {
         return true;
     }
@@ -157,7 +104,6 @@ public class User extends PersistentEntity implements UserDetails {
     /**
      * @return boolean
      */
-    @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }

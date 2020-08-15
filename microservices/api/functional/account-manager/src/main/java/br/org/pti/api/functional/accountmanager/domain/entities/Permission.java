@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.envers.Audited;
-import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -28,7 +27,7 @@ import java.util.Set;
         property = "id",
         scope = Permission.class,
         resolver = EntityIdResolver.class)
-public class Permission extends PersistentEntity implements GrantedAuthority {
+public class Permission extends PersistentEntity {
 
     /**
      *
