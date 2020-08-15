@@ -57,6 +57,13 @@ public class User extends PersistentEntity implements UserDetails {
     /**
      *
      */
+    @NotNull
+    @Column(nullable = false)
+    private boolean locked;
+
+    /**
+     *
+     */
     @Column(nullable = false, length = 250)
     private String name;
 
@@ -134,15 +141,15 @@ public class User extends PersistentEntity implements UserDetails {
      * @return boolean
      */
     @Override
-    public boolean isAccountNonExpired() {
-        return true;
+    public boolean isAccountNonLocked() {
+        return !locked;
     }
 
     /**
      * @return boolean
      */
     @Override
-    public boolean isAccountNonLocked() {
+    public boolean isAccountNonExpired() {
         return true;
     }
 

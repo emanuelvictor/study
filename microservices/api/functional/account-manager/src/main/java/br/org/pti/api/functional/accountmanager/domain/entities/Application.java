@@ -1,17 +1,21 @@
 package br.org.pti.api.functional.accountmanager.domain.entities;
 
+import br.org.pti.api.functional.accountmanager.application.converters.StringSetConverter;
 import br.org.pti.api.functional.accountmanager.domain.entities.generic.PersistentEntity;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.envers.Audited;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -46,39 +50,71 @@ public class Application extends PersistentEntity implements ClientDetails {
     /**
      *
      */
-    @Getter
-    @Setter
-    @Column(nullable = false)
-    private boolean enabled;
-
-    /**
-     *
-     */
     @ManyToOne(optional = false)
     private AccessGroup accessGroup;
 
     /**
      *
      */
+    @Getter
+    @Setter
+    @Column
+    @Convert(converter = StringSetConverter.class)
+    private Set<String> registeredRedirectUri;
+
+    /**
+     *
+     */
+    @Getter
+    @Setter
+    @Column
+    @Convert(converter = StringSetConverter.class)
+    private Set<String> resourceIds;
+
+    @Getter
+    @Setter
+    @Column
+    @Convert(converter = StringSetConverter.class)
+    private Set<String> authorizedGrantTypes;
+
+    /**
+     *
+     */
+    @Getter
+    @Setter
+    @Column(nullable = false)
+    private boolean secretRequired;
+
+    /**
+     *
+     */
+    @Getter
+    @Setter
+    @Column(nullable = false)
+    private boolean scoped;
+
+    /**
+     *
+     */
+    @Getter
+    @Setter
+    @Column(nullable = false)
+    private Integer accessTokenValiditySeconds = 60000;
+
+    /**
+     *
+     */
+    @Getter
+    @Setter
+    @Column(nullable = false)
+    private Integer refreshTokenValiditySeconds = 999999999;
+
+    /**
+     *
+     */
     public Application() {
-        this.enabled = true;
     }
 
-    /**
-     * @return String
-     */
-    @Override
-    public boolean isSecretRequired() {
-        return true;
-    }
-
-    /**
-     * @return boolean
-     */
-    @Override
-    public boolean isScoped() {
-        return true;
-    }
 
     /**
      * @return Set<String>
@@ -89,42 +125,11 @@ public class Application extends PersistentEntity implements ClientDetails {
     }
 
     /**
-     * @return Set<String>
-     */
-    @Override
-    public Set<String> getAuthorizedGrantTypes() {
-        final Set<String> authorizedGrantTypes = new HashSet<>();
-        authorizedGrantTypes.add(GrantType.AUTHORIZATION_CODE.getGrantType());
-        authorizedGrantTypes.add(GrantType.CLIENT_CREDENTIALS.getGrantType());
-        authorizedGrantTypes.add(GrantType.IMPLICIT.getGrantType());
-        authorizedGrantTypes.add(GrantType.PASSWORD.getGrantType());
-        authorizedGrantTypes.add(GrantType.REFRESH_TOKEN.getGrantType());
-        return authorizedGrantTypes;
-    }
-
-
-    /**
      * @return Collection<GrantedAuthority>
      */
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
         return this.accessGroup.getAccessGroupPermissions().stream().map(AccessGroupPermission::getPermission).distinct().collect(Collectors.toList());
-    }
-
-    /**
-     * @return Integer
-     */
-    @Override
-    public Integer getAccessTokenValiditySeconds() {
-        return 60000;
-    }
-
-    /**
-     * @return Integer
-     */
-    @Override
-    public Integer getRefreshTokenValiditySeconds() {
-        return 999999999;
     }
 
     /**
@@ -137,26 +142,6 @@ public class Application extends PersistentEntity implements ClientDetails {
     }
 
     /**
-     * Non necessary for now.
-     *
-     * @return Set<String></String>
-     */
-    @Override
-    public Set<String> getRegisteredRedirectUri() {
-        return null;
-    }
-
-    /**
-     * Non necessary
-     *
-     * @return Set<String>
-     */
-    @Override
-    public Set<String> getResourceIds() {
-        return null;
-    }
-
-    /**
      * Non necessary
      *
      * @return Map<String, Object>
@@ -165,4 +150,19 @@ public class Application extends PersistentEntity implements ClientDetails {
     public Map<String, Object> getAdditionalInformation() {
         return null;
     }
+
+    //
+//    /**
+//     * @return Set<String>
+//     */
+//    @Override
+//    public Set<String> getAuthorizedGrantTypes() {
+//        final Set<String> authorizedGrantTypes = new HashSet<>();
+//        authorizedGrantTypes.add(GrantType.AUTHORIZATION_CODE.getGrantType());
+//        authorizedGrantTypes.add(GrantType.CLIENT_CREDENTIALS.getGrantType());
+//        authorizedGrantTypes.add(GrantType.IMPLICIT.getGrantType());
+//        authorizedGrantTypes.add(GrantType.PASSWORD.getGrantType());
+//        authorizedGrantTypes.add(GrantType.REFRESH_TOKEN.getGrantType());
+//        return authorizedGrantTypes;
+//    }
 }

@@ -2,7 +2,6 @@ package br.org.pti.api.nonfunctional.authengine.domain.entities;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
 
 import javax.validation.constraints.NotBlank;
@@ -112,7 +111,7 @@ public class Client implements ClientDetails {
      */
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
-        return this.getScope().stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+        return this.getScope().stream().map(Permission::new).collect(Collectors.toList());
 //        return this.accessGroup.getAccessGroupPermissions().stream().map(AccessGroupPermission::getPermission).distinct().collect(Collectors.toList());
     }
 
