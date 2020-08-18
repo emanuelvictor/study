@@ -27,7 +27,7 @@ public class AccessGroupService {
     /**
      *
      */
-    private final AccessGroupRepository accessGroupRepository;
+    private final AccessGroupRepository AccessGroupRepository;
 
     /**
      *
@@ -40,7 +40,7 @@ public class AccessGroupService {
      * @return Page<AccessGroup>
      */
     public Page<AccessGroup> listByFilters(final String defaultFilter, final Pageable pageable) {
-        return this.accessGroupRepository.listByFilters(defaultFilter, pageable);
+        return this.AccessGroupRepository.listByFilters(defaultFilter, pageable);
     }
 
     /**
@@ -48,7 +48,7 @@ public class AccessGroupService {
      * @return {@link Optional <AccessGroup>}
      */
     public Optional<AccessGroup> findById(final long id) {
-        return this.accessGroupRepository.findById(id);
+        return this.AccessGroupRepository.findById(id);
     }
 
     /**
@@ -58,7 +58,7 @@ public class AccessGroupService {
     @Transactional
     public AccessGroup save(final AccessGroup accessGroup) {
         Assert.notEmpty(accessGroup.getAccessGroupPermissions(), "Defina permissões para esse Grupo de Acesso");
-        return accessGroupRepository.save(accessGroup);
+        return AccessGroupRepository.save(accessGroup);
     }
 
     /**
@@ -84,7 +84,7 @@ public class AccessGroupService {
         /*
          * Atualizo o grupo de acesso
          */
-        this.accessGroupRepository.save(accessGroup);
+        this.AccessGroupRepository.save(accessGroup);
 
         /*
          * Insiro todos os grupo acesso permissao
@@ -103,7 +103,7 @@ public class AccessGroupService {
      * @return Boolean
      */
     public Boolean delete(final long id) {
-        this.accessGroupRepository.deleteById(id);
+        this.AccessGroupRepository.deleteById(id);
         return true;
     }
 }
