@@ -12,6 +12,7 @@ import {AuthenticationService} from "../../domain/services/authentication.servic
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
+
   /**
    * Instancia a partir do window o NProgress
    */
@@ -38,11 +39,10 @@ export class Interceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     this.progress.start();
-
-    if (this.authenticationService.access && this.authenticationService.access.token)
+    if (this.authenticationService.access && this.authenticationService.access.access_token)
       req = req.clone({
         setHeaders: {
-          Authorization: `Bearer ${this.authenticationService.access.token}`
+          Authorization: `Bearer ${this.authenticationService.access.access_token}`
         }
       });
 

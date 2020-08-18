@@ -4,14 +4,13 @@ import {HttpClient} from '@angular/common/http';
 import {PageSerialize} from '../../page-serialize/page-serialize';
 import {Observable} from 'rxjs';
 import {environment} from "../../../../environments/environment";
-import {FileRepository} from "../../../domain/repository/file.repository";
 
 
 export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
 
   public collectionName: string = environment.apiContext + '/';
 
-  constructor(public httpClient: HttpClient, public collection: string, public fileRepository?: FileRepository) {
+  constructor(public httpClient: HttpClient, public collection: string) {
     if (collection)
       this.collectionName = this.collectionName + collection;
     else
@@ -53,57 +52,6 @@ export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
 
   updateAtivo(id: number): Promise<boolean> {
     return this.httpClient.put<boolean>(this.collectionName + '/ativo', id).toPromise();
-  }
-
-  /**
-   *
-   * @param publicacaoId
-   * @param pageable
-   */
-  public findAllByPublicacaoId(publicacaoId: number, pageable: any): Observable<any> {
-    const params = PageSerialize.getHttpParamsFromPageable(pageable);
-
-    return this.httpClient.get(this.collectionName + '/' + publicacaoId + '/anexos', {
-      params: params
-    });
-  }
-
-  /**
-   *
-   * @param fornecedorId
-   * @param pageable
-   */
-  public findAllByFornecedorId(fornecedorId: number, pageable: any): Observable<any> {
-    const params = PageSerialize.getHttpParamsFromPageable(pageable);
-
-    return this.httpClient.get(this.collectionName + '/' + fornecedorId + '/documentos', {
-      params: params
-    });
-  }
-
-
-  public listPaisesByFilters(pageable: any): Observable<any> {
-    const params = PageSerialize.getHttpParamsFromPageable(pageable);
-
-    return this.httpClient.get(this.collectionName + '/paises', {
-      params: params
-    });
-  }
-
-  public listEstadosByFilters(pageable: any): Observable<any> {
-    const params = PageSerialize.getHttpParamsFromPageable(pageable);
-
-    return this.httpClient.get(this.collectionName + '/estados', {
-      params: params
-    });
-  }
-
-  public listCidadesByFilters(pageable: any): Observable<any> {
-    const params = PageSerialize.getHttpParamsFromPageable(pageable);
-
-    return this.httpClient.get(this.collectionName + '/cidades', {
-      params: params
-    });
   }
 
 }
