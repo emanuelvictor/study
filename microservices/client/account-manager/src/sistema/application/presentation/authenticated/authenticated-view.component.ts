@@ -6,10 +6,9 @@ import {Subscription} from 'rxjs';
 import {MessageService} from '../../../domain/services/message.service';
 import {TranslateService} from '@ngx-translate/core';
 import {AuthenticationService} from "../../../domain/services/authentication.service";
-import {AlterarSenhaDialogComponent} from "./configuracoes/usuario/alterar-senha-dialog.component";
-import {UserDetails} from "../../../infrastructure/authentication/user-details";
-import {Usuario} from "../../../domain/entity/usuario.model";
-import {UsuarioRepository} from "../../../domain/repository/usuario.repository";
+import {UpdatePasswordDialogComponent} from "./configurations/user/update-password-dialog.component";
+import {User} from "../../../domain/entity/user.model";
+import {UserRepository} from "../../../domain/repository/user.repository";
 
 // @ts-ignore
 @Component({
@@ -21,7 +20,7 @@ export class AuthenticatedViewComponent implements OnInit, OnDestroy {
   /**
    *
    */
-  public usuario: Usuario;
+  public user: User;
   public routerSubscription: Subscription;
   public userSubscription: Subscription;
 
@@ -36,7 +35,7 @@ export class AuthenticatedViewComponent implements OnInit, OnDestroy {
    * @param activeRoute
    * @param messageService
    * @param loadingService
-   * @param usuarioRepository
+   * @param userRepository
    * @param dialog
    * @param router
    * @param authenticationService
@@ -45,7 +44,7 @@ export class AuthenticatedViewComponent implements OnInit, OnDestroy {
               private activeRoute: ActivatedRoute,
               private messageService: MessageService,
               private loadingService: TdLoadingService,
-              private usuarioRepository: UsuarioRepository,
+              private userRepository: UserRepository,
               private dialog: MatDialog, private router: Router,
               private authenticationService: AuthenticationService) {
 
@@ -85,8 +84,8 @@ export class AuthenticatedViewComponent implements OnInit, OnDestroy {
   public getAuthenticatedUser() {
     this.authenticationService.getObservedLoggedUser().subscribe(authenticatedUser => {
       if (authenticatedUser)
-        this.usuarioRepository.findByUsername(authenticatedUser.username).subscribe(result => {
-          this.usuario = result
+        this.userRepository.findByUsername(authenticatedUser.username).subscribe(result => {
+          this.user = result
         })
     })
   }
@@ -95,19 +94,19 @@ export class AuthenticatedViewComponent implements OnInit, OnDestroy {
    *
    */
   public openDialogChangePassword() {
-    this.dialog.open(AlterarSenhaDialogComponent, {
+    this.dialog.open(UpdatePasswordDialogComponent, {
       width: '400px',
       height: 'auto',
-      data: {usuario: this.usuario || null}
+      data: {user: this.user || null}
     })
   }
 
   /**
    * Verifica se o usuário logado é ADMINISTRADOR e se está editando ele mesmo.
    */
-  public itsMe(usuario: any): boolean {
-    const authenticatedUser = this.usuario;
-    return authenticatedUser && ((authenticatedUser as any).isRoot || (authenticatedUser as any).id === usuario.id)
+  public itsMe(user: any): boolean {
+    const authenticatedUser = this.user;
+    return authenticatedUser && ((authenticatedUser as any).isRoot || (authenticatedUser as any).id === user.id)
   }
 
   /**

@@ -1,18 +1,18 @@
 package br.org.pti.api.functional.accountmanager.infrastructure.jpa;
 
-import org.hibernate.dialect.PostgreSQL95Dialect;
+
+import org.hibernate.dialect.PostgreSQL9Dialect;
 
 /**
  * @author Emanuel Victor
  * @version 1.0.0
  * @since 2.0.0, 10/09/2020
  */
-public class CustomPostgresDialect extends PostgreSQL95Dialect {
-
+public class CustomPostgresDialect extends PostgreSQL9Dialect {
     /**
      *
      */
     public CustomPostgresDialect() {
-        super.registerFunction("FILTER", new br.org.pti.api.functional.accountmanager.infrastructure.jpa.PostgresFilterFunction());
+        super.registerFunction("FILTER", new PostgresFilterFunction());
     }
 }

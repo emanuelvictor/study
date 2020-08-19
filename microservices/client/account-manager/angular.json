@@ -14,7 +14,7 @@
           "options": {
             "outputPath": "../resources/META-INF/resources/modules/",
             "index": "src/sistema/index.html",
-            "main": "src/sistema/application/sistema-main.ts",
+            "main": "src/sistema/application/system-main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
@@ -23,7 +23,7 @@
             ],
             "styles": [
               "./node_modules/@covalent/core/common/platform.scss",
-              "src/sistema/application/sistema-theme.scss",
+              "src/sistema/application/system-theme.scss",
               "./node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
               "src/assets/styles/nprogress.css",
               "src/assets/styles/ev-datepicker.scss"

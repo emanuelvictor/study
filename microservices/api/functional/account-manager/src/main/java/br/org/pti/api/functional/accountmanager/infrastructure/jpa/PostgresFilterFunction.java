@@ -18,20 +18,18 @@ import java.util.stream.Collectors;
 public class PostgresFilterFunction implements SQLFunction {
 
     /**
-     * {@inheritDoc}
+     * Ex: FILTER(:filter, configuracao.id, configuracao.email, configuracao.nome) = TRUE
      *
-     * @param firstArgumentType
-     * @param arguments
-     * @param factory
-     * @return
+     * @param firstArgumentType Type
+     * @param arguments         List
+     * @param factory           SessionFactoryImplementor
+     * @return String
      * @throws QueryException
      */
+    @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    @SuppressWarnings("unchecked")
     public String render(final Type firstArgumentType, final List arguments, final SessionFactoryImplementor factory) throws QueryException {
-
         final String query = this.renderCast((String) arguments.get(0));
-
         final List<String> fields = (List<String>) arguments.stream().skip(1)
                 .map(field -> this.renderCast((String) field))
                 .collect(Collectors.toList());
@@ -40,19 +38,17 @@ public class PostgresFilterFunction implements SQLFunction {
     }
 
     /**
-     * @param field
-     * @return
+     * @param field String
+     * @return String
      */
     private String renderCast(final String field) {
         return String.format("cast(%s as text)", field);
     }
 
     /**
-     * {@inheritDoc}
-     *
-     * @param firstArgumentType
-     * @param mapping
-     * @return
+     * @param firstArgumentType Type
+     * @param mapping           Mapping
+     * @return Type
      * @throws QueryException
      */
     @Override
@@ -61,9 +57,7 @@ public class PostgresFilterFunction implements SQLFunction {
     }
 
     /**
-     * {@inheritDoc}
-     *
-     * @return
+     * @return boolean
      */
     @Override
     public boolean hasArguments() {
@@ -71,9 +65,7 @@ public class PostgresFilterFunction implements SQLFunction {
     }
 
     /**
-     * {@inheritDoc}
-     *
-     * @return
+     * @return boolean
      */
     @Override
     public boolean hasParenthesesIfNoArguments() {

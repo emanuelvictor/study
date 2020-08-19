@@ -1,18 +1,19 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot} from "@angular/router";
 import {isNullOrUndefined} from "util";
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
-import {UsuarioRepository} from "../repository/usuario.repository";
+import {UserRepository} from "../repository/user.repository";
 import {getParameterByName} from "../../application/utils/utils";
 import {Access} from "../../infrastructure/authentication/access";
 import {UserDetails} from "../../infrastructure/authentication/user-details";
+import {User} from "../entity/user.model";
 
 @Injectable()
 export class AuthenticationService implements CanActivate, CanActivateChild {
 
-  public user: UserDetails;
+  public user: User;
 
   public access: Access;
 
@@ -28,7 +29,7 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
    * @param router
    * @param http
    */
-  constructor(private usuarioRepository: UsuarioRepository,
+  constructor(private usuarioRepository: UserRepository,
               private router: Router, private http: HttpClient) {
   }
 
@@ -116,8 +117,8 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
    *
    * @param access
    */
-  private getLoggedUser(access?: Access): Promise<UserDetails> {
-    return this.http.get<UserDetails>('http://localhost:8081/oauth/principal/' + (access ? access.access_token : this.access.access_token)).toPromise()
+  private getLoggedUser(access?: Access): Promise<User> {
+    return this.http.get<User>('http://localhost:8081/oauth/principal/' + (access ? access.access_token : this.access.access_token)).toPromise()
   }
 
   /**

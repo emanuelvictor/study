@@ -33,7 +33,7 @@
            layout-margin layout-align='end center'>
 
         <button mat-button class='header-button'>
-            {{usuario?.name ? usuario?.name : usuario?.email}}
+            {{user?.name ? user?.name : user?.email}}
           <mat-icon>keyboard_arrow_down</mat-icon>
         </button>
       </div>
@@ -42,7 +42,7 @@
     <mat-menu #menu='matMenu'>
       <button (click)='openDialogChangePassword()'
               color='primary' style='color: #4C4C4C'
-              *ngIf='!usuario?.interno' mat-menu-item>
+              *ngIf='!user?.interno' mat-menu-item>
         <span>Alterar senha</span>
       </button>
       <button mat-menu-item (click)='logout()' color='primary' style='color: #4C4C4C'>
@@ -57,28 +57,28 @@
   <!-- MENU LATERAL -->
   <mat-sidenav #sidenav mode='over' [opened]='false'>
 
-    <div layout='row' class='menu-top' *ngIf='usuario' flex>
+    <div layout='row' class='menu-top' *ngIf='user' flex>
 
       <div layout='column' (click)='openDialogChangePassword()'
            matTooltip='Alterar senha' [style.position]="'relative'">
 
         <button mat-icon-button class='btn-primary'>
-          {{ usuario.name | userInitials }}
+          {{ user.name | userInitials }}
         </button>
         <mat-icon matSuffix class="change-password">settings</mat-icon>
 
       </div>
       <horizontal-space [horizontalMargin]="5"></horizontal-space>
       <div layout='column' style="margin-left: 10px;">
-        <h3>{{ usuario.name }}</h3>
-        <label *ngIf="usuario?.email?.length <= 24">{{ usuario.email }}</label>
-        <label matTooltip='{{ usuario?.email }}' *ngIf='usuario?.email?.length > 24'>
-          {{ usuario.email | truncate:21 }}
+        <h3>{{ user.name }}</h3>
+        <label *ngIf="user?.email?.length <= 24">{{ user.email }}</label>
+        <label matTooltip='{{ user?.email }}' *ngIf='user?.email?.length > 24'>
+          {{ user.email | truncate:21 }}
         </label>
       </div>
     </div>
 
-    <mat-nav-list class='pad-none' *ngIf="usuario" flex>
+    <mat-nav-list class='pad-none' *ngIf="user" flex>
       <mat-list class='pad-none'>
         <mat-list-item #rlaConfiguracoes='routerLinkActive' [routerLink]="'/configuracoes'"
                        class='menu-routers' (click)='sidenav.close()' routerLinkActive flex
