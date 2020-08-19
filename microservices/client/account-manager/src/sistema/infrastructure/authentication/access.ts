@@ -2,10 +2,25 @@ export class Access {
 
   private _access_token: string;
   private _expires_in: number;
-  private _integrator: any;
+  private _integrator: any; // TODO
   private _refresh_token: string;
   private _scope: any;
   private _token_type: any;
+
+
+  /**
+   *
+   * @param access
+   */
+  public constructor(access?: Access) {
+    if (access) {
+      this.access_token = access.access_token;
+      this.expires_in = access.expires_in;
+      this.integrator = access.integrator;
+      this.scope = access.scope;
+      this.token_type = access.token_type
+    }
+  }
 
   get access_token(): string {
     return this._access_token;
@@ -31,14 +46,6 @@ export class Access {
     this._integrator = value;
   }
 
-  get refresh_token(): string {
-    return this._refresh_token;
-  }
-
-  set refresh_token(value: string) {
-    this._refresh_token = value;
-  }
-
   get scope(): any {
     return this._scope;
   }
@@ -55,7 +62,4 @@ export class Access {
     this._token_type = value;
   }
 
-  get token(): string {
-    return this.access_token
-  }
 }

@@ -6,7 +6,10 @@ package br.org.pti.api.nonfunctional.authengine.application.security;
 import br.org.pti.api.nonfunctional.authengine.domain.services.ClientService;
 import br.org.pti.api.nonfunctional.authengine.domain.services.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -92,13 +95,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      */
     @Override
     public void configure(final ClientDetailsServiceConfigurer clientDetailsServiceConfigurer) throws Exception {
-//        clientDetailsServiceConfigurer.inMemory()
-//                .withClient("auth-engine")
-//                .authorizedGrantTypes("password", "authorization_code", "implicit", "token", "refresh_token", "client_credentials")
-//                .redirectUris("http://0.0.0.0:9000/#/")
-//                .scopes("root")
-//                .secret("$2a$12$V.mEGBHyJ7Feo2I48fYmi.je.ir5nqAPWjtNwGZv5XUZHUmgoz1Ne");
-
         clientDetailsServiceConfigurer.withClientDetails(clientDetailsService);
     }
 
@@ -112,8 +108,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         authorizationServerSecurityConfigurer
                 .tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()")
-                .allowFormAuthenticationForClients()
-                .addTokenEndpointAuthenticationFilter(new CorsFilter(corsConfigurationSource()));
+                .allowFormAuthenticationForClients();
 
     }
 
@@ -128,8 +123,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         final CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Collections.singletonList("*"));
         configuration.setAllowCredentials(true);
-        configuration.setAllowedHeaders(Arrays.asList("Access-Control-Allow-Headers", "Access-Control-Allow-Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", "Origin", "Cache-Control", "Content-Type", "Authorization"));
-        configuration.setAllowedMethods(Arrays.asList("DELETE", "GET", "POST", "PATCH", "PUT"));
+        configuration.setAllowedHeaders(Arrays.asList("access-control-allow-origin", "x-requested-with", "authorization", "Access-Control-Allow-Headers", "Access-Control-Allow-Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", "Origin", "Cache-Control", "Content-Type", "Authorization"));
+        configuration.setAllowedMethods(Arrays.asList("OPTIONS", "DELETE", "GET", "POST", "PATCH", "PUT"));
 
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
@@ -137,5 +132,15 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         return source;
     }
 
+    /**
+     *
+     * @return FilterRegistrationBean
+     */
+    @Bean
+    public FilterRegistrationBean<CorsFilter> corsFilter() {
+        final FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter(corsConfigurationSource()));
+        bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
+        return bean;
+    }
 
 }

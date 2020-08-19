@@ -19,7 +19,7 @@ public interface IUserFeignRepository {
      * @param username String
      * @return User
      */
-    @GetMapping("{username}")
+    @GetMapping("{username}/username")
     Optional<User> loadUserByUsername(@PathVariable("username") final String username);
 
 }

@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -36,5 +37,26 @@ public interface UserRepository extends JpaRepository<User, Long> {
      */
     @Query("FROM User u WHERE filter(:filter, u.username) = true")
     Page<User> findByFiltro(final String filter, final Pageable pageable);
+
+    /**
+     * @param defaultFilter String
+     * @param enableFilter  Boolean
+     * @param pageable      Pageable
+     * @return Page<User>
+     */
+    @Query("FROM User u WHERE " +
+            "(" +
+            "   filter(:defaultFilter, u.username, u.accessGroup.name) = true" +
+            "   AND " +
+            "   (" +
+            "       :enableFilter IS NOT NULL AND " +
+            "       (" +
+            "           u.enabled = :enableFilter" +
+            "       ) " +
+            "       OR :enableFilter IS NULL" +
+            "   )" +
+            ")")
+    Page<User> listByFilters(final @Param("defaultFilter") String defaultFilter,
+                             final @Param("enableFilter") Boolean enableFilter, final Pageable pageable);
 
 }

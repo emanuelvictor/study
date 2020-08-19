@@ -40,7 +40,7 @@ export class HasPermissionDirective implements OnInit {
       this.authenticationService.getObservedLoggedUser().subscribe(user => {
         this.currentUser = user;
 
-        this.authenticationService.getAuthorities().subscribe(authorities => {
+        this.authenticationService.getAuthorities(this.authenticationService.access ? this.authenticationService.access.access_token : null).subscribe(authorities => {
           this.currentUser.authorities = authorities;
 
           this.authenticationService.user.authorities = authorities;

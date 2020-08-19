@@ -16,7 +16,7 @@ export class ViewAccessGroupComponent implements OnInit {
   /**
    *
    */
-  grupoAcesso: any = {};
+  accessGroup: any = {};
 
   /**
    *
@@ -25,16 +25,16 @@ export class ViewAccessGroupComponent implements OnInit {
    * @param dialogService
    * @param activatedRoute
    * @param messageService
-   * @param grupoAcessoRepository
+   * @param accessGroupRepository
    */
   constructor(private router: Router,
               private dialogService: DialogService,
               public activatedRoute: ActivatedRoute,
               private messageService: MessageService,
               private homeView: AuthenticatedViewComponent,
-              private grupoAcessoRepository: AccessGroupRepository) {
+              private accessGroupRepository: AccessGroupRepository) {
 
-    this.grupoAcesso.id = +this.activatedRoute.snapshot.params.id || null;
+    this.accessGroup.id = +this.activatedRoute.snapshot.params.id || null;
     homeView.toolbar.subhead = 'Grupo de Acesso / Detalhes';
 
   }
@@ -43,10 +43,10 @@ export class ViewAccessGroupComponent implements OnInit {
    *
    */
   ngOnInit() {
-    if (this.grupoAcesso && this.grupoAcesso.id) {
+    if (this.accessGroup && this.accessGroup.id) {
       this.findById();
     } else {
-      this.router.navigate(["/grupos-acesso"])
+      this.router.navigate(['/grupos-acesso'])
     }
   }
 
@@ -54,23 +54,21 @@ export class ViewAccessGroupComponent implements OnInit {
    *
    */
   public findById() {
-    this.grupoAcessoRepository.findById(this.grupoAcesso.id)
-      .subscribe((result) =>
-        this.grupoAcesso = result
-      )
+    this.accessGroupRepository.findById(this.accessGroup.id)
+      .subscribe((result) => this.accessGroup = result)
   }
 
   /**
    * Função para confirmar a exclusão de um registro permanentemente
-   * @param grupoAcesso
+   * @param accessGroup
    */
-  public openDeleteDialog(grupoAcesso) {
+  public openDeleteDialog(accessGroup) {
 
-    this.dialogService.confirmDelete(grupoAcesso, 'Grupo de Acesso')
+    this.dialogService.confirmDelete(accessGroup, 'Grupo de Acesso')
       .then((accept: boolean) => {
 
         if (accept) {
-          this.grupoAcessoRepository.delete(grupoAcesso.id)
+          this.accessGroupRepository.delete(accessGroup.id)
             .then(() => {
               this.router.navigate(['configuracoes/grupos-acesso']);
               this.messageService.toastSuccess('Registro excluído com sucesso')

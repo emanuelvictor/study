@@ -9,7 +9,7 @@ import {MatDialog} from "@angular/material";
 
 // @ts-ignore
 @Component({
-  selector: 'visualizar-usuario',
+  selector: 'view-user',
   templateUrl: './view-user.component.html',
   styleUrls: ['../user.component.scss'],
   animations: [
@@ -21,7 +21,7 @@ export class ViewUserComponent implements OnInit {
   /**
    *
    */
-  usuario: any = {};
+  user: any = {};
 
   /**
    *
@@ -35,15 +35,15 @@ export class ViewUserComponent implements OnInit {
    * @param homeView
    * @param activatedRoute
    * @param messageService
-   * @param usuarioRepository
+   * @param userRepository
    */
   constructor(private router: Router,
               private dialog: MatDialog,
               public activatedRoute: ActivatedRoute,
               private messageService: MessageService,
               public homeView: AuthenticatedViewComponent,
-              private usuarioRepository: UserRepository) {
-    this.usuario.id = +this.activatedRoute.snapshot.params.id || null;
+              private userRepository: UserRepository) {
+    this.user.id = +this.activatedRoute.snapshot.params.id || null;
     homeView.toolbar.subhead = 'Usuário / Detalhes'
   }
 
@@ -51,41 +51,39 @@ export class ViewUserComponent implements OnInit {
    *
    */
   ngOnInit() {
-    if (this.usuario && this.usuario.id) {
+    if (this.user && this.user.id) {
       this.findById();
-      this.itsMe = this.homeView.itsMe(this.usuario)
-    } else {
-      this.router.navigate(["configuracoes/usuarios"])
-    }
+      this.itsMe = this.homeView.itsMe(this.user)
+    } else this.router.navigate(["configuracoes/usuarios"])
   }
 
   /**
    *
    */
   public findById() {
-    this.usuarioRepository.findById(this.usuario.id)
-      .subscribe(result => this.usuario = result)
+    this.userRepository.findById(this.user.id)
+      .subscribe(result => this.user = result)
   }
 
   /**
    *
    */
-  public updateAtivo(id: number) {
-    this.usuarioRepository.updateAtivo(id)
-      .then((ativo) => {
-        this.usuario.ativo = ativo;
-        this.messageService.toastSuccess(this.usuario.ativo ? 'Ativado com sucesso' : 'Inativado com sucesso')
+  public updateEnabled(id: number) {
+    this.userRepository.updateAtivo(id)
+      .then((enabled) => {
+        this.user.enabled = enabled;
+        this.messageService.toastSuccess(this.user.enabled ? 'Ativado com sucesso' : 'Inativado com sucesso')
       })
   }
 
   /**
    *
    */
-  public alteraSenha() {
+  public updatePassword() {
     this.dialog.open(UpdatePasswordComponent, {
       width: '400px',
       height: 'auto',
-      data: {usuario: this.usuario || null}
+      data: {user: this.user || null}
     })
   }
 }

@@ -45,5 +45,4 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         config.tokenServices(resourceServerTokenServices);
     }
 
-
 }

@@ -37,6 +37,11 @@ public class User extends PersistentEntity {
     /**
      *
      */
+    public static final String DEFAULT_PASSWORD = "testeteste";
+
+    /**
+     *
+     */
     @Column(nullable = false, length = 150, unique = true)
     private String username;
 

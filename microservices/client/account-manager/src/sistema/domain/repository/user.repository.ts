@@ -49,7 +49,7 @@ export class UserRepository extends BaseRepository<User> {
    * @param username
    */
   public findByUsername(username: string): Observable<User> {
-    return this.httpClient.get<User>(this.collectionName + '/' + username);
+    return this.httpClient.get<User>(this.collectionName + '/' + username  + '/username');
   }
 
   /**
@@ -63,7 +63,7 @@ export class UserRepository extends BaseRepository<User> {
     params = params.set('actualPassword', actualPassword);
     params = params.set('newPassword', newPassword);
 
-    return this.httpClient.put(`${this.collectionName}/alterar-password/${id}`, params).toPromise();
+    return this.httpClient.put(`${this.collectionName}/update-password/${id}`, params).toPromise();
   }
 
 }

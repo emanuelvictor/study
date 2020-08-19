@@ -9,6 +9,7 @@ import {getParameterByName} from "../../application/utils/utils";
 import {Access} from "../../infrastructure/authentication/access";
 import {UserDetails} from "../../infrastructure/authentication/user-details";
 import {User} from "../entity/user.model";
+import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class AuthenticationService implements CanActivate, CanActivateChild {
@@ -25,11 +26,11 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
 
   /**
    *
-   * @param usuarioRepository
+   * @param userRepository
    * @param router
    * @param http
    */
-  constructor(private usuarioRepository: UserRepository,
+  constructor(private userRepository: UserRepository,
               private router: Router, private http: HttpClient) {
   }
 
@@ -52,7 +53,7 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.getObservedLoggedUser().map(auth => {
       if (isNullOrUndefined(auth)) {
-        window.location.href = 'http://localhost:8081/oauth/authorize?response_type=code&client_id=browser&redirect_uri=http://localhost:4200&scope=none' + (state.url ? '&state=' + state.url : '');
+        window.location.href = `${environment.SSO}/oauth/authorize?response_type=code&client_id=browser&redirect_uri=http://localhost:4200` + (state.url ? '&state=' + state.url : '');
         return false
       } else {
         const stateReturned: string = getParameterByName('state');
@@ -77,25 +78,38 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
    *
    */
   public getPromiseLoggedUser(): Promise<UserDetails> {
-
     this.getPromiseLoggedUserInstance = this.getPromiseLoggedUserInstance ? this.getPromiseLoggedUserInstance : new Promise<UserDetails>((resolve, reject) => {
 
-      const code: string = getParameterByName('code');
+      const authorizationCode: string = getParameterByName('code');
 
-      if (!this.access && !code)
-        resolve(null)
+      if (localStorage.getItem('refresh_token')) { // Have the access token and it is invalid, but have the refresh token, get the access token by refresh token
 
-      if (!this.access && code)
-        this.getAccessTokenByAuthorizationCode(code).then(result => {
-          this.access = result;
-          this.getLoggedUser(this.access).then(result => {
+        this.getAccessTokenByRefreshToken(localStorage.getItem('refresh_token')).then(result => {
+          this.access = new Access(result);
+          localStorage.setItem('refresh_token', (result as any).refresh_token);
+          this.getLoggedUser(this.access.access_token).then(result => {
             this.user = result;
             resolve(result)
           }).catch(err => reject(err))
         }).catch(err => reject(err))
 
-      if (this.access)
-        this.getLoggedUser(this.access).then(result => {
+      } else if (!this.access && !authorizationCode) { // No have access token and no have code, must return null and redirect to SSO
+
+        resolve(null)
+
+      } else if ((!this.access || !this.access.access_token) && authorizationCode) { // No have access token but have code, must get the access token by authorization code.
+
+        this.getAccessTokenByAuthorizationCode(authorizationCode).then(result => {
+          this.access = new Access(result);
+          localStorage.setItem('refresh_token', (result as any).refresh_token);
+          this.getLoggedUser(this.access.access_token).then(result => {
+            this.user = result;
+            resolve(result)
+          }).catch(err => reject(err))
+        }).catch(err => reject(err))
+
+      } else if (this.access && this.access.access_token)
+        this.getLoggedUser(this.access.access_token).then(result => {
           this.user = result;
           resolve(result)
         }).catch(err => reject(err))
@@ -110,22 +124,32 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
    * @param authorizationCode
    */
   public getAccessTokenByAuthorizationCode(authorizationCode: string): Promise<Access> {
-    return this.http.post<Access>('http://localhost:8081/oauth/token?grant_type=authorization_code&code=' + authorizationCode + '&client_id=browser&client_secret=browser&redirect_uri=http://localhost:4200', {}).toPromise()
+    return this.http.post<Access>(`${environment.SSO}/oauth/token?grant_type=authorization_code&code=${authorizationCode}&client_id=browser&client_secret=browser&redirect_uri=http://localhost:4200`, {}).toPromise()
   }
 
   /**
    *
-   * @param access
+   * @param refreshToken
    */
-  private getLoggedUser(access?: Access): Promise<User> {
-    return this.http.get<User>('http://localhost:8081/oauth/principal/' + (access ? access.access_token : this.access.access_token)).toPromise()
+  public getAccessTokenByRefreshToken(refreshToken: string): Promise<Access> {
+    return this.http.post<Access>(`${environment.SSO}/oauth/token?grant_type=refresh_token&refresh_token=${refreshToken}&client_id=browser&client_secret=browser`, {}).toPromise()
   }
 
   /**
    *
+   * @param accessToken
    */
-  public getAuthorities(access?: Access): Observable<any> {
-    return this.http.get<any>('http://localhost:8081/oauth/authorities/' + (access ? access.access_token : this.access.access_token));
+  private getLoggedUser(accessToken: string): Promise<User> {
+    if (!accessToken)
+      return Promise.resolve(null);
+    return this.http.get<User>(`${environment.SSO}/oauth/principal/${accessToken}`).toPromise()
+  }
+
+  /**
+   * @param accessToken
+   */
+  public getAuthorities(accessToken: string): Observable<any> {
+    return this.http.get<any>(`${environment.SSO}/oauth/authorities/${accessToken}`);
   }
 
   /**
