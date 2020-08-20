@@ -80,7 +80,7 @@ export class InsertUserComponent implements OnInit {
 
     this.userRepository.save(user)
       .then(() => {
-        this.router.navigate(['configuracoes/users']);
+        this.router.navigate(['configuracoes/usuarios']);
         this.messageService.toastSuccess(`Novo usuário cadastrado.`, 5)
       })
   }

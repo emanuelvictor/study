@@ -33,6 +33,19 @@ spring:
           merge:
             entity_copy_observer: allow
 
+  #STATIC RESOURCES
+  resources.static-locations: classpath:/META-INF/resources/
+  resources.chain:
+    cache: false
+    strategy.content.enabled: true
+    strategy.content.paths: /**
+
+  #THYMELEAF
+  thymeleaf:
+    mode: HTML
+    cache: false
+    prefix: classpath:/META-INF/resources/
+    suffix: .html
 
   flyway:
     enabled: true

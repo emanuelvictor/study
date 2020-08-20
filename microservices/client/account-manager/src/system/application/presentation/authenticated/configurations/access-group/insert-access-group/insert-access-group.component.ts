@@ -7,7 +7,7 @@ import {AccessGroupRepository} from "../../../../../../domain/repository/access-
 
 // @ts-ignore
 @Component({
-  selector: 'inserir-grupo-acesso',
+  selector: 'insert-access-group',
   templateUrl: 'insert-access-group.component.html',
   styleUrls: ['../access-group.component.scss']
 })
