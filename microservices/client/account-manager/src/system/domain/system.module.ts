@@ -63,7 +63,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CovalentSearchModule} from "@covalent/core";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
-import {DadoComponent} from "../application/controls/data/dado.component";
+import {DataComponent} from "../application/controls/data/data.component";
 import {PieChartModule} from "@swimlane/ngx-charts";
 import {SystemComponent} from "../application/presentation/system.component";
 import {ViewAccessGroupComponent} from "../application/presentation/authenticated/configurations/access-group/view-access-group/view-access-group.component";
@@ -142,7 +142,7 @@ export function customTranslateLoader(http: HttpClient) {
     LinkPermissionsComponent,
     UpdatePasswordComponent,
 
-    DadoComponent,
+    DataComponent,
 
     // Has Permission
     HasPermissionDirective,

@@ -2,10 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 
 // @ts-ignore
 @Component({
-  selector: 'dado',
-  templateUrl: 'dado.component.html'
+  selector: 'data',
+  templateUrl: 'data.component.html'
 })
-export class DadoComponent implements OnInit {
+export class DataComponent implements OnInit {
 
   /**
    *

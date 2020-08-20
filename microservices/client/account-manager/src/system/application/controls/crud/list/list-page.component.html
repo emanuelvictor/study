@@ -53,7 +53,7 @@
         {{ column.label }}
       </mat-header-cell>
       <mat-cell *matCellDef='let data'>
-        <dado [routerLink]='[data.id]' [translate]='column.translate' [data]='data' [name]='column.name'></dado>
+        <data [routerLink]='[data.id]' [translate]='column.translate' [data]='data' [name]='column.name'></data>
 <!--        <a [routerLink]='[data.id]' ellipsis [matTooltipPosition]="'below'"-->
 <!--           matTooltip="{{ column.translate ? (getData(data, column.name) | translate) || '-' : (getData(data, column.name) || '-')  }}">-->
 <!--           {{ column.translate ? (getData(data, column.name) | translate) || '-' : (getData(data, column.name) || '-')  }}-->
