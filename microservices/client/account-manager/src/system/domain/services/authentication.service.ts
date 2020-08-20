@@ -162,21 +162,21 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
 
   /**
    *
-   * @param codigo
-   * @param senha
+   * @param code
+   * @param password
    */
-  public resetSenha(codigo: any, senha: any): Promise<any> {
+  public resetPassword(code: any, password: any): Promise<any> {
     let params = new HttpParams();
-    params = params.set('senha', senha);
+    params = params.set('password', password);
 
-    return this.http.post(`/cadastrar-senha/${codigo}`, params).toPromise();
+    return this.http.post(`/insert-password/${code}`, params).toPromise();
   }
 
   /**
    *
    * @param email
    */
-  public recoverSenha(email: any): Promise<any> {
-    return this.http.get(`/recuperar-senha/${email}`).toPromise();
+  public recoverPassword(email: any): Promise<any> {
+    return this.http.get(`/recover-password/${email}`).toPromise();
   }
 }

@@ -6,44 +6,42 @@ import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 
 // @ts-ignore
 @Component({
-  selector: 'cadastrar-senha',
-  templateUrl: 'cadastrar-senha.component.html',
+  selector: 'insert-password',
+  templateUrl: 'insert-password.component.html',
   styleUrls: ['../login/login.component.scss']
 })
-export class CadastrarSenhaComponent implements OnInit {
-  senha: FormControl;
+export class InsertPasswordComponent implements OnInit {
+  password: FormControl;
   passForm: FormGroup;
 
   ngOnInit(): void {
-    this.senha = new FormControl('', [
+    this.password = new FormControl('', [
       Validators.required,
       Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&+,.])[A-Za-z\d$@$!%*#?&+,.]{8,}$/)
     ]);
 
     this.passForm = new FormGroup({
-      'senha': this.senha
+      'password': this.password
     });
   }
 
   /**
    *
    */
-  public usuario: any = {};
+  public user: any = {};
 
   /**
    *
-   * @param usuarioService
+   * @param authService
    * @param messageService
    * @param router
    * @param activatedRoute
    */
-  constructor(
-    public authService: AuthenticationService,
-    public messageService: MessageService,
-    public router: Router,
-    public activatedRoute: ActivatedRoute
-  ) {
-    this.usuario.codigo = this.activatedRoute.snapshot.params.codigo || null;
+  constructor(public router: Router,
+              public activatedRoute: ActivatedRoute,
+              public messageService: MessageService,
+              public authService: AuthenticationService) {
+    this.user.code = this.activatedRoute.snapshot.params.code || null;
   }
 
   /**
@@ -55,26 +53,26 @@ export class CadastrarSenhaComponent implements OnInit {
     for (let inner in this.passForm.controls) {
       this.passForm.get(inner).markAsTouched();
     }
-    //this.senha.markAsTouched();
+    //this.password.markAsTouched();
 
-    //this.senha.markAsTouched();
-    if (this.usuario.senha != this.usuario.confirmarSenha) {
-      this.messageService.toastWarning('As duas senhas não conferem.');
+    //this.password.markAsTouched();
+    if (this.user.password != this.user.confirmPassword) {
+      this.messageService.toastWarning('As duas passwords não conferem.');
       return;
     }
 
     if (this.passForm.invalid) {
-      this.messageService.toastWarning('Favor informar uma senha válida.');
+      this.messageService.toastWarning('Favor informar uma password válida.');
       return;
     }
 
-    this.authService.resetSenha(this.usuario.codigo, this.usuario.senha)
+    this.authService.resetPassword(this.user.code, this.user.password)
       .then(() => {
         this.messageService.toastSuccess('Senha cadastrada com sucesso');
         this.router.navigate(['/login']);
       })
       .catch((ex) => {
-        this.messageService.toastError('O prazo para cadastrar a senha foi expirado.')
+        this.messageService.toastError('O prazo para cadastrar a password foi expirado.')
       });
   }
 }

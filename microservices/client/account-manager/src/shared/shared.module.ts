@@ -54,8 +54,8 @@ import {
   CovalentMediaModule
 } from '@covalent/core';
 import {CovalentMarkdownModule} from '@covalent/markdown';
-import {RecuperarSenhaComponent} from "../system/application/presentation/gerenciar-senha/recuperar-senha.component";
-import {CadastrarSenhaComponent} from "../system/application/presentation/gerenciar-senha/cadastrar-senha.component";
+import {RecoveryPasswordComponent} from "../system/application/presentation/manage-password/recovery-password.component";
+import {InsertPasswordComponent} from "../system/application/presentation/manage-password/insert-password.component";
 import {DeleteDialogComponent} from "../system/application/controls/delete-dialog/delete-dialog.component";
 import {CapitalizePipe} from "../system/application/controls/pipes/capitalize.pipe";
 import {HorizontalSpaceComponent} from "../system/application/controls/horizontal-space.component";
@@ -69,8 +69,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [
     // Recuperar senha
-    RecuperarSenhaComponent,
-    CadastrarSenhaComponent,
+    RecoveryPasswordComponent,
+    InsertPasswordComponent,
     DeleteDialogComponent,
 
     // Controls

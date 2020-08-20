@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from '../application/presentation/login/login.component';
-import {CadastrarSenhaComponent} from '../application/presentation/gerenciar-senha/cadastrar-senha.component';
-import {RecuperarSenhaComponent} from '../application/presentation/gerenciar-senha/recuperar-senha.component';
+import {InsertPasswordComponent} from '../application/presentation/manage-password/insert-password.component';
+import {RecoveryPasswordComponent} from '../application/presentation/manage-password/recovery-password.component';
 import {AuthenticatedViewComponent} from "../application/presentation/authenticated/authenticated-view.component";
 import {UpdateUserComponent} from "../application/presentation/authenticated/configurations/user/update-user/update-user.component";
 import {AuthenticationService} from "./services/authentication.service";
@@ -19,8 +19,8 @@ import {ConfigurationsViewComponent} from "../application/presentation/authentic
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'recuperar-senha', component: RecuperarSenhaComponent},
-  {path: 'cadastrar-senha/:codigo', component: CadastrarSenhaComponent},
+  {path: 'recuperar-senha', component: RecoveryPasswordComponent},
+  {path: 'cadastrar-senha/:codigo', component: InsertPasswordComponent},
   {
     path: '', component: AuthenticatedViewComponent, canActivate: [AuthenticationService],
     children: [

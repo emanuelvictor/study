@@ -5,16 +5,16 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 // @ts-ignore
 @Component({
-  selector: 'recuperar-senha',
-  templateUrl: 'recuperar-senha.component.html',
-  styleUrls: ['../login/login.component.scss', 'gerenciar-senha.component.scss']
+  selector: 'recovery-password',
+  templateUrl: 'recovery-password.component.html',
+  styleUrls: ['../login/login.component.scss', 'manage-password.component.scss']
 })
-export class RecuperarSenhaComponent {
+export class RecoveryPasswordComponent {
 
   /**
    *
    */
-  public usuario: any = {};
+  public user: any = {};
 
   /**
    *
@@ -23,11 +23,11 @@ export class RecuperarSenhaComponent {
    * @param router
    * @param activatedRoute
    */
-  constructor(public authService: AuthenticationService,
+  constructor(public router: Router,
+              public activatedRoute: ActivatedRoute,
               public messageService: MessageService,
-              public router: Router,
-              public activatedRoute: ActivatedRoute) {
-    this.usuario.codigo = this.activatedRoute.snapshot.params.codigo || null;
+              public authService: AuthenticationService) {
+    this.user.code = this.activatedRoute.snapshot.params.code || null;
   }
 
   /**
@@ -41,7 +41,7 @@ export class RecuperarSenhaComponent {
       return;
     }
 
-    this.authService.recoverSenha(this.usuario.email)
+    this.authService.recoverPassword(this.user.email)
       .then(() => {
         this.messageService.toastSuccess('Favor verificar seu e-mail para redefinir sua senha.');
         this.router.navigate(['/login']);
