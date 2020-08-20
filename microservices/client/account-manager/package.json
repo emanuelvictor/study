@@ -3,10 +3,8 @@
   "version": "1.0.2",
   "private": true,
   "scripts": {
-    "sistema": "ng serve --proxy-config proxy.conf.json sistema --port 4200 --open",
-    "portal": "ng serve --proxy-config proxy.conf.json portal --port 9000 --open",
-    "all": "npm run sistema & npm run portal",
-    "mavenbuild": "node --max_old_space_size=8192 node_modules/.bin/ng build --prod portal && node --max_old_space_size=8192 node_modules/.bin/ng build --prod sistema"
+    "system": "ng serve --proxy-config proxy.conf.json system --port 4200 --open",
+    "mavenbuild": "node --max_old_space_size=8192 node_modules/.bin/ng build --prod system"
   },
   "dependencies": {
     "@angular/animations": "^8.2.7",

@@ -3,27 +3,27 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sistema": {
-      "root": "sistema",
+    "system": {
+      "root": "system",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "sistema",
+      "prefix": "system",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "../resources/META-INF/resources/modules/",
-            "index": "src/sistema/index.html",
-            "main": "src/sistema/application/system-main.ts",
+            "index": "src/system/index.html",
+            "main": "src/system/application/system-main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              "src/sistema/favicon.ico",
+              "src/system/favicon.ico",
               "src/assets"
             ],
             "styles": [
               "./node_modules/@covalent/core/common/platform.scss",
-              "src/sistema/application/system-theme.scss",
+              "src/system/application/system-theme.scss",
               "./node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
               "src/assets/styles/nprogress.css",
               "src/assets/styles/ev-datepicker.scss"
@@ -55,18 +55,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "sistema:build"
+            "browserTarget": "system:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "sistema:build:production"
+              "browserTarget": "system:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sistema:build"
+            "browserTarget": "system:build"
           }
         },
         "lint": {
@@ -153,7 +153,7 @@
       }
     }
   },
-  "defaultProject": "sistema",
+  "defaultProject": "system",
   "cli": {
     "analytics": "1cee4484-104d-46ed-8289-372e87fe44cf"
   }

@@ -54,13 +54,13 @@ import {
   CovalentMediaModule
 } from '@covalent/core';
 import {CovalentMarkdownModule} from '@covalent/markdown';
-import {RecuperarSenhaComponent} from "../sistema/application/presentation/gerenciar-senha/recuperar-senha.component";
-import {CadastrarSenhaComponent} from "../sistema/application/presentation/gerenciar-senha/cadastrar-senha.component";
-import {DeleteDialogComponent} from "../sistema/application/controls/delete-dialog/delete-dialog.component";
-import {CapitalizePipe} from "../sistema/application/controls/pipes/capitalize.pipe";
-import {HorizontalSpaceComponent} from "../sistema/application/controls/horizontal-space.component";
-import {VerticalSpaceComponent} from "../sistema/application/controls/vertical-space.component";
-import {FocusOnInitDirective} from "../sistema/application/utils/focus-on-init.directive";
+import {RecuperarSenhaComponent} from "../system/application/presentation/gerenciar-senha/recuperar-senha.component";
+import {CadastrarSenhaComponent} from "../system/application/presentation/gerenciar-senha/cadastrar-senha.component";
+import {DeleteDialogComponent} from "../system/application/controls/delete-dialog/delete-dialog.component";
+import {CapitalizePipe} from "../system/application/controls/pipes/capitalize.pipe";
+import {HorizontalSpaceComponent} from "../system/application/controls/horizontal-space.component";
+import {VerticalSpaceComponent} from "../system/application/controls/vertical-space.component";
+import {FocusOnInitDirective} from "../system/application/utils/focus-on-init.directive";
 import {DragDropModule} from '@angular/cdk/drag-drop';
 
 /**
