@@ -75,68 +75,68 @@ export class UserFormComponent extends CrudViewComponent implements OnInit {
 
     this.form = this.fb.group({
       name: new FormControl({value: '', disabled: false}, Validators.required),
-      email: ['email', [Validators.required, Validators.email]],
+      username: ['username', [Validators.required/*, Validators.email*/]],
     });
 
-    this.form
-      .get('email')
-      .valueChanges
-      .pipe(
-        debounceTime(100),
-        switchMap(value =>
-          this.userRepository.findByLdapUsername((value as string))
-        )
-      )
-      .subscribe(user => {
-        if (user) {
-
-          this.users = [user];
-
-          if (this.form.get('email').value.includes('@')) {
-
-            this.entity.name = user.name;
-            this.form.controls['name'].disable();
-
-          } else
-
-            this.form.controls['name'].enable();
-
-        } else {
-
-          this.users = [];
-          this.form.controls['name'].enable();
-
-        }
-      });
+    // this.form
+    //   .get('email')
+    //   .valueChanges
+    //   .pipe(
+    //     debounceTime(100),
+    //     switchMap(value =>
+    //       this.userRepository.findByLdapUsername((value as string))
+    //     )
+    //   )
+    //   .subscribe(user => {
+    //     if (user) {
+    //
+    //       this.users = [user];
+    //
+    //       if (this.form.get('email').value.includes('@')) {
+    //
+    //         this.entity.name = user.name;
+    //         this.form.controls['name'].disable();
+    //
+    //       } else
+    //
+    //         this.form.controls['name'].enable();
+    //
+    //     } else {
+    //
+    //       this.users = [];
+    //       this.form.controls['name'].enable();
+    //
+    //     }
+    //   });
 
   }
 
   emit(entity: any) {
 
     if (entity.root)
-      delete entity.grupoAcesso; // Se for root não tem grupo de acesso
-    else if (entity.grupoAcesso)
-      delete entity.grupoAcesso.gruposAcessoPermissoes; // Remove recursividade
+      delete entity.accessGroup; // Se for root não tem grupo de acesso
+    else if (entity.accessGroup)
+      delete entity.accessGroup.accessGroupPermissions; // Remove recursividade
 
     this.save.emit(entity);
   }
 
-  /**
-   *
-   */
-  getEmail() {
-    this.entity.email = this.form.get('email').value;
-  }
-
-  notFirst: boolean = false;
-
-  /**
-   *
-   * @param email
-   */
-  displayFn(email) {
-    if (this.notFirst)
-      return email;
-    else this.notFirst = true;
-  }
+  // /**
+  //  *
+  //  */
+  // getEmail() {
+  //   this.entity.email = this.form.get('email').value;
+  // }
+  //
+  // notFirst: boolean = false;
+  //
+  // /**
+  //  *
+  //  * @param email
+  //  */
+  // displayFn(email) {
+  //   if (this.notFirst)
+  //     return email;
+  //   else this.notFirst = true;
+  // }
 }

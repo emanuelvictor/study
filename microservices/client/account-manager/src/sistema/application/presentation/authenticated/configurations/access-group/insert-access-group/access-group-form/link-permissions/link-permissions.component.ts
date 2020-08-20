@@ -73,6 +73,7 @@ export class LinkPermissionsComponent implements OnInit {
 
     if (this.permissions && this.permissions.length) {
       const data = this.buildFileTree(this.reduce(this.permissions), 0, false);
+      console.log(data);
       this.dataChange.next(data);
     }
   }
@@ -82,10 +83,10 @@ export class LinkPermissionsComponent implements OnInit {
    */
   reduce(array): any {
     return array.reduce((json, value, key) => {
-      key = value.nome;
-      if (value.permissionsInferiores)
-        if (value.permissionsInferiores.length !== 0)
-          json[key] = {key: this.reduce(value.permissionsInferiores), id: value.id, selected: value.selected};
+      key = value.authority;
+      if (value.lowerPermissions)
+        if (value.lowerPermissions.length !== 0)
+          json[key] = {key: this.reduce(value.lowerPermissions), id: value.id, selected: value.selected};
         else
           json[key] = {key: key, id: value.id, selected: value.selected};
       return json;
@@ -145,7 +146,7 @@ export class LinkPermissionsComponent implements OnInit {
       this.initTodoLeafItemSelectionToggle(flatNode);
     }
 
-    return flatNode;
+    return flatNode
   };
 
   /** Whether all the descendants of the node are selected. */
@@ -257,6 +258,7 @@ export class LinkPermissionsComponent implements OnInit {
 
   /* Get the parent node of a node */
   getParentNode(node: TodoItemFlatNode): TodoItemFlatNode | null {
+
     const currentLevel = this.getLevel(node);
 
     if (currentLevel < 1) {
@@ -269,10 +271,11 @@ export class LinkPermissionsComponent implements OnInit {
       const currentNode = this.treeControl.dataNodes[i];
 
       if (this.getLevel(currentNode) < currentLevel) {
-        return currentNode;
+        return currentNode
       }
     }
-    return null;
+
+    return null
   }
 
 }

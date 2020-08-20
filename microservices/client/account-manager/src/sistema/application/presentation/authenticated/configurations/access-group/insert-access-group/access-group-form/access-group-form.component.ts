@@ -60,7 +60,7 @@ export class AccessGroupFormComponent extends CrudViewComponent implements OnIni
   ngOnInit() {
     this.entity.enable = true;
     this.form = this.fb.group({
-      nome: ['nome', [Validators.required]]
+      name: ['name', [Validators.required]]
     });
 
     this.permissionRepository.listByFilters({branch: true})
@@ -69,8 +69,8 @@ export class AccessGroupFormComponent extends CrudViewComponent implements OnIni
 
         if (this.entity.id) {
           let permissions = this.entity.accessGroupPermissions.map(a => a.permission);
-          permissions = this.arruma(permissions);
-          this.percorre(permissions, this.permissions);
+          permissions = this.organize(permissions);
+          this.organizeTheSelecteds(permissions, this.permissions);
 
           this.entity.accessGroupPermissions = [];
 
@@ -91,15 +91,14 @@ export class AccessGroupFormComponent extends CrudViewComponent implements OnIni
             }
           }
         }
-
-      });
+      })
   }
 
   /**
    *
    * @param permissions
    */
-  arruma(permissions: Permission[]): Permission[] {
+  organize(permissions: Permission[]): Permission[] {
 
     for (let i = 0; i < permissions.length; i++) {
 
@@ -109,10 +108,10 @@ export class AccessGroupFormComponent extends CrudViewComponent implements OnIni
       if (!permissions[i].id)
         permissions[i] = this.findPermission(this.permissions, (permissions[i] as any));
       else if (permissions[i].lowerPermissions)
-        permissions[i].lowerPermissions = this.arruma(permissions[i].lowerPermissions);
+        permissions[i].lowerPermissions = this.organize(permissions[i].lowerPermissions);
     }
 
-    return permissions;
+    return permissions
   }
 
   /**
@@ -120,7 +119,7 @@ export class AccessGroupFormComponent extends CrudViewComponent implements OnIni
    * @param ownPermissoes
    * @param allPermissoes
    */
-  public percorre(ownPermissoes: Permission[], allPermissoes: Permission[]): void {
+  public organizeTheSelecteds(ownPermissoes: Permission[], allPermissoes: Permission[]): void {
     for (let i = 0; i < allPermissoes.length; i++) {
       const permission: Permission = this.findPermission(ownPermissoes, allPermissoes[i].id);
 
@@ -128,7 +127,7 @@ export class AccessGroupFormComponent extends CrudViewComponent implements OnIni
         (permission as any).selected = true;
         allPermissoes[i] = permission;
       } else if (allPermissoes[i].lowerPermissions && allPermissoes[i].lowerPermissions.length)
-        this.percorre(ownPermissoes, allPermissoes[i].lowerPermissions)
+        this.organizeTheSelecteds(ownPermissoes, allPermissoes[i].lowerPermissions)
     }
   }
 
@@ -159,7 +158,7 @@ export class AccessGroupFormComponent extends CrudViewComponent implements OnIni
 
     } else {
 
-      let permissions: Permission[] = this.removeRepetidos(this.arruma(this.entity.accessGroupPermissions.map(a => a.permission)));
+      let permissions: Permission[] = this.removeDuplicates(this.organize(this.entity.accessGroupPermissions.map(a => a.permission)));
 
       // Apenas verificação cautelar
       if (permissions && permissions.length) {
@@ -192,7 +191,7 @@ export class AccessGroupFormComponent extends CrudViewComponent implements OnIni
    * Remove os ítens repetidos
    * @param permissionsLineares
    */
-  removeRepetidos(permissionsLineares: Permission[]): Permission[] {
+  removeDuplicates(permissionsLineares: Permission[]): Permission[] {
     for (let i = 0; i < permissionsLineares.length; i++) {
       for (let k = 0; k < permissionsLineares.length; k++) {
         if (permissionsLineares[i] && permissionsLineares[k]) {
@@ -219,7 +218,7 @@ export class AccessGroupFormComponent extends CrudViewComponent implements OnIni
    */
   removePermission(permission: Permission) {
 
-    const permissions: Permission[] = this.percorreToRemove(permission, this.entity.accessGroupPermissions.map(a => a.permission));
+    const permissions: Permission[] = this.runToRemove(permission, this.entity.accessGroupPermissions.map(a => a.permission));
 
     this.entity.accessGroupPermissions = [];
 
@@ -245,28 +244,28 @@ export class AccessGroupFormComponent extends CrudViewComponent implements OnIni
 
 
   /**
-   * @param permissionARemover
-   * @param permissionsVinculadas
+   * @param permissionToRemove
+   * @param linkedPermissions
    */
-  public percorreToRemove(permissionARemover: Permission, permissionsVinculadas: Permission[]): Permission[] {
-    for (let i = 0; i < permissionsVinculadas.length; i++) {
-      if (permissionsVinculadas[i] && permissionARemover) {
-        if (permissionsVinculadas[i].id === permissionARemover.id) {
-          const copia = permissionsVinculadas.slice();
+  public runToRemove(permissionToRemove: Permission, linkedPermissions: Permission[]): Permission[] {
+    for (let i = 0; i < linkedPermissions.length; i++) {
+      if (linkedPermissions[i] && permissionToRemove) {
+        if (linkedPermissions[i].id === permissionToRemove.id) {
+          const copia = linkedPermissions.slice();
           copia.splice(i, 1);
           return copia;
-        } else if (permissionsVinculadas[i].lowerPermissions && permissionsVinculadas[i].lowerPermissions.length) {
+        } else if (linkedPermissions[i].lowerPermissions && linkedPermissions[i].lowerPermissions.length) {
 
-          if (this.findPermission(permissionsVinculadas[i].lowerPermissions, permissionARemover.id)) {
-            const aux = permissionsVinculadas.slice();
+          if (this.findPermission(linkedPermissions[i].lowerPermissions, permissionToRemove.id)) {
+            const aux = linkedPermissions.slice();
             aux.splice(i, 1);
-            return aux.concat(this.percorreToRemove(permissionARemover, permissionsVinculadas[i].lowerPermissions));
+            return aux.concat(this.runToRemove(permissionToRemove, linkedPermissions[i].lowerPermissions));
           }
 
         }
       }
     }
-    return permissionsVinculadas;
+    return linkedPermissions;
   }
 
   /**

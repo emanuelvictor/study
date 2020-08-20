@@ -57,6 +57,13 @@ public class Permission extends PersistentEntity {
     }
 
     /**
+     * @param authority String
+     */
+    public Permission(@NotNull final String authority) {
+        this.authority = authority;
+    }
+
+    /**
      * @param authority        String
      * @param upperPermission  Permission
      * @param lowerPermissions Set<Permission>

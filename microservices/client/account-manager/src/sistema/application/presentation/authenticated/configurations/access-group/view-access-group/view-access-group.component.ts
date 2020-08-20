@@ -4,6 +4,7 @@ import {AuthenticatedViewComponent} from '../../../authenticated-view.component'
 import {MessageService} from '../../../../../../domain/services/message.service';
 import {AccessGroupRepository} from "../../../../../../domain/repository/access-group.repository";
 import {DialogService} from "../../../../../../domain/services/dialog.service";
+import {AccessGroup} from "../../../../../../domain/entity/access-group.model";
 
 // @ts-ignore
 @Component({
@@ -16,7 +17,7 @@ export class ViewAccessGroupComponent implements OnInit {
   /**
    *
    */
-  accessGroup: any = {};
+  accessGroup: AccessGroup = new AccessGroup();
 
   /**
    *

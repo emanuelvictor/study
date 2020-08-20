@@ -69,7 +69,7 @@ export class RootFormComponent implements OnInit, OnDestroy {
   /**
    * Exibe organizações para o autocomplete
    */
-  public listGruposAcesso() {
+  public listAccessGroups() {
     let nameAccessGroup = this.accessGroup || null;
     if (this.isString(nameAccessGroup) && !(nameAccessGroup as any).length) {
       this.accessGroups = [];
@@ -85,7 +85,7 @@ export class RootFormComponent implements OnInit, OnDestroy {
   /**
    * Expressão específica para autocomplete
    */
-  public displayNomeAccessGroup(accessGroup) {
+  public displayNameAccessGroup(accessGroup) {
     return accessGroup && accessGroup.name ? accessGroup.name : null;
   }
 

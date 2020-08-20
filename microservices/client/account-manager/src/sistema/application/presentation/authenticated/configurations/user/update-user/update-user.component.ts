@@ -8,7 +8,7 @@ import {UserRepository} from "../../../../../../domain/repository/user.repositor
 
 // @ts-ignore
 @Component({
-  selector: 'editar-usuario',
+  selector: 'update-user',
   templateUrl: './update-user.component.html',
   styleUrls: ['../user.component.scss']
 })
@@ -18,7 +18,7 @@ export class UpdateUserComponent implements OnInit {
   /**
    *
    */
-  usuario: any = {
+  user: any = {
     organizacao: {},
     perfis: []
   };
@@ -30,25 +30,9 @@ export class UpdateUserComponent implements OnInit {
   error: boolean;
 
   /**
-   *
-   */
-  perfis: any = [];
-
-  /**
-   * Utilizado para o autocomplete
-   */
-  organizacoes: any = [];
-  organizacaoNome: string = '';
-
-  /**
    * Exibir senha
    */
   inputType: string = 'password';
-
-
-  checkboxGroup: FormGroup = new FormGroup({});
-
-  public debounce = debounce;
 
   /**
    *
@@ -56,38 +40,52 @@ export class UpdateUserComponent implements OnInit {
    * @param homeView
    * @param activatedRoute
    * @param messageService
-   * @param usuarioRepository
+   * @param userRepository
    */
   constructor(private router: Router,
               private homeView: AuthenticatedViewComponent,
               private activatedRoute: ActivatedRoute,
               private messageService: MessageService,
-              private usuarioRepository: UserRepository) {
+              private userRepository: UserRepository) {
 
     homeView.toolbar.subhead = 'Usuário / Editar';
-    this.usuario.id = +this.activatedRoute.snapshot.params.id;
+    this.user.id = +this.activatedRoute.snapshot.params.id;
 
   }
 
+  /**
+   *
+   */
+  ngOnInit() {
+    if (this.user && this.user.id) {
+      this.findById();
+      this.itsMe = this.homeView.itsMe(this.user);
+    }
+  }
+
+
+  /**
+   *
+   */
   back() {
     if (this.activatedRoute.snapshot.routeConfig.path === 'editar/:id')
       this.router.navigate(['configuracoes/usuarios']);
     else
-      this.router.navigate(['configuracoes/usuarios/' + this.usuario.id]);
+      this.router.navigate(['configuracoes/usuarios/' + this.user.id]);
   }
 
-  ngOnInit() {
-    if (this.usuario && this.usuario.id) {
-      this.findById();
-      this.itsMe = this.homeView.itsMe(this.usuario);
-    }
-  }
-
+  /**
+   *
+   */
   public findById() {
-    this.usuarioRepository.findById(this.usuario.id)
-      .subscribe(result => this.usuario = result);
+    this.userRepository.findById(this.user.id)
+      .subscribe(result => this.user = result);
   }
 
+  /**
+   *
+   * @param form
+   */
   public save(form) {
 
     if (form.invalid) {
@@ -95,12 +93,12 @@ export class UpdateUserComponent implements OnInit {
       return;
     }
 
-    if (this.isString(this.usuario.grupoAcesso)) {
+    if (this.isString(this.user.grupoAcesso)) {
       this.messageService.toastWarning('Nenhum grupo de acesso válido foi selecionado.');
       return;
     }
 
-    this.usuarioRepository.save(this.usuario)
+    this.userRepository.save(this.user)
       .then(() => {
         this.router.navigate(['configuracoes/usuarios']);
         this.messageService.toastSuccess(`Alterado com sucesso`, 5);
