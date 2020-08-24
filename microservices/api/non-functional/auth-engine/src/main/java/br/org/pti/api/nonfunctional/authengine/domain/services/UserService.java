@@ -1,6 +1,5 @@
 package br.org.pti.api.nonfunctional.authengine.domain.services;
 
-import br.org.pti.api.nonfunctional.authengine.domain.entities.User;
 import br.org.pti.api.nonfunctional.authengine.domain.repositories.feign.IUserFeignRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

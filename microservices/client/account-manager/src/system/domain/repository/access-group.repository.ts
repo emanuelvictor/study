@@ -7,7 +7,7 @@ import {AccessGroup} from "../entity/access-group.model";
 export class AccessGroupRepository extends BaseRepository<AccessGroup> {
 
   constructor(httpClient: HttpClient) {
-    super(httpClient, 'account-manager/api/access-groups');
+    super(httpClient, 'account-manager/access-groups');
   }
 
 }

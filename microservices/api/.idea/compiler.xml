@@ -2,25 +2,26 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="inventario-web" />
+        <module name="functional" />
+        <module name="test" />
+        <module name="inventarioweb" />
+        <module name="portalcompras" />
+        <module name="non-functional" />
         <module name="authengine" />
         <module name="nonfunctional" />
-        <module name="discoverer" />
-        <module name="clientApplication" />
-        <module name="accountmanager" />
-        <module name="test" />
-        <module name="functional" />
-        <module name="proxy" />
-        <module name="portalcompras" />
-        <module name="portal-compras" />
-        <module name="non-functional" />
         <module name="integrator" />
-        <module name="inventarioweb" />
+        <module name="inventario-web" />
+        <module name="proxy" />
+        <module name="clientApplication" />
+        <module name="portal-compras" />
+        <module name="accountmanager" />
         <module name="api" />
+        <module name="discoverer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

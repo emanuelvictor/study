@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static br.org.pti.api.functional.accountmanager.application.resource.Roles.PERMISSION_MAPPING_RESOURCE;
+
 
 /**
  * RESTFul de Permissões
@@ -19,8 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/permissions")
-//@RequestMapping({PERMISSAO_MAPPING_RESOURCE, "/sistema/" + PERMISSAO_MAPPING_RESOURCE})
+@RequestMapping(PERMISSION_MAPPING_RESOURCE)
 public class PermissionResource {
 
     /**

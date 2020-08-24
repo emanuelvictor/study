@@ -10,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
@@ -32,9 +33,21 @@ public class Permission extends PersistentEntity {
     /**
      *
      */
+    @NotBlank
+    @Column(nullable = false)
+    private String name;
+
+    /**
+     *
+     */
     @NotNull
     @Column(nullable = false, unique = true)
     private String authority;
+
+    /**
+     *
+     */
+    private String description;
 
     /**
      *

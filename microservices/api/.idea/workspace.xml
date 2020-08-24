@@ -1,160 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:maven" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:maven" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:microservices" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:maven" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:microservices" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:api" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:maven" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:microservices" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:api" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:functional" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:maven" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:microservices" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:api" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:functional" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:inventario-web" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:maven" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:microservices" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:api" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:functional" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:portal-compras" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:pos" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:pos" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:frameworks" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:pos" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:frameworks" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:books" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:pos" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:frameworks" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:books" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:src" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:pos" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:frameworks" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:books" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:src" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:main" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:pos" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:frameworks" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:books" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:src" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:main" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:ts" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="Implementing client">
+      <change afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/Roles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functional/account-manager/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/AuthorizationServerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/security/AuthorizationServerConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/AccessGroupResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/AccessGroupResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/ApplicationResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/ApplicationResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/PermissionResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/PermissionResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/UserResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/UserResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/domain/entities/Permission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.0__RELEASE.sql" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.0__RELEASE.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.1__RELEASE.sql" beforeDir="false" afterPath="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations/1.0.1__RELEASE.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/entities/Permission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/domain/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/config/application-alpha.yml" beforeDir="false" afterPath="$PROJECT_DIR$/non-functional/auth-engine/src/main/resources/config/application-alpha.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/account-manager/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/environments/environment.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/system/application/presentation/authenticated/configurations/access-group/insert-access-group/access-group-form/link-permissions/link-permissions.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/system/application/presentation/authenticated/configurations/access-group/insert-access-group/access-group-form/link-permissions/link-permissions.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/system/application/presentation/authenticated/configurations/access-group/insert-access-group/access-group-form/link-permissions/link-permissions.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/system/application/presentation/authenticated/configurations/access-group/insert-access-group/access-group-form/link-permissions/link-permissions.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/system/domain/repository/access-group.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/system/domain/repository/access-group.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/system/domain/repository/permission.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/system/domain/repository/permission.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/system/domain/repository/user.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/system/domain/repository/user.repository.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,6 +98,17 @@
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projetos\study\microservices\api\functional\test\src\main" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.org.pti.api.functional.accountmanager.application.resource" />
+      <recent name="br.org.pti.api.functional.test.application.oauth.resource" />
+      <recent name="br.org.pti.api.functional.integrator.application.security.oauth" />
+      <recent name="br.org.pti.api.functional.integrator.application.resource" />
+      <recent name="br.org.pti.api.nonfunctional.authengine.domain.services" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\projetos\study\microservices\api\non-functional\auth-engine\src\main\java\br\org\pti\api\nonfunctional\authengine\domain\entities" />
       <recent name="D:\projetos\study\microservices\api\functional\test\src\test\javascript" />
@@ -231,19 +116,19 @@
       <recent name="D:\projetos\study\microservices\api\functional\test\src\main\java\br\org\pti\api\functional\test\application" />
       <recent name="$PROJECT_DIR$/functional/account-manager/src/main/resources/db/migrations" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="br.org.pti.api.functional.test.application.oauth.resource" />
-      <recent name="br.org.pti.api.functional.accountmanager.application.resource" />
-      <recent name="br.org.pti.api.functional.integrator.application.security.oauth" />
-      <recent name="br.org.pti.api.functional.integrator.application.resource" />
-      <recent name="br.org.pti.api.nonfunctional.authengine.domain.services" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\projetos\study\microservices\api\functional\test\src\main" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.AccountManagerApplication">
+  <component name="RunManager" selected="npm.Angular CLI Server (account-manager)">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AccountManagerApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="accountmanager" />
       <extension name="coverage">
@@ -257,7 +142,6 @@
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="BSP.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="AccountManagerApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -274,7 +158,6 @@
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="BSP.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="Angular Application (account-manager)" type="JavascriptDebugType" uri="http://localhost:4200">
@@ -435,6 +318,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -460,6 +344,7 @@
       <workItem from="1597494731262" duration="18007000" />
       <workItem from="1597619010777" duration="2578000" />
       <workItem from="1597636166504" duration="1995000" />
+      <workItem from="1598234940962" duration="8182000" />
     </task>
     <task id="LOCAL-00001" summary="Rearranging packages.">
       <created>1583254084341</created>
@@ -626,7 +511,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -758,10 +643,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="443" y="130" width="1024" height="845" key="#Project_Structure/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595596758525" />
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592169732572">
+    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598238141050">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592169732572" />
+    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598238141050" />
     <state x="768" y="241" width="374" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1597515772235">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -790,65 +675,65 @@
     </state>
     <state x="738" y="212" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1596939324409" />
     <state x="738" y="242" width="424" height="621" key="FileChooserDialogImpl/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595600949153" />
-    <state width="1877" height="347" key="GridCell.Tab.0.bottom" timestamp="1597638023706">
+    <state width="1877" height="347" key="GridCell.Tab.0.bottom" timestamp="1598241663549">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597638023706" />
+    <state width="1877" height="347" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1598241663549" />
     <state width="1874" height="351" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595968140781" />
-    <state width="1877" height="347" key="GridCell.Tab.0.center" timestamp="1597638023706">
+    <state width="1877" height="347" key="GridCell.Tab.0.center" timestamp="1598241663548">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597638023706" />
+    <state width="1877" height="347" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1598241663548" />
     <state width="1874" height="351" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595968140781" />
-    <state width="1877" height="347" key="GridCell.Tab.0.left" timestamp="1597638023706">
+    <state width="1877" height="347" key="GridCell.Tab.0.left" timestamp="1598241663548">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597638023706" />
+    <state width="1877" height="347" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1598241663548" />
     <state width="1874" height="351" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595968140781" />
-    <state width="1877" height="347" key="GridCell.Tab.0.right" timestamp="1597638023706">
+    <state width="1877" height="347" key="GridCell.Tab.0.right" timestamp="1598241663549">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597638023706" />
+    <state width="1877" height="347" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1598241663549" />
     <state width="1874" height="351" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595968140781" />
-    <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1597638023443">
+    <state width="0" height="0" key="GridCell.Tab.1.bottom" timestamp="1598241663428">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597638023443" />
+    <state width="0" height="0" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1598241663428" />
     <state width="1874" height="351" key="GridCell.Tab.1.bottom/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595968140579" />
-    <state width="1877" height="347" key="GridCell.Tab.1.center" timestamp="1597638023443">
+    <state width="0" height="0" key="GridCell.Tab.1.center" timestamp="1598241663428">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597638023443" />
+    <state width="0" height="0" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1598241663428" />
     <state width="1874" height="351" key="GridCell.Tab.1.center/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595968140579" />
-    <state width="1877" height="347" key="GridCell.Tab.1.left" timestamp="1597638023443">
+    <state width="0" height="0" key="GridCell.Tab.1.left" timestamp="1598241663428">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597638023443" />
+    <state width="0" height="0" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1598241663428" />
     <state width="1874" height="351" key="GridCell.Tab.1.left/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595968140579" />
-    <state width="1877" height="347" key="GridCell.Tab.1.right" timestamp="1597638023443">
+    <state width="0" height="0" key="GridCell.Tab.1.right" timestamp="1598241663428">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597638023443" />
+    <state width="0" height="0" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1598241663428" />
     <state width="1874" height="351" key="GridCell.Tab.1.right/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595968140579" />
-    <state width="1877" height="347" key="GridCell.Tab.2.bottom" timestamp="1597638023443">
+    <state width="0" height="0" key="GridCell.Tab.2.bottom" timestamp="1598241663429">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597638023443" />
+    <state width="0" height="0" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1598241663429" />
     <state width="1874" height="351" key="GridCell.Tab.2.bottom/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595968140580" />
-    <state width="1877" height="347" key="GridCell.Tab.2.center" timestamp="1597638023443">
+    <state width="0" height="0" key="GridCell.Tab.2.center" timestamp="1598241663428">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597638023443" />
+    <state width="0" height="0" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1598241663428" />
     <state width="1874" height="351" key="GridCell.Tab.2.center/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595968140580" />
-    <state width="1877" height="347" key="GridCell.Tab.2.left" timestamp="1597638023443">
+    <state width="0" height="0" key="GridCell.Tab.2.left" timestamp="1598241663428">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597638023443" />
+    <state width="0" height="0" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1598241663428" />
     <state width="1874" height="351" key="GridCell.Tab.2.left/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595968140579" />
-    <state width="1877" height="347" key="GridCell.Tab.2.right" timestamp="1597638023443">
+    <state width="0" height="0" key="GridCell.Tab.2.right" timestamp="1598241663428">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597638023443" />
+    <state width="0" height="0" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1598241663428" />
     <state width="1874" height="351" key="GridCell.Tab.2.right/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595968140580" />
     <state x="540" y="269" width="872" height="507" key="NewModule_or_Project.wizard" timestamp="1596939334670">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -877,6 +762,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1597452043395" />
+    <state x="509" y="256" width="902" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1598238562643">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="509" y="256" width="902" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1598238562643" />
     <state x="651" y="261" width="1154" height="534" key="find.popup" timestamp="1597522302271">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -887,10 +776,10 @@
     </state>
     <state x="624" y="223" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1597504466337" />
     <state x="624" y="253" key="run.anything.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595602453942" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1597620807560">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1598243349672">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1597620807560" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1598243349672" />
     <state x="623" y="255" width="672" height="687" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595968210402" />
   </component>
   <component name="XDebuggerManager">
@@ -906,11 +795,10 @@
           <line>215</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/functional/account-manager/src/main/java/br/org/pti/api/functional/accountmanager/application/resource/TestResource.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.StackOverflowError" package="java.lang" />
+          <option name="timeStamp" value="26" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

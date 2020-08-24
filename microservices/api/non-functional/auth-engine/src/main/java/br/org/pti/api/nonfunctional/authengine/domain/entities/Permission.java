@@ -6,10 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.util.Set;
 
 
@@ -41,6 +40,7 @@ public class Permission extends PersistentEntity implements GrantedAuthority {
     /**
      *
      */
+    @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Set<Permission> lowerPermissions;
 

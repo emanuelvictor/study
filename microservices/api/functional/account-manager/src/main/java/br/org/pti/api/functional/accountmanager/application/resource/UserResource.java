@@ -6,20 +6,21 @@ import br.org.pti.api.functional.accountmanager.domain.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Set;
+
+import static br.org.pti.api.functional.accountmanager.application.resource.Roles.*;
 
 /**
  *
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/users")
+@RequestMapping({USER_MAPPING_RESOURCE})
 public class UserResource {
 
     /**
@@ -34,7 +35,7 @@ public class UserResource {
      * @return Page<User>
      */
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('asdf', 'root')")
+    @PreAuthorize("hasAnyAuthority('" + USER_GET_ROLE + "')")
     public Page<User> listByFilters(final String defaultFilter, final Boolean enableFilter, final Pageable pageable) {
         return this.userService.listByFilters(defaultFilter, enableFilter, pageable);
     }
@@ -44,7 +45,7 @@ public class UserResource {
      * @return User
      */
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('asdf', 'root')")
+    @PreAuthorize("hasAnyAuthority('" + USER_GET_ROLE + "')")
     public User findById(@PathVariable final long id) {
         return this.userService.findById(id);
     }
@@ -54,7 +55,7 @@ public class UserResource {
      * @return User
      */
     @PostMapping
-    @PreAuthorize("hasAnyAuthority('asdf', 'root')")
+    @PreAuthorize("hasAnyAuthority('" + USER_POST_ROLE + "')")
     public User save(@RequestBody final User user) {
         return this.userService.save(user);
     }
@@ -65,7 +66,7 @@ public class UserResource {
      * @return User
      */
     @PutMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('asdf', 'root')")
+    @PreAuthorize("hasAnyAuthority('" + USER_PUT_ROLE + "')")
     public User updateUser(@PathVariable final long id, @RequestBody final User user) {
         return this.userService.save(id, user);
     }
@@ -75,7 +76,7 @@ public class UserResource {
      * @return boolean
      */
     @PutMapping("/enable")
-    @PreAuthorize("hasAnyAuthority('asdf', 'root')")
+    @PreAuthorize("hasAnyAuthority('" + USER_PUT_ACTIVATE_ROLE + "')")
     public boolean updateEnable(@RequestBody final long id) {
         return this.userService.updateEnable(id).getEnabled();
     }
@@ -100,6 +101,8 @@ public class UserResource {
     }
 
     /**
+     * todo IS NOT NECESSARY
+     *
      * @param id {Long}
      * @return Set<GrantedAuthority>
      */
@@ -114,7 +117,7 @@ public class UserResource {
      * @return User
      */
     @GetMapping("{userId}/change-password")
-    @PreAuthorize("hasAnyAuthority('asdf', 'root')")
+    @PreAuthorize("hasAnyAuthority('" + USER_PUT_CHANGE_PASSWORD_ROLE + "')")
     User changePassword(@PathVariable final long userId, @RequestParam final String newPassword) {
         return this.userService.changePassword(userId, newPassword);
     }

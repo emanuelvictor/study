@@ -204,6 +204,8 @@ CREATE TABLE public.permission (
                                    created_on timestamp without time zone NOT NULL,
                                    updated_on timestamp without time zone,
                                    authority character varying(255) NOT NULL,
+                                   name character varying(255) NOT NULL,
+                                   description character varying(255),
                                    upper_permission_id bigint
 );
 
@@ -220,6 +222,8 @@ CREATE TABLE public.permission_audit (
                                          revision bigint NOT NULL,
                                          revision_type smallint,
                                          authority character varying(255),
+                                         name character varying(255),
+                                         description character varying(255),
                                          upper_permission_id bigint
 );
 

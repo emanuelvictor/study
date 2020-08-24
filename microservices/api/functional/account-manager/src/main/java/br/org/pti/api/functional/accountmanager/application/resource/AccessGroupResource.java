@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+import static br.org.pti.api.functional.accountmanager.application.resource.Roles.*;
+
 /**
  *
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/access-groups")
+@RequestMapping({ACCESS_GROUP_MAPPING_RESOURCE})
 public class AccessGroupResource {
 
     /**
@@ -29,7 +31,7 @@ public class AccessGroupResource {
      * @return Page<AccessGroup>
      */
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('asdf', 'root')")
+    @PreAuthorize("hasAnyAuthority('" + ACCESS_GROUP_GET_ROLE + "')")
     public Page<AccessGroup> listByFilters(final String defaultFilter, final Pageable pageable) {
         return this.accessGroupService.listByFilters(defaultFilter, pageable);
     }
@@ -39,7 +41,7 @@ public class AccessGroupResource {
      * @return Optional<AccessGroup>
      */
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('asdf', 'root')")
+    @PreAuthorize("hasAnyAuthority('" + ACCESS_GROUP_GET_ROLE + "')")
     public Optional<AccessGroup> findById(@PathVariable final long id) {
         return this.accessGroupService.findById(id);
     }
@@ -49,7 +51,7 @@ public class AccessGroupResource {
      * @return AccessGroup
      */
     @PostMapping
-    @PreAuthorize("hasAnyAuthority('asdf', 'root')")
+    @PreAuthorize("hasAnyAuthority('" + ACCESS_GROUP_POST_ROLE + "')")
     public AccessGroup save(@RequestBody final AccessGroup grupoAcesso) {
         grupoAcesso.getAccessGroupPermissions().forEach(grupoAcessoPermissao ->
                 grupoAcessoPermissao.setAccessGroup(grupoAcesso)
@@ -63,7 +65,7 @@ public class AccessGroupResource {
      * @return AccessGroup
      */
     @PutMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('asdf', 'root')")
+    @PreAuthorize("hasAnyAuthority('" + ACCESS_GROUP_PUT_ROLE + "')")
     public AccessGroup save(@PathVariable final long id, @RequestBody final AccessGroup grupoAcesso) {
         grupoAcesso.getAccessGroupPermissions().forEach(grupoAcessoPermissao ->
                 grupoAcessoPermissao.setAccessGroup(grupoAcesso)
@@ -76,7 +78,7 @@ public class AccessGroupResource {
      * @return Boolean
      */
     @DeleteMapping("{id}")
-    @PreAuthorize("hasAnyAuthority('asdf', 'root')")
+    @PreAuthorize("hasAnyAuthority('" + ACCESS_GROUP_DELETE_ROLE + "')")
     public Boolean delete(@PathVariable final long id) {
         this.accessGroupService.delete(id);
         return true;

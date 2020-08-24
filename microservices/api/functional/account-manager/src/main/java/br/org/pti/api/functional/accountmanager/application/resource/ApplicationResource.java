@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/applications")
+@RequestMapping("applications")
 public class ApplicationResource {
 
     /**
@@ -26,7 +26,7 @@ public class ApplicationResource {
      */
     @GetMapping("{clientId}")
     public Application loadClientByClientId(@PathVariable final String clientId) {
-        return (Application) applicationService.loadClientByClientId(clientId);
+        return applicationService.loadClientByClientId(clientId);
     }
 
 }

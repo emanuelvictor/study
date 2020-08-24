@@ -83,7 +83,7 @@ export class LinkPermissionsComponent implements OnInit {
    */
   reduce(array): any {
     return array.reduce((json, value, key) => {
-      key = value.authority;
+      key = value.name;
       if (value.lowerPermissions)
         if (value.lowerPermissions.length !== 0)
           json[key] = {key: this.reduce(value.lowerPermissions), id: value.id, selected: value.selected};
