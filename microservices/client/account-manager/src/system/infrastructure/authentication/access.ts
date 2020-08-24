@@ -2,6 +2,7 @@ export class Access {
 
   private _access_token: string;
   private _expires_in: number;
+  private _date_to_expire: Date;
   private _integrator: any; // TODO
   private _refresh_token: string;
   private _scope: any;
@@ -14,12 +15,24 @@ export class Access {
    */
   public constructor(access?: Access) {
     if (access) {
+      this.refresh_token = access.refresh_token;
       this.access_token = access.access_token;
       this.expires_in = access.expires_in;
+      this._date_to_expire = new Date();
+      this._date_to_expire = new Date(this._date_to_expire.getTime() + (this.expires_in * 1000));
+      console.log(this._date_to_expire);
       this.integrator = access.integrator;
       this.scope = access.scope;
       this.token_type = access.token_type
     }
+  }
+
+  get refresh_token(): string {
+    return this._refresh_token;
+  }
+
+  set refresh_token(value: string) {
+    this._refresh_token = value;
   }
 
   get access_token(): string {
@@ -62,4 +75,13 @@ export class Access {
     this._token_type = value;
   }
 
+  get isInvalidAccessToken(): boolean {
+    console.log(this._date_to_expire);
+    console.log(this._date_to_expire < new Date());
+    return Access.isDateBeforeToday(this._date_to_expire)
+  }
+
+  private static isDateBeforeToday(date: Date): boolean {
+    return date < new Date();
+  }
 }

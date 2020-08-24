@@ -1,6 +1,7 @@
 import {Observable, throwError as observableThrowError} from 'rxjs';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/mergeMap';
 import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 
@@ -9,6 +10,7 @@ import {Router} from '@angular/router';
 import {MessageService} from '../../domain/services/message.service';
 import {MatSnackBar} from "@angular/material";
 import {AuthenticationService} from "../../domain/services/authentication.service";
+import {Access} from "../../infrastructure/authentication/access";
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
@@ -39,6 +41,7 @@ export class Interceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     this.progress.start();
+
     if (this.authenticationService.access && this.authenticationService.access.access_token)
       req = req.clone({
         setHeaders: {
@@ -46,19 +49,27 @@ export class Interceptor implements HttpInterceptor {
         }
       });
 
-    return next.handle(req)
-      .do(evt => {
+    if (this.authenticationService.access && this.authenticationService.access.access_token && this.authenticationService.access.isInvalidAccessToken && req.url.indexOf('grant_type=refresh_token') <= 0) {
+      return this.authenticationService.getAccessTokenByRefreshToken(this.authenticationService.access.refresh_token)
+        .mergeMap(value => {
+          this.authenticationService.access = new Access(value);
+          return this.intercept(req, next);
+        })
+    } else
+      return next.handle(req)
+        .do(evt => {
 
-        this.progress.start();
+          this.progress.start();
 
-        if (evt instanceof HttpResponse)
-          this.progress.done();
+          if (evt instanceof HttpResponse)
+            this.progress.done();
 
-        else
-          this.progress.inc(0.4);
+          else
+            this.progress.inc(0.4);
 
-      })
-      .catch(this.catchErrors());
+        })
+        .catch(this.catchErrors());
+
   }
 
   /**

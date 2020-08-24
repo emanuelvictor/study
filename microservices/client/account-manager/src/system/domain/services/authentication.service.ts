@@ -82,16 +82,15 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
 
       const authorizationCode: string = getParameterByName('code');
 
-      if (localStorage.getItem('refresh_token')) { // Have the access token and it is invalid, but have the refresh token, get the access token by refresh token
+      if (this.access && this.access.isInvalidAccessToken) { // Have the access token and it is invalid, but have the refresh token, get the access token by refresh token
 
-        this.getAccessTokenByRefreshToken(localStorage.getItem('refresh_token')).then(result => {
+        this.getAccessTokenByRefreshToken(this.access.refresh_token).subscribe(result => {
           this.access = new Access(result);
-          localStorage.setItem('refresh_token', (result as any).refresh_token);
           this.getLoggedUser(this.access.access_token).then(result => {
             this.user = result;
             resolve(result)
           }).catch(err => reject(err))
-        }).catch(err => reject(err))
+        })/*.catch(err => reject(err))*/
 
       } else if (!this.access && !authorizationCode) { // No have access token and no have code, must return null and redirect to SSO
 
@@ -101,7 +100,6 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
 
         this.getAccessTokenByAuthorizationCode(authorizationCode).then(result => {
           this.access = new Access(result);
-          localStorage.setItem('refresh_token', (result as any).refresh_token);
           this.getLoggedUser(this.access.access_token).then(result => {
             this.user = result;
             resolve(result)
@@ -131,8 +129,8 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
    *
    * @param refreshToken
    */
-  public getAccessTokenByRefreshToken(refreshToken: string): Promise<Access> {
-    return this.http.post<Access>(`${environment.SSO}/oauth/token?grant_type=refresh_token&refresh_token=${refreshToken}&client_id=browser&client_secret=browser`, {}).toPromise()
+  public getAccessTokenByRefreshToken(refreshToken: string): Observable<Access> {
+    return this.http.post<Access>(`${environment.SSO}/oauth/token?grant_type=refresh_token&refresh_token=${refreshToken}&client_id=browser&client_secret=browser`, {})
   }
 
   /**
