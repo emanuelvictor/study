@@ -5,5 +5,5 @@
 export const environment = {
   production: true,
   SSO: 'http://localhost:8081',
-  apiContext: 'http://localhost:8080/account-manager'
+  api: 'http://localhost:8080',
 };

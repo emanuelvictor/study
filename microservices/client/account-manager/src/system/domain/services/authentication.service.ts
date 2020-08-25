@@ -13,6 +13,8 @@ import {environment} from "../../../environments/environment";
 @Injectable()
 export class AuthenticationService implements CanActivate, CanActivateChild {
 
+  private origin = window.location.origin;
+
   public user: User;
 
   public access: Access;
@@ -50,7 +52,7 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.getObservedLoggedUser().map(auth => {
       if (isNullOrUndefined(auth)) {
-        window.location.href = `${environment.SSO}/oauth/authorize?response_type=code&client_id=browser&redirect_uri=http://localhost:4200` + (state.url ? '&state=' + state.url : '');
+        window.location.href = `${environment.SSO}/oauth/authorize?response_type=code&client_id=browser&redirect_uri=${this.origin}` + (state.url ? '&state=' + state.url : '');
         return false
       } else {
         const stateReturned: string = getParameterByName('state');
@@ -113,7 +115,7 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
    * @param authorizationCode
    */
   public getAccessTokenByAuthorizationCode(authorizationCode: string): Promise<Access> {
-    return this.http.post<Access>(`${environment.SSO}/oauth/token?grant_type=authorization_code&code=${authorizationCode}&client_id=browser&client_secret=browser&redirect_uri=http://localhost:4200`, {}).toPromise()
+    return this.http.post<Access>(`${environment.SSO}/oauth/token?grant_type=authorization_code&code=${authorizationCode}&client_id=browser&client_secret=browser&redirect_uri=${this.origin}`, {}).toPromise()
   }
 
   /**

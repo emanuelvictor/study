@@ -8,7 +8,7 @@ import {environment} from "../../../../environments/environment";
 
 export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
 
-  public collectionName: string = environment.apiContext + '/';
+  public collectionName: string = environment.api + '/';
 
   constructor(public httpClient: HttpClient, public collection: string) {
     if (collection)

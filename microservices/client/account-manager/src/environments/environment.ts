@@ -5,5 +5,5 @@
 export const environment = {
   production: false,
   SSO: 'http://localhost:8081',
-  apiContext: ''
+  api: '',
 };
