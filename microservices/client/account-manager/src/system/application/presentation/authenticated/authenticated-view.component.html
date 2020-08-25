@@ -27,13 +27,12 @@
     </div>
 
     <div flex='20' layout='row' layout-align='end center' hide-xs>
-
-      <div [matMenuTriggerFor]='menu' layout='row'
-           style='cursor: pointer; color: #4C4C4C'
+      <div style='cursor: pointer; color: #4C4C4C'
+           [matMenuTriggerFor]='menu' layout='row'
            layout-margin layout-align='end center'>
 
         <button mat-button class='header-button'>
-            {{user?.name ? user?.name : user?.email}}
+          {{ user?.name  ? (user?.name | userInitials) : user?.username}}
           <mat-icon>keyboard_arrow_down</mat-icon>
         </button>
       </div>
@@ -41,8 +40,8 @@
 
     <mat-menu #menu='matMenu'>
       <button (click)='openDialogChangePassword()'
-              color='primary' style='color: #4C4C4C'
-              *ngIf='!user?.interno' mat-menu-item>
+              *ngIf='!user?.internal' mat-menu-item
+              color='primary' style='color: #4C4C4C'>
         <span>Alterar senha</span>
       </button>
       <button mat-menu-item (click)='logout()' color='primary' style='color: #4C4C4C'>
@@ -63,17 +62,17 @@
            matTooltip='Alterar senha' [style.position]="'relative'">
 
         <button mat-icon-button class='btn-primary'>
-          {{ user.name | userInitials }}
+          {{ user?.name  ? (user?.name | userInitials) : user?.username}}
         </button>
         <mat-icon matSuffix class="change-password">settings</mat-icon>
 
       </div>
       <horizontal-space [horizontalMargin]="5"></horizontal-space>
       <div layout='column' style="margin-left: 10px;">
-        <h3>{{ user.name }}</h3>
-        <label *ngIf="user?.email?.length <= 24">{{ user.email }}</label>
-        <label matTooltip='{{ user?.email }}' *ngIf='user?.email?.length > 24'>
-          {{ user.email | truncate:21 }}
+        <h3 *ngIf='user?.name'>{{ user?.name }}</h3>
+        <label *ngIf="user?.username?.length <= 24">{{ user?.username }}</label>
+        <label matTooltip='{{ user?.username }}' *ngIf='user?.username?.length > 24'>
+          {{ user?.username | truncate:21 }}
         </label>
       </div>
     </div>

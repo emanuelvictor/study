@@ -4,8 +4,7 @@ import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterSta
 import {isNullOrUndefined} from "util";
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
-import {UserRepository} from "../repository/user.repository";
-import {getParameterByName} from "../../application/utils/utils";
+import {getParameterByName, parseJwt} from "../../application/utils/utils";
 import {Access} from "../../infrastructure/authentication/access";
 import {UserDetails} from "../../infrastructure/authentication/user-details";
 import {User} from "../entity/user.model";
@@ -26,12 +25,10 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
 
   /**
    *
-   * @param userRepository
    * @param router
    * @param http
    */
-  constructor(private userRepository: UserRepository,
-              private router: Router, private http: HttpClient) {
+  constructor(private router: Router, private http: HttpClient) {
   }
 
   /**
@@ -86,11 +83,9 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
 
         this.getAccessTokenByRefreshToken(this.access.refresh_token).subscribe(result => {
           this.access = new Access(result);
-          this.getLoggedUser(this.access.access_token).then(result => {
-            this.user = result;
-            resolve(result)
-          }).catch(err => reject(err))
-        })/*.catch(err => reject(err))*/
+          this.user = AuthenticationService.getLoggedUser(this.access.access_token);
+          resolve(this.user)
+        })
 
       } else if (!this.access && !authorizationCode) { // No have access token and no have code, must return null and redirect to SSO
 
@@ -100,18 +95,14 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
 
         this.getAccessTokenByAuthorizationCode(authorizationCode).then(result => {
           this.access = new Access(result);
-          this.getLoggedUser(this.access.access_token).then(result => {
-            this.user = result;
-            resolve(result)
-          }).catch(err => reject(err))
+          this.user = AuthenticationService.getLoggedUser(this.access.access_token);
+          resolve(this.user)
         }).catch(err => reject(err))
 
-      } else if (this.access && this.access.access_token)
-        this.getLoggedUser(this.access.access_token).then(result => {
-          this.user = result;
-          resolve(result)
-        }).catch(err => reject(err))
-
+      } else if (this.access && this.access.access_token) {
+        this.user = AuthenticationService.getLoggedUser(this.access.access_token);
+        resolve(this.user)
+      }
     })
 
     return this.getPromiseLoggedUserInstance
@@ -137,17 +128,21 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
    *
    * @param accessToken
    */
-  private getLoggedUser(accessToken: string): Promise<User> {
-    if (!accessToken)
-      return Promise.resolve(null);
-    return this.http.get<User>(`${environment.SSO}/oauth/principal/${accessToken}`).toPromise()
-  }
+  private static getLoggedUser(accessToken: string): User {
 
-  /**
-   * @param accessToken
-   */
-  public getAuthorities(accessToken: string): Observable<any> {
-    return this.http.get<any>(`${environment.SSO}/oauth/authorities/${accessToken}`);
+    if (accessToken) {
+      const userToParse = parseJwt(accessToken);
+
+      const user: User = new User();
+      user.username = userToParse.user_name;
+      user.name = userToParse.name;
+      user.id = userToParse.id;
+      user.authorities = userToParse.authorities;
+
+      return user
+    }
+
+    return null
   }
 
   /**

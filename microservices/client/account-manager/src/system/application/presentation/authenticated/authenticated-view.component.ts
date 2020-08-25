@@ -82,12 +82,7 @@ export class AuthenticatedViewComponent implements OnInit, OnDestroy {
    *
    */
   public getAuthenticatedUser() {
-    this.authenticationService.getObservedLoggedUser().subscribe(authenticatedUser => {
-      if (authenticatedUser)
-        this.userRepository.findByUsername(authenticatedUser.username).subscribe(result => {
-          this.user = result
-        })
-    })
+    this.user = this.authenticationService.user;
   }
 
   /**

@@ -1,5 +1,6 @@
 package br.org.pti.api.nonfunctional.authengine.application.security;
 
+import br.org.pti.api.nonfunctional.authengine.domain.entities.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -69,7 +70,15 @@ public class CommonConfiguration {
     @Bean
     public TokenEnhancer tokenEnhancer() {
         return (accessToken, authentication) -> {
+
             final Map<String, Object> additionalInfo = new HashMap<>();
+
+            if (authentication.getUserAuthentication() != null) {
+                final User user = (User) authentication.getUserAuthentication().getPrincipal();
+                additionalInfo.put("name", user.getName());
+                additionalInfo.put("id", user.getId());
+            }
+
             additionalInfo.put(DEFAULT_TOKEN_ENHANCER, authentication.getName() + randomAlphabetic(4));
             ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
             return accessToken;

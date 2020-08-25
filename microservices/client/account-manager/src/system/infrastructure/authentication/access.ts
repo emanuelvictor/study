@@ -20,7 +20,6 @@ export class Access {
       this.expires_in = access.expires_in;
       this._date_to_expire = new Date();
       this._date_to_expire = new Date(this._date_to_expire.getTime() + (this.expires_in * 1000));
-      console.log(this._date_to_expire);
       this.integrator = access.integrator;
       this.scope = access.scope;
       this.token_type = access.token_type
@@ -76,8 +75,6 @@ export class Access {
   }
 
   get isInvalidAccessToken(): boolean {
-    console.log(this._date_to_expire);
-    console.log(this._date_to_expire < new Date());
     return Access.isDateBeforeToday(this._date_to_expire)
   }
 

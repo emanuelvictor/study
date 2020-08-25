@@ -36,18 +36,7 @@ export class HasPermissionDirective implements OnInit {
    *
    */
   ngOnInit() {
-    if (!this.authenticationService.user || !this.authenticationService.user.authorities || !this.authenticationService.user.authorities.length)
-      this.authenticationService.getObservedLoggedUser().subscribe(user => {
-        this.currentUser = user;
-
-        this.authenticationService.getAuthorities(this.authenticationService.access ? this.authenticationService.access.access_token : null).subscribe(authorities => {
-          this.currentUser.authorities = authorities;
-
-          this.authenticationService.user.authorities = authorities;
-          this.updateView()
-        })
-      });
-    else {
+    if (this.authenticationService.user && this.authenticationService.user.authorities && this.authenticationService.user.authorities.length) {
       this.currentUser = this.authenticationService.user;
       this.updateView()
     }
@@ -87,7 +76,7 @@ export class HasPermissionDirective implements OnInit {
     let hasPermission = false;
     if (currentUser && currentUser.authorities) {
       for (const checkPermission of authorities) {
-        const permissionFound = currentUser.authorities.map(authority => authority.authority).find(x => x.toUpperCase() === checkPermission.toUpperCase());
+        const permissionFound = currentUser.authorities.find(x => x.toUpperCase() === checkPermission.toUpperCase());
         if (permissionFound)
           hasPermission = true
       }

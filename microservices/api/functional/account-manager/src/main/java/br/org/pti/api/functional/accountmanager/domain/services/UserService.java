@@ -184,20 +184,4 @@ public class UserService {
         return user;
     }
 
-    /**
-     * @param id {Long}
-     * @return Set<GrantedAuthority>
-     */
-    @Transactional
-    public Set<Permission> getAuthoritiesByUserId(final long id) {
-
-        final User user = this.findById(id);
-
-        if (user.getAccessGroup().getAccessGroupPermissions() == null || user.getAccessGroup().getAccessGroupPermissions().size() == 0)
-            return null;
-
-        return user.getAccessGroup().getAccessGroupPermissions().stream().map(AccessGroupPermission::getPermission).collect(Collectors.toSet());
-
-    }
-
 }

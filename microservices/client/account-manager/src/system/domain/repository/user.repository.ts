@@ -46,14 +46,6 @@ export class UserRepository extends BaseRepository<User> {
 
   /**
    *
-   * @param username
-   */
-  public findByUsername(username: string): Observable<User> {
-    return this.httpClient.get<User>(this.collectionName + '/' + username  + '/username');
-  }
-
-  /**
-   *
    * @param id
    * @param actualPassword
    * @param newPassword

@@ -101,17 +101,6 @@ public class UserResource {
     }
 
     /**
-     * todo IS NOT NECESSARY
-     *
-     * @param id {Long}
-     * @return Set<GrantedAuthority>
-     */
-    @GetMapping("{id}/authorities")
-    public Set<Permission> getAuthoritiesByUserId(@PathVariable final long id) {
-        return this.userService.getAuthoritiesByUserId(id);
-    }
-
-    /**
      * @param userId      long
      * @param newPassword String
      * @return User
