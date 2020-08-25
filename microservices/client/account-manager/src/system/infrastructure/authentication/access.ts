@@ -1,4 +1,6 @@
-export class Access {
+import {User} from "../../domain/entity/user.model";
+
+export class Access extends User {
 
   private _access_token: string;
   private _expires_in: number;
@@ -14,6 +16,7 @@ export class Access {
    * @param access
    */
   public constructor(access?: Access) {
+    super(access.id);
     if (access) {
       this.refresh_token = access.refresh_token;
       this.access_token = access.access_token;
@@ -22,7 +25,9 @@ export class Access {
       this._date_to_expire = new Date(this._date_to_expire.getTime() + (this.expires_in * 1000));
       this.integrator = access.integrator;
       this.scope = access.scope;
-      this.token_type = access.token_type
+      this.token_type = access.token_type;
+      this.name = access.name;
+      this.id = access.id;
     }
   }
 

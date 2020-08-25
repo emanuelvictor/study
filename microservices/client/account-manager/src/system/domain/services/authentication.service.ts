@@ -83,7 +83,7 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
 
         this.getAccessTokenByRefreshToken(this.access.refresh_token).subscribe(result => {
           this.access = new Access(result);
-          this.user = AuthenticationService.getLoggedUser(this.access.access_token);
+          this.user = AuthenticationService.extractUserFromAccessToken(this.access);
           resolve(this.user)
         })
 
@@ -95,12 +95,12 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
 
         this.getAccessTokenByAuthorizationCode(authorizationCode).then(result => {
           this.access = new Access(result);
-          this.user = AuthenticationService.getLoggedUser(this.access.access_token);
+          this.user = AuthenticationService.extractUserFromAccessToken(this.access);
           resolve(this.user)
         }).catch(err => reject(err))
 
       } else if (this.access && this.access.access_token) {
-        this.user = AuthenticationService.getLoggedUser(this.access.access_token);
+        this.user = AuthenticationService.extractUserFromAccessToken(this.access);
         resolve(this.user)
       }
     })
@@ -126,17 +126,17 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
 
   /**
    *
-   * @param accessToken
+   * @param access
    */
-  private static getLoggedUser(accessToken: string): User {
+  private static extractUserFromAccessToken(access: Access): User {
 
-    if (accessToken) {
-      const userToParse = parseJwt(accessToken);
+    if (access.access_token) {
+      const userToParse = parseJwt(access.access_token);
 
       const user: User = new User();
       user.username = userToParse.user_name;
-      user.name = userToParse.name;
-      user.id = userToParse.id;
+      user.name = access.name;
+      user.id = access.id;
       user.authorities = userToParse.authorities;
 
       return user

@@ -25,6 +25,11 @@ public class User implements UserDetails {
     /**
      *
      */
+    private Long id;
+
+    /**
+     *
+     */
     private String username;
 
     /**

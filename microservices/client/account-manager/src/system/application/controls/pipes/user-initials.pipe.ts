@@ -11,17 +11,19 @@ export class UserInitialsPipe implements PipeTransform {
     if (!value)
       return;
 
-    const splittedName = value.split(' ');
-    const firstLetter = splittedName[0].charAt();
+    if (value.indexOf(' ') > 1 && value.length > 20) {
+      const splittedName = value.split(' ');
+      const firstLetter = splittedName[0].charAt(0);
 
-    let lastLetter = '';
+      let lastLetter = '';
 
-    if (splittedName.length > 1) {
-      lastLetter = splittedName[splittedName.length - 1].charAt();
-    }
+      if (splittedName.length > 1) {
+        lastLetter = splittedName[splittedName.length - 1].charAt(0);
+      }
 
-    const initials = `${firstLetter}${lastLetter}`;
+      const initials = `${firstLetter}${lastLetter}`;
 
-    return initials.toUpperCase();
+      return initials.toUpperCase();
+    } else return value
   }
 }
