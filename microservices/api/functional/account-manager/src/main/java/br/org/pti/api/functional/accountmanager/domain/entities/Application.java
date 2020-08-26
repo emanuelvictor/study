@@ -49,6 +49,15 @@ public class Application extends PersistentEntity {
      */
     @Getter
     @Setter
+    @NotBlank(message = "A revoke token URL must be informed")
+    @Column(name = "revokeTokenUrl", nullable = false)
+    private String revokeTokenUrl;
+
+    /**
+     *
+     */
+    @Getter
+    @Setter
     @ManyToOne(optional = false)
     private AccessGroup accessGroup;
 

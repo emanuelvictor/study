@@ -19,6 +19,7 @@ import org.springframework.security.oauth2.provider.ClientRegistrationException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,40 +36,40 @@ public class ApplicationService {
 
     private final PasswordEncoder passwordEncoder;
 
-    private final PermissionRepository permissaoRepository;
-    private final ApplicationRepository aplicacaoRepository;
+    private final PermissionRepository permissionRepository;
+    private final ApplicationRepository applicationRepository;
 
     private final List<ApplicationSavingLogic> applicationSavingLogics;
     private final List<ApplicationUpdatingLogic> userUpdatingLogics;
 
     /**
-     * @param aplicacao Usuario
+     * @param application Usuario
      */
     @Transactional
-    public Application save(final Application aplicacao) {
+    public Application save(final Application application) {
 
-        Assert.isNull(aplicacao.getId(), "Você não tem acesso a essa aplicação");
+        Assert.isNull(application.getId(), "Você não tem acesso a essa aplicação");
 
-        this.applicationSavingLogics.forEach(logic -> logic.perform(aplicacao));
+        this.applicationSavingLogics.forEach(logic -> logic.perform(application));
 
-        return this.aplicacaoRepository.save(aplicacao);
+        return this.applicationRepository.save(application);
     }
 
     /**
-     * @param aplicacao Usuario
+     * @param application Usuario
      */
     @Transactional
-    public Application save(final long id, final Application aplicacao) {
+    public Application save(final long id, final Application application) {
 
-        this.aplicacaoRepository.findById(id).ifPresentOrElse(actual -> {
-            this.userUpdatingLogics.forEach(logic -> logic.perform(aplicacao));
+        this.applicationRepository.findById(id).ifPresentOrElse(actual -> {
+            this.userUpdatingLogics.forEach(logic -> logic.perform(application));
 
-            this.aplicacaoRepository.save(aplicacao);
+            this.applicationRepository.save(application);
         }, () -> {
             throw new IllegalArgumentException("O id não pode ser nulo para atualização");
         });
 
-        return aplicacao;
+        return application;
 
     }
 
@@ -77,11 +78,11 @@ public class ApplicationService {
      */
     @Transactional
     public void delete(final long id) {
-        this.aplicacaoRepository.findById(id).ifPresent(user -> {
+        this.applicationRepository.findById(id).ifPresent(user -> {
             if (user.getClientId().equals("admin")) {
                 throw new IllegalArgumentException("Impossivel deletar o Administrador");
             } else {
-                this.aplicacaoRepository.delete(user);
+                this.applicationRepository.delete(user);
             }
         });
     }
@@ -95,10 +96,10 @@ public class ApplicationService {
 
         final String password = PasswordGenerator.generate();
 
-        this.aplicacaoRepository.findById(id)
+        this.applicationRepository.findById(id)
                 .ifPresent(user -> {
                     user.setClientSecret(this.passwordEncoder.encode(password));
-                    this.aplicacaoRepository.save(user);
+                    this.applicationRepository.save(user);
                 });
 
         return password;
@@ -110,7 +111,7 @@ public class ApplicationService {
      * @throws ClientRegistrationException
      */
     public Application loadClientByClientId(final String clientId) throws ClientRegistrationException {
-        return this.aplicacaoRepository.findByClientId(clientId)
+        return this.applicationRepository.findByClientId(clientId)
                 .orElseThrow(() -> new UsernameNotFoundException("ClientId " + clientId + " não localizado!"));
     }
 
@@ -118,7 +119,7 @@ public class ApplicationService {
      * @return List<Aplicacao>
      */
     public List<Application> findAll() {
-        return this.aplicacaoRepository.findAll();
+        return this.applicationRepository.findAll();
     }
 
     /**
@@ -127,7 +128,7 @@ public class ApplicationService {
      * @return Page<Aplicaca
      */
     public Page<Application> findByFiltro(final String filtro, final Pageable pageable) {
-        return aplicacaoRepository.findByFiltro(filtro, pageable);
+        return applicationRepository.findByFiltro(filtro, pageable);
     }
 
     /**
@@ -135,13 +136,13 @@ public class ApplicationService {
      * @return Optional<Aplicacao>
      */
     public Optional<Application> findById(final long id) {
-        return this.aplicacaoRepository.findById(id);
+        return this.applicationRepository.findById(id);
     }
 
     /**
      * @return Page<Permissao>
      */
     public Page<Permission> findAllPermissions() {
-        return permissaoRepository.findAll(PageRequest.of(0, 100000));
+        return permissionRepository.findAll(PageRequest.of(0, 100000));
     }
 }

@@ -32,13 +32,12 @@ public class TokenResource {
     private final ServiceToken serviceToken;
 
     /**
-     * @param token String
-     * @return ResponseEntity<User>
+     * @param refreshToken String
      */
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/oauth/revoke/{token}", method = RequestMethod.DELETE)
-    void revokeToken(@PathVariable("token") final String token) {
-        serviceToken.revokeToken(token);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(value = "/oauth/revoke/{refreshToken}", method = RequestMethod.DELETE)
+    void revokeToken(@PathVariable("refreshToken") final String refreshToken) {
+        serviceToken.removeRefreshToken(refreshToken);
     }
 
     /**

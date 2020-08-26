@@ -57,21 +57,6 @@ public class ClientService implements ClientDetailsService {
                     .build();
         }
 
-//        if (clientId.equals("browser")) {
-//            return new ClientBuilder()
-//                    .withClientId("browser")
-//                    .withRedirectUris("http://localhost:8080/test", "http://localhost:4200", "http://localhost:8084/api/test", "http://localhost:8084/api/logged", "http://localhost:8080/account-manager/api/logged", "http://localhost:8080/account-manager/api/test")
-//                    .withScoped(false)
-//                    .withClientSecret(passwordEncoder.encode("browser"))
-//                    .withScope("none") // TODO o escopo é obrigatório
-//                    .withSecretRequired(false)
-//                    .withAccessTokenValiditySeconds(999999999)
-//                    .withRefreshTokenValiditySeconds(999999999)
-//                    .withAuthorizedGrantTypes(ALL_GRANT_TYPES)
-//                    .build();
-//        }
-
-        //TODO não está convertendo de lá pra cá
         return this.clientFeignRepository.loadClientByClientId(clientId)
                 .orElseThrow(() -> new UsernameNotFoundException("ClientId " + clientId + " não localizado!"));
     }

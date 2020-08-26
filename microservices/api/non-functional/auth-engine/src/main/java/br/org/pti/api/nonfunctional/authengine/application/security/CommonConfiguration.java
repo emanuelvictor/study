@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
+import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -58,6 +59,7 @@ public class CommonConfiguration {
         final DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
         defaultTokenServices.setTokenStore(tokenStore());
         defaultTokenServices.setSupportRefreshToken(true);
+        defaultTokenServices.setTokenEnhancer(tokenEnhancer()); //TODO non necessary
         return defaultTokenServices;
     }
 
@@ -99,6 +101,14 @@ public class CommonConfiguration {
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder(12);
+    }
+
+    /**
+     * @return
+     */
+    @Bean
+    public AuthorizationCodeServices authorizationCodeServices() {
+        return new AuthorizationCodeServicesImpl();
     }
 
 }

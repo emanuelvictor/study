@@ -148,11 +148,14 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
   }
 
   /**
-   * TODO
+   *
    */
-  public logout(): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-    })
+  public logout(): void {
+    this.http.delete(`${environment.SSO}/oauth/revoke/${this.access.refresh_token}`)
+      .toPromise()
+      .then(() =>
+        window.location.href = `${environment.SSO}/logout`
+      )
   }
 
   /**
@@ -164,7 +167,7 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
     let params = new HttpParams();
     params = params.set('password', password);
 
-    return this.http.post(`/insert-password/${code}`, params).toPromise();
+    return this.http.post(`/insert-password/${code}`, params).toPromise(); //TODO B.O
   }
 
   /**
@@ -172,6 +175,6 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
    * @param email
    */
   public recoverPassword(email: any): Promise<any> {
-    return this.http.get(`/recover-password/${email}`).toPromise();
+    return this.http.get(`/recover-password/${email}`).toPromise(); //TODO B.O
   }
 }
