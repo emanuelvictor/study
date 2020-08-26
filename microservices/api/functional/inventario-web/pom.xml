@@ -48,7 +48,7 @@
         <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
 
         <!--        versão do quartz-->
-        <quartz.version>2.2.3</quartz.version>
+        <quartz.version>2.3.2</quartz.version>
 
         <!--commons lang 3-->
         <commons-lang3.version>3.9</commons-lang3.version>
