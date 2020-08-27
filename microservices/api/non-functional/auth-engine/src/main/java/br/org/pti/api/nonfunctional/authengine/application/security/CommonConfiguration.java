@@ -7,12 +7,9 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
-import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
@@ -101,14 +98,6 @@ public class CommonConfiguration {
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder(12);
-    }
-
-    /**
-     * @return
-     */
-    @Bean
-    public AuthorizationCodeServices authorizationCodeServices() {
-        return new AuthorizationCodeServicesImpl();
     }
 
 }
