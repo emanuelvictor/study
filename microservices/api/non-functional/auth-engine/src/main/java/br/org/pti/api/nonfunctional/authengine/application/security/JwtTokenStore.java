@@ -98,7 +98,7 @@ public class JwtTokenStore implements TokenStore {
 
     @Override
     public void storeRefreshToken(OAuth2RefreshToken refreshToken, OAuth2Authentication authentication) {
-//        Codes.getInstance().putOAuth2RefreshToken(authentication, refreshToken);
+        Codes.getInstance().putOAuth2RefreshToken(authentication, refreshToken);
     }
 
     @Override
