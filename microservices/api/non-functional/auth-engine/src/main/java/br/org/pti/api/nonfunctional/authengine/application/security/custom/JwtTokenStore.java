@@ -14,6 +14,7 @@ package br.org.pti.api.nonfunctional.authengine.application.security.custom;
  */
 
 
+import br.org.pti.api.nonfunctional.authengine.domain.entities.GrantType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.common.DefaultExpiringOAuth2RefreshToken;
 import org.springframework.security.oauth2.common.DefaultOAuth2RefreshToken;
@@ -25,6 +26,7 @@ import org.springframework.security.oauth2.provider.approval.Approval;
 import org.springframework.security.oauth2.provider.approval.Approval.ApprovalStatus;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 
 import java.util.*;
 
@@ -42,6 +44,16 @@ public class JwtTokenStore implements TokenStore {
     private JwtAccessTokenConverter jwtTokenEnhancer;
 
     private ApprovalStore approvalStore;
+
+    /**
+     *
+     */
+    private final List<AccessTokenAuthentication> accessTokens = new ArrayList<>();
+
+    /**
+     *
+     */
+    private final List<RefreshTokenAuthentication> refreshTokens = new ArrayList<>();
 
     /**
      * Create a JwtTokenStore with this token enhancer (should be shared with the DefaultTokenServices if used).
@@ -73,7 +85,7 @@ public class JwtTokenStore implements TokenStore {
 
     @Override
     public void storeAccessToken(OAuth2AccessToken token, OAuth2Authentication authentication) {
-        AccessAndRefreshTokenStore.getInstance().storeAccessToken( token,authentication);
+        this.accessTokens.add(new AccessTokenAuthentication(token, authentication));
     }
 
     @Override
@@ -91,12 +103,16 @@ public class JwtTokenStore implements TokenStore {
 
     @Override
     public void removeAccessToken(final OAuth2AccessToken token) {
-        AccessAndRefreshTokenStore.getInstance().removeAccessToken(token);
+        for (int i = 0; i < this.accessTokens.size(); i++)
+            if (this.accessTokens.get(i).getToken().getValue().equals(token.getValue())) {
+                this.accessTokens.remove(i);
+                break;
+            }
     }
 
     @Override
     public void storeRefreshToken(final OAuth2RefreshToken refreshToken, final OAuth2Authentication authentication) {
-        AccessAndRefreshTokenStore.getInstance().storeRefreshToken(refreshToken, authentication);
+        this.refreshTokens.add(new RefreshTokenAuthentication(refreshToken, authentication));
     }
 
     @Override
@@ -152,7 +168,16 @@ public class JwtTokenStore implements TokenStore {
 
     @Override
     public OAuth2AccessToken getAccessToken(OAuth2Authentication authentication) {
-        return AccessAndRefreshTokenStore.getInstance().getAccessToken(authentication);
+        if (authentication.getOAuth2Request().getGrantType().equals(GrantType.AUTHORIZATION_CODE.getGrantType()))
+            if (authentication.getUserAuthentication() != null && authentication.getUserAuthentication().getDetails() != null)
+                if (authentication.getUserAuthentication().getDetails() instanceof WebAuthenticationDetails)
+                    if (((WebAuthenticationDetails) authentication.getUserAuthentication().getDetails()).getSessionId() != null)
+                        for (final AccessTokenAuthentication accessToken : this.accessTokens)
+                            if (accessToken.getAuthentication() != null && accessToken.getAuthentication().getUserAuthentication() != null && accessToken.getAuthentication().getUserAuthentication().getDetails() != null && accessToken.getAuthentication().getUserAuthentication().getDetails() instanceof WebAuthenticationDetails)
+                                if (((WebAuthenticationDetails) authentication.getUserAuthentication().getDetails()).getSessionId().equals(((WebAuthenticationDetails) accessToken.getAuthentication().getUserAuthentication().getDetails()).getSessionId()))
+                                    return accessToken.getToken();
+                                //TODO colocar outros grantypes
+        return null;
     }
 
     @Override
@@ -162,7 +187,11 @@ public class JwtTokenStore implements TokenStore {
 
     @Override
     public Collection<OAuth2AccessToken> findTokensByClientId(final String clientId) {
-        return AccessAndRefreshTokenStore.getInstance().findTokensByClientId(clientId);
+        final Set<OAuth2AccessToken> accessTokensToReturn = new HashSet<>();
+        for (final AccessTokenAuthentication accessToken : this.accessTokens)
+            if (accessToken.getAuthentication() != null && accessToken.getAuthentication().getOAuth2Request() != null && accessToken.getAuthentication().getOAuth2Request().getClientId() != null && accessToken.getAuthentication().getOAuth2Request().getClientId().equals(clientId))
+                accessTokensToReturn.add(accessToken.getToken());
+        return accessTokensToReturn;
     }
 
     public void setTokenEnhancer(JwtAccessTokenConverter tokenEnhancer) {
