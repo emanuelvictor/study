@@ -73,7 +73,7 @@ public class JwtTokenStore implements TokenStore {
 
     @Override
     public void storeAccessToken(OAuth2AccessToken token, OAuth2Authentication authentication) {
-        Codes.getInstance().storeAccessToken( token,authentication);
+        AccessAndRefreshTokenStore.getInstance().storeAccessToken( token,authentication);
     }
 
     @Override
@@ -91,13 +91,12 @@ public class JwtTokenStore implements TokenStore {
 
     @Override
     public void removeAccessToken(final OAuth2AccessToken token) {
-        // todo
-        // gh-807 Approvals (if any) should only be removed when Refresh Tokens are removed (or expired)
+        AccessAndRefreshTokenStore.getInstance().removeAccessToken(token);
     }
 
     @Override
     public void storeRefreshToken(final OAuth2RefreshToken refreshToken, final OAuth2Authentication authentication) {
-        Codes.getInstance().storeRefreshToken(refreshToken, authentication);
+        AccessAndRefreshTokenStore.getInstance().storeRefreshToken(refreshToken, authentication);
     }
 
     @Override
@@ -153,17 +152,17 @@ public class JwtTokenStore implements TokenStore {
 
     @Override
     public OAuth2AccessToken getAccessToken(OAuth2Authentication authentication) {
-        return Codes.getInstance().getAccessToken(authentication);
+        return AccessAndRefreshTokenStore.getInstance().getAccessToken(authentication);
     }
 
     @Override
-    public Collection<OAuth2AccessToken> findTokensByClientIdAndUserName(String clientId, String userName) {
+    public Collection<OAuth2AccessToken> findTokensByClientIdAndUserName(final String clientId, final String userName) {
         return Collections.emptySet(); //TODO
     }
 
     @Override
-    public Collection<OAuth2AccessToken> findTokensByClientId(String clientId) {
-        return Collections.emptySet();//TODO
+    public Collection<OAuth2AccessToken> findTokensByClientId(final String clientId) {
+        return AccessAndRefreshTokenStore.getInstance().findTokensByClientId(clientId);
     }
 
     public void setTokenEnhancer(JwtAccessTokenConverter tokenEnhancer) {
