@@ -11,9 +11,9 @@ public class AccessTokenAuthentication {
 
     private OAuth2Authentication authentication;
 
-    public AccessTokenAuthentication(final OAuth2Authentication authentication, final OAuth2AccessToken token) {
-        this.authentication = authentication;
+    public AccessTokenAuthentication(final OAuth2AccessToken token, final OAuth2Authentication authentication) {
         this.token = token;
+        this.authentication = authentication;
     }
 
 }

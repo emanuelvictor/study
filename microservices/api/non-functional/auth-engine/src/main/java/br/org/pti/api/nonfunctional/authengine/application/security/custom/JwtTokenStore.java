@@ -1,4 +1,4 @@
-package br.org.pti.api.nonfunctional.authengine.application.security;
+package br.org.pti.api.nonfunctional.authengine.application.security.custom;
 
 /*
  * Copyright 2013-2014 the original author or authors.
@@ -14,7 +14,6 @@ package br.org.pti.api.nonfunctional.authengine.application.security;
  */
 
 
-import br.org.pti.api.nonfunctional.authengine.application.security.custom.Codes;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.common.DefaultExpiringOAuth2RefreshToken;
 import org.springframework.security.oauth2.common.DefaultOAuth2RefreshToken;
@@ -74,7 +73,7 @@ public class JwtTokenStore implements TokenStore {
 
     @Override
     public void storeAccessToken(OAuth2AccessToken token, OAuth2Authentication authentication) {
-        Codes.getInstance().putOAuth2AccessToken(authentication, token);
+        Codes.getInstance().storeAccessToken( token,authentication);
     }
 
     @Override
@@ -97,8 +96,8 @@ public class JwtTokenStore implements TokenStore {
     }
 
     @Override
-    public void storeRefreshToken(OAuth2RefreshToken refreshToken, OAuth2Authentication authentication) {
-        Codes.getInstance().putOAuth2RefreshToken(authentication, refreshToken);
+    public void storeRefreshToken(final OAuth2RefreshToken refreshToken, final OAuth2Authentication authentication) {
+        Codes.getInstance().storeRefreshToken(refreshToken, authentication);
     }
 
     @Override
@@ -154,7 +153,7 @@ public class JwtTokenStore implements TokenStore {
 
     @Override
     public OAuth2AccessToken getAccessToken(OAuth2Authentication authentication) {
-        return Codes.getInstance().getOAuth2AccessToken(authentication);
+        return Codes.getInstance().getAccessToken(authentication);
     }
 
     @Override

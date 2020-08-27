@@ -30,12 +30,12 @@ public final class Codes {
         return INSTANCE;
     }
 
-    public OAuth2AccessToken putOAuth2AccessToken(final OAuth2Authentication authentication, final OAuth2AccessToken token) {
-        this.accessTokens.add(new AccessTokenAuthentication(authentication, token));
+    public OAuth2AccessToken storeAccessToken(final OAuth2AccessToken token, final OAuth2Authentication authentication) {
+        this.accessTokens.add(new AccessTokenAuthentication(token, authentication));
         return token;
     }
 
-    public OAuth2AccessToken getOAuth2AccessToken(final OAuth2Authentication authentication) {
+    public OAuth2AccessToken getAccessToken(final OAuth2Authentication authentication) {
         if (authentication.getOAuth2Request().getGrantType().equals(GrantType.AUTHORIZATION_CODE.getGrantType()))
             if (authentication.getUserAuthentication() != null && authentication.getUserAuthentication().getDetails() != null)
                 if (authentication.getUserAuthentication().getDetails() instanceof WebAuthenticationDetails)
@@ -47,8 +47,8 @@ public final class Codes {
         return null;
     }
 
-    public OAuth2RefreshToken putOAuth2RefreshToken(final OAuth2Authentication authentication, final OAuth2RefreshToken token) {
-        this.refreshTokens.add(new RefreshTokenAuthentication(authentication, token));
+    public OAuth2RefreshToken storeRefreshToken(final OAuth2RefreshToken token, final OAuth2Authentication authentication) {
+        this.refreshTokens.add(new RefreshTokenAuthentication(token, authentication));
         return token;
     }
 

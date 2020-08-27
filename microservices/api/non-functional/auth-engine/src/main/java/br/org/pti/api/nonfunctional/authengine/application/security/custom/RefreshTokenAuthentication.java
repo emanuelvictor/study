@@ -12,8 +12,8 @@ public class RefreshTokenAuthentication {
 
     private OAuth2Authentication authentication;
 
-    public RefreshTokenAuthentication(final OAuth2Authentication authentication, final OAuth2RefreshToken token) {
-        this.authentication = authentication;
+    public RefreshTokenAuthentication( final OAuth2RefreshToken token, final OAuth2Authentication authentication) {
         this.token = token;
+        this.authentication = authentication;
     }
 }

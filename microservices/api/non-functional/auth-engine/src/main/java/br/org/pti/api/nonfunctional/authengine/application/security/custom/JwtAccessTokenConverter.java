@@ -1,4 +1,4 @@
-package br.org.pti.api.nonfunctional.authengine.application.security;
+package br.org.pti.api.nonfunctional.authengine.application.security.custom;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

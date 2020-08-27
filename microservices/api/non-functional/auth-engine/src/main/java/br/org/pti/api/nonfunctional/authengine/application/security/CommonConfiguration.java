@@ -1,5 +1,7 @@
 package br.org.pti.api.nonfunctional.authengine.application.security;
 
+import br.org.pti.api.nonfunctional.authengine.application.security.custom.JwtAccessTokenConverter;
+import br.org.pti.api.nonfunctional.authengine.application.security.custom.JwtTokenStore;
 import br.org.pti.api.nonfunctional.authengine.domain.entities.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
