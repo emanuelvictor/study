@@ -52,7 +52,7 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.getObservedLoggedUser().map(auth => {
       if (isNullOrUndefined(auth)) {
-        window.location.href = `${environment.SSO}/oauth/authorize?response_type=code&client_id=browser&redirect_uri=${this.origin}` + (state.url ? '&state=' + state.url : '');
+        this.authorizationCode(state.url);
         return false
       } else {
         const stateReturned: string = getParameterByName('state');
@@ -80,7 +80,7 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
     this.getPromiseLoggedUserInstance = this.getPromiseLoggedUserInstance ? this.getPromiseLoggedUserInstance : new Promise<UserDetails>((resolve, reject) => {
 
       const authorizationCode: string = getParameterByName('code');
-console.log(authorizationCode);
+      console.log(authorizationCode);
       if (this.access && this.access.isInvalidAccessToken) { // Have the access token and it is invalid, but have the refresh token, get the access token by refresh token
 
         this.getAccessTokenByRefreshToken(this.access.refresh_token).subscribe(result => {
@@ -156,7 +156,7 @@ console.log(authorizationCode);
     this.http.delete(`${environment.SSO}/oauth/revoke/${this.access.refresh_token}`)
       .toPromise()
       .then(() =>
-        window.location.href = `${environment.SSO}/logout`
+        this.toSSO('/logout')
       )
   }
 
@@ -178,5 +178,20 @@ console.log(authorizationCode);
    */
   public recoverPassword(email: any): Promise<any> {
     return this.http.get(`/recover-password/${email}`).toPromise(); //TODO B.O
+  }
+
+  /**
+   *
+   */
+  public authorizationCode(state?: string) {
+    this.toSSO(`/oauth/authorize?response_type=code&client_id=browser&redirect_uri=${this.origin}` + (state ? '&state=' + state : ''));
+  }
+
+  /**
+   *
+   * @param path
+   */
+  public toSSO(path?: string) {
+    window.location.href = `${environment.SSO}${path}`
   }
 }

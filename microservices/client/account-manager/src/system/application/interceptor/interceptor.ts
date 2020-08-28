@@ -83,19 +83,12 @@ export class Interceptor implements HttpInterceptor {
     this.progress.done();
 
     return (res: any) => {
-      // if (res.status === 500) {
-      //     this.error(res.error.message);
-      // }
-      //
-      // if (res.status === 401 || res.status === 403) {
-      //     //handle authorization errors
-      //     //in this example I am navigating to logout route which brings the login screen
-      //     // this.router.navigate(['login']);
-      //     this.error(res.error.message)
-      // }
-      if (res.error)
+      if (res.error) {
+        if (res.error.error && res.error.error === 'invalid_grant' && res.error.error_description && res.error.error_description.indexOf('nvalid refresh token') > 0)
+          this.authenticationService.authorizationCode(window.location.href.substring(window.location.href.indexOf('#/') + 1, window.location.href.length))
         if (typeof res.error === 'string')
-          res.error = JSON.parse(res.error);
+          res.error = JSON.parse(res.error)
+      }
 
       this.error(res.error.message);
 
