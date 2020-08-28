@@ -152,10 +152,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="964d2671-ef35-4a88-96d3-1be499abad3b" name="Default Changelist" comment="Trying implement access token linked with JSESSIONID">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/non-functional/auth-engine/src/main/java/br/org/pti/api/nonfunctional/authengine/application/aspect/RestResponseEntityExceptionHandler.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/account-manager/src/system/application/interceptor/interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/system/application/interceptor/interceptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/account-manager/src/system/application/presentation/authenticated/authenticated-view.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/system/application/presentation/authenticated/authenticated-view.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/account-manager/src/system/domain/services/authentication.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/account-manager/src/system/domain/services/authentication.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -465,7 +464,7 @@
       <workItem from="1597619010777" duration="2578000" />
       <workItem from="1597636166504" duration="1995000" />
       <workItem from="1598234940962" duration="8182000" />
-      <workItem from="1598622082967" duration="7620000" />
+      <workItem from="1598622082967" duration="8964000" />
     </task>
     <task id="LOCAL-00001" summary="Rearranging packages.">
       <created>1583254084341</created>
@@ -663,7 +662,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598475438946</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Trying implement access token linked with JSESSIONID">
+      <created>1598633465486</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1598633465486</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -907,11 +913,11 @@
     </state>
     <state x="443" y="102" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1596939354919" />
     <state x="443" y="130" width="1024" height="845" key="SettingsEditor/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595600973471" />
-    <state x="552" y="283" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1598475443421">
+    <state x="552" y="283" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1598633469591">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1597522963515" />
-    <state x="552" y="283" width="800" height="528" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1598475443421" />
+    <state x="552" y="283" width="800" height="528" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1598633469591" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1597514738389">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -936,11 +942,11 @@
     </state>
     <state x="624" y="223" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1597504466337" />
     <state x="624" y="253" key="run.anything.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1595602453942" />
-    <state x="623" y="255" width="672" height="687" key="search.everywhere.popup" timestamp="1598624821848">
+    <state x="623" y="255" width="672" height="687" key="search.everywhere.popup" timestamp="1598634760477">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1598243349672" />
-    <state x="623" y="255" width="672" height="687" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1598624821848" />
+    <state x="623" y="255" width="672" height="687" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1598634760477" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

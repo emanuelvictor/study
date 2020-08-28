@@ -59,8 +59,6 @@ export class Interceptor implements HttpInterceptor {
       return next.handle(req)
         .do(evt => {
 
-          this.progress.start();
-
           if (evt instanceof HttpResponse)
             this.progress.done();
 
@@ -83,19 +81,36 @@ export class Interceptor implements HttpInterceptor {
     this.progress.done();
 
     return (res: any) => {
+
       if (res.error) {
-        if (res.error.error && res.error.error === 'invalid_grant' && res.error.error_description && res.error.error_description.indexOf('nvalid refresh token') > 0)
+
+        // Invalid refresh token handler
+        if (res.error.error && res.error.error === 'invalid_grant' && res.error.error_description && res.error.error_description.indexOf('nvalid refresh token') > 0) {
           this.authenticationService.authorizationCode(window.location.href.substring(window.location.href.indexOf('#/') + 1, window.location.href.length))
+          return this.innerHandler(res)
+        }
+
         if (typeof res.error === 'string')
           res.error = JSON.parse(res.error)
       }
 
+      // Show the message error
       this.error(res.error.message);
 
-      this.progress.done();
-
-      return observableThrowError(res);
+      return this.innerHandler(res);
     };
+  }
+
+  /**
+   *
+   * @param res
+   */
+  private innerHandler(res): Observable<never> {
+
+    this.progress.done();
+
+    return observableThrowError(res)
+
   }
 
   /**

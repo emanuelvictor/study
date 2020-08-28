@@ -73,9 +73,7 @@ export class AuthenticatedViewComponent implements OnInit, OnDestroy {
    *
    */
   public logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/login']);
-    localStorage.clear() // LOCALSTORAGE
+    this.authenticationService.logout()
   }
 
   /**
