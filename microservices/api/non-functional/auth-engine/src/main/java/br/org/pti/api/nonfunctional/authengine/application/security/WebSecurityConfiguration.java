@@ -1,5 +1,6 @@
 package br.org.pti.api.nonfunctional.authengine.application.security;
 
+import br.org.pti.api.nonfunctional.authengine.application.security.custom.CustomLogoutHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,12 +10,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
-
-import static br.org.pti.api.nonfunctional.authengine.application.security.AuthorizationServerConfiguration.corsConfigurationSource;
 
 /**
  * @author Emanuel Victor
@@ -32,6 +27,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
      *
      */
     private final UserDetailsService userDetailsService;
+
+    /**
+     *
+     */
+    private final CustomLogoutHandler customLogoutHandler;
 
     /**
      * {@inheritDoc}
@@ -69,6 +69,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**"/*, "/login", "/oauth/authorize"*/)
                 .permitAll()
                 .and().formLogin()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .addLogoutHandler(customLogoutHandler)
                 .permitAll().and().logout().permitAll();
     }
 }

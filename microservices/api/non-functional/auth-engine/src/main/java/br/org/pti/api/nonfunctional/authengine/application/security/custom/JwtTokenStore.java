@@ -97,7 +97,14 @@ public class JwtTokenStore implements TokenStore {
         return null;
     }
 
-    private OAuth2AccessToken convertAccessToken(String tokenValue) {
+    public OAuth2RefreshToken getRefreshTokenBySessionId(final String sessionId) {
+        for (final RefreshTokenAuthentication refreshToken : this.refreshTokens)
+            if (refreshToken.getAuthentication() != null && refreshToken.getAuthentication().getUserAuthentication() != null && refreshToken.getAuthentication().getUserAuthentication().getDetails() != null && refreshToken.getAuthentication().getUserAuthentication().getDetails() instanceof WebAuthenticationDetails && sessionId.equals(((WebAuthenticationDetails) refreshToken.getAuthentication().getUserAuthentication().getDetails()).getSessionId()))
+                return refreshToken.getToken();
+        return null;
+    }
+
+    private OAuth2AccessToken convertAccessToken(final String tokenValue) {
         return jwtTokenEnhancer.extractAccessToken(tokenValue, jwtTokenEnhancer.decode(tokenValue));
     }
 

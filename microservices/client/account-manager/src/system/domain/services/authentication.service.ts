@@ -153,8 +153,7 @@ export class AuthenticationService implements CanActivate, CanActivateChild {
    *
    */
   public logout(): void {
-    this.http.delete(`${environment.SSO}/oauth/revoke/${this.access.refresh_token}`)
-      .subscribe(() => this.toSSO('/logout'))
+    this.toSSO('/logout')
   }
 
   /**
