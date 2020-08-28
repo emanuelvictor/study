@@ -38,6 +38,8 @@ public class ServiceToken {
     public void removeRefreshToken(final String refreshToken) {
         final OAuth2RefreshToken oAuth2RefreshToken = tokenStore.readRefreshToken(refreshToken);
 
+        tokenStore.removeAccessTokenUsingRefreshToken(oAuth2RefreshToken);
+
         tokenStore.removeRefreshToken(oAuth2RefreshToken);
 
         LOG.info("Refresh Token " + refreshToken + " revoked ");

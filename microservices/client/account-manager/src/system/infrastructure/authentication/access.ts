@@ -80,6 +80,7 @@ export class Access extends User {
   }
 
   get isInvalidAccessToken(): boolean {
+    console.log('_date_to_expire',this._date_to_expire);
     return Access.isDateBeforeToday(this._date_to_expire)
   }
 

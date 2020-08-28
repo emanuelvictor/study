@@ -41,7 +41,7 @@ import java.util.*;
  */
 public class JwtTokenStore implements TokenStore {
 
-    private JwtAccessTokenConverter jwtTokenEnhancer;
+    private final JwtAccessTokenConverter jwtTokenEnhancer;
 
     private ApprovalStore approvalStore;
 
@@ -58,19 +58,10 @@ public class JwtTokenStore implements TokenStore {
     /**
      * Create a JwtTokenStore with this token enhancer (should be shared with the DefaultTokenServices if used).
      *
-     * @param jwtTokenEnhancer
+     * @param jwtTokenEnhancer JwtAccessTokenConverter
      */
-    public JwtTokenStore(JwtAccessTokenConverter jwtTokenEnhancer) {
+    public JwtTokenStore(final JwtAccessTokenConverter jwtTokenEnhancer) {
         this.jwtTokenEnhancer = jwtTokenEnhancer;
-    }
-
-    /**
-     * ApprovalStore to be used to validate and restrict refresh tokens.
-     *
-     * @param approvalStore the approvalStore to set
-     */
-    public void setApprovalStore(ApprovalStore approvalStore) {
-        this.approvalStore = approvalStore;
     }
 
     @Override
@@ -85,16 +76,25 @@ public class JwtTokenStore implements TokenStore {
 
     @Override
     public void storeAccessToken(OAuth2AccessToken token, OAuth2Authentication authentication) {
+        for (final AccessTokenAuthentication accessToken : this.accessTokens)
+            if (accessToken.getToken().getValue().equals(token.getValue())) {
+                return;
+            }
         this.accessTokens.add(new AccessTokenAuthentication(token, authentication));
     }
 
     @Override
     public OAuth2AccessToken readAccessToken(String tokenValue) {
-        OAuth2AccessToken accessToken = convertAccessToken(tokenValue);
-        if (jwtTokenEnhancer.isRefreshToken(accessToken)) {
+        if (jwtTokenEnhancer.isRefreshToken(convertAccessToken(tokenValue))) {
             throw new InvalidTokenException("Encoded token is a refresh token");
         }
-        return accessToken;
+
+        for (final AccessTokenAuthentication accessToken : this.accessTokens) {
+            if (accessToken.getToken().getValue().equals(tokenValue))
+                return accessToken.getToken();
+        }
+
+        return null;
     }
 
     private OAuth2AccessToken convertAccessToken(String tokenValue) {
@@ -111,8 +111,12 @@ public class JwtTokenStore implements TokenStore {
     }
 
     @Override
-    public void storeRefreshToken(final OAuth2RefreshToken refreshToken, final OAuth2Authentication authentication) {
-        this.refreshTokens.add(new RefreshTokenAuthentication(refreshToken, authentication));
+    public void storeRefreshToken(final OAuth2RefreshToken token, final OAuth2Authentication authentication) {
+        for (final RefreshTokenAuthentication refreshToken : this.refreshTokens)
+            if (refreshToken.getToken().getValue().equals(token.getValue())) {
+                break;
+            }
+        this.refreshTokens.add(new RefreshTokenAuthentication(token, authentication));
     }
 
     @Override
@@ -125,7 +129,7 @@ public class JwtTokenStore implements TokenStore {
                 String userId = authentication.getUserAuthentication().getName();
                 String clientId = authentication.getOAuth2Request().getClientId();
                 Collection<Approval> approvals = approvalStore.getApprovals(userId, clientId);
-                Collection<String> approvedScopes = new HashSet<String>();
+                Collection<String> approvedScopes = new HashSet<>();
                 for (Approval approval : approvals) {
                     if (approval.isApproved()) {
                         approvedScopes.add(approval.getScope());
@@ -136,7 +140,14 @@ public class JwtTokenStore implements TokenStore {
                 }
             }
         }
-        return refreshToken;
+
+        for (final RefreshTokenAuthentication refreshhToken : this.refreshTokens) {
+            if (refreshhToken.getToken().getValue().equals(refreshToken.getValue()))
+                return refreshhToken.getToken();
+        }
+
+        return null;
+
     }
 
     private OAuth2RefreshToken createRefreshToken(OAuth2AccessToken encodedRefreshToken) {
@@ -156,18 +167,43 @@ public class JwtTokenStore implements TokenStore {
     }
 
     @Override
-    public void removeRefreshToken(OAuth2RefreshToken token) {
+    public void removeRefreshToken(final OAuth2RefreshToken token) {
+        for (int i = 0; i < this.refreshTokens.size(); i++)
+            if (this.refreshTokens.get(i).getToken().getValue().equals(token.getValue())) {
+                this.refreshTokens.remove(i);
+                break;
+            }
         remove(token.getValue());
     }
 
     @Override
-    public void removeAccessTokenUsingRefreshToken(OAuth2RefreshToken refreshToken) {
-        //TODO
-        // gh-807 Approvals (if any) should only be removed when Refresh Tokens are removed (or expired)
+    public void removeAccessTokenUsingRefreshToken(final OAuth2RefreshToken token) {
+        for (int i = 0; i < this.accessTokens.size(); i++)
+            if (this.accessTokens.get(i).getToken().getRefreshToken() != null && this.accessTokens.get(i).getToken().getRefreshToken().getValue().equals(token.getValue())) {
+                remove(this.accessTokens.get(i).getToken().getValue());
+                this.accessTokens.remove(i);
+                return;
+            }
+
+        RefreshTokenAuthentication refreshTokenAuthentication = null;
+        for (final RefreshTokenAuthentication refreshToken : this.refreshTokens)
+            if (refreshToken.getToken().getValue().equals(token.getValue())) {
+                refreshTokenAuthentication = refreshToken;
+                break;
+            }
+
+        if (refreshTokenAuthentication == null && refreshTokenAuthentication.getAuthentication() != null && refreshTokenAuthentication.getAuthentication().getUserAuthentication() != null && refreshTokenAuthentication.getAuthentication().getUserAuthentication().getDetails() != null && refreshTokenAuthentication.getAuthentication().getUserAuthentication().getDetails() instanceof WebAuthenticationDetails && ((WebAuthenticationDetails) refreshTokenAuthentication.getAuthentication().getUserAuthentication().getDetails()).getSessionId() != null)
+            for (int i = 0; i < this.accessTokens.size(); i++)
+                if (this.accessTokens.get(i).getAuthentication() != null && this.accessTokens.get(i).getAuthentication().getUserAuthentication() != null && this.accessTokens.get(i).getAuthentication().getUserAuthentication().getDetails() != null && this.accessTokens.get(i).getAuthentication().getUserAuthentication().getDetails() instanceof WebAuthenticationDetails && ((WebAuthenticationDetails) refreshTokenAuthentication.getAuthentication().getUserAuthentication().getDetails()).getSessionId().equals(((WebAuthenticationDetails) this.accessTokens.get(i).getAuthentication().getUserAuthentication().getDetails()).getSessionId())) {
+                    remove(this.accessTokens.get(i).getToken().getValue());
+                    this.accessTokens.remove(i);
+                    break;
+                }
+
     }
 
     @Override
-    public OAuth2AccessToken getAccessToken(OAuth2Authentication authentication) {
+    public OAuth2AccessToken getAccessToken(final OAuth2Authentication authentication) {
         if (authentication.getOAuth2Request().getGrantType().equals(GrantType.AUTHORIZATION_CODE.getGrantType()))
             if (authentication.getUserAuthentication() != null && authentication.getUserAuthentication().getDetails() != null)
                 if (authentication.getUserAuthentication().getDetails() instanceof WebAuthenticationDetails)
@@ -176,12 +212,13 @@ public class JwtTokenStore implements TokenStore {
                             if (accessToken.getAuthentication() != null && accessToken.getAuthentication().getUserAuthentication() != null && accessToken.getAuthentication().getUserAuthentication().getDetails() != null && accessToken.getAuthentication().getUserAuthentication().getDetails() instanceof WebAuthenticationDetails)
                                 if (((WebAuthenticationDetails) authentication.getUserAuthentication().getDetails()).getSessionId().equals(((WebAuthenticationDetails) accessToken.getAuthentication().getUserAuthentication().getDetails()).getSessionId()))
                                     return accessToken.getToken();
-                                //TODO colocar outros grantypes
+        //TODO colocar outros grantypes
         return null;
     }
 
     @Override
-    public Collection<OAuth2AccessToken> findTokensByClientIdAndUserName(final String clientId, final String userName) {
+    public Collection<OAuth2AccessToken> findTokensByClientIdAndUserName(final String clientId,
+                                                                         final String userName) {
         return Collections.emptySet(); //TODO
     }
 
@@ -194,18 +231,14 @@ public class JwtTokenStore implements TokenStore {
         return accessTokensToReturn;
     }
 
-    public void setTokenEnhancer(JwtAccessTokenConverter tokenEnhancer) {
-        this.jwtTokenEnhancer = tokenEnhancer;
-    }
-
-    private void remove(String token) {
+    private void remove(final String token) {
         if (approvalStore != null) {
-            OAuth2Authentication auth = readAuthentication(token);
-            String clientId = auth.getOAuth2Request().getClientId();
-            Authentication user = auth.getUserAuthentication();
+            final OAuth2Authentication auth = readAuthentication(token);
+            final String clientId = auth.getOAuth2Request().getClientId();
+            final Authentication user = auth.getUserAuthentication();
             if (user != null) {
-                Collection<Approval> approvals = new ArrayList<Approval>();
-                for (String scope : auth.getOAuth2Request().getScope()) {
+                final Collection<Approval> approvals = new ArrayList<>();
+                for (final String scope : auth.getOAuth2Request().getScope()) {
                     approvals.add(new Approval(user.getName(), clientId, scope, new Date(), ApprovalStatus.APPROVED));
                 }
                 approvalStore.revokeApprovals(approvals);
