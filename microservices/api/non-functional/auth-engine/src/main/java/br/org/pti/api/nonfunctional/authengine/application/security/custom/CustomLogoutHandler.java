@@ -26,6 +26,7 @@ public class CustomLogoutHandler implements LogoutHandler {
      */
     @Override
     public void logout(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse, final Authentication authentication) {
-        serviceToken.removeRefreshTokenBySessionId(((WebAuthenticationDetails) authentication.getDetails()).getSessionId());
+        if (authentication != null && authentication.getDetails() != null && authentication.getDetails() instanceof WebAuthenticationDetails)
+            serviceToken.removeRefreshTokenBySessionId(((WebAuthenticationDetails) authentication.getDetails()).getSessionId());
     }
 }

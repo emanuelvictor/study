@@ -76,8 +76,14 @@ public class JwtTokenStore implements TokenStore {
 
     @Override
     public void storeAccessToken(OAuth2AccessToken token, OAuth2Authentication authentication) {
-        for (final AccessTokenAuthentication accessToken : this.accessTokens)
-            if (accessToken.getToken().getValue().equals(token.getValue())) {
+        for (int i = 0; i < this.accessTokens.size(); i++)
+            if (this.accessTokens.get(i).getToken().getValue().equals(token.getValue())) {
+                if (authentication.getUserAuthentication() == null)
+                    this.accessTokens.remove(i);
+                else {
+                    this.accessTokens.get(i).setAuthentication(authentication);
+                    this.accessTokens.get(i).setToken(token);
+                }
                 return;
             }
         this.accessTokens.add(new AccessTokenAuthentication(token, authentication));
@@ -119,9 +125,15 @@ public class JwtTokenStore implements TokenStore {
 
     @Override
     public void storeRefreshToken(final OAuth2RefreshToken token, final OAuth2Authentication authentication) {
-        for (final RefreshTokenAuthentication refreshToken : this.refreshTokens)
-            if (refreshToken.getToken().getValue().equals(token.getValue())) {
-                break;
+        for (int i = 0; i < this.refreshTokens.size(); i++)
+            if (this.refreshTokens.get(i).getToken().getValue().equals(token.getValue())) {
+                if (authentication.getUserAuthentication() == null)
+                    this.refreshTokens.remove(i);
+                else {
+                    this.refreshTokens.get(i).setAuthentication(authentication);
+                    this.refreshTokens.get(i).setToken(token);
+                }
+                return;
             }
         this.refreshTokens.add(new RefreshTokenAuthentication(token, authentication));
     }

@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
@@ -63,6 +64,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http
+                .sessionManagement().sessionFixation().none() //TODO verify necessity
+//                .sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+                .and()
                 .csrf()
                 .disable()
                 .authorizeRequests()
