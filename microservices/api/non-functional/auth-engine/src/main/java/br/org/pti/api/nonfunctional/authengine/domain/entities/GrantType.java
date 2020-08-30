@@ -72,7 +72,7 @@ public enum GrantType {
     /**
      * @return the grantType
      */
-    public String getGrantType() {
+    public String getValue() {
         return grantType;
     }
 }

@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ClientService implements ClientDetailsService {
 
-    private static final String[] ALL_GRANT_TYPES = new String[]{GrantType.AUTHORIZATION_CODE.getGrantType(), GrantType.CLIENT_CREDENTIALS.getGrantType(), GrantType.IMPLICIT.getGrantType(), GrantType.PASSWORD.getGrantType(), GrantType.REFRESH_TOKEN.getGrantType(), "implicit"};
+    private static final String[] ALL_GRANT_TYPES = new String[]{GrantType.AUTHORIZATION_CODE.getValue(), GrantType.CLIENT_CREDENTIALS.getValue(), GrantType.IMPLICIT.getValue(), GrantType.PASSWORD.getValue(), GrantType.REFRESH_TOKEN.getValue(), "implicit"};
 
     /**
      *

@@ -7,10 +7,9 @@ spring:
 #      enabled: true
 #      force: true
 
-#server:
-#  servlet:
-#    session:
-#      persistent: false
+  servlet:
+    session:
+      persistent: false
 
 management:
   health:
@@ -46,3 +45,8 @@ info:
   description: 'Auth Engine'
   version: @project.version@-@project.build-number@
   environment: @active.profile@
+
+server:
+  servlet:
+    session:
+      timeout: 999999999

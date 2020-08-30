@@ -86,21 +86,23 @@ public class JwtTokenStore implements TokenStore {
                 }
                 return;
             }
-        this.accessTokens.add(new AccessTokenAuthentication(token, authentication));
+        if (authentication.getUserAuthentication() != null)
+            this.accessTokens.add(new AccessTokenAuthentication(token, authentication));
     }
 
     @Override
     public OAuth2AccessToken readAccessToken(String tokenValue) {
-        if (jwtTokenEnhancer.isRefreshToken(convertAccessToken(tokenValue))) {
+        OAuth2AccessToken accessToken = convertAccessToken(tokenValue);
+        if (jwtTokenEnhancer.isRefreshToken(accessToken)) {
             throw new InvalidTokenException("Encoded token is a refresh token");
         }
 
-        for (final AccessTokenAuthentication accessToken : this.accessTokens) {
-            if (accessToken.getToken().getValue().equals(tokenValue))
-                return accessToken.getToken();
+        for (final AccessTokenAuthentication accessTokenAuthentication : this.accessTokens) {
+            if (accessTokenAuthentication.getToken().getValue().equals(tokenValue))
+                return accessTokenAuthentication.getToken();
         }
 
-        return null;
+        return accessToken;
     }
 
     public OAuth2RefreshToken getRefreshTokenBySessionId(final String sessionId) {
@@ -135,7 +137,8 @@ public class JwtTokenStore implements TokenStore {
                 }
                 return;
             }
-        this.refreshTokens.add(new RefreshTokenAuthentication(token, authentication));
+        if (authentication.getUserAuthentication() != null)
+            this.refreshTokens.add(new RefreshTokenAuthentication(token, authentication));
     }
 
     @Override
@@ -165,7 +168,7 @@ public class JwtTokenStore implements TokenStore {
                 return refreshhToken.getToken();
         }
 
-        return null;
+        return refreshToken;
 
     }
 
@@ -211,7 +214,7 @@ public class JwtTokenStore implements TokenStore {
                 break;
             }
 
-        if (refreshTokenAuthentication == null && refreshTokenAuthentication.getAuthentication() != null && refreshTokenAuthentication.getAuthentication().getUserAuthentication() != null && refreshTokenAuthentication.getAuthentication().getUserAuthentication().getDetails() != null && refreshTokenAuthentication.getAuthentication().getUserAuthentication().getDetails() instanceof WebAuthenticationDetails && ((WebAuthenticationDetails) refreshTokenAuthentication.getAuthentication().getUserAuthentication().getDetails()).getSessionId() != null)
+        if (refreshTokenAuthentication != null && refreshTokenAuthentication.getAuthentication() != null && refreshTokenAuthentication.getAuthentication().getUserAuthentication() != null && refreshTokenAuthentication.getAuthentication().getUserAuthentication().getDetails() != null && refreshTokenAuthentication.getAuthentication().getUserAuthentication().getDetails() instanceof WebAuthenticationDetails && ((WebAuthenticationDetails) refreshTokenAuthentication.getAuthentication().getUserAuthentication().getDetails()).getSessionId() != null)
             for (int i = 0; i < this.accessTokens.size(); i++)
                 if (this.accessTokens.get(i).getAuthentication() != null && this.accessTokens.get(i).getAuthentication().getUserAuthentication() != null && this.accessTokens.get(i).getAuthentication().getUserAuthentication().getDetails() != null && this.accessTokens.get(i).getAuthentication().getUserAuthentication().getDetails() instanceof WebAuthenticationDetails && ((WebAuthenticationDetails) refreshTokenAuthentication.getAuthentication().getUserAuthentication().getDetails()).getSessionId().equals(((WebAuthenticationDetails) this.accessTokens.get(i).getAuthentication().getUserAuthentication().getDetails()).getSessionId())) {
                     remove(this.accessTokens.get(i).getToken().getValue());
@@ -223,7 +226,7 @@ public class JwtTokenStore implements TokenStore {
 
     @Override
     public OAuth2AccessToken getAccessToken(final OAuth2Authentication authentication) {
-        if (authentication.getOAuth2Request().getGrantType().equals(GrantType.AUTHORIZATION_CODE.getGrantType()))
+        if (authentication.getOAuth2Request().getGrantType().equals(GrantType.AUTHORIZATION_CODE.getValue()))
             if (authentication.getUserAuthentication() != null && authentication.getUserAuthentication().getDetails() != null)
                 if (authentication.getUserAuthentication().getDetails() instanceof WebAuthenticationDetails)
                     if (((WebAuthenticationDetails) authentication.getUserAuthentication().getDetails()).getSessionId() != null)
@@ -236,8 +239,7 @@ public class JwtTokenStore implements TokenStore {
     }
 
     @Override
-    public Collection<OAuth2AccessToken> findTokensByClientIdAndUserName(final String clientId,
-                                                                         final String userName) {
+    public Collection<OAuth2AccessToken> findTokensByClientIdAndUserName(final String clientId, final String userName) {
         return Collections.emptySet(); //TODO
     }
 
