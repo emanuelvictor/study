@@ -38,16 +38,11 @@ public class ServiceToken {
     private final TokenStore tokenStore;
 
     /**
-     *
+     * @param sessionId String
      */
-    private final UserService userService;
+    public void removeRefreshTokenBySessionId(final String sessionId) {
 
-    /**
-     * @param refreshToken String
-     */
-    public void removeRefreshToken(final String refreshToken) {
-
-        final OAuth2RefreshToken oAuth2RefreshToken = tokenStore.readRefreshToken(refreshToken);
+        final OAuth2RefreshToken oAuth2RefreshToken = ((JwtTokenStore) tokenStore).getRefreshTokenBySessionId(sessionId);
 
         this.removeRefreshToken(oAuth2RefreshToken);
     }
@@ -108,26 +103,5 @@ public class ServiceToken {
                 .map(authority -> authority.contains("/") ? authority.substring(authority.indexOf("/") + 1) : authority).map(authority -> authority.contains("/") ? authority.substring(0, authority.indexOf("/")) : authority)
                 .filter(authority -> !authority.equals("root"))
                 .collect(Collectors.toSet());
-    }
-
-    /**
-     * @param sessionId String
-     */
-    public void removeRefreshTokenBySessionId(final String sessionId) {
-
-        final OAuth2RefreshToken oAuth2RefreshToken = ((JwtTokenStore) tokenStore).getRefreshTokenBySessionId(sessionId);
-
-        this.removeRefreshToken(oAuth2RefreshToken);
-    }
-
-    /**
-     * @param token String
-     * @return User
-     */
-    public User getPrincipal(final String token) {
-
-        final OAuth2Authentication oAuth2Authentication = tokenStore.readAuthentication(token);
-
-        return (User) this.userService.loadUserByUsername((String) oAuth2Authentication.getUserAuthentication().getPrincipal());
     }
 }
