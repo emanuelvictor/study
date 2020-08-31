@@ -5,9 +5,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.util.Assert;
 
 import java.util.Set;
-import java.util.stream.Collectors;
 
-import static br.org.pti.api.nonfunctional.authengine.domain.services.ServiceToken.extractStringAuthorities;
+import static br.org.pti.api.nonfunctional.authengine.domain.services.ServiceToken.extractClientsId;
 
 //@SpringBootTest
 class AuthorizationServerApplicationTests {
@@ -25,7 +24,7 @@ class AuthorizationServerApplicationTests {
                 new SimpleGrantedAuthority("root/falcatrua/outra")
         );
 
-        Assert.isTrue("account-manager;financial;falcatrua".equals(String.join(";", extractStringAuthorities(authorities))), "");
+        Assert.isTrue("account-manager;financial;falcatrua".equals(String.join(";", extractClientsId(authorities))), "");
 
     }
 

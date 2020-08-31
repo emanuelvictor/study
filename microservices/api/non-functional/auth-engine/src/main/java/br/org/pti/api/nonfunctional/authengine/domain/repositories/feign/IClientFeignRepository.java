@@ -22,4 +22,11 @@ public interface IClientFeignRepository {
      */
     @GetMapping("{clientId}")
     Optional<Client> loadClientByClientId(@PathVariable("clientId") final String clientId);
+
+    /**
+     * @param clientId String
+     * @return Optional<Boolean>
+     */
+    @GetMapping("{clientId}/notify")
+    Optional<Boolean> notify(@PathVariable("clientId") final String clientId);
 }

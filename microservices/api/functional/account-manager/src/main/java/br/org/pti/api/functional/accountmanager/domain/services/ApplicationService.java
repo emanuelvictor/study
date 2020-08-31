@@ -1,5 +1,6 @@
 package br.org.pti.api.functional.accountmanager.domain.services;
 
+import br.org.pti.api.functional.accountmanager.application.resource.ApplicationResource;
 import br.org.pti.api.functional.accountmanager.domain.entities.Application;
 import br.org.pti.api.functional.accountmanager.domain.entities.Permission;
 import br.org.pti.api.functional.accountmanager.domain.repositories.ApplicationRepository;
@@ -8,6 +9,8 @@ import br.org.pti.api.functional.accountmanager.domain.logics.application.Applic
 import br.org.pti.api.functional.accountmanager.domain.logics.application.ApplicationUpdatingLogic;
 import br.org.pti.api.functional.accountmanager.infrastructure.misc.PasswordGenerator;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -33,6 +36,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class ApplicationService {
+
+    public static final Logger LOG = LoggerFactory.getLogger(ApplicationResource.class);
 
     private final PasswordEncoder passwordEncoder;
 
@@ -144,5 +149,13 @@ public class ApplicationService {
      */
     public Page<Permission> findAllPermissions() {
         return permissionRepository.findAll(PageRequest.of(0, 100000));
+    }
+
+    /**
+     * @param clientId String
+     */
+    public Boolean notify(final String clientId) {
+        LOG.info("Notifying " + clientId);
+        return true;
     }
 }
