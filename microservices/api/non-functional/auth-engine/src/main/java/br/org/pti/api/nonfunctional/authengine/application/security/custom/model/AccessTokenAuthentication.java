@@ -1,4 +1,4 @@
-package br.org.pti.api.nonfunctional.authengine.application.security.custom;
+package br.org.pti.api.nonfunctional.authengine.application.security.custom.model;
 
 import lombok.Data;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
