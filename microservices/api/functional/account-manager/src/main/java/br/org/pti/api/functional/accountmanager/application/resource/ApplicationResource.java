@@ -3,8 +3,6 @@ package br.org.pti.api.functional.accountmanager.application.resource;
 import br.org.pti.api.functional.accountmanager.domain.entities.Application;
 import br.org.pti.api.functional.accountmanager.domain.services.ApplicationService;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +26,6 @@ public class ApplicationResource {
     public Application loadClientByClientId(@PathVariable final String clientId) {
         return applicationService.loadClientByClientId(clientId);
     }
-
 
     /**
      *

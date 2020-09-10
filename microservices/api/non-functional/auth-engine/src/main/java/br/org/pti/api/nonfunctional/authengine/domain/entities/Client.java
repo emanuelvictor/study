@@ -59,6 +59,11 @@ public class Client implements ClientDetails {
     /**
      *
      */
+    private String revokeTokenUrl;
+
+    /**
+     *
+     */
     private boolean scoped;
 
     /**

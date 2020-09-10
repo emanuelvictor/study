@@ -1,12 +1,14 @@
 package br.org.pti.api.nonfunctional.authengine.domain.services;
 
 import br.org.pti.api.nonfunctional.authengine.application.security.custom.JwtTokenStore;
+import br.org.pti.api.nonfunctional.authengine.domain.entities.Client;
 import br.org.pti.api.nonfunctional.authengine.domain.repositories.feign.IClientFeignRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.common.OAuth2RefreshToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -30,6 +33,11 @@ public class ServiceToken {
      *
      */
     private final TokenStore tokenStore;
+
+    /**
+     *
+     */
+    private final OAuth2RestTemplate oAuth2RestTemplate;
 
     /**
      *
@@ -51,7 +59,7 @@ public class ServiceToken {
      */
     public void removeRefreshToken(final OAuth2RefreshToken oAuth2RefreshToken) {
 
-        this.notifyClients(oAuth2RefreshToken);
+        this.revokeTokens(oAuth2RefreshToken);
 
         tokenStore.removeAccessTokenUsingRefreshToken(oAuth2RefreshToken);
 
@@ -63,16 +71,21 @@ public class ServiceToken {
     /**
      * @param oAuth2RefreshToken OAuth2RefreshToken
      */
-    public void notifyClients(final OAuth2RefreshToken oAuth2RefreshToken) {
+    public void revokeTokens(final OAuth2RefreshToken oAuth2RefreshToken) {
 
         final OAuth2Authentication oAuth2Authentication = tokenStore.readAuthentication(oAuth2RefreshToken.getValue());
 
         final Set<String> clients = extractClientsId(oAuth2Authentication);
 
-        //TODO make in bach
-        clients.forEach(this.clientFeignRepository::notify);
-//        clients.forEach(System.out::println);
-
+        clients.forEach(clientString -> {
+            final Optional<Client> clientOptional = this.clientFeignRepository.loadClientByClientId(clientString);
+            clientOptional.ifPresentOrElse(client -> {
+                if (client.getRevokeTokenUrl() != null)
+                    oAuth2RestTemplate.delete(client.getRevokeTokenUrl() + "/" + oAuth2RefreshToken.getValue());
+            }, () -> {
+                // todo HAS NO CLIENT FOR THIS client id, must throws exception
+            });
+        });
     }
 
     /**

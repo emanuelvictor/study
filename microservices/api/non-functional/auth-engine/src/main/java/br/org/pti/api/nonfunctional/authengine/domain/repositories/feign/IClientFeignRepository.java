@@ -2,7 +2,6 @@ package br.org.pti.api.nonfunctional.authengine.domain.repositories.feign;
 
 import br.org.pti.api.nonfunctional.authengine.domain.entities.Client;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
