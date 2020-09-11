@@ -1,5 +1,7 @@
 package br.org.pti.api.functional.accountmanager.application.spring.oauth;
 
+import br.org.pti.api.functional.accountmanager.application.spring.oauth.custom.JwtAccessTokenConverter;
+import br.org.pti.api.functional.accountmanager.application.spring.oauth.custom.JwtTokenStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -7,8 +9,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 /**
  * @author Emanuel Victor

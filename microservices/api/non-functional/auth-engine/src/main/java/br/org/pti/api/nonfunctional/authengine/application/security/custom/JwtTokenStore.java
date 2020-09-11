@@ -114,6 +114,14 @@ public class JwtTokenStore implements TokenStore {
         return null;
     }
 
+
+    public OAuth2AccessToken getAccessTokenBySessionId(final String sessionId) {
+        for (final AccessTokenAuthentication acessToken : this.accessTokens)
+            if (acessToken.getAuthentication() != null && acessToken.getAuthentication().getUserAuthentication() != null && acessToken.getAuthentication().getUserAuthentication().getDetails() != null && acessToken.getAuthentication().getUserAuthentication().getDetails() instanceof WebAuthenticationDetails && sessionId.equals(((WebAuthenticationDetails) acessToken.getAuthentication().getUserAuthentication().getDetails()).getSessionId()))
+                return acessToken.getToken();
+        return null;
+    }
+
     private OAuth2AccessToken convertAccessToken(final String tokenValue) {
         return jwtTokenEnhancer.extractAccessToken(tokenValue, jwtTokenEnhancer.decode(tokenValue));
     }
@@ -226,9 +234,32 @@ public class JwtTokenStore implements TokenStore {
 
     }
 
+    public OAuth2AccessToken getAccessTokenUsingRefreshToken(final OAuth2RefreshToken token) {
+        for (final AccessTokenAuthentication accessToken : this.accessTokens)
+            if (accessToken.getToken().getRefreshToken() != null && accessToken.getToken().getRefreshToken().getValue().equals(token.getValue())) {
+                return accessToken.getToken();
+            }
+
+        RefreshTokenAuthentication refreshTokenAuthentication = null;
+        for (final RefreshTokenAuthentication refreshToken : this.refreshTokens)
+            if (refreshToken.getToken().getValue().equals(token.getValue())) {
+                refreshTokenAuthentication = refreshToken;
+                break;
+            }
+
+        if (refreshTokenAuthentication != null && refreshTokenAuthentication.getAuthentication() != null && refreshTokenAuthentication.getAuthentication().getUserAuthentication() != null && refreshTokenAuthentication.getAuthentication().getUserAuthentication().getDetails() != null && refreshTokenAuthentication.getAuthentication().getUserAuthentication().getDetails() instanceof WebAuthenticationDetails && ((WebAuthenticationDetails) refreshTokenAuthentication.getAuthentication().getUserAuthentication().getDetails()).getSessionId() != null)
+            for (final AccessTokenAuthentication accessToken : this.accessTokens)
+                if (accessToken.getAuthentication() != null && accessToken.getAuthentication().getUserAuthentication() != null && accessToken.getAuthentication().getUserAuthentication().getDetails() != null && accessToken.getAuthentication().getUserAuthentication().getDetails() instanceof WebAuthenticationDetails && ((WebAuthenticationDetails) refreshTokenAuthentication.getAuthentication().getUserAuthentication().getDetails()).getSessionId().equals(((WebAuthenticationDetails) accessToken.getAuthentication().getUserAuthentication().getDetails()).getSessionId())) {
+                    return accessToken.getToken();
+                }
+
+        return null;
+    }
+
+
     @Override
     public OAuth2AccessToken getAccessToken(final OAuth2Authentication authentication) {
-        if (authentication.getOAuth2Request().getGrantType().equals(GrantType.AUTHORIZATION_CODE.getValue()))
+        if (authentication.getOAuth2Request().getGrantType() != null && authentication.getOAuth2Request().getGrantType().equals(GrantType.AUTHORIZATION_CODE.getValue()))
             if (authentication.getUserAuthentication() != null && authentication.getUserAuthentication().getDetails() != null)
                 if (authentication.getUserAuthentication().getDetails() instanceof WebAuthenticationDetails)
                     if (((WebAuthenticationDetails) authentication.getUserAuthentication().getDetails()).getSessionId() != null)

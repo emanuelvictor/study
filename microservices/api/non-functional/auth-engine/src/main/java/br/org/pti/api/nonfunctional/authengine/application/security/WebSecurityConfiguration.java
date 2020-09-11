@@ -1,6 +1,5 @@
 package br.org.pti.api.nonfunctional.authengine.application.security;
 
-import br.org.pti.api.nonfunctional.authengine.application.security.custom.CustomLogoutHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

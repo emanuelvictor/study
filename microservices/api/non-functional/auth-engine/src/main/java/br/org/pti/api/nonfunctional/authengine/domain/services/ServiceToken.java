@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2RefreshToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -47,6 +48,39 @@ public class ServiceToken {
     /**
      * @param sessionId String
      */
+    public void removeTokensBySessionId(final String sessionId) {
+
+        this.removeRefreshTokenBySessionId(sessionId);
+
+        this.removeAccessTokenBySessionId(sessionId);
+    }
+
+    /**
+     * @param sessionId String
+     */
+    public void removeAccessTokenBySessionId(final String sessionId) {
+
+        final OAuth2AccessToken oAuth2AccessToken = ((JwtTokenStore) tokenStore).getAccessTokenBySessionId(sessionId);
+
+        if (oAuth2AccessToken != null)
+            this.removeAccessToken(oAuth2AccessToken);
+    }
+
+    /**
+     * @param oAuth2AccessToken OAuth2AccessToken
+     */
+    public void removeAccessToken(final OAuth2AccessToken oAuth2AccessToken) {
+
+        this.revoke(oAuth2AccessToken.getValue());
+
+        tokenStore.removeAccessToken(oAuth2AccessToken);
+
+        LOG.info("Refresh Token " + oAuth2AccessToken.getValue() + " revoked ");
+    }
+
+    /**
+     * @param sessionId String
+     */
     public void removeRefreshTokenBySessionId(final String sessionId) {
 
         final OAuth2RefreshToken oAuth2RefreshToken = ((JwtTokenStore) tokenStore).getRefreshTokenBySessionId(sessionId);
@@ -59,9 +93,9 @@ public class ServiceToken {
      */
     public void removeRefreshToken(final OAuth2RefreshToken oAuth2RefreshToken) {
 
-        this.revokeTokens(oAuth2RefreshToken);
+//        tokenStore.removeAccessTokenUsingRefreshToken(oAuth2RefreshToken); NÃO PRECISA
 
-        tokenStore.removeAccessTokenUsingRefreshToken(oAuth2RefreshToken);
+        this.revoke(oAuth2RefreshToken.getValue());
 
         tokenStore.removeRefreshToken(oAuth2RefreshToken);
 
@@ -69,19 +103,21 @@ public class ServiceToken {
     }
 
     /**
-     * @param oAuth2RefreshToken OAuth2RefreshToken
+     * @param oAuth2AccessToken OAuth2AccessToken
      */
-    public void revokeTokens(final OAuth2RefreshToken oAuth2RefreshToken) {
+    public void revoke(final String token) {
 
-        final OAuth2Authentication oAuth2Authentication = tokenStore.readAuthentication(oAuth2RefreshToken.getValue());
+        final OAuth2Authentication oAuth2Authentication = tokenStore.readAuthentication(token);
 
         final Set<String> clients = extractClientsId(oAuth2Authentication);
 
         clients.forEach(clientString -> {
             final Optional<Client> clientOptional = this.clientFeignRepository.loadClientByClientId(clientString);
             clientOptional.ifPresentOrElse(client -> {
-                if (client.getRevokeTokenUrl() != null)
-                    oAuth2RestTemplate.delete(client.getRevokeTokenUrl() + "/" + oAuth2RefreshToken.getValue());
+                if (client.getRevokeTokenUrl() != null) {
+                    // Get the access token from authentication
+                    oAuth2RestTemplate.delete(client.getRevokeTokenUrl() + "/" + token);
+                }
             }, () -> {
                 // todo HAS NO CLIENT FOR THIS client id, must throws exception
             });

@@ -80,6 +80,9 @@ public class CommonConfiguration {
                 additionalInfo.put("id", user.getId());
             }
 
+            if (authentication.getOAuth2Request() != null && authentication.getOAuth2Request().getGrantType() != null)
+                additionalInfo.put("grant_type", authentication.getOAuth2Request().getGrantType());
+
             additionalInfo.put(DEFAULT_TOKEN_ENHANCER, authentication.getName() + randomAlphabetic(4));
             ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
             return accessToken;

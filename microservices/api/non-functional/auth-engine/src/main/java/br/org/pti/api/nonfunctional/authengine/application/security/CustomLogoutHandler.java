@@ -1,4 +1,4 @@
-package br.org.pti.api.nonfunctional.authengine.application.security.custom;
+package br.org.pti.api.nonfunctional.authengine.application.security;
 
 import br.org.pti.api.nonfunctional.authengine.domain.services.ServiceToken;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +27,6 @@ public class CustomLogoutHandler implements LogoutHandler {
     @Override
     public void logout(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse, final Authentication authentication) {
         if (authentication != null && authentication.getDetails() != null && authentication.getDetails() instanceof WebAuthenticationDetails)
-            serviceToken.removeRefreshTokenBySessionId(((WebAuthenticationDetails) authentication.getDetails()).getSessionId());
+            serviceToken.removeTokensBySessionId(((WebAuthenticationDetails) authentication.getDetails()).getSessionId());
     }
 }
