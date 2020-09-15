@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>br.org.pti.api</groupId>
+        <groupId>com.emanuelvictor.api</groupId>
         <artifactId>functional</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>br.org.pti.api.functional</groupId>
+    <groupId>com.emanuelvictor.api.functional</groupId>
     <artifactId>accountmanager</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>account-manager</name>

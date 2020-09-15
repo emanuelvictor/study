@@ -12,11 +12,8 @@
         <option value="$PROJECT_DIR$/non-functional/proxy/pom.xml" />
         <option value="$PROJECT_DIR$/non-functional/discoverer/pom.xml" />
         <option value="$PROJECT_DIR$/non-functional/authorization-server/pom.xml" />
-        <option value="$PROJECT_DIR$/functional/portal-compras/pom.xml" />
         <option value="$PROJECT_DIR$/functional/pom.xml" />
-        <option value="$PROJECT_DIR$/functional/integrator/pom.xml" />
         <option value="$PROJECT_DIR$/functional/authorization-manager/pom.xml" />
-        <option value="$PROJECT_DIR$/functional/inventario-web/pom.xml" />
         <option value="$PROJECT_DIR$/functional/account-manager/pom.xml" />
         <option value="$PROJECT_DIR$/non-functional/auth-engine/pom.xml" />
         <option value="$PROJECT_DIR$/functional/test/pom.xml" />

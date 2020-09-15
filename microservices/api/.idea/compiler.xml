@@ -9,12 +9,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="functional" />
         <module name="test" />
-        <module name="inventarioweb" />
-        <module name="portalcompras" />
         <module name="non-functional" />
         <module name="authengine" />
         <module name="nonfunctional" />
-        <module name="integrator" />
         <module name="inventario-web" />
         <module name="proxy" />
         <module name="clientApplication" />
@@ -26,6 +23,9 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="auth-engine" target="11" />
+      <module name="integrator" target="11" />
+      <module name="inventarioweb" target="11" />
+      <module name="portalcompras" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
