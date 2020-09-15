@@ -17,6 +17,7 @@ package br.org.pti.api.nonfunctional.authengine.application.security.custom;
 import br.org.pti.api.nonfunctional.authengine.application.security.custom.model.AccessTokenAuthentication;
 import br.org.pti.api.nonfunctional.authengine.application.security.custom.model.RefreshTokenAuthentication;
 import br.org.pti.api.nonfunctional.authengine.domain.entities.GrantType;
+import lombok.Getter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.common.DefaultExpiringOAuth2RefreshToken;
 import org.springframework.security.oauth2.common.DefaultOAuth2RefreshToken;
@@ -50,6 +51,7 @@ public class JwtTokenStore implements TokenStore {
     /**
      *
      */
+    @Getter
     private final List<AccessTokenAuthentication> accessTokens = new ArrayList<>();
 
     /**

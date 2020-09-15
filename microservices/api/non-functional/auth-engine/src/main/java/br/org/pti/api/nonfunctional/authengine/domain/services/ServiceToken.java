@@ -46,64 +46,35 @@ public class ServiceToken {
     private final IClientFeignRepository clientFeignRepository;
 
     /**
-     * @param sessionId String
+     * @param accessToken String
      */
-    public void removeTokensBySessionId(final String sessionId) {
+    public void removeAccessToken(final String accessToken) {
 
-        this.removeRefreshTokenBySessionId(sessionId);
-
-        this.removeAccessTokenBySessionId(sessionId);
-    }
-
-    /**
-     * @param sessionId String
-     */
-    public void removeAccessTokenBySessionId(final String sessionId) {
-
-        final OAuth2AccessToken oAuth2AccessToken = ((JwtTokenStore) tokenStore).getAccessTokenBySessionId(sessionId);
-
-        if (oAuth2AccessToken != null)
-            this.removeAccessToken(oAuth2AccessToken);
-    }
-
-    /**
-     * @param oAuth2AccessToken OAuth2AccessToken
-     */
-    public void removeAccessToken(final OAuth2AccessToken oAuth2AccessToken) {
+        final OAuth2AccessToken oAuth2AccessToken = this.tokenStore.readAccessToken(accessToken);
 
         this.revoke(oAuth2AccessToken.getValue());
 
         tokenStore.removeAccessToken(oAuth2AccessToken);
 
-        LOG.info("Refresh Token " + oAuth2AccessToken.getValue() + " revoked ");
+        LOG.info("Refresh Token " + accessToken + " revoked ");
     }
 
     /**
-     * @param sessionId String
+     * @param refreshToken String
      */
-    public void removeRefreshTokenBySessionId(final String sessionId) {
+    public void removeRefreshToken(final String refreshToken) {
 
-        final OAuth2RefreshToken oAuth2RefreshToken = ((JwtTokenStore) tokenStore).getRefreshTokenBySessionId(sessionId);
-
-        this.removeRefreshToken(oAuth2RefreshToken);
-    }
-
-    /**
-     * @param oAuth2RefreshToken OAuth2RefreshToken
-     */
-    public void removeRefreshToken(final OAuth2RefreshToken oAuth2RefreshToken) {
-
-//        tokenStore.removeAccessTokenUsingRefreshToken(oAuth2RefreshToken); NÃO PRECISA
+        final OAuth2RefreshToken oAuth2RefreshToken = this.tokenStore.readRefreshToken(refreshToken);
 
         this.revoke(oAuth2RefreshToken.getValue());
 
         tokenStore.removeRefreshToken(oAuth2RefreshToken);
 
-        LOG.info("Refresh Token " + oAuth2RefreshToken.getValue() + " revoked ");
+        LOG.info("Refresh Token " + refreshToken + " revoked ");
     }
 
     /**
-     * @param oAuth2AccessToken OAuth2AccessToken
+     * @param token String
      */
     public void revoke(final String token) {
 
@@ -153,5 +124,13 @@ public class ServiceToken {
                 .map(authority -> authority.contains("/") ? authority.substring(authority.indexOf("/") + 1) : authority).map(authority -> authority.contains("/") ? authority.substring(0, authority.indexOf("/")) : authority)
                 .filter(authority -> !authority.equals("root"))
                 .collect(Collectors.toSet());
+    }
+
+    public void removeTokens(final String queryString) {
+        final String refreshToken = queryString.substring(queryString.indexOf("&refresh_token=") + 15, queryString.length());
+        final String accessToken = queryString.substring(queryString.indexOf("=") + 1, queryString.indexOf("&refresh_token="));
+
+        this.removeRefreshToken(refreshToken);
+        this.removeAccessToken(accessToken);
     }
 }
