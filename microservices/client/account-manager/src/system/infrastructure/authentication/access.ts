@@ -7,7 +7,7 @@ export class Access extends User {
   private _integrator: any; // TODO
   private _scope: any;
   private _token_type: any;
-
+  private _access_token: string;
 
   /**
    *
@@ -52,15 +52,11 @@ export class Access extends User {
   }
 
   get access_token(): string {
-    const access_token = localStorage.getItem('access_token');
-
-    if (access_token && access_token !== "null")
-      return access_token;
-    return null;
+    return this._access_token;
   }
 
   set access_token(value: string) {
-    localStorage.setItem('access_token', value);
+    this._access_token = value;
   }
 
   get expires_in(): number {

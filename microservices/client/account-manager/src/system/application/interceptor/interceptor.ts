@@ -100,7 +100,7 @@ export class Interceptor implements HttpInterceptor {
           res.error = JSON.parse(res.error)
       }
 
-      if ((res.status === 403 || res.status === 401) && !this.authenticationService.access.access_token && !this.authenticationService.access.refresh_token)
+      if ((res.status === 403 || res.status === 401) && !this.authenticationService.access.refresh_token)
         this.authenticationService.logout();
       else
         this.error(res.error.message);
