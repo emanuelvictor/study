@@ -1,6 +1,6 @@
 INSERT INTO permission(id, created_on, authority, name) VALUES (1, now(), 'root', 'Administração de Sistemas');
 
-INSERT INTO permission(id, created_on, authority, name, upper_permission_id) VALUES (100, now(), 'root/access-manager', 'Gerenciamento de Contas', 1);
+INSERT INTO permission(id, created_on, authority, name, upper_permission_id) VALUES (100, now(), 'root/access-manager', 'Gerenciamento de Acessos', 1);
 
 INSERT INTO permission (id, created_on, authority, name, upper_permission_id) VALUES (4000, now(), 'root/access-manager/users', 'Usuários', 100);
 INSERT INTO permission (id, created_on, authority, name, upper_permission_id) VALUES (40000, now(), 'root/access-manager/users/post', 'Adicionar', 4000);

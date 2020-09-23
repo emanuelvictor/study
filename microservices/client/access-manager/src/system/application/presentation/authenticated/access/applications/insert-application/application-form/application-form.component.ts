@@ -71,11 +71,11 @@ export class ApplicationFormComponent extends CrudViewComponent implements OnIni
    *
    */
   ngOnInit() {
-    this.entity.enable = true;
+    this.entity.enabled = true;
 
     this.form = this.fb.group({
       name: new FormControl({value: '', disabled: false}, Validators.required),
-      username: ['username', [Validators.required/*, Validators.email*/]],
+      clientId: ['clientId', [Validators.required/*, Validators.email*/]],
     });
 
     // this.form

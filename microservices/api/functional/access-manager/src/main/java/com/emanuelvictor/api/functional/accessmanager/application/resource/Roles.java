@@ -41,6 +41,20 @@ public class Roles {
     static final String USER_PUT_CHANGE_PASSWORD_ROLE = USER_PUT_ROLE + SEPARATOR + "change-password";
 
     /**
+     * Aplicações
+     */
+    private static final String APPLICATION_MAPPING = "applications";
+    static final String APPLICATION_MAPPING_RESOURCE = SEPARATOR + APPLICATION_MAPPING;
+
+    private static final String BASE_APPLICATION_ROLE = ROOT + SEPARATOR + APP_IDENTIFIER + SEPARATOR + APPLICATION_MAPPING;
+    static final String APPLICATION_POST_ROLE = BASE_APPLICATION_ROLE + SEPARATOR + "post";
+    static final String APPLICATION_PUT_ROLE = BASE_APPLICATION_ROLE + SEPARATOR + "put";
+    static final String APPLICATION_GET_ROLE = BASE_APPLICATION_ROLE + SEPARATOR + "get";
+    static final String APPLICATION_PUT_ACTIVATE_ROLE = APPLICATION_PUT_ROLE + SEPARATOR + "activate";
+    static final String APPLICATION_PUT_CHANGE_PASSWORD_ROLE = APPLICATION_PUT_ROLE + SEPARATOR + "change-password";
+    
+    
+    /**
      * Permissões
      */
     private static final String PERMISSION_MAPPING = "permissions";

@@ -4,20 +4,14 @@
   <ng-content select='[toolbar]'></ng-content>
 
   <mat-card>
-    <mat-slide-toggle [(ngModel)]='entity.root'
-                      style='margin-bottom: 15px'
-                      [ngModelOptions]='{standalone: true}'
-                      *ngIf='authenticationService.application.root'>
-      Root
-    </mat-slide-toggle>
 
     <mat-form-field flex style="display: block">
-      <mat-label>Nome de Usuário</mat-label>
+      <mat-label>Nome (clientId)</mat-label>
       <input maxlength='150' required
-             formControlName='username'
+             formControlName='clientId'
              matInput placeholder='Nome'
-             [(ngModel)]='entity.username'
-             id='username' name='username'/>
+             [(ngModel)]='entity.clientId'
+             id='clientId' name='clientId'/>
       <mat-error>
         Esse campo é obrigatório
       </mat-error>
@@ -27,36 +21,23 @@
     <!--      <mat-label>E-mail</mat-label>-->
     <!--      <mat-autocomplete #auto='matAutocomplete' [displayWith]='displayFn'>-->
     <!--        <ng-container *ngIf='users?.length'>-->
-    <!--          <mat-option *ngFor='let user of users' [value]='user.username' (click)='getEmail()'>-->
-    <!--            <span>{{ user?.name }} ({{user?.username }})</span>-->
+    <!--          <mat-option *ngFor='let user of users' [value]='user.clientId' (click)='getEmail()'>-->
+    <!--            <span>{{ user?.name }} ({{user?.clientId }})</span>-->
     <!--          </mat-option>-->
     <!--        </ng-container>-->
     <!--      </mat-autocomplete>-->
-    <!--      <input [matAutocomplete]='auto' name='username' id='username'-->
-    <!--             formControlName='username' maxlength='150' required-->
+    <!--      <input [matAutocomplete]='auto' name='clientId' id='clientId'-->
+    <!--             formControlName='clientId' maxlength='150' required-->
     <!--             pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'-->
-    <!--             (keyup)='getEmail()' [(ngModel)]='entity.username' matInput placeholder='E-mail'>-->
+    <!--             (keyup)='getEmail()' [(ngModel)]='entity.clientId' matInput placeholder='E-mail'>-->
 
-    <!--      <mat-error *ngIf="form.controls['username'].hasError('pattern')">-->
-    <!--        E-mail inválido, utilize o formato "exemplo@username.com"-->
+    <!--      <mat-error *ngIf="form.controls['clientId'].hasError('pattern')">-->
+    <!--        E-mail inválido, utilize o formato "exemplo@clientId.com"-->
     <!--      </mat-error>-->
-    <!--      <mat-error *ngIf="form.controls['username'].hasError('required')">-->
+    <!--      <mat-error *ngIf="form.controls['clientId'].hasError('required')">-->
     <!--        Esse campo é obrigatório-->
     <!--      </mat-error>-->
     <!--    </mat-form-field>-->
-
-    <vertical-space [verticalMargin]='5'></vertical-space>
-
-    <mat-form-field flex style="display: block">
-      <mat-label>Nome</mat-label>
-      <input maxlength='150' matInput
-             [(ngModel)]='entity.name'
-             required formControlName='name'
-             id='name' name='name' placeholder='Nome'/>
-      <mat-error>
-        Esse campo é obrigatório
-      </mat-error>
-    </mat-form-field>
 
     <vertical-space [verticalMargin]='5'></vertical-space>
 

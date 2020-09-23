@@ -43,7 +43,7 @@ export class InsertApplicationComponent implements OnInit {
               private applicationRepository: ApplicationRepository,) {
 
     if (!this.activatedRoute.snapshot.params.id) {
-      homeView.toolbar.subhead = 'Usuário / Adicionar';
+      homeView.toolbar.subhead = 'Aplicativo / Adicionar';
     }
 
   }
@@ -80,8 +80,8 @@ export class InsertApplicationComponent implements OnInit {
 
     this.applicationRepository.save(application)
       .then(() => {
-        this.router.navigate(['access/users']);
-        this.messageService.toastSuccess(`Novo usuário cadastrado.`, 5)
+        this.router.navigate(['access/applications']);
+        this.messageService.toastSuccess(`Novo aplicativo cadastrado.`, 5)
       })
   }
 

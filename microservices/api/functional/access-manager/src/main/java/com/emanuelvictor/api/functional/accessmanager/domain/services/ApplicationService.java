@@ -3,10 +3,10 @@ package com.emanuelvictor.api.functional.accessmanager.domain.services;
 import com.emanuelvictor.api.functional.accessmanager.application.resource.ApplicationResource;
 import com.emanuelvictor.api.functional.accessmanager.domain.entities.Application;
 import com.emanuelvictor.api.functional.accessmanager.domain.entities.Permission;
-import com.emanuelvictor.api.functional.accessmanager.domain.repositories.ApplicationRepository;
-import com.emanuelvictor.api.functional.accessmanager.domain.repositories.PermissionRepository;
 import com.emanuelvictor.api.functional.accessmanager.domain.logics.application.ApplicationSavingLogic;
 import com.emanuelvictor.api.functional.accessmanager.domain.logics.application.ApplicationUpdatingLogic;
+import com.emanuelvictor.api.functional.accessmanager.domain.repositories.ApplicationRepository;
+import com.emanuelvictor.api.functional.accessmanager.domain.repositories.PermissionRepository;
 import com.emanuelvictor.api.functional.accessmanager.infrastructure.misc.PasswordGenerator;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -45,6 +45,16 @@ public class ApplicationService {
     private final List<ApplicationUpdatingLogic> userUpdatingLogics;
 
     /**
+     * @param defaultFilter String
+     * @param enableFilter  Boolean
+     * @param pageable      Pageable
+     * @return Page<Application>
+     */
+    public Page<Application> listByFilters(final String defaultFilter, final Boolean enableFilter, final Pageable pageable) {
+        return applicationRepository.listByFilters(defaultFilter, pageable);
+    }
+
+    /**
      * @param application Usuario
      */
     @Transactional
@@ -80,11 +90,11 @@ public class ApplicationService {
      */
     @Transactional
     public void delete(final long id) {
-        this.applicationRepository.findById(id).ifPresent(user -> {
-            if (user.getClientId().equals("admin")) {
+        this.applicationRepository.findById(id).ifPresent(application -> {
+            if (application.getClientId().equals("admin")) {
                 throw new IllegalArgumentException("Impossivel deletar o Administrador");
             } else {
-                this.applicationRepository.delete(user);
+                this.applicationRepository.delete(application);
             }
         });
     }
@@ -99,9 +109,9 @@ public class ApplicationService {
         final String password = PasswordGenerator.generate();
 
         this.applicationRepository.findById(id)
-                .ifPresent(user -> {
-                    user.setClientSecret(this.passwordEncoder.encode(password));
-                    this.applicationRepository.save(user);
+                .ifPresent(application -> {
+                    application.setClientSecret(this.passwordEncoder.encode(password));
+                    this.applicationRepository.save(application);
                 });
 
         return password;
@@ -110,11 +120,9 @@ public class ApplicationService {
     /**
      * @param clientId String
      * @return ClientDetails
-     * @throws ClientRegistrationException
      */
-    public Application loadClientByClientId(final String clientId) throws ClientRegistrationException {
-        return this.applicationRepository.findByClientId(clientId)
-                .orElseThrow(() -> new UsernameNotFoundException("ClientId " + clientId + " não localizado!"));
+    public Optional<Application> loadClientByClientId(final String clientId) {
+        return this.applicationRepository.findByClientId(clientId);
     }
 
     /**

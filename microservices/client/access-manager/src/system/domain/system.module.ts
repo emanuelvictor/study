@@ -73,6 +73,8 @@ import {ConsultApplicationsComponent} from "../application/presentation/authenti
 import {InsertApplicationComponent} from "../application/presentation/authenticated/access/applications/insert-application/insert-application.component";
 import {UpdateApplicationComponent} from "../application/presentation/authenticated/access/applications/update-application/update-application.component";
 import {ViewApplicationComponent} from "../application/presentation/authenticated/access/applications/view-application/view-application.component";
+import {ApplicationRepository} from "./repository/application.repository";
+import {ApplicationFormComponent} from "../application/presentation/authenticated/access/applications/insert-application/application-form/application-form.component";
 
 const appearance: MatFormFieldDefaultOptions = {
   appearance: 'outline'
@@ -159,6 +161,7 @@ export function customTranslateLoader(http: HttpClient) {
 
     // Has Permission
     HasPermissionDirective,
+    ApplicationFormComponent,
 
   ],
   imports: [
@@ -194,6 +197,7 @@ export function customTranslateLoader(http: HttpClient) {
     // Repositories
     UserRepository,
     PermissionRepository,
+    ApplicationRepository,
     GroupRepository,
 
     // Services

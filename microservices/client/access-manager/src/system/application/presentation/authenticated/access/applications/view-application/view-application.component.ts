@@ -6,6 +6,7 @@ import {ApplicationRepository} from "../../../../../../domain/repository/applica
 import {viewAnimation} from "../../../../../utils/utils";
 import {UpdatePasswordComponent} from "../update-password/update-password.component";
 import {MatDialog} from "@angular/material";
+import {Application} from "../../../../../../domain/entity/application.model";
 
 // @ts-ignore
 @Component({
@@ -21,7 +22,7 @@ export class ViewApplicationComponent implements OnInit {
   /**
    *
    */
-  application: any = {};
+  application: Application = new Application();
 
   /**
    *
@@ -44,7 +45,7 @@ export class ViewApplicationComponent implements OnInit {
               public homeView: AuthenticatedViewComponent,
               private applicationRepository: ApplicationRepository) {
     this.application.id = +this.activatedRoute.snapshot.params.id || null;
-    homeView.toolbar.subhead = 'Usuário / Detalhes'
+    homeView.toolbar.subhead = 'Aplicativo / Detalhes'
   }
 
   /**
@@ -54,7 +55,7 @@ export class ViewApplicationComponent implements OnInit {
     if (this.application && this.application.id) {
       this.findById();
       this.itsMe = this.homeView.itsMe(this.application)
-    } else this.router.navigate(["access/users"])
+    } else this.router.navigate(["access/applications"])
   }
 
   /**

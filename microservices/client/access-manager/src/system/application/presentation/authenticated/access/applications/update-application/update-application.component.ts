@@ -5,6 +5,7 @@ import {MessageService} from '../../../../../../domain/services/message.service'
 import {debounce} from "../../../../../utils/debounce";
 import {FormGroup} from "@angular/forms"
 import {ApplicationRepository} from "../../../../../../domain/repository/application.repository";
+import {Application} from "../../../../../../domain/entity/application.model";
 
 // @ts-ignore
 @Component({
@@ -18,10 +19,7 @@ export class UpdateApplicationComponent implements OnInit {
   /**
    *
    */
-  application: any = {
-    organizacao: {},
-    perfis: []
-  };
+  application: Application = new Application();
 
   /**
    *
@@ -48,7 +46,7 @@ export class UpdateApplicationComponent implements OnInit {
               private messageService: MessageService,
               private applicationRepository: ApplicationRepository) {
 
-    homeView.toolbar.subhead = 'Usuário / Editar';
+    homeView.toolbar.subhead = 'Aplicativo / Editar';
     this.application.id = +this.activatedRoute.snapshot.params.id;
 
   }
@@ -69,9 +67,9 @@ export class UpdateApplicationComponent implements OnInit {
    */
   back() {
     if (this.activatedRoute.snapshot.routeConfig.path === 'edit/:id')
-      this.router.navigate(['access/users']);
+      this.router.navigate(['access/applications']);
     else
-      this.router.navigate(['access/users/' + this.application.id]);
+      this.router.navigate(['access/applications/' + this.application.id]);
   }
 
   /**
@@ -93,14 +91,14 @@ export class UpdateApplicationComponent implements OnInit {
       return;
     }
 
-    if (this.isString(this.application.grupoAcesso)) {
+    if (this.isString(this.application.group)) {
       this.messageService.toastWarning('Nenhum grupo de acesso válido foi selecionado.');
       return;
     }
 
     this.applicationRepository.save(this.application)
       .then(() => {
-        this.router.navigate(['access/users']);
+        this.router.navigate(['access/applications']);
         this.messageService.toastSuccess(`Alterado com sucesso`, 5);
       });
   }

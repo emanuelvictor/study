@@ -34,9 +34,7 @@ export class ConsultApplicationsComponent implements OnInit {
   public pageSize: any;
 
   public columns: any[] = [
-    {name: 'name', label: 'Nome'},
-    {name: 'applicationname', label: "Nome de Usuário"},
-    {name: 'enabled', label: 'Ativo', translate: true},
+    {name: 'clientId', label: "Nome do Aplicativo"}
   ];
 
   public displayedColumns: string[] = this.columns.map(cell => cell.name);
@@ -55,7 +53,7 @@ export class ConsultApplicationsComponent implements OnInit {
               private applicationRepository: ApplicationRepository) {
 
     this.displayedColumns.push('acoes');
-    this.pageable = paginationService.pageable('name');
+    this.pageable = paginationService.pageable('clientId');
 
   }
 

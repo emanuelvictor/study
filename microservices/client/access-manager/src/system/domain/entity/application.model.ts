@@ -1,48 +1,28 @@
 import {People} from './people.model';
-import {UserDetails} from "../../infrastructure/authentication/user-details";
 import {Group} from "./group.model";
+import {ClientDetails} from "../../infrastructure/authentication/client-details";
 
-export class Application extends People implements UserDetails {
-
-  /**
-   *
-   */
-  public email: string;
+export class Application extends People implements ClientDetails {
 
   /**
    *
    */
-  public password: string;
+  public clientId: string;
 
   /**
    *
    */
-  public internal: boolean = false;
+  public clientSecret: string;
 
   /**
    *
    */
-  public enable: boolean = true;
+  public enabled: boolean = true;
 
   /**
    *
    */
   public group: Group;
-
-  /**
-   *
-   */
-  public isManager: boolean = false;
-
-  /**
-   *
-   */
-  public root: boolean = false;
-
-  /**
-   *
-   */
-  public username: string;
 
   /**
    *
@@ -54,17 +34,7 @@ export class Application extends People implements UserDetails {
    */
   constructor(id?: number) {
     super();
-    if (id)
-      this.id = id;
-    else
-      this.root = false;
-  }
-
-  /**
-   *
-   */
-  get isRoot(): boolean {
-    return this.root;
+    this.id = id;
   }
 
 }
