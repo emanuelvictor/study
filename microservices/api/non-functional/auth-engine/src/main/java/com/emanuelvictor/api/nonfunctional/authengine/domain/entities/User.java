@@ -58,14 +58,14 @@ public class User implements UserDetails {
     private boolean credentialsNonExpired;
 
     /**
-     *
+     * TODO remover
      */
     private String name;
 
     /**
      *
      */
-    private AccessGroup accessGroup;
+    private Group group;
 
     /**
      *
@@ -111,12 +111,12 @@ public class User implements UserDetails {
 
         final Set<Permission> permissions = new HashSet<>();
 
-        if (this.accessGroup != null && this.accessGroup.getAccessGroupPermissions() != null)
-            for (AccessGroupPermission accessGroupPermission : this.accessGroup.getAccessGroupPermissions()) {
-                permissions.add(accessGroupPermission.getPermission().copy());
+        if (this.group != null && this.group.getGroupPermissions() != null)
+            for (final GroupPermission groupPermission : this.group.getGroupPermissions()) {
+                permissions.add(groupPermission.getPermission().copy());
 
-                if (!accessGroupPermission.getPermission().getLowerPermissions().isEmpty())
-                    permissions.addAll(populePermissions(accessGroupPermission.getPermission().getLowerPermissions()));
+                if (!groupPermission.getPermission().getLowerPermissions().isEmpty())
+                    permissions.addAll(populePermissions(groupPermission.getPermission().getLowerPermissions()));
             }
 
         return permissions.isEmpty() ? null : new HashSet<>(permissions);

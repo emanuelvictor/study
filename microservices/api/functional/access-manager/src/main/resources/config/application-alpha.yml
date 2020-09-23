@@ -1,3 +1,12 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+  flyway:
+    enabled: true
+
 info:
   version: @project.version@
   app:
@@ -12,7 +21,7 @@ logging:
   file:
     name: /${user.home}/${spring.application.name}.log
 server:
-  port: 8081
+  port: 8084
 
 # configs do eureka server
 eureka:
@@ -21,12 +30,4 @@ eureka:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
   instance:
     hostname: localhost
-    appname: auth-engine
-
-oauth:
-  endpoints:
-    users: http://localhost:8080/access-manager/users/
-    applications: http://localhost:8080/access-manager/applications/
-  token: http://localhost:8080/auth-engine/oauth/token
-  clientId: auth-engine
-  clientSecret: auth-engine
+    appname: access-manager

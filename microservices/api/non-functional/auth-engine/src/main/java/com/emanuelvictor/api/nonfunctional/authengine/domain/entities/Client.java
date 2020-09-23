@@ -79,7 +79,7 @@ public class Client implements ClientDetails {
     /**
      *
      */
-    private AccessGroup accessGroup;
+    private Group group;
 
     /**
      * @return String
@@ -135,8 +135,8 @@ public class Client implements ClientDetails {
 
         final Set<Permission> permissions = new HashSet<>();
 
-        if (this.accessGroup != null && this.accessGroup.getAccessGroupPermissions() != null)
-            for (AccessGroupPermission grupoAcessoPermissao : this.accessGroup.getAccessGroupPermissions()) {
+        if (this.group != null && this.group.getGroupPermissions() != null)
+            for (GroupPermission grupoAcessoPermissao : this.group.getGroupPermissions()) {
                 permissions.add(grupoAcessoPermissao.getPermission().copy());
 
                 if (!grupoAcessoPermissao.getPermission().getLowerPermissions().isEmpty())
