@@ -1,0 +1,28 @@
+<detail-page [entity]="editora">
+
+  <div class="toolbar" layout="row" flex toolbar>
+    <div layout="column">
+      <div class="headline" [innerHTML]="'Editora / Detalhes'"></div>
+      <div class="subhead" [innerHTML]="'Editora'"></div>
+    </div>
+    <div layout="row" layout-align="end center" flex>
+      <button mat-raised-button type="button" color="accent" routerLink="../">
+        <mat-icon>arrow_back</mat-icon>
+        <span>Voltar</span>
+      </button>
+      <horizontal-space></horizontal-space>
+      <button mat-raised-button type="button"
+              [ngClass]="{'activate': !editora.ativo, 'inactivate': editora.ativo}"
+              (click)="updateAtivo(editora.id)">
+        <mat-icon>{{ !editora.ativo ? 'check' : 'block' }}</mat-icon>
+        <span>{{ !editora.ativo ? 'Ativar' : 'Inativar' }}</span>
+      </button>
+      <horizontal-space></horizontal-space>
+      <a mat-raised-button type="button" color="primary" [routerLink]="'editar'" >
+        <mat-icon>edit</mat-icon>
+        <span>Editar</span>
+      </a>
+    </div>
+  </div>
+
+</detail-page>

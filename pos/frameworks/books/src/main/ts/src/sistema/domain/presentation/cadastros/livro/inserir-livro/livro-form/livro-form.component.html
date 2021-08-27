@@ -1,0 +1,40 @@
+<form [formGroup]='form' (ngSubmit)='saveEntity(form)' novalidate>
+
+  <!--toolbar div-->
+  <ng-content select='[toolbar]'></ng-content>
+
+  <mat-card id='default-form'>
+    <div layout='row'>
+
+      <mat-form-field flex>
+        <input formControlName='nome'
+               matInput placeholder='Nome'
+               required id='nome' name='nome'
+               [(ngModel)]='entity.nome' maxlength='50'/>
+        <mat-error>
+          Esse campo é obrigatório
+        </mat-error>
+      </mat-form-field>
+
+      <horizontal-space></horizontal-space>
+
+      <mat-form-field flex>
+        <input formControlName='editora' [(ngModel)]='entity.editora'
+               placeholder='Editora' name='editora' required matInput
+               [matAutocomplete]='auto' (blur)='normalizeEditora()' id='editora'
+               (keyup)='debounce(this,listEditoras); errorr = isString(entity.editora)'>
+
+        <mat-autocomplete [displayWith]='displayNomeEditora' #auto='matAutocomplete'>
+          <mat-option [value]='editora' *ngFor='let editora of editoras'>
+            {{ editora.nome }}
+          </mat-option>
+        </mat-autocomplete>
+
+        <mat-error>
+          Nenhum grupo de acesso selecionado.
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+  </mat-card>
+</form>
