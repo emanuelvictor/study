@@ -24,7 +24,7 @@ public class Executor {
                                 estadoString.substring(estadoString.indexOf("-") + 1, estadoString.indexOf("/")).trim(),
 
                                 // Seta o Pais do estado
-                                new Pais(estadoString.substring(estadoString.indexOf("/") + 1, estadoString.length()).trim())
+                                new Pais(estadoString.substring(estadoString.indexOf("/") + 1).trim())
 
                         )
                 );

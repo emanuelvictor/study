@@ -13,7 +13,7 @@ public class Session extends Element {
     @Override
     public void exibir() {
         System.out.println(this.getName());
-        this.elements.forEach(element -> element.exibir());
+        this.elements.forEach(Element::exibir);
     }
 
     public void adicionar(Element element) {

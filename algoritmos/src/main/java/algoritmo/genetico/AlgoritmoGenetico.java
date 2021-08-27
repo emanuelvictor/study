@@ -31,7 +31,6 @@ public class AlgoritmoGenetico {
     //variável para somar o fitness
     private int geracaoMelhorFitness;
     private int[] rotaMelhorFitness;
-    private Crossover melhorCrossover;
     private int melhorTamPop;
     private int[][] populacaoInicial;
     private boolean IMPRIMIR_EVOLUCAO = false;
@@ -392,12 +391,12 @@ public class AlgoritmoGenetico {
         this.IMPRIMIR_EVOLUCAO = IMPRIMIR_EVOLUCAO;
     }
 
-    public int execute() {
-        return this.execute(this.populacao);
+    public void execute() {
+        this.execute(this.populacao);
     }
 
     //TODO EXECUTE
-    public int execute(int[][] populacao) {
+    public void execute(int[][] populacao) {
 
         int melhorFitnes = 99999;
 
@@ -427,10 +426,9 @@ public class AlgoritmoGenetico {
                     System.out.println("Encontrou " + fitness[0] + " na geração " + j);
                 }
                 geracaoMelhorFitness = j;
-                melhorCrossover = getCrossover();
                 rotaMelhorFitness = ordenar(populacao, fitness)[0];
                 melhorFitnes = fitness[0];
-                melhorTamPop = populacao.length;
+                melhorTamPop = populacao.length; //TODO ? deletar
             }
 
 
@@ -444,7 +442,6 @@ public class AlgoritmoGenetico {
             populacao = mutacao(populacao, TAXA_MUTACAO, MATRIZ_ADJACENTE);
 
             // Calcula o fitness
-            /*fitness = */
             fitness = calcularFitness(populacao, MATRIZ_ADJACENTE);
 
             /*populacao = */
@@ -456,7 +453,6 @@ public class AlgoritmoGenetico {
             System.out.println(calcularFitness(populacao, MATRIZ_ADJACENTE)[0]);
         }
 
-        return melhorFitnes/* maisForteDaPrimeiraGeracao-fitness[0]*/;
     }
 
     public void setMatrizAdjacente(int[][] MATRIZ_ADJACENTE) {
