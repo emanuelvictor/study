@@ -1,15 +1,16 @@
 package algoritmo.genetico;
 
-import lombok.Getter;
-
 import java.util.Random;
 
 public final class Matrix {
 
     private static Matrix instance;
 
-    @Getter
     public int[][] matrix;
+
+    public int[][] getMatrix() {
+        return matrix;
+    }
 
     private Matrix(int[][] matrix) {
         this.matrix = matrix;

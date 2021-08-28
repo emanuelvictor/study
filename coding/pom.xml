@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Study</name>
+    <name>coding</name>
     <description>Dedicated to the study of project standards, data structures, and other technologies</description>
 
     <parent>
