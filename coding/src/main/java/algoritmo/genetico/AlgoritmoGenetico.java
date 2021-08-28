@@ -4,8 +4,7 @@ package algoritmo.genetico;
 
 
 import algoritmo.Matriz;
-//TODO arrumar crossover TMX
-//TODO configurar elitismo crossover TMX
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Arrays;
@@ -18,18 +17,17 @@ import java.util.Random;
  */
 public class AlgoritmoGenetico {
 
-    private int[][] MATRIZ_ADJACENTE = new int[][]{{}};
+    private int[][] MATRIZ_ADJACENTE;
     // Tamanho da população
     private int sizePopulation;
     //    COM TAXA DE MUTAÇÃO 100% E CROSSOVER 0% O ALGORÍTMO ESTA CONFIGURADO PARA FORÇA BRUTA
     private final float txMutation;
     private final int txCrossover;
-    private Crossover CROSSOVER;
-    private int fitnessToFind;
+    private final int fitnessToFind;
     private int elitism = 0;
     // Número de geraçoẽs (são atributos privados por não são necessários para o acesso externo)
     // SE FOR SETADO COMO NULL, AS GERAÇẼOS SÃO CONSIDERADAS COMO INFINITAS. OU SEJA SÓ VAI PARAR QUANDO ENCONTRAR O FITNESS
-    private Integer generations = 1;
+    private long generations = 1;
 
 
     public AlgoritmoGenetico(int sizeMatrix, int sizePopulation, float txMutation, int txCrossover) {
@@ -44,8 +42,7 @@ public class AlgoritmoGenetico {
         this(10, 20, 5, 100);
     }
 
-
-    public int execute() {
+    public long execute() {
 
         int[][] population = generateRandomPopulation(sizePopulation, MATRIZ_ADJACENTE);
 
@@ -54,10 +51,7 @@ public class AlgoritmoGenetico {
         //Vetor que guarda os fitness de fitness (são atributos privados por não são necessários para o acesso externo)
         int[] fitness = calcularFitness(population, MATRIZ_ADJACENTE);
 
-        for (int generation = 0; generation < generations; generation++) { // todo alterar para do while
-
-//            //Reordena a populaçao pelo fitness
-//            population = sort(population, fitness);
+        for (long generation = 0; generation < generations; generation++) {
 
             // Aplica o crossover do indivíduo selecionado pela roleta
             population = crossoverOX(roleta(fitness), population, txCrossover, MATRIZ_ADJACENTE);
@@ -68,10 +62,8 @@ public class AlgoritmoGenetico {
             // Calcula o fitness
             fitness = calcularFitness(population, MATRIZ_ADJACENTE);
 
-//            /*populacao = */
-//            population = sort(population, fitness);
-
-            final int bestFitnessOnThisGeneration = calcularFitness(population, MATRIZ_ADJACENTE)[0];
+            // Print
+            final int bestFitnessOnThisGeneration = fitness[0];
             if (bestFitnessOnThisGeneration != bestFitness) {
                 bestFitness = bestFitnessOnThisGeneration;
                 final StringBuilder genesOfIndividual = new StringBuilder();
@@ -86,8 +78,8 @@ public class AlgoritmoGenetico {
                         genesSumsOfIndividual.append(population[0][i]).append(" + ").append(population[0][i + 1]).append(" = ").append(this.MATRIZ_ADJACENTE[population[0][i]][population[0][i + 1]]).append("  ");
                 }
 
-                final String toShowing = "Fitness a ser encontrado: " + format(3, fitnessToFind) + " Fitness encontrado: ";
-                System.out.println(toShowing + format(3, bestFitnessOnThisGeneration) + " " + genesOfIndividual);
+                final String toShowing = "Fitness a ser encontrado: " + format(5, fitnessToFind) + " Fitness encontrado: ";
+                System.out.println(toShowing + format(5, bestFitnessOnThisGeneration) + " " + genesOfIndividual);
                 if (bestFitnessOnThisGeneration <= fitnessToFind) {
                     System.out.println("Encontrou " + fitness[0] + " na geração " + generation);
                     System.out.println(genesSumsOfIndividual);
@@ -98,8 +90,8 @@ public class AlgoritmoGenetico {
             generations++;
 
         }
-        throw new RuntimeException();
 
+        throw new RuntimeException();
     }
 
 
@@ -190,7 +182,6 @@ public class AlgoritmoGenetico {
 
     public static int[][] generateRandomPopulation(int TAM_POP, int[][] MATRIZ_ADJACENTE) {
 
-
         int[][] rotas = new int[TAM_POP][MATRIZ_ADJACENTE.length];
 
         //Inicializando população inicial
@@ -203,7 +194,7 @@ public class AlgoritmoGenetico {
 
             int[] rota = new int[rotaAux.length];
 
-            rota = embaralha(rota.length, rota, rotaAux);
+            shuffle(rota.length, rota, rotaAux);
 
             if (!isContained(rotas, rota)) {
                 rotas[k] = rota;
@@ -215,7 +206,7 @@ public class AlgoritmoGenetico {
         return rotas;
     }
 
-    private static int[] embaralha(int tam, int rota[], int rotaAux[]) {
+    private static void shuffle(int tam, final int[] route, int[] auxRoute) {
         // Embaralha
         for (int i = 0; i < tam; i++) {
             int r;
@@ -223,10 +214,9 @@ public class AlgoritmoGenetico {
                 r = new Random().nextInt(tam - i);
             } while (r == i);
 
-            rota[i] = rotaAux[r];
-            rotaAux = preencheVetorSemOR(rotaAux, r);
+            route[i] = auxRoute[r];
+            auxRoute = preencheVetorSemOR(auxRoute, r);
         }
-        return rota;
     }
 
     private static int[] preencheVetorSemOR(final int[] vetorDeIndices, final int r) {
@@ -353,7 +343,6 @@ public class AlgoritmoGenetico {
                 if (new Random().nextInt(99) < TAXA_CROSSOVER - 1) {
 
                     int[] mom = population[c];
-
 
                     int[] primeiraParteFilhoDoPai = new int[cut(dad.length, 3)];
                     int[] primeiraParteFilhoDaMae = new int[cut(mom.length, 3)];
