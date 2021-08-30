@@ -32,9 +32,9 @@ public class AlgoritmoGenetico {
     private final boolean withRoulette;
     private final Crossover crossover;
 
-    public AlgoritmoGenetico(int sizematrix, int sizePopulation, float txMutation, int txCrossover, final boolean withRoulette, final Crossover crossover) {
-        this.matrix = Matriz.getMatriz(sizematrix);
-        this.fitnessToFind = Matriz.getFitness(sizematrix);
+    public AlgoritmoGenetico(int sizeMatrix, int sizePopulation, float txMutation, int txCrossover, final boolean withRoulette, final Crossover crossover) {
+        this.matrix = Matriz.getMatriz(sizeMatrix);
+        this.fitnessToFind = Matriz.getFitness(sizeMatrix);
         this.sizePopulation = sizePopulation;
         this.txMutation = txMutation;
         this.txCrossover = txCrossover;
