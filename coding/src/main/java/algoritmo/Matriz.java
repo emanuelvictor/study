@@ -178,6 +178,9 @@ public class Matriz {
             }
         }
 
+        // Back to home
+        matriz[0][matriz.length -1] = matriz.length;
+
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 1; j < matriz.length; j++) {
                 matriz[j][i] = matriz[i][j];
