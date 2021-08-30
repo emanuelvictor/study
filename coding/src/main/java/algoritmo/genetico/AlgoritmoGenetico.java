@@ -23,16 +23,16 @@ public class AlgoritmoGenetico {
     private final int sizePopulation;
     //    COM TAXA DE MUTAÇÃO 100% E CROSSOVER 0% O ALGORÍTMO ESTA CONFIGURADO PARA FORÇA BRUTA
     private final float txMutation;
-    private final int txCrossover;
+    private final float txCrossover;
+    private final float txElitism;
     private final int fitnessToFind;
-    private int elitism = 0;
     // Número de geraçoẽs (são atributos privados por não são necessários para o acesso externo)
     // SE FOR SETADO COMO NULL, AS GERAÇẼOS SÃO CONSIDERADAS COMO INFINITAS. OU SEJA SÓ VAI PARAR QUANDO ENCONTRAR O FITNESS
     private long generations = 1;
-    private final boolean withRoulette;
+    private boolean withRoulette = true;
     private final Crossover crossover;
 
-    public AlgoritmoGenetico(int sizeMatrix, int sizePopulation, float txMutation, int txCrossover, final boolean withRoulette, final Crossover crossover) {
+    public AlgoritmoGenetico(int sizeMatrix, int sizePopulation, float txMutation, int txCrossover, final float txElitism, final boolean withRoulette, final Crossover crossover) {
         this.matrix = Matriz.getMatriz(sizeMatrix);
         this.fitnessToFind = Matriz.getFitness(sizeMatrix);
         this.sizePopulation = sizePopulation;
@@ -40,10 +40,21 @@ public class AlgoritmoGenetico {
         this.txCrossover = txCrossover;
         this.withRoulette = withRoulette;
         this.crossover = crossover;
+        this.txElitism = txElitism;
+    }
+
+    public AlgoritmoGenetico(int sizeMatrix, int sizePopulation, float txMutation, int txCrossover, final float txElitism, final Crossover crossover) {
+        this.matrix = Matriz.getMatriz(sizeMatrix);
+        this.fitnessToFind = Matriz.getFitness(sizeMatrix);
+        this.sizePopulation = sizePopulation;
+        this.txMutation = txMutation;
+        this.txCrossover = txCrossover;
+        this.crossover = crossover;
+        this.txElitism = txElitism;
     }
 
     public AlgoritmoGenetico() {
-        this(10, 20, 5, 100, true, Crossover.OX);
+        this(10, 20, 5, 100, 0, true, Crossover.OX);
     }
 
     public long execute() {
@@ -64,7 +75,7 @@ public class AlgoritmoGenetico {
             Assert.isTrue(calculateFitness(population, matrix)[0] == fitness[0]);
 
             // Aplica o crossover do indivíduo selecionado pela roulette
-            population = crossover(elitism, withRoulette ? roulette(fitness) : 0, population, txCrossover, matrix, this.crossover);
+            population = crossover(txElitism, txCrossover, withRoulette ? roulette(fitness) : 0, population, matrix, this.crossover);
 
             // Aplica mutaçao
             population = mutation(population, txMutation, matrix);
@@ -105,7 +116,7 @@ public class AlgoritmoGenetico {
     }
 
     /**
-     * @param elitism     int
+     * @param txElitism   int
      * @param roulette    int
      * @param population  int[][]
      * @param txCrossover int
@@ -113,14 +124,14 @@ public class AlgoritmoGenetico {
      * @param crossover   Crossover
      * @return int[][]
      */
-    private int[][] crossover(final int elitism, final int roulette, final int[][] population, final int txCrossover, final int[][] matrix, final Crossover crossover) {
+    private int[][] crossover(final float txElitism, final float txCrossover, final int roulette, final int[][] population, final int[][] matrix, final Crossover crossover) {
         if (crossover.equals(Crossover.PMX))
-            return crossoverPMX(elitism, roulette, population, txCrossover, matrix);
+            return crossoverPMX(txElitism, txCrossover, roulette, population, matrix);
         else
-            return crossoverOX(elitism, roulette, population, txCrossover, matrix);
+            return crossoverOX(txElitism, txCrossover, roulette, population, matrix);
     }
 
-    private int[][] crossoverOX(final int elitism, final int roulette, final int[][] population, final int txCrossover, final int[][] matrix) {
+    private int[][] crossoverOX(final float txElitism, final float txCrossover, final int roulette, final int[][] population, final int[][] matrix) {
 
         if (new Random().nextInt(99) < txCrossover - 1) {
 
@@ -130,7 +141,7 @@ public class AlgoritmoGenetico {
             // Create new population
             final int[][] newPopulation = Arrays.copyOf(population, population.length);
 
-            for (int c = 0; c < population.length; c++) {
+            for (int c = Math.round(sizePopulation * (txElitism / 100)); c < population.length; c++) {
 
                 if (c != roulette) { // To not do crossover himself.
 
@@ -166,7 +177,7 @@ public class AlgoritmoGenetico {
         return population;
     }
 
-    public int[][] crossoverPMX(final int elitism, final int roulette, final int[][] population, final int txCrossover, final int[][] matrix) {
+    public int[][] crossoverPMX(final float txElitism, final float txCrossover, final int roulette, final int[][] population, final int[][] matrix) {
 
         if (new Random().nextInt(99) < txCrossover - 1) {
 
@@ -175,7 +186,7 @@ public class AlgoritmoGenetico {
             // Create new population
             final int[][] newPopulation = Arrays.copyOf(population, population.length);
 
-            for (int c = 0; c < population.length - elitism /* TODO wrong*/; c++) { // Runs through the population, except the chromosomes out of the elitism range.
+            for (int c = Math.round(sizePopulation * (txElitism / 100)); c < population.length; c++) { // Runs through the population, except the chromosomes out of the elitism range.
 
                 if (c != roulette) { // Ignore the father selected, to not be crossover with same father
 
@@ -245,7 +256,6 @@ public class AlgoritmoGenetico {
 
         return population;
     }
-
 
     private static int roulette(final int[] fitness) {
 
