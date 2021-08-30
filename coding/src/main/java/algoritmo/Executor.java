@@ -1,9 +1,8 @@
 package algoritmo;
 
 import algoritmo.genetico.AlgoritmoGenetico;
-import algoritmo.memetico.AlgoritmoMemetico;
+import algoritmo.genetico.Crossover;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -25,37 +24,45 @@ public class Executor {
 //                Float.parseFloat(Leitura.inDados("Taxa de mutação: "))
 //        );
 
+        int num = 1000;
 
-        long [] brute = new long[10];
-        long [] bruteTime = new long[10];
-        long [] heu = new long[10];
-        long [] heuTime = new long[10];
+        long[] withRoulettePMX = new long[num];
+        long[] withoutRoulettePMX = new long[num];
 
-        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        long[] withRouletteOX = new long[num];
+        long[] withoutRouletteOX = new long[num];
 
-        for (int i = 0; i < 10; i++) {
-            final AlgoritmoGenetico heuristc = new AlgoritmoGenetico(10, 20, 5, 100);
-            final LocalDateTime initialDate = LocalDateTime.now();
-            heu[i] = heuristc.execute();
-            final LocalDateTime finalDate = LocalDateTime.now();
-            System.out.println("EURISTICO " + i);
-            System.out.println("Início: " + formatter.format(initialDate) + " Término: " + formatter.format(finalDate));
-            heuTime[i] = finalDate.compareTo(initialDate);
+
+        for (int i = 0; i < num; i++) {
+            final AlgoritmoGenetico pmx = new AlgoritmoGenetico(10, 20, 5, 100, false, Crossover.PMX);
+            withoutRoulettePMX[i] = pmx.execute();
+
+            final AlgoritmoGenetico ox = new AlgoritmoGenetico(10, 20, 5, 100, false, Crossover.PMX);
+            withoutRouletteOX[i] = ox.execute();
         }
 
-        for (int i = 0; i < 10; i++) {
-            final AlgoritmoGenetico bruteForce = new AlgoritmoGenetico(10, 20, 100, 0);
-            final LocalDateTime initialDate = LocalDateTime.now();
-            brute[i] = bruteForce.execute();
-            final LocalDateTime finalDate = LocalDateTime.now();
-            System.out.println("Força Bruta " + i);
-            System.out.println("Início: " + formatter.format(initialDate) + " Término: " + formatter.format(finalDate));
-            bruteTime[i] = finalDate.compareTo(initialDate);
+        for (int i = 0; i < num; i++) {
+            final AlgoritmoGenetico pmx = new AlgoritmoGenetico(10, 20, 5, 100, true, Crossover.OX);
+            withRoulettePMX[i] = pmx.execute();
+
+            final AlgoritmoGenetico ox = new AlgoritmoGenetico(10, 20, 5, 100, true, Crossover.OX);
+            withRouletteOX[i] = ox.execute();
         }
 
-        for (int i = 0; i < 10; i++) {
-            System.out.println("Brute force " + brute[i] + " bruteTime " + bruteTime[i]);
-            System.out.println("Heuristc " + heu[i] + " heuTime " + heuTime[i]);
+//        for (int i = 0; i < 10; i++) {
+//            final AlgoritmoGenetico bruteForce = new AlgoritmoGenetico(10, 20, 100, 0);
+//            final LocalDateTime initialDate = LocalDateTime.now();
+//            brute[i] = bruteForce.execute();
+//            final LocalDateTime finalDate = LocalDateTime.now();
+//            System.out.println("Força Bruta " + i);
+//            System.out.println("Início: " + formatter.format(initialDate) + " Término: " + formatter.format(finalDate));
+//            bruteTime[i] = finalDate.compareTo(initialDate);
+//        }
+
+        for (int i = 0; i < num; i++) {
+//            System.out.println("Brute force " + brute[i] + " bruteTime " + bruteTime[i]);
+            System.out.println(withoutRoulettePMX[i] + ";" + withRoulettePMX[i] +";" + withoutRouletteOX[i] + ";" + withRouletteOX[i]);
         }
+
     }
 }
