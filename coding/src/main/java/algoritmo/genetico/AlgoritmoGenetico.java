@@ -4,6 +4,7 @@ package algoritmo.genetico;
 
 
 import algoritmo.Matriz;
+import lombok.Setter;
 import org.springframework.util.Assert;
 
 import javax.validation.constraints.NotBlank;
@@ -31,6 +32,10 @@ public class AlgoritmoGenetico {
     private long generations = 1;
     private boolean withRoulette = true;
     private final Crossover crossover;
+
+    public void setWithRoulette(boolean withRoulette) {
+        this.withRoulette = withRoulette;
+    }
 
     public AlgoritmoGenetico(int sizeMatrix, int sizePopulation, float txMutation, int txCrossover, final float txElitism, final boolean withRoulette, final Crossover crossover) {
         this.matrix = Matriz.getMatriz(sizeMatrix);
@@ -141,7 +146,7 @@ public class AlgoritmoGenetico {
             // Create new population
             final int[][] newPopulation = Arrays.copyOf(population, population.length);
 
-            for (int c = Math.round(sizePopulation * (txElitism / 100)); c < population.length; c++) {
+            for (int c = 0; c < population.length; c++) {
 
                 if (c != roulette) { // To not do crossover himself.
 
@@ -162,12 +167,18 @@ public class AlgoritmoGenetico {
                     // Select the winner from fight between sons
                     final int[] winner = fight(matrix, firstSon, secondSon, thirdSon, fourthSon);
 
-                    // If the winner is strongest then the mom, and weaker then the dad
-                    int fitnessWinner = calculateFitness(winner, matrix);
-                    int fitnessMom = calculateFitness(mom, matrix);
+                    // Apply the 'steady-state' elitism conform the txElitism.
+                    // If the txElitism is 100%, the algorithm always  be 'steady-state';
+                    if (new Random().nextFloat() * 100 <= txElitism) {
+                        // If the winner is strongest then the mom
+                        int fitnessWinner = calculateFitness(winner, matrix);
+                        int fitnessMom = calculateFitness(mom, matrix);
 
-                    if (fitnessWinner < fitnessMom)
+                        if (fitnessWinner < fitnessMom)
+                            newPopulation[c] = winner;
+                    } else // If the elitism is 0%, the algorithm always  be 'generational' type
                         newPopulation[c] = winner;
+
                 }
             }
 
@@ -186,7 +197,7 @@ public class AlgoritmoGenetico {
             // Create new population
             final int[][] newPopulation = Arrays.copyOf(population, population.length);
 
-            for (int c = Math.round(sizePopulation * (txElitism / 100)); c < population.length; c++) { // Runs through the population, except the chromosomes out of the elitism range.
+            for (int c = 0; c < population.length; c++) { // Runs through the population, except the chromosomes out of the elitism range.
 
                 if (c != roulette) { // Ignore the father selected, to not be crossover with same father
 
@@ -242,11 +253,16 @@ public class AlgoritmoGenetico {
                     // Select the winner from fight between sons
                     final int[] winner = fight(matrix, filhoDaMae, filhoDoPai);
 
-                    // If the winner is strongest then the mom, and weaker then the dad
-                    int fitnessWinner = calculateFitness(winner, matrix);
-                    int fitnessMom = calculateFitness(mom, matrix);
+                    // Apply the 'steady-state' elitism conform the txElitism.
+                    // If the txElitism is 100%, the algorithm always  be 'steady-state';
+                    if (new Random().nextFloat() * 100 <= txElitism) {
+                        // If the winner is strongest then the mom
+                        int fitnessWinner = calculateFitness(winner, matrix);
+                        int fitnessMom = calculateFitness(mom, matrix);
 
-                    if (fitnessWinner < fitnessMom)
+                        if (fitnessWinner < fitnessMom)
+                            newPopulation[c] = winner;
+                    } else // If the elitism is 0%, the algorithm always  be 'generational' type
                         newPopulation[c] = winner;
                 }
             }

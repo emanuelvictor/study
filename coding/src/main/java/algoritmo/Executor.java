@@ -23,7 +23,8 @@ public class Executor {
 //        );
 
 
-        final AlgoritmoGenetico genetic = new AlgoritmoGenetico(10, 20, 5, 100, 0, Crossover.OX);
+        final AlgoritmoGenetico genetic = new AlgoritmoGenetico(16, 20, 25, 100, 85, Crossover.PMX);
+        genetic.setWithRoulette(false);
         genetic.execute();
 
 
