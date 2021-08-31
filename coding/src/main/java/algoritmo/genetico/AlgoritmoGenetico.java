@@ -4,7 +4,6 @@ package algoritmo.genetico;
 
 
 import algoritmo.Matriz;
-import lombok.Setter;
 import org.springframework.util.Assert;
 
 import javax.validation.constraints.NotBlank;
@@ -20,22 +19,15 @@ import java.util.Random;
 public class AlgoritmoGenetico {
 
     private final int[][] matrix;
-    // Tamanho da população
     private final int sizePopulation;
-    //    COM TAXA DE MUTAÇÃO 100% E CROSSOVER 0% O ALGORÍTMO ESTA CONFIGURADO PARA FORÇA BRUTA
     private final float txMutation;
     private final float txCrossover;
     private final float txElitism;
     private final int fitnessToFind;
-    // Número de geraçoẽs (são atributos privados por não são necessários para o acesso externo)
-    // SE FOR SETADO COMO NULL, AS GERAÇẼOS SÃO CONSIDERADAS COMO INFINITAS. OU SEJA SÓ VAI PARAR QUANDO ENCONTRAR O FITNESS
-    private long generations = 1;
     private boolean withRoulette = true;
     private final Crossover crossover;
 
-    public void setWithRoulette(boolean withRoulette) {
-        this.withRoulette = withRoulette;
-    }
+    private long generations = 1;
 
     public AlgoritmoGenetico(int sizeMatrix, int sizePopulation, float txMutation, int txCrossover, final float txElitism, final boolean withRoulette, final Crossover crossover) {
         this.matrix = Matriz.getMatriz(sizeMatrix);
@@ -235,23 +227,37 @@ public class AlgoritmoGenetico {
                     }
 
                     // Populate sons
-                    final int[] filhoDoPai = new int[dad.length];
-                    final int[] filhoDaMae = new int[mom.length];
+                    final int[] firstSonOfDad = new int[dad.length];
+                    final int[] secondSonOfDad = new int[dad.length];
+                    final int[] firstSonOfMom = new int[mom.length];
+                    final int[] secondSonOfMom = new int[mom.length];
 
-                    for (int i = 0; i < filhoDoPai.length; i++)
+                    for (int i = 0; i < firstSonOfDad.length; i++)
                         if (i < firstPartyOfTheSonOfTheDad.length)
-                            filhoDoPai[i] = firstPartyOfTheSonOfTheDad[i];
+                            firstSonOfDad[i] = firstPartyOfTheSonOfTheDad[i];
                         else
-                            filhoDoPai[i] = restSonsOfTheDad[i - firstPartyOfTheSonOfTheDad.length];
+                            firstSonOfDad[i] = restSonsOfTheDad[i - firstPartyOfTheSonOfTheDad.length];
 
-                    for (int i = 0; i < filhoDaMae.length; i++)
-                        if (i < firstPartyOfTheSonOfTheMom.length)
-                            filhoDaMae[i] = firstPartyOfTheSonOfTheMom[i];
+                    for (int i = 0; i < secondSonOfDad.length; i++)
+                        if (i >= restSonsOfTheDad.length)
+                            secondSonOfDad[i] = firstPartyOfTheSonOfTheDad[i - restSonsOfTheDad.length];
                         else
-                            filhoDaMae[i] = restSonsOfTheMom[i - firstPartyOfTheSonOfTheMom.length];
+                            secondSonOfDad[i] = restSonsOfTheDad[i];
+
+                    for (int i = 0; i < firstSonOfMom.length; i++)
+                        if (i < firstPartyOfTheSonOfTheMom.length)
+                            firstSonOfMom[i] = firstPartyOfTheSonOfTheMom[i];
+                        else
+                            firstSonOfMom[i] = restSonsOfTheMom[i - firstPartyOfTheSonOfTheMom.length];
+
+                    for (int i = 0; i < secondSonOfMom.length; i++)
+                        if (i >= restSonsOfTheMom.length)
+                            secondSonOfMom[i] = firstPartyOfTheSonOfTheMom[i - restSonsOfTheMom.length];
+                        else
+                            secondSonOfMom[i] = restSonsOfTheMom[i];
 
                     // Select the winner from fight between sons
-                    final int[] winner = fight(matrix, filhoDaMae, filhoDoPai);
+                    final int[] winner = fight(matrix, firstSonOfMom, secondSonOfMom, firstSonOfDad, secondSonOfDad);
 
                     // Apply the 'steady-state' elitism conform the txElitism.
                     // If the txElitism is 100%, the algorithm always  be 'steady-state';
@@ -448,8 +454,8 @@ public class AlgoritmoGenetico {
 
         sort(chromosomes, fitness);
 
-//        return chromosomes[roulette(fitness)];
-        return this.withRoulette ? chromosomes[roulette(fitness)] : chromosomes[0];
+//        return this.withRoulette ? chromosomes[roulette(fitness)] : chromosomes[0];
+        return chromosomes[0];
     }
 
     /**

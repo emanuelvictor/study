@@ -8,7 +8,6 @@ import algoritmo.genetico.Crossover;
  * Análise da influencia da mutação nos crossovers OX e PMX.
  * Classe que executa os testes
  */
-
 public class Executor {
 
     public static void main(String[] args) {
@@ -23,10 +22,12 @@ public class Executor {
 //        );
 
 
-        final AlgoritmoGenetico genetic = new AlgoritmoGenetico(16, 20, 25, 100, 85, Crossover.PMX);
-        genetic.setWithRoulette(false);
+        final AlgoritmoGenetico genetic = new AlgoritmoGenetico(12, 20, 25, 100, 85, false, Crossover.PMX);
         genetic.execute();
 
+//        // Brute force
+//        final AlgoritmoGenetico genetic = new AlgoritmoGenetico(10, 20, 100, 0, 85, false, Crossover.PMX);
+//        genetic.execute();
 
     }
 }
