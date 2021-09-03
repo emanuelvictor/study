@@ -31,7 +31,7 @@ public final class Matrix {
         for (int i = 0; i < matrix.length; i++) {
 
             for (int j = 0; j < matrix.length; j++) {
-                number = random.nextInt(100) + 200;
+                number = random.nextInt(matrix.length) + matrix.length;
                 matrix[i][j] = number;
             }
         }

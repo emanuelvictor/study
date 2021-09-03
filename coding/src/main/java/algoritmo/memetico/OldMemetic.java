@@ -5,7 +5,7 @@ import algoritmo.Matriz;
 import java.util.Arrays;
 import java.util.Random;
 
-public class AlgoritmoMemetico {
+public class OldMemetic {
 
     private int[][] MATRIZ_ADJACENTE = new int[][]{{}};
 
@@ -19,12 +19,12 @@ public class AlgoritmoMemetico {
     // Quantidade de cidades
     private int TAM_MATRIZ = 80;
 
-    public AlgoritmoMemetico(int TAM_MATRIZ) {
+    public OldMemetic(int TAM_MATRIZ) {
         this.MATRIZ_ADJACENTE = Matriz.getMatriz(TAM_MATRIZ);
         this.FITNESS = Matriz.getFitness(TAM_MATRIZ);
     }
 
-    public AlgoritmoMemetico() {
+    public OldMemetic() {
         this.MATRIZ_ADJACENTE = Matriz.getMatriz(TAM_MATRIZ);
         this.FITNESS = Matriz.getFitness(TAM_MATRIZ);
     }
@@ -83,7 +83,7 @@ public class AlgoritmoMemetico {
 
     //TODO
     private static int[][] buscaLocal(int[][] populacao, int[][] MATRIZ_ADJACENTE) {
-        int melhor[] = populacao[0];
+        int[] melhor = populacao[0];
         //Percorrendo toda a população
         for (int n = 0; n < populacao.length; n++) {
             for (int i = 1; i < populacao.length; i++) {
@@ -225,8 +225,8 @@ public class AlgoritmoMemetico {
         return populacao;
     }
 
-    private static boolean estaContido(int[][] populacao, int individuo[]) {
-        for (int auxiliar[] : populacao) {
+    private static boolean estaContido(int[][] populacao, int[] individuo) {
+        for (int[] auxiliar : populacao) {
             if (Arrays.equals(auxiliar, individuo)) {
                 return true;
             }
@@ -248,29 +248,5 @@ public class AlgoritmoMemetico {
         for (int j : rota) {
             System.out.print(" " + j);
         }
-    }
-
-    public int[][] getMATRIZ_ADJACENTE() {
-        return MATRIZ_ADJACENTE;
-    }
-
-    public void setMATRIZ_ADJACENTE(int[][] MATRIZ_ADJACENTE) {
-        this.MATRIZ_ADJACENTE = MATRIZ_ADJACENTE;
-    }
-
-    public int getFITNESS() {
-        return FITNESS;
-    }
-
-    public void setFITNESS(int FITNESS) {
-        this.FITNESS = FITNESS;
-    }
-
-    public int getTAM_POP() {
-        return TAM_POP;
-    }
-
-    public void setTAM_POP(int TAM_POP) {
-        this.TAM_POP = TAM_POP;
     }
 }

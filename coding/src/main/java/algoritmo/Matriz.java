@@ -150,15 +150,15 @@ public class Matriz {
 
     public static int[][] getMatriz(int TAM) {
 
-        int numero;
+        int number;
         int[][] matriz = new int[TAM][TAM];
-        Random aleatorio = new Random();
+        Random random = new Random();
 
         for (int i = 0; i < matriz.length; i++) {
 
             for (int j = 0; j < matriz.length; j++) {
-                numero = aleatorio.nextInt(100) + 200;
-                matriz[i][j] = numero;
+                number = random.nextInt(matriz.length) + matriz.length;
+                matriz[i][j] = number;
             }
         }
 
@@ -210,7 +210,8 @@ public class Matriz {
             cont = cont + i;
         }
 
-        return cont;
+        return cont + TAM; // return to home
+//        return cont;
     }
 
 }
