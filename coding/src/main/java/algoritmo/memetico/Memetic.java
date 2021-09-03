@@ -92,63 +92,29 @@ public class Memetic {
 
     //TODO
     private static int[][] buscaLocal(int[][] population, int[][] matrix) {
-//        do {
-        // Select the dad
-//            final int[] dad = population[0];
         int p = 0;
-        /*for (int p = 0; p < population.length; p++)*/
-        {
+        //Percorrendo toda a população,
+        for (int m = 1; m < population.length; m++) {
+            //Percorrendo as ideias do pai
+            for (int ip = 0; ip < population[p].length; ip++) {
 
-            //Percorrendo toda a população, TODO começa do 1 pq o zero é o dad
-            for (int m = 1; m < population.length; m++) {
-                //Percorrendo as ideias do pai
-                for (int ip = 0; ip < population[p].length; ip++) {
+                //Percorrendo as ideias da mãe
+                for (int im = 0; im < population[m].length; im++) {
 
-                    //Percorrendo as ideias da mãe
-                    for (int im = 0; im < population[m].length; im++) {
+                    final int indexOfBestIdeaOfDad = rankIdeas(im, population[p], matrix);
+                    final int indexOfBestIdeaOfMom = rankIdeas(im, population[m], matrix);
 
-                        final int indexOfBestIdeaOfDad = rankIdeas(im, population[p], matrix);
-                        final int indexOfBestIdeaOfMom = rankIdeas(im, population[m], matrix);
+                    int fitnessOfBestIdeaOfDad = calcularFitness(population[p][indexOfBestIdeaOfDad], population[p][population[p].length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1], matrix); // Calculate the fitness of the mom
+                    int fitnessOfBestIdeaOfMom = calcularFitness(population[m][indexOfBestIdeaOfMom], population[m][population[m].length - 1 == indexOfBestIdeaOfMom ? 0 : indexOfBestIdeaOfMom + 1], matrix); // Calculate the fitness of the dad
 
-                        int fitnessOfBestIdeaOfDad = calcularFitness(population[p][indexOfBestIdeaOfDad], population[p][population[p].length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1], matrix); // Calculate the fitness of the mom
-                        int fitnessOfBestIdeaOfMom = calcularFitness(population[m][indexOfBestIdeaOfMom], population[m][population[m].length - 1 == indexOfBestIdeaOfMom ? 0 : indexOfBestIdeaOfMom + 1], matrix); // Calculate the fitness of the dad
-                        if (fitnessOfBestIdeaOfDad < fitnessOfBestIdeaOfMom) {
-                            /*if (*/
-                            trocarIdeia(population[m], population[p], indexOfBestIdeaOfDad);/*)*/
-//                                    im--;
-//                                    System.out.println(Arrays.toString(population[m]));
-
-//                                    for (int k = 0; k < population[m].length; k++) {
-//                                        if (population[m][k] == population[p][population[p].length - 1 == bestIdeaOfDad ? 0 : bestIdeaOfDad + 1]) {
-//                                            population[m][k] = population[m][population[m].length - 1 == bestIdeaOfMom ? 0 : bestIdeaOfMom + 1];
-////                                            break;
-//                                        }
-//                                    }
-//                                    population[m][population[m].length - 1 == bestIdeaOfMom ? 0 : bestIdeaOfMom + 1] = population[p][population[p].length - 1 == bestIdeaOfDad ? 0 : bestIdeaOfDad + 1];
-                        } else if (fitnessOfBestIdeaOfDad > fitnessOfBestIdeaOfMom) {
-                            /*if (*/
-                            trocarIdeia(population[p], population[m], indexOfBestIdeaOfMom);/*)*/
-//                                    im--;
-//                                    System.out.println(Arrays.toString(population[p]));
-//                                    for (int k = 0; k < population[p].length; k++) {
-//                                        if (population[p][k] == population[m][population[m].length - 1 == indexOfBestIdeaOfMom ? 0 : indexOfBestIdeaOfMom + 1]) {
-//                                            population[p][k] = population[p][population[p].length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1];
-////                                            break;
-//                                        }
-//                                    }
-//                                    population[p][population[p].length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1] = population[m][population[m].length - 1 == indexOfBestIdeaOfMom ? 0 : indexOfBestIdeaOfMom + 1];
-
-                        } else {
-//                                System.out.println(Arrays.toString(population[p]));
-//                                System.out.println(Arrays.toString(population[m]));
-//                                System.out.println("ideias iguais "+ im);
-                            continue;
-                        }
+                    if (fitnessOfBestIdeaOfDad < fitnessOfBestIdeaOfMom) {
+                        trocarIdeia(population[m], population[p], indexOfBestIdeaOfDad);
+                    } else if (fitnessOfBestIdeaOfDad > fitnessOfBestIdeaOfMom) {
+                        trocarIdeia(population[p], population[m], indexOfBestIdeaOfMom);
                     }
                 }
             }
         }
-//        } while (!converge(population, matrix));
         return ordenar(population, calcularFitness(population, matrix));
     }
 
@@ -170,36 +136,6 @@ public class Memetic {
                 mom[k == mom.length - 1 ? 0 : k + 1] = dad[dad.length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1];
 
                 break;
-            }
-        }
-        return true;
-    }
-
-    public static boolean converge(int[][] populacao, int[][] matrix) {
-        int[] fitness = calcularFitness(populacao, matrix);
-        for (int i = 1; i < fitness.length; i++) {
-            if (fitness[i] != fitness[i - 1]) return false;
-        }
-        return true;
-    }
-
-    private static boolean converge(final int[][] population) {
-//        for (int i = 0; i < populacao.length; i++) {
-//            int count = 0;
-//            for (int j = 0; j < populacao.length; j++) {
-//                if (i != j) {
-//                    if (Arrays.equals(populacao[i], populacao[j]))
-//                        count++;
-//                    if (count >= (populacao.length * convergenceRate) / 100)
-//                        return true;
-//                }
-//            }
-//        }
-//        return false;
-        for (final int[] outer : population) {
-            for (final int[] inner : population) {
-                if (!Arrays.equals(outer, inner))
-                    return false;
             }
         }
         return true;

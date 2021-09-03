@@ -12,14 +12,14 @@ public class Executor {
 
     public static void main(String[] args) {
 
-        Matrix.getInstance().generateMatrix(20);
+        Matrix.getInstance().generateMatrix(20, true);
 
 
-        final Memetic memetic = new Memetic();
-        memetic.execute();
+//        final Memetic memetic = new Memetic();
+//        memetic.execute();
 
-//        final OldMemetic oldMemetic = new OldMemetic();
-//        oldMemetic.execute();
+        final OldMemetic oldMemetic = new OldMemetic();
+        oldMemetic.execute();
 
         System.out.println(" ----------------------------------------------------------------------------------------------------- ");
 
