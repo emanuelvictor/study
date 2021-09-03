@@ -162,24 +162,20 @@ public final class Matrix {
         return matrix;
     }
 
+    private Matrix() {
+    }
+
     private Matrix(int[][] matrix) {
         this.matrix = matrix;
-        this.calculateFitness();
     }
 
     public static Matrix getInstance() {
         if (instance == null)
-            instance = new Matrix(generateMatrix(10));
+            instance = new Matrix();
         return instance;
     }
 
-    public static Matrix getInstance(int TAM) {
-        if (instance == null)
-            instance = new Matrix(generateMatrix(TAM));
-        return instance;
-    }
-
-    private static int[][] generateMatrix(int TAM) {
+    public void generateMatrix(int TAM) {
 
         int number;
         int[][] matrix = new int[TAM][TAM];
@@ -231,10 +227,14 @@ public final class Matrix {
             System.out.println();
         }
 
-        return matrix;
+        this.matrix = matrix;
+
+        this.fitness = calculateFitness();
+
+//        return matrix;
     }
 
-    public int calculateFitness() {
+    private int calculateFitness() {
 
         this.fitness = this.matrix[this.matrix.length - 1][this.matrix.length - 1];
 

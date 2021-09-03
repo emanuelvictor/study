@@ -11,14 +11,20 @@ import algoritmo.memetico.OldMemetic;
 public class Executor {
 
     public static void main(String[] args) {
-        final Memetic memetic = new Memetic(10);
+
+        Matrix.getInstance().generateMatrix(20);
+
+
+        final Memetic memetic = new Memetic();
         memetic.execute();
 
-//        final OldMemetic oldMemetic = new OldMemetic(40);
+//        final OldMemetic oldMemetic = new OldMemetic();
 //        oldMemetic.execute();
 
-
         System.out.println(" ----------------------------------------------------------------------------------------------------- ");
+
+
+
 
         //        final AlgoritmoGenetico algoritmoGenetico = new AlgoritmoGenetico(
 //                Integer.parseInt(Leitura.inDados("Insira a quantidade de cidades: ")),

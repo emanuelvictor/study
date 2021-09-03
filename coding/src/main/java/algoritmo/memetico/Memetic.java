@@ -2,7 +2,6 @@ package algoritmo.memetico;
 
 
 import algoritmo.Matrix;
-import org.springframework.util.Assert;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -10,9 +9,9 @@ import java.util.Random;
 
 public class Memetic {
 
-    private int[][] MATRIZ_ADJACENTE = new int[][]{{}};
+    private int[][] matrix = new int[][]{{}};
 
-    private int FITNESS;
+    private int fitnessToFind;
 
     // Tamanho da população. O tamanho da população também define a aleatóriedade
     private int TAM_POP = 5;
@@ -22,55 +21,55 @@ public class Memetic {
     // Quantidade de cidades
     private int TAM_MATRIZ = 80;
 
-    public Memetic(int TAM_MATRIZ) {
-        this.MATRIZ_ADJACENTE = Matrix.getInstance(TAM_MATRIZ).getMatrix();
-        this.FITNESS = Matrix.getInstance().calculateFitness();
+    public Memetic() {
+        this.matrix = Matrix.getInstance().getMatrix();
+        this.fitnessToFind = Matrix.getInstance().getFitness();
     }
 
-    public Memetic() {
-        this.MATRIZ_ADJACENTE = Matrix.getInstance(TAM_MATRIZ).getMatrix();
-        this.FITNESS = Matrix.getInstance().calculateFitness();
+    public Memetic(int[][] matrix, int fitnessToFind) {
+        this.matrix = matrix;
+        this.fitnessToFind = fitnessToFind;
     }
 
     public void execute() {
-        int[][] populacao = gerarPopulacaoAleatoria(TAM_POP, MATRIZ_ADJACENTE);
+        int[][] populacao = gerarPopulacaoAleatoria(TAM_POP, matrix);
 
-        melhor = ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0];
+        melhor = ordenar(populacao, calcularFitness(populacao, matrix))[0];
 
         //Variável auxiliar para guardar o melhor da população anterior anterior.
-        int melhorAnterior = calcularFitness(melhor, MATRIZ_ADJACENTE);
+        int melhorAnterior = calcularFitness(melhor, matrix);
 
-        while (!melhorGlobal(populacao, MATRIZ_ADJACENTE, FITNESS)) {
+        while (!melhorGlobal(populacao, matrix, fitnessToFind)) {
 
-            populacao = saltar(populacao, MATRIZ_ADJACENTE);
+            populacao = saltar(populacao, matrix);
 
-            populacao = buscaLocal(populacao, MATRIZ_ADJACENTE);
+            populacao = buscaLocal(populacao, matrix);
 
             //Variável auxiliar para não duplicar o processo de cálculo do fitness
-            int melhorAtual = calcularFitness(melhor, MATRIZ_ADJACENTE);
+            int melhorAtual = calcularFitness(melhor, matrix);
 
             //TODO gambiarrona para elitizar o melhor e o algoritmo não desaprender
-            if (calcularFitness(ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0], MATRIZ_ADJACENTE) <= melhorAtual) {
-                populacao = ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE));
+            if (calcularFitness(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix) <= melhorAtual) {
+                populacao = ordenar(populacao, calcularFitness(populacao, matrix));
                 for (int i = 0; i < populacao[0].length; i++) {
                     melhor[i] = populacao[0][i];
                 }
             } else {
-                populacao = ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE));
+                populacao = ordenar(populacao, calcularFitness(populacao, matrix));
                 for (int i = 0; i < populacao[0].length; i++) {
                     populacao[0][i] = melhor[i];
                 }
             }
             //Se o fitness do melhor indivíduo encontrado for melhor que o anterior, imprime-o
             if (melhorAtual < melhorAnterior) {
-                melhorAnterior = calcularFitness(melhor, MATRIZ_ADJACENTE);
-                imprimir(ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0], MATRIZ_ADJACENTE);
+                melhorAnterior = calcularFitness(melhor, matrix);
+                imprimir(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
 //                System.out.println(" = " + calcularFitness(ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0], MATRIZ_ADJACENTE));
             }
 
         }
 
-        imprimir(ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0], MATRIZ_ADJACENTE);
+        imprimir(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
 
     }
 
@@ -94,27 +93,28 @@ public class Memetic {
     //TODO
     private static int[][] buscaLocal(int[][] population, int[][] matrix) {
 //        do {
-            // Select the dad
+        // Select the dad
 //            final int[] dad = population[0];
-            int p = 0;
-            /*for (int p = 0; p < population.length; p++)*/
-            {
+        int p = 0;
+        /*for (int p = 0; p < population.length; p++)*/
+        {
 
-                //Percorrendo toda a população, TODO começa do 1 pq o zero é o dad
-                for (int m = 1; m < population.length; m++) {
-                    //Percorrendo as ideias do pai
-                    for (int ip = 0; ip < population[p].length; ip++) {
+            //Percorrendo toda a população, TODO começa do 1 pq o zero é o dad
+            for (int m = 1; m < population.length; m++) {
+                //Percorrendo as ideias do pai
+                for (int ip = 0; ip < population[p].length; ip++) {
 
-                        //Percorrendo as ideias da mãe
-                        for (int im = 0; im < population[m].length; im++) {
+                    //Percorrendo as ideias da mãe
+                    for (int im = 0; im < population[m].length; im++) {
 
-                            final int indexOfBestIdeaOfDad = rankIdeas(im, population[p], matrix);
-                            final int indexOfBestIdeaOfMom = rankIdeas(im, population[m], matrix);
+                        final int indexOfBestIdeaOfDad = rankIdeas(im, population[p], matrix);
+                        final int indexOfBestIdeaOfMom = rankIdeas(im, population[m], matrix);
 
-                            int fitnessOfBestIdeaOfDad = calcularFitness(population[p][indexOfBestIdeaOfDad], population[p][population[p].length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1], matrix); // Calculate the fitness of the mom
-                            int fitnessOfBestIdeaOfMom = calcularFitness(population[m][indexOfBestIdeaOfMom], population[m][population[m].length - 1 == indexOfBestIdeaOfMom ? 0 : indexOfBestIdeaOfMom + 1], matrix); // Calculate the fitness of the dad
-                            if (fitnessOfBestIdeaOfDad < fitnessOfBestIdeaOfMom) {
-                                /*if (*/trocarIdeia(population[m], population[p], indexOfBestIdeaOfDad);/*)*/
+                        int fitnessOfBestIdeaOfDad = calcularFitness(population[p][indexOfBestIdeaOfDad], population[p][population[p].length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1], matrix); // Calculate the fitness of the mom
+                        int fitnessOfBestIdeaOfMom = calcularFitness(population[m][indexOfBestIdeaOfMom], population[m][population[m].length - 1 == indexOfBestIdeaOfMom ? 0 : indexOfBestIdeaOfMom + 1], matrix); // Calculate the fitness of the dad
+                        if (fitnessOfBestIdeaOfDad < fitnessOfBestIdeaOfMom) {
+                            /*if (*/
+                            trocarIdeia(population[m], population[p], indexOfBestIdeaOfDad);/*)*/
 //                                    im--;
 //                                    System.out.println(Arrays.toString(population[m]));
 
@@ -125,8 +125,9 @@ public class Memetic {
 //                                        }
 //                                    }
 //                                    population[m][population[m].length - 1 == bestIdeaOfMom ? 0 : bestIdeaOfMom + 1] = population[p][population[p].length - 1 == bestIdeaOfDad ? 0 : bestIdeaOfDad + 1];
-                            } else if (fitnessOfBestIdeaOfDad > fitnessOfBestIdeaOfMom) {
-                                /*if (*/trocarIdeia(population[p], population[m], indexOfBestIdeaOfMom);/*)*/
+                        } else if (fitnessOfBestIdeaOfDad > fitnessOfBestIdeaOfMom) {
+                            /*if (*/
+                            trocarIdeia(population[p], population[m], indexOfBestIdeaOfMom);/*)*/
 //                                    im--;
 //                                    System.out.println(Arrays.toString(population[p]));
 //                                    for (int k = 0; k < population[p].length; k++) {
@@ -137,16 +138,16 @@ public class Memetic {
 //                                    }
 //                                    population[p][population[p].length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1] = population[m][population[m].length - 1 == indexOfBestIdeaOfMom ? 0 : indexOfBestIdeaOfMom + 1];
 
-                            } else {
+                        } else {
 //                                System.out.println(Arrays.toString(population[p]));
 //                                System.out.println(Arrays.toString(population[m]));
 //                                System.out.println("ideias iguais "+ im);
-                                continue;
-                            }
+                            continue;
                         }
                     }
                 }
             }
+        }
 //        } while (!converge(population, matrix));
         return ordenar(population, calcularFitness(population, matrix));
     }
@@ -167,10 +168,7 @@ public class Memetic {
                     }
 
                 mom[k == mom.length - 1 ? 0 : k + 1] = dad[dad.length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1];
-                for (int c = 0; c < mom.length; c++)
-                    for (int x = 0; x < mom.length; x++)
-                        if (x != c)
-                            Assert.isTrue(mom[c] != mom[x]);
+
                 break;
             }
         }
@@ -347,6 +345,6 @@ public class Memetic {
         for (int j : rota) {
             System.out.print(" " + j);
         }
-        System.out.println(" = " + calcularFitness(rota, matrix) + " fitness a ser encontrado = " + FITNESS);
+        System.out.println(" = " + calcularFitness(rota, matrix) + " fitness a ser encontrado = " + fitnessToFind);
     }
 }

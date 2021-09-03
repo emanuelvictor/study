@@ -30,7 +30,7 @@ public class AlgoritmoGenetico {
     private long generations = 1;
 
     public AlgoritmoGenetico(int sizeMatrix, int sizePopulation, float txMutation, int txCrossover, final float txElitism, final boolean withRoulette, final Crossover crossover) {
-        this.matrix = Matrix.getInstance(sizeMatrix).getMatrix();
+        this.matrix = Matrix.getInstance().getMatrix();
         this.fitnessToFind = Matrix.getInstance().getFitness();
         this.sizePopulation = sizePopulation;
         this.txMutation = txMutation;
@@ -41,7 +41,7 @@ public class AlgoritmoGenetico {
     }
 
     public AlgoritmoGenetico(int sizeMatrix, int sizePopulation, float txMutation, int txCrossover, final float txElitism, final Crossover crossover) {
-        this.matrix = Matrix.getInstance(sizeMatrix).getMatrix();
+        this.matrix = Matrix.getInstance().getMatrix();
         this.fitnessToFind = Matrix.getInstance().getFitness();
         this.sizePopulation = sizePopulation;
         this.txMutation = txMutation;

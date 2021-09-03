@@ -7,69 +7,66 @@ import java.util.Random;
 
 public class OldMemetic {
 
-    private int[][] MATRIZ_ADJACENTE = new int[][]{{}};
+    private int[][] matrix;
 
-    private int FITNESS;
+    private int fitnessToFind;
 
     // Tamanho da população. O tamanho da população também define a aleatóriedade
     private int TAM_POP = 50;
 
     private int[] melhor;
 
-    // Quantidade de cidades
-    private int TAM_MATRIZ = 80;
-
-    public OldMemetic(int TAM_MATRIZ) {
-        this.MATRIZ_ADJACENTE = Matrix.getInstance(TAM_MATRIZ).getMatrix();
-        this.FITNESS = Matrix.getInstance().getFitness();
+    public OldMemetic() {
+        this.matrix = Matrix.getInstance().getMatrix();
+        this.fitnessToFind = Matrix.getInstance().getFitness();
     }
 
-    public OldMemetic() {
-        this.MATRIZ_ADJACENTE = Matrix.getInstance(TAM_MATRIZ).getMatrix();
-        this.FITNESS = Matrix.getInstance().getFitness();
+    public OldMemetic(int[][] matrix, int fitnessToFind) {
+        this.matrix = matrix;
+        this.fitnessToFind = fitnessToFind;
     }
 
     public void execute() {
-        int[][] populacao = gerarPopulacaoAleatoria(TAM_POP, MATRIZ_ADJACENTE);
+        int[][] populacao = gerarPopulacaoAleatoria(TAM_POP, matrix);
 
-        melhor = ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0];
+        melhor = ordenar(populacao, calcularFitness(populacao, matrix))[0];
 
         //Variável auxiliar para guardar o melhor da população anterior anterior.
-        int melhorAnterior = calcularFitness(melhor, MATRIZ_ADJACENTE);
+        int melhorAnterior = calcularFitness(melhor, matrix);
 
-        while (!melhorGlobal(populacao, MATRIZ_ADJACENTE, FITNESS)) {
+        while (!melhorGlobal(populacao, matrix, fitnessToFind)) {
 
-            populacao = saltar(populacao, MATRIZ_ADJACENTE);
+            populacao = saltar(populacao, matrix);
 
-            populacao = buscaLocal(populacao, MATRIZ_ADJACENTE);
+            populacao = buscaLocal(populacao, matrix);
 
             //Variável auxiliar para não duplicar o processo de cálculo do fitness
-            int melhorAtual = calcularFitness(melhor, MATRIZ_ADJACENTE);
+            int melhorAtual = calcularFitness(melhor, matrix);
 
             //TODO gambiarrona para elitizar o melhor e o algoritmo não desaprender
-            if (calcularFitness(ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0], MATRIZ_ADJACENTE) <= melhorAtual) {
-                populacao = ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE));
+            if (calcularFitness(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix) <= melhorAtual) {
+                populacao = ordenar(populacao, calcularFitness(populacao, matrix));
                 for (int i = 0; i < populacao[0].length; i++) {
                     melhor[i] = populacao[0][i];
                 }
             } else {
-                populacao = ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE));
+                populacao = ordenar(populacao, calcularFitness(populacao, matrix));
                 for (int i = 0; i < populacao[0].length; i++) {
                     populacao[0][i] = melhor[i];
                 }
             }
             //Se o fitness do melhor indivíduo encontrado for melhor que o anterior, imprime-o
             if (melhorAtual < melhorAnterior) {
-                melhorAnterior = calcularFitness(melhor, MATRIZ_ADJACENTE);
-                imprimir(ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0]);
-                System.out.println(" = " + calcularFitness(ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0], MATRIZ_ADJACENTE));
+                melhorAnterior = calcularFitness(melhor, matrix);
+                imprimir(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
+//                System.out.println(" = " + calcularFitness(ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0], MATRIZ_ADJACENTE));
             }
 
         }
 
-        imprimir(populacao, calcularFitness(populacao,MATRIZ_ADJACENTE), MATRIZ_ADJACENTE);
-        imprimir(populacao[0]);
-        System.out.print(" "+calcularFitness(populacao[0], MATRIZ_ADJACENTE));
+        imprimir(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
+//        imprimir(populacao[0]);
+//        System.out.print(" "+calcularFitness(populacao[0], MATRIZ_ADJACENTE));
 
     }
 
@@ -234,19 +231,27 @@ public class OldMemetic {
         return false;
     }
 
-    private static void imprimir(int[][] populacao, int[] fitness, int[][] MATRIZ_ADJACENTE) {
-        for (int j = 0; j < populacao.length; j++) {
-            System.out.print("Rota " + j + " = ");
-            for (int i = 0; i < MATRIZ_ADJACENTE.length; i++) {
-                System.out.print(" " + populacao[j][i] + " ");
-            }
-            System.out.println(" fitness = " + fitness[j]);
-        }
-    }
 
-    private static void imprimir(int[] rota) {
+    private void imprimir(int[] rota, int[][] matrix) {
         for (int j : rota) {
             System.out.print(" " + j);
         }
+        System.out.println(" = " + calcularFitness(rota, matrix) + " fitness a ser encontrado = " + fitnessToFind);
     }
+
+//    private static void imprimir(int[][] populacao, int[] fitness, int[][] MATRIZ_ADJACENTE) {
+//        for (int j = 0; j < populacao.length; j++) {
+//            System.out.print("Rota " + j + " = ");
+//            for (int i = 0; i < MATRIZ_ADJACENTE.length; i++) {
+//                System.out.print(" " + populacao[j][i] + " ");
+//            }
+//            System.out.println(" fitness = " + fitness[j]);
+//        }
+//    }
+//
+//    private static void imprimir(int[] rota) {
+//        for (int j : rota) {
+//            System.out.print(" " + j);
+//        }
+//    }
 }
