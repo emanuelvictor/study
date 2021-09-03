@@ -1,6 +1,6 @@
 package algoritmo.memetico;
 
-import algoritmo.Matriz;
+import algoritmo.Matrix;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -20,13 +20,13 @@ public class OldMemetic {
     private int TAM_MATRIZ = 80;
 
     public OldMemetic(int TAM_MATRIZ) {
-        this.MATRIZ_ADJACENTE = Matriz.getMatriz(TAM_MATRIZ);
-        this.FITNESS = Matriz.getFitness(TAM_MATRIZ);
+        this.MATRIZ_ADJACENTE = Matrix.getInstance(TAM_MATRIZ).getMatrix();
+        this.FITNESS = Matrix.getInstance().getFitness();
     }
 
     public OldMemetic() {
-        this.MATRIZ_ADJACENTE = Matriz.getMatriz(TAM_MATRIZ);
-        this.FITNESS = Matriz.getFitness(TAM_MATRIZ);
+        this.MATRIZ_ADJACENTE = Matrix.getInstance(TAM_MATRIZ).getMatrix();
+        this.FITNESS = Matrix.getInstance().getFitness();
     }
 
     public void execute() {

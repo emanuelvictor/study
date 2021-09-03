@@ -5,21 +5,21 @@ import java.util.Random;
 /**
  * Algoritmo Genético implementado por Emanuel Victor e Haroldo Ramirez em 29/09/14.
  * Análise da influencia da mutação nos crossovers OX e PMX.
- * Matrizes analisadas
+ * Matrixes analisadas
  */
-public class Matriz {
+public final class Matrix {
 
     /**
      * TODO
      * Lista de melhores fitness
-     * Para a matriz de 06 cidades a melhor rota possível é = 0  1  4  3  2  5 com fitness = 110
-     * Para a matriz de 09 cidades a melhor rota possível é = 1  0  7  8  4  3  2  5  6  com fitness = 120
-     * Para a matriz de 12 cidades a melhor rota possível é = 0  1  6  5  2  4  3  11  10  9  8  7   com fitness = 147
-     * Para a matriz de 18 cidades a melhor rota possível é = 0  1  6  5  2  4  3  15  17  16  14  13  12  11  10  9  8  7   com fitness = 200
+     * Para a matrix de 06 cidades a melhor rota possível é = 0  1  4  3  2  5 com fitness = 110
+     * Para a matrix de 09 cidades a melhor rota possível é = 1  0  7  8  4  3  2  5  6  com fitness = 120
+     * Para a matrix de 12 cidades a melhor rota possível é = 0  1  6  5  2  4  3  11  10  9  8  7   com fitness = 147
+     * Para a matrix de 18 cidades a melhor rota possível é = 0  1  6  5  2  4  3  15  17  16  14  13  12  11  10  9  8  7   com fitness = 200
      */
 
 
-    public static final int[][] MATRIZ_30_CIDADES =
+    public static final int[][] MATRIX_30_CIDADES =
             new int[][]{
                     /**     01  02  03  04  05  06  07  08  09  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30*/
                     /**1**/{00, 1, 43, 87, 78, 32, 87, 78, 65, 88, 52, 56, 48, 45, 43, 32, 35, 31, 33, 49, 78, 32, 95, 91, 49, 82, 42, 99, 97, 51},
@@ -56,9 +56,9 @@ public class Matriz {
             };
 
 
-    public static final int FITNESS_MATRIZ_18_CIDADES = 200;
+    public static final int FITNESS_MATRIX_18_CIDADES = 200;
 
-    public static final int[][] MATRIZ_18_CIDADES =
+    public static final int[][] MATRIX_18_CIDADES =
             new int[][]{
                     /**     01  02  03  04  05  06  07  08  09  10  11  12  13  14  15  16  17  18*/
                     /**1**/{00, 7, 23, 87, 78, 32, 87, 8, 22, 87, 22, 56, 48, 45, 43, 32, 35, 21},
@@ -82,9 +82,9 @@ public class Matriz {
             };
 
 
-    public static final int FITNESS_MATRIZ_12_CIDADES = 147;
+    public static final int FITNESS_MATRIX_12_CIDADES = 147;
 
-    public static final int[][] MATRIZ_12_CIDADES =
+    public static final int[][] MATRIX_12_CIDADES =
             new int[][]{
                     /**     01  02  03  04  05  06  07  08  09  10  11  12  */
                     /**1**/{00, 7, 23, 87, 78, 32, 87, 8, 22, 87, 22, 56},
@@ -102,9 +102,9 @@ public class Matriz {
             };
 
 
-    public static final int FITNESS_MATRIZ_09_CIDADES = 120;
+    public static final int FITNESS_MATRIX_09_CIDADES = 120;
 
-    public static final int[][] MATRIZ_09_CIDADES =
+    public static final int[][] MATRIX_09_CIDADES =
             new int[][]{
                     /**     01  02  03  04  05  06  07  08  09 */
                     /**1**/{00, 7, 23, 87, 78, 32, 87, 8, 22},
@@ -119,9 +119,9 @@ public class Matriz {
             };
 
 
-    public static final int FITNESS_MATRIZ_06_CIDADES = 110;
+    public static final int FITNESS_MATRIX_06_CIDADES = 110;
 
-    public static final int[][] MATRIZ_06_CIDADES =
+    public static final int[][] MATRIX_06_CIDADES =
             new int[][]{
                     /**     01  02  03  04  05  06  */
                     /**1**/{00, 7, 23, 87, 78, 32},
@@ -133,9 +133,9 @@ public class Matriz {
             };
 
 
-    public static final int FITNESS_MATRIZ_06_CIDADES_TESTE = 21;
+    public static final int FITNESS_MATRIX_06_CIDADES_TESTE = 21;
 
-    public static final int[][] MATRIZ_06_CIDADES_TESTE =
+    public static final int[][] MATRIX_06_CIDADES_TESTE =
             new int[][]{
                     /**     01  02  03  04  05  06  */
                     /**1**/{00, 1, 23, 87, 78, 32, 06},
@@ -148,69 +148,104 @@ public class Matriz {
             };
 
 
-    public static int[][] getMatriz(int TAM) {
+    private static Matrix instance;
+
+    private int fitness;
+
+    private int[][] matrix;
+
+    public int getFitness() {
+        return fitness;
+    }
+
+    public int[][] getMatrix() {
+        return matrix;
+    }
+
+    private Matrix(int[][] matrix) {
+        this.matrix = matrix;
+        this.calculateFitness();
+    }
+
+    public static Matrix getInstance() {
+        if (instance == null)
+            instance = new Matrix(generateMatrix(10));
+        return instance;
+    }
+
+    public static Matrix getInstance(int TAM) {
+        if (instance == null)
+            instance = new Matrix(generateMatrix(TAM));
+        return instance;
+    }
+
+    private static int[][] generateMatrix(int TAM) {
 
         int number;
-        int[][] matriz = new int[TAM][TAM];
+        int[][] matrix = new int[TAM][TAM];
         Random random = new Random();
 
-        for (int i = 0; i < matriz.length; i++) {
+        for (int i = 0; i < matrix.length; i++) {
 
-            for (int j = 0; j < matriz.length; j++) {
-                number = random.nextInt(matriz.length) + matriz.length;
-                matriz[i][j] = number;
+            for (int j = 0; j < matrix.length; j++) {
+                number = random.nextInt(matrix.length) + matrix.length;
+                matrix[i][j] = number;
             }
         }
 
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz.length; j++) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
                 if (j == i) {
-                    matriz[j][i] = 0;
+                    matrix[j][i] = 0;
                 }
             }
         }
 
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 1; j < matriz.length; j++) {
-                if (j == i) {
-                    matriz[j - 1][i] = i;
-                }
-            }
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 1; j < matrix.length; j++)
+                if (j == i)
+//                    matrix[j - 1][i] = i;
+                    matrix[j - 1][i] = random.nextInt(matrix.length);
         }
 
         // Back to home
-        matriz[0][matriz.length -1] = matriz.length;
+        matrix[0][matrix.length - 1] = matrix.length;
 
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 1; j < matriz.length; j++) {
-                matriz[j][i] = matriz[i][j];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 1; j < matrix.length; j++) {
+                matrix[j][i] = matrix[i][j];
             }
         }
 
-        for (int i = 0; i < matriz.length; i++) {
-            for (int[] aMatriz : matriz) {
-                if (aMatriz[i] == 0)
+        for (int i = 0; i < matrix.length; i++) {
+            for (int[] aMatrix : matrix) {
+                if (aMatrix[i] == 0)
                     System.out.print("000 ");
-                else if (aMatriz[i] < 100 && aMatriz[i] >= 10)
-                    System.out.print("0" + aMatriz[i] + " ");
-                else if (aMatriz[i] < 10)
-                    System.out.print("00" + aMatriz[i] + " ");
+                else if (aMatrix[i] < 100 && aMatrix[i] >= 10)
+                    System.out.print("0" + aMatrix[i] + " ");
+                else if (aMatrix[i] < 10)
+                    System.out.print("00" + aMatrix[i] + " ");
                 else
-                    System.out.print(aMatriz[i] + " ");
+                    System.out.print(aMatrix[i] + " ");
             }
             System.out.println();
         }
-        return matriz;
+
+        return matrix;
     }
 
-    public static int getFitness(int TAM) {
+    public int calculateFitness() {
 
-        int cont = 0;
-        for (int i = 0; i < TAM; i++) {
-            cont = cont + i;
+        this.fitness = this.matrix[this.matrix.length - 1][this.matrix.length - 1];
+
+        for (int i = 0; i < this.matrix.length; i++) {
+            for (int i1 = 0; i1 < this.matrix.length; i1++) {
+                if (i == i1)
+                    fitness = fitness + this.matrix[i == this.matrix.length - 1 ? 0 : i + 1][i1];
+            }
         }
 
-        return cont + TAM; // return to home
+        return fitness; // return to home
 //        return cont;
     }
 

@@ -3,7 +3,7 @@
 package algoritmo.genetico;
 
 
-import algoritmo.Matriz;
+import algoritmo.Matrix;
 import org.springframework.util.Assert;
 
 import javax.validation.constraints.NotBlank;
@@ -30,8 +30,8 @@ public class AlgoritmoGenetico {
     private long generations = 1;
 
     public AlgoritmoGenetico(int sizeMatrix, int sizePopulation, float txMutation, int txCrossover, final float txElitism, final boolean withRoulette, final Crossover crossover) {
-        this.matrix = Matriz.getMatriz(sizeMatrix);
-        this.fitnessToFind = Matriz.getFitness(sizeMatrix);
+        this.matrix = Matrix.getInstance(sizeMatrix).getMatrix();
+        this.fitnessToFind = Matrix.getInstance().getFitness();
         this.sizePopulation = sizePopulation;
         this.txMutation = txMutation;
         this.txCrossover = txCrossover;
@@ -41,8 +41,8 @@ public class AlgoritmoGenetico {
     }
 
     public AlgoritmoGenetico(int sizeMatrix, int sizePopulation, float txMutation, int txCrossover, final float txElitism, final Crossover crossover) {
-        this.matrix = Matriz.getMatriz(sizeMatrix);
-        this.fitnessToFind = Matriz.getFitness(sizeMatrix);
+        this.matrix = Matrix.getInstance(sizeMatrix).getMatrix();
+        this.fitnessToFind = Matrix.getInstance().getFitness();
         this.sizePopulation = sizePopulation;
         this.txMutation = txMutation;
         this.txCrossover = txCrossover;

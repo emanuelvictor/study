@@ -1,7 +1,7 @@
 package algoritmo.memetico;
 
 
-import algoritmo.Matriz;
+import algoritmo.Matrix;
 import org.springframework.util.Assert;
 
 import java.util.Arrays;
@@ -23,13 +23,13 @@ public class Memetic {
     private int TAM_MATRIZ = 80;
 
     public Memetic(int TAM_MATRIZ) {
-        this.MATRIZ_ADJACENTE = Matriz.getMatriz(TAM_MATRIZ);
-        this.FITNESS = Matriz.getFitness(TAM_MATRIZ);
+        this.MATRIZ_ADJACENTE = Matrix.getInstance(TAM_MATRIZ).getMatrix();
+        this.FITNESS = Matrix.getInstance().calculateFitness();
     }
 
     public Memetic() {
-        this.MATRIZ_ADJACENTE = Matriz.getMatriz(TAM_MATRIZ);
-        this.FITNESS = Matriz.getFitness(TAM_MATRIZ);
+        this.MATRIZ_ADJACENTE = Matrix.getInstance(TAM_MATRIZ).getMatrix();
+        this.FITNESS = Matrix.getInstance().calculateFitness();
     }
 
     public void execute() {

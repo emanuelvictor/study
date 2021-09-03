@@ -11,11 +11,11 @@ import algoritmo.memetico.OldMemetic;
 public class Executor {
 
     public static void main(String[] args) {
-//        final Memetic memetic = new Memetic(40);
-//        memetic.execute();
+        final Memetic memetic = new Memetic(10);
+        memetic.execute();
 
-        final OldMemetic oldMemetic = new OldMemetic(40);
-        oldMemetic.execute();
+//        final OldMemetic oldMemetic = new OldMemetic(40);
+//        oldMemetic.execute();
 
 
         System.out.println(" ----------------------------------------------------------------------------------------------------- ");
