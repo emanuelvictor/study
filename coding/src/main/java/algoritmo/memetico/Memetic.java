@@ -4,12 +4,11 @@ package algoritmo.memetico;
 import algoritmo.Matrix;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Random;
 
 public class Memetic {
 
-    private int[][] matrix = new int[][]{{}};
+    private int[][] matrix;
 
     private final int fitnessToFind;
 
@@ -25,46 +24,39 @@ public class Memetic {
 
     public void execute() {
         // Tamanho da população. O tamanho da população também define a aleatóriedade
-        int TAM_POP = 2;
-        int[][] population = generateRandomPopulation(TAM_POP, matrix);
+        int sizeOfPopulation = 2;
+        int[][] population = generateRandomPopulation(sizeOfPopulation, matrix);
 
         int[] best = sort(population, calculateFitness(population, matrix))[0];
 
         //Variável auxiliar para guardar o melhor da população anterior anterior.
         int melhorAnterior = calculateFitness(best, matrix);
 
-        while (!melhorGlobal(population, matrix, fitnessToFind)) {
+        while (!overallBest(population, matrix, fitnessToFind)) {
 
             population = jump(population, matrix);
 
             population = learn(population, matrix);
 
             //Variável auxiliar para não duplicar o processo de cálculo do fitness
-            int melhorAtual = calculateFitness(best, matrix);
+            int currentBest = calculateFitness(best, matrix);
 
             //TODO gambiarrona para elitizar o melhor e o algoritmo não desaprender
-            if (calculateFitness(sort(population, calculateFitness(population, matrix))[0], matrix) <= melhorAtual) {
-                population = sort(population, calculateFitness(population, matrix));
-                for (int i = 0; i < population[0].length; i++) {
-                    best[i] = population[0][i];
-                }
+            if (calculateFitness(sort(population, calculateFitness(population, matrix))[0], matrix) <= currentBest) {
+                System.arraycopy(population[0], 0, best, 0, population[0].length);
             } else {
-                population = sort(population, calculateFitness(population, matrix));
-                for (int i = 0; i < population[0].length; i++) {
-                    population[0][i] = best[i];
-                }
+                System.arraycopy(best, 0, population[0], 0, population[0].length);
             }
             //Se o fitness do melhor indivíduo encontrado for melhor que o anterior, imprime-o
-            if (melhorAtual < melhorAnterior) {
+            if (currentBest < melhorAnterior) {
                 melhorAnterior = calculateFitness(best, matrix);
-//                imprimir(sort(population, calculateFitness(population, matrix))[0], matrix);
-//                System.out.println(" = " + calcularFitness(ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0], MATRIZ_ADJACENTE));
+//                imprimir(null, sort(population, calculateFitness(population, matrix))[0], matrix);
+//                System.out.println(" = " + calcularFitness(ordenar(population, calcularFitness(population, matrix))[0], matrix));
             }
 
         }
-
-//        imprimir(sort(population, calculateFitness(population, matrix))[0], matrix);
-        System.out.println("memetic done");
+//        imprimir("memetic done ", sort(population, calculateFitness(population, matrix))[0], matrix);
+        System.out.println("memetic done ");
     }
 
     private static int[][] jump(final int[][] population, final int[][] matrix) {
@@ -182,110 +174,109 @@ public class Memetic {
 //        }
 //    }
 //
-//    public static boolean converge(int[][] populacao, int[][] matrix) {
-//        int[] fitness = calculateFitness(populacao, matrix);
+//    public static boolean converge(int[][] population, int[][] matrix) {
+//        int[] fitness = calculateFitness(population, matrix);
 //        for (int i = 1; i < fitness.length; i++) {
 //            if (fitness[i] != fitness[i - 1]) return false;
 //        }
 //        return true;
 //    }
 
-    /**
-     * @param position   int position of the rank
-     * @param chromosome int[] individual to rank
-     * @param matrix     int[][] matrix
-     * @return int Return the position of the ranked meme
-     */
-    private static int rankIdeas(final int position, final int[] chromosome, final int[][] matrix) {
+//    /**
+//     * @param position   int position of the rank
+//     * @param chromosome int[] individual to rank
+//     * @param matrix     int[][] matrix
+//     * @return int Return the position of the ranked meme
+//     */
+//    private static int rankIdeas(final int position, final int[] chromosome, final int[][] matrix) {
+//
+//        final HashMap<Integer, Integer> hashMap = new HashMap<>();
+//        final int[] fitness = new int[chromosome.length];
+//
+//        for (int i = 0; i < chromosome.length; i++) {
+//            fitness[i] = calculateFitness(chromosome[i], chromosome[i == chromosome.length - 1 ? 0 : i + 1], matrix);
+//            hashMap.put(fitness[i], i);
+//        }
+//
+//        Arrays.sort(fitness);
+//
+//        return hashMap.get(fitness[position]);
+//    }
 
-        final HashMap<Integer, Integer> hashMap = new HashMap<>();
-        final int[] fitness = new int[chromosome.length];
-
-        for (int i = 0; i < chromosome.length; i++) {
-            fitness[i] = calculateFitness(chromosome[i], chromosome[i == chromosome.length - 1 ? 0 : i + 1], matrix);
-            hashMap.put(fitness[i], i);
-        }
-
-        Arrays.sort(fitness);
-
-        return hashMap.get(fitness[position]);
+    private static boolean overallBest(final int[][] population, final int[][] matrix, final int fitness) {
+        return calculateFitness(population, matrix)[0] <= fitness;
     }
 
-    private static boolean melhorGlobal(int[][] populacao, int[][] MATRIZ_ADJACENTE, int FITNESS) {
-        return calculateFitness(populacao, MATRIZ_ADJACENTE)[0] <= FITNESS;
-    }
+    private static int[][] generateRandomPopulation(final int sizeOfPopulation, final int[][] matrix) {
 
-    private static int[][] generateRandomPopulation(int TAM_POP, int[][] matrix) {
-
-        int[][] rotas = new int[TAM_POP][matrix.length];
+        int[][] routes = new int[sizeOfPopulation][matrix.length];
 
         //Inicializando população inicial
-        for (int k = 0; k < TAM_POP; k++) {
+        for (int k = 0; k < sizeOfPopulation; k++) {
 
-            int[] rotaAux = new int[matrix.length];
+            int[] auxRoute = new int[matrix.length];
             for (int i = 0; i < matrix.length; i++) {
-                rotaAux[i] = i;
+                auxRoute[i] = i;
             }
 
-            int[] rota = new int[rotaAux.length];
+            int[] route = new int[auxRoute.length];
 
-            embaralha(rota.length, rota, rotaAux);
+            shuffle(route.length, route, auxRoute);
 
-            if (!estaContido(rotas, rota)) {
-                rotas[k] = rota;
+            if (!isContained(routes, route)) {
+                routes[k] = route;
             } else {
                 k--;
             }
         }
 
-        return sort(rotas, calculateFitness(rotas, matrix));
+        return sort(routes, calculateFitness(routes, matrix));
     }
 
-    private static int[] embaralha(int tam, int[] rota, int[] rotaAux) {
-        // Embaralha
+    private static void shuffle(final int tam, final int[] route, int[] auxRoute) {
+        // Shuffling
         for (int i = 0; i < tam; i++) {
-            int r;
+            int random;
             do {
-                r = new Random().nextInt(tam - i);
-            } while (r == i);
+                random = new Random().nextInt(tam - i);
+            } while (random == i);
 
-            rota[i] = rotaAux[r];
-            rotaAux = preencheVetorSemOR(rotaAux, r);
+            route[i] = auxRoute[random];
+            auxRoute = fillWithoutRandom(auxRoute, random);
         }
-        return rota;
     }
 
-    private static int[] preencheVetorSemOR(final int[] vetorDeIndices, final int r) {
-        int[] vetAux = new int[vetorDeIndices.length - 1];
+    private static int[] fillWithoutRandom(final int[] arrayOfIndex, final int random) {
+        int[] auxArray = new int[arrayOfIndex.length - 1];
         int cont = 0;
-        for (int j = 0; j < vetorDeIndices.length; j++) {
-            if (j == r) {
+        for (int j = 0; j < arrayOfIndex.length; j++) {
+            if (j == random) {
                 continue;
             }
-            vetAux[cont] = vetorDeIndices[j];
+            auxArray[cont] = arrayOfIndex[j];
             cont++;
         }
-        return vetAux;
+        return auxArray;
     }
 
-    private static int[] calculateFitness(final int[][] populacao, final int[][] MATRIZ_ADJACENTE) {
-        int[] fitness = new int[populacao.length];
-        for (int i = 0; i < populacao.length; i++) {
-            fitness[i] = calculateFitness(populacao[i], MATRIZ_ADJACENTE);
+    private static int[] calculateFitness(final int[][] population, final int[][] matrix) {
+        int[] fitness = new int[population.length];
+        for (int i = 0; i < population.length; i++) {
+            fitness[i] = calculateFitness(population[i], matrix);
         }
         return fitness;
     }
 
-    private static int calculateFitness(final int[] chromosome, final int[][] MATRIZ_ADJACENTE) {
+    private static int calculateFitness(final int[] chromosome, final int[][] matrix) {
         int fitness = 0;
         for (int j = 0; j < chromosome.length; j++) {
-            fitness = fitness + MATRIZ_ADJACENTE[chromosome[j]][chromosome[j == chromosome.length - 1 ? 0 : j + 1]];
+            fitness = fitness + matrix[chromosome[j]][chromosome[j == chromosome.length - 1 ? 0 : j + 1]];
         }
         return fitness;
     }
 
-    private static int calculateFitness(int cidade1, int cidade2, int[][] MATRIZ_ADJACENTE) {
-        return MATRIZ_ADJACENTE[cidade1][cidade2];
+    private static int calculateFitness(int cidade1, int cidade2, int[][] matrix) {
+        return matrix[cidade1][cidade2];
     }
 
     private static int[][] sort(final int[][] population, final int[] fitness) {
@@ -307,8 +298,8 @@ public class Memetic {
         return population;
     }
 
-    private static boolean estaContido(int[][] populacao, int[] individuo) {
-        for (int[] auxiliar : populacao) {
+    private static boolean isContained(int[][] population, int[] individuo) {
+        for (int[] auxiliar : population) {
             if (Arrays.equals(auxiliar, individuo)) {
                 return true;
             }
@@ -316,17 +307,18 @@ public class Memetic {
         return false;
     }
 
-//    private static void imprimir(int[][] populacao, int[] fitness, int[][] MATRIZ_ADJACENTE) {
-//        for (int j = 0; j < populacao.length; j++) {
+//    private static void imprimir(int[][] population, int[] fitness, int[][] matrix) {
+//        for (int j = 0; j < population.length; j++) {
 //            System.out.print("Rota " + j + " = ");
-//            for (int i = 0; i < MATRIZ_ADJACENTE.length; i++) {
-//                System.out.print(" " + populacao[j][i] + " ");
+//            for (int i = 0; i < matrix.length; i++) {
+//                System.out.print(" " + population[j][i] + " ");
 //            }
 //            System.out.println(" fitness = " + fitness[j]);
 //        }
 //    }
 
-    private void imprimir(int[] rota, int[][] matrix) {
+    private void imprimir(final String concluded, int[] rota, int[][] matrix) {
+        if (concluded != null) System.out.print(concluded);
         for (int j : rota) {
             System.out.print(" " + j);
         }

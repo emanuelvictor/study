@@ -58,7 +58,7 @@ public class OldMemetic {
             //Se o fitness do melhor indivíduo encontrado for melhor que o anterior, imprime-o
             if (melhorAtual < melhorAnterior) {
                 melhorAnterior = calcularFitness(melhor, matrix);
-//                imprimir(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
+//                imprimir(null, ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
 //                System.out.println(" = " + calcularFitness(ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0], MATRIZ_ADJACENTE));
             }
 
@@ -67,7 +67,8 @@ public class OldMemetic {
 //        imprimir(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
 //        imprimir(populacao[0]);
 //        System.out.print(" "+calcularFitness(populacao[0], MATRIZ_ADJACENTE));
-        System.out.println("oldMemetic done");
+//        imprimir("oldMemetic done ", ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
+        System.out.println("oldMemetic done ");
     }
 
     public static int[][] saltar(int[][] populacao, int[][] MATRIZ_ADJACENTE) {
@@ -233,7 +234,8 @@ public class OldMemetic {
     }
 
 
-    private void imprimir(int[] rota, int[][] matrix) {
+    private void imprimir(final String concluded, int[] rota, int[][] matrix) {
+        if(concluded != null) System.out.print(concluded);
         for (int j : rota) {
             System.out.print(" " + j);
         }
