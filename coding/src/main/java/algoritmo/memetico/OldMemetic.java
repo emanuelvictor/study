@@ -12,7 +12,7 @@ public class OldMemetic {
     private int fitnessToFind;
 
     // Tamanho da população. O tamanho da população também define a aleatóriedade
-    private int TAM_POP = 50;
+    private int TAM_POP = 2;
 
     private int[] melhor;
 
@@ -21,7 +21,7 @@ public class OldMemetic {
         this.fitnessToFind = Matrix.getInstance().getFitness();
     }
 
-    public OldMemetic(int[][] matrix, int fitnessToFind) {
+    public OldMemetic(final int[][] matrix, final int fitnessToFind) {
         this.matrix = matrix;
         this.fitnessToFind = fitnessToFind;
     }
@@ -58,39 +58,40 @@ public class OldMemetic {
             //Se o fitness do melhor indivíduo encontrado for melhor que o anterior, imprime-o
             if (melhorAtual < melhorAnterior) {
                 melhorAnterior = calcularFitness(melhor, matrix);
-                imprimir(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
+//                imprimir(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
 //                System.out.println(" = " + calcularFitness(ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0], MATRIZ_ADJACENTE));
             }
 
         }
 
-        imprimir(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
+//        imprimir(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
 //        imprimir(populacao[0]);
 //        System.out.print(" "+calcularFitness(populacao[0], MATRIZ_ADJACENTE));
-
+        System.out.println("oldMemetic done");
     }
 
-    private static int[][] saltar(int[][] populacao, int[][] MATRIZ_ADJACENTE) {
+    public static int[][] saltar(int[][] populacao, int[][] MATRIZ_ADJACENTE) {
         int[] melhor = ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0];
-        populacao = gerarPopulacaoAleatoria(populacao.length, MATRIZ_ADJACENTE);
         populacao = ordenar(gerarPopulacaoAleatoria(populacao.length, MATRIZ_ADJACENTE), calcularFitness(populacao, MATRIZ_ADJACENTE));
         populacao[populacao.length - 1] = melhor;
+//        melhor = rotate(melhor);
         return ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE));
     }
 
     //TODO
-    private static int[][] buscaLocal(int[][] populacao, int[][] MATRIZ_ADJACENTE) {
-        int[] melhor = populacao[0];
+    public static int[][] buscaLocal(int[][] populacao, int[][] MATRIZ_ADJACENTE) {
+
+        final int[] melhor = populacao[0];
         //Percorrendo toda a população
         for (int n = 0; n < populacao.length; n++) {
             for (int i = 1; i < populacao.length; i++) {
                 //Percorrendo o mellhor
                 for (int c = 0; c < melhor.length - 1; c++) {
                     //Percorrendo o indivíduo da população
-                    int custoA = calcularFitness(melhor[c], melhor[c + 1], MATRIZ_ADJACENTE);
+                    final int custoA = calcularFitness(melhor[c], melhor[c + 1], MATRIZ_ADJACENTE);
                     for (int j = 0; j < populacao[i].length - 1; j++) {
                         if (populacao[i][j] == melhor[c]) {
-                            int custoB = calcularFitness(populacao[i][j], populacao[i][j + 1], MATRIZ_ADJACENTE);
+                            final int custoB = calcularFitness(populacao[i][j], populacao[i][j + 1], MATRIZ_ADJACENTE);
                             if (custoA < custoB) {
                                 for (int k = 0; k < populacao[i].length; k++) {
                                     if (populacao[i][k] == melhor[c + 1]) {
@@ -191,7 +192,7 @@ public class OldMemetic {
         return fitness;
     }
 
-    private static int calcularFitness(int[] individuo, int[][] MATRIZ_ADJACENTE) {
+    public static int calcularFitness(int[] individuo, int[][] MATRIZ_ADJACENTE) {
         int fitness = 0;
         for (int j = 0; j < individuo.length; j++) {
             fitness = fitness + MATRIZ_ADJACENTE[individuo[j]][individuo[j == individuo.length - 1 ? 0 : j + 1]];
@@ -199,7 +200,7 @@ public class OldMemetic {
         return fitness;
     }
 
-    private static int calcularFitness(int cidade1, int cidade2, int[][] MATRIZ_ADJACENTE) {
+    public static int calcularFitness(int cidade1, int cidade2, int[][] MATRIZ_ADJACENTE) {
         return MATRIZ_ADJACENTE[cidade1][cidade2];
     }
 

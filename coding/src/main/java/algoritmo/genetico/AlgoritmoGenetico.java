@@ -279,7 +279,7 @@ public class AlgoritmoGenetico {
         return population;
     }
 
-    private static int roulette(final int[] fitness) {
+    public static int roulette(final int[] fitness) {
 
         // Inverting array
         int[] fitnessAux = new int[fitness.length];

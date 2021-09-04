@@ -11,135 +11,184 @@ public class Memetic {
 
     private int[][] matrix = new int[][]{{}};
 
-    private int fitnessToFind;
-
-    // Tamanho da população. O tamanho da população também define a aleatóriedade
-    private int TAM_POP = 5;
-
-    private int[] melhor;
-
-    // Quantidade de cidades
-    private int TAM_MATRIZ = 80;
+    private final int fitnessToFind;
 
     public Memetic() {
         this.matrix = Matrix.getInstance().getMatrix();
         this.fitnessToFind = Matrix.getInstance().getFitness();
     }
 
-    public Memetic(int[][] matrix, int fitnessToFind) {
+    public Memetic(final int[][] matrix, final int fitnessToFind) {
         this.matrix = matrix;
         this.fitnessToFind = fitnessToFind;
     }
 
     public void execute() {
-        int[][] populacao = gerarPopulacaoAleatoria(TAM_POP, matrix);
+        // Tamanho da população. O tamanho da população também define a aleatóriedade
+        int TAM_POP = 2;
+        int[][] population = generateRandomPopulation(TAM_POP, matrix);
 
-        melhor = ordenar(populacao, calcularFitness(populacao, matrix))[0];
+        int[] best = sort(population, calculateFitness(population, matrix))[0];
 
         //Variável auxiliar para guardar o melhor da população anterior anterior.
-        int melhorAnterior = calcularFitness(melhor, matrix);
+        int melhorAnterior = calculateFitness(best, matrix);
 
-        while (!melhorGlobal(populacao, matrix, fitnessToFind)) {
+        while (!melhorGlobal(population, matrix, fitnessToFind)) {
 
-            populacao = saltar(populacao, matrix);
+            population = jump(population, matrix);
 
-            populacao = buscaLocal(populacao, matrix);
+            population = learn(population, matrix);
 
             //Variável auxiliar para não duplicar o processo de cálculo do fitness
-            int melhorAtual = calcularFitness(melhor, matrix);
+            int melhorAtual = calculateFitness(best, matrix);
 
             //TODO gambiarrona para elitizar o melhor e o algoritmo não desaprender
-            if (calcularFitness(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix) <= melhorAtual) {
-                populacao = ordenar(populacao, calcularFitness(populacao, matrix));
-                for (int i = 0; i < populacao[0].length; i++) {
-                    melhor[i] = populacao[0][i];
+            if (calculateFitness(sort(population, calculateFitness(population, matrix))[0], matrix) <= melhorAtual) {
+                population = sort(population, calculateFitness(population, matrix));
+                for (int i = 0; i < population[0].length; i++) {
+                    best[i] = population[0][i];
                 }
             } else {
-                populacao = ordenar(populacao, calcularFitness(populacao, matrix));
-                for (int i = 0; i < populacao[0].length; i++) {
-                    populacao[0][i] = melhor[i];
+                population = sort(population, calculateFitness(population, matrix));
+                for (int i = 0; i < population[0].length; i++) {
+                    population[0][i] = best[i];
                 }
             }
             //Se o fitness do melhor indivíduo encontrado for melhor que o anterior, imprime-o
             if (melhorAtual < melhorAnterior) {
-                melhorAnterior = calcularFitness(melhor, matrix);
-                imprimir(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
+                melhorAnterior = calculateFitness(best, matrix);
+//                imprimir(sort(population, calculateFitness(population, matrix))[0], matrix);
 //                System.out.println(" = " + calcularFitness(ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0], MATRIZ_ADJACENTE));
             }
 
         }
 
-        imprimir(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
-
+//        imprimir(sort(population, calculateFitness(population, matrix))[0], matrix);
+        System.out.println("memetic done");
     }
 
-    private static int[][] saltar(int[][] populacao, int[][] MATRIZ_ADJACENTE) {
-        int[] melhor = ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0];
-        populacao = ordenar(gerarPopulacaoAleatoria(populacao.length, MATRIZ_ADJACENTE), calcularFitness(populacao, MATRIZ_ADJACENTE));
-        populacao[populacao.length - 1] = melhor;
-//        melhor = rotate(melhor);
-        return ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE));
+    private static int[][] jump(final int[][] population, final int[][] matrix) {
+        int[] bestChromosome = sort(population, calculateFitness(population, matrix))[0];
+        final int[][] newPopulation = generateRandomPopulation(population.length, matrix);
+        newPopulation[newPopulation.length - 1] = bestChromosome;
+        return sort(newPopulation, calculateFitness(newPopulation, matrix));
     }
 
-    private static int[] rotate(final int[] chromosome) {
-        for (int i = 0; i < chromosome.length - 1; i++) {
-            final int first = chromosome[0];
-            System.arraycopy(chromosome, 1, chromosome, 0, chromosome.length - 1);
-            chromosome[chromosome.length - 1] = first;
-        }
-        return chromosome;
-    }
+    public static int[][] learn(int[][] population, int[][] matrix) {
 
-    //TODO
-    private static int[][] buscaLocal(int[][] population, int[][] matrix) {
-        int p = 0;
-        //Percorrendo toda a população,
-        for (int m = 1; m < population.length; m++) {
-            //Percorrendo as ideias do pai
-            for (int ip = 0; ip < population[p].length; ip++) {
+//        int[] fitness = calculateFitness(population, matrix);
 
-                //Percorrendo as ideias da mãe
-                for (int im = 0; im < population[m].length; im++) {
+//        sort(population, fitness);
 
-                    final int indexOfBestIdeaOfDad = rankIdeas(im, population[p], matrix);
-                    final int indexOfBestIdeaOfMom = rankIdeas(im, population[m], matrix);
+        final int m = 0; //roulette(fitness);
 
-                    int fitnessOfBestIdeaOfDad = calcularFitness(population[p][indexOfBestIdeaOfDad], population[p][population[p].length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1], matrix); // Calculate the fitness of the mom
-                    int fitnessOfBestIdeaOfMom = calcularFitness(population[m][indexOfBestIdeaOfMom], population[m][population[m].length - 1 == indexOfBestIdeaOfMom ? 0 : indexOfBestIdeaOfMom + 1], matrix); // Calculate the fitness of the dad
-
-                    if (fitnessOfBestIdeaOfDad < fitnessOfBestIdeaOfMom) {
-                        trocarIdeia(population[m], population[p], indexOfBestIdeaOfDad);
-                    } else if (fitnessOfBestIdeaOfDad > fitnessOfBestIdeaOfMom) {
-                        trocarIdeia(population[p], population[m], indexOfBestIdeaOfMom);
+        //Percorrendo toda a população
+        for (int n = 0; n < population.length; n++) {
+            for (int i = 1; i < population.length; i++) {
+                //Percorrendo o mellhor
+                for (int c = 0; c < population[m].length - 1; c++) {
+                    //Percorrendo o indivíduo da população
+                    final int custoA = calculateFitness(population[m][c], population[m][c + 1], matrix);
+                    for (int j = 0; j < population[i].length - 1; j++) {
+                        if (population[i][j] == population[m][c]) {
+                            final int custoB = calculateFitness(population[i][j], population[i][j + 1], matrix);
+                            if (custoA < custoB) {
+                                for (int k = 0; k < population[i].length; k++) {
+                                    if (population[i][k] == population[m][c + 1]) {
+                                        population[i][k] = population[i][j + 1];
+                                        break;
+                                    }
+                                }
+                                population[i][j + 1] = population[m][c + 1];
+                            } else if (custoB < custoA) {
+                                for (int k = 0; k < population[m].length; k++) {
+                                    if (population[m][k] == population[i][j + 1]) {
+                                        population[m][k] = population[m][c + 1];
+                                        break;
+                                    }
+                                }
+                                population[m][c + 1] = population[i][j + 1];
+                            }
+                            break;
+                        }
                     }
                 }
             }
         }
-        return ordenar(population, calcularFitness(population, matrix));
+        return sort(population, calculateFitness(population, matrix));
     }
 
-    public static boolean trocarIdeia(final int[] mom, final int[] dad, final int indexOfBestIdeaOfDad) {
-        for (int k = 0; k < mom.length; k++) {
+//    private static int[] rotate(final int[] chromosome) {
+//        for (int i = 0; i < chromosome.length - 1; i++) {
+//            final int first = chromosome[0];
+//            System.arraycopy(chromosome, 1, chromosome, 0, chromosome.length - 1);
+//            chromosome[chromosome.length - 1] = first;
+//        }
+//        return chromosome;
+//    }
+//
+//    private static int[][] oldLearn(final int[][] population, final int[][] matrix) {
+//
+//        int[] fitness = calculateFitness(population, matrix);
+//
+//        sort(population, fitness);
+//
+//        final int p = AlgoritmoGenetico.roulette(fitness);
+//        //Percorrendo toda a população,
+//        for (final int[] moms : population) {
+//            //Percorrendo as ideias do pai
+//            for (int ip = 0; ip < population[p].length; ip++) {
+//
+//                //Percorrendo as ideias da mãe
+//                for (int im = 0; im < moms.length; im++) {
+//
+//                    final int indexOfBestIdeaOfDad = rankIdeas(im, population[p], matrix);
+//                    final int indexOfBestIdeaOfMom = rankIdeas(im, moms, matrix);
+//
+//                    int fitnessOfBestIdeaOfDad = calculateFitness(population[p][indexOfBestIdeaOfDad], population[p][population[p].length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1], matrix); // Calculate the fitness of the mom
+//                    int fitnessOfBestIdeaOfMom = calculateFitness(moms[indexOfBestIdeaOfMom], moms[moms.length - 1 == indexOfBestIdeaOfMom ? 0 : indexOfBestIdeaOfMom + 1], matrix); // Calculate the fitness of the dad
+//
+//                    if (fitnessOfBestIdeaOfDad < fitnessOfBestIdeaOfMom) {
+//                        learn(moms, population[p], indexOfBestIdeaOfDad);
+//                    } else if (fitnessOfBestIdeaOfDad > fitnessOfBestIdeaOfMom) {
+//                        learn(population[p], moms, indexOfBestIdeaOfMom);
+//                    }
+//
+//                }
+//            }
+//        }
+//        return sort(population, calculateFitness(population, matrix));
+//    }
 
-            if (mom[k] == dad[indexOfBestIdeaOfDad]) {
-
-                // A troca de ideias deve fazer diferença no cromossomo
-                if (mom[k == mom.length - 1 ? 0 : k + 1] == dad[dad.length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1])
-                    return false;
-
-                for (int i = 0; true; i++)
-                    if (mom[i] == dad[dad.length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1]) {
-                        mom[i] = mom[k == mom.length - 1 ? 0 : k + 1];
-                        break;
-                    }
-
-                mom[k == mom.length - 1 ? 0 : k + 1] = dad[dad.length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1];
-
-                break;
-            }
-        }
-        return true;
-    }
+//    public static void learn(final int[] mom, final int[] dad, final int indexOfBestIdeaOfDad) {
+//        for (int k = 0; k < mom.length; k++) {
+//
+//            if (mom[k] == dad[indexOfBestIdeaOfDad]) {
+//
+//                // A troca de ideias deve fazer diferença no cromossomo
+//                if (mom[k == mom.length - 1 ? 0 : k + 1] == dad[dad.length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1])
+//                    return;
+//
+//                for (int i = 0; true; i++)
+//                    if (mom[i] == dad[dad.length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1]) {
+//                        mom[i] = mom[k == mom.length - 1 ? 0 : k + 1];
+//                        break;
+//                    }
+//
+//                mom[k == mom.length - 1 ? 0 : k + 1] = dad[dad.length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1];
+//
+//                break;
+//            }
+//        }
+//    }
+//
+//    public static boolean converge(int[][] populacao, int[][] matrix) {
+//        int[] fitness = calculateFitness(populacao, matrix);
+//        for (int i = 1; i < fitness.length; i++) {
+//            if (fitness[i] != fitness[i - 1]) return false;
+//        }
+//        return true;
+//    }
 
     /**
      * @param position   int position of the rank
@@ -153,7 +202,7 @@ public class Memetic {
         final int[] fitness = new int[chromosome.length];
 
         for (int i = 0; i < chromosome.length; i++) {
-            fitness[i] = calcularFitness(chromosome[i], chromosome[i == chromosome.length - 1 ? 0 : i + 1], matrix);
+            fitness[i] = calculateFitness(chromosome[i], chromosome[i == chromosome.length - 1 ? 0 : i + 1], matrix);
             hashMap.put(fitness[i], i);
         }
 
@@ -163,24 +212,24 @@ public class Memetic {
     }
 
     private static boolean melhorGlobal(int[][] populacao, int[][] MATRIZ_ADJACENTE, int FITNESS) {
-        return calcularFitness(populacao, MATRIZ_ADJACENTE)[0] <= FITNESS;
+        return calculateFitness(populacao, MATRIZ_ADJACENTE)[0] <= FITNESS;
     }
 
-    private static int[][] gerarPopulacaoAleatoria(int TAM_POP, int[][] MATRIZ_ADJACENTE) {
+    private static int[][] generateRandomPopulation(int TAM_POP, int[][] matrix) {
 
-        int[][] rotas = new int[TAM_POP][MATRIZ_ADJACENTE.length];
+        int[][] rotas = new int[TAM_POP][matrix.length];
 
         //Inicializando população inicial
         for (int k = 0; k < TAM_POP; k++) {
 
-            int[] rotaAux = new int[MATRIZ_ADJACENTE.length];
-            for (int i = 0; i < MATRIZ_ADJACENTE.length; i++) {
+            int[] rotaAux = new int[matrix.length];
+            for (int i = 0; i < matrix.length; i++) {
                 rotaAux[i] = i;
             }
 
             int[] rota = new int[rotaAux.length];
 
-            rota = embaralha(rota.length, rota, rotaAux);
+            embaralha(rota.length, rota, rotaAux);
 
             if (!estaContido(rotas, rota)) {
                 rotas[k] = rota;
@@ -189,7 +238,7 @@ public class Memetic {
             }
         }
 
-        return ordenar(rotas, calcularFitness(rotas, MATRIZ_ADJACENTE));
+        return sort(rotas, calculateFitness(rotas, matrix));
     }
 
     private static int[] embaralha(int tam, int[] rota, int[] rotaAux) {
@@ -219,43 +268,43 @@ public class Memetic {
         return vetAux;
     }
 
-    private static int[] calcularFitness(int[][] populacao, int[][] MATRIZ_ADJACENTE) {
+    private static int[] calculateFitness(final int[][] populacao, final int[][] MATRIZ_ADJACENTE) {
         int[] fitness = new int[populacao.length];
         for (int i = 0; i < populacao.length; i++) {
-            fitness[i] = calcularFitness(populacao[i], MATRIZ_ADJACENTE);
+            fitness[i] = calculateFitness(populacao[i], MATRIZ_ADJACENTE);
         }
         return fitness;
     }
 
-    private static int calcularFitness(int[] individuo, int[][] MATRIZ_ADJACENTE) {
+    private static int calculateFitness(final int[] chromosome, final int[][] MATRIZ_ADJACENTE) {
         int fitness = 0;
-        for (int j = 0; j < individuo.length; j++) {
-            fitness = fitness + MATRIZ_ADJACENTE[individuo[j]][individuo[j == individuo.length - 1 ? 0 : j + 1]];
+        for (int j = 0; j < chromosome.length; j++) {
+            fitness = fitness + MATRIZ_ADJACENTE[chromosome[j]][chromosome[j == chromosome.length - 1 ? 0 : j + 1]];
         }
         return fitness;
     }
 
-    private static int calcularFitness(int cidade1, int cidade2, int[][] MATRIZ_ADJACENTE) {
+    private static int calculateFitness(int cidade1, int cidade2, int[][] MATRIZ_ADJACENTE) {
         return MATRIZ_ADJACENTE[cidade1][cidade2];
     }
 
-    private static int[][] ordenar(int[][] populacao, int[] fitness) {
+    private static int[][] sort(final int[][] population, final int[] fitness) {
         // ordenando
         int i, i2;
-        for (i = 0; i < populacao.length; i++) {
-            for (i2 = i; i2 < populacao.length; i2++) {
+        for (i = 0; i < population.length; i++) {
+            for (i2 = i; i2 < population.length; i2++) {
                 if (fitness[i] > fitness[i2]) {
                     int vTmp = fitness[i];
                     fitness[i] = fitness[i2];
                     fitness[i2] = vTmp;
 
-                    int[] vvTmp = populacao[i];
-                    populacao[i] = populacao[i2];
-                    populacao[i2] = vvTmp;
+                    int[] vvTmp = population[i];
+                    population[i] = population[i2];
+                    population[i2] = vvTmp;
                 }
             }
         }
-        return populacao;
+        return population;
     }
 
     private static boolean estaContido(int[][] populacao, int[] individuo) {
@@ -281,6 +330,6 @@ public class Memetic {
         for (int j : rota) {
             System.out.print(" " + j);
         }
-        System.out.println(" = " + calcularFitness(rota, matrix) + " fitness a ser encontrado = " + fitnessToFind);
+        System.out.println(" = " + calculateFitness(rota, matrix) + " fitness a ser encontrado = " + fitnessToFind);
     }
 }

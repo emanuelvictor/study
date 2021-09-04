@@ -3,6 +3,9 @@ package algoritmo;
 import algoritmo.memetico.Memetic;
 import algoritmo.memetico.OldMemetic;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * Algoritmo Genético implementado por Emanuel Victor e Haroldo Ramirez em 29/09/14.
  * Análise da influencia da mutação nos crossovers OX e PMX.
@@ -12,18 +15,16 @@ public class Executor {
 
     public static void main(String[] args) {
 
-        Matrix.getInstance().generateMatrix(20, true);
-
-
-//        final Memetic memetic = new Memetic();
-//        memetic.execute();
+        Matrix.getInstance().generateMatrix(25, true);
 
         final OldMemetic oldMemetic = new OldMemetic();
-        oldMemetic.execute();
+        final Memetic memetic = new Memetic();
+
+        final ExecutorService executor = Executors.newFixedThreadPool(5);
+        executor.execute(memetic::execute);
+        executor.execute(oldMemetic::execute);
 
         System.out.println(" ----------------------------------------------------------------------------------------------------- ");
-
-
 
 
         //        final AlgoritmoGenetico algoritmoGenetico = new AlgoritmoGenetico(
