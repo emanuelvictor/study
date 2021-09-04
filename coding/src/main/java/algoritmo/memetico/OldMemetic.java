@@ -67,8 +67,7 @@ public class OldMemetic {
 //        imprimir(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
 //        imprimir(populacao[0]);
 //        System.out.print(" "+calcularFitness(populacao[0], MATRIZ_ADJACENTE));
-//        imprimir("oldMemetic done ", ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
-        System.out.println("oldMemetic done ");
+        imprimir("oldMemetic done ", ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
     }
 
     public static int[][] saltar(int[][] populacao, int[][] MATRIZ_ADJACENTE) {

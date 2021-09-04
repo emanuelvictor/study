@@ -15,7 +15,7 @@ public class Executor {
 
     public static void main(String[] args) {
 
-        Matrix.getInstance().generateMatrix(15, true);
+        Matrix.getInstance().generateMatrix(50, true);
 
         final OldMemetic oldMemetic = new OldMemetic();
         final Memetic memetic = new Memetic();

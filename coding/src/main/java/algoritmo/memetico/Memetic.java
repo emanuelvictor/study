@@ -55,8 +55,7 @@ public class Memetic {
             }
 
         }
-//        imprimir("memetic done ", sort(population, calculateFitness(population, matrix))[0], matrix);
-        System.out.println("memetic done ");
+        imprimir("memetic done ", sort(population, calculateFitness(population, matrix))[0], matrix);
     }
 
     private static int[][] jump(final int[][] population, final int[][] matrix) {
@@ -109,99 +108,6 @@ public class Memetic {
         }
         return sort(population, calculateFitness(population, matrix));
     }
-
-//    private static int[] rotate(final int[] chromosome) {
-//        for (int i = 0; i < chromosome.length - 1; i++) {
-//            final int first = chromosome[0];
-//            System.arraycopy(chromosome, 1, chromosome, 0, chromosome.length - 1);
-//            chromosome[chromosome.length - 1] = first;
-//        }
-//        return chromosome;
-//    }
-//
-//    private static int[][] oldLearn(final int[][] population, final int[][] matrix) {
-//
-//        int[] fitness = calculateFitness(population, matrix);
-//
-//        sort(population, fitness);
-//
-//        final int p = AlgoritmoGenetico.roulette(fitness);
-//        //Percorrendo toda a população,
-//        for (final int[] moms : population) {
-//            //Percorrendo as ideias do pai
-//            for (int ip = 0; ip < population[p].length; ip++) {
-//
-//                //Percorrendo as ideias da mãe
-//                for (int im = 0; im < moms.length; im++) {
-//
-//                    final int indexOfBestIdeaOfDad = rankIdeas(im, population[p], matrix);
-//                    final int indexOfBestIdeaOfMom = rankIdeas(im, moms, matrix);
-//
-//                    int fitnessOfBestIdeaOfDad = calculateFitness(population[p][indexOfBestIdeaOfDad], population[p][population[p].length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1], matrix); // Calculate the fitness of the mom
-//                    int fitnessOfBestIdeaOfMom = calculateFitness(moms[indexOfBestIdeaOfMom], moms[moms.length - 1 == indexOfBestIdeaOfMom ? 0 : indexOfBestIdeaOfMom + 1], matrix); // Calculate the fitness of the dad
-//
-//                    if (fitnessOfBestIdeaOfDad < fitnessOfBestIdeaOfMom) {
-//                        learn(moms, population[p], indexOfBestIdeaOfDad);
-//                    } else if (fitnessOfBestIdeaOfDad > fitnessOfBestIdeaOfMom) {
-//                        learn(population[p], moms, indexOfBestIdeaOfMom);
-//                    }
-//
-//                }
-//            }
-//        }
-//        return sort(population, calculateFitness(population, matrix));
-//    }
-
-//    public static void learn(final int[] mom, final int[] dad, final int indexOfBestIdeaOfDad) {
-//        for (int k = 0; k < mom.length; k++) {
-//
-//            if (mom[k] == dad[indexOfBestIdeaOfDad]) {
-//
-//                // A troca de ideias deve fazer diferença no cromossomo
-//                if (mom[k == mom.length - 1 ? 0 : k + 1] == dad[dad.length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1])
-//                    return;
-//
-//                for (int i = 0; true; i++)
-//                    if (mom[i] == dad[dad.length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1]) {
-//                        mom[i] = mom[k == mom.length - 1 ? 0 : k + 1];
-//                        break;
-//                    }
-//
-//                mom[k == mom.length - 1 ? 0 : k + 1] = dad[dad.length - 1 == indexOfBestIdeaOfDad ? 0 : indexOfBestIdeaOfDad + 1];
-//
-//                break;
-//            }
-//        }
-//    }
-//
-//    public static boolean converge(int[][] population, int[][] matrix) {
-//        int[] fitness = calculateFitness(population, matrix);
-//        for (int i = 1; i < fitness.length; i++) {
-//            if (fitness[i] != fitness[i - 1]) return false;
-//        }
-//        return true;
-//    }
-
-//    /**
-//     * @param position   int position of the rank
-//     * @param chromosome int[] individual to rank
-//     * @param matrix     int[][] matrix
-//     * @return int Return the position of the ranked meme
-//     */
-//    private static int rankIdeas(final int position, final int[] chromosome, final int[][] matrix) {
-//
-//        final HashMap<Integer, Integer> hashMap = new HashMap<>();
-//        final int[] fitness = new int[chromosome.length];
-//
-//        for (int i = 0; i < chromosome.length; i++) {
-//            fitness[i] = calculateFitness(chromosome[i], chromosome[i == chromosome.length - 1 ? 0 : i + 1], matrix);
-//            hashMap.put(fitness[i], i);
-//        }
-//
-//        Arrays.sort(fitness);
-//
-//        return hashMap.get(fitness[position]);
-//    }
 
     private static boolean overallBest(final int[][] population, final int[][] matrix, final int fitness) {
         return calculateFitness(population, matrix)[0] <= fitness;
