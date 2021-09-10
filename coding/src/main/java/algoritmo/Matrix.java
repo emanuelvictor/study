@@ -36,6 +36,44 @@ public final class Matrix {
         generateMatrix(TAM, false);
     }
 
+
+    public int[] generateOrderingRoute(final int TAM) {
+
+        final int[] array = new int[TAM];
+
+        for (int i = 0; i < TAM; i++) {
+            array[i] = i;
+        }
+
+        return array;
+    }
+
+    public int[] generateRandomRoute(final int TAM) {
+
+        final int[] array = generateOrderingRoute(TAM);
+
+        shuffle(array);
+
+        return array;
+    }
+
+    /**
+     * Code from method java.util.Collections.shuffle();
+     */
+    public static void shuffle(final int[] array) {
+        final Random random = new Random();
+        final int count = array.length;
+        for (int i = count; i > 1; i--) {
+            swap(array, i - 1, random.nextInt(i));
+        }
+    }
+
+    private static void swap(final int[] array, final int i, final int j) {
+        final int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
     public void generateMatrix(final int TAM, final boolean linear) {
 
         final int[][] matrix = new int[TAM][TAM];
