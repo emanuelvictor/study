@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Memetic {
 
-    private int[][] matrix;
+    private final int[][] matrix;
 
     private final int fitnessToFind;
 
@@ -39,7 +39,7 @@ public class Memetic {
             population = learn(population, matrix);
 
             //Variável auxiliar para não duplicar o processo de cálculo do fitness
-            int currentBest = calculateFitness(best, matrix);
+            final int currentBest = calculateFitness(best, matrix);
 
             //TODO gambiarrona para elitizar o melhor e o algoritmo não desaprender
             if (calculateFitness(sort(population, calculateFitness(population, matrix))[0], matrix) <= currentBest) {

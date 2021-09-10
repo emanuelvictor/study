@@ -41,39 +41,31 @@ public final class Matrix {
         final int[][] matrix = new int[TAM][TAM];
         final Random random = new Random();
 
-        for (int i = 0; i < matrix.length; i++) {
-
+        for (int i = 0; i < matrix.length; i++)
             for (int j = 0; j < matrix.length; j++) {
                 final int randomNumber = random.nextInt(matrix.length) + matrix.length;
                 matrix[i][j] = randomNumber == matrix.length ? randomNumber + 1 : randomNumber;
             }
-        }
 
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                if (j == i) {
+        for (int i = 0; i < matrix.length; i++)
+            for (int j = 0; j < matrix.length; j++)
+                if (j == i)
                     matrix[j][i] = 0;
-                }
-            }
-        }
 
-        for (int i = 0; i < matrix.length; i++) {
+        for (int i = 0; i < matrix.length; i++)
             for (int j = 1; j < matrix.length; j++)
                 if (j == i)
                     if (linear)
                         matrix[j - 1][i] = i;
                     else
                         matrix[j - 1][i] = random.nextInt(matrix.length);
-        }
 
         // Back to home
         matrix[0][matrix.length - 1] = linear ? matrix.length : random.nextInt(matrix.length);
 
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 1; j < matrix.length; j++) {
+        for (int i = 0; i < matrix.length; i++)
+            for (int j = 1; j < matrix.length; j++)
                 matrix[j][i] = matrix[i][j];
-            }
-        }
 
         for (int i = 0; i < matrix.length; i++) {
             for (int[] aMatrix : matrix) {
