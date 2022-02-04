@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.util.Assert;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static others.threads.ThreadComponent.pool;
@@ -46,8 +48,8 @@ public class ThreadComponentTests {
 
         final AtomicBoolean done = new AtomicBoolean(false);
 
-        pool(POOL).
-                execute(
+        pool(POOL)
+                .execute(
                         () -> new Memetic().execute("1 ="),
                         () -> new Memetic().execute("2 ="),
                         () -> new Memetic().execute("3 ="),
@@ -70,8 +72,8 @@ public class ThreadComponentTests {
 
         final AtomicBoolean done = new AtomicBoolean(false);
 
-        pool(POOL).
-                execute(
+        pool(POOL)
+                .execute(
                         () -> new Memetic().execute("1 ="),
                         () -> new Memetic().execute("2 ="),
                         () -> new Memetic().execute("3 ="),
@@ -93,5 +95,45 @@ public class ThreadComponentTests {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void executeInSequence() {
+
+        final List<Integer> order = new ArrayList<>();
+
+        pool(1)
+                .execute(
+                        () -> {
+                            new Memetic().execute("1 =");
+                            order.add(1);
+                        },
+                        () -> {
+                            new Memetic().execute("2 =");
+                            order.add(2);
+                        },
+                        () -> {
+                            new Memetic().execute("3 =");
+                            order.add(3);
+                        },
+                        () -> {
+                            new Memetic().execute("4 =");
+                            order.add(4);
+                        },
+                        () -> {
+                            new Memetic().execute("5 =");
+                            order.add(5);
+                        }
+                )
+                .then(o -> {
+
+                    for (int i = 1; i <= 5; i++) {
+                        Assert.isTrue(order.get(i - 1).equals(i), "In sequence is not working");
+                    }
+                });
+
     }
 }

@@ -39,6 +39,10 @@ public class ThreadComponent {
         return new ThreadComponent(threadPool);
     }
 
+    /**
+     * @param runnables Runnable...
+     * @return ThreadComponent
+     */
     public ThreadComponent execute(final Runnable... runnables) {
         for (final Runnable runnable : runnables) {
             futures.add(executorService.submit(runnable));
@@ -46,11 +50,17 @@ public class ThreadComponent {
         return this;
     }
 
+    /**
+     * @return ThreadComponent
+     */
     public ThreadComponent block() {
         this.block = true;
         return this;
     }
 
+    /**
+     * @param then Consumer<?>
+     */
     public void then(final Consumer<?> then) {
         if (block)
             accept(then);
@@ -62,11 +72,18 @@ public class ThreadComponent {
         }
     }
 
+    /**
+     * @param then Consumer<?>
+     */
     private void accept(final Consumer<?> then) {
-        while (!futures.stream().allMatch(Future::isDone)) { //TODO substituir por observable do RXJava
-
+        int j = 1;
+        for (int i = 0; i < j++; i++) {
+            if (futures.stream().allMatch(Future::isDone)) {
+                then.accept(null);
+                break;
+            }
+            j++;
         }
-        then.accept(null);
     }
 
 }
