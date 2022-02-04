@@ -1,4 +1,4 @@
-import algoritmo.Matrix;
+import algorithm.Matrix;
 import org.junit.Test;
 import org.springframework.util.Assert;
 
