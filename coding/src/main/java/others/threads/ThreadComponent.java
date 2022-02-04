@@ -12,6 +12,16 @@ public class ThreadComponent {
     /**
      *
      */
+    private boolean block = false;
+
+    /**
+     *
+     */
+    private final Collection<Future<?>> futures = new ArrayList<>();
+
+    /**
+     *
+     */
     public static ExecutorService executorService = Executors.newFixedThreadPool(10);
 
     /**
@@ -29,24 +39,34 @@ public class ThreadComponent {
         return new ThreadComponent(threadPool);
     }
 
-    public void execute(final Consumer<?> then, final Runnable... runnables) {
-
-        final Collection<Future<?>> futures = new ArrayList<>();
+    public ThreadComponent execute(final Runnable... runnables) {
         for (final Runnable runnable : runnables) {
             futures.add(executorService.submit(runnable));
         }
+        return this;
+    }
 
-        final Consumer<Boolean> done = isDone -> {
-            if (isDone)
-                then.accept(null);
-        };
+    public ThreadComponent block() {
+        this.block = true;
+        return this;
+    }
 
-        while (!futures.stream().allMatch(Future::isDone)) {
-            done.accept(false);
+    public void then(final Consumer<?> then) {
+        if (block)
+            accept(then);
+        else {
+            final Runnable runnable = () -> accept(then);
+            final ExecutorService executorService = Executors.newFixedThreadPool(1);
+            executorService.execute(runnable);
+            executorService.shutdown();
         }
+    }
 
-        done.accept(true);
+    private void accept(final Consumer<?> then) {
+        while (!futures.stream().allMatch(Future::isDone)) { //TODO substituir por observable do RXJava
 
+        }
+        then.accept(null);
     }
 
 }
