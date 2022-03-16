@@ -1,3 +1,5 @@
+package algorithm;
+
 import algorithm.Matrix;
 import org.junit.Test;
 import org.springframework.util.Assert;
