@@ -1,5 +1,9 @@
 package algorithm;
 
+import algorithm.memetic.domain.entity.Result;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -9,13 +13,21 @@ import java.util.Random;
  */
 public final class Matrix {
 
-    private static boolean PRINT_MATRIX = false;
-
     private static Matrix instance;
 
     private int fitness;
 
     private int[][] matrix;
+
+    private int bestSelection;
+
+    public int getBestSelection() {
+        return bestSelection;
+    }
+
+    public void setBestSelection(int bestSelection) {
+        this.bestSelection = bestSelection;
+    }
 
     public int getFitness() {
         return fitness;
@@ -38,6 +50,21 @@ public final class Matrix {
         generateMatrix(TAM, false);
     }
 
+    public void print() {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int[] aMatrix : matrix) {
+                if (aMatrix[i] == 0)
+                    System.out.print("000, ");
+                else if (aMatrix[i] < 100 && aMatrix[i] >= 10)
+                    System.out.print("0" + aMatrix[i] + ", ");
+                else if (aMatrix[i] < 10)
+                    System.out.print("00" + aMatrix[i] + ", ");
+                else
+                    System.out.print(aMatrix[i] + ", ");
+            }
+            System.out.println();
+        }
+    }
 
     public int[] generateOrderingRoute(final int TAM) {
 
@@ -107,21 +134,6 @@ public final class Matrix {
             for (int j = 1; j < matrix.length; j++)
                 matrix[j][i] = matrix[i][j];
 
-        if (PRINT_MATRIX)
-            for (int i = 0; i < matrix.length; i++) {
-                for (int[] aMatrix : matrix) {
-                    if (aMatrix[i] == 0)
-                        System.out.print("000 ");
-                    else if (aMatrix[i] < 100 && aMatrix[i] >= 10)
-                        System.out.print("0" + aMatrix[i] + " ");
-                    else if (aMatrix[i] < 10)
-                        System.out.print("00" + aMatrix[i] + " ");
-                    else
-                        System.out.print(aMatrix[i] + " ");
-                }
-                System.out.println();
-            }
-
         this.matrix = matrix;
 
         this.fitness = calculateFitness();
@@ -144,4 +156,37 @@ public final class Matrix {
 //        return cont;
     }
 
+    /**
+     * @param matrix int[][]
+     */
+    public void setMatrix(final int[][] matrix) {
+        this.matrix = matrix;
+        this.fitness = calculateFitness();
+    }
+
+    private Result memeticReuslt = new Result();
+
+    private Result oldMemeticResult = new Result();
+
+    int count = 1;
+
+    public int getCount() {
+        return count;
+    }
+
+    public void resetCount() {
+        count = 1;
+    }
+
+    public void addOldMemeticResult(final Result result) {
+        this.oldMemeticResult = result;
+        System.out.println(memeticReuslt + " | " + oldMemeticResult + " | " + this.bestSelection);
+        count++;
+    }
+
+    public void addMemeticResult(final Result result) {
+        this.memeticReuslt = result;
+        System.out.println(memeticReuslt + " | " + oldMemeticResult + " | " + this.bestSelection);
+        count++;
+    }
 }

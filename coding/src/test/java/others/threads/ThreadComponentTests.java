@@ -1,7 +1,7 @@
 package others.threads;
 
 import algorithm.Matrix;
-import algorithm.memetico.Memetic;
+import algorithm.memetic.Memetic;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static others.threads.ThreadComponent.pool;
+
 
 @FixMethodOrder(MethodSorters.JVM)
 public class ThreadComponentTests {

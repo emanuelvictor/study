@@ -1,8 +1,9 @@
-import algorithm.Matrix;
+package algorithm;
+
 import org.junit.Test;
 import org.springframework.util.Assert;
 
-public class MatrixTest {
+public class MatrixTests {
 
     @Test
     public void testGenerateRandomRouteMustPass() {

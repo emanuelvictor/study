@@ -1,7 +1,10 @@
-package algorithm.memetico;
+package algorithm.memetic;
 
 import algorithm.Matrix;
+import algorithm.memetic.domain.entity.Result;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -26,13 +29,22 @@ public class OldMemetic {
         this.fitnessToFind = fitnessToFind;
     }
 
-    public void execute() {
-        int[][] populacao = gerarPopulacaoAleatoria(TAM_POP, matrix);
+    public long execute(final String instanceName) {
+        final int[][] populacao = gerarPopulacaoAleatoria(TAM_POP, matrix);
+        return execute(instanceName, populacao);
+    }
+
+    private int firstBest = 0;
+
+    public long execute(final String instanceName, int[][] populacao) {
+        final LocalDateTime init = LocalDateTime.now();
 
         melhor = ordenar(populacao, calcularFitness(populacao, matrix))[0];
 
         //Variável auxiliar para guardar o melhor da população anterior anterior.
         int melhorAnterior = calcularFitness(melhor, matrix);
+
+        firstBest = melhorAnterior;
 
         while (!melhorGlobal(populacao, matrix, fitnessToFind)) {
 
@@ -45,19 +57,18 @@ public class OldMemetic {
 
             //TODO gambiarrona para elitizar o melhor e o algorithm não desaprender
             if (calcularFitness(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix) <= melhorAtual) {
-                populacao = ordenar(populacao, calcularFitness(populacao, matrix));
-                for (int i = 0; i < populacao[0].length; i++) {
-                    melhor[i] = populacao[0][i];
-                }
+//                ordenar(populacao, calcularFitness(populacao, matrix));
+                System.arraycopy(populacao[0], 0, melhor, 0, populacao[0].length);
             } else {
-                populacao = ordenar(populacao, calcularFitness(populacao, matrix));
-                for (int i = 0; i < populacao[0].length; i++) {
-                    populacao[0][i] = melhor[i];
-                }
+//                ordenar(populacao, calcularFitness(populacao, matrix));
+                System.arraycopy(melhor, 0, populacao[0], 0, populacao[0].length);
             }
             //Se o fitness do melhor indivíduo encontrado for melhor que o anterior, imprime-o
             if (melhorAtual < melhorAnterior) {
                 melhorAnterior = calcularFitness(melhor, matrix);
+                final int[] theBest = ordenar(populacao, calcularFitness(populacao, matrix))[0];
+                Matrix.getInstance().addOldMemeticResult(new Result(firstBest, calcularFitness(theBest, matrix), Matrix.getInstance().getFitness(), "old memetic"));
+//                System.out.println("  PRIMEIRO MELHOR = " +firstBest+ " Old Memético= " + calcularFitness(theBest, matrix) + " => " + Matrix.getInstance().getFitness() /*+ " | " + Arrays.toString(theBest)*/) ;
 //                imprimir(null, ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
 //                System.out.println(" = " + calcularFitness(ordenar(populacao, calcularFitness(populacao, MATRIZ_ADJACENTE))[0], MATRIZ_ADJACENTE));
             }
@@ -67,7 +78,8 @@ public class OldMemetic {
 //        imprimir(ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
 //        imprimir(populacao[0]);
 //        System.out.print(" "+calcularFitness(populacao[0], MATRIZ_ADJACENTE));
-        imprimir("oldMemetic done ", ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix);
+        final LocalDateTime end = LocalDateTime.now();
+        return imprimir(instanceName, ordenar(populacao, calcularFitness(populacao, matrix))[0], matrix, init, end);
     }
 
     public static int[][] saltar(int[][] populacao, int[][] MATRIZ_ADJACENTE) {
@@ -131,7 +143,7 @@ public class OldMemetic {
         return calcularFitness(populacao, MATRIZ_ADJACENTE)[0] <= FITNESS;
     }
 
-    private static int[][] gerarPopulacaoAleatoria(int TAM_POP, int[][] MATRIZ_ADJACENTE) {
+    public static int[][] gerarPopulacaoAleatoria(int TAM_POP, int[][] MATRIZ_ADJACENTE) {
 
         int[][] rotas = new int[TAM_POP][MATRIZ_ADJACENTE.length];
 
@@ -232,13 +244,19 @@ public class OldMemetic {
         return false;
     }
 
-
-    private void imprimir(final String concluded, int[] rota, int[][] matrix) {
-        if(concluded != null) System.out.print(concluded);
-        for (int j : rota) {
-            System.out.print(" " + j);
+    private long imprimir(final String concluded, int[] rota, int[][] matrix, final LocalDateTime init, final LocalDateTime end) {
+        final StringBuilder stringBuilder = new StringBuilder();
+        if (concluded != null) stringBuilder.append(concluded);
+        for (final int j : rota) {
+            stringBuilder.append(" ").append(j);
         }
-        System.out.println(" = " + calcularFitness(rota, matrix) + " fitness a ser encontrado = " + fitnessToFind);
+        stringBuilder.append(" = ").append(calcularFitness(rota, matrix)).append(" fitness a ser encontrado = ").append(fitnessToFind);
+
+        long time = ChronoUnit.MILLIS.between(init, end);
+        stringBuilder.append("  | demorou: ").append(time);
+
+        System.out.println(stringBuilder);
+        return time;
     }
 
 //    private static void imprimir(int[][] populacao, int[] fitness, int[][] MATRIZ_ADJACENTE) {

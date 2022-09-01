@@ -1,27 +1,23 @@
 package algorithm;
 
-
 import algorithm.memetic.Memetic;
 import algorithm.memetic.OldMemetic;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static others.threads.ThreadComponent.pool;
 
 /**
- * Algoritmo Genético implementado por Emanuel Victor e Haroldo Ramirez em 29/09/14.
- * Análise da influência da mutação nos crossovers OX e PMX.
- * Classe que executa os testes
+ *
  */
-public class Executor {
-
+public class ExecutorTests {
 
     public static final int[][] MATRIX = new int[][]
             {
@@ -57,62 +53,46 @@ public class Executor {
                     {12, 41, 50, 46, 56, 36, 44, 59, 32, 58, 35, 47, 50, 53, 58, 53, 55, 31, 31, 31, 51, 56, 32, 37, 40, 57, 36, 52, 2, 0}
             };
 
-    public static void main(final String[] args) /*throws IOException, InterruptedException */ {
-
-        main();
-
-    }
-
-    public static void main() {
-        Matrix.getInstance().generateMatrix(5, false);
-//        Matrix.getInstance().setMatrix(MATRIX);
+    /**
+     *
+     */
+    @Test
+    public void main() {
+//        Matrix.getInstance().generateMatrix(30, false);
+        Matrix.getInstance().setMatrix(MATRIX);
 //        Matrix.getInstance().print();
+
+        int[][] population = OldMemetic.gerarPopulacaoAleatoria(2, Matrix.getInstance().getMatrix());
 
         final AtomicLong sumMemetic = new AtomicLong();
         final AtomicLong sumOldMemetic = new AtomicLong();
 
-        int sizeOfPopulation = 2;
-
-        new Memetic().execute("\n " + 0 + " memetic done", Memetic.generateRandomPopulation(sizeOfPopulation, Matrix.getInstance().getMatrix()), 0);
-//        final Runnable runnable0 = () -> sumMemetic.set(sumMemetic.get() + new Memetic().execute("\n " + 0 + " memetic done", Memetic.generateRandomPopulation(sizeOfPopulation, Matrix.getInstance().getMatrix()), 0));
-//        final Runnable runnable1 = () -> sumMemetic.set(sumMemetic.get() + new Memetic().execute("\n " + 1 + " memetic done", Memetic.generateRandomPopulation(sizeOfPopulation, Matrix.getInstance().getMatrix()), 1));
-//        final Runnable runnable2 = () -> sumMemetic.set(sumMemetic.get() + new Memetic().execute("\n " + 2 + " memetic done", Memetic.generateRandomPopulation(sizeOfPopulation, Matrix.getInstance().getMatrix()), 2));
-//        final Runnable runnable3 = () -> sumMemetic.set(sumMemetic.get() + new Memetic().execute("\n " + 3 + " memetic done", Memetic.generateRandomPopulation(sizeOfPopulation, Matrix.getInstance().getMatrix()), 3));
-//
-//        final Runnable oldMemetic = () -> sumOldMemetic.set(sumOldMemetic.get() + new OldMemetic().execute("\n Old Memétic done", Memetic.generateRandomPopulation(sizeOfPopulation, Matrix.getInstance().getMatrix())));
-//
-//        pool(8)
-//                .execute(/*oldMemetic,*/ runnable0)
-//                .block()
-//                .then(o0 -> {
-////                    Matrix.getInstance().resetCount();
-//                });
-//
-//        pool(8)
-//                .execute(oldMemetic, runnable1)
-//                .block()
-//                .then(o1 -> {
-////                    Matrix.getInstance().resetCount();
-//                });
-//
-//        pool(10)
-//                .execute(oldMemetic, runnable2)
-//                .block()
-//                .then(o2 -> {
-////                    Matrix.getInstance().resetCount();
-//                });
-//
-//        pool(10)
-//                .execute(oldMemetic, runnable3)
-//                .block()
-//                .then(o3 -> {
-////                    Matrix.getInstance().resetCount();
-//                });
-
+        for (int i = 0; i < 100; i++) {
+            pool(4000)
+                    .execute(
+                            () -> {
+                                sumMemetic.set(sumMemetic.get() + new Memetic().execute("\n 1 memetic done", copy(population)));
+                            },
+                            () -> {
+                                sumOldMemetic.set(sumOldMemetic.get() + new OldMemetic().execute("\n 2 Old memetic done", copy(population)));
+                            }
+                    )
+//                    .block()
+                    .then(o -> {
+                        final File file = new File("results.txt");
+                        final String resultMemetic = "memetic " + sumMemetic.get();
+                        final String resultOldMemetic = "Old Memetic " + sumOldMemetic.get();
+                        try {
+                            Files.write(Paths.get(file.getPath()), Arrays.asList(resultMemetic, resultOldMemetic));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            throw new RuntimeException(e);
+                        }
+                    });
+        }
 
         System.out.println(sumMemetic.get());
         System.out.println(sumOldMemetic.get());
-        System.exit(-1);
     }
 
     static int[][] copy(int[][] array) {
@@ -120,4 +100,5 @@ public class Executor {
         System.arraycopy(array, 0, auxArray, 0, auxArray.length);
         return auxArray;
     }
+
 }

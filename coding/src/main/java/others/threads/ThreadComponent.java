@@ -66,7 +66,7 @@ public class ThreadComponent {
             accept(then);
         else {
             final Runnable runnable = () -> accept(then);
-            final ExecutorService executorService = Executors.newFixedThreadPool(1);
+            final ExecutorService executorService = Executors.newFixedThreadPool(2);
             executorService.execute(runnable);
             executorService.shutdown();
         }
