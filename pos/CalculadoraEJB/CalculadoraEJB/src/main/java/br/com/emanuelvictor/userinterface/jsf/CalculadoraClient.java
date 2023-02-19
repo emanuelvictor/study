@@ -6,9 +6,11 @@ package br.com.emanuelvictor.userinterface.jsf;
 
 import br.com.emanuelvictor.domain.ports.Calculadora;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
@@ -21,7 +23,7 @@ import javax.enterprise.context.RequestScoped;
 public class CalculadoraClient {
 
     @EJB
-    private Calculadora calculadora;
+    private final Calculadora calculadora;
 
     @Setter
     @Getter
@@ -34,6 +36,11 @@ public class CalculadoraClient {
     @Setter
     @Getter
     private int resultado;
+
+    @Inject
+    public CalculadoraClient(final Calculadora calculadora) {
+        this.calculadora = calculadora;
+    }
 
     public void somar(){
         resultado = calculadora.somar(primeiroValor, segundoValor);
