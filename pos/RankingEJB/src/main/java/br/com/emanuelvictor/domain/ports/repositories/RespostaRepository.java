@@ -7,7 +7,6 @@ package br.com.emanuelvictor.domain.ports.repositories;
 import br.com.emanuelvictor.domain.entities.Resposta;
 
 import javax.ejb.Local;
-import java.util.List;
 
 /**
  * @author Emanuel Victor
@@ -15,8 +14,6 @@ import java.util.List;
 @Local
 public interface RespostaRepository {
 
-    Resposta save(final Resposta resposta);
-
-    List<Resposta> getAll();
+    void save(final Resposta resposta);
 
 }

@@ -6,12 +6,15 @@ package br.com.emanuelvictor.userinterface.jsf;
 
 import br.com.emanuelvictor.domain.entities.Resposta;
 import br.com.emanuelvictor.domain.entities.Usuario;
+import br.com.emanuelvictor.domain.ports.repositories.QuestaoRepository;
 import br.com.emanuelvictor.domain.services.RespostaService;
+import br.com.emanuelvictor.infrastructure.adapters.QuestaoRepositoryImpl;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -25,17 +28,25 @@ import java.util.List;
 public class JsfResposta implements Serializable {
     @Setter
     @Getter
-    private Resposta resposta = new Resposta();
+    private Resposta resposta;
+
     @EJB
     private RespostaService respostaService;
+
+    @EJB
+    private final QuestaoRepository questaoRepository;
+
+    @Inject
+    public JsfResposta(final QuestaoRepository questaoRepository) {
+        this.questaoRepository = questaoRepository;
+        this.resposta = new Resposta();
+        this.resposta.setQuestao(questaoRepository.gerarNovaQuestao());
+    }
 
     public void save() {
         respostaService.save(resposta);
         resposta = new Resposta();
-    }
-
-    public List<Resposta> getAll() {
-        return respostaService.getAll();
+        resposta.setQuestao(questaoRepository.gerarNovaQuestao());
     }
 
     public List<Usuario> getRanque() {

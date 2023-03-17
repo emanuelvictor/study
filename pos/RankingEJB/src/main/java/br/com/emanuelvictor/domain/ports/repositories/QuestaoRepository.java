@@ -7,12 +7,13 @@ package br.com.emanuelvictor.domain.ports.repositories;
 import br.com.emanuelvictor.domain.entities.Questao;
 
 import javax.ejb.Local;
+import java.io.Serializable;
 
 /**
  * @author Emanuel Victor
  */
 @Local
-public interface QuestaoRepository {
+public interface QuestaoRepository extends Serializable {
 
     Questao gerarNovaQuestao();
 

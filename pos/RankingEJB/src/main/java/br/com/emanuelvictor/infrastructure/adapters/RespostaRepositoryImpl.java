@@ -20,13 +20,8 @@ public class RespostaRepositoryImpl implements RespostaRepository {
     private final List<Resposta> respostas = new ArrayList<>();
 
     @Override
-    public Resposta save(Resposta resposta) {
+    public void save(Resposta resposta) {
         respostas.add(resposta);
-        return resposta;
     }
 
-    @Override
-    public List<Resposta> getAll() {
-        return respostas;
-    }
 }

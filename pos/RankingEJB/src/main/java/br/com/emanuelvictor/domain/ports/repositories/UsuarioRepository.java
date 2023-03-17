@@ -16,7 +16,7 @@ import java.util.List;
 @Local
 public interface UsuarioRepository extends Serializable {
 
-    Usuario save(final Usuario usuario);
+    void save(final Usuario usuario);
 
     List<Usuario> getAll();
 

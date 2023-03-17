@@ -10,15 +10,13 @@ import br.com.emanuelvictor.domain.ports.repositories.QuestaoRepository;
 import javax.ejb.Stateless;
 
 /**
- *
- * @author default
+ * @author Emanuel Victor
+ * EJB Stateless
  */
 @Stateless
 public class QuestaoRepositoryImpl implements QuestaoRepository {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-    public Questao gerarNovaQuestao(){
+    public Questao gerarNovaQuestao() {
         return new Questao();
     }
 }

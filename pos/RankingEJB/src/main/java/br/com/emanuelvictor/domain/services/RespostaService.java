@@ -12,13 +12,14 @@ import br.com.emanuelvictor.domain.ports.repositories.UsuarioRepository;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author default
  */
 @Stateful
-public class RespostaService {
+public class RespostaService implements Serializable {
 
     @EJB
     private final UsuarioRepository usuarioRepository;
@@ -33,15 +34,11 @@ public class RespostaService {
 
     public void save(final Resposta resposta) {
         final Usuario usuario = usuarioRepository.findByName(resposta.getUsuario().getNome());
-        if(resposta.getResultadoInformadoPeloUsuario() == resposta.getQuestao().somar()){
+        if (resposta.verificarValorInformadoPeloUsuario()) {
             usuario.incrementarPontuacao();
         }
         usuarioRepository.save(usuario);
         respostaRepository.save(resposta);
-    }
-
-    public List<Resposta> getAll() {
-        return respostaRepository.getAll();
     }
 
     public List<Usuario> getRanque() {

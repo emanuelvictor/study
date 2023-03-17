@@ -11,7 +11,7 @@ public class Resposta {
 
     @Setter
     @Getter
-    private Questao questao = new Questao();
+    private Questao questao;
 
     @Setter
     @Getter

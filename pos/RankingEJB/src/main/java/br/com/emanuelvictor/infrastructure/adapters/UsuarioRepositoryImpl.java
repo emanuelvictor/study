@@ -22,9 +22,8 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     private final Set<Usuario> usuarios = new HashSet<>();
 
     @Override
-    public Usuario save(Usuario usuario) {
+    public void save(Usuario usuario) {
         usuarios.add(usuario);
-        return usuario;
     }
 
     @Override
