@@ -30,6 +30,10 @@ public class JsfResposta implements Serializable {
     @Getter
     private Resposta resposta;
 
+    @Setter
+    @Getter
+    private String mensagem;
+
     @EJB
     private RespostaService respostaService;
 
@@ -44,7 +48,10 @@ public class JsfResposta implements Serializable {
     }
 
     public void save() {
-        respostaService.save(resposta);
+        if (respostaService.save(resposta))
+            mensagem = "Você acertou :)";
+        else
+            mensagem = "Você errou :(";
         resposta = new Resposta();
         resposta.setQuestao(questaoRepository.gerarNovaQuestao());
     }

@@ -13,7 +13,9 @@ import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.inject.Inject;
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author default
@@ -32,17 +34,21 @@ public class RespostaService implements Serializable {
         this.respostaRepository = respostaRepository;
     }
 
-    public void save(final Resposta resposta) {
+    public boolean save(final Resposta resposta) {
         final Usuario usuario = usuarioRepository.findByName(resposta.getUsuario().getNome());
-        if (resposta.verificarValorInformadoPeloUsuario()) {
+        final boolean usuarioAcertou = resposta.verificarValorInformadoPeloUsuario();
+        if (usuarioAcertou) {
             usuario.incrementarPontuacao();
         }
         usuarioRepository.save(usuario);
         respostaRepository.save(resposta);
+        return usuarioAcertou;
     }
 
     public List<Usuario> getRanque() {
-        return usuarioRepository.getAll();
+        return usuarioRepository.getAll().stream()
+                .sorted(Comparator.comparingInt(Usuario::getPontuacao).reversed())
+                .collect(Collectors.toList());
     }
 
 }

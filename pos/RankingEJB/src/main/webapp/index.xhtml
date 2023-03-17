@@ -11,7 +11,7 @@
             <br/>
             Qual é a soma entre <h:outputText value="#{jsfResposta.resposta.questao.valores[0]}"/> e <h:outputText value="#{jsfResposta.resposta.questao.valores[1]}"/> ? <h:inputText value="#{jsfResposta.resposta.resultadoInformadoPeloUsuario}"/>
             <h:commandButton value="Calcular" action="#{jsfResposta.save()}"/>
-<!--            Resultado: <h:outputText value="#{calculadora.resultado}"/>-->
+            <h:outputText value="#{jsfResposta.mensagem}"/>
         </h:form>
 
         <br/>
@@ -26,25 +26,6 @@
                     <h:outputText value="#{usuario.pontuacao}" />
                 </h:column>
             </h:dataTable>
-
-<!--            Itens adicionados-->
-<!--            <h:form>-->
-<!--                <h:dataTable value="#{jsfCompra.all}" var="item">-->
-<!--                    <h:column>-->
-<!--                        <h:outputText value="#{item.respostauto.codigo}" />-->
-<!--                    </h:column>-->
-<!--                    <h:column>-->
-<!--                        <h:outputText value="#{item.respostauto.descricao}" />-->
-<!--                       -->
-<!--                    </h:column>-->
-<!--                -->
-<!--                    <h:column>-->
-<!--                        <h:outputText value="#{item.quantidade}" />-->
-<!--                    </h:column>-->
-<!--                </h:dataTable>-->
-<!--                <h:commandButton value="Limpar lista"-->
-<!--                                 action="#{jsfCompra.limparLista()}"/>-->
-<!--            </h:form>-->
         </h:form>
     </h:body>
 </html>
