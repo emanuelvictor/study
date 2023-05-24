@@ -18,6 +18,132 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PersonTests {
 
+    private final BigDecimal salary = BigDecimal.valueOf(10000);
+
+    @Test
+    void mustCreateAMan() {
+        final int age = 18;
+        final Boolean male = true;
+
+        final Person person = new Person(male, age, salary);
+
+        assertThat(person.isMale()).isTrue();
+        assertThat(person.isFemale()).isFalse();
+    }
+
+    @Test
+    void mustCreateAWoman() {
+        final int age = 18;
+        final Boolean male = false;
+
+        final Person person = new Person(male, age, salary);
+
+        assertThat(person.isMale()).isFalse();
+        assertThat(person.isFemale()).isTrue();
+    }
+
+    @Test
+    void mustCreateAYoungMan() {
+        final int age = 18;
+        final Boolean male = true;
+
+        final Person person = new Person(male, age, salary);
+
+        assertThat(person.isYoungMan()).isTrue();
+        assertThat(person.isMediumMan()).isFalse();
+        assertThat(person.isOldMan()).isFalse();
+        assertThat(person.isYoungWoman()).isFalse();
+        assertThat(person.isMediumWoman()).isFalse();
+        assertThat(person.isOldWoman()).isFalse();
+    }
+
+    @Test
+    void mustCreateAMediumMan() {
+        final int age = 36;
+        final Boolean male = true;
+
+        final Person person = new Person(male, age, salary);
+
+        assertThat(person.isYoungMan()).isFalse();
+        assertThat(person.isMediumMan()).isTrue();
+        assertThat(person.isOldMan()).isFalse();
+        assertThat(person.isYoungWoman()).isFalse();
+        assertThat(person.isMediumWoman()).isFalse();
+        assertThat(person.isOldWoman()).isFalse();
+    }
+
+    @Test
+    void mustCreateAOldMan() {
+        final int age = 46;
+        final Boolean male = true;
+
+        final Person person = new Person(male, age, salary);
+
+        assertThat(person.isYoungMan()).isFalse();
+        assertThat(person.isMediumMan()).isFalse();
+        assertThat(person.isOldMan()).isTrue();
+        assertThat(person.isYoungWoman()).isFalse();
+        assertThat(person.isMediumWoman()).isFalse();
+        assertThat(person.isOldWoman()).isFalse();
+    }
+
+    @Test
+    void mustCreateAYoungWoman() {
+        final int age = 18;
+        final Boolean male = false;
+
+        final Person person = new Person(male, age, salary);
+
+        assertThat(person.isYoungMan()).isFalse();
+        assertThat(person.isMediumMan()).isFalse();
+        assertThat(person.isOldMan()).isFalse();
+        assertThat(person.isYoungWoman()).isTrue();
+        assertThat(person.isMediumWoman()).isFalse();
+        assertThat(person.isOldWoman()).isFalse();
+    }
+
+
+    @Test
+    void mustCreateAMediumWoman() {
+        final int age = 31;
+        final Boolean male = false;
+
+        final Person person = new Person(male, age, salary);
+
+        assertThat(person.isYoungMan()).isFalse();
+        assertThat(person.isMediumMan()).isFalse();
+        assertThat(person.isOldMan()).isFalse();
+        assertThat(person.isYoungWoman()).isFalse();
+        assertThat(person.isMediumWoman()).isTrue();
+        assertThat(person.isOldWoman()).isFalse();
+    }
+
+    @Test
+    void mustCreateAOldWoman() {
+        final int age = 41;
+        final Boolean male = false;
+
+        final Person person = new Person(male, age, salary);
+
+        assertThat(person.isYoungMan()).isFalse();
+        assertThat(person.isMediumMan()).isFalse();
+        assertThat(person.isOldMan()).isFalse();
+        assertThat(person.isYoungWoman()).isFalse();
+        assertThat(person.isMediumWoman()).isFalse();
+        assertThat(person.isOldWoman()).isTrue();
+    }
+
+    @Test
+    void cannotAllowMortgage() {
+        final int age = 55;
+        final Boolean male = false;
+        final Person person = new Person(male, age, salary);
+
+        final Exception businessLogicException = assertThrows(BusinessLogicException.class, person::calculateAllowedMortgage);
+
+        Assertions.assertThat(businessLogicException).isInstanceOf(BusinessLogicException.class).hasMessageContaining("Mortgage is not allowed");
+    }
+
     @ParameterizedTest
     @MethodSource("getValuesAndMessageErrorsFromPeopleEntity")
     void cannotCreateInstanceOfPersonWithInvalidInputs(final Boolean gender, final Integer age, final BigDecimal salary, final String message) {
@@ -26,6 +152,25 @@ public class PersonTests {
 
         Assertions.assertThat(businessLogicException).isInstanceOf(BusinessLogicException.class).hasMessageContaining(message);
 
+    }
+
+    @ParameterizedTest
+    @MethodSource("getAgesAndMortgageFactors")
+    void mustCalculateMortgageFactor(final Boolean male, final Integer age, final BigDecimal mortgageFactor) {
+        final Person person = new Person(male, age, BigDecimal.valueOf(10000));
+
+        assertThat(person.getMortgageFactor()).isEqualTo(mortgageFactor);
+    }
+
+    @ParameterizedTest
+    @MethodSource("getAgesAndMortgageFactors")
+    void mustCalculateMaxMortgage(final Boolean male, final Integer age, final BigDecimal mortgageFactor) {
+        final Person person = new Person(male, age, BigDecimal.valueOf(10000));
+        final BigDecimal mortgageAllowedExpected = person.getSalary().multiply(mortgageFactor);
+
+        final BigDecimal mortgageAllowed = person.calculateAllowedMortgage();
+
+        assertThat(mortgageAllowed).isEqualTo(mortgageAllowedExpected);
     }
 
     private static Stream<Arguments> getValuesAndMessageErrorsFromPeopleEntity() {
@@ -40,237 +185,14 @@ public class PersonTests {
         );
     }
 
-    @Nested
-    class ManTests {
-        private final Boolean male = true;
-        private final BigDecimal salary = BigDecimal.valueOf(10000);
-
-        @Nested
-        class YoungAgeTests {
-            private final int age = 18;
-            private final BigDecimal mortgageFactor = MORTGAGE_FACTOR_TO_YOUNG_MAN;
-
-            @Test
-            void mustCreateAYoungMan() {
-                final Person person = new Person(male, age, salary);
-
-                assertThat(person.isYoungMan()).isTrue();
-                assertThat(person.isMediumMan()).isFalse();
-                assertThat(person.isOldMan()).isFalse();
-                assertThat(person.isYoungWoman()).isFalse();
-                assertThat(person.isMediumWoman()).isFalse();
-                assertThat(person.isOldWoman()).isFalse();
-            }
-
-            @Test
-            void mustCalculateMortgageFactor() {
-                final Person person = new Person(male, age, salary);
-
-                assertThat(person.getMortgageFactor()).isEqualTo(mortgageFactor);
-            }
-
-            @Test
-            void mustCalculateMaxMortgage() {
-                final Person person = new Person(male, age, salary);
-                final BigDecimal mortgageAllowedExpected = person.getSalary().multiply(mortgageFactor);
-
-                final BigDecimal mortgageAllowed = person.calculateAllowedMortgage();
-
-                assertThat(mortgageAllowed).isEqualTo(mortgageAllowedExpected);
-            }
-        }
-
-        @Nested
-        class MediumAgeTests {
-            private final int age = 36;
-            private final BigDecimal mortgageFactor = MORTGAGE_FACTOR_TO_MEDIUM_MAN;
-
-            @Test
-            void mustCreateAMediumMan() {
-
-                final Person person = new Person(male, age, salary);
-
-                assertThat(person.isYoungMan()).isFalse();
-                assertThat(person.isMediumMan()).isTrue();
-                assertThat(person.isOldMan()).isFalse();
-                assertThat(person.isYoungWoman()).isFalse();
-                assertThat(person.isMediumWoman()).isFalse();
-                assertThat(person.isOldWoman()).isFalse();
-            }
-
-            @Test
-            void mustCalculateMortgageFactor() {
-                final Person person = new Person(male, age, salary);
-
-                assertThat(person.getMortgageFactor()).isEqualTo(mortgageFactor);
-            }
-
-            @Test
-            void mustCalculateMaxMortgage() {
-                final Person person = new Person(male, age, salary);
-                final BigDecimal mortgageAllowedExpected = person.getSalary().multiply(mortgageFactor);
-
-                final BigDecimal mortgageAllowed = person.calculateAllowedMortgage();
-
-                assertThat(mortgageAllowed).isEqualTo(mortgageAllowedExpected);
-            }
-
-        }
-
-        @Nested
-        class OldAgeTests {
-            private final int age = 46;
-            private final BigDecimal mortgageFactor = MORTGAGE_FACTOR_TO_OLD_MAN;
-            @Test
-            void mustCreateAOldMan() {
-
-                final Person person = new Person(male, age, salary);
-
-                assertThat(person.isYoungMan()).isFalse();
-                assertThat(person.isMediumMan()).isFalse();
-                assertThat(person.isOldMan()).isTrue();
-                assertThat(person.isYoungWoman()).isFalse();
-                assertThat(person.isMediumWoman()).isFalse();
-                assertThat(person.isOldWoman()).isFalse();
-            }
-
-            @Test
-            void mustCalculateMortgageFactor() {
-                final Person person = new Person(male, age, salary);
-
-                assertThat(person.getMortgageFactor()).isEqualTo(mortgageFactor);
-            }
-
-            @Test
-            void mustCalculateMaxMortgage() {
-                final Person person = new Person(male, age, salary);
-                final BigDecimal mortgageAllowedExpected = person.getSalary().multiply(mortgageFactor);
-
-                final BigDecimal mortgageAllowed = person.calculateAllowedMortgage();
-
-                assertThat(mortgageAllowed).isEqualTo(mortgageAllowedExpected);
-            }
-        }
-    }
-
-    @Nested
-    class WomanTests {
-        private final Boolean male = false;
-        private final BigDecimal salary = BigDecimal.valueOf(10000);
-
-        @Nested
-        class YoungAgeTests {
-            private final int age = 18;
-            private final BigDecimal mortgageFactor = MORTGAGE_FACTOR_TO_YOUNG_WOMAN;
-            @Test
-            void mustCreateAYoungMan() {
-
-                final Person person = new Person(male, age, salary);
-
-                assertThat(person.isYoungMan()).isFalse();
-                assertThat(person.isMediumMan()).isFalse();
-                assertThat(person.isOldMan()).isFalse();
-                assertThat(person.isYoungWoman()).isTrue();
-                assertThat(person.isMediumWoman()).isFalse();
-                assertThat(person.isOldWoman()).isFalse();
-            }
-
-            @Test
-            void mustCalculateMortgageFactor() {
-                final Person person = new Person(male, age, salary);
-
-                assertThat(person.getMortgageFactor()).isEqualTo(mortgageFactor);
-            }
-
-            @Test
-            void mustCalculateMaxMortgage() {
-                final Person person = new Person(male, age, salary);
-                final BigDecimal mortgageAllowedExpected = person.getSalary().multiply(mortgageFactor);
-
-                final BigDecimal mortgageAllowed = person.calculateAllowedMortgage();
-
-                assertThat(mortgageAllowed).isEqualTo(mortgageAllowedExpected);
-            }
-        }
-
-        @Nested
-        class MediumAgeTests {
-            private final int age = 31;
-            private final BigDecimal mortgageFactor = MORTGAGE_FACTOR_TO_MEDIUM_WOMAN;
-            @Test
-            void mustCreateAMediumMan() {
-
-                final Person person = new Person(male, age, salary);
-
-                assertThat(person.isYoungMan()).isFalse();
-                assertThat(person.isMediumMan()).isFalse();
-                assertThat(person.isOldMan()).isFalse();
-                assertThat(person.isYoungWoman()).isFalse();
-                assertThat(person.isMediumWoman()).isTrue();
-                assertThat(person.isOldWoman()).isFalse();
-            }
-
-            @Test
-            void mustCalculateMortgageFactor() {
-                final Person person = new Person(male, age, salary);
-
-                assertThat(person.getMortgageFactor()).isEqualTo(mortgageFactor);
-            }
-
-            @Test
-            void mustCalculateMaxMortgage() {
-                final Person person = new Person(male, age, salary);
-                final BigDecimal mortgageAllowedExpected = person.getSalary().multiply(mortgageFactor);
-
-                final BigDecimal mortgageAllowed = person.calculateAllowedMortgage();
-
-                assertThat(mortgageAllowed).isEqualTo(mortgageAllowedExpected);
-            }
-        }
-
-        @Nested
-        class OldAgeTests {
-            private final int age = 41;
-            private final BigDecimal mortgageFactor = MORTGAGE_FACTOR_TO_OLD_WOMAN;
-            @Test
-            void mustCreateAOldMan() {
-
-                final Person person = new Person(male, age, salary);
-
-                assertThat(person.isYoungMan()).isFalse();
-                assertThat(person.isMediumMan()).isFalse();
-                assertThat(person.isOldMan()).isFalse();
-                assertThat(person.isYoungWoman()).isFalse();
-                assertThat(person.isMediumWoman()).isFalse();
-                assertThat(person.isOldWoman()).isTrue();
-            }
-
-            @Test
-            void mustCalculateMortgageFactor() {
-                final Person person = new Person(male, age, salary);
-
-                assertThat(person.getMortgageFactor()).isEqualTo(mortgageFactor);
-            }
-
-            @Test
-            void mustCalculateMaxMortgage() {
-                final Person person = new Person(male, age, salary);
-                final BigDecimal mortgageAllowedExpected = person.getSalary().multiply(mortgageFactor);
-
-                final BigDecimal mortgageAllowed = person.calculateAllowedMortgage();
-
-                assertThat(mortgageAllowed).isEqualTo(mortgageAllowedExpected);
-            }
-
-            @Test
-            void cannotAllowMortgage() {
-                final int age = 55;
-                final Person person = new Person(male, age, salary);
-
-                final Exception businessLogicException = assertThrows(BusinessLogicException.class, person::calculateAllowedMortgage);
-
-                Assertions.assertThat(businessLogicException).isInstanceOf(BusinessLogicException.class).hasMessageContaining("Mortgage is not allowed");
-            }
-        }
+    private static Stream<Arguments> getAgesAndMortgageFactors() {
+        return Stream.of(
+                Arguments.arguments(true, 18, MORTGAGE_FACTOR_TO_YOUNG_MAN),
+                Arguments.arguments(true, 36, MORTGAGE_FACTOR_TO_MEDIUM_MAN),
+                Arguments.arguments(true, 46, MORTGAGE_FACTOR_TO_OLD_MAN),
+                Arguments.arguments(false, 18, MORTGAGE_FACTOR_TO_YOUNG_WOMAN),
+                Arguments.arguments(false, 31, MORTGAGE_FACTOR_TO_MEDIUM_WOMAN),
+                Arguments.arguments(false, 41, MORTGAGE_FACTOR_TO_OLD_WOMAN)
+        );
     }
 }
