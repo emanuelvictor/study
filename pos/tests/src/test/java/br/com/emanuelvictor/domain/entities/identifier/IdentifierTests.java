@@ -26,8 +26,9 @@ public class IdentifierTests {
     void mustCreateIdentifierInstanceFromValidValues(final String value) {
         final Identifier identifier = new Identifier(value);
 
-        Assertions.assertThat(identifier).isNotNull()
-        ;
+        Assertions.assertThat(identifier)
+                .isNotNull()
+                .satisfies(it -> Assertions.assertThat(it.getValue()).isEqualTo(Identifier.trimValue(value)));
     }
 
     private static Stream<Arguments> getInvalidValuesFromIdentifier() {
