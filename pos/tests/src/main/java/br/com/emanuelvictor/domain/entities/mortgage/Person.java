@@ -1,6 +1,6 @@
-package domain.entities;
+package br.com.emanuelvictor.domain.entities.mortgage;
 
-import domain.exceptions.BusinessLogicException;
+import br.com.emanuelvictor.domain.exceptions.BusinessLogicException;
 
 import java.math.BigDecimal;
 

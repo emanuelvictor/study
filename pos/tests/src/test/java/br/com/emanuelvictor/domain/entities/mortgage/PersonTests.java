@@ -1,8 +1,7 @@
-package domain.entities;
+package br.com.emanuelvictor.domain.entities.mortgage;
 
-import domain.exceptions.BusinessLogicException;
+import br.com.emanuelvictor.domain.exceptions.BusinessLogicException;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -11,8 +10,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.math.BigDecimal;
 import java.util.stream.Stream;
 
-import static domain.entities.Person.*;
-import static domain.entities.Person.MORTGAGE_FACTOR_TO_YOUNG_MAN;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -175,24 +172,24 @@ public class PersonTests {
 
     private static Stream<Arguments> getValuesAndMessageErrorsFromPeopleEntity() {
         return Stream.of(
-                Arguments.arguments(true, 17, BigDecimal.valueOf(10000), MIN_AGE_ERROR_MESSAGE),
-                Arguments.arguments(true, 56, BigDecimal.valueOf(10000), MAX_AGE_ERROR_MESSAGE),
-                Arguments.arguments(true, null, BigDecimal.valueOf(10000), NULL_AGE_ERROR_MESSAGE),
-                Arguments.arguments(true, 32, BigDecimal.valueOf(-1), MIN_SALARY_ERROR_MESSAGE),
-                Arguments.arguments(true, 32, BigDecimal.valueOf(10001), MAX_SALARY_ERROR_MESSAGE),
-                Arguments.arguments(true, 32, null, NULL_SALARY_ERROR_MESSAGE),
-                Arguments.arguments(null, 32, BigDecimal.valueOf(10000), NULL_GENDER_ERROR_MESSAGE)
+                Arguments.arguments(true, 17, BigDecimal.valueOf(10000), Person.MIN_AGE_ERROR_MESSAGE),
+                Arguments.arguments(true, 56, BigDecimal.valueOf(10000), Person.MAX_AGE_ERROR_MESSAGE),
+                Arguments.arguments(true, null, BigDecimal.valueOf(10000), Person.NULL_AGE_ERROR_MESSAGE),
+                Arguments.arguments(true, 32, BigDecimal.valueOf(-1), Person.MIN_SALARY_ERROR_MESSAGE),
+                Arguments.arguments(true, 32, BigDecimal.valueOf(10001), Person.MAX_SALARY_ERROR_MESSAGE),
+                Arguments.arguments(true, 32, null, Person.NULL_SALARY_ERROR_MESSAGE),
+                Arguments.arguments(null, 32, BigDecimal.valueOf(10000), Person.NULL_GENDER_ERROR_MESSAGE)
         );
     }
 
     private static Stream<Arguments> getAgesAndMortgageFactors() {
         return Stream.of(
-                Arguments.arguments(true, 18, MORTGAGE_FACTOR_TO_YOUNG_MAN),
-                Arguments.arguments(true, 36, MORTGAGE_FACTOR_TO_MEDIUM_MAN),
-                Arguments.arguments(true, 46, MORTGAGE_FACTOR_TO_OLD_MAN),
-                Arguments.arguments(false, 18, MORTGAGE_FACTOR_TO_YOUNG_WOMAN),
-                Arguments.arguments(false, 31, MORTGAGE_FACTOR_TO_MEDIUM_WOMAN),
-                Arguments.arguments(false, 41, MORTGAGE_FACTOR_TO_OLD_WOMAN)
+                Arguments.arguments(true, 18, Person.MORTGAGE_FACTOR_TO_YOUNG_MAN),
+                Arguments.arguments(true, 36, Person.MORTGAGE_FACTOR_TO_MEDIUM_MAN),
+                Arguments.arguments(true, 46, Person.MORTGAGE_FACTOR_TO_OLD_MAN),
+                Arguments.arguments(false, 18, Person.MORTGAGE_FACTOR_TO_YOUNG_WOMAN),
+                Arguments.arguments(false, 31, Person.MORTGAGE_FACTOR_TO_MEDIUM_WOMAN),
+                Arguments.arguments(false, 41, Person.MORTGAGE_FACTOR_TO_OLD_WOMAN)
         );
     }
 }

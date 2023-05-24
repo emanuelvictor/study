@@ -1,4 +1,4 @@
-package domain.exceptions;
+package br.com.emanuelvictor.domain.exceptions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,6 +26,13 @@ public class BusinessLogicException extends RuntimeException {
 
     public BusinessLogicException whenTrue(final boolean condition, final String message) {
         if (condition) {
+            this.errors.add(message);
+        }
+        return this;
+    }
+
+    public BusinessLogicException whenFalse(final boolean condition, final String message) {
+        if (!condition) {
             this.errors.add(message);
         }
         return this;
