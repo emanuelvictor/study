@@ -22,7 +22,7 @@ public class PersonTests {
 
     @Test
     void mustCreateAMan() {
-        final int age = 18;
+        final int age = 19;
         final Boolean male = true;
 
         final Person person = new Person(male, age, salary);
@@ -33,7 +33,7 @@ public class PersonTests {
 
     @Test
     void mustCreateAWoman() {
-        final int age = 18;
+        final int age = 19;
         final Boolean male = false;
 
         final Person person = new Person(male, age, salary);

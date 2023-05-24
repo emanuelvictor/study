@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class BusinessLogicException extends RuntimeException {
+
+    static final long serialVersionUID = -7034897190745766148L;
     private List<String> errors = new ArrayList<>();
 
     private BusinessLogicException() {
@@ -51,8 +53,8 @@ public class BusinessLogicException extends RuntimeException {
     private static String buildMessage(final List<String> errors) {
         final StringBuilder message = new StringBuilder();
 
-        for (final String erro : errors) {
-            message.append(erro).append("\n");
+        for (final String error : errors) {
+            message.append(error).append("\n");
         }
 
         return message.toString();
