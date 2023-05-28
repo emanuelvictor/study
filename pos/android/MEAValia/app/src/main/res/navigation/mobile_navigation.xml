@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/nav_transform"
-        android:name="online.meavalia.ui.criteria.list.TransformFragment"
+        android:name="online.meavalia.ui.criteria.list.ListCriteriaFragment"
         android:label="@string/menu_transform"
-        tools:layout="@layout/fragment_transform" />
+        tools:layout="@layout/list_criteria_fragment" />
 
     <fragment
         android:id="@+id/nav_insert_criteria"

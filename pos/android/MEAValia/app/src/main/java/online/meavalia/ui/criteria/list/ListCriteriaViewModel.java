@@ -7,11 +7,11 @@ import androidx.lifecycle.ViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransformViewModel extends ViewModel {
+public class ListCriteriaViewModel extends ViewModel {
 
     private final MutableLiveData<List<String>> mTexts;
 
-    public TransformViewModel() {
+    public ListCriteriaViewModel() {
         mTexts = new MutableLiveData<>();
         List<String> texts = new ArrayList<>();
         for (int i = 1; i <= 16; i++) {

@@ -31,15 +31,13 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.appBarMain.toolbar);
         configureNavController();
 
-        NavigationView navigationView = binding.navView;
-        if (navigationView != null) {
-            mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_transform, R.id.nav_insert_criteria)
-//                    .setFallbackOnNavigateUpListener() // TODO configura back button
-                    .setOpenableLayout(binding.drawerLayout)
-                    .build();
+        mAppBarConfiguration =
+                new AppBarConfiguration
+                        .Builder(R.id.nav_transform, R.id.nav_insert_criteria)
+                        .setOpenableLayout(binding.drawerLayout)
+                        .build();
 //            NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
 //            NavigationUI.setupWithNavController(navigationView, navController);
-        }
 
         configureFabButton(binding);
     }
@@ -70,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+        navController.navigate(R.id.nav_transform);
+        return true;
     }
 }

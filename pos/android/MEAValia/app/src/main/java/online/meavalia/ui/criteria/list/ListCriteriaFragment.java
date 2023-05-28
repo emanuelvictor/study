@@ -16,8 +16,11 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import online.meavalia.R;
-import online.meavalia.databinding.FragmentTransformBinding;
+import online.meavalia.databinding.ActivityMainBinding;
+import online.meavalia.databinding.ListCriteriaFragmentBinding;
 import online.meavalia.databinding.ItemTransformBinding;
 
 import java.util.Arrays;
@@ -30,27 +33,49 @@ import java.util.Objects;
  * the [RecyclerView] using LinearLayoutManager in a small screen
  * and shows items using GridLayoutManager in a large screen.
  */
-public class TransformFragment extends Fragment {
+public class ListCriteriaFragment extends Fragment {
 
-    private FragmentTransformBinding binding;
+    private ListCriteriaFragmentBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        TransformViewModel transformViewModel =
-                new ViewModelProvider(this).get(TransformViewModel.class);
+        ListCriteriaViewModel listCriteriaViewModel =
+                new ViewModelProvider(this)
+                        .get(ListCriteriaViewModel.class);
 
-        configureTitle("Criteria list");
+        configureTitle("List of Criteria");
+        configureBackButton();
+//        configureFabButton();
 
-        binding = FragmentTransformBinding.inflate(inflater, container, false);
+        binding = ListCriteriaFragmentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         RecyclerView recyclerView = binding.recyclerviewTransform;
         ListAdapter<String, TransformViewHolder> adapter = new TransformAdapter();
         recyclerView.setAdapter(adapter);
-        transformViewModel.getTexts().observe(getViewLifecycleOwner(), adapter::submitList);
+        listCriteriaViewModel.getTexts().observe(getViewLifecycleOwner(), adapter::submitList);
         return root;
     }
 
+    private void configureFabButton() {
+        ((FloatingActionButton) getMainActivity().findViewById(R.id.fab)).hide();
+    }
+
+    private void configureBackButton() {
+        showBackButton(false);
+    }
+
+    private void showBackButton(final boolean showButton) {
+        getMainActivity().getSupportActionBar().setDisplayHomeAsUpEnabled(showButton);
+    }
+
+    private void configureTitle(final String title) {
+        getMainActivity().getSupportActionBar().setTitle(Objects.isNull(title) ? "Title" : title);
+    }
+
+    private AppCompatActivity getMainActivity(){
+        return ((AppCompatActivity) getActivity());
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -106,10 +131,6 @@ public class TransformFragment extends Fragment {
                             drawables.get(position),
                             null));
         }
-    }
-
-    private void configureTitle(final String title) {
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(Objects.isNull(title) ? "Title" : title);
     }
 
     private static class TransformViewHolder extends RecyclerView.ViewHolder {
