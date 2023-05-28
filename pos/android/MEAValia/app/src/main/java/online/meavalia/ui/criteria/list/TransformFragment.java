@@ -1,4 +1,4 @@
-package online.meavalia.ui.transform;
+package online.meavalia.ui.criteria.list;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -21,6 +22,7 @@ import online.meavalia.databinding.ItemTransformBinding;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Fragment that demonstrates a responsive layout pattern where the format of the content
@@ -36,6 +38,8 @@ public class TransformFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         TransformViewModel transformViewModel =
                 new ViewModelProvider(this).get(TransformViewModel.class);
+
+        configureTitle("Criteria list");
 
         binding = FragmentTransformBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -102,6 +106,10 @@ public class TransformFragment extends Fragment {
                             drawables.get(position),
                             null));
         }
+    }
+
+    private void configureTitle(final String title) {
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(Objects.isNull(title) ? "Title" : title);
     }
 
     private static class TransformViewHolder extends RecyclerView.ViewHolder {

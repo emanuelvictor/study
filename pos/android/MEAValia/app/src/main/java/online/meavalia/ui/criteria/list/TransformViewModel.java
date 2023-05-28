@@ -1,4 +1,4 @@
-package online.meavalia.ui.transform;
+package online.meavalia.ui.criteria.list;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
