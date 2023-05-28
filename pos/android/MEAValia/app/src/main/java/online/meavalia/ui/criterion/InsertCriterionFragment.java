@@ -1,4 +1,4 @@
-package online.meavalia.ui.settings;
+package online.meavalia.ui.criterion;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import online.meavalia.databinding.FragmentSettingsBinding;
+import online.meavalia.databinding.InsertCriterionBinding;
 
-public class SettingsFragment extends Fragment {
+public class InsertCriterionFragment extends Fragment {
 
-    private FragmentSettingsBinding binding;
+    private InsertCriterionBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SettingsViewModel settingsViewModel =
-                new ViewModelProvider(this).get(SettingsViewModel.class);
+        CriterionViewModel criterionViewModel =
+                new ViewModelProvider(this).get(CriterionViewModel.class);
 
-        binding = FragmentSettingsBinding.inflate(inflater, container, false);
+        binding = InsertCriterionBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textSettings;
-        settingsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        criterionViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
