@@ -1,16 +1,16 @@
-package online.meavalia.ui.reflow;
+package online.meavalia.ui.criterion.insert;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ReflowViewModel extends ViewModel {
+public class CriterionViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public ReflowViewModel() {
+    public CriterionViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is reflow fragment");
+        mText.setValue("This is settings fragment");
     }
 
     public LiveData<String> getText() {

@@ -1,4 +1,4 @@
-package online.meavalia.ui.criterion;
+package online.meavalia.ui.criterion.insert;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
