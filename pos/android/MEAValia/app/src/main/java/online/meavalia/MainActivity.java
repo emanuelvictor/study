@@ -41,15 +41,7 @@ public class MainActivity extends AppCompatActivity {
 //            NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
 //            NavigationUI.setupWithNavController(navigationView, navController);
 
-//        configureFabButton(binding); TODO remove
 
-        //configure fullscreen
-        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE |
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                View.SYSTEM_UI_FLAG_IMMERSIVE |
-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-                View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
 
     private void configureNavController() {
@@ -58,13 +50,9 @@ public class MainActivity extends AppCompatActivity {
         navController = navHostFragment.getNavController();
     }
 
-//    private void configureFabButton(ActivityMainBinding binding) {  TODO remove
-//        if (binding.appBarMain.fab != null) {
-//            binding.appBarMain.fab.setOnClickListener(view -> {
-//                navController.navigate(R.id.nav_insert_criteria);
-//            });
-//        }
-//    }
+    public NavController getNavController() {
+        return navController;
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

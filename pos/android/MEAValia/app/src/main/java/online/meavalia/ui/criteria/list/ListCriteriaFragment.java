@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.Objects;
 
 import online.meavalia.ExecutionActivity;
-import online.meavalia.MainActivity;
 import online.meavalia.R;
 import online.meavalia.databinding.ItemTransformBinding;
 import online.meavalia.databinding.ListCriteriaFragmentBinding;
@@ -41,32 +40,35 @@ public class ListCriteriaFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        ListCriteriaViewModel listCriteriaViewModel =
-                new ViewModelProvider(this)
-                        .get(ListCriteriaViewModel.class);
 
         binding = ListCriteriaFragmentBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
 
         configureTitle("List of Criteria");
         configureBackButton();
         configureFabButton();
 
-        RecyclerView recyclerView = binding.recyclerviewTransform;
-        ListAdapter<String, TransformViewHolder> adapter = new TransformAdapter();
+        final ListAdapter<String, TransformViewHolder> adapter = new TransformAdapter();
+        final RecyclerView recyclerView = binding.recyclerviewTransform;
         recyclerView.setAdapter(adapter);
+
+        final ListCriteriaViewModel listCriteriaViewModel =
+                new ViewModelProvider(this)
+                        .get(ListCriteriaViewModel.class);
+
         listCriteriaViewModel.getTexts().observe(getViewLifecycleOwner(), adapter::submitList);
-        return root;
+        return binding.getRoot();
     }
 
     private void configureFabButton() {
-        binding.fab.setOnClickListener(view -> {
-            getNavController().navigate(R.id.nav_insert_criteria);
-        });
+        binding.fab.setOnClickListener(view -> getNavController().navigate(R.id.nav_insert_criteria));
     }
 
     private NavController getNavController() {
-        final NavHostFragment navHostFragment = (NavHostFragment) this.getMainActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
+        final NavHostFragment navHostFragment =
+                (NavHostFragment) getMainActivity()
+                        .getSupportFragmentManager()
+                        .findFragmentById(R.id.nav_host_fragment_content_main);
+        assert navHostFragment != null;
         return navHostFragment.getNavController();
     }
 
@@ -98,7 +100,7 @@ public class ListCriteriaFragment extends Fragment {
         binding = null;
     }
 
-    private static class TransformAdapter extends ListAdapter<String, TransformViewHolder> {
+    private class TransformAdapter extends ListAdapter<String, TransformViewHolder> {
 
         private final List<Integer> drawables = Arrays.asList(
                 R.drawable.avatar_1,
@@ -141,7 +143,7 @@ public class ListCriteriaFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull TransformViewHolder holder, int position) {
-            holder.textView.setText(getItem(position));
+            holder.textView.setText("NANA");
             holder.imageView.setImageDrawable(
                     ResourcesCompat.getDrawable(holder.imageView.getResources(),
                             drawables.get(position),
@@ -149,7 +151,7 @@ public class ListCriteriaFragment extends Fragment {
         }
     }
 
-    private static class TransformViewHolder extends RecyclerView.ViewHolder {
+    private class TransformViewHolder extends RecyclerView.ViewHolder {
 
         private final ImageView imageView;
         private final TextView textView;
@@ -158,6 +160,8 @@ public class ListCriteriaFragment extends Fragment {
             super(binding.getRoot());
             imageView = binding.imageViewItemTransform;
             textView = binding.textViewItemTransform;
+            binding.imageViewItemTransform.getRootView().setClickable(true);
+            binding.imageViewItemTransform.getRootView().setOnClickListener(v -> executeAssessment());
         }
     }
 }

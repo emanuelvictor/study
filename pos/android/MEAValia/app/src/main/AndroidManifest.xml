@@ -28,7 +28,6 @@
 
         <activity
             android:name=".ExecutionActivity"
-            android:exported="true"
             android:resizeableActivity="true"
             android:theme="@style/Theme.MEAValia.NoActionBar"
             tools:targetApi="24">
