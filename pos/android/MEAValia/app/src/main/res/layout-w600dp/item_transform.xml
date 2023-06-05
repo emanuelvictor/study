@@ -16,11 +16,20 @@
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/text_view_item_transform"
+        android:id="@+id/criteria_name_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@id/image_view_item_transform"
         app:layout_constraintStart_toStartOf="@id/image_view_item_transform"
         app:layout_constraintTop_toBottomOf="@id/image_view_item_transform"
-        tools:text="This is item # xx" />
+        tools:text="Name" />
+
+    <TextView
+        android:id="@+id/criteria_sentence_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/criteria_name_text_view"
+        app:layout_constraintStart_toStartOf="@id/criteria_name_text_view"
+        app:layout_constraintTop_toBottomOf="@id/criteria_name_text_view"
+        tools:text="Sentence" />
 </androidx.constraintlayout.widget.ConstraintLayout>

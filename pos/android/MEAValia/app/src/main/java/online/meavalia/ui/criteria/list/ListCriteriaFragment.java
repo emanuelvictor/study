@@ -27,6 +27,7 @@ import online.meavalia.ExecutionActivity;
 import online.meavalia.R;
 import online.meavalia.databinding.ItemTransformBinding;
 import online.meavalia.databinding.ListCriteriaFragmentBinding;
+import online.meavalia.domain.model.Criteria;
 
 /**
  * Fragment that demonstrates a responsive layout pattern where the format of the content
@@ -43,11 +44,11 @@ public class ListCriteriaFragment extends Fragment {
 
         binding = ListCriteriaFragmentBinding.inflate(inflater, container, false);
 
-        configureTitle("List of Criteria");
+        configureTitle();
         configureBackButton();
         configureFabButton();
 
-        final ListAdapter<String, TransformViewHolder> adapter = new TransformAdapter();
+        final ListAdapter<Criteria, TransformViewHolder> adapter = new TransformAdapter();
         final RecyclerView recyclerView = binding.recyclerviewTransform;
         recyclerView.setAdapter(adapter);
 
@@ -55,14 +56,23 @@ public class ListCriteriaFragment extends Fragment {
                 new ViewModelProvider(this)
                         .get(ListCriteriaViewModel.class);
 
-        listCriteriaViewModel.getTexts().observe(getViewLifecycleOwner(), adapter::submitList);
+        listCriteriaViewModel.getCriterias().observe(getViewLifecycleOwner(), adapter::submitList);
         return binding.getRoot();
+    }
+
+    private void configureTitle() {
+        Objects.requireNonNull(getMainActivity().getSupportActionBar()).setTitle("List of Criteria");
+    }
+
+    private void configureBackButton() {
+        Objects.requireNonNull(getMainActivity().getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
     }
 
     private void configureFabButton() {
         binding.fab.setOnClickListener(view -> getNavController().navigate(R.id.nav_insert_criteria));
     }
 
+    // TODO utilize from mainactivy
     private NavController getNavController() {
         final NavHostFragment navHostFragment =
                 (NavHostFragment) getMainActivity()
@@ -72,23 +82,11 @@ public class ListCriteriaFragment extends Fragment {
         return navHostFragment.getNavController();
     }
 
-    private void configureBackButton() {
-        showBackButton(false);
-    }
-
-    private void showBackButton(final boolean showButton) {
-        getMainActivity().getSupportActionBar().setDisplayHomeAsUpEnabled(showButton);
-    }
-
-    private void configureTitle(final String title) {
-        getMainActivity().getSupportActionBar().setTitle(Objects.isNull(title) ? "Title" : title);
-    }
-
     private AppCompatActivity getMainActivity() {
         return ((AppCompatActivity) getActivity());
     }
 
-    private void executeAssessment() {
+    private void startAssessmentActivity() {
         Intent myIntent = new Intent(getMainActivity(), ExecutionActivity.class);
 //            myIntent.putExtra("key", value); //Optional parameters
         this.getMainActivity().startActivity(myIntent);
@@ -100,7 +98,7 @@ public class ListCriteriaFragment extends Fragment {
         binding = null;
     }
 
-    private class TransformAdapter extends ListAdapter<String, TransformViewHolder> {
+    private class TransformAdapter extends ListAdapter<Criteria, TransformViewHolder> {
 
         private final List<Integer> drawables = Arrays.asList(
                 R.drawable.avatar_1,
@@ -121,14 +119,15 @@ public class ListCriteriaFragment extends Fragment {
                 R.drawable.avatar_16);
 
         protected TransformAdapter() {
-            super(new DiffUtil.ItemCallback<String>() {
+            super(new DiffUtil.ItemCallback<Criteria>() {
+
                 @Override
-                public boolean areItemsTheSame(@NonNull String oldItem, @NonNull String newItem) {
+                public boolean areItemsTheSame(@NonNull Criteria oldItem, @NonNull Criteria newItem) {
                     return oldItem.equals(newItem);
                 }
 
                 @Override
-                public boolean areContentsTheSame(@NonNull String oldItem, @NonNull String newItem) {
+                public boolean areContentsTheSame(@NonNull Criteria oldItem, @NonNull Criteria newItem) {
                     return oldItem.equals(newItem);
                 }
             });
@@ -143,7 +142,8 @@ public class ListCriteriaFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull TransformViewHolder holder, int position) {
-            holder.textView.setText("NANA");
+            holder.criteriaNameTextView.setText(getItem(position).getName());
+            holder.sentenceTextView.setText(getItem(position).getSentence());
             holder.imageView.setImageDrawable(
                     ResourcesCompat.getDrawable(holder.imageView.getResources(),
                             drawables.get(position),
@@ -154,14 +154,16 @@ public class ListCriteriaFragment extends Fragment {
     private class TransformViewHolder extends RecyclerView.ViewHolder {
 
         private final ImageView imageView;
-        private final TextView textView;
+        private final TextView criteriaNameTextView;
+        private final TextView sentenceTextView;
 
         public TransformViewHolder(ItemTransformBinding binding) {
             super(binding.getRoot());
             imageView = binding.imageViewItemTransform;
-            textView = binding.textViewItemTransform;
+            criteriaNameTextView = binding.criteriaNameTextView;
+            sentenceTextView = binding.criteriaSentenceTextView;
             binding.imageViewItemTransform.getRootView().setClickable(true);
-            binding.imageViewItemTransform.getRootView().setOnClickListener(v -> executeAssessment());
+            binding.imageViewItemTransform.getRootView().setOnClickListener(v -> startAssessmentActivity());
         }
     }
 }

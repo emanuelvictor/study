@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">MEAValia</string>
+    <string name="criteria_name_hint">Criteria name</string>
+    <string name="criteria_sentence_hint">Sentence</string>
+    <string name="criteria_email_hint">E-mail</string>
+    <string name="criteria_cpf_hint">CPF</string>
+    <string name="criteria_cnpj_hint">CNPJ</string>
+    <string name="criteria_save_button_label">Save</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>

@@ -7,20 +7,23 @@ import androidx.lifecycle.ViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import online.meavalia.domain.model.Criteria;
+import online.meavalia.domain.repository.CriteriaRepository;
+import online.meavalia.infrastructure.repository.impl.CriteriaRepositoryImpl;
+
 public class ListCriteriaViewModel extends ViewModel {
 
-    private final MutableLiveData<List<String>> mTexts;
+    private final MutableLiveData<List<Criteria>> mCriterias;
+
+    private final CriteriaRepository criteriaRepository = new CriteriaRepositoryImpl();
 
     public ListCriteriaViewModel() {
-        mTexts = new MutableLiveData<>();
-        List<String> texts = new ArrayList<>();
-        for (int i = 1; i <= 16; i++) {
-            texts.add("This is item # " + i);
-        }
-        mTexts.setValue(texts);
+        mCriterias = new MutableLiveData<>();
+        final List<Criteria> texts = criteriaRepository.getAll();
+        mCriterias.setValue(texts);
     }
 
-    public LiveData<List<String>> getTexts() {
-        return mTexts;
+    public LiveData<List<Criteria>> getCriterias() {
+        return mCriterias;
     }
 }

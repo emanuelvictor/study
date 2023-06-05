@@ -1,5 +1,6 @@
 package online.meavalia.ui.criteria.insert;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,18 +9,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -65,23 +63,56 @@ public class InsertCriteriaFragment extends Fragment implements AdapterView.OnIt
     }
 
     private void saveCriteria() {
+        if (verifyRequiredField())
+            return;
         final String criteriaName = Objects.requireNonNull(binding.nameTextInputLayout.getEditText()).getText().toString();
         final String criteriaSentence = Objects.requireNonNull(binding.sentenceTextInputLayout.getEditText()).getText().toString();
         final Criteria criteria;
         if (binding.criteriaType.getSelectedItem().equals("NORMAL CRITERIA")) {
             criteria = new Criteria(criteriaName, criteriaSentence);
         } else {
-            final String criteriaEmail = binding.emailTextInputLayout.getEditText().getText().toString();
+            final String criteriaEmail = Objects.requireNonNull(binding.emailTextInputLayout.getEditText()).getText().toString();
             if (binding.criteriaType.getSelectedItem().equals("PHYSIC PERSON")) {
-                final String criteriaCpf = binding.cpfTextInputLayout.getEditText().getText().toString();
+                final String criteriaCpf = Objects.requireNonNull(binding.cpfTextInputLayout.getEditText()).getText().toString();
                 criteria = new Criteria(criteriaName, criteriaSentence, criteriaCpf, criteriaEmail, CriteriaType.PHYSIC_PERSON);
             } else {
-                final String criteriaCnpj = binding.cnpjTextInputLayout.getEditText().getText().toString();
+                final String criteriaCnpj = Objects.requireNonNull(binding.cnpjTextInputLayout.getEditText()).getText().toString();
                 criteria = new Criteria(criteriaName, criteriaSentence, criteriaCnpj, criteriaEmail, CriteriaType.JURIDIC_PERSON);
             }
         }
         criteriaRepository.save(criteria);
         navigateToList();
+        Toast.makeText(getMainActivity(), "Criteria inserted!", Toast.LENGTH_LONG).show();
+    }
+
+    private boolean verifyRequiredField() {
+        if (binding.criteriaType.getSelectedItem().equals("NORMAL CRITERIA")) {
+            return verifyRequiredField(binding.nameTextInputLayout, binding.sentenceTextInputLayout);
+        } else if (binding.criteriaType.getSelectedItem().equals("PHYSIC PERSON")) {
+            return verifyRequiredField(binding.nameTextInputLayout, binding.sentenceTextInputLayout, binding.emailTextInputLayout, binding.cpfTextInputLayout);
+        } else {
+            return verifyRequiredField(binding.nameTextInputLayout, binding.sentenceTextInputLayout, binding.emailTextInputLayout, binding.cnpjTextInputLayout);
+        }
+    }
+
+    private boolean verifyRequiredField(final TextInputLayout... textsInputsLayouts) {
+        boolean notValidated = false;
+        for (final TextInputLayout textsInputsLayout : textsInputsLayouts) {
+            if (verifyRequiredField(textsInputsLayout))
+                notValidated = true;
+        }
+        return notValidated;
+    }
+
+    private boolean verifyRequiredField(final TextInputLayout textInputLayout) {
+        final String value = Objects.requireNonNull(textInputLayout.getEditText()).getText().toString();
+        if (Objects.isNull(value) || value.isEmpty()) {
+            textInputLayout.setError("This field is required");
+            return true;
+        } else {
+            textInputLayout.setError(null);
+        }
+        return false;
     }
 
     private void navigateToList() {
@@ -116,7 +147,6 @@ public class InsertCriteriaFragment extends Fragment implements AdapterView.OnIt
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         final String item = parent.getItemAtPosition(position).toString();
-//        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
 
         final TextInputLayout emailTextInputLayout = binding.emailTextInputLayout;
         final TextInputLayout cpfTextInputLayout = binding.cpfTextInputLayout;

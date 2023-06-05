@@ -1,5 +1,7 @@
 package online.meavalia.domain.model;
 
+import java.util.Objects;
+
 public class Criteria {
     private String name;
     private String sentence;
@@ -39,5 +41,31 @@ public class Criteria {
 
     public CriteriaType getType() {
         return type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Criteria criteria = (Criteria) o;
+
+        if (!Objects.equals(name, criteria.name)) return false;
+        if (!Objects.equals(sentence, criteria.sentence))
+            return false;
+        if (!Objects.equals(document, criteria.document))
+            return false;
+        if (!Objects.equals(email, criteria.email)) return false;
+        return type == criteria.type;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (sentence != null ? sentence.hashCode() : 0);
+        result = 31 * result + (document != null ? document.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        return result;
     }
 }
