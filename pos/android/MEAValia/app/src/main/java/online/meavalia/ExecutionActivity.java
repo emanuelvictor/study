@@ -1,20 +1,17 @@
 package online.meavalia;
 
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
+import androidx.core.content.ContextCompat;
 
-import online.meavalia.R;
-import online.meavalia.databinding.ActivityMainBinding;
+import online.meavalia.domain.model.Criteria;
 
 public class ExecutionActivity extends AppCompatActivity {
 
@@ -23,12 +20,46 @@ public class ExecutionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.execution_activity);
-//        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
-//        setContentView(binding.getRoot());
-//
-//        setSupportActionBar(binding.appBarMain.toolbar);
 
+        configureAssessmentSentence();
+        configureLabels();
+        configureEmojis();
         configureFullscreen();
+    }
+
+    private void configureAssessmentSentence(){
+        final Criteria criteria = (Criteria) getIntent().getSerializableExtra("criteria");
+        final TextView textView = findViewById(R.id.sentence_name_text_view);
+        textView.setText(criteria.getSentence());
+    }
+
+    private void configureLabels() {
+        configureLabels(R.id.terrible_name_text_view, R.string.terrible);
+        configureLabels(R.id.bad_name_text_view, R.string.bad);
+        configureLabels(R.id.regular_name_text_view, R.string.regular);
+        configureLabels(R.id.good_name_text_view, R.string.good);
+        configureLabels(R.id.excellent_name_text_view, R.string.excellent);
+    }
+
+    private void configureLabels(int textViewId, int stringId) {
+        final TextView textView = findViewById(textViewId);
+        textView.setText(stringId);
+    }
+
+    private void configureEmojis() {
+        configureEmoji(R.id.terrible_name_image_view, R.drawable.terrible, R.color.terrible_color);
+        configureEmoji(R.id.bad_name_image_view, R.drawable.bad, R.color.bad_color);
+        configureEmoji(R.id.regular_name_image_view, R.drawable.regular, R.color.regular_color);
+        configureEmoji(R.id.good_name_image_view, R.drawable.good, R.color.good_color);
+        configureEmoji(R.id.excellent_name_image_view, R.drawable.excellent, R.color.excellent_color);
+    }
+
+    private void configureEmoji(int imageViewId, int drawableId, int colorId) {
+        final ImageView imageView = findViewById(imageViewId);
+        final Drawable pessimoIcon = ContextCompat.getDrawable(this, drawableId);
+        assert pessimoIcon != null;
+        pessimoIcon.setColorFilter(ContextCompat.getColor(this, colorId), PorterDuff.Mode.SRC_IN);
+        imageView.setBackground(pessimoIcon);
     }
 
     private void configureFullscreen() {

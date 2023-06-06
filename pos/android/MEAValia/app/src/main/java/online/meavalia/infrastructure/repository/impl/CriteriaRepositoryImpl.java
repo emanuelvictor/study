@@ -15,6 +15,8 @@ public class CriteriaRepositoryImpl extends AbstractRepository<Criteria, Long> i
 
     @Override
     public List<Criteria> getAll() {
+        final Criteria criteria = new Criteria("Atendimento", "Como você avalia atendimento?");
+        super.findAll().add(criteria);
         return super.findAll();
     }
 }

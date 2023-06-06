@@ -1,111 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple_500"
     android:baselineAligned="false"
-    tools:context=".ExecutionActivity" >
+    tools:context=".ExecutionActivity">
 
     <!--    card-->
     <LinearLayout
-        android:background="@color/white"
-        android:elevation="4dp"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginRight="75dp"
+        android:layout_gravity="center"
         android:layout_marginLeft="75dp"
         android:layout_marginTop="75dp"
+        android:layout_marginRight="75dp"
         android:layout_marginBottom="75dp"
-        android:layout_gravity="center"
-        android:layout_weight="1" >
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:elevation="15dp">
 
-<!--        internal container-->
+        <TextView
+            android:id="@+id/sentence_name_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="50dp"
+            android:textAlignment="center"
+            android:textSize="22sp"
+            tools:text="@string/terrible" />
 
+        <!--        internal container-->
         <LinearLayout
-            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="50dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="50dp"
+            android:background="@color/white"
             android:baselineAligned="false">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_weight="1" >
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/terrible_name_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="35dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/terrible"
+                    android:contentDescription="@string/terrible" />
 
                 <TextView
-                    android:text="NANA"
-                    android:id="@+id/one"
-                    android:textColor="@color/black"
-                    android:layout_marginHorizontal="50dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1" >
-
-                <TextView
-                    android:text="2"
-                    android:id="@+id/two"
-                    android:layout_marginHorizontal="50dp"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/terrible_name_text_view"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
-            </LinearLayout>
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@id/terrible_name_image_view"
+                    app:layout_constraintStart_toStartOf="@id/terrible_name_image_view"
+                    app:layout_constraintTop_toBottomOf="@id/terrible_name_image_view"
+                    tools:text="@string/terrible" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_weight="1" >
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/bad_name_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="35dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/bad"
+                    android:contentDescription="@string/bad" />
 
                 <TextView
-                    android:text="3"
-                    android:id="@+id/three"
-                    android:layout_marginHorizontal="50dp"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/bad_name_text_view"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
-            </LinearLayout>
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@id/bad_name_image_view"
+                    app:layout_constraintStart_toStartOf="@id/bad_name_image_view"
+                    app:layout_constraintTop_toBottomOf="@id/bad_name_image_view"
+                    tools:text="@string/bad" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_weight="1" >
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/regular_name_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="35dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/regular"
+                    android:contentDescription="@string/regular" />
 
                 <TextView
-                    android:text="4"
-                    android:id="@+id/four"
-                    android:layout_marginHorizontal="50dp"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/regular_name_text_view"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
-            </LinearLayout>
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@id/regular_name_image_view"
+                    app:layout_constraintStart_toStartOf="@id/regular_name_image_view"
+                    app:layout_constraintTop_toBottomOf="@id/regular_name_image_view"
+                    tools:text="@string/regular" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_weight="1" >
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/good_name_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="35dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/good"
+                    android:contentDescription="@string/good" />
 
                 <TextView
-                    android:text="5"
-                    android:id="@+id/five"
-                    android:layout_marginHorizontal="50dp"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/good_name_text_view"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
-            </LinearLayout>
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@id/good_name_image_view"
+                    app:layout_constraintStart_toStartOf="@id/good_name_image_view"
+                    app:layout_constraintTop_toBottomOf="@id/good_name_image_view"
+                    tools:text="@string/good" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/excellent_name_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="35dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/excellent"
+                    android:contentDescription="@string/excellent" />
+
+                <TextView
+                    android:id="@+id/excellent_name_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@id/excellent_name_image_view"
+                    app:layout_constraintStart_toStartOf="@id/excellent_name_image_view"
+                    app:layout_constraintTop_toBottomOf="@id/excellent_name_image_view"
+                    tools:text="@string/excellent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
     </LinearLayout>

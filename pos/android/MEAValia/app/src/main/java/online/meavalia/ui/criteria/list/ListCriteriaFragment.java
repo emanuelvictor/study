@@ -86,10 +86,10 @@ public class ListCriteriaFragment extends Fragment {
         return ((AppCompatActivity) getActivity());
     }
 
-    private void startAssessmentActivity() {
-        Intent myIntent = new Intent(getMainActivity(), ExecutionActivity.class);
-//            myIntent.putExtra("key", value); //Optional parameters
-        this.getMainActivity().startActivity(myIntent);
+    private void startAssessmentActivity(final Criteria criteria) {
+        final Intent intent = new Intent(getMainActivity(), ExecutionActivity.class);
+        intent.putExtra("criteria", criteria); //Optional parameters
+        this.getMainActivity().startActivity(intent);
     }
 
     @Override
@@ -144,6 +144,7 @@ public class ListCriteriaFragment extends Fragment {
         public void onBindViewHolder(@NonNull TransformViewHolder holder, int position) {
             holder.criteriaNameTextView.setText(getItem(position).getName());
             holder.sentenceTextView.setText(getItem(position).getSentence());
+            holder.setCriteria(getItem(position));
             holder.imageView.setImageDrawable(
                     ResourcesCompat.getDrawable(holder.imageView.getResources(),
                             drawables.get(position),
@@ -153,17 +154,24 @@ public class ListCriteriaFragment extends Fragment {
 
     private class TransformViewHolder extends RecyclerView.ViewHolder {
 
+        private Criteria criteria;
         private final ImageView imageView;
         private final TextView criteriaNameTextView;
         private final TextView sentenceTextView;
 
-        public TransformViewHolder(ItemTransformBinding binding) {
+        public TransformViewHolder(final ItemTransformBinding binding) {
             super(binding.getRoot());
             imageView = binding.imageViewItemTransform;
             criteriaNameTextView = binding.criteriaNameTextView;
             sentenceTextView = binding.criteriaSentenceTextView;
             binding.imageViewItemTransform.getRootView().setClickable(true);
-            binding.imageViewItemTransform.getRootView().setOnClickListener(v -> startAssessmentActivity());
+            binding.imageViewItemTransform.getRootView().setOnClickListener(v -> {
+                startAssessmentActivity(criteria);
+            });
+        }
+
+        public void setCriteria(Criteria criteria) {
+            this.criteria = criteria;
         }
     }
 }

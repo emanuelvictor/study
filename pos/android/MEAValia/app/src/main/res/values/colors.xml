@@ -3,6 +3,11 @@
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#7b1fa2</color>
     <color name="purple_700">#5400B3</color>
+    <color name="terrible_color">#c21c1f</color>
+    <color name="bad_color">#e96d01</color>
+    <color name="regular_color">#d4c40d</color>
+    <color name="good_color">#8fc82c</color>
+    <color name="excellent_color">#5ee924</color>
     <color name="green_200">#45c62d</color>
     <color name="green_700">#2c662e</color>
     <color name="black">#FF000000</color>

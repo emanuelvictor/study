@@ -1,8 +1,9 @@
 package online.meavalia.domain.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Criteria {
+public class Criteria implements Serializable {
     private String name;
     private String sentence;
     private String document;
