@@ -74,7 +74,8 @@
                     app:layout_constraintEnd_toEndOf="@id/terrible_name_image_view"
                     app:layout_constraintStart_toStartOf="@id/terrible_name_image_view"
                     app:layout_constraintTop_toBottomOf="@id/terrible_name_image_view"
-                    tools:text="@string/terrible" />
+                    tools:text="@string/terrible"
+                    android:gravity="center_horizontal" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -105,7 +106,8 @@
                     app:layout_constraintEnd_toEndOf="@id/bad_name_image_view"
                     app:layout_constraintStart_toStartOf="@id/bad_name_image_view"
                     app:layout_constraintTop_toBottomOf="@id/bad_name_image_view"
-                    tools:text="@string/bad" />
+                    tools:text="@string/bad"
+                    android:gravity="center_horizontal" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -136,7 +138,8 @@
                     app:layout_constraintEnd_toEndOf="@id/regular_name_image_view"
                     app:layout_constraintStart_toStartOf="@id/regular_name_image_view"
                     app:layout_constraintTop_toBottomOf="@id/regular_name_image_view"
-                    tools:text="@string/regular" />
+                    tools:text="@string/regular"
+                    android:gravity="center_horizontal" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -167,7 +170,8 @@
                     app:layout_constraintEnd_toEndOf="@id/good_name_image_view"
                     app:layout_constraintStart_toStartOf="@id/good_name_image_view"
                     app:layout_constraintTop_toBottomOf="@id/good_name_image_view"
-                    tools:text="@string/good" />
+                    tools:text="@string/good"
+                    android:gravity="center_horizontal" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -198,7 +202,8 @@
                     app:layout_constraintEnd_toEndOf="@id/excellent_name_image_view"
                     app:layout_constraintStart_toStartOf="@id/excellent_name_image_view"
                     app:layout_constraintTop_toBottomOf="@id/excellent_name_image_view"
-                    tools:text="@string/excellent" />
+                    tools:text="@string/excellent"
+                    android:gravity="center_horizontal" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
