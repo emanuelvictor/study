@@ -1,7 +1,11 @@
 package online.meavalia.domain.model;
 
 public class Note {
-    private int value;
+    private final int value;
+
+    public Note(int value) {
+        this.value = value;
+    }
 
     public int getValue() {
         return value;

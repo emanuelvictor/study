@@ -13,10 +13,10 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginRight="75dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginLeft="175dp"
+        android:layout_marginTop="175dp"
+        android:layout_marginRight="175dp"
+        android:layout_marginBottom="175dp"
         android:layout_weight="1"
         android:orientation="vertical"
         android:background="@color/white"
@@ -47,6 +47,7 @@
             android:baselineAligned="false">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terrible_button_view"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -79,6 +80,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/bad_button_view"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -111,6 +113,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/regular_button_view"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -143,6 +146,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/good_button_view"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -175,6 +179,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/excellent_button_view"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"

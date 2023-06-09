@@ -19,6 +19,8 @@
     <string name="menu_settings">Settings</string>
 
     <string name="assessment_sentence">Assessment sentence</string>
+    <string name="thanks_sentence">Thanks for your assessment!</string>
+    <string name="password_logout_label">Insert the password to logout</string>
 
     <string name="terrible">Terrible</string>
     <string name="bad">Bad</string>
@@ -36,4 +38,5 @@
     <string name="image_view_item_transform_content_description">Represents an image view in the
         item
     </string>
+    <string name="nav_transform_of_execution_activity">Execution Activity</string>
 </resources>

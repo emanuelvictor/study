@@ -1,8 +1,13 @@
 package online.meavalia.domain.model;
 
 public class Assessment {
-    private Criteria criteria;
-    private Note note;
+    private final Criteria criteria;
+    private final Note note;
+
+    public Assessment(Criteria criteria, Note note) {
+        this.criteria = criteria;
+        this.note = note;
+    }
 
     public Criteria getCriteria() {
         return criteria;

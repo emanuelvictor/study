@@ -122,12 +122,12 @@ public class ListCriteriaFragment extends Fragment {
             super(new DiffUtil.ItemCallback<Criteria>() {
 
                 @Override
-                public boolean areItemsTheSame(@NonNull Criteria oldItem, @NonNull Criteria newItem) {
+                public boolean areItemsTheSame(@NonNull final Criteria oldItem, @NonNull final Criteria newItem) {
                     return oldItem.equals(newItem);
                 }
 
                 @Override
-                public boolean areContentsTheSame(@NonNull Criteria oldItem, @NonNull Criteria newItem) {
+                public boolean areContentsTheSame(@NonNull final Criteria oldItem, @NonNull final Criteria newItem) {
                     return oldItem.equals(newItem);
                 }
             });
@@ -135,8 +135,8 @@ public class ListCriteriaFragment extends Fragment {
 
         @NonNull
         @Override
-        public TransformViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            ItemTransformBinding binding = ItemTransformBinding.inflate(LayoutInflater.from(parent.getContext()));
+        public TransformViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
+            final ItemTransformBinding binding = ItemTransformBinding.inflate(LayoutInflater.from(parent.getContext()));
             return new TransformViewHolder(binding);
         }
 
