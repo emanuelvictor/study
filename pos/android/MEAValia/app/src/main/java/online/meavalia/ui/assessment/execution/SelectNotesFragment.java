@@ -1,4 +1,4 @@
-package online.meavalia.ui.criteria.execution;
+package online.meavalia.ui.assessment.execution;
 
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -15,6 +15,14 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import online.meavalia.R;
 import online.meavalia.databinding.SelectNotesBinding;
@@ -98,7 +106,7 @@ public class SelectNotesFragment extends Fragment {
         });
     }
 
-    void saveAssessment(final Criteria criteria, final int note) {
+    private void saveAssessment(final Criteria criteria, final int note) {
         final Assessment assessment = new Assessment(criteria, new Note(note));
         assessmentRepository.save(assessment);
     }

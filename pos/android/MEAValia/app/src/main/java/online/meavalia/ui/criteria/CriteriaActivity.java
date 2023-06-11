@@ -1,4 +1,4 @@
-package online.meavalia;
+package online.meavalia.ui.criteria;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -10,9 +10,10 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 
+import online.meavalia.R;
 import online.meavalia.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class CriteriaActivity extends AppCompatActivity {
 
     private NavController navController;
 

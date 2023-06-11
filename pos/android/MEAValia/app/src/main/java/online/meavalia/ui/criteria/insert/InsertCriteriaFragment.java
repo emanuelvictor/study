@@ -19,13 +19,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import online.meavalia.MainActivity;
 import online.meavalia.R;
 import online.meavalia.databinding.InsertCriteriaBinding;
 import online.meavalia.domain.model.Criteria;
 import online.meavalia.domain.model.CriteriaType;
 import online.meavalia.domain.repository.CriteriaRepository;
 import online.meavalia.infrastructure.repository.impl.CriteriaRepositoryImpl;
+import online.meavalia.ui.criteria.CriteriaActivity;
 
 public class InsertCriteriaFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -132,8 +132,8 @@ public class InsertCriteriaFragment extends Fragment implements AdapterView.OnIt
         spinner.setAdapter(dataAdapter);
     }
 
-    private MainActivity getMainActivity() {
-        return ((MainActivity) getActivity());
+    private CriteriaActivity getMainActivity() {
+        return ((CriteriaActivity) getActivity());
     }
 
     @Override

@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -22,12 +23,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
-import online.meavalia.ExecutionActivity;
 import online.meavalia.R;
 import online.meavalia.databinding.ItemTransformBinding;
 import online.meavalia.databinding.ListCriteriaFragmentBinding;
 import online.meavalia.domain.model.Criteria;
+import online.meavalia.ui.assessment.AssessmentExecutionActivity;
 
 /**
  * Fragment that demonstrates a responsive layout pattern where the format of the content
@@ -87,8 +89,8 @@ public class ListCriteriaFragment extends Fragment {
     }
 
     private void startAssessmentActivity(final Criteria criteria) {
-        final Intent intent = new Intent(getMainActivity(), ExecutionActivity.class);
-        intent.putExtra("criteria", criteria); //Optional parameters
+        final Intent intent = new Intent(getMainActivity(), AssessmentExecutionActivity.class);
+        intent.putExtra("criteria", criteria);
         this.getMainActivity().startActivity(intent);
     }
 
@@ -144,6 +146,9 @@ public class ListCriteriaFragment extends Fragment {
         public void onBindViewHolder(@NonNull TransformViewHolder holder, int position) {
             holder.criteriaNameTextView.setText(getItem(position).getName());
             holder.sentenceTextView.setText(getItem(position).getSentence());
+            holder.averageTextView.setText(String.valueOf(getItem(position).getAvg()));
+            if(getItem(position).getAvg() == null)
+                holder.averageTextView.setVisibility(View.GONE);
             holder.setCriteria(getItem(position));
             holder.imageView.setImageDrawable(
                     ResourcesCompat.getDrawable(holder.imageView.getResources(),
@@ -158,12 +163,14 @@ public class ListCriteriaFragment extends Fragment {
         private final ImageView imageView;
         private final TextView criteriaNameTextView;
         private final TextView sentenceTextView;
+        private final TextView averageTextView;
 
         public TransformViewHolder(final ItemTransformBinding binding) {
             super(binding.getRoot());
             imageView = binding.imageViewItemTransform;
             criteriaNameTextView = binding.criteriaNameTextView;
             sentenceTextView = binding.criteriaSentenceTextView;
+            averageTextView = binding.averageTextView;
             binding.imageViewItemTransform.getRootView().setClickable(true);
             binding.imageViewItemTransform.getRootView().setOnClickListener(v -> {
                 startAssessmentActivity(criteria);

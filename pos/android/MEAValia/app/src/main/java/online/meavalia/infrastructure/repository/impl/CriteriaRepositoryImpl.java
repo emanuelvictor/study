@@ -1,6 +1,7 @@
 package online.meavalia.infrastructure.repository.impl;
 
-import java.util.List;
+
+import java.util.Set;
 
 import online.meavalia.domain.model.Criteria;
 import online.meavalia.domain.repository.CriteriaRepository;
@@ -14,9 +15,9 @@ public class CriteriaRepositoryImpl extends AbstractRepository<Criteria, Long> i
     }
 
     @Override
-    public List<Criteria> getAll() {
+    public Set<Criteria> getAll() {
         final Criteria criteria = new Criteria("Atendimento", "Como você avalia atendimento?");
-        super.findAll().add(criteria);
-        return super.findAll();
+        save(criteria);
+        return super.findAllByKey(Criteria.class.toString());
     }
 }

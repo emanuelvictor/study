@@ -1,4 +1,4 @@
-package online.meavalia;
+package online.meavalia.ui.assessment;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -8,9 +8,10 @@ import android.window.OnBackInvokedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
-import online.meavalia.ui.criteria.execution.LogoutDialogFragment;
+import online.meavalia.R;
+import online.meavalia.ui.assessment.execution.LogoutDialogFragment;
 
-public class ExecutionActivity extends AppCompatActivity {
+public class AssessmentExecutionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,4 +46,8 @@ public class ExecutionActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

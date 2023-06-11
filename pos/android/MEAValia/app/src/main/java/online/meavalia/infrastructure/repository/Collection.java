@@ -1,14 +1,18 @@
 package online.meavalia.infrastructure.repository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public final class Collection<T> {
     private static Collection<?> instance;
-    public List<T> values;
+    public Map<String, Set<T>> values;
 
     private Collection() {
-        this.values = new ArrayList<>();
+        this.values = new HashMap<>();
     }
 
     public static <T> Collection<T> getInstance() {
@@ -19,11 +23,16 @@ public final class Collection<T> {
     }
 
     T add(T t) {
-        values.add(t);
+        final String key = t.getClass().toString();
+        if (values.get(key) == null)
+            values.put(key, new HashSet<>());
+        values.get(key).add(t);
         return t;
     }
 
-    List<T> getAll() {
-        return values;
+    Set<T> getAllByKey(final String key) {
+        if (values.get(key) == null)
+            values.put(key, new HashSet<>());
+        return values.get(key);
     }
 }

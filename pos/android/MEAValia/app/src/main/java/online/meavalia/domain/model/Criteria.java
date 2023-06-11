@@ -1,14 +1,16 @@
 package online.meavalia.domain.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Criteria implements Serializable {
-    private String name;
-    private String sentence;
+    private final String name;
+    private final String sentence;
+    private final CriteriaType type;
     private String document;
     private String email;
-    private CriteriaType type;
+    private BigDecimal avg;
 
     public Criteria(String name, String sentence) {
         this.name = name;
@@ -42,6 +44,14 @@ public class Criteria implements Serializable {
 
     public CriteriaType getType() {
         return type;
+    }
+
+    public void setAvg(BigDecimal avg) {
+        this.avg = avg;
+    }
+
+    public BigDecimal getAvg() {
+        return avg;
     }
 
     @Override

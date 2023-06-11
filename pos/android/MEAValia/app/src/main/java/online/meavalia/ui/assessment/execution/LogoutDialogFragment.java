@@ -1,4 +1,4 @@
-package online.meavalia.ui.criteria.execution;
+package online.meavalia.ui.assessment.execution;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,8 +14,7 @@ import androidx.fragment.app.DialogFragment;
 import online.meavalia.databinding.LogoutDialogBinding;
 
 public class LogoutDialogFragment extends DialogFragment {
-    private static final String DEFAULT_PASSWORD_TO_LOGOUT = "bm129000";
-
+    private static final String DEFAULT_PASSWORD_TO_LOGOUT = "129000";
     private LogoutDialogBinding binding;
 
     @Override
@@ -23,12 +22,12 @@ public class LogoutDialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         binding = LogoutDialogBinding.inflate(inflater, container, false);
 
-        configureLogout();
+        configureLoginToLogout();
 
         return binding.getRoot();
     }
 
-    private void configureLogout() {
+    private void configureLoginToLogout() {
         final EditText passwordLogout = binding.passwordLogout;
         final TextWatcher textWatcher = new TextWatcher() {
             @Override
@@ -38,7 +37,6 @@ public class LogoutDialogFragment extends DialogFragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                System.out.println(s);
                 if (s.toString().equals(DEFAULT_PASSWORD_TO_LOGOUT)) {
                     requireActivity().finish();
                 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/purple_500"
     android:baselineAligned="false"
-    tools:context=".ExecutionActivity">
+    tools:context=".ui.criteria.CriteriaActivity">
 
     <!--    card-->
     <LinearLayout
