@@ -1,10 +1,8 @@
-package online.meavalia.ui.custom;
+package online.meavalia.ui.generic;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-
-import online.meavalia.R;
 
 public abstract class AbstractCustomFragmentImpl extends Fragment implements CustomFragment {
 

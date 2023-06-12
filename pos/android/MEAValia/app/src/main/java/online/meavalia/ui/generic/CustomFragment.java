@@ -1,4 +1,4 @@
-package online.meavalia.ui.custom;
+package online.meavalia.ui.generic;
 
 import androidx.navigation.NavController;
 

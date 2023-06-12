@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:baselineAligned="false"
+    android:orientation="vertical"
+    tools:context=".ui.criteria.CriteriaActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/student_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            tools:text="Student name: " />
+
+        <TextView
+            android:id="@+id/student_name_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Student Name" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/student_email_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            tools:text="Student e-mail: " />
+
+        <TextView
+            android:id="@+id/student_email_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Student E-mail" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/app_description_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            tools:text="APP description: " />
+
+        <TextView
+            android:id="@+id/app_description_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="APP description" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/institution_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            tools:text="Institution name: " />
+
+        <TextView
+            android:id="@+id/institution_name_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="UTFPR name" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/institution_logo_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:src="@drawable/utfpr_logo" />
+
+</LinearLayout>

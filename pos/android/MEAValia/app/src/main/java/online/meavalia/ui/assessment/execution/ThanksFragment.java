@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 
 import online.meavalia.R;
 import online.meavalia.databinding.ThanksBinding;
-import online.meavalia.ui.custom.AbstractCustomFragmentImpl;
+import online.meavalia.ui.generic.AbstractCustomFragmentImpl;
 
 public class ThanksFragment extends AbstractCustomFragmentImpl {
 

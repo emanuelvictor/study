@@ -20,7 +20,7 @@ import online.meavalia.domain.model.Criteria;
 import online.meavalia.domain.model.Note;
 import online.meavalia.domain.repository.CriteriaRepository;
 import online.meavalia.infrastructure.repository.impl.CriteriaRepositoryImpl;
-import online.meavalia.ui.custom.AbstractCustomFragmentImpl;
+import online.meavalia.ui.generic.AbstractCustomFragmentImpl;
 
 public class SelectNotesFragment extends AbstractCustomFragmentImpl {
 

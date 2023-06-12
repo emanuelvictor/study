@@ -25,7 +25,7 @@ import online.meavalia.databinding.ItemTransformBinding;
 import online.meavalia.databinding.ListCriteriaFragmentBinding;
 import online.meavalia.domain.model.Criteria;
 import online.meavalia.ui.assessment.AssessmentExecutionActivity;
-import online.meavalia.ui.custom.AbstractCustomFragmentImpl;
+import online.meavalia.ui.generic.AbstractCustomFragmentImpl;
 
 public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
 

@@ -11,7 +11,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -26,7 +25,7 @@ import online.meavalia.domain.model.CriteriaType;
 import online.meavalia.domain.repository.CriteriaRepository;
 import online.meavalia.infrastructure.repository.impl.CriteriaRepositoryImpl;
 import online.meavalia.ui.criteria.CriteriaActivity;
-import online.meavalia.ui.custom.AbstractCustomFragmentImpl;
+import online.meavalia.ui.generic.AbstractCustomFragmentImpl;
 
 public class InsertCriteriaFragment extends AbstractCustomFragmentImpl implements AdapterView.OnItemSelectedListener {
 
