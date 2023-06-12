@@ -1,6 +1,8 @@
 package online.meavalia.domain.model;
 
-public enum CriteriaType {
+import java.io.Serializable;
+
+public enum CriteriaType implements Serializable {
 
     NORMAL_CRITERIA("NORMAL CRITERIA"),
     PHYSIC_PERSON("PHYSIC PERSON"),
@@ -12,7 +14,7 @@ public enum CriteriaType {
         this.value = value;
     }
 
-    public String getValue(){
+    public String getValue() {
         return this.value;
     }
 }

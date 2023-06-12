@@ -1,12 +1,12 @@
 package online.meavalia.infrastructure.repository;
 
-import java.util.Set;
+import java.util.List;
 
 public interface IRepository<T, ID> {
 
     T save(T t);
 
-    Set<T> findAllByKey(final String key);
+    List<T> findAllByKey(final String key);
 
     T findById(ID id);
 }

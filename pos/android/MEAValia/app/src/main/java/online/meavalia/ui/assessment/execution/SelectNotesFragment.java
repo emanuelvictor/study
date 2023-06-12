@@ -12,32 +12,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
-
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 import online.meavalia.R;
 import online.meavalia.databinding.SelectNotesBinding;
 import online.meavalia.domain.model.Assessment;
 import online.meavalia.domain.model.Criteria;
 import online.meavalia.domain.model.Note;
-import online.meavalia.domain.repository.AssessmentRepository;
-import online.meavalia.infrastructure.repository.impl.AssessmentRepositoryImpl;
+import online.meavalia.domain.repository.CriteriaRepository;
+import online.meavalia.infrastructure.repository.impl.CriteriaRepositoryImpl;
+import online.meavalia.ui.custom.AbstractCustomFragmentImpl;
 
-public class SelectNotesFragment extends Fragment {
+public class SelectNotesFragment extends AbstractCustomFragmentImpl {
 
     private Criteria criteria;
     private SelectNotesBinding binding;
-
-    private final AssessmentRepository assessmentRepository = new AssessmentRepositoryImpl();
+    private final CriteriaRepository criteriaRepository = new CriteriaRepositoryImpl();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,7 +40,6 @@ public class SelectNotesFragment extends Fragment {
 
         return binding.getRoot();
     }
-
 
     private void configureAssessmentSentence() {
         criteria = (Criteria) requireActivity().getIntent().getSerializableExtra("criteria");
@@ -84,10 +72,10 @@ public class SelectNotesFragment extends Fragment {
     }
 
     private void configureEmoji(final ImageView imageView, int drawableId, int colorId) {
-        final Drawable pessimoIcon = ContextCompat.getDrawable(requireActivity(), drawableId);
-        assert pessimoIcon != null;
-        pessimoIcon.setColorFilter(ContextCompat.getColor(requireActivity(), colorId), PorterDuff.Mode.SRC_IN);
-        imageView.setBackground(pessimoIcon);
+        final Drawable icon = ContextCompat.getDrawable(requireActivity(), drawableId);
+        assert icon != null;
+        icon.setColorFilter(ContextCompat.getColor(requireActivity(), colorId), PorterDuff.Mode.SRC_IN);
+        imageView.setBackground(icon);
     }
 
     private void configureButtons() {
@@ -108,19 +96,16 @@ public class SelectNotesFragment extends Fragment {
 
     private void saveAssessment(final Criteria criteria, final int note) {
         final Assessment assessment = new Assessment(criteria, new Note(note));
-        assessmentRepository.save(assessment);
+        criteria.addAssessment(assessment);
+        criteriaRepository.save(criteria);
     }
 
     private void navigateToThanks() {
         getNavController().navigate(R.id.nav_to_thanks);
     }
 
-    private NavController getNavController() {
-        final NavHostFragment navHostFragment =
-                (NavHostFragment) requireActivity()
-                        .getSupportFragmentManager()
-                        .findFragmentById(R.id.nav_host_fragment_content_main_of_execution_activity);
-        assert navHostFragment != null;
-        return navHostFragment.getNavController();
+    @Override
+    public int getNavHostFragmentId() {
+        return R.id.nav_host_fragment_content_main_of_execution_activity;
     }
 }

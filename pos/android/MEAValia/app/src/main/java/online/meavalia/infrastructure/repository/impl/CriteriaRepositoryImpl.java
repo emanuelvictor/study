@@ -1,7 +1,9 @@
 package online.meavalia.infrastructure.repository.impl;
 
 
-import java.util.Set;
+import android.annotation.SuppressLint;
+
+import java.util.List;
 
 import online.meavalia.domain.model.Criteria;
 import online.meavalia.domain.repository.CriteriaRepository;
@@ -15,9 +17,16 @@ public class CriteriaRepositoryImpl extends AbstractRepository<Criteria, Long> i
     }
 
     @Override
-    public Set<Criteria> getAll() {
-        final Criteria criteria = new Criteria("Atendimento", "Como você avalia atendimento?");
-        save(criteria);
+    public List<Criteria> getAll() {
+        populateFirstCriteria();
         return super.findAllByKey(Criteria.class.toString());
+    }
+
+    @SuppressLint("NewApi")
+    private void populateFirstCriteria() {
+        if (super.findAllByKey(Criteria.class.toString()).stream().noneMatch(it -> it.getName().equals("Atendimento"))) {
+            final Criteria criteria = new Criteria("Atendimento", "Como você avalia atendimento?");
+            save(criteria);
+        }
     }
 }

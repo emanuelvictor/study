@@ -1,7 +1,7 @@
 package online.meavalia.infrastructure.repository;
 
-import java.util.HashSet;
-import java.util.Set;
+
+import java.util.List;
 
 public abstract class AbstractRepository<T, ID> implements IRepository<T, ID> {
 
@@ -14,7 +14,7 @@ public abstract class AbstractRepository<T, ID> implements IRepository<T, ID> {
     }
 
     @Override
-    public Set<T> findAllByKey(final String key) {
+    public List<T> findAllByKey(final String key) {
         return collection.getAllByKey(key);
     }
 

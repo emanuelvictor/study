@@ -15,9 +15,7 @@ import online.meavalia.databinding.ActivityMainBinding;
 
 public class CriteriaActivity extends AppCompatActivity {
 
-    private NavController navController;
-
-    private AppBarConfiguration mAppBarConfiguration;
+//    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,27 +25,16 @@ public class CriteriaActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        configureNavController();
 
-        mAppBarConfiguration =
-                new AppBarConfiguration
-                        .Builder(R.id.nav_transform, R.id.nav_insert_criteria)
-                        .setOpenableLayout(binding.drawerLayout)
-                        .build();
+//        mAppBarConfiguration =
+//                new AppBarConfiguration
+//                        .Builder(R.id.nav_transform, R.id.nav_insert_criteria)
+//                        .setOpenableLayout(binding.drawerLayout)
+//                        .build();
 //            NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
 //            NavigationUI.setupWithNavController(navigationView, navController);
 
 
-    }
-
-    private void configureNavController() {
-        final NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
-        assert navHostFragment != null;
-        navController = navHostFragment.getNavController();
-    }
-
-    public NavController getNavController() {
-        return navController;
     }
 
     @Override

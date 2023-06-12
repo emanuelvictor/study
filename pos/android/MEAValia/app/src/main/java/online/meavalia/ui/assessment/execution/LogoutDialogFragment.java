@@ -37,9 +37,8 @@ public class LogoutDialogFragment extends DialogFragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.toString().equals(DEFAULT_PASSWORD_TO_LOGOUT)) {
+                if (s.toString().equals(DEFAULT_PASSWORD_TO_LOGOUT))
                     requireActivity().finish();
-                }
             }
 
             @Override

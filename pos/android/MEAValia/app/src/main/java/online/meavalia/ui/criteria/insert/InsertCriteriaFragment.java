@@ -26,8 +26,9 @@ import online.meavalia.domain.model.CriteriaType;
 import online.meavalia.domain.repository.CriteriaRepository;
 import online.meavalia.infrastructure.repository.impl.CriteriaRepositoryImpl;
 import online.meavalia.ui.criteria.CriteriaActivity;
+import online.meavalia.ui.custom.AbstractCustomFragmentImpl;
 
-public class InsertCriteriaFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class InsertCriteriaFragment extends AbstractCustomFragmentImpl implements AdapterView.OnItemSelectedListener {
 
     private InsertCriteriaBinding binding;
 
@@ -113,8 +114,13 @@ public class InsertCriteriaFragment extends Fragment implements AdapterView.OnIt
         return false;
     }
 
+    @Override
+    public int getNavHostFragmentId() {
+        return R.id.nav_host_fragment_content_main;
+    }
+
     private void navigateToList() {
-        getMainActivity().getNavController().navigate(R.id.nav_transform);
+        getNavController().navigate(R.id.nav_transform);
     }
 
     private void configureSpinner() {

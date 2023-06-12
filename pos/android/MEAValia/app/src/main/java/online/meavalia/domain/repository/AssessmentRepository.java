@@ -1,11 +1,11 @@
 package online.meavalia.domain.repository;
 
-import java.util.Set;
+
+import java.util.List;
 
 import online.meavalia.domain.model.Assessment;
 
 public interface AssessmentRepository {
     Assessment save(Assessment assessment);
-
-    Set<Assessment> getAll();
+    List<Assessment> getAll();
 }

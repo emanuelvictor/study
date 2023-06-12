@@ -1,6 +1,7 @@
 package online.meavalia.infrastructure.repository.impl;
 
 
+import java.util.List;
 import java.util.Set;
 
 import online.meavalia.domain.model.Assessment;
@@ -15,7 +16,7 @@ public class AssessmentRepositoryImpl extends AbstractRepository<Assessment, Lon
     }
 
     @Override
-    public Set<Assessment> getAll() {
+    public List<Assessment> getAll() {
         return super.findAllByKey(Assessment.class.toString());
     }
 }

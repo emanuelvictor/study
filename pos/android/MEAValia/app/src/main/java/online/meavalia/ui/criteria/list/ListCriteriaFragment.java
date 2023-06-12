@@ -11,11 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,21 +19,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import online.meavalia.R;
 import online.meavalia.databinding.ItemTransformBinding;
 import online.meavalia.databinding.ListCriteriaFragmentBinding;
 import online.meavalia.domain.model.Criteria;
 import online.meavalia.ui.assessment.AssessmentExecutionActivity;
+import online.meavalia.ui.custom.AbstractCustomFragmentImpl;
 
-/**
- * Fragment that demonstrates a responsive layout pattern where the format of the content
- * transforms depending on the size of the screen. Specifically this Fragment shows items in
- * the [RecyclerView] using LinearLayoutManager in a small screen
- * and shows items using GridLayoutManager in a large screen.
- */
-public class ListCriteriaFragment extends Fragment {
+public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
 
     private ListCriteriaFragmentBinding binding;
 
@@ -49,7 +39,18 @@ public class ListCriteriaFragment extends Fragment {
         configureTitle();
         configureBackButton();
         configureFabButton();
+        configureListView();
 
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        configureListView();
+        super.onResume();
+    }
+
+    private void configureListView() {
         final ListAdapter<Criteria, TransformViewHolder> adapter = new TransformAdapter();
         final RecyclerView recyclerView = binding.recyclerviewTransform;
         recyclerView.setAdapter(adapter);
@@ -59,7 +60,6 @@ public class ListCriteriaFragment extends Fragment {
                         .get(ListCriteriaViewModel.class);
 
         listCriteriaViewModel.getCriterias().observe(getViewLifecycleOwner(), adapter::submitList);
-        return binding.getRoot();
     }
 
     private void configureTitle() {
@@ -74,14 +74,9 @@ public class ListCriteriaFragment extends Fragment {
         binding.fab.setOnClickListener(view -> getNavController().navigate(R.id.nav_insert_criteria));
     }
 
-    // TODO utilize from mainactivy
-    private NavController getNavController() {
-        final NavHostFragment navHostFragment =
-                (NavHostFragment) getMainActivity()
-                        .getSupportFragmentManager()
-                        .findFragmentById(R.id.nav_host_fragment_content_main);
-        assert navHostFragment != null;
-        return navHostFragment.getNavController();
+    @Override
+    public int getNavHostFragmentId() {
+        return R.id.nav_host_fragment_content_main;
     }
 
     private AppCompatActivity getMainActivity() {

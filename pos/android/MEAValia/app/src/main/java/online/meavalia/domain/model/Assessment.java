@@ -1,12 +1,21 @@
 package online.meavalia.domain.model;
 
-public class Assessment {
+import android.annotation.SuppressLint;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Objects;
+
+public class Assessment implements Serializable {
     private final Criteria criteria;
     private final Note note;
+    private final LocalDateTime time;
 
-    public Assessment(Criteria criteria, Note note) {
+    @SuppressLint("NewApi")
+    public Assessment(final Criteria criteria, final Note note) {
         this.criteria = criteria;
         this.note = note;
+        this.time = LocalDateTime.now();
     }
 
     public Criteria getCriteria() {
