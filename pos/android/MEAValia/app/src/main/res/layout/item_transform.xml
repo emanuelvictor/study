@@ -55,8 +55,8 @@
             android:layout_height="match_parent"
             tools:text="Average"
             android:textAlignment="textEnd"
-            android:layout_marginLeft="100dp"
-            android:layout_marginStart="100dp"
+            android:layout_marginLeft="250dp"
+            android:layout_marginStart="250dp"
             android:layout_gravity="end"/>
     </LinearLayout>
 
