@@ -55,9 +55,11 @@
             android:layout_height="match_parent"
             tools:text="Average"
             android:textAlignment="textEnd"
+            android:layout_marginRight="10dp"
             android:layout_marginLeft="250dp"
             android:layout_marginStart="250dp"
-            android:layout_gravity="end"/>
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
