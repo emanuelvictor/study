@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="animal" type="animal"/>
+
+
+    <xs:complexType name="animal">
+        <xs:all>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="species" type="xs:string"/>
+            <xs:element name="race" type="xs:string"/>
+            <xs:element name="gender" type="xs:string"/>
+            <xs:element name="ageDate" type="xs:string"/>
+        </xs:all>
+    </xs:complexType>
+
+</xs:schema>
