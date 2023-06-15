@@ -6,9 +6,6 @@ import androidx.navigation.fragment.NavHostFragment;
 
 public abstract class AbstractCustomFragmentImpl extends Fragment implements CustomFragment {
 
-
-
-
     @Override
     public NavController getNavController() {
         final NavHostFragment navHostFragment =

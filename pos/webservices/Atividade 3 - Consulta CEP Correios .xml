@@ -1,0 +1,2948 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="e1ec5047-e3c6-476c-b1af-99e0f2099258" activeEnvironment="Default" name="AtendeCliente" resourceRoot="" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="91189658-b2a8-4ad5-b2f1-9e4ac2a56586" wsaVersion="NONE" name="AtendeClienteServiceSoapBinding" type="wsdl" bindingName="{http://cliente.bean.master.sigep.bsb.correios.com.br/}AtendeClienteServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://wscorreio.multilaser.com.br/soap/AtendeCliente.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://wscorreio.multilaser.com.br/soap/AtendeCliente.wsdl"><con:part><con:url>http://wscorreio.multilaser.com.br/soap/AtendeCliente.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="AtendeClienteService" targetNamespace="http://cliente.bean.master.sigep.bsb.correios.com.br/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://cliente.bean.master.sigep.bsb.correios.com.br/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://cliente.bean.master.sigep.bsb.correios.com.br/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="atualizaPLP" type="tns:atualizaPLP"/>
+      <xs:element name="atualizaPLPResponse" type="tns:atualizaPLPResponse"/>
+      <xs:element name="bloquearObjeto" type="tns:bloquearObjeto"/>
+      <xs:element name="bloquearObjetoResponse" type="tns:bloquearObjetoResponse"/>
+      <xs:element name="buscaCliente" type="tns:buscaCliente"/>
+      <xs:element name="buscaClienteResponse" type="tns:buscaClienteResponse"/>
+      <xs:element name="buscaContrato" type="tns:buscaContrato"/>
+      <xs:element name="buscaContratoResponse" type="tns:buscaContratoResponse"/>
+      <xs:element name="buscaServicos" type="tns:buscaServicos"/>
+      <xs:element name="buscaServicosResponse" type="tns:buscaServicosResponse"/>
+      <xs:element name="cancelarPedidoScol" type="tns:cancelarPedidoScol"/>
+      <xs:element name="cancelarPedidoScolResponse" type="tns:cancelarPedidoScolResponse"/>
+      <xs:element name="consultaCEP" type="tns:consultaCEP"/>
+      <xs:element name="consultaCEPResponse" type="tns:consultaCEPResponse"/>
+      <xs:element name="consultaSRO" type="tns:consultaSRO"/>
+      <xs:element name="consultaSROResponse" type="tns:consultaSROResponse"/>
+      <xs:element name="consultarPedidosInformacao" type="tns:consultarPedidosInformacao"/>
+      <xs:element name="consultarPedidosInformacaoResponse" type="tns:consultarPedidosInformacaoResponse"/>
+      <xs:element name="fechaPlp" type="tns:fechaPlp"/>
+      <xs:element name="fechaPlpResponse" type="tns:fechaPlpResponse"/>
+      <xs:element name="fechaPlpVariosServicos" type="tns:fechaPlpVariosServicos"/>
+      <xs:element name="fechaPlpVariosServicosResponse" type="tns:fechaPlpVariosServicosResponse"/>
+      <xs:element name="geraDigitoVerificadorEtiquetas" type="tns:geraDigitoVerificadorEtiquetas"/>
+      <xs:element name="geraDigitoVerificadorEtiquetasResponse" type="tns:geraDigitoVerificadorEtiquetasResponse"/>
+      <xs:element name="getStatusCartaoPostagem" type="tns:getStatusCartaoPostagem"/>
+      <xs:element name="getStatusCartaoPostagemResponse" type="tns:getStatusCartaoPostagemResponse"/>
+      <xs:element name="integrarUsuarioScol" type="tns:integrarUsuarioScol"/>
+      <xs:element name="integrarUsuarioScolResponse" type="tns:integrarUsuarioScolResponse"/>
+      <xs:element name="obterAssuntosPI" type="tns:obterAssuntosPI"/>
+      <xs:element name="obterAssuntosPIResponse" type="tns:obterAssuntosPIResponse"/>
+      <xs:element name="obterClienteAtualizacao" type="tns:obterClienteAtualizacao"/>
+      <xs:element name="obterClienteAtualizacaoResponse" type="tns:obterClienteAtualizacaoResponse"/>
+      <xs:element name="obterEmbalagemLRS" type="tns:obterEmbalagemLRS"/>
+      <xs:element name="obterEmbalagemLRSResponse" type="tns:obterEmbalagemLRSResponse"/>
+      <xs:element name="obterMensagemRetornoPI" type="tns:obterMensagemRetornoPI"/>
+      <xs:element name="obterMensagemRetornoPIResponse" type="tns:obterMensagemRetornoPIResponse"/>
+      <xs:element name="obterMotivosPI" type="tns:obterMotivosPI"/>
+      <xs:element name="obterMotivosPIResponse" type="tns:obterMotivosPIResponse"/>
+      <xs:element name="registrarPedidosInformacao" type="tns:registrarPedidosInformacao"/>
+      <xs:element name="registrarPedidosInformacaoResponse" type="tns:registrarPedidosInformacaoResponse"/>
+      <xs:element name="solicitaEtiquetas" type="tns:solicitaEtiquetas"/>
+      <xs:element name="solicitaEtiquetasResponse" type="tns:solicitaEtiquetasResponse"/>
+      <xs:element name="solicitaPLP" type="tns:solicitaPLP"/>
+      <xs:element name="solicitaPLPResponse" type="tns:solicitaPLPResponse"/>
+      <xs:element name="solicitaXmlPlp" type="tns:solicitaXmlPlp"/>
+      <xs:element name="solicitaXmlPlpResponse" type="tns:solicitaXmlPlpResponse"/>
+      <xs:element name="solicitarPostagemScol" type="tns:solicitarPostagemScol"/>
+      <xs:element name="solicitarPostagemScolResponse" type="tns:solicitarPostagemScolResponse"/>
+      <xs:element name="validaEtiquetaPLP" type="tns:validaEtiquetaPLP"/>
+      <xs:element name="validaEtiquetaPLPResponse" type="tns:validaEtiquetaPLPResponse"/>
+      <xs:element name="validaPlp" type="tns:validaPlp"/>
+      <xs:element name="validaPlpResponse" type="tns:validaPlpResponse"/>
+      <xs:element name="validarPostagemReversa" type="tns:validarPostagemReversa"/>
+      <xs:element name="validarPostagemReversaResponse" type="tns:validarPostagemReversaResponse"/>
+      <xs:element name="validarPostagemSimultanea" type="tns:validarPostagemSimultanea"/>
+      <xs:element name="validarPostagemSimultaneaResponse" type="tns:validarPostagemSimultaneaResponse"/>
+      <xs:element name="verificaDisponibilidadeServico" type="tns:verificaDisponibilidadeServico"/>
+      <xs:element name="verificaDisponibilidadeServicoResponse" type="tns:verificaDisponibilidadeServicoResponse"/>
+      <xs:complexType name="validaEtiquetaPLP">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="numeroEtiqueta" type="xs:string"/>
+          <xs:element minOccurs="0" name="idPlp" type="xs:long"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="validaEtiquetaPLPResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fechaPlp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="xml" type="xs:string"/>
+          <xs:element minOccurs="0" name="idPlpCliente" type="xs:long"/>
+          <xs:element minOccurs="0" name="cartaoPostagem" type="xs:string"/>
+          <xs:element minOccurs="0" name="faixaEtiquetas" type="xs:string"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fechaPlpResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="verificaDisponibilidadeServico">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codAdministrativo" type="xs:int"/>
+          <xs:element minOccurs="0" name="numeroServico" type="xs:string"/>
+          <xs:element minOccurs="0" name="cepOrigem" type="xs:string"/>
+          <xs:element minOccurs="0" name="cepDestino" type="xs:string"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="verificaDisponibilidadeServicoResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="registrarPedidosInformacao">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="pedidosInformacao" type="tns:pedidoInformacaoRegistro"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="pedidoInformacaoRegistro">
+        <xs:complexContent>
+          <xs:extension base="tns:pedidoInformacao">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cliente" type="tns:cliente"/>
+              <xs:element minOccurs="0" name="codigoRegistro" type="xs:string"/>
+              <xs:element minOccurs="0" name="conta" type="tns:conta"/>
+              <xs:element minOccurs="0" name="conteudoObjeto" type="xs:string"/>
+              <xs:element minOccurs="0" name="cpfCnpj" type="xs:string"/>
+              <xs:element minOccurs="0" name="destinatario" type="tns:destinatario"/>
+              <xs:element minOccurs="0" name="embalagem" type="xs:string"/>
+              <xs:element minOccurs="0" name="motivo" type="xs:int"/>
+              <xs:element minOccurs="0" name="observacao" type="xs:string"/>
+              <xs:element minOccurs="0" name="postagem" type="tns:postagem"/>
+              <xs:element minOccurs="0" name="remetente" type="tns:remetente"/>
+              <xs:element minOccurs="0" name="servico" type="xs:int"/>
+              <xs:element minOccurs="0" name="tipoDocumento" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="pedidoInformacao">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cliente">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="numeroContrato" type="xs:string"/>
+          <xs:element minOccurs="0" name="possuiContrato" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="conta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigoBanco" type="xs:string"/>
+          <xs:element minOccurs="0" name="nomeBanco" type="xs:string"/>
+          <xs:element minOccurs="0" name="numeroAgencia" type="xs:string"/>
+          <xs:element minOccurs="0" name="numeroConta" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="destinatario">
+        <xs:complexContent>
+          <xs:extension base="tns:pessoa">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="pessoa">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bairro" type="xs:string"/>
+          <xs:element minOccurs="0" name="cep" type="xs:string"/>
+          <xs:element minOccurs="0" name="cidade" type="xs:string"/>
+          <xs:element minOccurs="0" name="complemento" type="xs:string"/>
+          <xs:element minOccurs="0" name="ddd" type="xs:string"/>
+          <xs:element minOccurs="0" name="endereco" type="xs:string"/>
+          <xs:element minOccurs="0" name="nome" type="xs:string"/>
+          <xs:element minOccurs="0" name="numero" type="xs:string"/>
+          <xs:element minOccurs="0" name="pais" type="xs:string"/>
+          <xs:element minOccurs="0" name="telefone" type="xs:string"/>
+          <xs:element minOccurs="0" name="uf" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="postagem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="agencia" type="xs:string"/>
+          <xs:element minOccurs="0" name="avisoRecebimento" type="xs:string"/>
+          <xs:element minOccurs="0" name="data" type="xs:string"/>
+          <xs:element minOccurs="0" name="local" type="xs:string"/>
+          <xs:element minOccurs="0" name="valorDeclarado" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="remetente">
+        <xs:complexContent>
+          <xs:extension base="tns:pessoa">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="email" type="xs:string"/>
+              <xs:element minOccurs="0" name="empresa" type="xs:string"/>
+              <xs:element minOccurs="0" name="fax" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="registrarPedidosInformacaoResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:retorno"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="retorno">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigoPI" type="xs:long"/>
+          <xs:element minOccurs="0" name="codigoRegistro" type="xs:string"/>
+          <xs:element minOccurs="0" name="codigoRetorno" type="xs:string"/>
+          <xs:element minOccurs="0" name="dataPrazoResposta" type="xs:string"/>
+          <xs:element minOccurs="0" name="dataRegistro" type="xs:string"/>
+          <xs:element minOccurs="0" name="dataResposta" type="xs:string"/>
+          <xs:element minOccurs="0" name="dataUltimaRecorrencia" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="mensagemRetorno" type="xs:string"/>
+          <xs:element minOccurs="0" name="resposta" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="bloquearObjeto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="numeroEtiqueta" type="xs:string"/>
+          <xs:element minOccurs="0" name="idPlp" type="xs:long"/>
+          <xs:element minOccurs="0" name="tipoBloqueio" type="tns:tipoBloqueio"/>
+          <xs:element minOccurs="0" name="acao" type="tns:acao"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="bloquearObjetoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="buscaCliente">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idContrato" type="xs:string"/>
+          <xs:element minOccurs="0" name="idCartaoPostagem" type="xs:string"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="buscaClienteResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:clienteERP"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="clienteERP">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cnpj" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="contratos" nillable="true" type="tns:contratoERP"/>
+          <xs:element minOccurs="0" name="dataAtualizacao" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="datajAtualizacao" type="xs:int"/>
+          <xs:element minOccurs="0" name="descricaoStatusCliente" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="gerenteConta" nillable="true" type="tns:gerenteConta"/>
+          <xs:element minOccurs="0" name="horajAtualizacao" type="xs:long"/>
+          <xs:element name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="inscricaoEstadual" type="xs:string"/>
+          <xs:element minOccurs="0" name="nome" type="xs:string"/>
+          <xs:element minOccurs="0" name="statusCodigo" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="contratoERP">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="cartoesPostagem" nillable="true" type="tns:cartaoPostagemERP"/>
+          <xs:element minOccurs="0" name="cliente" type="tns:clienteERP"/>
+          <xs:element name="codigoCliente" type="xs:long"/>
+          <xs:element minOccurs="0" name="codigoDiretoria" type="xs:string"/>
+          <xs:element minOccurs="0" name="contratoPK" type="tns:contratoERPPK"/>
+          <xs:element minOccurs="0" name="dataAtualizacao" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dataAtualizacaoDDMMYYYY" type="xs:string"/>
+          <xs:element minOccurs="0" name="dataVigenciaFim" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dataVigenciaFimDDMMYYYY" type="xs:string"/>
+          <xs:element minOccurs="0" name="dataVigenciaInicio" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dataVigenciaInicioDDMMYYYY" type="xs:string"/>
+          <xs:element minOccurs="0" name="datajAtualizacao" type="xs:int"/>
+          <xs:element minOccurs="0" name="datajVigenciaFim" type="xs:int"/>
+          <xs:element minOccurs="0" name="datajVigenciaInicio" type="xs:int"/>
+          <xs:element minOccurs="0" name="descricaoDiretoriaRegional" type="xs:string"/>
+          <xs:element minOccurs="0" name="descricaoStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="diretoriaRegional" type="tns:unidadePostagemERP"/>
+          <xs:element minOccurs="0" name="horajAtualizacao" type="xs:int"/>
+          <xs:element minOccurs="0" name="statusCodigo" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cartaoPostagemERP">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigoAdministrativo" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="contratos" nillable="true" type="tns:contratoERP"/>
+          <xs:element minOccurs="0" name="dataAtualizacao" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dataVigenciaFim" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dataVigenciaInicio" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="datajAtualizacao" type="xs:int"/>
+          <xs:element minOccurs="0" name="datajVigenciaFim" type="xs:int"/>
+          <xs:element minOccurs="0" name="datajVigenciaInicio" type="xs:int"/>
+          <xs:element minOccurs="0" name="descricaoStatusCartao" type="xs:string"/>
+          <xs:element minOccurs="0" name="descricaoUnidadePostagemGenerica" type="xs:string"/>
+          <xs:element minOccurs="0" name="horajAtualizacao" type="xs:int"/>
+          <xs:element minOccurs="0" name="numero" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="servicos" nillable="true" type="tns:servicoERP"/>
+          <xs:element minOccurs="0" name="statusCartaoPostagem" type="xs:string"/>
+          <xs:element minOccurs="0" name="statusCodigo" type="xs:string"/>
+          <xs:element minOccurs="0" name="unidadeGenerica" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="unidadesPostagem" nillable="true" type="tns:unidadePostagemERP"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="servicoERP">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigo" type="xs:string"/>
+          <xs:element minOccurs="0" name="dataAtualizacao" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="datajAtualizacao" type="xs:int"/>
+          <xs:element minOccurs="0" name="descricao" type="xs:string"/>
+          <xs:element minOccurs="0" name="horajAtualizacao" type="xs:int"/>
+          <xs:element name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="servicoSigep" type="tns:servicoSigep"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="servicosAdicionais" nillable="true" type="tns:servicoAdicionalERP"/>
+          <xs:element minOccurs="0" name="tipo1Codigo" type="xs:string"/>
+          <xs:element minOccurs="0" name="tipo1Descricao" type="xs:string"/>
+          <xs:element minOccurs="0" name="tipo2Codigo" type="xs:string"/>
+          <xs:element minOccurs="0" name="tipo2Descricao" type="xs:string"/>
+          <xs:element minOccurs="0" name="vigencia" type="tns:vigenciaERP"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="servicoSigep">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="categoriaServico" type="tns:categoriaServico"/>
+          <xs:element minOccurs="0" name="chancela" type="tns:chancelaMaster"/>
+          <xs:element minOccurs="0" name="exigeDimensoes" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="exigeValorCobrar" type="xs:boolean"/>
+          <xs:element name="imitm" type="xs:long"/>
+          <xs:element name="servico" type="xs:long"/>
+          <xs:element minOccurs="0" name="servicoERP" type="tns:servicoERP"/>
+          <xs:element minOccurs="0" name="ssiCoCodigoPostal" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="chancelaMaster">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chancela" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="dataAtualizacao" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="descricao" type="xs:string"/>
+          <xs:element name="id" type="xs:long"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="servicosSigep" nillable="true" type="tns:servicoSigep"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="servicoAdicionalERP">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigo" type="xs:string"/>
+          <xs:element minOccurs="0" name="dataAtualizacao" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="datajAtualizacao" type="xs:int"/>
+          <xs:element minOccurs="0" name="descricao" type="xs:string"/>
+          <xs:element minOccurs="0" name="horajAtualizacao" type="xs:int"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="sigla" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="vigenciaERP">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dataFinal" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dataInicial" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="datajFim" type="xs:int"/>
+          <xs:element minOccurs="0" name="datajIni" type="xs:int"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="unidadePostagemERP">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="diretoriaRegional" type="xs:string"/>
+          <xs:element minOccurs="0" name="endereco" type="tns:enderecoERP"/>
+          <xs:element minOccurs="0" name="id" type="xs:string"/>
+          <xs:element minOccurs="0" name="nome" type="xs:string"/>
+          <xs:element minOccurs="0" name="status" type="xs:string"/>
+          <xs:element minOccurs="0" name="tipo" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="enderecoERP">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bairro" type="xs:string"/>
+          <xs:element minOccurs="0" name="cep" type="xs:string"/>
+          <xs:element minOccurs="0" name="cidade" type="xs:string"/>
+          <xs:element minOccurs="0" name="complemento" type="xs:string"/>
+          <xs:element minOccurs="0" name="complemento2" type="xs:string"/>
+          <xs:element minOccurs="0" name="end" type="xs:string"/>
+          <xs:element name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="uf" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="unidadesPostagem" nillable="true" type="tns:unidadePostagemERP"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="contratoERPPK">
+        <xs:sequence>
+          <xs:element name="diretoria" type="xs:long"/>
+          <xs:element minOccurs="0" name="numero" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="gerenteConta">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="clientesVisiveis" nillable="true" type="tns:clienteERP"/>
+          <xs:element minOccurs="0" name="dataAtualizacao" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dataInclusao" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dataSenha" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="login" type="xs:string"/>
+          <xs:element minOccurs="0" name="matricula" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+          <xs:element minOccurs="0" name="status" type="tns:statusGerente"/>
+          <xs:element minOccurs="0" name="tipoGerente" type="tns:tipoGerente"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="usuariosInstalacao" nillable="true" type="tns:usuarioInstalacao"/>
+          <xs:element minOccurs="0" name="validade" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="usuarioInstalacao">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dataAtualizacao" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dataInclusao" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dataSenha" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="gerenteMaster" type="tns:gerenteConta"/>
+          <xs:element minOccurs="0" name="hashSenha" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="login" type="xs:string"/>
+          <xs:element minOccurs="0" name="nome" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="parametros" nillable="true" type="tns:parametroMaster"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+          <xs:element minOccurs="0" name="status" type="tns:statusUsuario"/>
+          <xs:element minOccurs="0" name="validade" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="parametroMaster">
+        <xs:sequence>
+          <xs:element name="prmCoParametro" type="xs:long"/>
+          <xs:element minOccurs="0" name="prmTxParametro" type="xs:string"/>
+          <xs:element minOccurs="0" name="prmTxValor" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="solicitaEtiquetas">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="tipoDestinatario" type="xs:string"/>
+          <xs:element minOccurs="0" name="identificador" type="xs:string"/>
+          <xs:element minOccurs="0" name="idServico" type="xs:long"/>
+          <xs:element minOccurs="0" name="qtdEtiquetas" type="xs:int"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="solicitaEtiquetasResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="obterMensagemRetornoPI">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="obterMensagemRetornoPIResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:mensagemRetornoPIMaster"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="mensagemRetornoPIMaster">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigo" type="xs:int"/>
+          <xs:element minOccurs="0" name="mensagem" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="consultarPedidosInformacao">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="pedidosInformacao" type="tns:pedidoInformacaoConsulta"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="pedidoInformacaoConsulta">
+        <xs:complexContent>
+          <xs:extension base="tns:pedidoInformacao">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="numero" type="xs:long"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="consultarPedidosInformacaoResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:retorno"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="geraDigitoVerificadorEtiquetas">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="etiquetas" type="xs:string"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="geraDigitoVerificadorEtiquetasResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="validarPostagemReversa">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codAdministrativo" type="xs:int"/>
+          <xs:element minOccurs="0" name="codigoServico" type="xs:int"/>
+          <xs:element minOccurs="0" name="cepDestinatario" type="xs:string"/>
+          <xs:element minOccurs="0" name="coleta" type="tns:coletaReversaTO"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="coletaReversaTO">
+        <xs:complexContent>
+          <xs:extension base="tns:coletaTO">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ag" type="xs:string"/>
+              <xs:element minOccurs="0" name="ar" type="xs:int"/>
+              <xs:element minOccurs="0" name="cartao" type="xs:long"/>
+              <xs:element minOccurs="0" name="numero" type="xs:int"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="obj_col" nillable="true" type="tns:objetoTO"/>
+              <xs:element minOccurs="0" name="servico_adicional" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="coletaTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cklist" type="xs:string"/>
+          <xs:element minOccurs="0" name="descricao" type="xs:string"/>
+          <xs:element minOccurs="0" name="id_cliente" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="produto" nillable="true" type="tns:produtoTO"/>
+          <xs:element minOccurs="0" name="remetente" type="tns:remetenteTO"/>
+          <xs:element minOccurs="0" name="tipo" type="xs:string"/>
+          <xs:element minOccurs="0" name="valor_declarado" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="objetoTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="desc" type="xs:string"/>
+          <xs:element minOccurs="0" name="entrega" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:string"/>
+          <xs:element minOccurs="0" name="item" type="xs:string"/>
+          <xs:element minOccurs="0" name="num" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="produtoTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigo" type="xs:long"/>
+          <xs:element minOccurs="0" name="qtd" type="xs:long"/>
+          <xs:element minOccurs="0" name="tipo" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="remetenteTO">
+        <xs:complexContent>
+          <xs:extension base="tns:pessoaTO">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="identificacao" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="pessoaTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bairro" type="xs:string"/>
+          <xs:element minOccurs="0" name="cep" type="xs:string"/>
+          <xs:element minOccurs="0" name="cidade" type="xs:string"/>
+          <xs:element minOccurs="0" name="complemento" type="xs:string"/>
+          <xs:element minOccurs="0" name="ddd" type="xs:string"/>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="logradouro" type="xs:string"/>
+          <xs:element minOccurs="0" name="nome" type="xs:string"/>
+          <xs:element minOccurs="0" name="numero" type="xs:string"/>
+          <xs:element minOccurs="0" name="referencia" type="xs:string"/>
+          <xs:element minOccurs="0" name="telefone" type="xs:string"/>
+          <xs:element minOccurs="0" name="uf" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="validarPostagemReversaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fechaPlpVariosServicos">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="xml" type="xs:string"/>
+          <xs:element minOccurs="0" name="idPlpCliente" type="xs:long"/>
+          <xs:element minOccurs="0" name="cartaoPostagem" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="listaEtiquetas" type="xs:string"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fechaPlpVariosServicosResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="validaPlp">
+        <xs:sequence>
+          <xs:element name="cliente" type="xs:long"/>
+          <xs:element minOccurs="0" name="numero" type="xs:string"/>
+          <xs:element name="diretoria" type="xs:long"/>
+          <xs:element minOccurs="0" name="cartao" type="xs:string"/>
+          <xs:element minOccurs="0" name="unidadePostagem" type="xs:string"/>
+          <xs:element minOccurs="0" name="servico" type="xs:long"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="servicosAdicionais" type="xs:string"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="validaPlpResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="validarPostagemSimultanea">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codAdministrativo" type="xs:int"/>
+          <xs:element minOccurs="0" name="codigoServico" type="xs:int"/>
+          <xs:element minOccurs="0" name="cepDestinatario" type="xs:string"/>
+          <xs:element minOccurs="0" name="coleta" type="tns:coletaSimultaneaTO"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="coletaSimultaneaTO">
+        <xs:complexContent>
+          <xs:extension base="tns:coletaTO">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="obj" type="xs:string"/>
+              <xs:element minOccurs="0" name="obs" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="validarPostagemSimultaneaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="obterEmbalagemLRS">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="obterEmbalagemLRSResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:embalagemLRSMaster"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="embalagemLRSMaster">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigo" type="xs:string"/>
+          <xs:element minOccurs="0" name="nome" type="xs:string"/>
+          <xs:element minOccurs="0" name="tipo" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cancelarPedidoScol">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codAdministrativo" type="xs:int"/>
+          <xs:element minOccurs="0" name="idPostagem" type="xs:string"/>
+          <xs:element minOccurs="0" name="tipo" type="xs:string"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cancelarPedidoScolResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:retornoCancelamentoTO"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="retornoCancelamentoTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cod_erro" type="xs:string"/>
+          <xs:element minOccurs="0" name="codigo_administrativo" type="xs:string"/>
+          <xs:element minOccurs="0" name="data" type="xs:string"/>
+          <xs:element minOccurs="0" name="hora" type="xs:string"/>
+          <xs:element minOccurs="0" name="msg_erro" type="xs:string"/>
+          <xs:element minOccurs="0" name="objeto_postal" type="tns:objetoSimplificadoTO"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="objetoSimplificadoTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="datahora_cancelamento" type="xs:string"/>
+          <xs:element minOccurs="0" name="numero_pedido" type="xs:int"/>
+          <xs:element minOccurs="0" name="status_pedido" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="buscaServicos">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idContrato" type="xs:string"/>
+          <xs:element minOccurs="0" name="idCartaoPostagem" type="xs:string"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="buscaServicosResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:servicoERP"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="solicitarPostagemScol">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codAdministrativo" type="xs:int"/>
+          <xs:element minOccurs="0" name="xml" type="xs:string"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="solicitarPostagemScolResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="solicitaPLP">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idPlpMaster" type="xs:long"/>
+          <xs:element minOccurs="0" name="numEtiqueta" type="xs:string"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="solicitaPLPResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getStatusCartaoPostagem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="numeroCartaoPostagem" type="xs:string"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getStatusCartaoPostagemResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:statusCartao"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="solicitaXmlPlp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idPlpMaster" type="xs:long"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="solicitaXmlPlpResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="obterMotivosPI">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="obterMotivosPIResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:motivoPIMaster"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="motivoPIMaster">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigo" type="xs:int"/>
+          <xs:element minOccurs="0" name="descricao" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="buscaContrato">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="numero" type="xs:string"/>
+          <xs:element name="diretoria" type="xs:long"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="buscaContratoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:contratoERP"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="consultaSRO">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="listaObjetos" type="xs:string"/>
+          <xs:element minOccurs="0" name="tipoConsulta" type="xs:string"/>
+          <xs:element minOccurs="0" name="tipoResultado" type="xs:string"/>
+          <xs:element minOccurs="0" name="usuarioSro" type="xs:string"/>
+          <xs:element minOccurs="0" name="senhaSro" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="consultaSROResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="obterClienteAtualizacao">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cnpjCliente" type="xs:string"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="obterClienteAtualizacaoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="integrarUsuarioScol">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codAdministrativo" type="xs:int"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="integrarUsuarioScolResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="atualizaPLP">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idPlpMaster" type="xs:long"/>
+          <xs:element minOccurs="0" name="numEtiqueta" type="xs:string"/>
+          <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+          <xs:element minOccurs="0" name="senha" type="xs:string"/>
+          <xs:element minOccurs="0" name="xml" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="atualizaPLPResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="obterAssuntosPI">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="obterAssuntosPIResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:assuntoPIMaster"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="assuntoPIMaster">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigo" type="xs:int"/>
+          <xs:element minOccurs="0" name="descricao" type="xs:string"/>
+          <xs:element minOccurs="0" name="tipo" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="consultaCEP">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cep" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="consultaCEPResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:enderecoERP"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="tipoBloqueio">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="FRAUDE_BLOQUEIO"/>
+          <xs:enumeration value="EXTRAVIO_VAREJO_PRE_INDENIZADO"/>
+          <xs:enumeration value="EXTRAVIO_VAREJO_POS_INDENIZADO"/>
+          <xs:enumeration value="EXTRAVIO_CORPORATIVO"/>
+          <xs:enumeration value="INTERNACIONAL_LDI"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="acao">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="DEVOLVIDO_AO_REMETENTE"/>
+          <xs:enumeration value="ENCAMINHADO_PARA_REFUGO"/>
+          <xs:enumeration value="REINTEGRADO_E_DEVOLVIDO_AO_REMETENTE"/>
+          <xs:enumeration value="DESBLOQUEADO"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="categoriaServico">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SEM_CATEGORIA"/>
+          <xs:enumeration value="PAC"/>
+          <xs:enumeration value="SEDEX"/>
+          <xs:enumeration value="CARTA_REGISTRADA"/>
+          <xs:enumeration value="SERVICO_COM_RESTRICAO"/>
+          <xs:enumeration value="REVERSO"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="statusGerente">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Ativo"/>
+          <xs:enumeration value="Inativo"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="tipoGerente">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="GerenteConta"/>
+          <xs:enumeration value="GerenteContaMaster"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="statusUsuario">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Ativo"/>
+          <xs:enumeration value="Inativo"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="statusCartao">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Desconhecido"/>
+          <xs:enumeration value="Normal"/>
+          <xs:enumeration value="Suspenso"/>
+          <xs:enumeration value="Cancelado"/>
+          <xs:enumeration value="Irregular"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="AutenticacaoException" nillable="true" type="xs:string"/>
+      <xs:element name="SigepClienteException" nillable="true" type="xs:string"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="verificaDisponibilidadeServico">
+    <wsdl:part element="tns:verificaDisponibilidadeServico" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarPostagemReversaResponse">
+    <wsdl:part element="tns:validarPostagemReversaResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitaPLP">
+    <wsdl:part element="tns:solicitaPLP" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="atualizaPLP">
+    <wsdl:part element="tns:atualizaPLP" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscaServicosResponse">
+    <wsdl:part element="tns:buscaServicosResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="fechaPlpResponse">
+    <wsdl:part element="tns:fechaPlpResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelarPedidoScolResponse">
+    <wsdl:part element="tns:cancelarPedidoScolResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verificaDisponibilidadeServicoResponse">
+    <wsdl:part element="tns:verificaDisponibilidadeServicoResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obterAssuntosPIResponse">
+    <wsdl:part element="tns:obterAssuntosPIResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SigepClienteException">
+    <wsdl:part element="tns:SigepClienteException" name="SigepClienteException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validaEtiquetaPLPResponse">
+    <wsdl:part element="tns:validaEtiquetaPLPResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validaPlp">
+    <wsdl:part element="tns:validaPlp" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarPostagemSimultaneaResponse">
+    <wsdl:part element="tns:validarPostagemSimultaneaResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obterClienteAtualizacao">
+    <wsdl:part element="tns:obterClienteAtualizacao" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="atualizaPLPResponse">
+    <wsdl:part element="tns:atualizaPLPResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obterClienteAtualizacaoResponse">
+    <wsdl:part element="tns:obterClienteAtualizacaoResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bloquearObjeto">
+    <wsdl:part element="tns:bloquearObjeto" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitaEtiquetas">
+    <wsdl:part element="tns:solicitaEtiquetas" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscaCliente">
+    <wsdl:part element="tns:buscaCliente" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validaEtiquetaPLP">
+    <wsdl:part element="tns:validaEtiquetaPLP" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscaContratoResponse">
+    <wsdl:part element="tns:buscaContratoResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitarPostagemScol">
+    <wsdl:part element="tns:solicitarPostagemScol" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaSROResponse">
+    <wsdl:part element="tns:consultaSROResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarPedidosInformacaoResponse">
+    <wsdl:part element="tns:consultarPedidosInformacaoResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="fechaPlp">
+    <wsdl:part element="tns:fechaPlp" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelarPedidoScol">
+    <wsdl:part element="tns:cancelarPedidoScol" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obterEmbalagemLRS">
+    <wsdl:part element="tns:obterEmbalagemLRS" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="fechaPlpVariosServicos">
+    <wsdl:part element="tns:fechaPlpVariosServicos" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="fechaPlpVariosServicosResponse">
+    <wsdl:part element="tns:fechaPlpVariosServicosResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obterMensagemRetornoPI">
+    <wsdl:part element="tns:obterMensagemRetornoPI" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validaPlpResponse">
+    <wsdl:part element="tns:validaPlpResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarPostagemReversa">
+    <wsdl:part element="tns:validarPostagemReversa" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="geraDigitoVerificadorEtiquetasResponse">
+    <wsdl:part element="tns:geraDigitoVerificadorEtiquetasResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registrarPedidosInformacao">
+    <wsdl:part element="tns:registrarPedidosInformacao" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitaXmlPlp">
+    <wsdl:part element="tns:solicitaXmlPlp" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obterAssuntosPI">
+    <wsdl:part element="tns:obterAssuntosPI" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bloquearObjetoResponse">
+    <wsdl:part element="tns:bloquearObjetoResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AutenticacaoException">
+    <wsdl:part element="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaCEPResponse">
+    <wsdl:part element="tns:consultaCEPResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscaContrato">
+    <wsdl:part element="tns:buscaContrato" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obterMotivosPI">
+    <wsdl:part element="tns:obterMotivosPI" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obterMotivosPIResponse">
+    <wsdl:part element="tns:obterMotivosPIResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaCEP">
+    <wsdl:part element="tns:consultaCEP" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscaClienteResponse">
+    <wsdl:part element="tns:buscaClienteResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registrarPedidosInformacaoResponse">
+    <wsdl:part element="tns:registrarPedidosInformacaoResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaSRO">
+    <wsdl:part element="tns:consultaSRO" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStatusCartaoPostagem">
+    <wsdl:part element="tns:getStatusCartaoPostagem" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStatusCartaoPostagemResponse">
+    <wsdl:part element="tns:getStatusCartaoPostagemResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obterEmbalagemLRSResponse">
+    <wsdl:part element="tns:obterEmbalagemLRSResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscaServicos">
+    <wsdl:part element="tns:buscaServicos" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="integrarUsuarioScol">
+    <wsdl:part element="tns:integrarUsuarioScol" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitaEtiquetasResponse">
+    <wsdl:part element="tns:solicitaEtiquetasResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitarPostagemScolResponse">
+    <wsdl:part element="tns:solicitarPostagemScolResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarPostagemSimultanea">
+    <wsdl:part element="tns:validarPostagemSimultanea" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarPedidosInformacao">
+    <wsdl:part element="tns:consultarPedidosInformacao" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="geraDigitoVerificadorEtiquetas">
+    <wsdl:part element="tns:geraDigitoVerificadorEtiquetas" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="integrarUsuarioScolResponse">
+    <wsdl:part element="tns:integrarUsuarioScolResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obterMensagemRetornoPIResponse">
+    <wsdl:part element="tns:obterMensagemRetornoPIResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitaPLPResponse">
+    <wsdl:part element="tns:solicitaPLPResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitaXmlPlpResponse">
+    <wsdl:part element="tns:solicitaXmlPlpResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AtendeCliente">
+    <wsdl:operation name="validaEtiquetaPLP">
+      <wsdl:input message="tns:validaEtiquetaPLP" name="validaEtiquetaPLP"></wsdl:input>
+      <wsdl:output message="tns:validaEtiquetaPLPResponse" name="validaEtiquetaPLPResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="fechaPlp">
+      <wsdl:input message="tns:fechaPlp" name="fechaPlp"></wsdl:input>
+      <wsdl:output message="tns:fechaPlpResponse" name="fechaPlpResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verificaDisponibilidadeServico">
+      <wsdl:input message="tns:verificaDisponibilidadeServico" name="verificaDisponibilidadeServico"></wsdl:input>
+      <wsdl:output message="tns:verificaDisponibilidadeServicoResponse" name="verificaDisponibilidadeServicoResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registrarPedidosInformacao">
+      <wsdl:input message="tns:registrarPedidosInformacao" name="registrarPedidosInformacao"></wsdl:input>
+      <wsdl:output message="tns:registrarPedidosInformacaoResponse" name="registrarPedidosInformacaoResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="bloquearObjeto">
+      <wsdl:input message="tns:bloquearObjeto" name="bloquearObjeto"></wsdl:input>
+      <wsdl:output message="tns:bloquearObjetoResponse" name="bloquearObjetoResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscaCliente">
+      <wsdl:input message="tns:buscaCliente" name="buscaCliente"></wsdl:input>
+      <wsdl:output message="tns:buscaClienteResponse" name="buscaClienteResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitaEtiquetas">
+      <wsdl:input message="tns:solicitaEtiquetas" name="solicitaEtiquetas"></wsdl:input>
+      <wsdl:output message="tns:solicitaEtiquetasResponse" name="solicitaEtiquetasResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obterMensagemRetornoPI">
+      <wsdl:input message="tns:obterMensagemRetornoPI" name="obterMensagemRetornoPI"></wsdl:input>
+      <wsdl:output message="tns:obterMensagemRetornoPIResponse" name="obterMensagemRetornoPIResponse"></wsdl:output>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultarPedidosInformacao">
+      <wsdl:input message="tns:consultarPedidosInformacao" name="consultarPedidosInformacao"></wsdl:input>
+      <wsdl:output message="tns:consultarPedidosInformacaoResponse" name="consultarPedidosInformacaoResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="geraDigitoVerificadorEtiquetas">
+      <wsdl:input message="tns:geraDigitoVerificadorEtiquetas" name="geraDigitoVerificadorEtiquetas"></wsdl:input>
+      <wsdl:output message="tns:geraDigitoVerificadorEtiquetasResponse" name="geraDigitoVerificadorEtiquetasResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validarPostagemReversa">
+      <wsdl:input message="tns:validarPostagemReversa" name="validarPostagemReversa"></wsdl:input>
+      <wsdl:output message="tns:validarPostagemReversaResponse" name="validarPostagemReversaResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="fechaPlpVariosServicos">
+      <wsdl:input message="tns:fechaPlpVariosServicos" name="fechaPlpVariosServicos"></wsdl:input>
+      <wsdl:output message="tns:fechaPlpVariosServicosResponse" name="fechaPlpVariosServicosResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validaPlp">
+      <wsdl:input message="tns:validaPlp" name="validaPlp"></wsdl:input>
+      <wsdl:output message="tns:validaPlpResponse" name="validaPlpResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validarPostagemSimultanea">
+      <wsdl:input message="tns:validarPostagemSimultanea" name="validarPostagemSimultanea"></wsdl:input>
+      <wsdl:output message="tns:validarPostagemSimultaneaResponse" name="validarPostagemSimultaneaResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obterEmbalagemLRS">
+      <wsdl:input message="tns:obterEmbalagemLRS" name="obterEmbalagemLRS"></wsdl:input>
+      <wsdl:output message="tns:obterEmbalagemLRSResponse" name="obterEmbalagemLRSResponse"></wsdl:output>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cancelarPedidoScol">
+      <wsdl:input message="tns:cancelarPedidoScol" name="cancelarPedidoScol"></wsdl:input>
+      <wsdl:output message="tns:cancelarPedidoScolResponse" name="cancelarPedidoScolResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscaServicos">
+      <wsdl:input message="tns:buscaServicos" name="buscaServicos"></wsdl:input>
+      <wsdl:output message="tns:buscaServicosResponse" name="buscaServicosResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitarPostagemScol">
+      <wsdl:input message="tns:solicitarPostagemScol" name="solicitarPostagemScol"></wsdl:input>
+      <wsdl:output message="tns:solicitarPostagemScolResponse" name="solicitarPostagemScolResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitaPLP">
+      <wsdl:input message="tns:solicitaPLP" name="solicitaPLP"></wsdl:input>
+      <wsdl:output message="tns:solicitaPLPResponse" name="solicitaPLPResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStatusCartaoPostagem">
+      <wsdl:input message="tns:getStatusCartaoPostagem" name="getStatusCartaoPostagem"></wsdl:input>
+      <wsdl:output message="tns:getStatusCartaoPostagemResponse" name="getStatusCartaoPostagemResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitaXmlPlp">
+      <wsdl:input message="tns:solicitaXmlPlp" name="solicitaXmlPlp"></wsdl:input>
+      <wsdl:output message="tns:solicitaXmlPlpResponse" name="solicitaXmlPlpResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obterMotivosPI">
+      <wsdl:input message="tns:obterMotivosPI" name="obterMotivosPI"></wsdl:input>
+      <wsdl:output message="tns:obterMotivosPIResponse" name="obterMotivosPIResponse"></wsdl:output>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscaContrato">
+      <wsdl:input message="tns:buscaContrato" name="buscaContrato"></wsdl:input>
+      <wsdl:output message="tns:buscaContratoResponse" name="buscaContratoResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaSRO">
+      <wsdl:input message="tns:consultaSRO" name="consultaSRO"></wsdl:input>
+      <wsdl:output message="tns:consultaSROResponse" name="consultaSROResponse"></wsdl:output>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obterClienteAtualizacao">
+      <wsdl:input message="tns:obterClienteAtualizacao" name="obterClienteAtualizacao"></wsdl:input>
+      <wsdl:output message="tns:obterClienteAtualizacaoResponse" name="obterClienteAtualizacaoResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="integrarUsuarioScol">
+      <wsdl:input message="tns:integrarUsuarioScol" name="integrarUsuarioScol"></wsdl:input>
+      <wsdl:output message="tns:integrarUsuarioScolResponse" name="integrarUsuarioScolResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="atualizaPLP">
+      <wsdl:input message="tns:atualizaPLP" name="atualizaPLP"></wsdl:input>
+      <wsdl:output message="tns:atualizaPLPResponse" name="atualizaPLPResponse"></wsdl:output>
+      <wsdl:fault message="tns:AutenticacaoException" name="AutenticacaoException"></wsdl:fault>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obterAssuntosPI">
+      <wsdl:input message="tns:obterAssuntosPI" name="obterAssuntosPI"></wsdl:input>
+      <wsdl:output message="tns:obterAssuntosPIResponse" name="obterAssuntosPIResponse"></wsdl:output>
+      <wsdl:fault message="tns:SigepClienteException" name="SigepClienteException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaCEP">
+      <wsdl:input message="tns:consultaCEP" name="consultaCEP"></wsdl:input>
+      <wsdl:output message="tns:consultaCEPResponse" name="consultaCEPResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AtendeClienteServiceSoapBinding" type="tns:AtendeCliente">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="fechaPlp">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="fechaPlp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="fechaPlpResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validaEtiquetaPLP">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="validaEtiquetaPLP">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validaEtiquetaPLPResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registrarPedidosInformacao">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="registrarPedidosInformacao">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registrarPedidosInformacaoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verificaDisponibilidadeServico">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verificaDisponibilidadeServico">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verificaDisponibilidadeServicoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="bloquearObjeto">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="bloquearObjeto">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="bloquearObjetoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscaCliente">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="buscaCliente">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="buscaClienteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitaEtiquetas">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="solicitaEtiquetas">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="solicitaEtiquetasResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obterMensagemRetornoPI">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="obterMensagemRetornoPI">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="obterMensagemRetornoPIResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultarPedidosInformacao">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="consultarPedidosInformacao">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultarPedidosInformacaoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="geraDigitoVerificadorEtiquetas">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="geraDigitoVerificadorEtiquetas">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="geraDigitoVerificadorEtiquetasResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="fechaPlpVariosServicos">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="fechaPlpVariosServicos">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="fechaPlpVariosServicosResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validarPostagemReversa">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="validarPostagemReversa">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validarPostagemReversaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validaPlp">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="validaPlp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validaPlpResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cancelarPedidoScol">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="cancelarPedidoScol">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelarPedidoScolResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obterEmbalagemLRS">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="obterEmbalagemLRS">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="obterEmbalagemLRSResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validarPostagemSimultanea">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="validarPostagemSimultanea">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validarPostagemSimultaneaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscaServicos">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="buscaServicos">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="buscaServicosResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitarPostagemScol">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="solicitarPostagemScol">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="solicitarPostagemScolResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitaPLP">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="solicitaPLP">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="solicitaPLPResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStatusCartaoPostagem">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getStatusCartaoPostagem">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getStatusCartaoPostagemResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitaXmlPlp">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="solicitaXmlPlp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="solicitaXmlPlpResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obterMotivosPI">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="obterMotivosPI">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="obterMotivosPIResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscaContrato">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="buscaContrato">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="buscaContratoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaSRO">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="consultaSRO">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultaSROResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obterClienteAtualizacao">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="obterClienteAtualizacao">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="obterClienteAtualizacaoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="integrarUsuarioScol">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="integrarUsuarioScol">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="integrarUsuarioScolResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="atualizaPLP">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="atualizaPLP">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="atualizaPLPResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault name="AutenticacaoException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obterAssuntosPI">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="obterAssuntosPI">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="obterAssuntosPIResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SigepClienteException">
+        <soap:fault name="SigepClienteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaCEP">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="consultaCEP">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultaCEPResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AtendeClienteService">
+    <wsdl:port binding="tns:AtendeClienteServiceSoapBinding" name="AtendeClientePort">
+      <soap:address location="https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint></con:endpoints><con:operation id="7b2315dc-0c0a-4475-98dd-b6bd6ed69db2" isOneWay="false" action="" name="atualizaPLP" bindingOperationName="atualizaPLP" type="Request-Response" outputName="atualizaPLPResponse" inputName="atualizaPLP" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="96bd0fe1-1ad2-403d-9d50-ea4c9a52ec73" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:atualizaPLP>\r
+         <!--Optional:-->\r
+         <idPlpMaster>?</idPlpMaster>\r
+         <!--Optional:-->\r
+         <numEtiqueta>?</numEtiqueta>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+         <!--Optional:-->\r
+         <xml>?</xml>\r
+      </cli:atualizaPLP>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/atualizaPLP"/></con:call></con:operation><con:operation id="30af8e54-09f5-4929-8195-ca67045b708b" isOneWay="false" action="" name="bloquearObjeto" bindingOperationName="bloquearObjeto" type="Request-Response" outputName="bloquearObjetoResponse" inputName="bloquearObjeto" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1f34d608-c409-4f35-a69e-352459b96ae6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:bloquearObjeto>\r
+         <!--Optional:-->\r
+         <numeroEtiqueta>?</numeroEtiqueta>\r
+         <!--Optional:-->\r
+         <idPlp>?</idPlp>\r
+         <!--Optional:-->\r
+         <tipoBloqueio>?</tipoBloqueio>\r
+         <!--Optional:-->\r
+         <acao>?</acao>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:bloquearObjeto>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/bloquearObjeto"/></con:call></con:operation><con:operation id="c4060d02-3c57-440c-9359-455700f3533e" isOneWay="false" action="" name="buscaCliente" bindingOperationName="buscaCliente" type="Request-Response" outputName="buscaClienteResponse" inputName="buscaCliente" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6a0ce441-f15e-4c58-8077-2a1fbafa108b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:buscaCliente>\r
+         <!--Optional:-->\r
+         <idContrato>?</idContrato>\r
+         <!--Optional:-->\r
+         <idCartaoPostagem>?</idCartaoPostagem>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:buscaCliente>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/buscaCliente"/></con:call></con:operation><con:operation id="8df11af2-2657-46b7-9eef-438a8729a43e" isOneWay="false" action="" name="buscaContrato" bindingOperationName="buscaContrato" type="Request-Response" outputName="buscaContratoResponse" inputName="buscaContrato" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="236ecd1d-f73a-41f5-9e84-dc2f740baf53" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:buscaContrato>\r
+         <!--Optional:-->\r
+         <numero>?</numero>\r
+         <diretoria>?</diretoria>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:buscaContrato>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/buscaContrato"/></con:call></con:operation><con:operation id="8474158d-e1b5-4d11-9faf-5b085b786b9c" isOneWay="false" action="" name="buscaServicos" bindingOperationName="buscaServicos" type="Request-Response" outputName="buscaServicosResponse" inputName="buscaServicos" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9c810171-9ca7-4182-84d2-e53c3d8e52d2" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:buscaServicos>\r
+         <!--Optional:-->\r
+         <idContrato>?</idContrato>\r
+         <!--Optional:-->\r
+         <idCartaoPostagem>?</idCartaoPostagem>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:buscaServicos>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/buscaServicos"/></con:call></con:operation><con:operation id="2259adac-7c31-4c12-a02a-e5e798d1408a" isOneWay="false" action="" name="cancelarPedidoScol" bindingOperationName="cancelarPedidoScol" type="Request-Response" outputName="cancelarPedidoScolResponse" inputName="cancelarPedidoScol" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="bc538b1c-83ad-41b7-bfa3-3e0fcc813cab" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:cancelarPedidoScol>\r
+         <!--Optional:-->\r
+         <codAdministrativo>?</codAdministrativo>\r
+         <!--Optional:-->\r
+         <idPostagem>?</idPostagem>\r
+         <!--Optional:-->\r
+         <tipo>?</tipo>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:cancelarPedidoScol>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/cancelarPedidoScol"/></con:call></con:operation><con:operation id="832f2bd6-1830-4772-862c-676485803b5c" isOneWay="false" action="" name="consultaCEP" bindingOperationName="consultaCEP" type="Request-Response" outputName="consultaCEPResponse" inputName="consultaCEP" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1d06d308-caaf-4452-a230-a0179cda0eee" name="CEP 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:consultaCEP>\r
+         <!--Optional:-->\r
+         <cep>85862590</cep>\r
+      </cli:consultaCEP>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/consultaCEP"/><con:wsrmConfig version="1.2"/></con:call><con:call id="e2532418-8f51-4655-8d37-d8587c44de1b" name="CEP 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:consultaCEP>\r
+         <!--Optional:-->\r
+         <cep>85857650</cep>\r
+      </cli:consultaCEP>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/consultaCEP"/><con:wsrmConfig version="1.2"/></con:call><con:call id="54b615e2-e52d-437a-8ffe-6c70798fbefb" name="CEP 3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:consultaCEP>\r
+         <!--Optional:-->\r
+         <cep>85854110</cep>\r
+      </cli:consultaCEP>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/consultaCEP"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="23b2a869-9c32-4bb9-a678-813bfbdea794" isOneWay="false" action="" name="consultarPedidosInformacao" bindingOperationName="consultarPedidosInformacao" type="Request-Response" outputName="consultarPedidosInformacaoResponse" inputName="consultarPedidosInformacao" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="18d843f6-6aba-4054-a77a-453a5f5c4c18" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:consultarPedidosInformacao>\r
+         <!--Zero or more repetitions:-->\r
+         <pedidosInformacao>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <usuario>?</usuario>\r
+            <!--Optional:-->\r
+            <numero>?</numero>\r
+         </pedidosInformacao>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:consultarPedidosInformacao>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/consultarPedidosInformacao"/></con:call></con:operation><con:operation id="2618fb85-a7fa-4ef7-8a43-14bc5752d648" isOneWay="false" action="" name="consultaSRO" bindingOperationName="consultaSRO" type="Request-Response" outputName="consultaSROResponse" inputName="consultaSRO" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="21c42191-179e-4312-aa8c-3a38c500627d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:consultaSRO>\r
+         <!--Zero or more repetitions:-->\r
+         <listaObjetos>?</listaObjetos>\r
+         <!--Optional:-->\r
+         <tipoConsulta>?</tipoConsulta>\r
+         <!--Optional:-->\r
+         <tipoResultado>?</tipoResultado>\r
+         <!--Optional:-->\r
+         <usuarioSro>?</usuarioSro>\r
+         <!--Optional:-->\r
+         <senhaSro>?</senhaSro>\r
+      </cli:consultaSRO>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/consultaSRO"/></con:call></con:operation><con:operation id="583802ff-b6bd-4880-bf79-90ab5886b627" isOneWay="false" action="" name="fechaPlp" bindingOperationName="fechaPlp" type="Request-Response" outputName="fechaPlpResponse" inputName="fechaPlp" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="33a9c11c-2834-44b0-b4c8-377c176e319b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:fechaPlp>\r
+         <!--Optional:-->\r
+         <xml>?</xml>\r
+         <!--Optional:-->\r
+         <idPlpCliente>?</idPlpCliente>\r
+         <!--Optional:-->\r
+         <cartaoPostagem>?</cartaoPostagem>\r
+         <!--Optional:-->\r
+         <faixaEtiquetas>?</faixaEtiquetas>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:fechaPlp>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/fechaPlp"/></con:call></con:operation><con:operation id="d08de577-cc8d-4879-910f-73f2904beaac" isOneWay="false" action="" name="fechaPlpVariosServicos" bindingOperationName="fechaPlpVariosServicos" type="Request-Response" outputName="fechaPlpVariosServicosResponse" inputName="fechaPlpVariosServicos" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="57da66c8-69b9-4d57-920e-f9c50a17d507" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:fechaPlpVariosServicos>\r
+         <!--Optional:-->\r
+         <xml>?</xml>\r
+         <!--Optional:-->\r
+         <idPlpCliente>?</idPlpCliente>\r
+         <!--Optional:-->\r
+         <cartaoPostagem>?</cartaoPostagem>\r
+         <!--Zero or more repetitions:-->\r
+         <listaEtiquetas>?</listaEtiquetas>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:fechaPlpVariosServicos>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/fechaPlpVariosServicos"/></con:call></con:operation><con:operation id="9c91194c-db31-488f-acf7-11c7375d3920" isOneWay="false" action="" name="geraDigitoVerificadorEtiquetas" bindingOperationName="geraDigitoVerificadorEtiquetas" type="Request-Response" outputName="geraDigitoVerificadorEtiquetasResponse" inputName="geraDigitoVerificadorEtiquetas" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3a278fac-404d-46f8-95ec-48c12d87fb25" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:geraDigitoVerificadorEtiquetas>\r
+         <!--Zero or more repetitions:-->\r
+         <etiquetas>?</etiquetas>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:geraDigitoVerificadorEtiquetas>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/geraDigitoVerificadorEtiquetas"/></con:call></con:operation><con:operation id="89e18ea4-3ac2-4162-990c-652468d5396a" isOneWay="false" action="" name="getStatusCartaoPostagem" bindingOperationName="getStatusCartaoPostagem" type="Request-Response" outputName="getStatusCartaoPostagemResponse" inputName="getStatusCartaoPostagem" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1cbdaa60-47d1-4f9b-bb44-da870efe9298" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:getStatusCartaoPostagem>\r
+         <!--Optional:-->\r
+         <numeroCartaoPostagem>?</numeroCartaoPostagem>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:getStatusCartaoPostagem>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/getStatusCartaoPostagem"/></con:call></con:operation><con:operation id="3b03eda5-9b2c-4f78-b81f-1e23042a38b5" isOneWay="false" action="" name="integrarUsuarioScol" bindingOperationName="integrarUsuarioScol" type="Request-Response" outputName="integrarUsuarioScolResponse" inputName="integrarUsuarioScol" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cc725e0e-c78a-4725-ac79-cfa36f48537c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:integrarUsuarioScol>\r
+         <!--Optional:-->\r
+         <codAdministrativo>?</codAdministrativo>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:integrarUsuarioScol>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/integrarUsuarioScol"/></con:call></con:operation><con:operation id="895d6049-0ebb-4659-8f17-892f8c546281" isOneWay="false" action="" name="obterAssuntosPI" bindingOperationName="obterAssuntosPI" type="Request-Response" outputName="obterAssuntosPIResponse" inputName="obterAssuntosPI" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7ec1f937-0214-4551-b703-37bf951c03da" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:obterAssuntosPI/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/obterAssuntosPI"/></con:call></con:operation><con:operation id="bf57407a-9c1b-430e-8afe-1f86161559b8" isOneWay="false" action="" name="obterClienteAtualizacao" bindingOperationName="obterClienteAtualizacao" type="Request-Response" outputName="obterClienteAtualizacaoResponse" inputName="obterClienteAtualizacao" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fd981e80-8e12-4b0f-8e89-ce95682c7c3a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:obterClienteAtualizacao>\r
+         <!--Optional:-->\r
+         <cnpjCliente>?</cnpjCliente>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:obterClienteAtualizacao>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/obterClienteAtualizacao"/></con:call></con:operation><con:operation id="4bb51ae0-5a42-4412-a7fb-b73126b554a6" isOneWay="false" action="" name="obterEmbalagemLRS" bindingOperationName="obterEmbalagemLRS" type="Request-Response" outputName="obterEmbalagemLRSResponse" inputName="obterEmbalagemLRS" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5dcfd239-8576-4264-94df-775b4325fec8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:obterEmbalagemLRS/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/obterEmbalagemLRS"/></con:call></con:operation><con:operation id="de45578b-4146-41e9-bc98-24dbbbe43b2c" isOneWay="false" action="" name="obterMensagemRetornoPI" bindingOperationName="obterMensagemRetornoPI" type="Request-Response" outputName="obterMensagemRetornoPIResponse" inputName="obterMensagemRetornoPI" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2ea44790-6527-4c17-a9c2-b5c48c05362e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:obterMensagemRetornoPI/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/obterMensagemRetornoPI"/></con:call></con:operation><con:operation id="40c7e008-b37b-449e-a5fb-3e4cf12581d4" isOneWay="false" action="" name="obterMotivosPI" bindingOperationName="obterMotivosPI" type="Request-Response" outputName="obterMotivosPIResponse" inputName="obterMotivosPI" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7a667603-f2c1-4591-999a-a3ec13bf6057" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:obterMotivosPI/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/obterMotivosPI"/></con:call></con:operation><con:operation id="e2c8a880-d587-44d8-a88e-22c68731f2ad" isOneWay="false" action="" name="registrarPedidosInformacao" bindingOperationName="registrarPedidosInformacao" type="Request-Response" outputName="registrarPedidosInformacaoResponse" inputName="registrarPedidosInformacao" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="39c9b895-88fd-4cec-a5c4-60e9d29b98fc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:registrarPedidosInformacao>\r
+         <!--Zero or more repetitions:-->\r
+         <pedidosInformacao>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <usuario>?</usuario>\r
+            <!--Optional:-->\r
+            <cliente>\r
+               <!--Optional:-->\r
+               <numeroContrato>?</numeroContrato>\r
+               <!--Optional:-->\r
+               <possuiContrato>?</possuiContrato>\r
+            </cliente>\r
+            <!--Optional:-->\r
+            <codigoRegistro>?</codigoRegistro>\r
+            <!--Optional:-->\r
+            <conta>\r
+               <!--Optional:-->\r
+               <codigoBanco>?</codigoBanco>\r
+               <!--Optional:-->\r
+               <nomeBanco>?</nomeBanco>\r
+               <!--Optional:-->\r
+               <numeroAgencia>?</numeroAgencia>\r
+               <!--Optional:-->\r
+               <numeroConta>?</numeroConta>\r
+            </conta>\r
+            <!--Optional:-->\r
+            <conteudoObjeto>?</conteudoObjeto>\r
+            <!--Optional:-->\r
+            <cpfCnpj>?</cpfCnpj>\r
+            <!--Optional:-->\r
+            <destinatario>\r
+               <!--Optional:-->\r
+               <bairro>?</bairro>\r
+               <!--Optional:-->\r
+               <cep>?</cep>\r
+               <!--Optional:-->\r
+               <cidade>?</cidade>\r
+               <!--Optional:-->\r
+               <complemento>?</complemento>\r
+               <!--Optional:-->\r
+               <ddd>?</ddd>\r
+               <!--Optional:-->\r
+               <endereco>?</endereco>\r
+               <!--Optional:-->\r
+               <nome>?</nome>\r
+               <!--Optional:-->\r
+               <numero>?</numero>\r
+               <!--Optional:-->\r
+               <pais>?</pais>\r
+               <!--Optional:-->\r
+               <telefone>?</telefone>\r
+               <!--Optional:-->\r
+               <uf>?</uf>\r
+            </destinatario>\r
+            <!--Optional:-->\r
+            <embalagem>?</embalagem>\r
+            <!--Optional:-->\r
+            <motivo>?</motivo>\r
+            <!--Optional:-->\r
+            <observacao>?</observacao>\r
+            <!--Optional:-->\r
+            <postagem>\r
+               <!--Optional:-->\r
+               <agencia>?</agencia>\r
+               <!--Optional:-->\r
+               <avisoRecebimento>?</avisoRecebimento>\r
+               <!--Optional:-->\r
+               <data>?</data>\r
+               <!--Optional:-->\r
+               <local>?</local>\r
+               <!--Optional:-->\r
+               <valorDeclarado>?</valorDeclarado>\r
+            </postagem>\r
+            <!--Optional:-->\r
+            <remetente>\r
+               <!--Optional:-->\r
+               <bairro>?</bairro>\r
+               <!--Optional:-->\r
+               <cep>?</cep>\r
+               <!--Optional:-->\r
+               <cidade>?</cidade>\r
+               <!--Optional:-->\r
+               <complemento>?</complemento>\r
+               <!--Optional:-->\r
+               <ddd>?</ddd>\r
+               <!--Optional:-->\r
+               <endereco>?</endereco>\r
+               <!--Optional:-->\r
+               <nome>?</nome>\r
+               <!--Optional:-->\r
+               <numero>?</numero>\r
+               <!--Optional:-->\r
+               <pais>?</pais>\r
+               <!--Optional:-->\r
+               <telefone>?</telefone>\r
+               <!--Optional:-->\r
+               <uf>?</uf>\r
+               <!--Optional:-->\r
+               <email>?</email>\r
+               <!--Optional:-->\r
+               <empresa>?</empresa>\r
+               <!--Optional:-->\r
+               <fax>?</fax>\r
+            </remetente>\r
+            <!--Optional:-->\r
+            <servico>?</servico>\r
+            <!--Optional:-->\r
+            <tipoDocumento>?</tipoDocumento>\r
+         </pedidosInformacao>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:registrarPedidosInformacao>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/registrarPedidosInformacao"/></con:call></con:operation><con:operation id="d9a1c765-8a52-4ed1-92b6-45780a57205f" isOneWay="false" action="" name="solicitaEtiquetas" bindingOperationName="solicitaEtiquetas" type="Request-Response" outputName="solicitaEtiquetasResponse" inputName="solicitaEtiquetas" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="442c4813-678a-4c27-8eab-60290e65d137" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:solicitaEtiquetas>\r
+         <!--Optional:-->\r
+         <tipoDestinatario>?</tipoDestinatario>\r
+         <!--Optional:-->\r
+         <identificador>?</identificador>\r
+         <!--Optional:-->\r
+         <idServico>?</idServico>\r
+         <!--Optional:-->\r
+         <qtdEtiquetas>?</qtdEtiquetas>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:solicitaEtiquetas>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/solicitaEtiquetas"/></con:call></con:operation><con:operation id="a10bf02a-9baa-4897-acd8-5722cbf51cc3" isOneWay="false" action="" name="solicitaPLP" bindingOperationName="solicitaPLP" type="Request-Response" outputName="solicitaPLPResponse" inputName="solicitaPLP" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0280929e-eed5-425c-b093-4f241e4cce9c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:solicitaPLP>\r
+         <!--Optional:-->\r
+         <idPlpMaster>?</idPlpMaster>\r
+         <!--Optional:-->\r
+         <numEtiqueta>?</numEtiqueta>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:solicitaPLP>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/solicitaPLP"/></con:call></con:operation><con:operation id="a5cc5290-6208-41e8-b44e-6f1f79cc031b" isOneWay="false" action="" name="solicitarPostagemScol" bindingOperationName="solicitarPostagemScol" type="Request-Response" outputName="solicitarPostagemScolResponse" inputName="solicitarPostagemScol" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="63203969-2b7d-4a2d-84ae-aae565a54ca3" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:solicitarPostagemScol>\r
+         <!--Optional:-->\r
+         <codAdministrativo>?</codAdministrativo>\r
+         <!--Optional:-->\r
+         <xml>?</xml>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:solicitarPostagemScol>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/solicitarPostagemScol"/></con:call></con:operation><con:operation id="549307bd-e0ff-4536-9c08-abc603c88479" isOneWay="false" action="" name="solicitaXmlPlp" bindingOperationName="solicitaXmlPlp" type="Request-Response" outputName="solicitaXmlPlpResponse" inputName="solicitaXmlPlp" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="51a10cb9-4f6d-4fbd-aa36-2232dea8ea04" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:solicitaXmlPlp>\r
+         <!--Optional:-->\r
+         <idPlpMaster>?</idPlpMaster>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:solicitaXmlPlp>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/solicitaXmlPlp"/></con:call></con:operation><con:operation id="834319e1-ebf6-4ef5-a8bb-b305e12d1b6a" isOneWay="false" action="" name="validaEtiquetaPLP" bindingOperationName="validaEtiquetaPLP" type="Request-Response" outputName="validaEtiquetaPLPResponse" inputName="validaEtiquetaPLP" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="738e1425-dbf5-411a-bc54-ecedaf5ee805" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:validaEtiquetaPLP>\r
+         <!--Optional:-->\r
+         <numeroEtiqueta>?</numeroEtiqueta>\r
+         <!--Optional:-->\r
+         <idPlp>?</idPlp>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:validaEtiquetaPLP>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/validaEtiquetaPLP"/></con:call></con:operation><con:operation id="5cd72663-05e6-45da-b10b-95a954e5ad04" isOneWay="false" action="" name="validaPlp" bindingOperationName="validaPlp" type="Request-Response" outputName="validaPlpResponse" inputName="validaPlp" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e2414ecb-5111-4bdf-bc3c-6f2fdbd66aca" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:validaPlp>\r
+         <cliente>?</cliente>\r
+         <!--Optional:-->\r
+         <numero>?</numero>\r
+         <diretoria>?</diretoria>\r
+         <!--Optional:-->\r
+         <cartao>?</cartao>\r
+         <!--Optional:-->\r
+         <unidadePostagem>?</unidadePostagem>\r
+         <!--Optional:-->\r
+         <servico>?</servico>\r
+         <!--Zero or more repetitions:-->\r
+         <servicosAdicionais>?</servicosAdicionais>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:validaPlp>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/validaPlp"/></con:call></con:operation><con:operation id="967ecfa2-20f7-49eb-9d69-285dd03ac3dd" isOneWay="false" action="" name="validarPostagemReversa" bindingOperationName="validarPostagemReversa" type="Request-Response" outputName="validarPostagemReversaResponse" inputName="validarPostagemReversa" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7727030b-3dcd-4513-aa74-5e056f59dcb7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:validarPostagemReversa>\r
+         <!--Optional:-->\r
+         <codAdministrativo>?</codAdministrativo>\r
+         <!--Optional:-->\r
+         <codigoServico>?</codigoServico>\r
+         <!--Optional:-->\r
+         <cepDestinatario>?</cepDestinatario>\r
+         <!--Optional:-->\r
+         <coleta>\r
+            <!--Optional:-->\r
+            <cklist>?</cklist>\r
+            <!--Optional:-->\r
+            <descricao>?</descricao>\r
+            <!--Optional:-->\r
+            <id_cliente>?</id_cliente>\r
+            <!--Zero or more repetitions:-->\r
+            <produto>\r
+               <!--Optional:-->\r
+               <codigo>?</codigo>\r
+               <!--Optional:-->\r
+               <qtd>?</qtd>\r
+               <!--Optional:-->\r
+               <tipo>?</tipo>\r
+            </produto>\r
+            <!--Optional:-->\r
+            <remetente>\r
+               <!--Optional:-->\r
+               <bairro>?</bairro>\r
+               <!--Optional:-->\r
+               <cep>?</cep>\r
+               <!--Optional:-->\r
+               <cidade>?</cidade>\r
+               <!--Optional:-->\r
+               <complemento>?</complemento>\r
+               <!--Optional:-->\r
+               <ddd>?</ddd>\r
+               <!--Optional:-->\r
+               <email>?</email>\r
+               <!--Optional:-->\r
+               <logradouro>?</logradouro>\r
+               <!--Optional:-->\r
+               <nome>?</nome>\r
+               <!--Optional:-->\r
+               <numero>?</numero>\r
+               <!--Optional:-->\r
+               <referencia>?</referencia>\r
+               <!--Optional:-->\r
+               <telefone>?</telefone>\r
+               <!--Optional:-->\r
+               <uf>?</uf>\r
+               <!--Optional:-->\r
+               <identificacao>?</identificacao>\r
+            </remetente>\r
+            <!--Optional:-->\r
+            <tipo>?</tipo>\r
+            <!--Optional:-->\r
+            <valor_declarado>?</valor_declarado>\r
+            <!--Optional:-->\r
+            <ag>?</ag>\r
+            <!--Optional:-->\r
+            <ar>?</ar>\r
+            <!--Optional:-->\r
+            <cartao>?</cartao>\r
+            <!--Optional:-->\r
+            <numero>?</numero>\r
+            <!--Zero or more repetitions:-->\r
+            <obj_col>\r
+               <!--Optional:-->\r
+               <desc>?</desc>\r
+               <!--Optional:-->\r
+               <entrega>?</entrega>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <item>?</item>\r
+               <!--Optional:-->\r
+               <num>?</num>\r
+            </obj_col>\r
+            <!--Optional:-->\r
+            <servico_adicional>?</servico_adicional>\r
+         </coleta>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:validarPostagemReversa>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/validarPostagemReversa"/></con:call></con:operation><con:operation id="7ad9d30b-521f-4159-877a-756d69f55527" isOneWay="false" action="" name="validarPostagemSimultanea" bindingOperationName="validarPostagemSimultanea" type="Request-Response" outputName="validarPostagemSimultaneaResponse" inputName="validarPostagemSimultanea" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f244bc63-47ff-4aa7-b346-b08e825563e0" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:validarPostagemSimultanea>\r
+         <!--Optional:-->\r
+         <codAdministrativo>?</codAdministrativo>\r
+         <!--Optional:-->\r
+         <codigoServico>?</codigoServico>\r
+         <!--Optional:-->\r
+         <cepDestinatario>?</cepDestinatario>\r
+         <!--Optional:-->\r
+         <coleta>\r
+            <!--Optional:-->\r
+            <cklist>?</cklist>\r
+            <!--Optional:-->\r
+            <descricao>?</descricao>\r
+            <!--Optional:-->\r
+            <id_cliente>?</id_cliente>\r
+            <!--Zero or more repetitions:-->\r
+            <produto>\r
+               <!--Optional:-->\r
+               <codigo>?</codigo>\r
+               <!--Optional:-->\r
+               <qtd>?</qtd>\r
+               <!--Optional:-->\r
+               <tipo>?</tipo>\r
+            </produto>\r
+            <!--Optional:-->\r
+            <remetente>\r
+               <!--Optional:-->\r
+               <bairro>?</bairro>\r
+               <!--Optional:-->\r
+               <cep>?</cep>\r
+               <!--Optional:-->\r
+               <cidade>?</cidade>\r
+               <!--Optional:-->\r
+               <complemento>?</complemento>\r
+               <!--Optional:-->\r
+               <ddd>?</ddd>\r
+               <!--Optional:-->\r
+               <email>?</email>\r
+               <!--Optional:-->\r
+               <logradouro>?</logradouro>\r
+               <!--Optional:-->\r
+               <nome>?</nome>\r
+               <!--Optional:-->\r
+               <numero>?</numero>\r
+               <!--Optional:-->\r
+               <referencia>?</referencia>\r
+               <!--Optional:-->\r
+               <telefone>?</telefone>\r
+               <!--Optional:-->\r
+               <uf>?</uf>\r
+               <!--Optional:-->\r
+               <identificacao>?</identificacao>\r
+            </remetente>\r
+            <!--Optional:-->\r
+            <tipo>?</tipo>\r
+            <!--Optional:-->\r
+            <valor_declarado>?</valor_declarado>\r
+            <!--Optional:-->\r
+            <obj>?</obj>\r
+            <!--Optional:-->\r
+            <obs>?</obs>\r
+         </coleta>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:validarPostagemSimultanea>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/validarPostagemSimultanea"/></con:call></con:operation><con:operation id="9fabb699-b890-4bae-8efe-0921406056db" isOneWay="false" action="" name="verificaDisponibilidadeServico" bindingOperationName="verificaDisponibilidadeServico" type="Request-Response" outputName="verificaDisponibilidadeServicoResponse" inputName="verificaDisponibilidadeServico" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="bc0c9ed2-4e2d-457b-9060-adde615f8a05" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:verificaDisponibilidadeServico>\r
+         <!--Optional:-->\r
+         <codAdministrativo>?</codAdministrativo>\r
+         <!--Optional:-->\r
+         <numeroServico>?</numeroServico>\r
+         <!--Optional:-->\r
+         <cepOrigem>?</cepOrigem>\r
+         <!--Optional:-->\r
+         <cepDestino>?</cepDestino>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:verificaDisponibilidadeServico>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/verificaDisponibilidadeServico"/></con:call></con:operation></con:interface><con:testSuite id="65d10428-c2a2-4c76-9d6b-695668166c3c" name="AtendeClienteServiceSoapBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="b80666f8-c7d7-4f56-9f37-dd62e255977e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="atualizaPLP TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="7ec818cd-f55c-4a01-91e3-2afbf6fd97f1" name="atualizaPLP"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>atualizaPLP</con:operation><con:request name="atualizaPLP" id="525e8cf3-d519-4db2-a874-cc7b476d3394"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:atualizaPLP>\r
+         <!--Optional:-->\r
+         <idPlpMaster>?</idPlpMaster>\r
+         <!--Optional:-->\r
+         <numEtiqueta>?</numEtiqueta>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+         <!--Optional:-->\r
+         <xml>?</xml>\r
+      </cli:atualizaPLP>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/atualizaPLP"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="703e655c-8dfd-477f-b3ce-79638bdbec45" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="bloquearObjeto TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="6f5c7129-a804-4f30-a35f-504bf8f11555" name="bloquearObjeto"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>bloquearObjeto</con:operation><con:request name="bloquearObjeto" id="f935b8a6-c1e7-4373-a156-45aac8e3c292"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:bloquearObjeto>\r
+         <!--Optional:-->\r
+         <numeroEtiqueta>?</numeroEtiqueta>\r
+         <!--Optional:-->\r
+         <idPlp>?</idPlp>\r
+         <!--Optional:-->\r
+         <tipoBloqueio>?</tipoBloqueio>\r
+         <!--Optional:-->\r
+         <acao>?</acao>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:bloquearObjeto>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/bloquearObjeto"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="f9c433b1-cff5-45c8-8fe3-3fa0c97acbc4" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="buscaCliente TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="dc927223-6bd9-4857-91f1-523127dc49f4" name="buscaCliente"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>buscaCliente</con:operation><con:request name="buscaCliente" id="a3be044f-22ab-4128-83e2-44a2903bc8f8"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:buscaCliente>\r
+         <!--Optional:-->\r
+         <idContrato>?</idContrato>\r
+         <!--Optional:-->\r
+         <idCartaoPostagem>?</idCartaoPostagem>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:buscaCliente>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/buscaCliente"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="7116c154-4f8c-43e9-90e2-2595496d589d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="buscaContrato TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="8f59c018-b65b-4f15-8537-108f2f5c2ebc" name="buscaContrato"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>buscaContrato</con:operation><con:request name="buscaContrato" id="1238eed6-346c-4ab7-a76b-3ba357c8a22f"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:buscaContrato>\r
+         <!--Optional:-->\r
+         <numero>?</numero>\r
+         <diretoria>?</diretoria>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:buscaContrato>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/buscaContrato"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="68b6d7d5-d805-4154-9b4d-533f0e6b86e5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="buscaServicos TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="52d9cab7-0eed-459c-b499-e30b5f1643f8" name="buscaServicos"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>buscaServicos</con:operation><con:request name="buscaServicos" id="c9f1045b-38e8-495d-9cc4-61658528c069"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:buscaServicos>\r
+         <!--Optional:-->\r
+         <idContrato>?</idContrato>\r
+         <!--Optional:-->\r
+         <idCartaoPostagem>?</idCartaoPostagem>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:buscaServicos>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/buscaServicos"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="b1f4259b-e8c7-4a3a-bfbf-54f8a9219319" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="cancelarPedidoScol TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="13bd1f71-8309-437c-97fe-8f8fee1607ac" name="cancelarPedidoScol"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>cancelarPedidoScol</con:operation><con:request name="cancelarPedidoScol" id="b0f3b510-14ff-4599-9eee-3742dfb3f310"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:cancelarPedidoScol>\r
+         <!--Optional:-->\r
+         <codAdministrativo>?</codAdministrativo>\r
+         <!--Optional:-->\r
+         <idPostagem>?</idPostagem>\r
+         <!--Optional:-->\r
+         <tipo>?</tipo>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:cancelarPedidoScol>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/cancelarPedidoScol"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="4d0df446-7717-41e5-a101-958a50cb8737" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="consultaCEP TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="e1e57e4c-9674-4c0e-86d3-7f41a6cbc31d" name="consultaCEP"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>consultaCEP</con:operation><con:request name="consultaCEP" id="5783a7f1-495b-4429-ac7c-1065794eb500"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:consultaCEP>\r
+         <!--Optional:-->\r
+         <cep>?</cep>\r
+      </cli:consultaCEP>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/consultaCEP"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="00e3d6dd-8665-4ced-b760-a429e47141f1" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="consultarPedidosInformacao TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="9373402e-19c1-4e54-b4f1-d25f60ef1dce" name="consultarPedidosInformacao"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>consultarPedidosInformacao</con:operation><con:request name="consultarPedidosInformacao" id="4461f3c1-ce4c-4746-807d-c61b306817af"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:consultarPedidosInformacao>\r
+         <!--Zero or more repetitions:-->\r
+         <pedidosInformacao>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <usuario>?</usuario>\r
+            <!--Optional:-->\r
+            <numero>?</numero>\r
+         </pedidosInformacao>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:consultarPedidosInformacao>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/consultarPedidosInformacao"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="76842145-e390-4d34-9c5a-e1fd83c08527" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="consultaSRO TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="29ce822f-d4eb-4537-b815-fb3454981eec" name="consultaSRO"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>consultaSRO</con:operation><con:request name="consultaSRO" id="0cb06e89-1279-47be-b095-02f14baa8f50"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:consultaSRO>\r
+         <!--Zero or more repetitions:-->\r
+         <listaObjetos>?</listaObjetos>\r
+         <!--Optional:-->\r
+         <tipoConsulta>?</tipoConsulta>\r
+         <!--Optional:-->\r
+         <tipoResultado>?</tipoResultado>\r
+         <!--Optional:-->\r
+         <usuarioSro>?</usuarioSro>\r
+         <!--Optional:-->\r
+         <senhaSro>?</senhaSro>\r
+      </cli:consultaSRO>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/consultaSRO"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="f09ec81f-3deb-4fff-9a69-de4387ef5d11" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="fechaPlp TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="e6dea5f3-de32-4dd7-b9a2-471031a72fa6" name="fechaPlp"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>fechaPlp</con:operation><con:request name="fechaPlp" id="cc4c3a77-6d02-4f5a-8f17-485709a0907f"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:fechaPlp>\r
+         <!--Optional:-->\r
+         <xml>?</xml>\r
+         <!--Optional:-->\r
+         <idPlpCliente>?</idPlpCliente>\r
+         <!--Optional:-->\r
+         <cartaoPostagem>?</cartaoPostagem>\r
+         <!--Optional:-->\r
+         <faixaEtiquetas>?</faixaEtiquetas>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:fechaPlp>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/fechaPlp"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="a327107f-f2d2-4e74-97ef-18fbd5e58acd" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="fechaPlpVariosServicos TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="e8a89b29-e549-4b1b-a15d-46b58dcf2a87" name="fechaPlpVariosServicos"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>fechaPlpVariosServicos</con:operation><con:request name="fechaPlpVariosServicos" id="8f9be9f9-0af2-47b2-b314-d9eec9963674"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:fechaPlpVariosServicos>\r
+         <!--Optional:-->\r
+         <xml>?</xml>\r
+         <!--Optional:-->\r
+         <idPlpCliente>?</idPlpCliente>\r
+         <!--Optional:-->\r
+         <cartaoPostagem>?</cartaoPostagem>\r
+         <!--Zero or more repetitions:-->\r
+         <listaEtiquetas>?</listaEtiquetas>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:fechaPlpVariosServicos>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/fechaPlpVariosServicos"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="b0acedb7-40a1-4a3c-9f68-3a305a09659f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="geraDigitoVerificadorEtiquetas TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="06c0a3a2-dcca-458a-97dd-1221d4a7ffad" name="geraDigitoVerificadorEtiquetas"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>geraDigitoVerificadorEtiquetas</con:operation><con:request name="geraDigitoVerificadorEtiquetas" id="520176e1-2b1e-4fb7-a8e5-724f9a0bab33"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:geraDigitoVerificadorEtiquetas>\r
+         <!--Zero or more repetitions:-->\r
+         <etiquetas>?</etiquetas>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:geraDigitoVerificadorEtiquetas>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/geraDigitoVerificadorEtiquetas"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="4d715141-0689-420c-9d1a-dee4b3073577" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getStatusCartaoPostagem TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="69ca9ccc-f48c-426d-b56b-377291a4d036" name="getStatusCartaoPostagem"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>getStatusCartaoPostagem</con:operation><con:request name="getStatusCartaoPostagem" id="41e0b2d8-3043-4a5a-8ac9-3c135345cd22"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:getStatusCartaoPostagem>\r
+         <!--Optional:-->\r
+         <numeroCartaoPostagem>?</numeroCartaoPostagem>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:getStatusCartaoPostagem>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/getStatusCartaoPostagem"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="e2d3e68a-d60c-4369-a7a9-7ac05412fe60" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="integrarUsuarioScol TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="8c90bac9-9cbb-4bca-851c-d91dd4b77c3c" name="integrarUsuarioScol"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>integrarUsuarioScol</con:operation><con:request name="integrarUsuarioScol" id="b1732f5a-af7a-4d22-b6ce-8e90faab7358"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:integrarUsuarioScol>\r
+         <!--Optional:-->\r
+         <codAdministrativo>?</codAdministrativo>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:integrarUsuarioScol>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/integrarUsuarioScol"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="df5e8c36-3ab0-419e-8fdc-9113132b23cb" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="obterAssuntosPI TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="025a5aa1-4b7d-467f-8467-b4629135c4c9" name="obterAssuntosPI"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>obterAssuntosPI</con:operation><con:request name="obterAssuntosPI" id="9a25e1f0-eeed-4129-b8ac-4ab2b489f2ca"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:obterAssuntosPI/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/obterAssuntosPI"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="84056343-22c3-40bd-8f20-190988e5226c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="obterClienteAtualizacao TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="aed277e5-057a-44c2-86a5-a4cd1494f787" name="obterClienteAtualizacao"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>obterClienteAtualizacao</con:operation><con:request name="obterClienteAtualizacao" id="84494df5-0fc8-48a6-886c-cf14a7115462"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:obterClienteAtualizacao>\r
+         <!--Optional:-->\r
+         <cnpjCliente>?</cnpjCliente>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:obterClienteAtualizacao>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/obterClienteAtualizacao"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="89e8bc92-9713-4038-9167-29ebc0ed6a81" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="obterEmbalagemLRS TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="d55a0404-8a7f-4b19-b5cb-da9a9e0ee12c" name="obterEmbalagemLRS"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>obterEmbalagemLRS</con:operation><con:request name="obterEmbalagemLRS" id="d4f59b2f-f027-42bf-b883-9b6dd44440a4"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:obterEmbalagemLRS/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/obterEmbalagemLRS"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="4fc81308-d3c6-4603-97b4-770faa34d411" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="obterMensagemRetornoPI TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="a68ff91e-e716-48f8-ac13-90e6007af764" name="obterMensagemRetornoPI"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>obterMensagemRetornoPI</con:operation><con:request name="obterMensagemRetornoPI" id="baf0c9b8-3072-4a73-b2de-698cdf6f08c9"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:obterMensagemRetornoPI/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/obterMensagemRetornoPI"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="531008da-d9a1-4808-bccb-42008da887e4" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="obterMotivosPI TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="82141c54-2a0f-4068-8989-02b91d79b649" name="obterMotivosPI"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>obterMotivosPI</con:operation><con:request name="obterMotivosPI" id="753e15e1-e0f7-416a-a9cb-83e7bf3e85a4"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:obterMotivosPI/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/obterMotivosPI"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="3d06b499-4908-489d-a0b7-e4cdbe097e6a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="registrarPedidosInformacao TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="16210efc-6ae9-4d3f-a705-63b07818759d" name="registrarPedidosInformacao"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>registrarPedidosInformacao</con:operation><con:request name="registrarPedidosInformacao" id="ec26974a-d9d3-4dee-b980-c91a98a727ea"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:registrarPedidosInformacao>\r
+         <!--Zero or more repetitions:-->\r
+         <pedidosInformacao>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <usuario>?</usuario>\r
+            <!--Optional:-->\r
+            <cliente>\r
+               <!--Optional:-->\r
+               <numeroContrato>?</numeroContrato>\r
+               <!--Optional:-->\r
+               <possuiContrato>?</possuiContrato>\r
+            </cliente>\r
+            <!--Optional:-->\r
+            <codigoRegistro>?</codigoRegistro>\r
+            <!--Optional:-->\r
+            <conta>\r
+               <!--Optional:-->\r
+               <codigoBanco>?</codigoBanco>\r
+               <!--Optional:-->\r
+               <nomeBanco>?</nomeBanco>\r
+               <!--Optional:-->\r
+               <numeroAgencia>?</numeroAgencia>\r
+               <!--Optional:-->\r
+               <numeroConta>?</numeroConta>\r
+            </conta>\r
+            <!--Optional:-->\r
+            <conteudoObjeto>?</conteudoObjeto>\r
+            <!--Optional:-->\r
+            <cpfCnpj>?</cpfCnpj>\r
+            <!--Optional:-->\r
+            <destinatario>\r
+               <!--Optional:-->\r
+               <bairro>?</bairro>\r
+               <!--Optional:-->\r
+               <cep>?</cep>\r
+               <!--Optional:-->\r
+               <cidade>?</cidade>\r
+               <!--Optional:-->\r
+               <complemento>?</complemento>\r
+               <!--Optional:-->\r
+               <ddd>?</ddd>\r
+               <!--Optional:-->\r
+               <endereco>?</endereco>\r
+               <!--Optional:-->\r
+               <nome>?</nome>\r
+               <!--Optional:-->\r
+               <numero>?</numero>\r
+               <!--Optional:-->\r
+               <pais>?</pais>\r
+               <!--Optional:-->\r
+               <telefone>?</telefone>\r
+               <!--Optional:-->\r
+               <uf>?</uf>\r
+            </destinatario>\r
+            <!--Optional:-->\r
+            <embalagem>?</embalagem>\r
+            <!--Optional:-->\r
+            <motivo>?</motivo>\r
+            <!--Optional:-->\r
+            <observacao>?</observacao>\r
+            <!--Optional:-->\r
+            <postagem>\r
+               <!--Optional:-->\r
+               <agencia>?</agencia>\r
+               <!--Optional:-->\r
+               <avisoRecebimento>?</avisoRecebimento>\r
+               <!--Optional:-->\r
+               <data>?</data>\r
+               <!--Optional:-->\r
+               <local>?</local>\r
+               <!--Optional:-->\r
+               <valorDeclarado>?</valorDeclarado>\r
+            </postagem>\r
+            <!--Optional:-->\r
+            <remetente>\r
+               <!--Optional:-->\r
+               <bairro>?</bairro>\r
+               <!--Optional:-->\r
+               <cep>?</cep>\r
+               <!--Optional:-->\r
+               <cidade>?</cidade>\r
+               <!--Optional:-->\r
+               <complemento>?</complemento>\r
+               <!--Optional:-->\r
+               <ddd>?</ddd>\r
+               <!--Optional:-->\r
+               <endereco>?</endereco>\r
+               <!--Optional:-->\r
+               <nome>?</nome>\r
+               <!--Optional:-->\r
+               <numero>?</numero>\r
+               <!--Optional:-->\r
+               <pais>?</pais>\r
+               <!--Optional:-->\r
+               <telefone>?</telefone>\r
+               <!--Optional:-->\r
+               <uf>?</uf>\r
+               <!--Optional:-->\r
+               <email>?</email>\r
+               <!--Optional:-->\r
+               <empresa>?</empresa>\r
+               <!--Optional:-->\r
+               <fax>?</fax>\r
+            </remetente>\r
+            <!--Optional:-->\r
+            <servico>?</servico>\r
+            <!--Optional:-->\r
+            <tipoDocumento>?</tipoDocumento>\r
+         </pedidosInformacao>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:registrarPedidosInformacao>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/registrarPedidosInformacao"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="b2c2b34e-a0d9-417e-ad3f-7a5a1c88ff7d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="solicitaEtiquetas TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="1b15854a-1855-4103-8fb0-37133da7aa5c" name="solicitaEtiquetas"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>solicitaEtiquetas</con:operation><con:request name="solicitaEtiquetas" id="f9c590b5-c132-4918-afd7-43fcadb547d1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:solicitaEtiquetas>\r
+         <!--Optional:-->\r
+         <tipoDestinatario>?</tipoDestinatario>\r
+         <!--Optional:-->\r
+         <identificador>?</identificador>\r
+         <!--Optional:-->\r
+         <idServico>?</idServico>\r
+         <!--Optional:-->\r
+         <qtdEtiquetas>?</qtdEtiquetas>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:solicitaEtiquetas>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/solicitaEtiquetas"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="e85b565c-2bb0-4e38-bb3b-cc457d68e0f8" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="solicitaPLP TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="2756b50c-8ce0-4050-9c20-2892abbb26df" name="solicitaPLP"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>solicitaPLP</con:operation><con:request name="solicitaPLP" id="e26725fa-0a5c-4caa-958b-f4c01ea9d0f8"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:solicitaPLP>\r
+         <!--Optional:-->\r
+         <idPlpMaster>?</idPlpMaster>\r
+         <!--Optional:-->\r
+         <numEtiqueta>?</numEtiqueta>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:solicitaPLP>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/solicitaPLP"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ff2dacd2-476f-4738-b6f2-7927ff228617" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="solicitarPostagemScol TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="cd23fef9-6aa5-47a2-81e0-84990b5978f7" name="solicitarPostagemScol"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>solicitarPostagemScol</con:operation><con:request name="solicitarPostagemScol" id="a498492d-6f63-43fa-bb63-5f5e362b1e40"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:solicitarPostagemScol>\r
+         <!--Optional:-->\r
+         <codAdministrativo>?</codAdministrativo>\r
+         <!--Optional:-->\r
+         <xml>?</xml>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:solicitarPostagemScol>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/solicitarPostagemScol"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ebb4b25a-c71e-457a-8096-42247f6a5b39" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="solicitaXmlPlp TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="cd894b9f-80de-4bec-9c62-da920a44e5ca" name="solicitaXmlPlp"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>solicitaXmlPlp</con:operation><con:request name="solicitaXmlPlp" id="3264bf91-85c5-4340-8c35-b83bef32751b"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:solicitaXmlPlp>\r
+         <!--Optional:-->\r
+         <idPlpMaster>?</idPlpMaster>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:solicitaXmlPlp>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/solicitaXmlPlp"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="9bce9d98-f94e-43f7-92c7-51ae7df6eeb9" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="validaEtiquetaPLP TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="9570304e-7380-4c7c-9822-5cf3f96d520f" name="validaEtiquetaPLP"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>validaEtiquetaPLP</con:operation><con:request name="validaEtiquetaPLP" id="2284a4bb-d078-457d-bf03-198d18166faa"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:validaEtiquetaPLP>\r
+         <!--Optional:-->\r
+         <numeroEtiqueta>?</numeroEtiqueta>\r
+         <!--Optional:-->\r
+         <idPlp>?</idPlp>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:validaEtiquetaPLP>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/validaEtiquetaPLP"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="e2c75866-e4d0-49d5-8e52-040a33adde6a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="validaPlp TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="f646bc48-8f44-4c2c-b9a6-2299d5ad74a3" name="validaPlp"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>validaPlp</con:operation><con:request name="validaPlp" id="f8817d32-4736-48d2-9452-88e2fc932317"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:validaPlp>\r
+         <cliente>?</cliente>\r
+         <!--Optional:-->\r
+         <numero>?</numero>\r
+         <diretoria>?</diretoria>\r
+         <!--Optional:-->\r
+         <cartao>?</cartao>\r
+         <!--Optional:-->\r
+         <unidadePostagem>?</unidadePostagem>\r
+         <!--Optional:-->\r
+         <servico>?</servico>\r
+         <!--Zero or more repetitions:-->\r
+         <servicosAdicionais>?</servicosAdicionais>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:validaPlp>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/validaPlp"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="137f458b-0524-4275-879b-f96fce8f4683" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="validarPostagemReversa TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="efd2acfe-a835-4c12-8457-7a2cb2bb48f7" name="validarPostagemReversa"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>validarPostagemReversa</con:operation><con:request name="validarPostagemReversa" id="67a01ad3-1e4a-4385-b53a-5f9abf515b4e"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:validarPostagemReversa>\r
+         <!--Optional:-->\r
+         <codAdministrativo>?</codAdministrativo>\r
+         <!--Optional:-->\r
+         <codigoServico>?</codigoServico>\r
+         <!--Optional:-->\r
+         <cepDestinatario>?</cepDestinatario>\r
+         <!--Optional:-->\r
+         <coleta>\r
+            <!--Optional:-->\r
+            <cklist>?</cklist>\r
+            <!--Optional:-->\r
+            <descricao>?</descricao>\r
+            <!--Optional:-->\r
+            <id_cliente>?</id_cliente>\r
+            <!--Zero or more repetitions:-->\r
+            <produto>\r
+               <!--Optional:-->\r
+               <codigo>?</codigo>\r
+               <!--Optional:-->\r
+               <qtd>?</qtd>\r
+               <!--Optional:-->\r
+               <tipo>?</tipo>\r
+            </produto>\r
+            <!--Optional:-->\r
+            <remetente>\r
+               <!--Optional:-->\r
+               <bairro>?</bairro>\r
+               <!--Optional:-->\r
+               <cep>?</cep>\r
+               <!--Optional:-->\r
+               <cidade>?</cidade>\r
+               <!--Optional:-->\r
+               <complemento>?</complemento>\r
+               <!--Optional:-->\r
+               <ddd>?</ddd>\r
+               <!--Optional:-->\r
+               <email>?</email>\r
+               <!--Optional:-->\r
+               <logradouro>?</logradouro>\r
+               <!--Optional:-->\r
+               <nome>?</nome>\r
+               <!--Optional:-->\r
+               <numero>?</numero>\r
+               <!--Optional:-->\r
+               <referencia>?</referencia>\r
+               <!--Optional:-->\r
+               <telefone>?</telefone>\r
+               <!--Optional:-->\r
+               <uf>?</uf>\r
+               <!--Optional:-->\r
+               <identificacao>?</identificacao>\r
+            </remetente>\r
+            <!--Optional:-->\r
+            <tipo>?</tipo>\r
+            <!--Optional:-->\r
+            <valor_declarado>?</valor_declarado>\r
+            <!--Optional:-->\r
+            <ag>?</ag>\r
+            <!--Optional:-->\r
+            <ar>?</ar>\r
+            <!--Optional:-->\r
+            <cartao>?</cartao>\r
+            <!--Optional:-->\r
+            <numero>?</numero>\r
+            <!--Zero or more repetitions:-->\r
+            <obj_col>\r
+               <!--Optional:-->\r
+               <desc>?</desc>\r
+               <!--Optional:-->\r
+               <entrega>?</entrega>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <item>?</item>\r
+               <!--Optional:-->\r
+               <num>?</num>\r
+            </obj_col>\r
+            <!--Optional:-->\r
+            <servico_adicional>?</servico_adicional>\r
+         </coleta>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:validarPostagemReversa>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/validarPostagemReversa"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="437ed34b-a4a6-4020-adcb-bcb3ea9bf91d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="validarPostagemSimultanea TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="b9fa1681-f2cc-4f8b-8c3b-484fe2b77b94" name="validarPostagemSimultanea"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>validarPostagemSimultanea</con:operation><con:request name="validarPostagemSimultanea" id="a90d420c-7d77-48ee-bcff-43a36545b19c"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:validarPostagemSimultanea>\r
+         <!--Optional:-->\r
+         <codAdministrativo>?</codAdministrativo>\r
+         <!--Optional:-->\r
+         <codigoServico>?</codigoServico>\r
+         <!--Optional:-->\r
+         <cepDestinatario>?</cepDestinatario>\r
+         <!--Optional:-->\r
+         <coleta>\r
+            <!--Optional:-->\r
+            <cklist>?</cklist>\r
+            <!--Optional:-->\r
+            <descricao>?</descricao>\r
+            <!--Optional:-->\r
+            <id_cliente>?</id_cliente>\r
+            <!--Zero or more repetitions:-->\r
+            <produto>\r
+               <!--Optional:-->\r
+               <codigo>?</codigo>\r
+               <!--Optional:-->\r
+               <qtd>?</qtd>\r
+               <!--Optional:-->\r
+               <tipo>?</tipo>\r
+            </produto>\r
+            <!--Optional:-->\r
+            <remetente>\r
+               <!--Optional:-->\r
+               <bairro>?</bairro>\r
+               <!--Optional:-->\r
+               <cep>?</cep>\r
+               <!--Optional:-->\r
+               <cidade>?</cidade>\r
+               <!--Optional:-->\r
+               <complemento>?</complemento>\r
+               <!--Optional:-->\r
+               <ddd>?</ddd>\r
+               <!--Optional:-->\r
+               <email>?</email>\r
+               <!--Optional:-->\r
+               <logradouro>?</logradouro>\r
+               <!--Optional:-->\r
+               <nome>?</nome>\r
+               <!--Optional:-->\r
+               <numero>?</numero>\r
+               <!--Optional:-->\r
+               <referencia>?</referencia>\r
+               <!--Optional:-->\r
+               <telefone>?</telefone>\r
+               <!--Optional:-->\r
+               <uf>?</uf>\r
+               <!--Optional:-->\r
+               <identificacao>?</identificacao>\r
+            </remetente>\r
+            <!--Optional:-->\r
+            <tipo>?</tipo>\r
+            <!--Optional:-->\r
+            <valor_declarado>?</valor_declarado>\r
+            <!--Optional:-->\r
+            <obj>?</obj>\r
+            <!--Optional:-->\r
+            <obs>?</obs>\r
+         </coleta>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:validarPostagemSimultanea>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/validarPostagemSimultanea"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="c72df36e-a75e-48e8-a0b5-4f533c714a94" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="verificaDisponibilidadeServico TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="8afeadf1-bb12-41d0-b2d7-89e80c244ecd" name="verificaDisponibilidadeServico"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AtendeClienteServiceSoapBinding</con:interface><con:operation>verificaDisponibilidadeServico</con:operation><con:request name="verificaDisponibilidadeServico" id="5dfa49e4-b80f-4789-b877-63904c8e453c"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:verificaDisponibilidadeServico>\r
+         <!--Optional:-->\r
+         <codAdministrativo>?</codAdministrativo>\r
+         <!--Optional:-->\r
+         <numeroServico>?</numeroServico>\r
+         <!--Optional:-->\r
+         <cepOrigem>?</cepOrigem>\r
+         <!--Optional:-->\r
+         <cepDestino>?</cepDestino>\r
+         <!--Optional:-->\r
+         <usuario>?</usuario>\r
+         <!--Optional:-->\r
+         <senha>?</senha>\r
+      </cli:verificaDisponibilidadeServico>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://cliente.bean.master.sigep.bsb.correios.com.br/AtendeCliente/verificaDisponibilidadeServico"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
