@@ -1,4 +1,4 @@
-package br.com.emanuelvictor.domain.entities.mortgage;
+package br.com.emanuelvictor.domain.model.mortgage;
 
 import br.com.emanuelvictor.domain.exceptions.BusinessLogicException;
 import org.assertj.core.api.Assertions;

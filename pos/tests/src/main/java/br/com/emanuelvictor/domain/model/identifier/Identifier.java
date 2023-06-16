@@ -1,4 +1,4 @@
-package br.com.emanuelvictor.domain.entities.identifier;
+package br.com.emanuelvictor.domain.model.identifier;
 
 import br.com.emanuelvictor.domain.exceptions.BusinessLogicException;
 

@@ -1,4 +1,4 @@
-package br.com.emanuelvictor.domain.entities.identifier;
+package br.com.emanuelvictor.domain.model.identifier;
 
 import br.com.emanuelvictor.domain.exceptions.BusinessLogicException;
 import org.assertj.core.api.Assertions;
@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static br.com.emanuelvictor.domain.entities.identifier.Identifier.*;
+import static br.com.emanuelvictor.domain.model.identifier.Identifier.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class IdentifierTests {
