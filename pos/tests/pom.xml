@@ -13,6 +13,8 @@
         <assertj>3.17.0</assertj>
         <junit.platform.version>1.7.0</junit.platform.version>
 
+        <lombok.version>1.18.28</lombok.version>
+
     </properties>
     <dependencies>
         <dependency>
@@ -26,6 +28,12 @@
             <artifactId>assertj-core</artifactId>
             <version>${assertj}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.28</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>

@@ -1,44 +1,39 @@
 package br.com.emanuelvictor.domain.model.employee;
 
+import lombok.Getter;
+
 import java.math.BigDecimal;
 
-public enum Function {
-    DEVELOPER(BigDecimal.valueOf(3000)),
-    DBA(BigDecimal.valueOf(2000)),
-    TESTER(BigDecimal.valueOf(2000)),
-    MANAGER(BigDecimal.valueOf(5000));
+@Getter
+public class Function {
 
-    private BigDecimal averageSalary;
+    private final String name;
+    private final BigDecimal averageSalary;
+    private final BigDecimal percentageOfDiscountFromSalaryLessThanAverageSalary;
+    private final BigDecimal percentageOfDiscountFromSalaryGreaterThanAverageSalary;
 
-    Function(BigDecimal averageSalary) {
+    public Function(final String name,
+                    final BigDecimal averageSalary,
+                    final BigDecimal percentageOfDiscountFromSalaryLessThanAverageSalary,
+                    final BigDecimal percentageOfDiscountFromSalaryGreaterThanAverageSalary) {
+        this.name = name;
         this.averageSalary = averageSalary;
-    }
-
-    BigDecimal getAverageSalary() {
-        return this.averageSalary;
+        this.percentageOfDiscountFromSalaryLessThanAverageSalary = percentageOfDiscountFromSalaryLessThanAverageSalary;
+        this.percentageOfDiscountFromSalaryGreaterThanAverageSalary = percentageOfDiscountFromSalaryGreaterThanAverageSalary;
     }
 
     BigDecimal calculateSalary(final BigDecimal salary) {
-        if (this.equals(DEVELOPER)) {
-            if (salary.compareTo(averageSalary) >= 1)
-                return salary.multiply(BigDecimal.valueOf(0.20));
-            else
-                return salary.multiply(BigDecimal.valueOf(0.10));
-        } else if (this.equals(DBA)) {
-            if (salary.compareTo(averageSalary) >= 1)
-                return salary.multiply(BigDecimal.valueOf(0.25));
-            else
-                return salary.multiply(BigDecimal.valueOf(0.15));
-        } else if (this.equals(TESTER)) {
-            if (salary.compareTo(averageSalary) >= 1)
-                return salary.multiply(BigDecimal.valueOf(0.25));
-            else
-                return salary.multiply(BigDecimal.valueOf(0.15));
-        } else {
-            if (salary.compareTo(averageSalary) >= 1)
-                return salary.multiply(BigDecimal.valueOf(0.30));
-            else
-                return salary.multiply(BigDecimal.valueOf(0.20));
-        }
+        final BigDecimal percentageOfDiscount = getPercentageOfDiscount(salary);
+        return salary.subtract(salary.multiply(percentageOfDiscount));
+    }
+
+    BigDecimal getPercentageOfDiscount(final BigDecimal salary) {
+        if (salaryIsGreaterOrEqualsToAverageSalary(salary))
+            return percentageOfDiscountFromSalaryGreaterThanAverageSalary;
+        return percentageOfDiscountFromSalaryLessThanAverageSalary;
+    }
+
+    boolean salaryIsGreaterOrEqualsToAverageSalary(final BigDecimal salary) {
+        return (salary.compareTo(averageSalary) >= 0);
     }
 }
