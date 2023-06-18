@@ -1,6 +1,6 @@
 package br.com.emanuelvictor.domain.model.identifier;
 
-import br.com.emanuelvictor.domain.exceptions.BusinessLogicException;
+import br.com.emanuelvictor.domain.model.employee.exceptions.BusinessLogicException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

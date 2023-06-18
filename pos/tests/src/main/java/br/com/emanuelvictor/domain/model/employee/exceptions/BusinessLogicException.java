@@ -1,4 +1,4 @@
-package br.com.emanuelvictor.domain.exceptions;
+package br.com.emanuelvictor.domain.model.employee.exceptions;
 
 import java.util.ArrayList;
 import java.util.Arrays;

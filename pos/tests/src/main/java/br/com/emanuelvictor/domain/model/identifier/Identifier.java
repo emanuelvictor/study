@@ -1,6 +1,6 @@
 package br.com.emanuelvictor.domain.model.identifier;
 
-import br.com.emanuelvictor.domain.exceptions.BusinessLogicException;
+import br.com.emanuelvictor.domain.model.employee.exceptions.BusinessLogicException;
 
 public class Identifier {
     static int MIN_LENGTH = 1;
