@@ -27,7 +27,7 @@ public class CriteriaActivity extends AppCompatActivity {
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.appBarMain.toolbar);
+//        setSupportActionBar(binding.activityContainer.findViewById(R.id.toolbar));
 
 //        mAppBarConfiguration =
 //                new AppBarConfiguration

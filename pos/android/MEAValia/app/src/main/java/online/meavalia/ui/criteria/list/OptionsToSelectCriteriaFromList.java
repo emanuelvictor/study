@@ -9,8 +9,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 
-import java.util.Objects;
-
 import online.meavalia.R;
 import online.meavalia.domain.model.Criteria;
 import online.meavalia.ui.assessment.AssessmentExecutionActivity;
@@ -29,7 +27,6 @@ public class OptionsToSelectCriteriaFromList implements ActionMode.Callback {
     @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
         this.mode = mode;
-//        Objects.requireNonNull(appCompatActivity.getSupportActionBar()).hide();
         MenuInflater inflate = mode.getMenuInflater();
         inflate.inflate(R.menu.criteria_selected, menu);
         return true;
@@ -60,8 +57,6 @@ public class OptionsToSelectCriteriaFromList implements ActionMode.Callback {
 
     @Override
     public void onDestroyActionMode(ActionMode mode) {
-//        Objects.requireNonNull(appCompatActivity.getSupportActionBar()).show(); // TODO a animação fica esquisita
-        mode.finish();
     }
 
     void finish() {

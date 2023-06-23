@@ -9,7 +9,7 @@
     tools:context=".ui.criteria.list.ListCriteriaFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_transform"
+        android:id="@+id/item_criteria"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="GridLayoutManager"

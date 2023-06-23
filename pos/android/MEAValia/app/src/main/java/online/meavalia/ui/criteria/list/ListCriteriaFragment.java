@@ -1,6 +1,5 @@
 package online.meavalia.ui.criteria.list;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,10 +20,9 @@ import java.util.List;
 import java.util.Objects;
 
 import online.meavalia.R;
-import online.meavalia.databinding.ItemTransformBinding;
+import online.meavalia.databinding.ItemCriteriaBinding;
 import online.meavalia.databinding.ListCriteriaFragmentBinding;
 import online.meavalia.domain.model.Criteria;
-import online.meavalia.ui.assessment.AssessmentExecutionActivity;
 import online.meavalia.ui.generic.AbstractCustomFragmentImpl;
 
 public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
@@ -54,7 +52,7 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
 
     private void configureListView() {
         final ListAdapter<Criteria, TransformViewHolder> adapter = new TransformAdapter();
-        final RecyclerView recyclerView = binding.recyclerviewTransform;
+        final RecyclerView recyclerView = binding.itemCriteria;
         recyclerView.setAdapter(adapter);
 
         final ListCriteriaViewModel listCriteriaViewModel =
@@ -135,7 +133,7 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
         @NonNull
         @Override
         public TransformViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
-            final ItemTransformBinding binding = ItemTransformBinding.inflate(LayoutInflater.from(parent.getContext()));
+            final ItemCriteriaBinding binding = ItemCriteriaBinding.inflate(LayoutInflater.from(parent.getContext()));
             return new TransformViewHolder(binding);
         }
 
@@ -162,7 +160,7 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
         private final TextView sentenceTextView;
         private final TextView averageTextView;
 
-        public TransformViewHolder(final ItemTransformBinding binding) {
+        public TransformViewHolder(final ItemCriteriaBinding binding) {
             super(binding.getRoot());
             imageView = binding.imageViewItemTransform;
             criteriaNameTextView = binding.criteriaNameTextView;

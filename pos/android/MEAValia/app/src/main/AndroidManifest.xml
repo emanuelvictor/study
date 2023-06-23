@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <application
         android:allowBackup="true"
@@ -16,8 +17,7 @@
         <activity
             android:name=".ui.criteria.CriteriaActivity"
             android:exported="true"
-            android:resizeableActivity="true"
-            android:theme="@style/Theme.MEAValia.NoActionBar">
+            android:resizeableActivity="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
