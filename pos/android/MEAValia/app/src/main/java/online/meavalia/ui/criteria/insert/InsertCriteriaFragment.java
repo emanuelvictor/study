@@ -47,7 +47,7 @@ public class InsertCriteriaFragment extends AbstractCustomFragmentImpl implement
     }
 
     private void configureTitle() {
-        Objects.requireNonNull(getMainActivity().getSupportActionBar()).setTitle("Insert criteria");
+        Objects.requireNonNull(getMainActivity().getSupportActionBar()).setTitle(R.string.insert_criteria);
     }
 
     private void configureBackButton() {

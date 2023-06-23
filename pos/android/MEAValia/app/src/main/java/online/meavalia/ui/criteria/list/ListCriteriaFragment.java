@@ -63,7 +63,7 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
     }
 
     private void configureTitle() {
-        Objects.requireNonNull(getMainActivity().getSupportActionBar()).setTitle("List of Criteria");
+        Objects.requireNonNull(getMainActivity().getSupportActionBar()).setTitle(R.string.list_of_criteria);
     }
 
     private void configureBackButton() {

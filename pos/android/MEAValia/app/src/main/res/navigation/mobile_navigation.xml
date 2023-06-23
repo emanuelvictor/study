@@ -8,13 +8,11 @@
     <fragment
         android:id="@+id/nav_transform"
         android:name="online.meavalia.ui.criteria.list.ListCriteriaFragment"
-        android:label="@string/menu_transform"
         tools:layout="@layout/list_criteria_fragment" />
 
     <fragment
         android:id="@+id/nav_insert_criteria"
         android:name="online.meavalia.ui.criteria.insert.InsertCriteriaFragment"
-        android:label="@string/menu_settings"
         tools:layout="@layout/insert_criteria" />
 
     <fragment

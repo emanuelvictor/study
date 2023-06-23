@@ -8,13 +8,11 @@
     <fragment
         android:id="@+id/nav_to_select_notes"
         android:name="online.meavalia.ui.assessment.execution.SelectNotesFragment"
-        android:label="@string/nav_transform_of_execution_activity"
         tools:layout="@layout/select_notes" />
 
     <fragment
         android:id="@+id/nav_to_thanks"
         android:name="online.meavalia.ui.assessment.execution.ThanksFragment"
-        android:label="@string/nav_transform_of_execution_activity"
         tools:layout="@layout/thanks" />
 
 </navigation>

@@ -27,6 +27,7 @@ public class AboutFragment extends AbstractCustomFragmentImpl {
 
         binding = AboutBinding.inflate(inflater, container, false);
 
+        configureTitle();
         configureBackButton();
         configureLabels();
         configureLogo();
@@ -34,19 +35,23 @@ public class AboutFragment extends AbstractCustomFragmentImpl {
         return binding.getRoot();
     }
 
-    private void configureLabels(){
-        binding.studentNameLabel.setText("Student name: ");
-        binding.studentEmailLabel.setText("Student e-mail: ");
-        binding.appDescriptionLabel.setText("APP description: ");
-        binding.institutionNameLabel.setText("Institution name: ");
-
-        binding.studentNameValue.setText("Emanuel Victor de Oliveira Fonseca");
-        binding.studentEmailValue.setText("emanuel.info@gmail.com");
-        binding.appDescriptionValue.setText("This application create assessments and allow it to be executed by users.");
-        binding.institutionNameValue.setText("Universidade Tecnológica Federal do Paraná");
+    private void configureTitle() {
+        Objects.requireNonNull(getMainActivity().getSupportActionBar()).setTitle(R.string.about);
     }
 
-    private void configureLogo(){
+    private void configureLabels() {
+        binding.studentNameLabel.setText(R.string.student_name_label);
+        binding.studentEmailLabel.setText(R.string.student_email_label);
+        binding.appDescriptionLabel.setText(R.string.app_description_label);
+        binding.institutionNameLabel.setText(R.string.instution_name_label);
+
+        binding.studentNameValue.setText(R.string.student_name_value);
+        binding.studentEmailValue.setText(R.string.student_email_value);
+        binding.appDescriptionValue.setText(R.string.app_description_value);
+        binding.institutionNameValue.setText(R.string.instution_name_value);
+    }
+
+    private void configureLogo() {
         configureLogo(binding.institutionLogoValue, R.drawable.utfpr_logo);
     }
 
