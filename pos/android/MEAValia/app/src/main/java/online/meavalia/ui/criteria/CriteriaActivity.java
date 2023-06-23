@@ -14,6 +14,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 
 import online.meavalia.R;
 import online.meavalia.databinding.ActivityMainBinding;
+import online.meavalia.ui.criteria.list.OptionsToSelectCriteriaFromList;
 
 public class CriteriaActivity extends AppCompatActivity {
 
@@ -53,11 +54,6 @@ public class CriteriaActivity extends AppCompatActivity {
             final NavController navController = Navigation
                     .findNavController(this, R.id.nav_host_fragment_content_main);
             navController.navigate(R.id.nav_about);
-            return true;
-        } else if (itemId == R.id.nav_insert_criteria) {
-            final NavController navController = Navigation
-                    .findNavController(this, R.id.nav_host_fragment_content_main);
-            navController.navigate(R.id.nav_insert_criteria);
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -29,6 +29,8 @@ import online.meavalia.ui.generic.AbstractCustomFragmentImpl;
 
 public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
 
+    private OptionsToSelectCriteriaFromList optionsToSelectCriteriaFromList;
+
     private ListCriteriaFragmentBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -71,7 +73,13 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
     }
 
     private void configureFabButton() {
-        binding.fab.setOnClickListener(view -> getNavController().navigate(R.id.nav_insert_criteria));
+        binding.fab.setOnClickListener(view -> {
+            getNavController().navigate(R.id.nav_insert_criteria);
+            if (Objects.nonNull(this.optionsToSelectCriteriaFromList)) {
+                this.optionsToSelectCriteriaFromList.finish();
+                this.optionsToSelectCriteriaFromList = null;
+            }
+        });
     }
 
     @Override
@@ -81,12 +89,6 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
 
     private AppCompatActivity getMainActivity() {
         return ((AppCompatActivity) getActivity());
-    }
-
-    private void startAssessmentActivity(final Criteria criteria) {
-        final Intent intent = new Intent(getMainActivity(), AssessmentExecutionActivity.class);
-        intent.putExtra("criteria", criteria);
-        this.getMainActivity().startActivity(intent);
     }
 
     @Override
@@ -142,7 +144,7 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
             holder.criteriaNameTextView.setText(getItem(position).getName());
             holder.sentenceTextView.setText(getItem(position).getSentence());
             holder.averageTextView.setText(String.valueOf(getItem(position).getAvg()));
-            if(getItem(position).getAvg() == null)
+            if (getItem(position).getAvg() == null)
                 holder.averageTextView.setVisibility(View.GONE);
             holder.setCriteria(getItem(position));
             holder.imageView.setImageDrawable(
@@ -168,7 +170,23 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
             averageTextView = binding.averageTextView;
             binding.imageViewItemTransform.getRootView().setClickable(true);
             binding.imageViewItemTransform.getRootView().setOnClickListener(v -> {
-                startAssessmentActivity(criteria);
+                /*if (actionMode != null){
+                    return false;
+                }
+
+                posicaoSelecionada = position;
+
+                view.setBackgroundColor(Color.LTGRAY);
+
+                viewSelecionada = view;
+
+                listViewPessoas.setEnabled(false);
+
+                actionMode = */
+                optionsToSelectCriteriaFromList = new OptionsToSelectCriteriaFromList(criteria, getMainActivity());
+                getMainActivity().startSupportActionMode(optionsToSelectCriteriaFromList);
+
+//                startAssessmentActivity(criteria);
             });
         }
 
