@@ -38,4 +38,19 @@
     <string name="excellent">Excellent</string>
 
     <string name="fab_content_description">Add Critery</string>
+    <string name="check_box_person_label">The criteria is a person?</string>
+    <string name="physic_person">Physic Person</string>
+    <string name="legal_person">Legal Person</string>
+
+    <string name="HIGH_PRIORITY_NAME">HIGH_PRIORITY</string>
+    <string name="MEDIUM_PRIORITY_NAME">MEDIUM_PRIORITY</string>
+    <string name="LOW_PRIORITY_NAME">LOW_PRIORITY</string>
+    <string name="HIGH_PRIORITY_DESCRIPTION">HIGH PRIORITY</string>
+    <string name="MEDIUM_PRIORITY_DESCRIPTION">MEDIUM PRIORITY</string>
+    <string name="LOW_PRIORITY_DESCRIPTION">LOW PRIORITY</string>
+
+    <string name="invalid_fields">Invalid fields!</string>
+    <string name="criteria_inserted">Criteria Inserted!</string>
+    <string name="criteria_updated">Criteria Updated!</string>
+    <string name="criteria_removed">Criteria Removed!</string>
 </resources>

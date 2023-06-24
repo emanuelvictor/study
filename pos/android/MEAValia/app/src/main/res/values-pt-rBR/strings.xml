@@ -38,4 +38,20 @@
     <string name="excellent">Excelente</string>
 
     <string name="fab_content_description">Adicionar Critério</string>
+    <string name="check_box_person_label">O critério é uma Pessoa?</string>
+    <string name="physic_person">Pessoa Física</string>
+    <string name="legal_person">Pessoa Jurídica</string>
+
+    <string name="HIGH_PRIORITY_NAME">PRIORIDADE_ALTA</string>
+    <string name="MEDIUM_PRIORITY_NAME">PRIORIDADE_MEDIA</string>
+    <string name="LOW_PRIORITY_NAME">PRIORIDADE_BAIXA</string>
+    <string name="HIGH_PRIORITY_DESCRIPTION">PRIORIDADE ALTA</string>
+    <string name="MEDIUM_PRIORITY_DESCRIPTION">PRIORIDADE MÉDIA</string>
+    <string name="LOW_PRIORITY_DESCRIPTION">PRIORIDADE BAIXA</string>
+
+    <string name="invalid_fields">Campos inválidos!</string>
+    <string name="criteria_inserted">Critério Inserido!</string>
+    <string name="criteria_updated">Critério Atualizado!</string>
+    <string name="criteria_removed">Critério Removido!</string>
+
 </resources>

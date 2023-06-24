@@ -11,8 +11,28 @@
         android:orientation="vertical"
         android:scrollbarAlwaysDrawVerticalTrack="true">
 
+        <CheckBox android:id="@+id/checkbox_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/check_box_person_label" />
+
+        <RadioGroup
+            android:id="@+id/radio_group_type_of_person"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RadioButton android:id="@+id/radio_button_physic_person"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/physic_person"/>
+            <RadioButton android:id="@+id/radio_button_legal_person"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/legal_person"/>
+        </RadioGroup>
+
         <Spinner
-            android:id="@+id/criteria_type"
+            android:id="@+id/priority_criteria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp" />

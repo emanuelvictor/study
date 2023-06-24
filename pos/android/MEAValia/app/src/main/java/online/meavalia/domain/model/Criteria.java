@@ -6,30 +6,31 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 public class Criteria implements Serializable {
 
-    private final String name;
-    private final String sentence;
-    private final CriteriaType type;
+    private String name;
+    private String sentence;
+    private Priority priority;
+    private Boolean legalPerson;
     private String document;
     private String email;
     private BigDecimal avg;
-    private final List<Assessment> assessments = new ArrayList<>();
+    private final List<Assessment> assessments = new ArrayList<>(); // TODO
 
-    public Criteria(String name, String sentence) {
+    public Criteria(String name, String sentence, final int valueOfPriority) {
         this.name = name;
         this.sentence = sentence;
-        this.type = CriteriaType.NORMAL_CRITERIA;
+        this.priority = Priority.enumFromValue(valueOfPriority);
     }
 
-    public Criteria(String name, String sentence, String document, String email, CriteriaType type) {
+    public Criteria(String name, String sentence, String document, String email, int valueOfPriority, Boolean legalPerson) {
         this.name = name;
         this.sentence = sentence;
         this.document = document;
         this.email = email;
-        this.type = type;
+        this.priority = Priority.enumFromValue(valueOfPriority);
+        this.legalPerson = legalPerson;
     }
 
     public String getName() {
@@ -38,18 +39,6 @@ public class Criteria implements Serializable {
 
     public String getSentence() {
         return sentence;
-    }
-
-    public String getDocument() {
-        return document;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public CriteriaType getType() {
-        return type;
     }
 
     public void calculateAvg() {
@@ -83,7 +72,7 @@ public class Criteria implements Serializable {
         if (!Objects.equals(name, criteria.name)) return false;
         if (!Objects.equals(sentence, criteria.sentence))
             return false;
-        if (type != criteria.type) return false;
+        if (priority != criteria.priority) return false;
         if (!Objects.equals(document, criteria.document))
             return false;
         return Objects.equals(email, criteria.email);
@@ -93,7 +82,7 @@ public class Criteria implements Serializable {
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (sentence != null ? sentence.hashCode() : 0);
-        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (priority != null ? priority.hashCode() : 0);
         result = 31 * result + (document != null ? document.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
