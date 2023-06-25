@@ -132,6 +132,8 @@ public class Criteria implements Serializable {
     }
 
     public BigDecimal getAvg() {
+        if(avg == null)
+            return null;
         final MathContext round = new MathContext(3);
         return avg.round(round);
     }

@@ -15,8 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
-import java.util.Objects;
-
 import online.meavalia.R;
 import online.meavalia.databinding.SelectNotesBinding;
 import online.meavalia.domain.model.Criteria;

@@ -1,6 +1,5 @@
 package online.meavalia.ui.criteria.edit;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -21,7 +19,7 @@ import java.util.List;
 import java.util.Objects;
 
 import online.meavalia.R;
-import online.meavalia.databinding.InsertCriteriaBinding;
+import online.meavalia.databinding.EditCriteriaBinding;
 import online.meavalia.domain.model.Criteria;
 import online.meavalia.domain.model.Priority;
 import online.meavalia.domain.repository.CriteriaRepository;
@@ -33,18 +31,20 @@ public class EditCriteriaFragment extends AbstractCustomFragmentImpl implements 
 
     private Criteria criteria;
     private Priority priority;
-    private InsertCriteriaBinding binding;
+    private EditCriteriaBinding binding;
     private CriteriaRepository criteriaRepository;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         criteriaRepository = new CriteriaRepositoryImpl(getContext());
-        binding = InsertCriteriaBinding.inflate(inflater, container, false);
+        binding = EditCriteriaBinding.inflate(inflater, container, false);
 
         assert getArguments() != null;
         criteria = (Criteria) getArguments().get("criteria");
 
+        initialConfigurationsFromFields();
+        configureEditTexts();
         configureTitle();
         configureCheckBox();
         configureRadioButton();
@@ -56,11 +56,55 @@ public class EditCriteriaFragment extends AbstractCustomFragmentImpl implements 
         return binding.getRoot();
     }
 
+    private void initialConfigurationsFromFields() {
+        binding.emailTextInputLayout.setVisibility(View.GONE);
+        binding.radioGroupTypeOfPerson.setVisibility(View.GONE);
+        binding.cpfTextInputLayout.setVisibility(View.GONE);
+        binding.cnpjTextInputLayout.setVisibility(View.GONE);
+    }
+
+    private void configureEditTexts() {
+        if (criteria.getLegalPerson() != null) {
+            binding.emailTextInputLayout.setVisibility(View.VISIBLE);
+            if (criteria.getLegalPerson()) {
+                binding.radioButtonLegalPerson.setChecked(true);
+                binding.cpfTextInputLayout.setVisibility(View.GONE);
+                binding.cnpjTextInputLayout.setVisibility(View.VISIBLE);
+            } else {
+                binding.radioButtonPhysicPerson.setChecked(true);
+                binding.cpfTextInputLayout.setVisibility(View.VISIBLE);
+                binding.cnpjTextInputLayout.setVisibility(View.GONE);
+            }
+        }
+        Objects.requireNonNull(binding.cpfTextInputLayout.getEditText())
+                .setText(criteria.getDocument());
+        Objects.requireNonNull(binding.cnpjTextInputLayout.getEditText())
+                .setText(criteria.getDocument());
+        Objects.requireNonNull(binding.nameTextInputLayout.getEditText())
+                .setText(criteria.getName());
+        Objects.requireNonNull(binding.sentenceTextInputLayout.getEditText())
+                .setText(criteria.getSentence());
+        Objects.requireNonNull(binding.emailTextInputLayout.getEditText())
+                .setText(criteria.getEmail());
+    }
+
     private void configureCheckBox() {
+        binding.checkboxPerson.setChecked(criteria.getLegalPerson() != null);
         binding.checkboxPerson.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 binding.emailTextInputLayout.setVisibility(View.VISIBLE);
                 binding.radioGroupTypeOfPerson.setVisibility(View.VISIBLE);
+
+                if (criteria.getLegalPerson() != null && criteria.getLegalPerson()) {
+                    binding.radioButtonLegalPerson.setChecked(true);
+                    binding.cpfTextInputLayout.setVisibility(View.GONE);
+                    binding.cnpjTextInputLayout.setVisibility(View.VISIBLE);
+                } else {
+                    binding.radioButtonPhysicPerson.setChecked(true);
+                    binding.cpfTextInputLayout.setVisibility(View.VISIBLE);
+                    binding.cnpjTextInputLayout.setVisibility(View.GONE);
+                }
+
             } else {
                 binding.emailTextInputLayout.setVisibility(View.GONE);
                 binding.radioGroupTypeOfPerson.setVisibility(View.GONE);
@@ -71,12 +115,17 @@ public class EditCriteriaFragment extends AbstractCustomFragmentImpl implements 
     }
 
     private void configureRadioButton() {
-        binding.radioGroupTypeOfPerson.setVisibility(View.GONE);
+        if (criteria.getLegalPerson() != null)
+            binding.radioGroupTypeOfPerson.setVisibility(View.VISIBLE);
+        else
+            binding.radioGroupTypeOfPerson.setVisibility(View.GONE);
         binding.radioButtonLegalPerson.setOnClickListener(view -> {
+            criteria.setLegalPerson(true);
             binding.cpfTextInputLayout.setVisibility(View.GONE);
             binding.cnpjTextInputLayout.setVisibility(View.VISIBLE);
         });
         binding.radioButtonPhysicPerson.setOnClickListener(view -> {
+            criteria.setLegalPerson(false);
             binding.cpfTextInputLayout.setVisibility(View.VISIBLE);
             binding.cnpjTextInputLayout.setVisibility(View.GONE);
         });
@@ -91,9 +140,9 @@ public class EditCriteriaFragment extends AbstractCustomFragmentImpl implements 
     }
 
     private void configureSaveButton() {
-        final Button saveButton = binding.saveButton;
+        final Button saveButton = binding.editButton;
         saveButton.setClickable(true);
-        saveButton.setOnClickListener((v) -> saveCriteria());
+        saveButton.setOnClickListener((v) -> updateCriteria());
     }
 
     private void configureClearButton() {
@@ -102,11 +151,6 @@ public class EditCriteriaFragment extends AbstractCustomFragmentImpl implements 
     }
 
     private void configureSpinner() {
-        binding.emailTextInputLayout.setVisibility(View.GONE);
-        binding.radioGroupTypeOfPerson.setVisibility(View.GONE);
-        binding.cpfTextInputLayout.setVisibility(View.GONE);
-        binding.cnpjTextInputLayout.setVisibility(View.GONE);
-
         final Spinner spinner = binding.priorityCriteria;
 
         final List<String> categories = Arrays.asList(
@@ -119,11 +163,11 @@ public class EditCriteriaFragment extends AbstractCustomFragmentImpl implements 
 
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
-        spinner.setSelection(0);
+        spinner.setSelection(criteria.getPriority());
         spinner.setOnItemSelectedListener(this);
     }
 
-    private void saveCriteria() {
+    private void updateCriteria() {
         if (hasInvalidField()) {
             Toast.makeText(getMainActivity(), getString(R.string.invalid_fields), Toast.LENGTH_SHORT).show();
             return;
@@ -143,9 +187,15 @@ public class EditCriteriaFragment extends AbstractCustomFragmentImpl implements 
                 criteria = new Criteria(criteriaName, criteriaSentence, criteriaCnpj, criteriaEmail, priority.getValue(), true);
             }
         }
-        criteriaRepository.save(criteria);
+        updateCriteria(criteria);
         navigateToList();
         Toast.makeText(getMainActivity(), getString(R.string.criteria_inserted), Toast.LENGTH_SHORT).show();
+    }
+
+    void updateCriteria(final Criteria criteria) {
+        criteria.setId(this.criteria.getId());
+        criteria.setAvg(this.criteria.getAvg());
+        criteriaRepository.update(criteria);
     }
 
     private boolean hasInvalidField() {
@@ -209,12 +259,17 @@ public class EditCriteriaFragment extends AbstractCustomFragmentImpl implements 
     private void clearData() {
         Toast.makeText(getMainActivity(), getString(R.string.fields_cleared), Toast.LENGTH_SHORT).show();
         Objects.requireNonNull(binding.nameTextInputLayout.getEditText()).setText(null);
+        criteria.setName(null);
         Objects.requireNonNull(binding.sentenceTextInputLayout.getEditText()).setText(null);
+        criteria.setSentence(null);
         binding.checkboxPerson.setChecked(false);
+        criteria.setLegalPerson(null);
         Objects.requireNonNull(binding.emailTextInputLayout.getEditText()).setText(null);
+        criteria.setEmail(null);
         binding.radioButtonPhysicPerson.setChecked(false);
         binding.radioButtonLegalPerson.setChecked(false);
         Objects.requireNonNull(binding.cpfTextInputLayout.getEditText()).setText(null);
         Objects.requireNonNull(binding.cnpjTextInputLayout.getEditText()).setText(null);
+        criteria.setDocument(null);
     }
 }

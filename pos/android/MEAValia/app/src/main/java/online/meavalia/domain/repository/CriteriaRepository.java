@@ -1,7 +1,6 @@
 package online.meavalia.domain.repository;
 
 import java.util.List;
-import java.util.Set;
 
 import online.meavalia.domain.model.Criteria;
 

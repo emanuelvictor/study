@@ -1,6 +1,5 @@
 package online.meavalia.ui.about;
 
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;

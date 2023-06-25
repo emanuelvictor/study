@@ -39,6 +39,7 @@ public class InsertCriteriaFragment extends AbstractCustomFragmentImpl implement
         criteriaRepository = new CriteriaRepositoryImpl(getContext());
         binding = InsertCriteriaBinding.inflate(inflater, container, false);
 
+        initialConfigurationsFromFields();
         configureCheckBox();
         configureRadioButton();
         configureTitle();
@@ -50,11 +51,20 @@ public class InsertCriteriaFragment extends AbstractCustomFragmentImpl implement
         return binding.getRoot();
     }
 
+    private void initialConfigurationsFromFields(){
+        binding.emailTextInputLayout.setVisibility(View.GONE);
+        binding.radioGroupTypeOfPerson.setVisibility(View.GONE);
+        binding.cpfTextInputLayout.setVisibility(View.GONE);
+        binding.cnpjTextInputLayout.setVisibility(View.GONE);
+    }
+
     private void configureCheckBox() {
         binding.checkboxPerson.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 binding.emailTextInputLayout.setVisibility(View.VISIBLE);
                 binding.radioGroupTypeOfPerson.setVisibility(View.VISIBLE);
+                binding.radioButtonPhysicPerson.setChecked(true);
+                binding.cpfTextInputLayout.setVisibility(View.VISIBLE);
             } else {
                 binding.emailTextInputLayout.setVisibility(View.GONE);
                 binding.radioGroupTypeOfPerson.setVisibility(View.GONE);
@@ -96,10 +106,6 @@ public class InsertCriteriaFragment extends AbstractCustomFragmentImpl implement
     }
 
     private void configureSpinner() {
-        binding.emailTextInputLayout.setVisibility(View.GONE);
-        binding.radioGroupTypeOfPerson.setVisibility(View.GONE);
-        binding.cpfTextInputLayout.setVisibility(View.GONE);
-        binding.cnpjTextInputLayout.setVisibility(View.GONE);
 
         final Spinner spinner = binding.priorityCriteria;
 
