@@ -34,6 +34,12 @@ public class CriteriaRepositoryImpl implements CriteriaRepository {
         return database.criteriaRepositoryRoom().findAll();
     }
 
+    @Override
+    public Criteria getById(int id) {
+        return database.criteriaRepositoryRoom().findById(id);
+    }
+
+    @Override
     public void remove(final Criteria criteria) {
         database.criteriaRepositoryRoom().remove(criteria);
     }

@@ -1,5 +1,10 @@
 package online.meavalia.ui.assessment.execution;
 
+import static online.meavalia.ui.assessment.execution.SelectNotesFragment.FILE;
+import static online.meavalia.ui.assessment.execution.SelectNotesFragment.KEY;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -37,8 +42,10 @@ public class LogoutDialogFragment extends DialogFragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.toString().equals(DEFAULT_PASSWORD_TO_LOGOUT))
+                if (s.toString().equals(DEFAULT_PASSWORD_TO_LOGOUT)){
+                    removeCurrentAssessment();
                     requireActivity().finish();
+                }
             }
 
             @Override
@@ -47,6 +54,14 @@ public class LogoutDialogFragment extends DialogFragment {
             }
         };
         passwordLogout.addTextChangedListener(textWatcher);
+    }
+
+    void removeCurrentAssessment(){
+        final SharedPreferences shared = requireContext().getSharedPreferences(FILE,
+                Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = shared.edit();
+        editor.remove(KEY);
+        editor.commit();
     }
 
 }

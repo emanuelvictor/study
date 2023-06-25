@@ -1,6 +1,10 @@
 package online.meavalia.ui.criteria;
 
+import static online.meavalia.ui.assessment.execution.SelectNotesFragment.FILE;
+import static online.meavalia.ui.assessment.execution.SelectNotesFragment.KEY;
+
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,6 +19,9 @@ import androidx.navigation.Navigation;
 import online.meavalia.R;
 import online.meavalia.databinding.ActivityMainBinding;
 import online.meavalia.domain.model.Criteria;
+import online.meavalia.domain.repository.CriteriaRepository;
+import online.meavalia.infrastructure.repository.impl.CriteriaRepositoryImpl;
+import online.meavalia.ui.assessment.AssessmentExecutionActivity;
 
 public class CriteriaActivity extends AppCompatActivity {
 
@@ -25,6 +32,15 @@ public class CriteriaActivity extends AppCompatActivity {
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        final Criteria oldCriteria = loadAssessmentToContinueExecution();
+        if (oldCriteria != null)
+            continueOldCriteria(oldCriteria);
+    }
+
+    private void continueOldCriteria(final Criteria oldCriteria) {
+        final Intent intent = new Intent(this, AssessmentExecutionActivity.class);
+        intent.putExtra("criteria", oldCriteria);
+        this.startActivity(intent);
     }
 
     @Override
@@ -55,10 +71,13 @@ public class CriteriaActivity extends AppCompatActivity {
     }
 
     private Criteria loadAssessmentToContinueExecution() {
-        final SharedPreferences shared = getSharedPreferences("online.meavalia.ui.criteria.FILE", Context.MODE_PRIVATE);
-        final String criteriaId = shared.getString("criteria", null);
+        final SharedPreferences shared = getSharedPreferences(FILE, Context.MODE_PRIVATE);
+        final int criteriaId = shared.getInt(KEY, 0);
 
-        // TODO load criteria here if exists
+        if (criteriaId != 0) {
+            final CriteriaRepository criteriaRepository = new CriteriaRepositoryImpl(this);
+            return criteriaRepository.getById(criteriaId);
+        }
 
         return null;
     }

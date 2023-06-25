@@ -1,5 +1,7 @@
 package online.meavalia.ui.assessment.execution;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -13,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
+import java.util.Objects;
+
 import online.meavalia.R;
 import online.meavalia.databinding.SelectNotesBinding;
 import online.meavalia.domain.model.Criteria;
@@ -22,6 +26,8 @@ import online.meavalia.ui.generic.AbstractCustomFragmentImpl;
 
 public class SelectNotesFragment extends AbstractCustomFragmentImpl {
 
+    public static String FILE = "online.meavalia.ui.criteria.FILE";
+    public static String KEY = "meavaliaId";
     private Criteria criteria;
     private SelectNotesBinding binding;
     private CriteriaRepository criteriaRepository;
@@ -31,6 +37,9 @@ public class SelectNotesFragment extends AbstractCustomFragmentImpl {
 
         criteriaRepository = new CriteriaRepositoryImpl(getContext());
         binding = SelectNotesBinding.inflate(inflater, container, false);
+        criteria = (Criteria) requireActivity().getIntent().getSerializableExtra("criteria");
+
+        saveCurrentAssessment(criteria);
 
         configureAssessmentSentence();
         configureLabels();
@@ -40,8 +49,15 @@ public class SelectNotesFragment extends AbstractCustomFragmentImpl {
         return binding.getRoot();
     }
 
+    void saveCurrentAssessment(final Criteria criteria) {
+        final SharedPreferences shared = requireContext().getSharedPreferences(FILE,
+                Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = shared.edit();
+        editor.putInt(KEY, criteria.getId());
+        editor.commit();
+    }
+
     private void configureAssessmentSentence() {
-        criteria = (Criteria) requireActivity().getIntent().getSerializableExtra("criteria");
         final TextView textView = binding.sentenceNameTextView;
         configureLabels(textView, criteria.getSentence());
     }

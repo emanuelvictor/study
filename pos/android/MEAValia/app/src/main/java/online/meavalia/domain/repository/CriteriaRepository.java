@@ -12,5 +12,7 @@ public interface CriteriaRepository {
 
     List<Criteria> getAll();
 
+    Criteria getById(int id);
+
     void remove(final Criteria criteria);
 }
