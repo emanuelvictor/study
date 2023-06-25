@@ -11,13 +11,15 @@ import androidx.appcompat.view.ActionMode;
 
 import online.meavalia.R;
 import online.meavalia.domain.model.Criteria;
+import online.meavalia.domain.repository.CriteriaRepository;
+import online.meavalia.infrastructure.repository.impl.CriteriaRepositoryImpl;
 import online.meavalia.ui.assessment.AssessmentExecutionActivity;
 
 public class OptionsToSelectCriteriaFromList implements ActionMode.Callback {
 
     private final Criteria criteria;
     private final AppCompatActivity appCompatActivity;
-    private ActionMode mode;
+    private final CriteriaRepository criteriaRepository = new CriteriaRepositoryImpl();
 
     public OptionsToSelectCriteriaFromList(Criteria criteria, AppCompatActivity appCompatActivity) {
         this.criteria = criteria;
@@ -26,7 +28,6 @@ public class OptionsToSelectCriteriaFromList implements ActionMode.Callback {
 
     @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-        this.mode = mode;
         MenuInflater inflate = mode.getMenuInflater();
         inflate.inflate(R.menu.criteria_selected, menu);
         return true;
@@ -40,11 +41,12 @@ public class OptionsToSelectCriteriaFromList implements ActionMode.Callback {
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
         if (item.getItemId() == R.id.menuItemUpdateCriteria) {
-            Toast.makeText(appCompatActivity, "Update " + criteria.getName(), Toast.LENGTH_LONG).show();
+            Toast.makeText(appCompatActivity, "Update " + criteria.getName(), Toast.LENGTH_SHORT).show();
             mode.finish();
             return true;
         } else if (item.getItemId() == R.id.menuItemUpdateRemoveCriteria) {
-            Toast.makeText(appCompatActivity, "Remover " + criteria.getName(), Toast.LENGTH_LONG).show();
+            Toast.makeText(appCompatActivity, "Remover " + criteria.getName(), Toast.LENGTH_SHORT).show();
+            criteriaRepository.remove(criteria);
             mode.finish();
             return true;
         } else if (item.getItemId() == R.id.menuItemExecuteAssessment) {
@@ -57,10 +59,6 @@ public class OptionsToSelectCriteriaFromList implements ActionMode.Callback {
 
     @Override
     public void onDestroyActionMode(ActionMode mode) {
-    }
-
-    void finish() {
-        mode.finish();
     }
 
     private void startAssessmentActivity(final Criteria criteria) {

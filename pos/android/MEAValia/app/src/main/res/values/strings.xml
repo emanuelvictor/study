@@ -52,7 +52,9 @@
 
     <string name="fields_cleared">Fields cleared!</string>
     <string name="invalid_fields">Invalid fields!</string>
-    <string name="criteria_inserted">Criteria Inserted!</string>
-    <string name="criteria_updated">Criteria Updated!</string>
-    <string name="criteria_removed">Criteria Removed!</string>
+    <string name="criteria_inserted">Criteria inserted!</string>
+    <string name="criteria_updated">Criteria updated!</string>
+    <string name="criteria_removed">Criteria removed!</string>
+    <string name="criteria">Criteria</string>
+    <string name="selected">selected</string>
 </resources>

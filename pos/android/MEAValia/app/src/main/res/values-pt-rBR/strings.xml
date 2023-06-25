@@ -28,7 +28,7 @@
 
     <string name="menu_settings">Settings</string>
 
-    <string name="assessment_sentence">Sentença da Avaliação</string>
+    <string name="assessment_sentence">Sentença da avaliação</string>
     <string name="thanks_sentence">Obrigado pela sua avaliação!</string>
     <string name="password_logout_label">Insira a senha para realizar o logout</string>
 
@@ -52,7 +52,9 @@
 
     <string name="fields_cleared">Campos limpos!</string>
     <string name="invalid_fields">Campos inválidos!</string>
-    <string name="criteria_inserted">Critério Inserido!</string>
-    <string name="criteria_updated">Critério Atualizado!</string>
-    <string name="criteria_removed">Critério Removido!</string>
+    <string name="criteria_inserted">Critério inserido!</string>
+    <string name="criteria_updated">Critério atualizado!</string>
+    <string name="criteria_removed">Critério removido!</string>
+    <string name="criteria">Critério</string>
+    <string name="selected">selecionado</string>
 </resources>

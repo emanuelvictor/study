@@ -19,9 +19,7 @@ import online.meavalia.infrastructure.repository.impl.CriteriaRepositoryImpl;
 public class ListCriteriaViewModel extends ViewModel {
 
     private final MutableLiveData<List<Criteria>> mCriterias;
-
     private final CriteriaRepository criteriaRepository = new CriteriaRepositoryImpl();
-
 
     public ListCriteriaViewModel() {
         mCriterias = new MutableLiveData<>();

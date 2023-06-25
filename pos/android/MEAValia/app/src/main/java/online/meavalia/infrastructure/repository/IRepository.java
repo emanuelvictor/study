@@ -9,4 +9,6 @@ public interface IRepository<T, ID> {
     List<T> findAllByKey(final String key);
 
     T findById(ID id);
+
+    void remove(final String key, T t);
 }

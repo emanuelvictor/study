@@ -118,7 +118,7 @@ public class InsertCriteriaFragment extends AbstractCustomFragmentImpl implement
 
     private void saveCriteria() {
         if (hasInvalidField()) {
-            Toast.makeText(getMainActivity(), getString(R.string.invalid_fields), Toast.LENGTH_LONG).show();
+            Toast.makeText(getMainActivity(), getString(R.string.invalid_fields), Toast.LENGTH_SHORT).show();
             return;
         }
         final String criteriaName = Objects.requireNonNull(binding.nameTextInputLayout.getEditText()).getText().toString();
@@ -138,7 +138,7 @@ public class InsertCriteriaFragment extends AbstractCustomFragmentImpl implement
         }
         criteriaRepository.save(criteria);
         navigateToList();
-        Toast.makeText(getMainActivity(), getString(R.string.criteria_inserted), Toast.LENGTH_LONG).show();
+        Toast.makeText(getMainActivity(), getString(R.string.criteria_inserted), Toast.LENGTH_SHORT).show();
     }
 
     private boolean hasInvalidField() {
@@ -200,7 +200,7 @@ public class InsertCriteriaFragment extends AbstractCustomFragmentImpl implement
     }
 
     private void clearData() {
-        Toast.makeText(getMainActivity(), getString(R.string.fields_cleared), Toast.LENGTH_LONG).show();
+        Toast.makeText(getMainActivity(), getString(R.string.fields_cleared), Toast.LENGTH_SHORT).show();
         Objects.requireNonNull(binding.nameTextInputLayout.getEditText()).setText(null);
         Objects.requireNonNull(binding.sentenceTextInputLayout.getEditText()).setText(null);
         binding.checkboxPerson.setChecked(false);

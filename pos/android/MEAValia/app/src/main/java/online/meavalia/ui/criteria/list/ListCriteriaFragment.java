@@ -1,14 +1,22 @@
 package online.meavalia.ui.criteria.list;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DiffUtil;
@@ -23,12 +31,15 @@ import online.meavalia.R;
 import online.meavalia.databinding.ItemCriteriaBinding;
 import online.meavalia.databinding.ListCriteriaFragmentBinding;
 import online.meavalia.domain.model.Criteria;
+import online.meavalia.domain.repository.CriteriaRepository;
+import online.meavalia.infrastructure.repository.impl.CriteriaRepositoryImpl;
+import online.meavalia.ui.assessment.AssessmentExecutionActivity;
 import online.meavalia.ui.generic.AbstractCustomFragmentImpl;
 
 public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
 
-    private OptionsToSelectCriteriaFromList optionsToSelectCriteriaFromList;
-
+    private TransformViewHolder transformViewHolder;
+    private final CriteriaRepository criteriaRepository = new CriteriaRepositoryImpl();
     private ListCriteriaFragmentBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -44,10 +55,24 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
         return binding.getRoot();
     }
 
-    @Override
-    public void onResume() {
-        configureListView();
-        super.onResume();
+    private void configureTitle() {
+        Objects.requireNonNull(getMainActivity().getSupportActionBar()).setTitle(R.string.list_of_criteria);
+    }
+
+    private void configureBackButton() {
+        Objects.requireNonNull(getMainActivity().getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+    }
+
+    private void finishActionMode() {
+        if (this.transformViewHolder != null)
+            this.transformViewHolder.finishActionMode();
+    }
+
+    private void configureFabButton() {
+        binding.fab.setOnClickListener(view -> {
+            getNavController().navigate(R.id.nav_insert_criteria);
+            finishActionMode();
+        });
     }
 
     private void configureListView() {
@@ -62,24 +87,6 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
         listCriteriaViewModel.getCriterias().observe(getViewLifecycleOwner(), adapter::submitList);
     }
 
-    private void configureTitle() {
-        Objects.requireNonNull(getMainActivity().getSupportActionBar()).setTitle(R.string.list_of_criteria);
-    }
-
-    private void configureBackButton() {
-        Objects.requireNonNull(getMainActivity().getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
-    }
-
-    private void configureFabButton() {
-        binding.fab.setOnClickListener(view -> {
-            getNavController().navigate(R.id.nav_insert_criteria);
-            if (Objects.nonNull(this.optionsToSelectCriteriaFromList)) {
-                this.optionsToSelectCriteriaFromList.finish();
-                this.optionsToSelectCriteriaFromList = null;
-            }
-        });
-    }
-
     @Override
     public int getNavHostFragmentId() {
         return R.id.nav_host_fragment_content_main;
@@ -87,12 +94,6 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
 
     private AppCompatActivity getMainActivity() {
         return ((AppCompatActivity) getActivity());
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
     }
 
     private class TransformAdapter extends ListAdapter<Criteria, TransformViewHolder> {
@@ -134,7 +135,8 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
         @Override
         public TransformViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
             final ItemCriteriaBinding binding = ItemCriteriaBinding.inflate(LayoutInflater.from(parent.getContext()));
-            return new TransformViewHolder(binding);
+            transformViewHolder = new TransformViewHolder(binding);
+            return transformViewHolder;
         }
 
         @Override
@@ -152,8 +154,9 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
         }
     }
 
-    private class TransformViewHolder extends RecyclerView.ViewHolder {
+    private class TransformViewHolder extends RecyclerView.ViewHolder implements ActionMode.Callback {
 
+        private ActionMode actionMode;
         private Criteria criteria;
         private final ImageView imageView;
         private final TextView criteriaNameTextView;
@@ -167,29 +170,78 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
             sentenceTextView = binding.criteriaSentenceTextView;
             averageTextView = binding.averageTextView;
             binding.imageViewItemTransform.getRootView().setClickable(true);
-            binding.imageViewItemTransform.getRootView().setOnClickListener(v -> {
-                /*if (actionMode != null){
-                    return false;
-                }
-
-                posicaoSelecionada = position;
-
-                view.setBackgroundColor(Color.LTGRAY);
-
-                viewSelecionada = view;
-
-                listViewPessoas.setEnabled(false);
-
-                actionMode = */
-                optionsToSelectCriteriaFromList = new OptionsToSelectCriteriaFromList(criteria, getMainActivity());
-                getMainActivity().startSupportActionMode(optionsToSelectCriteriaFromList);
-
-//                startAssessmentActivity(criteria);
-            });
+            binding.imageViewItemTransform.getRootView()
+                    .setOnClickListener(view -> {
+                        getMainActivity().startSupportActionMode(this);
+                        final String message = getString(R.string.criteria) + " " +
+                                criteria.getName() + " " + getString(R.string.selected);
+                        Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show();
+                    });
         }
 
         public void setCriteria(Criteria criteria) {
             this.criteria = criteria;
         }
+
+        @Override
+        public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+            final MenuInflater inflate = actionMode.getMenuInflater();
+            inflate.inflate(R.menu.criteria_selected, menu);
+            this.actionMode = actionMode;
+            return true;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            if (item.getItemId() == R.id.menuItemUpdateCriteria) {
+                Toast.makeText(requireActivity(), "Update " + criteria.getName(), Toast.LENGTH_SHORT).show(); // TODO translate
+                mode.finish();
+                return true;
+            } else if (item.getItemId() == R.id.menuItemUpdateRemoveCriteria) {
+                Toast.makeText(requireActivity(), getString(R.string.criteria_removed), Toast.LENGTH_SHORT).show();
+                criteriaRepository.remove(criteria);
+                onResume();
+                mode.finish();
+                return true;
+            } else if (item.getItemId() == R.id.menuItemExecuteAssessment) {
+                startAssessmentActivity(criteria);
+                mode.finish();
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+
+        }
+
+        private void startAssessmentActivity(final Criteria criteria) {
+            final Intent intent = new Intent(requireActivity(), AssessmentExecutionActivity.class);
+            intent.putExtra("criteria", criteria);
+            requireActivity().startActivity(intent);
+        }
+
+        public void finishActionMode() {
+            if (actionMode != null)
+                actionMode.finish();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        configureListView();
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
