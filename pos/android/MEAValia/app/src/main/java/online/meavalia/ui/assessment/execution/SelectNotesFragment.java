@@ -15,9 +15,7 @@ import androidx.core.content.ContextCompat;
 
 import online.meavalia.R;
 import online.meavalia.databinding.SelectNotesBinding;
-import online.meavalia.domain.model.Assessment;
 import online.meavalia.domain.model.Criteria;
-import online.meavalia.domain.model.Note;
 import online.meavalia.domain.repository.CriteriaRepository;
 import online.meavalia.infrastructure.repository.impl.CriteriaRepositoryImpl;
 import online.meavalia.ui.generic.AbstractCustomFragmentImpl;
@@ -95,8 +93,7 @@ public class SelectNotesFragment extends AbstractCustomFragmentImpl {
     }
 
     private void saveAssessment(final Criteria criteria, final int note) {
-        final Assessment assessment = new Assessment(criteria, new Note(note));
-        criteria.addAssessment(assessment);
+        criteria.addAssessment(note);
         criteriaRepository.save(criteria);
     }
 

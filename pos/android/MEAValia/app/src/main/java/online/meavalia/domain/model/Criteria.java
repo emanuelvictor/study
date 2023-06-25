@@ -16,7 +16,7 @@ public class Criteria implements Serializable {
     private String document;
     private String email;
     private BigDecimal avg;
-    private final List<Assessment> assessments = new ArrayList<>(); // TODO
+    private int countOfAssessments = 0;
 
     public Criteria(String name, String sentence, final int valueOfPriority) {
         this.name = name;
@@ -41,25 +41,20 @@ public class Criteria implements Serializable {
         return sentence;
     }
 
-    public void calculateAvg() {
+    public void addAssessment(final int newNote) {
 
-        BigDecimal sum = BigDecimal.ZERO;
-        for (int j = 0; j < assessments.size(); j++) {
-            sum = sum.add(BigDecimal.valueOf(assessments.get(j).getNote().getValue()));
+        if (avg == null) {
+            avg = BigDecimal.valueOf(newNote);
+            countOfAssessments++;
+            return;
         }
-
-        if (!sum.equals(BigDecimal.ZERO))
-            this.avg = sum.divide(BigDecimal.valueOf(assessments.size()), 2, RoundingMode.HALF_UP);
-
+        final BigDecimal avgMultiplied = avg.multiply(BigDecimal.valueOf(countOfAssessments));
+        avg = avgMultiplied.add(BigDecimal.valueOf(newNote)).divide(BigDecimal.valueOf(countOfAssessments + 1), 2, RoundingMode.HALF_UP);
+        this.countOfAssessments++;
     }
 
     public BigDecimal getAvg() {
         return avg;
-    }
-
-    public void addAssessment(final Assessment assessment) {
-        this.assessments.add(assessment);
-        calculateAvg();
     }
 
     @Override
