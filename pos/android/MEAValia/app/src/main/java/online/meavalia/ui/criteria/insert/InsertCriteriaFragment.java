@@ -43,6 +43,7 @@ public class InsertCriteriaFragment extends AbstractCustomFragmentImpl implement
         configureTitle();
         configureBackButton();
         configureSaveButton();
+        configureClearButton();
         configureSpinner();
 
         return binding.getRoot();
@@ -86,6 +87,11 @@ public class InsertCriteriaFragment extends AbstractCustomFragmentImpl implement
         final Button saveButton = binding.saveButton;
         saveButton.setClickable(true);
         saveButton.setOnClickListener((v) -> saveCriteria());
+    }
+
+    private void configureClearButton() {
+        binding.clearButton.setClickable(true);
+        binding.clearButton.setOnClickListener(v -> clearData());
     }
 
     private void configureSpinner() {
@@ -191,5 +197,17 @@ public class InsertCriteriaFragment extends AbstractCustomFragmentImpl implement
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    private void clearData() {
+        Toast.makeText(getMainActivity(), getString(R.string.fields_cleared), Toast.LENGTH_LONG).show();
+        Objects.requireNonNull(binding.nameTextInputLayout.getEditText()).setText(null);
+        Objects.requireNonNull(binding.sentenceTextInputLayout.getEditText()).setText(null);
+        binding.checkboxPerson.setChecked(false);
+        Objects.requireNonNull(binding.emailTextInputLayout.getEditText()).setText(null);
+        binding.radioButtonPhysicPerson.setChecked(false);
+        binding.radioButtonLegalPerson.setChecked(false);
+        Objects.requireNonNull(binding.cpfTextInputLayout.getEditText()).setText(null);
+        Objects.requireNonNull(binding.cnpjTextInputLayout.getEditText()).setText(null);
     }
 }
