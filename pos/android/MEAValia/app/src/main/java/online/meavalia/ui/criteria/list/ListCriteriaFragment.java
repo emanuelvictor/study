@@ -39,13 +39,14 @@ import online.meavalia.ui.generic.AbstractCustomFragmentImpl;
 
 public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
 
-    private TransformViewHolder transformViewHolder;
-    private final CriteriaRepository criteriaRepository = new CriteriaRepositoryImpl();
     private ListCriteriaFragmentBinding binding;
+    private TransformViewHolder transformViewHolder;
+    private CriteriaRepository criteriaRepository;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        criteriaRepository = new CriteriaRepositoryImpl(getContext());
         binding = ListCriteriaFragmentBinding.inflate(inflater, container, false);
 
         configureTitle();
@@ -85,7 +86,8 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
                 new ViewModelProvider(this)
                         .get(ListCriteriaViewModel.class);
 
-        listCriteriaViewModel.getCriterias().observe(getViewLifecycleOwner(), adapter::submitList);
+        listCriteriaViewModel.getCriterias(criteriaRepository)
+                .observe(getViewLifecycleOwner(), adapter::submitList);
     }
 
     @Override
@@ -204,7 +206,7 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
 
                 final AtomicBoolean confirmed = new AtomicBoolean(true);
                 final DialogInterface.OnClickListener listener = (dialog, which) -> {
-                    if(which == DialogInterface.BUTTON_POSITIVE){
+                    if (which == DialogInterface.BUTTON_POSITIVE) {
                         Toast.makeText(requireActivity(), getString(R.string.criteria_removed), Toast.LENGTH_SHORT).show();
                         criteriaRepository.remove(criteria);
                         onResume();

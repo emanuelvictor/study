@@ -1,37 +1,40 @@
 package online.meavalia.infrastructure.repository.impl;
 
 
-import android.annotation.SuppressLint;
+import android.content.Context;
 
 import java.util.List;
 
 import online.meavalia.domain.model.Criteria;
-import online.meavalia.domain.model.Priority;
 import online.meavalia.domain.repository.CriteriaRepository;
-import online.meavalia.infrastructure.repository.AbstractRepository;
+import online.meavalia.infrastructure.repository.Database;
 
-public class CriteriaRepositoryImpl extends AbstractRepository<Criteria, Long> implements CriteriaRepository {
+public class CriteriaRepositoryImpl implements CriteriaRepository {
+
+    private final Database database;
+
+    public CriteriaRepositoryImpl(final Context context) {
+        database = Database.getDatabase(context);
+    }
 
     @Override
-    public Criteria save(Criteria criteria) {
-        return super.save(criteria);
+    public Criteria save(final Criteria criteria) {
+        final long id = database.criteriaRepositoryRoom().insert(criteria);
+        return database.criteriaRepositoryRoom().findById(id);
+    }
+
+    @Override
+    public Criteria update(Criteria criteria) {
+        database.criteriaRepositoryRoom().update(criteria);
+        return database.criteriaRepositoryRoom().findById(criteria.getId());
     }
 
     @Override
     public List<Criteria> getAll() {
-        populateFirstCriteria();
-        return super.findAllByKey(Criteria.class.toString());
+        return database.criteriaRepositoryRoom().findAll();
     }
 
     public void remove(final Criteria criteria) {
-        super.findAllByKey(Criteria.class.toString()).remove(criteria);
-    }
-
-    @SuppressLint("NewApi")
-    private void populateFirstCriteria() {
-//        if (super.findAllByKey(Criteria.class.toString()).stream().noneMatch(it -> it.getName().equals("Atendimento"))) {
-//            final Criteria criteria = new Criteria("Atendimento", "Como você avalia atendimento?", Priority.HIGH_PRIORITY.getValue());
-//            save(criteria);
-//        }
+        database.criteriaRepositoryRoom().remove(criteria);
     }
 }

@@ -1,5 +1,7 @@
 package online.meavalia.ui.criteria;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -9,16 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
 
 import online.meavalia.R;
 import online.meavalia.databinding.ActivityMainBinding;
-import online.meavalia.ui.criteria.list.OptionsToSelectCriteriaFromList;
+import online.meavalia.domain.model.Criteria;
 
 public class CriteriaActivity extends AppCompatActivity {
-
-//    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +24,6 @@ public class CriteriaActivity extends AppCompatActivity {
 
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-//        setSupportActionBar(binding.activityContainer.findViewById(R.id.toolbar));
-
-//        mAppBarConfiguration =
-//                new AppBarConfiguration
-//                        .Builder(R.id.nav_transform, R.id.nav_insert_criteria)
-//                        .setOpenableLayout(binding.drawerLayout)
-//                        .build();
-//            NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-//            NavigationUI.setupWithNavController(navigationView, navController);
-
 
     }
 
@@ -65,5 +52,14 @@ public class CriteriaActivity extends AppCompatActivity {
                 .findNavController(this, R.id.nav_host_fragment_content_main);
         navController.navigate(R.id.nav_transform);
         return true;
+    }
+
+    private Criteria loadAssessmentToContinueExecution() {
+        final SharedPreferences shared = getSharedPreferences("online.meavalia.ui.criteria.FILE", Context.MODE_PRIVATE);
+        final String criteriaId = shared.getString("criteria", null);
+
+        // TODO load criteria here if exists
+
+        return null;
     }
 }

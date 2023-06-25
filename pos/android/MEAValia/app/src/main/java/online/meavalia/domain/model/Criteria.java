@@ -1,36 +1,78 @@
 package online.meavalia.domain.model;
 
+
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
+import online.meavalia.domain.converters.BigDecimalConverter;
+
+
+@Entity
 public class Criteria implements Serializable {
 
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+    @NonNull
     private String name;
+    @NonNull
     private String sentence;
-    private Priority priority;
+    @NonNull
+    private int priority;
     private Boolean legalPerson;
     private String document;
     private String email;
+
+    @TypeConverters(BigDecimalConverter.class)
     private BigDecimal avg;
     private int countOfAssessments = 0;
 
-    public Criteria(String name, String sentence, final int valueOfPriority) {
-        this.name = name;
-        this.sentence = sentence;
-        this.priority = Priority.enumFromValue(valueOfPriority);
+    public Criteria() {
     }
 
-    public Criteria(String name, String sentence, String document, String email, int valueOfPriority, Boolean legalPerson) {
+    public Criteria(@NonNull String name, @NonNull String sentence, final int valueOfPriority) {
+        this.name = name;
+        this.sentence = sentence;
+        this.priority = (valueOfPriority);
+    }
+
+    public Criteria(@NonNull String name, @NonNull String sentence, String document, String email, int valueOfPriority, Boolean legalPerson) {
         this.name = name;
         this.sentence = sentence;
         this.document = document;
         this.email = email;
-        this.priority = Priority.enumFromValue(valueOfPriority);
+        this.priority = (valueOfPriority);
         this.legalPerson = legalPerson;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public Boolean getLegalPerson() {
+        return legalPerson;
+    }
+
+    public String getDocument() {
+        return document;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public int getCountOfAssessments() {
+        return countOfAssessments;
     }
 
     public String getName() {
@@ -39,6 +81,42 @@ public class Criteria implements Serializable {
 
     public String getSentence() {
         return sentence;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(@NonNull String name) {
+        this.name = name;
+    }
+
+    public void setSentence(@NonNull String sentence) {
+        this.sentence = sentence;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
+    public void setLegalPerson(Boolean legalPerson) {
+        this.legalPerson = legalPerson;
+    }
+
+    public void setDocument(String document) {
+        this.document = document;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setAvg(BigDecimal avg) {
+        this.avg = avg;
+    }
+
+    public void setCountOfAssessments(int countOfAssessments) {
+        this.countOfAssessments = countOfAssessments;
     }
 
     public void addAssessment(final int newNote) {
@@ -54,32 +132,8 @@ public class Criteria implements Serializable {
     }
 
     public BigDecimal getAvg() {
-        return avg;
+        final MathContext round = new MathContext(3);
+        return avg.round(round);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Criteria criteria = (Criteria) o;
-
-        if (!Objects.equals(name, criteria.name)) return false;
-        if (!Objects.equals(sentence, criteria.sentence))
-            return false;
-        if (priority != criteria.priority) return false;
-        if (!Objects.equals(document, criteria.document))
-            return false;
-        return Objects.equals(email, criteria.email);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (sentence != null ? sentence.hashCode() : 0);
-        result = 31 * result + (priority != null ? priority.hashCode() : 0);
-        result = 31 * result + (document != null ? document.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        return result;
-    }
 }

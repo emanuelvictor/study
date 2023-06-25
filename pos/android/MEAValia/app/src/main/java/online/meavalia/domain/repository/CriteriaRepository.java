@@ -8,6 +8,8 @@ import online.meavalia.domain.model.Criteria;
 public interface CriteriaRepository {
     Criteria save(Criteria criteria);
 
+    Criteria update(Criteria criteria);
+
     List<Criteria> getAll();
 
     void remove(final Criteria criteria);

@@ -24,11 +24,12 @@ public class SelectNotesFragment extends AbstractCustomFragmentImpl {
 
     private Criteria criteria;
     private SelectNotesBinding binding;
-    private final CriteriaRepository criteriaRepository = new CriteriaRepositoryImpl();
+    private CriteriaRepository criteriaRepository;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        criteriaRepository = new CriteriaRepositoryImpl(getContext());
         binding = SelectNotesBinding.inflate(inflater, container, false);
 
         configureAssessmentSentence();
@@ -94,7 +95,7 @@ public class SelectNotesFragment extends AbstractCustomFragmentImpl {
 
     private void saveAssessment(final Criteria criteria, final int note) {
         criteria.addAssessment(note);
-        criteriaRepository.save(criteria);
+        criteriaRepository.update(criteria);
     }
 
     private void navigateToThanks() {

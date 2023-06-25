@@ -34,12 +34,12 @@ public class EditCriteriaFragment extends AbstractCustomFragmentImpl implements 
     private Criteria criteria;
     private Priority priority;
     private InsertCriteriaBinding binding;
-    private final CriteriaRepository criteriaRepository = new CriteriaRepositoryImpl();
+    private CriteriaRepository criteriaRepository;
 
-    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        criteriaRepository = new CriteriaRepositoryImpl(getContext());
         binding = InsertCriteriaBinding.inflate(inflater, container, false);
 
         assert getArguments() != null;
