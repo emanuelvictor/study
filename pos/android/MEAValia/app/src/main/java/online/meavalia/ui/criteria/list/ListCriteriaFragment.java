@@ -1,9 +1,8 @@
 package online.meavalia.ui.criteria.list;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 import androidx.core.content.res.ResourcesCompat;
@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import online.meavalia.R;
 import online.meavalia.databinding.ItemCriteriaBinding;
@@ -194,21 +195,44 @@ public class ListCriteriaFragment extends AbstractCustomFragmentImpl {
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             if (item.getItemId() == R.id.menuItemUpdateCriteria) {
-                Toast.makeText(requireActivity(), "Update " + criteria.getName(), Toast.LENGTH_SHORT).show(); // TODO translate
+                final Bundle bundle = new Bundle();
+                bundle.putSerializable("criteria", criteria);
+                getNavController().navigate(R.id.nav_edit_criteria, bundle);
                 mode.finish();
                 return true;
             } else if (item.getItemId() == R.id.menuItemUpdateRemoveCriteria) {
-                Toast.makeText(requireActivity(), getString(R.string.criteria_removed), Toast.LENGTH_SHORT).show();
-                criteriaRepository.remove(criteria);
-                onResume();
-                mode.finish();
-                return true;
+
+                final AtomicBoolean confirmed = new AtomicBoolean(true);
+                final DialogInterface.OnClickListener listener = (dialog, which) -> {
+                    if(which == DialogInterface.BUTTON_POSITIVE){
+                        Toast.makeText(requireActivity(), getString(R.string.criteria_removed), Toast.LENGTH_SHORT).show();
+                        criteriaRepository.remove(criteria);
+                        onResume();
+                        mode.finish();
+                    } else
+                        confirmed.set(false);
+                };
+
+                confirmToRemove(listener);
+
+                return confirmed.get();
             } else if (item.getItemId() == R.id.menuItemExecuteAssessment) {
                 startAssessmentActivity(criteria);
                 mode.finish();
                 return true;
             }
             return false;
+        }
+
+        private void confirmToRemove(final DialogInterface.OnClickListener listener) {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            builder.setTitle(R.string.confirmation_title);
+            builder.setIcon(android.R.drawable.ic_dialog_alert);
+            builder.setMessage(R.string.confirmation_message);
+            builder.setPositiveButton(R.string.yes, listener);
+            builder.setNegativeButton(R.string.no, listener);
+            final AlertDialog alert = builder.create();
+            alert.show();
         }
 
         @Override

@@ -16,6 +16,11 @@
         tools:layout="@layout/insert_criteria" />
 
     <fragment
+        android:id="@+id/nav_edit_criteria"
+        android:name="online.meavalia.ui.criteria.edit.EditCriteriaFragment"
+        tools:layout="@layout/edit_criteria" />
+
+    <fragment
         android:id="@+id/nav_about"
         android:name="online.meavalia.ui.about.AboutFragment"
         android:label="@string/menu_settings"
