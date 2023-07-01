@@ -170,7 +170,7 @@ public class InsertCriteriaFragment extends AbstractCustomFragmentImpl implement
     private boolean hasInvalidField(final TextInputLayout textInputLayout) {
         final String value = Objects.requireNonNull(textInputLayout.getEditText()).getText().toString();
         if (Objects.isNull(value) || value.isEmpty()) {
-            textInputLayout.setError("This field is required"); // TODO translate
+            textInputLayout.setError(getString(R.string.this_field_is_required));
             return true;
         } else {
             textInputLayout.setError(null);

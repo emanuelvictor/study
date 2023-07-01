@@ -63,4 +63,5 @@
     <string name="yes">Sim</string>
     <string name="no">Não</string>
     <string name="criteria_edit_button_label">Editar</string>
+    <string name="this_field_is_required">Esse campo é obrigatório</string>
 </resources>

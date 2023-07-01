@@ -26,7 +26,7 @@ public class AssessmentExecutionActivity extends AppCompatActivity {
     }
 
     private void configureBackAction() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // TODO
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
                     OnBackInvokedDispatcher.PRIORITY_DEFAULT,
                     this::showDialog

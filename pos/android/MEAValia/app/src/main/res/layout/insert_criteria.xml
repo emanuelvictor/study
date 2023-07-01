@@ -11,6 +11,11 @@
         android:orientation="vertical"
         android:scrollbarAlwaysDrawVerticalTrack="true">
 
+        <TextView android:id="@+id/text_view_insert_criteria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/insert_criteria" />
+
         <CheckBox android:id="@+id/checkbox_person"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
