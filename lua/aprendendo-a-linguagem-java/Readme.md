@@ -1,0 +1,1 @@
+This project is dedicated to study of book "Aprendendo a linguagem LUA (José Augusto N.G Manzano)"
