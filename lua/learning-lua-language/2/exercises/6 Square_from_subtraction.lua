@@ -1,0 +1,5 @@
+io.write('Insert value of A: \n')
+A = io.read()
+io.write('Insert value of B: \n')
+B = io.read()
+io.write('(A-B)^2 is '..string.format("%i",(A-B)^2))

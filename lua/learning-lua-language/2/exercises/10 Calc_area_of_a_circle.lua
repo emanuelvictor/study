@@ -1,0 +1,8 @@
+io.write('Insert value of A: \n')
+A = io.read()
+io.write('Insert value of B: \n')
+B = io.read()
+print('A + B = ' .. string.format("%d", A + B))
+print('A - B = ' .. string.format("%d", A - B))
+print('A * B = ' .. string.format("%d", A * B))
+print('A / B = ' .. string.format("%7.2f", A / B))

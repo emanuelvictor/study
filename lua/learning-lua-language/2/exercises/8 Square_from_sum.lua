@@ -1,0 +1,7 @@
+io.write('Insert value of A: \n')
+A = io.read()
+io.write('Insert value of B: \n')
+B = io.read()
+io.write('Insert value of C: \n')
+C = io.read()
+io.write('(A+B+C)^2 is '..string.format("%i",(A+B+C)^2))
